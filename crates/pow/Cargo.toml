@@ -12,3 +12,5 @@ version.workspace = true
 serde.workspace = true
 starknet-crypto.workspace = true
 cairo-felt.workspace = true
+thiserror.workspace = true
+cairovm_verifier_transcript.workspace = true

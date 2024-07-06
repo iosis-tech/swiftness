@@ -35,7 +35,7 @@ struct StarkUnsentCommitment {
     // corresponding column shifted by the corresponding row_offset.
     oods_values: Vec<Felt252>,
     fri: cairovm_verifier_fri::types::UnsentCommitment,
-    proof_of_work: cairovm_verifier_pow::types::UnsentCommitment,
+    proof_of_work: cairovm_verifier_pow::pow::UnsentCommitment,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

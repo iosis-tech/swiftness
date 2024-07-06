@@ -1,4 +1,4 @@
-pub mod channel;
+pub mod transcript;
 
 #[cfg(test)]
 pub mod tests;
