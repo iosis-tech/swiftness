@@ -1,5 +1,5 @@
 [package]
-name = "channel"
+name = "cairovm_verifier_channel"
 description.workspace = true
 edition.workspace = true
 homepage.workspace = true

@@ -16,7 +16,9 @@ repository = "https://github.com/iosis-tech/cairovm-verifier"
 version = "0.0.1"
 
 [workspace.dependencies]
+serde = { version = "1.0", features = ["derive"] }
 starknet-crypto = "0.7.1"
+cairo-felt = "0.9.1"
 
 cairovm_verifier_air = { path = "crates/air" }
 cairovm_verifier_channel = { path = "crates/channel" }

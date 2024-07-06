@@ -1,5 +1,5 @@
 [package]
-name = "pow"
+name = "cairovm_verifier_pow"
 description.workspace = true
 edition.workspace = true
 homepage.workspace = true
@@ -9,3 +9,6 @@ repository.workspace = true
 version.workspace = true
 
 [dependencies]
+serde.workspace = true
+starknet-crypto.workspace = true
+cairo-felt.workspace = true
