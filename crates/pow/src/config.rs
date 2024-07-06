@@ -10,22 +10,23 @@ pub struct Config {
 }
 
 impl Config {
-    pub fn validate(&self) -> Result<(), ConfigError> {
+    pub fn validate(&self) -> Result<(), Error> {
         if self.n_bits < MIN_PROOF_OF_WORK_BITS || self.n_bits > MAX_PROOF_OF_WORK_BITS {
-            Err(ConfigError::OutOfBounds {
-                min: MIN_PROOF_OF_WORK_BITS,
-                max: MAX_PROOF_OF_WORK_BITS,
-            })
+            Err(Error::OutOfBounds { min: MIN_PROOF_OF_WORK_BITS, max: MAX_PROOF_OF_WORK_BITS })
         } else {
             Ok(())
         }
+    }
+
+    pub fn bits(&self) -> &u8 {
+        &self.n_bits
     }
 }
 
 use thiserror::Error;
 
 #[derive(Error, Debug)]
-pub enum ConfigError {
+pub enum Error {
     #[error("config n_bits out of bounds {min} - {max}")]
     OutOfBounds { min: u8, max: u8 },
 }
