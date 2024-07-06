@@ -1,0 +1,26 @@
+[profile.release]
+overflow-checks = true
+
+[workspace]
+resolver = "2"
+members = ["crates/air", "crates/channel", "crates/commitment", "crates/fri", "crates/pow", "crates/stark"]
+exclude = []
+
+[workspace.package]
+description = ""
+edition = "2021"
+homepage = ""
+license-file = "LICENSE"
+readme = "README.md"
+repository = "https://github.com/iosis-tech/cairovm-verifier"
+version = "0.0.1"
+
+[workspace.dependencies]
+starknet-crypto = "0.7.1"
+
+cairovm_verifier_air = { path = "crates/air" }
+cairovm_verifier_channel = { path = "crates/channel" }
+cairovm_verifier_commitment = { path = "crates/commitment" }
+cairovm_verifier_fri = { path = "crates/fri" }
+cairovm_verifier_pow = { path = "crates/pow" }
+cairovm_verifier_stark = { path = "crates/stark" }
