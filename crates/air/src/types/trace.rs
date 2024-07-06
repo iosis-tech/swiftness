@@ -1,12 +1,17 @@
-use cairo_felt::Felt252;
 use serde::{Deserialize, Serialize};
+use serde_with::serde_as;
+use starknet_core::serde::unsigned_field_element::UfeHex;
+use starknet_crypto::Felt;
 
 // Commitment values for the Traces component. Used to generate a commitment by "reading" these
 // values from the channel.
+#[serde_as]
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct UnsentCommitment {
-    original: Felt252,
-    interaction: Felt252,
+    #[serde_as(as = "UfeHex")]
+    original: Felt,
+    #[serde_as(as = "UfeHex")]
+    interaction: Felt,
 }
 
 // Commitment for the Traces component.

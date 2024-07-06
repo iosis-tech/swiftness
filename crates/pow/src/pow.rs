@@ -5,7 +5,7 @@ use crate::config::Config;
 
 const MAGIC: u64 = 0x0123456789abcded;
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct UnsentCommitment {
     nonce: u64,
 }

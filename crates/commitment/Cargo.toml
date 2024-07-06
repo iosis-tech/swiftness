@@ -10,5 +10,6 @@ version.workspace = true
 
 [dependencies]
 serde.workspace = true
+serde_with.workspace = true
 starknet-crypto.workspace = true
-cairo-felt.workspace = true
+starknet-core.workspace = true
