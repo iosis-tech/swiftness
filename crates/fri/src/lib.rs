@@ -1,4 +1,5 @@
 pub mod config;
+pub mod formula;
 pub mod fri;
 pub mod types;
 

@@ -1,9 +1,8 @@
+use crate::config::Config;
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
 use starknet_core::serde::unsigned_field_element::UfeHex;
 use starknet_crypto::Felt;
-
-use crate::config::Config;
 
 // Commitment values for FRI. Used to generate a commitment by "reading" these values
 // from the channel.
