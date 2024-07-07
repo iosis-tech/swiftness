@@ -39,7 +39,7 @@ impl Config {
         {
             return Err(Error::OutOfBounds { min: 0, max: MAX_LAST_LAYER_LOG_DEGREE_BOUND });
         }
-        if *self.fri_step_sizes.get(0).ok_or(Error::FirstFriStepInvalid)? == Felt::ZERO {
+        if *self.fri_step_sizes.first().ok_or(Error::FirstFriStepInvalid)? == Felt::ZERO {
             return Err(Error::FirstFriStepInvalid);
         }
 

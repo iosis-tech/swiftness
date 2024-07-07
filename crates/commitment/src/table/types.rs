@@ -16,7 +16,7 @@ pub struct Commitment {
 pub struct Config {
     #[serde_as(as = "UfeHex")]
     n_columns: Felt,
-    vector: vector::types::Config,
+    vector: vector::config::Config,
 }
 
 // Responses for queries to the table commitment.

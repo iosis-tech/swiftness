@@ -58,7 +58,7 @@ pub fn verify_pow(digest: [u8; 32], n_bits: u8, nonce: u64) -> Result<(), Error>
     let (q, _r) = Felt::from_bytes_be_slice(final_hash.as_slice())
         .div_rem(&NonZeroFelt::try_from(Felt::TWO.pow(128_u128)).unwrap());
     if q >= work_limit {
-        Err(Error::PoWFail)
+        Err(Error::ProofOfWorkFail)
     } else {
         Ok(())
     }
@@ -69,5 +69,5 @@ use thiserror::Error;
 #[derive(Error, Debug)]
 pub enum Error {
     #[error("proof of work verification fail")]
-    PoWFail,
+    ProofOfWorkFail,
 }

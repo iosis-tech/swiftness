@@ -1,3 +1,4 @@
+use super::config::Config;
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
 use starknet_core::serde::unsigned_field_element::UfeHex;
@@ -7,18 +8,9 @@ use starknet_crypto::Felt;
 #[serde_as]
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Commitment {
-    config: Config,
+    pub config: Config,
     #[serde_as(as = "UfeHex")]
-    commitment_hash: Felt,
-}
-
-#[serde_as]
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
-pub struct Config {
-    #[serde_as(as = "UfeHex")]
-    height: Felt,
-    #[serde_as(as = "UfeHex")]
-    n_verifier_friendly_commitment_layers: Felt,
+    pub commitment_hash: Felt,
 }
 
 // A query to the vector commitment.
