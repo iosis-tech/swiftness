@@ -33,21 +33,29 @@ pub fn verify_pow(digest: [u8; 32], n_bits: u8, nonce: u64) -> Result<(), Error>
     // Total of 0x29 = 41 bytes.
 
     let mut hasher = Keccak256::new();
-    hasher.update(
-        MAGIC.to_be_bytes().into_iter().chain(digest).take(n_bits.into()).collect::<Vec<u8>>(),
-    );
-    let hash = hasher.finalize().to_vec();
+    let mut init_data = Vec::with_capacity(41);
+    init_data.extend_from_slice(&MAGIC.to_be_bytes());
+    init_data.extend_from_slice(&digest);
+    init_data.push(n_bits);
+    hasher.update(&init_data);
+    let init_hash = hasher.finalize().to_vec();
 
-    // Compute Hash(init_hash || nonce   )
+    // Reverse the endianness of the initial hash.
+    // init_hash.reverse();
+
+    // Compute Hash(init_hash || nonce)
     //              32 bytes  || 8 bytes
     // Total of 0x28 = 40 bytes.
 
     let mut hasher = Keccak256::new();
-    hasher.update(hash.into_iter().chain(nonce.to_be_bytes()).collect::<Vec<u8>>());
-    let hash = hasher.finalize();
+    let mut hash_data = Vec::with_capacity(40);
+    hash_data.extend_from_slice(&init_hash);
+    hash_data.extend_from_slice(&nonce.to_be_bytes());
+    hasher.update(&hash_data);
+    let final_hash = hasher.finalize();
 
     let work_limit = Felt::TWO.pow(128 - n_bits);
-    let (q, _r) = Felt::from_bytes_be_slice(hash.as_slice())
+    let (q, _r) = Felt::from_bytes_be_slice(final_hash.as_slice())
         .div_rem(&NonZeroFelt::try_from(Felt::TWO.pow(128_u128)).unwrap());
     if q >= work_limit {
         Err(Error::PoWFail)
