@@ -4,12 +4,12 @@ use starknet_core::serde::unsigned_field_element::UfeHex;
 use starknet_crypto::Felt;
 
 #[serde_as]
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Config {
     #[serde_as(as = "UfeHex")]
-    height: Felt,
+    pub height: Felt,
     #[serde_as(as = "UfeHex")]
-    n_verifier_friendly_commitment_layers: Felt,
+    pub n_verifier_friendly_commitment_layers: Felt,
 }
 
 impl Config {
