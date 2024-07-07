@@ -3,7 +3,14 @@ overflow-checks = true
 
 [workspace]
 resolver = "2"
-members = ["crates/air", "crates/transcript", "crates/commitment", "crates/fri", "crates/pow", "crates/stark"]
+members = [
+    "crates/air",
+    "crates/transcript",
+    "crates/commitment",
+    "crates/fri",
+    "crates/pow",
+    "crates/stark",
+]
 exclude = []
 
 [workspace.package]

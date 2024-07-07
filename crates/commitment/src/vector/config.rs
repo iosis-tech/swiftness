@@ -7,9 +7,9 @@ use starknet_crypto::Felt;
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Config {
     #[serde_as(as = "UfeHex")]
-    height: Felt,
+    pub height: Felt,
     #[serde_as(as = "UfeHex")]
-    n_verifier_friendly_commitment_layers: Felt,
+    pub n_verifier_friendly_commitment_layers: Felt,
 }
 
 impl Config {

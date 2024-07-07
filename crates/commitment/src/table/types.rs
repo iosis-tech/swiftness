@@ -15,8 +15,8 @@ pub struct Commitment {
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Config {
     #[serde_as(as = "UfeHex")]
-    n_columns: Felt,
-    vector: vector::config::Config,
+    pub n_columns: Felt,
+    pub vector: vector::config::Config,
 }
 
 // Responses for queries to the table commitment.
