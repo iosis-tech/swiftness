@@ -27,6 +27,6 @@ use thiserror::Error;
 
 #[derive(Error, Debug)]
 pub enum Error {
-    #[error("config n_bits out of bounds {min} - {max}")]
+    #[error("value out of bounds {min} - {max}")]
     OutOfBounds { min: u8, max: u8 },
 }
