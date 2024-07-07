@@ -20,7 +20,7 @@ pub struct Config {
     pub n_layers: Felt,
     // Array of size n_layers - 1, each entry is a configuration of a table commitment for the
     // corresponding inner layer.
-    pub inner_layers: Vec<cairovm_verifier_commitment::table::types::Config>,
+    pub inner_layers: Vec<cairovm_verifier_commitment::table::config::Config>,
     // Array of size n_layers, each entry represents the FRI step size,
     // i.e. the number of FRI-foldings between layer i and i+1.
     #[serde_as(as = "Vec<UfeHex>")]

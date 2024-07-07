@@ -1,9 +1,6 @@
-use cairovm_verifier_commitment::{
-    table::types::Config as TableCommitmentConfig, vector::config::Config as VectorCommitmentConfig,
-};
+use crate::config::Config;
+use cairovm_verifier_commitment::{table, vector};
 use starknet_crypto::Felt;
-
-use crate::config::Config as FriConfig;
 
 #[test]
 fn test_fri_config() {
@@ -18,35 +15,35 @@ fn test_fri_config() {
     );
 }
 
-pub fn get() -> FriConfig {
-    FriConfig {
+pub fn get() -> Config {
+    Config {
         log_input_size: Felt::from_hex("0x16").unwrap(),
         n_layers: Felt::from_hex("0x5").unwrap(),
         inner_layers: vec![
-            TableCommitmentConfig {
+            table::config::Config {
                 n_columns: Felt::from_hex("0x10").unwrap(),
-                vector: VectorCommitmentConfig {
+                vector: vector::config::Config {
                     height: Felt::from_hex("0x12").unwrap(),
                     n_verifier_friendly_commitment_layers: Felt::from_hex("0x64").unwrap(),
                 },
             },
-            TableCommitmentConfig {
+            table::config::Config {
                 n_columns: Felt::from_hex("0x8").unwrap(),
-                vector: VectorCommitmentConfig {
+                vector: vector::config::Config {
                     height: Felt::from_hex("0xf").unwrap(),
                     n_verifier_friendly_commitment_layers: Felt::from_hex("0x64").unwrap(),
                 },
             },
-            TableCommitmentConfig {
+            table::config::Config {
                 n_columns: Felt::from_hex("0x4").unwrap(),
-                vector: VectorCommitmentConfig {
+                vector: vector::config::Config {
                     height: Felt::from_hex("0xd").unwrap(),
                     n_verifier_friendly_commitment_layers: Felt::from_hex("0x64").unwrap(),
                 },
             },
-            TableCommitmentConfig {
+            table::config::Config {
                 n_columns: Felt::from_hex("0x4").unwrap(),
-                vector: VectorCommitmentConfig {
+                vector: vector::config::Config {
                     height: Felt::from_hex("0xb").unwrap(),
                     n_verifier_friendly_commitment_layers: Felt::from_hex("0x64").unwrap(),
                 },

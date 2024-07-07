@@ -46,6 +46,6 @@ pub struct Witness {
 // Configuration for the Traces component.
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Config {
-    original: cairovm_verifier_commitment::table::types::Config,
-    interaction: cairovm_verifier_commitment::table::types::Config,
+    original: cairovm_verifier_commitment::table::config::Config,
+    interaction: cairovm_verifier_commitment::table::config::Config,
 }

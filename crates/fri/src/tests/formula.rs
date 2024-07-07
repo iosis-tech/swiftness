@@ -1,6 +1,5 @@
-use starknet_crypto::Felt;
-
 use crate::formula::fri_formula;
+use starknet_crypto::Felt;
 
 #[test]
 fn test_fri_formula2() {

@@ -15,7 +15,7 @@ struct StarkProof {
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct StarkConfig {
     traces: cairovm_verifier_air::types::trace::Config,
-    composition: cairovm_verifier_commitment::table::types::Config,
+    composition: cairovm_verifier_commitment::table::config::Config,
     fri: cairovm_verifier_fri::config::Config,
     proof_of_work: cairovm_verifier_fri::config::Config,
     // Log2 of the trace domain size.

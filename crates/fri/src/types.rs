@@ -1,27 +1,8 @@
+use crate::config::Config;
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
 use starknet_core::serde::unsigned_field_element::UfeHex;
 use starknet_crypto::Felt;
-
-#[serde_as]
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
-pub struct Config {
-    // Log2 of the size of the input layer to FRI.
-    #[serde_as(as = "UfeHex")]
-    log_input_size: Felt,
-    // Number of layers in the FRI. Inner + last layer.
-    #[serde_as(as = "UfeHex")]
-    n_layers: Felt,
-    // Array of size n_layers - 1, each entry is a configuration of a table commitment for the
-    // corresponding inner layer.
-    inner_layers: Vec<cairovm_verifier_commitment::table::types::Config>,
-    // Array of size n_layers, each entry represents the FRI step size,
-    // i.e. the number of FRI-foldings between layer i and i+1.
-    #[serde_as(as = "Vec<UfeHex>")]
-    fri_step_sizes: Vec<Felt>,
-    #[serde_as(as = "UfeHex")]
-    log_last_layer_degree_bound: Felt,
-}
 
 // Commitment values for FRI. Used to generate a commitment by "reading" these values
 // from the channel.
