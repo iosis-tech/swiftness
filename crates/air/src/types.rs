@@ -20,9 +20,9 @@ pub struct SegmentInfo {
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct AddrValue {
     #[serde_as(as = "UfeHex")]
-    address: Felt,
+    pub address: Felt,
     #[serde_as(as = "UfeHex")]
-    value: Felt,
+    pub value: Felt,
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
