@@ -17,25 +17,18 @@ fn test_fri_config() {
 
 pub fn get() -> Config {
     Config {
-        log_input_size: Felt::from_hex("0x16").unwrap(),
+        log_input_size: Felt::from_hex("0x14").unwrap(),
         n_layers: Felt::from_hex("0x5").unwrap(),
         inner_layers: vec![
             table::config::Config {
                 n_columns: Felt::from_hex("0x10").unwrap(),
                 vector: vector::config::Config {
-                    height: Felt::from_hex("0x12").unwrap(),
+                    height: Felt::from_hex("0x10").unwrap(),
                     n_verifier_friendly_commitment_layers: Felt::from_hex("0x64").unwrap(),
                 },
             },
             table::config::Config {
                 n_columns: Felt::from_hex("0x8").unwrap(),
-                vector: vector::config::Config {
-                    height: Felt::from_hex("0xf").unwrap(),
-                    n_verifier_friendly_commitment_layers: Felt::from_hex("0x64").unwrap(),
-                },
-            },
-            table::config::Config {
-                n_columns: Felt::from_hex("0x4").unwrap(),
                 vector: vector::config::Config {
                     height: Felt::from_hex("0xd").unwrap(),
                     n_verifier_friendly_commitment_layers: Felt::from_hex("0x64").unwrap(),
@@ -45,6 +38,13 @@ pub fn get() -> Config {
                 n_columns: Felt::from_hex("0x4").unwrap(),
                 vector: vector::config::Config {
                     height: Felt::from_hex("0xb").unwrap(),
+                    n_verifier_friendly_commitment_layers: Felt::from_hex("0x64").unwrap(),
+                },
+            },
+            table::config::Config {
+                n_columns: Felt::from_hex("0x4").unwrap(),
+                vector: vector::config::Config {
+                    height: Felt::from_hex("0x9").unwrap(),
                     n_verifier_friendly_commitment_layers: Felt::from_hex("0x64").unwrap(),
                 },
             },

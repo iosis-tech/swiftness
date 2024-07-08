@@ -83,7 +83,7 @@ struct FriLayerWitness {
 // Performs FRI commitment phase rounds. Each round reads a commitment on a layer, and sends an
 // evaluation point for the next round.
 pub fn fri_commit_rounds(
-    channel: &mut Transcript,
+    transcript: &mut Transcript,
     n_layers: Felt,
     configs: Vec<TableCommitmentConfig>,
     unsent_commitments: Vec<Felt>,
@@ -93,18 +93,21 @@ pub fn fri_commit_rounds(
 
     let len: usize = n_layers.to_biguint().try_into().unwrap();
     for i in 0..len {
-        let config = configs.get(i).unwrap().clone();
         // Read commitments.
-        commitments.push(table_commit(channel, *unsent_commitments.get(i).unwrap(), config));
+        commitments.push(table_commit(
+            transcript,
+            *unsent_commitments.get(i).unwrap(),
+            configs.get(i).unwrap().clone(),
+        ));
         // Send the next eval_points.
-        eval_points.push(channel.random_felt_to_prover());
+        eval_points.push(transcript.random_felt_to_prover());
     }
 
     (commitments, eval_points)
 }
 
 pub fn fri_commit(
-    channel: &mut Transcript,
+    transcript: &mut Transcript,
     unsent_commitment: FriUnsentCommitment,
     config: FriConfig,
 ) -> FriCommitment {
@@ -112,20 +115,18 @@ pub fn fri_commit(
     let inner_layers = config.inner_layers.clone();
 
     let (commitments, eval_points) = fri_commit_rounds(
-        channel,
+        transcript,
         config.n_layers - 1,
         inner_layers,
         unsent_commitment.inner_layers,
     );
 
     // Read last layer coefficients.
-    channel.read_felt_vector_from_prover(&unsent_commitment.last_layer_coefficients);
+    transcript.read_felt_vector_from_prover(&unsent_commitment.last_layer_coefficients);
     let coefficients = unsent_commitment.last_layer_coefficients;
-    let log_last_layer_degree_bound: u128 =
-        config.log_last_layer_degree_bound.to_biguint().try_into().unwrap();
 
     assert!(
-        Felt::from(2).pow(log_last_layer_degree_bound) == coefficients.len().into(),
+        Felt::TWO.pow_felt(&config.log_last_layer_degree_bound) == coefficients.len().into(),
         "Invalid value"
     );
 

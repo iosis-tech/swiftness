@@ -34,17 +34,17 @@ pub fn get() -> FriCommitment {
                 config: TableCommitmentConfig {
                     n_columns: Felt::from_hex("0x10").unwrap(),
                     vector: VectorCommitmentConfig {
-                        height: Felt::from_hex("0x12").unwrap(),
+                        height: Felt::from_hex("0x10").unwrap(),
                         n_verifier_friendly_commitment_layers: Felt::from_hex("0x64").unwrap(),
                     },
                 },
                 vector_commitment: VectorCommitment {
                     config: VectorCommitmentConfig {
-                        height: Felt::from_hex("0x12").unwrap(),
+                        height: Felt::from_hex("0x10").unwrap(),
                         n_verifier_friendly_commitment_layers: Felt::from_hex("0x64").unwrap(),
                     },
                     commitment_hash: Felt::from_hex(
-                        "0x137de087f31f4e6f54222fc3cebb3c162469083196999e6ee4bb8ceb4d6b786",
+                        "0x31b917291bbb3d38f7bc196dee1f3638ca197512162a4bdeb1ce814619c1625",
                     )
                     .unwrap(),
                 },
@@ -53,25 +53,6 @@ pub fn get() -> FriCommitment {
                 config: TableCommitmentConfig {
                     n_columns: Felt::from_hex("0x8").unwrap(),
                     vector: VectorCommitmentConfig {
-                        height: Felt::from_hex("0xf").unwrap(),
-                        n_verifier_friendly_commitment_layers: Felt::from_hex("0x64").unwrap(),
-                    },
-                },
-                vector_commitment: VectorCommitment {
-                    config: VectorCommitmentConfig {
-                        height: Felt::from_hex("0xf").unwrap(),
-                        n_verifier_friendly_commitment_layers: Felt::from_hex("0x64").unwrap(),
-                    },
-                    commitment_hash: Felt::from_hex(
-                        "0x3bb3c75d228842edce6f6bf6fd6706ce51f5d83c6842a3ab4b4d89fad6f07b",
-                    )
-                    .unwrap(),
-                },
-            },
-            TableCommitment {
-                config: TableCommitmentConfig {
-                    n_columns: Felt::from_hex("0x4").unwrap(),
-                    vector: VectorCommitmentConfig {
                         height: Felt::from_hex("0xd").unwrap(),
                         n_verifier_friendly_commitment_layers: Felt::from_hex("0x64").unwrap(),
                     },
@@ -82,7 +63,7 @@ pub fn get() -> FriCommitment {
                         n_verifier_friendly_commitment_layers: Felt::from_hex("0x64").unwrap(),
                     },
                     commitment_hash: Felt::from_hex(
-                        "0xb606d3c2b341ff9de5ead44f00121fdc4113f3720feb162eeaecb511e73d4f",
+                        "0x6945b2895872a701b3451cdf93dca9cba3cad8f250d5866ca5c263e41c8f2b2",
                     )
                     .unwrap(),
                 },
@@ -101,20 +82,39 @@ pub fn get() -> FriCommitment {
                         n_verifier_friendly_commitment_layers: Felt::from_hex("0x64").unwrap(),
                     },
                     commitment_hash: Felt::from_hex(
-                        "0x787b0937a4cd02e0143e93979bb79139ca9546fc1654b4f755f8642c989ba20",
+                        "0x786c3ebbd4cab0c782d36860cd51887712953c48ce72c8d10acf5698c5a1213",
+                    )
+                    .unwrap(),
+                },
+            },
+            TableCommitment {
+                config: TableCommitmentConfig {
+                    n_columns: Felt::from_hex("0x4").unwrap(),
+                    vector: VectorCommitmentConfig {
+                        height: Felt::from_hex("0x9").unwrap(),
+                        n_verifier_friendly_commitment_layers: Felt::from_hex("0x64").unwrap(),
+                    },
+                },
+                vector_commitment: VectorCommitment {
+                    config: VectorCommitmentConfig {
+                        height: Felt::from_hex("0x9").unwrap(),
+                        n_verifier_friendly_commitment_layers: Felt::from_hex("0x64").unwrap(),
+                    },
+                    commitment_hash: Felt::from_hex(
+                        "0x1e9b0fa29ebe52b9c9a43a1d44e555ce42da3199370134d758735bfe9f40269",
                     )
                     .unwrap(),
                 },
             },
         ],
         eval_points: vec![
-            Felt::from_hex("0x2318111dbaa02700a1ac0d1ce605b756010af6c39b4e85422e9e8c848ec05ca")
+            Felt::from_hex("0x3fa22931f1e5f47eb6273e90ee38c37a21730bb432f6ef09c7c8f8c4e7b7fff")
                 .unwrap(),
-            Felt::from_hex("0xe32c017cfa9260ed2130df2d513340c4a5aaee766696beb2f640ad261e0261")
+            Felt::from_hex("0x72089def6cbdc9a9ad42dab128c499727e36b05d40df74bbccff39650569bd")
                 .unwrap(),
-            Felt::from_hex("0x4103675a55bf63ad036370ded26f12e273026699c056d578c6b01dff2c3e9e0")
+            Felt::from_hex("0x311de180838f0ad6e82a20d03978ddefb1c73bcee966471479a6c70fdc05f34")
                 .unwrap(),
-            Felt::from_hex("0x2cda81790074e40739eb81556de82ebc000056aafcc09c34f5ba52d6d0ff1ba")
+            Felt::from_hex("0x18e241a9c138d318daa567510ba31c4ebeecdaab9076b3a8828dbb4b3303e3")
                 .unwrap(),
         ],
         last_layer_coefficients: last_layer_coefficients::get(),
