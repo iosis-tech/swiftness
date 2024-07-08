@@ -862,7 +862,7 @@ pub fn eval_composition_polynomial_inner(
     total_sum
 }
 
-pub fn eval_oods_polynomial(
+pub fn eval_oods_polynomial_inner(
     column_values: &[Felt],
     oods_values: &[Felt],
     constraint_coefficients: &[Felt],
