@@ -20,3 +20,6 @@ starknet-types-core.workspace = true
 
 cairovm_verifier_air.workspace = true
 cairovm_verifier_commitment.workspace = true
+
+[dev-dependencies]
+cairovm_verifier_common.workspace = true

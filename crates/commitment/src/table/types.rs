@@ -6,7 +6,7 @@ use starknet_core::serde::unsigned_field_element::UfeHex;
 use starknet_crypto::Felt;
 
 // Commitment for a table (n_rows x n_columns) of field elements in montgomery form.
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Commitment {
     pub config: Config,
     pub vector_commitment: vector::types::Commitment,
@@ -23,7 +23,7 @@ pub struct Decommitment {
 }
 
 // Witness for a decommitment over queries.
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Witness {
     pub vector: vector::types::Witness,
 }

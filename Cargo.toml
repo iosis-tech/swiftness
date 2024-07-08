@@ -10,6 +10,7 @@ members = [
     "crates/fri",
     "crates/pow",
     "crates/stark",
+    "crates/common",
 ]
 exclude = []
 
@@ -37,3 +38,4 @@ cairovm_verifier_commitment = { path = "crates/commitment" }
 cairovm_verifier_fri = { path = "crates/fri" }
 cairovm_verifier_pow = { path = "crates/pow" }
 cairovm_verifier_stark = { path = "crates/stark" }
+cairovm_verifier_common = { path = "crates/common" }
