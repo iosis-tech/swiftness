@@ -1,7 +1,13 @@
+use crate::layout::recursive::{
+    global_values::InteractionElements, NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND,
+};
+use cairovm_verifier_commitment::vector;
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
 use starknet_core::serde::unsigned_field_element::UfeHex;
 use starknet_crypto::Felt;
+
+const MAX_N_COLUMNS: Felt = Felt::from_hex_unchecked("0x80");
 
 // Commitment values for the Traces component. Used to generate a commitment by "reading" these
 // values from the channel.
@@ -9,21 +15,21 @@ use starknet_crypto::Felt;
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct UnsentCommitment {
     #[serde_as(as = "UfeHex")]
-    original: Felt,
+    pub original: Felt,
     #[serde_as(as = "UfeHex")]
-    interaction: Felt,
+    pub interaction: Felt,
 }
 
 // Commitment for the Traces component.
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Commitment {
     // Commitment to the first trace.
-    original: cairovm_verifier_commitment::table::types::Commitment,
+    pub original: cairovm_verifier_commitment::table::types::Commitment,
     // The interaction elements that were sent to the prover after the first trace commitment (e.g.
     // memory interaction).
-    // interaction_elements: InteractionElements,
+    pub interaction_elements: InteractionElements,
     // Commitment to the second (interaction) trace.
-    interaction: cairovm_verifier_commitment::table::types::Commitment,
+    pub interaction: cairovm_verifier_commitment::table::types::Commitment,
 }
 
 // Responses for queries to the AIR commitment.
@@ -46,6 +52,53 @@ pub struct Witness {
 // Configuration for the Traces component.
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Config {
-    original: cairovm_verifier_commitment::table::config::Config,
-    interaction: cairovm_verifier_commitment::table::config::Config,
+    pub original: cairovm_verifier_commitment::table::config::Config,
+    pub interaction: cairovm_verifier_commitment::table::config::Config,
+}
+
+impl Config {
+    pub fn validate(
+        &self,
+        log_eval_domain_size: Felt,
+        n_verifier_friendly_commitment_layers: Felt,
+    ) -> Result<(), Error> {
+        if self.original.n_columns < Felt::ONE || self.original.n_columns > MAX_N_COLUMNS {
+            return Err(Error::OutOfBounds { min: Felt::ONE, max: MAX_N_COLUMNS });
+        }
+        if self.interaction.n_columns < Felt::ONE || self.interaction.n_columns > MAX_N_COLUMNS {
+            return Err(Error::OutOfBounds { min: Felt::ONE, max: MAX_N_COLUMNS });
+        }
+
+        if self.original.n_columns != NUM_COLUMNS_FIRST.into() {
+            return Err(Error::ColumnsNumInvalid);
+        }
+
+        if self.interaction.n_columns != NUM_COLUMNS_SECOND.into() {
+            return Err(Error::ColumnsNumInvalid);
+        }
+
+        Ok(self
+            .original
+            .vector
+            .validate(log_eval_domain_size, n_verifier_friendly_commitment_layers)
+            .and(
+                self.interaction
+                    .vector
+                    .validate(log_eval_domain_size, n_verifier_friendly_commitment_layers),
+            )?)
+    }
+}
+
+use thiserror::Error;
+
+#[derive(Error, Debug)]
+pub enum Error {
+    #[error("value out of bounds {min} - {max}")]
+    OutOfBounds { min: Felt, max: Felt },
+
+    #[error("wrong numbers of columns")]
+    ColumnsNumInvalid,
+
+    #[error("Vector Error")]
+    Vector(#[from] vector::config::Error),
 }
