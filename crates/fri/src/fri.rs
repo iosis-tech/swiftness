@@ -14,7 +14,9 @@ use crate::{
     config::Config as FriConfig,
     first_layer::gather_first_layer_queries,
     group::get_fri_group,
+    last_layer::{self, verify_last_layer},
     layer::{compute_next_layer, FriLayerComputationParams, FriLayerQuery},
+    types::{Commitment as FriCommitment, Decommitment as FriDecommitment},
 };
 
 // Commitment values for FRI. Used to generate a commitment by "reading" these values
@@ -27,38 +29,18 @@ pub struct FriUnsentCommitment {
     pub last_layer_coefficients: Vec<Felt>,
 }
 
-#[derive(Debug, PartialEq)]
-pub struct FriCommitment {
-    pub config: FriConfig,
-    // Array of size n_layers - 1 containing table commitments for each inner layer.
-    pub inner_layers: Vec<TableCommitment>,
-    // Array of size n_layers, of one evaluation point for each layer.
-    pub eval_points: Vec<Felt>,
-    // Array of size 2**log_last_layer_degree_bound containing coefficients for the last layer
-    // polynomial.
-    pub last_layer_coefficients: Vec<Felt>,
-}
-
-struct FriDecommitment {
-    // Array of size n_values, containing the values of the input layer at query indices.
-    values: Vec<Felt>,
-    // Array of size n_values, containing the field elements that correspond to the query indices
-    // (See queries_to_points).
-    points: Vec<Felt>,
-}
-
 // A witness for the decommitment of the FRI layers over queries.
-struct FriWitness {
+pub struct FriWitness {
     // An array of size n_layers - 1, containing a witness for each inner layer.
-    layers: Vec<FriLayerWitness>,
+    pub layers: Vec<FriLayerWitness>,
 }
 
 #[derive(Clone)]
-struct FriLayerWitness {
+pub struct FriLayerWitness {
     // Values for the sibling leaves required for decommitment.
     pub leaves: Vec<Felt>,
     // Table commitment witnesses for decommiting all the leaves.
-    table_witness: TableCommitmentWitness,
+    pub table_witness: TableCommitmentWitness,
 }
 
 // A FRI phase with N layers starts with a single input layer.
@@ -150,14 +132,13 @@ fn fri_verify_layers(
     let len: usize = n_layers.to_biguint().try_into().unwrap();
 
     for i in 0..len {
-        let step_size_uint: u128 = step_sizes.get(i).unwrap().to_biguint().try_into().unwrap();
         let target_layer_witness = layer_witness.get(i).unwrap().clone();
         let mut target_layer_witness_leaves = target_layer_witness.leaves;
         let target_layer_witness_table_withness = target_layer_witness.table_witness;
         let target_commitment = commitment.get(i).unwrap().clone();
 
         // Params.
-        let coset_size = Felt::from(2).pow(step_size_uint);
+        let coset_size = Felt::TWO.pow_felt(step_sizes.get(i).unwrap());
         let params = FriLayerComputationParams {
             coset_size,
             fri_group: fri_group.clone(),
@@ -183,14 +164,17 @@ fn fri_verify_layers(
 }
 
 // FRI protocol component decommitment.
-fn fri_verify(
+pub fn fri_verify(
     queries: Vec<Felt>,
     commitment: FriCommitment,
     decommitment: FriDecommitment,
     witness: FriWitness,
-) {
+) -> Result<(), Error> {
     if queries.len() != decommitment.values.len() {
-        assert!(false, "Invalid value");
+        return Err(Error::InvalidLength {
+            expected: queries.len(),
+            actual: decommitment.values.len(),
+        });
     }
 
     // Compute first FRI layer queries.
@@ -206,15 +190,30 @@ fn fri_verify(
         commitment.inner_layers,
         witness.layers,
         commitment.eval_points,
-        commitment.config.fri_step_sizes[1..commitment.config.fri_step_sizes.len() - 1].to_vec(),
+        commitment.config.fri_step_sizes[1..commitment.config.fri_step_sizes.len()].to_vec(),
         fri_queries,
     );
 
-    let log_last_layer_degree_bound: u128 =
-        commitment.config.log_last_layer_degree_bound.to_biguint().try_into().unwrap();
     if Felt::from(commitment.last_layer_coefficients.len())
-        == Felt::from(2).pow(log_last_layer_degree_bound)
+        != Felt::TWO.pow_felt(&commitment.config.log_last_layer_degree_bound)
     {
-        assert!(true, "Invalid value");
-    }
+        return Err(Error::InvalidValue);
+    };
+
+    verify_last_layer(last_queries, commitment.last_layer_coefficients)?;
+    Ok(())
+}
+
+use thiserror::Error;
+
+#[derive(Error, Debug)]
+pub enum Error {
+    #[error("Invalid length: expected {expected}, actual {actual}")]
+    InvalidLength { expected: usize, actual: usize },
+
+    #[error("Invalid value")]
+    InvalidValue,
+
+    #[error("Last layer verification error: {0}")]
+    LastLayerVerificationError(#[from] last_layer::Error),
 }

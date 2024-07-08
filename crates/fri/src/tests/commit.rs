@@ -5,10 +5,7 @@ use cairovm_verifier_commitment::{
 use cairovm_verifier_transcript::transcript::Transcript;
 use starknet_crypto::Felt;
 
-use crate::{
-    fri::{fri_commit, FriCommitment},
-    tests::config,
-};
+use crate::{fri::fri_commit, tests::config, types::Commitment as FriCommitment};
 
 use super::*;
 
