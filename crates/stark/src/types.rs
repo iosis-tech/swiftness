@@ -18,7 +18,7 @@ pub struct StarkProof {
 pub struct StarkUnsentCommitment {
     pub traces: cairovm_verifier_air::trace::UnsentCommitment,
     #[serde_as(as = "UfeHex")]
-    pubcomposition: Felt,
+    pub composition: Felt,
     // n_oods_values elements. The i-th value is the evaluation of the i-th mask item polynomial at
     // the OODS point, where the mask item polynomial is the interpolation polynomial of the
     // corresponding column shifted by the corresponding row_offset.
