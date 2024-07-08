@@ -1,3 +1,5 @@
+use std::ops::Deref;
+
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
 use starknet_core::serde::unsigned_field_element::UfeHex;
@@ -16,28 +18,6 @@ pub struct SegmentInfo {
 
 #[serde_as]
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
-pub struct PublicInput {
-    #[serde_as(as = "UfeHex")]
-    log_n_steps: Felt,
-    #[serde_as(as = "UfeHex")]
-    range_check_min: Felt,
-    #[serde_as(as = "UfeHex")]
-    range_check_max: Felt,
-    #[serde_as(as = "UfeHex")]
-    layout: Felt,
-    #[serde_as(as = "Vec<UfeHex>")]
-    dynamic_params: Vec<Felt>,
-    segments: Vec<SegmentInfo>,
-    #[serde_as(as = "UfeHex")]
-    padding_addr: Felt,
-    #[serde_as(as = "UfeHex")]
-    padding_value: Felt,
-    main_page: Page,
-    continuous_page_headers: Vec<ContinuousPageHeader>,
-}
-
-#[serde_as]
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct AddrValue {
     #[serde_as(as = "UfeHex")]
     address: Felt,
@@ -45,7 +25,32 @@ pub struct AddrValue {
     value: Felt,
 }
 
-pub type Page = Vec<AddrValue>;
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+pub struct Page(Vec<AddrValue>);
+
+impl Deref for Page {
+    type Target = Vec<AddrValue>;
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+impl Page {
+    // Returns the product of (z - (addr + alpha * val)) over a single page.
+    pub fn get_product(&self, z: Felt, alpha: Felt) -> Felt {
+        let mut res = Felt::ONE;
+        let mut i = 0;
+        loop {
+            if i == self.len() {
+                break res;
+            }
+            let current = &self[i];
+
+            res *= z - (current.address + alpha * current.value);
+            i += 1;
+        }
+    }
+}
 
 // Information about a continuous page (a consecutive section of the public memory)..
 // Each such page must be verified externally to the verifier:
@@ -61,14 +66,14 @@ pub type Page = Vec<AddrValue>;
 pub struct ContinuousPageHeader {
     // Start address.
     #[serde_as(as = "UfeHex")]
-    start_address: Felt,
+    pub start_address: Felt,
     // Size of the page.
     #[serde_as(as = "UfeHex")]
-    size: Felt,
+    pub size: Felt,
     // Hash of the page.
     #[serde_as(as = "UfeHex")]
-    hash: Felt,
+    pub hash: Felt,
     // Cumulative product of the page.
     #[serde_as(as = "UfeHex")]
-    prod: Felt,
+    pub prod: Felt,
 }

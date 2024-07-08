@@ -6,7 +6,7 @@ use starknet_crypto::Felt;
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct StarkProof {
     config: StarkConfig,
-    public_input: cairovm_verifier_air::types::PublicInput,
+    public_input: cairovm_verifier_air::public_memory::PublicInput,
     unsent_commitment: StarkUnsentCommitment,
     witness: StarkWitness,
 }
