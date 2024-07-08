@@ -197,5 +197,5 @@ fn test_vector_commitment_decommit() {
         ],
     };
 
-    vector_commitment_decommit(commitment, queries, witness).unwrap();
+    vector_commitment_decommit(commitment, &queries, witness).unwrap();
 }
