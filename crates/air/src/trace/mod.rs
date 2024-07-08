@@ -1,3 +1,7 @@
+pub mod config;
+pub mod decommit;
+
+use crate::layout::recursive::global_values::InteractionElements;
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
 use starknet_core::serde::unsigned_field_element::UfeHex;
@@ -9,21 +13,21 @@ use starknet_crypto::Felt;
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct UnsentCommitment {
     #[serde_as(as = "UfeHex")]
-    original: Felt,
+    pub original: Felt,
     #[serde_as(as = "UfeHex")]
-    interaction: Felt,
+    pub interaction: Felt,
 }
 
 // Commitment for the Traces component.
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Commitment {
     // Commitment to the first trace.
-    original: cairovm_verifier_commitment::table::types::Commitment,
+    pub original: cairovm_verifier_commitment::table::types::Commitment,
     // The interaction elements that were sent to the prover after the first trace commitment (e.g.
     // memory interaction).
-    // interaction_elements: InteractionElements,
+    pub interaction_elements: InteractionElements,
     // Commitment to the second (interaction) trace.
-    interaction: cairovm_verifier_commitment::table::types::Commitment,
+    pub interaction: cairovm_verifier_commitment::table::types::Commitment,
 }
 
 // Responses for queries to the AIR commitment.
@@ -31,21 +35,14 @@ pub struct Commitment {
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Decommitment {
     // Responses for queries to the original trace.
-    original: cairovm_verifier_commitment::table::types::Decommitment,
+    pub original: cairovm_verifier_commitment::table::types::Decommitment,
     // Responses for queries to the interaction trace.
-    interaction: cairovm_verifier_commitment::table::types::Decommitment,
+    pub interaction: cairovm_verifier_commitment::table::types::Decommitment,
 }
 
 // A witness for a decommitment of the AIR traces over queries.
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Witness {
-    original: cairovm_verifier_commitment::table::types::Witness,
-    interaction: cairovm_verifier_commitment::table::types::Witness,
-}
-
-// Configuration for the Traces component.
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
-pub struct Config {
-    original: cairovm_verifier_commitment::table::config::Config,
-    interaction: cairovm_verifier_commitment::table::config::Config,
+    pub original: cairovm_verifier_commitment::table::types::Witness,
+    pub interaction: cairovm_verifier_commitment::table::types::Witness,
 }
