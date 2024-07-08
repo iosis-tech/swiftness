@@ -3,10 +3,10 @@ use serde::{Deserialize, Serialize};
 const MAX_PROOF_OF_WORK_BITS: u8 = 50;
 const MIN_PROOF_OF_WORK_BITS: u8 = 20;
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Config {
     // Proof of work difficulty (number of bits required to be 0).
-    n_bits: u8,
+    pub n_bits: u8,
 }
 
 impl Config {
@@ -16,10 +16,6 @@ impl Config {
         } else {
             Ok(())
         }
-    }
-
-    pub fn bits(&self) -> &u8 {
-        &self.n_bits
     }
 }
 

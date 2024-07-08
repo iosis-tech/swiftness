@@ -20,7 +20,7 @@ impl UnsentCommitment {
         unsent_commitment: UnsentCommitment,
         config: &Config,
     ) -> Result<(), Error> {
-        verify_pow(transcript.digest().to_bytes_be(), *config.bits(), unsent_commitment.nonce)?;
+        verify_pow(transcript.digest().to_bytes_be(), config.n_bits, unsent_commitment.nonce)?;
         transcript.read_uint64_from_prover(unsent_commitment.nonce);
         Ok(())
     }

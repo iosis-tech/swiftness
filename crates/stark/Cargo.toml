@@ -13,6 +13,7 @@ serde.workspace = true
 serde_with.workspace = true
 starknet-crypto.workspace = true
 starknet-core.workspace = true
+thiserror.workspace = true
 
 cairovm_verifier_air.workspace = true
 cairovm_verifier_pow.workspace = true
