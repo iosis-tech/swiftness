@@ -7,9 +7,9 @@ pub struct FriLayerComputationParams {
 }
 
 pub struct FriLayerQuery {
-    index: Felt,
-    y_value: Felt,
-    x_inv_value: Felt,
+    pub index: Felt,
+    pub y_value: Felt,
+    pub x_inv_value: Felt,
 }
 
 // Computes the elements of the coset starting at coset_start_index.
