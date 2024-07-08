@@ -7,9 +7,9 @@ use starknet_crypto::Felt;
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct EcPoint {
     #[serde_as(as = "UfeHex")]
-    x: Felt,
+    pub x: Felt,
     #[serde_as(as = "UfeHex")]
-    y: Felt,
+    pub y: Felt,
 }
 
 // Accumulation of member expressions for auto generated composition polynomial code.
@@ -18,60 +18,60 @@ pub struct EcPoint {
 pub struct GlobalValues {
     // Public input.
     #[serde_as(as = "UfeHex")]
-    trace_length: Felt,
+    pub trace_length: Felt,
     #[serde_as(as = "UfeHex")]
-    initial_pc: Felt,
+    pub initial_pc: Felt,
     #[serde_as(as = "UfeHex")]
-    final_pc: Felt,
+    pub final_pc: Felt,
     #[serde_as(as = "UfeHex")]
-    initial_ap: Felt,
+    pub initial_ap: Felt,
     #[serde_as(as = "UfeHex")]
-    final_ap: Felt,
+    pub final_ap: Felt,
     #[serde_as(as = "UfeHex")]
-    initial_pedersen_addr: Felt,
+    pub initial_pedersen_addr: Felt,
     #[serde_as(as = "UfeHex")]
-    initial_range_check_addr: Felt,
+    pub initial_range_check_addr: Felt,
     #[serde_as(as = "UfeHex")]
-    initial_bitwise_addr: Felt,
+    pub initial_bitwise_addr: Felt,
     #[serde_as(as = "UfeHex")]
-    range_check_min: Felt,
+    pub range_check_min: Felt,
     #[serde_as(as = "UfeHex")]
-    range_check_max: Felt,
+    pub range_check_max: Felt,
     // Constants.
     #[serde_as(as = "UfeHex")]
-    offset_size: Felt,
+    pub offset_size: Felt,
     #[serde_as(as = "UfeHex")]
-    half_offset_size: Felt,
-    pedersen_shift_point: EcPoint,
+    pub half_offset_size: Felt,
+    pub pedersen_shift_point: EcPoint,
     // Periodic columns.
     #[serde_as(as = "UfeHex")]
-    pedersen_points_x: Felt,
+    pub pedersen_points_x: Felt,
     #[serde_as(as = "UfeHex")]
-    pedersen_points_y: Felt,
+    pub pedersen_points_y: Felt,
     // Interaction elements.
     #[serde_as(as = "UfeHex")]
-    memory_multi_column_perm_perm_interaction_elm: Felt,
+    pub memory_multi_column_perm_perm_interaction_elm: Felt,
     #[serde_as(as = "UfeHex")]
-    memory_multi_column_perm_hash_interaction_elm0: Felt,
+    pub memory_multi_column_perm_hash_interaction_elm0: Felt,
     #[serde_as(as = "UfeHex")]
-    range_check16_perm_interaction_elm: Felt,
+    pub range_check16_perm_interaction_elm: Felt,
     #[serde_as(as = "UfeHex")]
-    diluted_check_permutation_interaction_elm: Felt,
+    pub diluted_check_permutation_interaction_elm: Felt,
     #[serde_as(as = "UfeHex")]
-    diluted_check_interaction_z: Felt,
+    pub diluted_check_interaction_z: Felt,
     #[serde_as(as = "UfeHex")]
-    diluted_check_interaction_alpha: Felt,
+    pub diluted_check_interaction_alpha: Felt,
     // Permutation products.
     #[serde_as(as = "UfeHex")]
-    memory_multi_column_perm_perm_public_memory_prod: Felt,
+    pub memory_multi_column_perm_perm_public_memory_prod: Felt,
     #[serde_as(as = "UfeHex")]
-    range_check16_perm_public_memory_prod: Felt,
+    pub range_check16_perm_public_memory_prod: Felt,
     #[serde_as(as = "UfeHex")]
-    diluted_check_first_elm: Felt,
+    pub diluted_check_first_elm: Felt,
     #[serde_as(as = "UfeHex")]
-    diluted_check_permutation_public_memory_prod: Felt,
+    pub diluted_check_permutation_public_memory_prod: Felt,
     #[serde_as(as = "UfeHex")]
-    diluted_check_final_cum_val: Felt,
+    pub diluted_check_final_cum_val: Felt,
 }
 
 // Elements that are sent from the prover after the commitment on the original trace.
