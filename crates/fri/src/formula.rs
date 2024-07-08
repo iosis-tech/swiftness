@@ -73,8 +73,9 @@ pub fn fri_formula(
     values: Vec<Felt>,
     eval_point: Felt,
     x_inv: Felt,
-    coset_size: usize,
+    coset_size: Felt,
 ) -> Result<Felt, Error> {
+    let coset_size: u64 = coset_size.to_biguint().try_into().unwrap();
     // Sort by usage frequency.
     match coset_size {
         2 => {

@@ -1,11 +1,12 @@
 use starknet_crypto::Felt;
 
 pub struct FriLayerComputationParams {
-    coset_size: usize,
-    fri_group: Vec<Felt>,
-    eval_point: Felt,
+    pub coset_size: Felt,
+    pub fri_group: Vec<Felt>,
+    pub eval_point: Felt,
 }
 
+#[derive(PartialEq, Eq, Debug)]
 pub struct FriLayerQuery {
     pub index: Felt,
     pub y_value: Felt,
@@ -28,24 +29,22 @@ pub struct FriLayerQuery {
 pub fn compute_coset_elements(
     queries: &mut Vec<FriLayerQuery>,
     sibling_witness: &mut Vec<Felt>,
-    coset_size: usize,
-    coset_start_index: usize,
-    fri_group: Vec<Felt>,
+    coset_size: Felt,
+    coset_start_index: Felt,
+    fri_group: &[Felt],
 ) -> (Vec<Felt>, Felt) {
     let mut coset_elements = Vec::new();
     let mut coset_x_inv = Felt::ZERO;
+    let coset_size: usize = coset_size.to_biguint().try_into().unwrap();
     for index in 0..coset_size {
-        let q = queries.get(index);
-        // route
-        if let Some(q) = q {
-            let query_index: usize = q.index.to_bigint().try_into().unwrap();
-            if query_index == coset_start_index + index {
-                let query = queries.swap_remove(0);
-                coset_elements.push(query.y_value);
-                coset_x_inv = query.x_inv_value + fri_group.get(index).unwrap();
-            }
+        let q = queries.first();
+        if q.is_some() && q.unwrap().index == coset_start_index + Felt::from(index) {
+            let query: Vec<FriLayerQuery> = queries.drain(0..1).collect();
+            coset_elements.push(query[0].y_value);
+            coset_x_inv = query[0].x_inv_value * fri_group.get(index).unwrap();
         } else {
-            coset_elements.push(sibling_witness.swap_remove(0));
+            let withness: Vec<Felt> = sibling_witness.drain(0..1).collect();
+            coset_elements.push(withness[0]);
         }
     }
 
@@ -75,29 +74,29 @@ pub fn compute_next_layer(
     let mut verify_y_values = Vec::new();
 
     let coset_size = params.coset_size;
-
     while !queries.is_empty() {
-        let query_index: usize = queries.first().unwrap().index.to_bigint().try_into().unwrap();
-        let coset_index = query_index / coset_size;
+        let query_uint = queries.first().unwrap().index.to_biguint();
+        let coset_size_uint = coset_size.to_biguint();
+        let coset_index =
+            Felt::from_bytes_be_slice((query_uint / coset_size_uint).to_bytes_be().as_slice());
 
-        verify_indices.push(Felt::from(coset_index as u64));
+        verify_indices.push(coset_index);
 
         let (coset_elements, coset_x_inv) = compute_coset_elements(
             queries,
             sibling_witness,
             coset_size,
             coset_index * coset_size,
-            params.fri_group.clone(),
+            &params.fri_group,
         );
-
         verify_y_values.extend(coset_elements.iter());
 
         let fri_formula_res =
             fri_formula(coset_elements, params.eval_point, coset_x_inv, coset_size)?;
 
-        let next_x_inv = coset_x_inv.pow(params.coset_size as u64);
+        let next_x_inv = coset_x_inv.pow_felt(&params.coset_size);
         next_queries.push(FriLayerQuery {
-            index: Felt::from(coset_index as u64),
+            index: coset_index,
             y_value: fri_formula_res,
             x_inv_value: next_x_inv,
         });

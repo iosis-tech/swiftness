@@ -26,7 +26,7 @@ fn test_fri_formula2() {
         "198440420437625747101596759055022522005259320860955022036987094429833877178",
     )
     .unwrap();
-    let result = fri_formula(coset_values, eval_point, x_inv, 2).unwrap();
+    let result = fri_formula(coset_values, eval_point, x_inv, Felt::from(2)).unwrap();
     assert_eq!(result, expected_res);
 }
 
@@ -63,7 +63,7 @@ fn test_fri_formula4() {
         "76986752687751524725198345383694178215277147555245625873131732095927140782",
     )
     .unwrap();
-    let result = fri_formula(coset_values, eval_point, x_inv, coset_size).unwrap();
+    let result = fri_formula(coset_values, eval_point, x_inv, Felt::from(coset_size)).unwrap();
     assert_eq!(result, expected_res);
 }
 
@@ -116,7 +116,7 @@ fn test_fri_formula8() {
         "2928957534120406763150873305661822742897260412260280822311358109399058652974",
     )
     .unwrap();
-    let result = fri_formula(coset_values, eval_point, x_inv, coset_size).unwrap();
+    let result = fri_formula(coset_values, eval_point, x_inv, Felt::from(coset_size)).unwrap();
     assert_eq!(result, expected_res);
 }
 
@@ -201,6 +201,6 @@ fn test_fri_formula16() {
         "624048098022519532611213501847456835806953670583267764150309668941596037474",
     )
     .unwrap();
-    let result = fri_formula(coset_values, eval_point, x_inv, coset_size).unwrap();
+    let result = fri_formula(coset_values, eval_point, x_inv, Felt::from(coset_size)).unwrap();
     assert_eq!(result, expected_res);
 }
