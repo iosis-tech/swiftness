@@ -10,10 +10,10 @@ use starknet_crypto::Felt;
 pub struct SegmentInfo {
     // Start address of the memory segment.
     #[serde_as(as = "UfeHex")]
-    begin_addr: Felt,
+    pub begin_addr: Felt,
     // Stop pointer of the segment - not necessarily the end of the segment.
     #[serde_as(as = "UfeHex")]
-    stop_ptr: Felt,
+    pub stop_ptr: Felt,
 }
 
 #[serde_as]

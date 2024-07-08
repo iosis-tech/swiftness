@@ -8,22 +8,22 @@ use starknet_crypto::Felt;
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct PublicInput {
     #[serde_as(as = "UfeHex")]
-    log_n_steps: Felt,
+    pub log_n_steps: Felt,
     #[serde_as(as = "UfeHex")]
-    range_check_min: Felt,
+    pub range_check_min: Felt,
     #[serde_as(as = "UfeHex")]
-    range_check_max: Felt,
+    pub range_check_max: Felt,
     #[serde_as(as = "UfeHex")]
-    layout: Felt,
+    pub layout: Felt,
     #[serde_as(as = "Vec<UfeHex>")]
-    dynamic_params: Vec<Felt>,
-    segments: Vec<SegmentInfo>,
+    pub dynamic_params: Vec<Felt>,
+    pub segments: Vec<SegmentInfo>,
     #[serde_as(as = "UfeHex")]
-    padding_addr: Felt,
+    pub padding_addr: Felt,
     #[serde_as(as = "UfeHex")]
-    padding_value: Felt,
-    main_page: Page,
-    continuous_page_headers: Vec<ContinuousPageHeader>,
+    pub padding_value: Felt,
+    pub main_page: Page,
+    pub continuous_page_headers: Vec<ContinuousPageHeader>,
 }
 
 impl PublicInput {
@@ -50,7 +50,7 @@ impl PublicInput {
             .floor_div(&NonZeroFelt::from_felt_unchecked(denominator_pad))
     }
     // Returns the product of all public memory cells.
-    fn get_public_memory_product(&self, z: Felt, alpha: Felt) -> (Felt, Felt) {
+    pub fn get_public_memory_product(&self, z: Felt, alpha: Felt) -> (Felt, Felt) {
         let main_page_prod = self.main_page.get_product(z, alpha);
 
         let (continuous_pages_prod, continuous_pages_total_length) =
