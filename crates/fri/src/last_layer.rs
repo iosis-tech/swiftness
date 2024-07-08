@@ -12,7 +12,7 @@ pub fn verify_last_layer(
     for query in quries.iter_mut() {
         let horner_eval_result = horner_eval(
             &coefficients,
-            Felt::from(1).field_div(&NonZeroFelt::from_felt_unchecked(query.x_inv_value)),
+            Felt::ONE.field_div(&NonZeroFelt::from_felt_unchecked(query.x_inv_value)),
         );
         if horner_eval_result != query.y_value {
             return Err(Error::QueryMismatch { expected: query.y_value, got: horner_eval_result });

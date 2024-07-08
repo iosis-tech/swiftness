@@ -8,10 +8,9 @@ pub fn gather_first_layer_queries(
     evaluations: Vec<Felt>,
     x_values: Vec<Felt>,
 ) -> Vec<FriLayerQuery> {
-    let field_generator_inverse = Felt::from_dec_str(
-        "1206167596222043737899107594365023368541035738443865566657697352045290673494",
-    )
-    .unwrap();
+    let field_generator_inverse = Felt::from_hex_unchecked(
+        "0x2AAAAAAAAAAAAB0555555555555555555555555555555555555555555555556",
+    );
     let mut fri_queries = Vec::new();
 
     for (index, query) in queries.iter().enumerate() {
