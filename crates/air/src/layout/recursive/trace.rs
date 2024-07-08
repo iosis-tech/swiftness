@@ -1,10 +1,13 @@
 // Reads the traces commitment from the transcript.
 // Returns the commitment, along with GlobalValue required to evaluate the constraint polynomial.
 
-use cairovm_verifier_commitment::table::commit::table_commit;
+use cairovm_verifier_commitment::table::{commit::table_commit, decommit::table_decommit};
 use cairovm_verifier_transcript::transcript::Transcript;
+use starknet_crypto::Felt;
 
-use crate::types::trace::{Commitment, Config, UnsentCommitment};
+use crate::trace::{
+    config::Config, decommit::Error, Commitment, Decommitment, UnsentCommitment, Witness,
+};
 
 use super::global_values::InteractionElements;
 
@@ -35,4 +38,22 @@ pub fn traces_commit(
         interaction_elements,
         interaction: interaction_commitment,
     }
+}
+
+// Verifies a decommitment for the traces at the query indices.
+// decommitment - holds the commited values of the leaves at the query_indices.
+pub fn traces_decommit(
+    queries: Vec<Felt>,
+    commitment: Commitment,
+    decommitment: Decommitment,
+    witness: Witness,
+) -> Result<(), Error> {
+    Ok(table_decommit(commitment.original, &queries, decommitment.original, witness.original).and(
+        table_decommit(
+            commitment.interaction,
+            &queries,
+            decommitment.interaction,
+            witness.interaction,
+        ),
+    )?)
 }

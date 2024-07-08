@@ -14,7 +14,7 @@ struct StarkProof {
 #[serde_as]
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct StarkConfig {
-    traces: cairovm_verifier_air::types::trace::Config,
+    traces: cairovm_verifier_air::trace::config::Config,
     composition: cairovm_verifier_commitment::table::config::Config,
     fri: cairovm_verifier_fri::config::Config,
     proof_of_work: cairovm_verifier_fri::config::Config,
@@ -36,7 +36,7 @@ struct StarkConfig {
 #[serde_as]
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct StarkUnsentCommitment {
-    traces: cairovm_verifier_air::types::trace::UnsentCommitment,
+    traces: cairovm_verifier_air::trace::UnsentCommitment,
     #[serde_as(as = "UfeHex")]
     composition: Felt,
     // n_oods_values elements. The i-th value is the evaluation of the i-th mask item polynomial at
@@ -51,7 +51,7 @@ struct StarkUnsentCommitment {
 #[serde_as]
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct StarkCommitment {
-    traces: cairovm_verifier_air::types::trace::Commitment,
+    traces: cairovm_verifier_air::trace::Commitment,
     composition: cairovm_verifier_commitment::table::types::Commitment,
     #[serde_as(as = "UfeHex")]
     interaction_after_composition: Felt,
@@ -64,8 +64,8 @@ struct StarkCommitment {
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 struct StarkWitness {
-    traces_decommitment: cairovm_verifier_air::types::trace::Decommitment,
-    traces_witness: cairovm_verifier_air::types::trace::Witness,
+    traces_decommitment: cairovm_verifier_air::trace::Decommitment,
+    traces_witness: cairovm_verifier_air::trace::Witness,
     composition_decommitment: cairovm_verifier_commitment::table::types::Decommitment,
     composition_witness: cairovm_verifier_commitment::table::types::Witness,
     fri_witness: cairovm_verifier_fri::types::Witness,

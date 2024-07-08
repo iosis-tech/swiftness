@@ -12,7 +12,7 @@ const MONTGOMERY_R: Felt =
 
 pub fn table_decommit(
     commitment: Commitment,
-    queries: Vec<Felt>,
+    queries: &[Felt],
     decommitment: Decommitment,
     witness: Witness,
 ) -> Result<(), Error> {
@@ -37,13 +37,13 @@ pub fn table_decommit(
 
     // Generate queries to the underlying vector commitment.
     let vector_queries = generate_vector_queries(
-        &queries,
+        queries,
         &montgomery_values,
         n_columns,
         is_bottom_layer_verifier_friendly,
     );
 
-    Ok(vector_commitment_decommit(commitment.vector_commitment, vector_queries, witness.vector)?)
+    Ok(vector_commitment_decommit(commitment.vector_commitment, &vector_queries, witness.vector)?)
 }
 
 fn generate_vector_queries(

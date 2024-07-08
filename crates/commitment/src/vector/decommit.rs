@@ -7,13 +7,13 @@ use thiserror::Error;
 
 pub fn vector_commitment_decommit(
     commitment: Commitment,
-    queries: Vec<Query>,
+    queries: &[Query],
     witness: Witness,
 ) -> Result<(), Error> {
     let shift = Felt::TWO.pow_felt(&commitment.config.height);
     // Shifts the query indices by shift=2**height, to convert index representation to heap-like.
     let shifted_queries: Vec<QueryWithDepth> = queries
-        .into_iter()
+        .iter()
         .map(|q| QueryWithDepth {
             index: q.index + shift,
             value: q.value,
