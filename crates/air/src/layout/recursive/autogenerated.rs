@@ -3,9 +3,9 @@ use crate::layout::recursive::{CONSTRAINT_DEGREE, NUM_COLUMNS_FIRST, NUM_COLUMNS
 use starknet_core::types::NonZeroFelt;
 use starknet_crypto::Felt;
 
-fn eval_composition_polynomial_inner(
-    mask_values: Vec<Felt>,
-    constraint_coefficients: Vec<Felt>,
+pub fn eval_composition_polynomial_inner(
+    mask_values: &[Felt],
+    constraint_coefficients: &[Felt],
     point: Felt,
     trace_generator: Felt,
     global_values: GlobalValues,
@@ -60,7 +60,7 @@ fn eval_composition_polynomial_inner(
     let pow29 = pow16 * pow28; // pow(trace_generator, (safe_div((safe_mult(7, global_values.trace_length)), 32))).
     let pow30 = pow16 * pow29; // pow(trace_generator, (safe_div((safe_mult(15, global_values.trace_length)), 64))).
     let pow31 = trace_generator.pow_felt(
-        &(Felt::from(3)
+        &(Felt::THREE
             * global_values
                 .trace_length
                 .floor_div(&NonZeroFelt::from_felt_unchecked(Felt::from(4)))),
@@ -446,11 +446,8 @@ fn eval_composition_polynomial_inner(
 
     // Constraint: cpu/opcodes/call/push_pc.
     value = (cpu_decode_opcode_range_check_bit_12
-        * (column3_row5
-            - (column3_row0
-                + cpu_decode_opcode_range_check_bit_2
-                + Felt::from_hex_unchecked("0x1"))))
-    .field_div(&NonZeroFelt::from_felt_unchecked(domain4));
+        * (column3_row5 - (column3_row0 + cpu_decode_opcode_range_check_bit_2 + 1)))
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain4));
     total_sum += constraint_coefficients[19] * value;
 
     // Constraint: cpu/opcodes/call/off0.
@@ -461,19 +458,15 @@ fn eval_composition_polynomial_inner(
 
     // Constraint: cpu/opcodes/call/off1.
     value = (cpu_decode_opcode_range_check_bit_12
-        * (column5_row8 - (global_values.half_offset_size + Felt::ONE)))
+        * (column5_row8 - (global_values.half_offset_size + 1)))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain4));
     total_sum += constraint_coefficients[21] * value;
 
     // Constraint: cpu/opcodes/call/flags.
     value = (cpu_decode_opcode_range_check_bit_12
-        * (cpu_decode_opcode_range_check_bit_12
-            + cpu_decode_opcode_range_check_bit_12
-            + Felt::TWO
-            - (cpu_decode_opcode_range_check_bit_0
-                + cpu_decode_opcode_range_check_bit_1
-                + Felt::from_hex_unchecked("0x4"))))
-    .field_div(&NonZeroFelt::from_felt_unchecked(domain4));
+        * (cpu_decode_opcode_range_check_bit_12 + cpu_decode_opcode_range_check_bit_12 + 2
+            - (cpu_decode_opcode_range_check_bit_0 + cpu_decode_opcode_range_check_bit_1 + 4)))
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain4));
     total_sum += constraint_coefficients[22] * value;
 
     // Constraint: cpu/opcodes/ret/off0.
@@ -484,7 +477,7 @@ fn eval_composition_polynomial_inner(
 
     // Constraint: cpu/opcodes/ret/off2.
     value = (cpu_decode_opcode_range_check_bit_13
-        * (column5_row4 + Felt::ONE - global_values.half_offset_size))
+        * (column5_row4 + 1 - global_values.half_offset_size))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain4));
     total_sum += constraint_coefficients[24] * value;
 
@@ -567,12 +560,12 @@ fn eval_composition_polynomial_inner(
     total_sum += constraint_coefficients[36] * value;
 
     // Constraint: memory/is_func.
-    value = ((memory_address_diff_0 - Felt::ONE) * (column4_row1 - column4_row3))
+    value = ((memory_address_diff_0 - 1) * (column4_row1 - column4_row3))
         * domain16.field_div(&NonZeroFelt::from_felt_unchecked(domain1));
     total_sum += constraint_coefficients[37] * value;
 
     // Constraint: memory/initial_addr.
-    value = (column4_row0 - Felt::ONE).field_div(&NonZeroFelt::from_felt_unchecked(domain15));
+    value = (column4_row0 - 1).field_div(&NonZeroFelt::from_felt_unchecked(domain15));
     total_sum += constraint_coefficients[38] * value;
 
     // Constraint: public_memory_addr_zero.
@@ -640,8 +633,7 @@ fn eval_composition_polynomial_inner(
     total_sum += constraint_coefficients[49] * value;
 
     // Constraint: diluted_check/init.
-    value =
-        (column7_inter1_row0 - Felt::ONE).field_div(&NonZeroFelt::from_felt_unchecked(domain15));
+    value = (column7_inter1_row0 - 1).field_div(&NonZeroFelt::from_felt_unchecked(domain15));
     total_sum += constraint_coefficients[50] * value;
 
     // Constraint: diluted_check/first_element.
@@ -870,10 +862,10 @@ fn eval_composition_polynomial_inner(
     total_sum
 }
 
-pub fn eval_oods_polynomial(
-    column_values: Vec<Felt>,
-    oods_values: Vec<Felt>,
-    constraint_coefficients: Vec<Felt>,
+pub fn eval_oods_polynomial_inner(
+    column_values: &[Felt],
+    oods_values: &[Felt],
+    constraint_coefficients: &[Felt],
     point: Felt,
     oods_point: Felt,
     trace_generator: Felt,
