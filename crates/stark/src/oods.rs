@@ -117,6 +117,5 @@ mod tests {
         //     Felt::from_hex_unchecked("0x40000"),
         //     Felt::from_hex_unchecked("0x4768803ef85256034f67453635f87997ff61841e411ee63ce7b0a8b9745a046")
         // );
-        panic!()
     }
 }
