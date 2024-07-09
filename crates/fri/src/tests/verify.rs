@@ -9,5 +9,5 @@ fn test_fri_verify() {
     let decommitment = decommit::get();
     let withness = witness::get();
 
-    fri_verify(queries, commitment, decommitment, withness).unwrap();
+    fri_verify(&queries, commitment, decommitment, withness).unwrap();
 }

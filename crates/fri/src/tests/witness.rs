@@ -1,16 +1,16 @@
 use std::vec;
 
-use crate::fri::{FriLayerWitness, FriWitness};
+use crate::types::{LayerWitness, Witness};
 use cairovm_verifier_commitment::{
     table::types::Witness as TableCommitmentWitness,
     vector::types::Witness as VectorCommitmentWitness,
 };
 use starknet_crypto::Felt;
 
-pub fn get() -> FriWitness {
-    FriWitness {
+pub fn get() -> Witness {
+    Witness {
         layers: vec![
-            FriLayerWitness {
+            LayerWitness {
                 leaves: vec![
                     Felt::from_hex(
                         "0x1d3ad0b704196dffcec14a46fecff3982a1fb70c9bc9da48516b993105d50de",
@@ -1100,7 +1100,7 @@ pub fn get() -> FriWitness {
                     },
                 },
             },
-            FriLayerWitness {
+            LayerWitness {
                 leaves: vec![
                     Felt::from_hex(
                         "0x61aac3e5564be91456bd196eac62085407c23b25c2e5146fa49cca554b871cd",
@@ -1750,7 +1750,7 @@ pub fn get() -> FriWitness {
                     },
                 },
             },
-            FriLayerWitness {
+            LayerWitness {
                 leaves: vec![
                     Felt::from_hex(
                         "0x4d08279c0b89588d1f1180f86e288f3d5edae56c04a9f42b12e515db3ab37b3",
@@ -2160,7 +2160,7 @@ pub fn get() -> FriWitness {
                     },
                 },
             },
-            FriLayerWitness {
+            LayerWitness {
                 leaves: vec![
                     Felt::from_hex(
                         "0x3ced8c0e3d71da3d1ddd14241427f431dafdea753a2d41a8504ce1d4fa505e3",

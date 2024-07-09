@@ -11,9 +11,6 @@ use serde_with::serde_as;
 use starknet_core::{serde::unsigned_field_element::UfeHex, types::NonZeroFelt};
 use starknet_crypto::{pedersen_hash, poseidon_hash_many, Felt};
 
-const MAX_ADDRESS: Felt = Felt::from_hex_unchecked("0xffffffffffffffff");
-const INITIAL_PC: Felt = Felt::from_hex_unchecked("0x1");
-
 const MAX_LOG_N_STEPS: Felt = Felt::from_hex_unchecked("50");
 const MAX_RANGE_CHECK: Felt = Felt::from_hex_unchecked("0xffff"); // 2 ** 16 - 1
 
@@ -107,7 +104,7 @@ impl PublicInput {
         poseidon_hash_many(&hash_data)
     }
 
-    pub fn validate(&self, stark_domains: StarkDomains) {
+    pub fn validate(&self, stark_domains: &StarkDomains) {
         assert!(self.log_n_steps < MAX_LOG_N_STEPS);
         let n_steps = Felt::TWO.pow_felt(&self.log_n_steps);
         let trace_length = stark_domains.trace_domain_size;
@@ -122,8 +119,8 @@ impl PublicInput {
 
         assert!(self.layout == LAYOUT_CODE.into());
 
-        let output_uses = (self.segments.get(segments::OUTPUT).unwrap().stop_ptr
-            - self.segments.get(segments::OUTPUT).unwrap().begin_addr);
+        let output_uses = self.segments.get(segments::OUTPUT).unwrap().stop_ptr
+            - self.segments.get(segments::OUTPUT).unwrap().begin_addr;
         assert!(output_uses < u128::MAX.into());
 
         let pedersen_copies = trace_length

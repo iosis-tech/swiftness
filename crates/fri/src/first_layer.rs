@@ -7,7 +7,7 @@ const FIELD_GENERATOR_INVERSE: Felt =
     Felt::from_hex_unchecked("0x2AAAAAAAAAAAAB0555555555555555555555555555555555555555555555556");
 
 pub fn gather_first_layer_queries(
-    queries: Vec<Felt>,
+    queries: &[Felt],
     evaluations: Vec<Felt>,
     x_values: Vec<Felt>,
 ) -> Vec<FriLayerQuery> {

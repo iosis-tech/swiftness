@@ -26,7 +26,7 @@ pub struct AddrValue {
 }
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
-pub struct Page(Vec<AddrValue>);
+pub struct Page(pub Vec<AddrValue>);
 
 impl Deref for Page {
     type Target = Vec<AddrValue>;

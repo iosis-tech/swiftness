@@ -18,4 +18,5 @@ thiserror.workspace = true
 cairovm_verifier_air.workspace = true
 cairovm_verifier_pow.workspace = true
 cairovm_verifier_fri.workspace = true
+cairovm_verifier_transcript.workspace = true
 cairovm_verifier_commitment.workspace = true

@@ -79,7 +79,7 @@ pub fn get_builtins() -> Vec<Felt> {
 
 pub fn eval_composition_polynomial(
     interaction_elements: InteractionElements,
-    public_input: PublicInput,
+    public_input: &PublicInput,
     mask_values: &[Felt],
     constraint_coefficients: &[Felt],
     point: Felt,

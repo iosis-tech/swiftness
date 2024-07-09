@@ -1,10 +1,10 @@
 use starknet_crypto::Felt;
 
 use super::*;
-use crate::fri::FriUnsentCommitment;
+use crate::types::UnsentCommitment;
 
-pub fn get() -> FriUnsentCommitment {
-    FriUnsentCommitment {
+pub fn get() -> UnsentCommitment {
+    UnsentCommitment {
         inner_layers: vec![
             Felt::from_hex("0x31b917291bbb3d38f7bc196dee1f3638ca197512162a4bdeb1ce814619c1625")
                 .unwrap(),

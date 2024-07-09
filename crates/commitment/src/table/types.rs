@@ -15,7 +15,7 @@ pub struct Commitment {
 // Responses for queries to the table commitment.
 // Each query corresponds to a full row of the table.
 #[serde_as]
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Decommitment {
     // n_columns * n_queries values to decommit.
     #[serde_as(as = "Vec<UfeHex>")]

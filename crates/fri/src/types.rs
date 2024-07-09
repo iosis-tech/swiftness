@@ -7,15 +7,15 @@ use starknet_crypto::Felt;
 // Commitment values for FRI. Used to generate a commitment by "reading" these values
 // from the channel.
 #[serde_as]
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct UnsentCommitment {
     // Array of size n_layers - 1 containing unsent table commitments for each inner layer.
     #[serde_as(as = "Vec<UfeHex>")]
-    inner_layers: Vec<Felt>,
+    pub inner_layers: Vec<Felt>,
     // Array of size 2**log_last_layer_degree_bound containing coefficients for the last layer
     // polynomial.
     #[serde_as(as = "Vec<UfeHex>")]
-    last_layer_coefficients: Vec<Felt>,
+    pub last_layer_coefficients: Vec<Felt>,
 }
 
 #[serde_as]
@@ -46,20 +46,20 @@ pub struct Decommitment {
 }
 
 // A witness for the decommitment of the FRI layers over queries.
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Witness {
     // An array of size n_layers - 1, containing a witness for each inner layer.
-    layers: Vec<LayerWitness>,
+    pub layers: Vec<LayerWitness>,
 }
 
 // A witness for a single FRI layer. This witness is required to verify the transition from an
 // inner layer to the following layer.
 #[serde_as]
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct LayerWitness {
     // Values for the sibling leaves required for decommitment.
     #[serde_as(as = "Vec<UfeHex>")]
-    leaves: Vec<Felt>,
+    pub leaves: Vec<Felt>,
     // Table commitment witnesses for decommiting all the leaves.
-    table_witness: cairovm_verifier_commitment::table::types::Witness,
+    pub table_witness: cairovm_verifier_commitment::table::types::Witness,
 }
