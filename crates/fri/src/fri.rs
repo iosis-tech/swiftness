@@ -2,10 +2,7 @@ use cairovm_verifier_commitment::table::{
     commit::table_commit,
     config::Config as TableCommitmentConfig,
     decommit::table_decommit,
-    types::{
-        Commitment as TableCommitment, Decommitment as TableDecommitment,
-        Witness as TableCommitmentWitness,
-    },
+    types::{Commitment as TableCommitment, Decommitment as TableDecommitment},
 };
 use cairovm_verifier_transcript::transcript::Transcript;
 use starknet_crypto::Felt;
@@ -16,32 +13,10 @@ use crate::{
     group::get_fri_group,
     last_layer::{self, verify_last_layer},
     layer::{compute_next_layer, FriLayerComputationParams, FriLayerQuery},
-    types::{Commitment as FriCommitment, Decommitment as FriDecommitment},
+    types::{
+        self, Commitment as FriCommitment, Decommitment as FriDecommitment, LayerWitness, Witness,
+    },
 };
-
-// Commitment values for FRI. Used to generate a commitment by "reading" these values
-// from the channel.
-pub struct FriUnsentCommitment {
-    // Array of size n_layers - 1 containing unsent table commitments for each inner layer.
-    pub inner_layers: Vec<Felt>,
-    // Array of size 2**log_last_layer_degree_bound containing coefficients for the last layer
-    // polynomial.
-    pub last_layer_coefficients: Vec<Felt>,
-}
-
-// A witness for the decommitment of the FRI layers over queries.
-pub struct FriWitness {
-    // An array of size n_layers - 1, containing a witness for each inner layer.
-    pub layers: Vec<FriLayerWitness>,
-}
-
-#[derive(Clone)]
-pub struct FriLayerWitness {
-    // Values for the sibling leaves required for decommitment.
-    pub leaves: Vec<Felt>,
-    // Table commitment witnesses for decommiting all the leaves.
-    pub table_witness: TableCommitmentWitness,
-}
 
 // A FRI phase with N layers starts with a single input layer.
 // Afterwards, there are N - 1 inner layers resulting from FRI-folding each preceding layer.
@@ -68,7 +43,7 @@ pub fn fri_commit_rounds(
     transcript: &mut Transcript,
     n_layers: Felt,
     configs: Vec<TableCommitmentConfig>,
-    unsent_commitments: Vec<Felt>,
+    unsent_commitments: &[Felt],
 ) -> (Vec<TableCommitment>, Vec<Felt>) {
     let mut commitments = Vec::<TableCommitment>::new();
     let mut eval_points = Vec::<Felt>::new();
@@ -90,7 +65,7 @@ pub fn fri_commit_rounds(
 
 pub fn fri_commit(
     transcript: &mut Transcript,
-    unsent_commitment: FriUnsentCommitment,
+    unsent_commitment: types::UnsentCommitment,
     config: FriConfig,
 ) -> FriCommitment {
     assert!(config.n_layers > Felt::from(0), "Invalid value");
@@ -100,7 +75,7 @@ pub fn fri_commit(
         transcript,
         config.n_layers - 1,
         inner_layers,
-        unsent_commitment.inner_layers,
+        &unsent_commitment.inner_layers,
     );
 
     // Read last layer coefficients.
@@ -124,7 +99,7 @@ fn fri_verify_layers(
     fri_group: Vec<Felt>,
     n_layers: Felt,
     commitment: Vec<TableCommitment>,
-    layer_witness: Vec<FriLayerWitness>,
+    layer_witness: Vec<LayerWitness>,
     eval_points: Vec<Felt>,
     step_sizes: Vec<Felt>,
     mut queries: Vec<FriLayerQuery>,
@@ -132,9 +107,9 @@ fn fri_verify_layers(
     let len: usize = n_layers.to_biguint().try_into().unwrap();
 
     for i in 0..len {
-        let target_layer_witness = layer_witness.get(i).unwrap().clone();
-        let mut target_layer_witness_leaves = target_layer_witness.leaves;
-        let target_layer_witness_table_withness = target_layer_witness.table_witness;
+        let target_layer_witness = layer_witness.get(i).unwrap();
+        let mut target_layer_witness_leaves = target_layer_witness.leaves.to_owned();
+        let target_layer_witness_table_withness = target_layer_witness.table_witness.to_owned();
         let target_commitment = commitment.get(i).unwrap().clone();
 
         // Params.
@@ -165,10 +140,10 @@ fn fri_verify_layers(
 
 // FRI protocol component decommitment.
 pub fn fri_verify(
-    queries: Vec<Felt>,
+    queries: &[Felt],
     commitment: FriCommitment,
     decommitment: FriDecommitment,
-    witness: FriWitness,
+    witness: Witness,
 ) -> Result<(), Error> {
     if queries.len() != decommitment.values.len() {
         return Err(Error::InvalidLength {

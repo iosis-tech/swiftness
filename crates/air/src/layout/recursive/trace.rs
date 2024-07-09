@@ -13,7 +13,7 @@ use super::global_values::InteractionElements;
 
 pub fn traces_commit(
     transcript: &mut Transcript,
-    unsent_commitment: UnsentCommitment,
+    unsent_commitment: &UnsentCommitment,
     config: Config,
 ) -> Commitment {
     // Read original commitment.
@@ -43,15 +43,15 @@ pub fn traces_commit(
 // Verifies a decommitment for the traces at the query indices.
 // decommitment - holds the commited values of the leaves at the query_indices.
 pub fn traces_decommit(
-    queries: Vec<Felt>,
+    queries: &[Felt],
     commitment: Commitment,
     decommitment: Decommitment,
     witness: Witness,
 ) -> Result<(), Error> {
-    Ok(table_decommit(commitment.original, &queries, decommitment.original, witness.original).and(
+    Ok(table_decommit(commitment.original, queries, decommitment.original, witness.original).and(
         table_decommit(
             commitment.interaction,
-            &queries,
+            queries,
             decommitment.interaction,
             witness.interaction,
         ),

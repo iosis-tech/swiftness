@@ -14,14 +14,9 @@ pub struct UnsentCommitment {
 }
 
 impl UnsentCommitment {
-    pub fn commit(
-        &self,
-        transcript: &mut Transcript,
-        unsent_commitment: UnsentCommitment,
-        config: &Config,
-    ) -> Result<(), Error> {
-        verify_pow(transcript.digest().to_bytes_be(), config.n_bits, unsent_commitment.nonce)?;
-        transcript.read_uint64_from_prover(unsent_commitment.nonce);
+    pub fn commit(&self, transcript: &mut Transcript, config: &Config) -> Result<(), Error> {
+        verify_pow(transcript.digest().to_bytes_be(), config.n_bits, self.nonce)?;
+        transcript.read_uint64_from_prover(self.nonce);
         Ok(())
     }
 }

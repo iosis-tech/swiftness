@@ -6,7 +6,7 @@ use starknet_crypto::Felt;
 const MAX_N_COLUMNS: Felt = Felt::from_hex_unchecked("0x80");
 
 // Configuration for the Traces component.
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Config {
     pub original: cairovm_verifier_commitment::table::config::Config,
     pub interaction: cairovm_verifier_commitment::table::config::Config,
