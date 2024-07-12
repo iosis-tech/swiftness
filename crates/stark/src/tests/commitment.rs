@@ -10,7 +10,7 @@ use super::ood_values;
 
 pub fn get() -> StarkCommitment {
     StarkCommitment {
-        traces: cairovm_verifier_air::tests::commitment::get(),
+        traces: cairovm_verifier_air::fixtures::commitment::get(),
         composition: TableCommitment {
             config: TableCommitmentConfig {
                 n_columns: Felt::from_hex_unchecked("0x2"),
@@ -438,6 +438,6 @@ pub fn get() -> StarkCommitment {
                 "0x7a702a902f300a47fb79f18195691f2f1cd57fa870b6d4e12d365ed59231506",
             ),
         ],
-        fri: cairovm_verifier_fri::tests::commit::get(),
+        fri: cairovm_verifier_fri::fixtures::commitment::get(),
     }
 }
