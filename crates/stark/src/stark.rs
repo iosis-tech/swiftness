@@ -39,7 +39,7 @@ impl StarkProof {
             &queries,
             stark_commitment,
             &self.witness,
-            stark_domains,
+            &stark_domains,
         )?)
     }
 }

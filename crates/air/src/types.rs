@@ -77,3 +77,15 @@ pub struct ContinuousPageHeader {
     #[serde_as(as = "UfeHex")]
     pub prod: Felt,
 }
+
+pub fn get_continuous_pages_product(page_headers: &[ContinuousPageHeader]) -> (Felt, Felt) {
+    let mut res = Felt::ONE;
+    let mut total_length = Felt::ZERO;
+
+    for header in page_headers {
+        res *= header.prod;
+        total_length += header.size
+    }
+
+    (res, total_length)
+}

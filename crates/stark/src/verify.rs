@@ -19,7 +19,7 @@ pub fn stark_verify(
     queries: &[Felt],
     commitment: StarkCommitment,
     witness: &StarkWitness,
-    stark_domains: StarkDomains,
+    stark_domains: &StarkDomains,
 ) -> Result<(), Error> {
     // First layer decommit.
     traces_decommit(
