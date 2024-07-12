@@ -3,7 +3,7 @@ use crate::{
 };
 
 impl StarkProof {
-    pub fn verify(&self, security_bits: Felt) -> Result<(), Error> {
+    pub fn verify(&self, security_bits: Felt) -> Result<Felt, Error> {
         self.config.validate(security_bits)?;
 
         // Validate the public input.
@@ -33,14 +33,16 @@ impl StarkProof {
         );
 
         // STARK verify phase.
-        Ok(stark_verify(
+        stark_verify(
             NUM_COLUMNS_FIRST as usize,
             NUM_COLUMNS_SECOND as usize,
             &queries,
             stark_commitment,
             &self.witness,
             &stark_domains,
-        )?)
+        )?;
+
+        Ok(digest)
     }
 }
 
