@@ -8,3 +8,4 @@ pub mod next_layer;
 pub mod unsent_commitment;
 pub mod verify;
 pub mod witness;
+pub mod queries;
