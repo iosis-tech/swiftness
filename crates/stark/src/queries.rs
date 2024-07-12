@@ -14,9 +14,10 @@ pub fn generate_queries(
     let mut samples: Vec<Felt> = (0..n)
         .map(|_| {
             let res = transcript.random_felt_to_prover();
-            let (_high, low) =
-                res.div_rem(&NonZeroFelt::from_felt_unchecked(Felt::from(u128::MAX)));
-            let (_high, sample) = low.div_rem(&NonZeroFelt::from_felt_unchecked(query_upper_bound));
+            let (_, low) = res.div_rem(&NonZeroFelt::from_felt_unchecked(
+                Felt::from_hex_unchecked("0x100000000000000000000000000000000"),
+            ));
+            let (_, sample) = low.div_rem(&NonZeroFelt::from_felt_unchecked(query_upper_bound));
             sample
         })
         .collect();

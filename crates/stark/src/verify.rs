@@ -37,7 +37,7 @@ pub fn stark_verify(
     )?;
 
     // Compute query points.
-    let points = queries_to_points(queries, &stark_domains);
+    let points = queries_to_points(queries, stark_domains);
 
     // Evaluate the FRI input layer at query points.
     let eval_info = OodsEvaluationInfo {

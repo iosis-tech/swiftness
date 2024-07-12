@@ -32,6 +32,8 @@ impl StarkProof {
             stark_domains.eval_domain_size,
         );
 
+        println!("{:#?}", queries);
+
         // STARK verify phase.
         stark_verify(
             NUM_COLUMNS_FIRST as usize,

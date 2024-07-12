@@ -7,5 +7,4 @@ pub mod last_layer;
 pub mod layer;
 pub mod types;
 
-#[cfg(test)]
 pub mod tests;

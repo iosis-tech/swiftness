@@ -13,6 +13,8 @@ use crate::{
     public_memory::PublicInput,
 };
 
+pub mod tests;
+
 // Recursive layout
 pub const BITWISE_RATIO: u32 = 8;
 pub const BITWISE_ROW_RATIO: u32 = 128;
