@@ -11,9 +11,9 @@ impl StarkProof {
             StarkDomains::new(self.config.log_trace_domain_size, self.config.log_n_cosets);
         self.public_input.validate(&stark_domains);
 
-        // Compute the initial hash seed for the Fiat-Shamir channel.
+        // Compute the initial hash seed for the Fiat-Shamir transcript.
         let digest = self.public_input.get_public_input_hash();
-        // Construct the channel.
+        // Construct the transcript.
         let mut transcript = Transcript::new(digest);
 
         // STARK commitment phase.
@@ -39,7 +39,7 @@ impl StarkProof {
             &queries,
             stark_commitment,
             &self.witness,
-            stark_domains,
+            &stark_domains,
         )?;
 
         Ok(digest)

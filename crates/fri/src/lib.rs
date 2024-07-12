@@ -1,5 +1,6 @@
 pub mod config;
 pub mod first_layer;
+pub mod fixtures;
 pub mod formula;
 pub mod fri;
 pub mod group;

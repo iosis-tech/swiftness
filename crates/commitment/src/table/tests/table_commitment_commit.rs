@@ -9,20 +9,21 @@ use crate::{
 #[test]
 fn test_table_commitment_commit() {
     let mut transcript = Transcript::new_with_counter(
-        Felt::from_hex("0x1b9182dce9dc1169fcd00c1f8c0b6acd6baad99ce578370ead5ca230b8fb8c6")
-            .unwrap(),
-        Felt::from_hex("0x1").unwrap(),
+        Felt::from_hex_unchecked(
+            "0x1b9182dce9dc1169fcd00c1f8c0b6acd6baad99ce578370ead5ca230b8fb8c6",
+        ),
+        Felt::from_hex_unchecked("0x1"),
     );
 
-    let unsent_commitment =
-        Felt::from_hex("0x1e9b0fa29ebe52b9c9a43a1d44e555ce42da3199370134d758735bfe9f40269")
-            .unwrap();
+    let unsent_commitment = Felt::from_hex_unchecked(
+        "0x1e9b0fa29ebe52b9c9a43a1d44e555ce42da3199370134d758735bfe9f40269",
+    );
 
     let config = table::config::Config {
-        n_columns: Felt::from_hex("0x4").unwrap(),
+        n_columns: Felt::from_hex_unchecked("0x4"),
         vector: vector::config::Config {
-            height: Felt::from_hex("0x9").unwrap(),
-            n_verifier_friendly_commitment_layers: Felt::from_hex("0x64").unwrap(),
+            height: Felt::from_hex_unchecked("0x9"),
+            n_verifier_friendly_commitment_layers: Felt::from_hex_unchecked("0x64"),
         },
     };
 
@@ -39,8 +40,9 @@ fn test_table_commitment_commit() {
 
     assert!(
         *transcript.digest()
-            == Felt::from_hex("0x1abd607dab09dede570ed131d9df0a1997e33735b11933c45dc84353df84259")
-                .unwrap(),
+            == Felt::from_hex_unchecked(
+                "0x1abd607dab09dede570ed131d9df0a1997e33735b11933c45dc84353df84259"
+            ),
     );
-    assert!(*transcript.counter() == Felt::from_hex("0x0").unwrap());
+    assert!(*transcript.counter() == Felt::from_hex_unchecked("0x0"));
 }

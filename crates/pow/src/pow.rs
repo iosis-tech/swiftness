@@ -10,7 +10,7 @@ const MAGIC: u64 = 0x0123456789abcded;
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct UnsentCommitment {
-    nonce: u64,
+    pub nonce: u64,
 }
 
 impl UnsentCommitment {

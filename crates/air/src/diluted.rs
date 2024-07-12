@@ -25,7 +25,7 @@ use starknet_crypto::Felt;
 // Now we can compute p_{n_bits} and q_{n_bits} in just n_bits recursive steps and we are done.
 pub fn get_diluted_product(n_bits: Felt, spacing: Felt, z: Felt, alpha: Felt) -> Felt {
     let diff_multiplier = Felt::TWO.pow_felt(&spacing);
-    let mut diff_x = diff_multiplier - 2;
+    let mut diff_x: Felt = diff_multiplier - 2;
     let mut x: Felt = Felt::ONE;
     let mut p: Felt = z + 1;
     let mut q: Felt = Felt::ONE;

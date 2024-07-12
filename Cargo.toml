@@ -10,7 +10,6 @@ members = [
     "crates/fri",
     "crates/pow",
     "crates/stark",
-    "crates/common",
 ]
 exclude = []
 
@@ -25,17 +24,16 @@ version = "0.0.1"
 
 [workspace.dependencies]
 serde = { version = "1.0", features = ["derive"] }
-starknet-crypto = "0.7.1"
-starknet-core = "0.11.1"
-thiserror = "1.0.61"
 serde_with = "2.3.2"
 sha3 = "0.10.8"
+starknet-core = "0.11.1"
+starknet-crypto = "0.7.1"
 starknet-types-core = "0.1.5"
+thiserror = "1.0.61"
 
 cairovm_verifier_air = { path = "crates/air" }
-cairovm_verifier_transcript = { path = "crates/transcript" }
 cairovm_verifier_commitment = { path = "crates/commitment" }
 cairovm_verifier_fri = { path = "crates/fri" }
 cairovm_verifier_pow = { path = "crates/pow" }
 cairovm_verifier_stark = { path = "crates/stark" }
-cairovm_verifier_common = { path = "crates/common" }
+cairovm_verifier_transcript = { path = "crates/transcript" }

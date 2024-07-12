@@ -40,7 +40,7 @@ pub fn verify_oods(
     // TODO support degree > 2?
     let claimed_composition = oods[oods.len() - 2] + oods[oods.len() - 1] * oods_point;
 
-    assert!(composition_from_trace == claimed_composition);
+    assert_eq!(composition_from_trace, claimed_composition);
 }
 
 pub fn eval_oods_boundary_poly_at_points(
@@ -94,28 +94,4 @@ pub fn eval_oods_boundary_poly_at_points(
     }
 
     evaluations
-}
-
-#[cfg(test)]
-mod tests {
-    use super::verify_oods;
-    use starknet_crypto::Felt;
-
-    #[test]
-    fn test_verify_oods() {
-        // let public_input = stone_proof_fibonacci::public_input::get();
-        // let interaction_elements = stone_proof_fibonacci::interaction_elements::get();
-        // let mask_values = stone_proof_fibonacci::stark::oods_values::get();
-        // let constraint_coefficients = stone_proof_fibonacci::constraint_coefficients::get();
-
-        // verify_oods(
-        //     mask_values,
-        //     interaction_elements,
-        //     public_input,
-        //     constraint_coefficients.span(),
-        //     Felt::from_hex_unchecked("0x47148421d376a8ca07af1e4c89890bf29c90272f63b16103646397d907281a8"),
-        //     Felt::from_hex_unchecked("0x40000"),
-        //     Felt::from_hex_unchecked("0x4768803ef85256034f67453635f87997ff61841e411ee63ce7b0a8b9745a046")
-        // );
-    }
 }

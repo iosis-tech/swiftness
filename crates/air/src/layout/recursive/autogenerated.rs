@@ -1496,12 +1496,12 @@ pub fn eval_oods_polynomial_inner(
     let oods_point_to_deg = oods_point.pow(CONSTRAINT_DEGREE);
 
     value = (column_values[(NUM_COLUMNS_FIRST + NUM_COLUMNS_SECOND) as usize] - oods_values[133])
-        .floor_div(&NonZeroFelt::from_felt_unchecked(point - oods_point_to_deg));
+        .field_div(&NonZeroFelt::from_felt_unchecked(point - oods_point_to_deg));
     total_sum += constraint_coefficients[133] * value;
 
     value = (column_values[(NUM_COLUMNS_FIRST + NUM_COLUMNS_SECOND + 1) as usize]
         - oods_values[134])
-        .floor_div(&NonZeroFelt::from_felt_unchecked(point - oods_point_to_deg));
+        .field_div(&NonZeroFelt::from_felt_unchecked(point - oods_point_to_deg));
     total_sum += constraint_coefficients[134] * value;
 
     total_sum
