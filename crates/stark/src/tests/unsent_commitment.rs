@@ -12,6 +12,6 @@ pub fn get() -> StarkUnsentCommitment {
         ),
         oods_values: ood_values::get(),
         fri: cairovm_verifier_fri::fixtures::unsent_commitment::get(),
-        proof_of_work: cairovm_verifier_pow::tests::unsent_commitment::get(),
+        proof_of_work: cairovm_verifier_pow::fixtures::unsent_commitment::get(),
     }
 }

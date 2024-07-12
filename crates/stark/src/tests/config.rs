@@ -17,7 +17,7 @@ pub fn get() -> StarkConfig {
             },
         },
         fri: cairovm_verifier_fri::fixtures::config::get(),
-        proof_of_work: cairovm_verifier_pow::tests::config::get(),
+        proof_of_work: cairovm_verifier_pow::fixtures::config::get(),
         log_trace_domain_size: Felt::from_hex_unchecked("0x12"),
         n_queries: Felt::from_hex_unchecked("0xa"),
         log_n_cosets: Felt::from_hex_unchecked("0x2"),
