@@ -1,2 +1,2 @@
 pub mod commit;
-pub mod public_input;
+pub mod verify_oods;

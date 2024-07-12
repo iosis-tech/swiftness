@@ -3,10 +3,8 @@ use starknet_crypto::Felt;
 
 use crate::{
     commit::stark_commit,
-    fixtures::{commitment, config, domains, unsent_commitment},
+    fixtures::{commitment, config, domains, public_input, unsent_commitment},
 };
-
-use super::*;
 
 #[test]
 pub fn test_stark_commit() {

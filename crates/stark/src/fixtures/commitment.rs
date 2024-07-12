@@ -6,7 +6,7 @@ use starknet_crypto::Felt;
 
 use crate::types::StarkCommitment;
 
-use super::ood_values;
+use super::oods_values;
 
 pub fn get() -> StarkCommitment {
     StarkCommitment {
@@ -32,7 +32,7 @@ pub fn get() -> StarkCommitment {
         interaction_after_composition: Felt::from_hex_unchecked(
             "0x1c0d29e24bc79e4679b20a2185841d65fa77a288bdd472e1d4a3de9324338e7",
         ),
-        oods_values: ood_values::get(),
+        oods_values: oods_values::get(),
         interaction_after_oods: vec![
             Felt::from_hex_unchecked("0x1"),
             Felt::from_hex_unchecked(

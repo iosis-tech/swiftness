@@ -56,8 +56,8 @@ impl PublicInput {
         let denominator_pad = padded.pow_felt(&(public_memory_column_size - total_length));
 
         numerator
-            .floor_div(&NonZeroFelt::from_felt_unchecked(pages_product))
-            .floor_div(&NonZeroFelt::from_felt_unchecked(denominator_pad))
+            .field_div(&NonZeroFelt::from_felt_unchecked(pages_product))
+            .field_div(&NonZeroFelt::from_felt_unchecked(denominator_pad))
     }
     // Returns the product of all public memory cells.
     pub fn get_public_memory_product(&self, z: Felt, alpha: Felt) -> (Felt, Felt) {
