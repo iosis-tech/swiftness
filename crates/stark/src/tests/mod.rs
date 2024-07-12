@@ -1,3 +1,3 @@
 pub mod commit;
 pub mod proof;
-pub mod verify_oods;
+pub mod verify;

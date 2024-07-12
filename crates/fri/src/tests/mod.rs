@@ -5,4 +5,3 @@ pub mod formula;
 pub mod last_layer;
 pub mod next_layer;
 pub mod verify;
-pub mod witness;

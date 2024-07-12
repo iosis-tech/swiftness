@@ -1,5 +1,5 @@
 use crate::pow::UnsentCommitment;
 
 pub fn get() -> UnsentCommitment {
-    UnsentCommitment { nonce: 116297668 }
+    UnsentCommitment { nonce: 0x6ee8fc4 }
 }

@@ -1,15 +1,11 @@
-use cairovm_verifier_commitment::{
-    table::types::Witness as TableCommitmentWitness,
-    vector::types::Witness as VectorCommitmentWitness,
-};
-use starknet_crypto::Felt;
-
 use crate::trace::Witness;
+use cairovm_verifier_commitment::{table, vector};
+use starknet_crypto::Felt;
 
 pub fn get() -> Witness {
     Witness {
-        original: TableCommitmentWitness {
-            vector: VectorCommitmentWitness {
+        original: table::types::Witness {
+            vector: vector::types::Witness {
                 authentications: vec![
                     Felt::from_hex_unchecked(
                         "0x6732ed418f24c6da3dd615ee87b95896d7b019fc0a47a7bdbd22080a10601a8",
@@ -494,8 +490,8 @@ pub fn get() -> Witness {
                 ],
             },
         },
-        interaction: TableCommitmentWitness {
-            vector: VectorCommitmentWitness {
+        interaction: table::types::Witness {
+            vector: vector::types::Witness {
                 authentications: vec![
                     Felt::from_hex_unchecked(
                         "0x76b789ba37b249ed446240d80a657fd3a5216fdef370ac2e67966da1781f111",

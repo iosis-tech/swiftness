@@ -40,7 +40,7 @@ pub fn verify_oods(
     // TODO support degree > 2?
     let claimed_composition = oods[oods.len() - 2] + oods[oods.len() - 1] * oods_point;
 
-    assert!(composition_from_trace == claimed_composition);
+    assert_eq!(composition_from_trace, claimed_composition);
 }
 
 pub fn eval_oods_boundary_poly_at_points(

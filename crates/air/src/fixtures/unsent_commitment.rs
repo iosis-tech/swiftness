@@ -1,9 +1,9 @@
 use starknet_crypto::Felt;
 
-use crate::trace::UnsentCommitment;
+use crate::trace;
 
-pub fn get() -> UnsentCommitment {
-    UnsentCommitment {
+pub fn get() -> trace::UnsentCommitment {
+    trace::UnsentCommitment {
         original: Felt::from_hex_unchecked(
             "0x2a588e8517b956684162e05e373dc6891146c1853c82d3984fbc707ae937972",
         ),

@@ -5,7 +5,7 @@ use starknet_core::serde::unsigned_field_element::UfeHex;
 use starknet_crypto::Felt;
 
 // Commitment values for FRI. Used to generate a commitment by "reading" these values
-// from the channel.
+// from the transcript.
 #[serde_as]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct UnsentCommitment {

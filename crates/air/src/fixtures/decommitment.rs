@@ -1,11 +1,11 @@
-use cairovm_verifier_commitment::table::types::Decommitment as TableDecommitment;
+use cairovm_verifier_commitment::table;
 use starknet_crypto::Felt;
 
-use crate::trace::Decommitment;
+use crate::trace;
 
-pub fn get() -> Decommitment {
-    Decommitment {
-        original: TableDecommitment {
+pub fn get() -> trace::Decommitment {
+    trace::Decommitment {
+        original: table::types::Decommitment {
             values: vec![
                 Felt::from_hex_unchecked(
                     "0x5a81cfa7b8ba1dd722ce2bcaf78476fd0e0b7fda53287ed2632c2c32ab4f42c",
@@ -219,7 +219,7 @@ pub fn get() -> Decommitment {
                 ),
             ],
         },
-        interaction: TableDecommitment {
+        interaction: table::types::Decommitment {
             values: vec![
                 Felt::from_hex_unchecked(
                     "0x5bf29218811908115445900bc8f367dcf29cf113bfe0e29f3c669b396e12da6",
