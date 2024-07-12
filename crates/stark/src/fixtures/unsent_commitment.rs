@@ -1,8 +1,6 @@
 use starknet_crypto::Felt;
 
-use crate::types::StarkUnsentCommitment;
-
-use super::*;
+use crate::{fixtures::ood_values, types::StarkUnsentCommitment};
 
 pub fn get() -> StarkUnsentCommitment {
     StarkUnsentCommitment {

@@ -1,7 +1,10 @@
 use cairovm_verifier_transcript::transcript::Transcript;
 use starknet_crypto::Felt;
 
-use crate::commit::stark_commit;
+use crate::{
+    commit::stark_commit,
+    fixtures::{commitment, config, domains, unsent_commitment},
+};
 
 use super::*;
 
