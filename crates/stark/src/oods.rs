@@ -1,8 +1,6 @@
+use bail_out::assure;
 use cairovm_verifier_air::{
-    layout::recursive::{
-        eval_composition_polynomial, eval_oods_polynomial, global_values::InteractionElements,
-        CONSTRAINT_DEGREE,
-    },
+    layout::{recursive::CONSTRAINT_DEGREE, CompositionPolyEvalError, LayoutTrait},
     public_memory::PublicInput,
     trace,
 };
@@ -18,16 +16,16 @@ pub struct OodsEvaluationInfo {
 
 // Checks that the trace and the compostion agree at oods_point, assuming the prover provided us
 // with the proper evaluations.
-pub fn verify_oods(
+pub fn verify_oods<Layout: LayoutTrait>(
     oods: &[Felt],
-    interaction_elements: InteractionElements,
+    interaction_elements: &Layout::InteractionElements,
     public_input: &PublicInput,
     constraint_coefficients: &[Felt],
-    oods_point: Felt,
-    trace_domain_size: Felt,
-    trace_generator: Felt,
-) {
-    let composition_from_trace = eval_composition_polynomial(
+    oods_point: &Felt,
+    trace_domain_size: &Felt,
+    trace_generator: &Felt,
+) -> Result<(), OodsVerifyError> {
+    let composition_from_trace = Layout::eval_composition_polynomial(
         interaction_elements,
         public_input,
         &oods[0..oods.len() - 2],
@@ -35,15 +33,31 @@ pub fn verify_oods(
         oods_point,
         trace_domain_size,
         trace_generator,
-    );
+    )?;
 
     // TODO support degree > 2?
     let claimed_composition = oods[oods.len() - 2] + oods[oods.len() - 1] * oods_point;
 
-    assert_eq!(composition_from_trace, claimed_composition);
+    assure!(
+        composition_from_trace == claimed_composition,
+        OodsVerifyError::EvaluationInvalid {
+            expected: claimed_composition,
+            actual: composition_from_trace
+        }
+    )
 }
 
-pub fn eval_oods_boundary_poly_at_points(
+use thiserror::Error;
+
+#[derive(Error, Debug)]
+pub enum OodsVerifyError {
+    #[error("oods invalid {expected} - {actual}")]
+    EvaluationInvalid { expected: Felt, actual: Felt },
+    #[error("CompositionPolyEval Error")]
+    CompositionPolyEvalError(#[from] CompositionPolyEvalError),
+}
+
+pub fn eval_oods_boundary_poly_at_points<Layout: LayoutTrait>(
     n_original_columns: usize,
     n_interaction_columns: usize,
     eval_info: OodsEvaluationInfo,
@@ -83,13 +97,13 @@ pub fn eval_oods_boundary_poly_at_points(
                 [i * CONSTRAINT_DEGREE as usize..(i + 1) * CONSTRAINT_DEGREE as usize],
         );
 
-        evaluations.push(eval_oods_polynomial(
+        evaluations.push(Layout::eval_oods_polynomial(
             &column_values,
             &eval_info.oods_values,
             &eval_info.constraint_coefficients,
-            point,
-            eval_info.oods_point,
-            eval_info.trace_generator,
+            &point,
+            &eval_info.oods_point,
+            &eval_info.trace_generator,
         ));
     }
 

@@ -1,4 +1,4 @@
-use cairovm_verifier_air::{domains::StarkDomains, layout::recursive::trace::traces_decommit};
+use cairovm_verifier_air::{domains::StarkDomains, layout::LayoutTrait};
 use cairovm_verifier_commitment::table::decommit::table_decommit;
 use cairovm_verifier_fri::{
     fri::{self, fri_verify},
@@ -13,16 +13,16 @@ use crate::{
 };
 
 // STARK verify phase.
-pub fn stark_verify(
+pub fn stark_verify<Layout: LayoutTrait>(
     n_original_columns: usize,
     n_interaction_columns: usize,
     queries: &[Felt],
-    commitment: StarkCommitment,
+    commitment: StarkCommitment<Layout::InteractionElements>,
     witness: &StarkWitness,
     stark_domains: &StarkDomains,
 ) -> Result<(), Error> {
     // First layer decommit.
-    traces_decommit(
+    Layout::traces_decommit(
         queries,
         commitment.traces,
         witness.traces_decommitment.to_owned(),
@@ -46,7 +46,7 @@ pub fn stark_verify(
         trace_generator: stark_domains.trace_generator,
         constraint_coefficients: commitment.interaction_after_oods,
     };
-    let oods_poly_evals = eval_oods_boundary_poly_at_points(
+    let oods_poly_evals = eval_oods_boundary_poly_at_points::<Layout>(
         n_original_columns,
         n_interaction_columns,
         eval_info,

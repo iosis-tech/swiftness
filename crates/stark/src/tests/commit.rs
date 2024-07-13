@@ -1,4 +1,4 @@
-use cairovm_verifier_air::fixtures::public_input;
+use cairovm_verifier_air::{fixtures::public_input, layout::recursive::RecursiveLayout};
 use cairovm_verifier_transcript::transcript::Transcript;
 use starknet_crypto::Felt;
 
@@ -22,8 +22,14 @@ pub fn test_stark_commit() {
     let stark_domains = domains::get();
 
     assert_eq!(
-        stark_commit(&mut transcript, &public_input, &unsent_commitment, &config, &stark_domains)
-            .unwrap(),
+        stark_commit::<RecursiveLayout>(
+            &mut transcript,
+            &public_input,
+            &unsent_commitment,
+            &config,
+            &stark_domains
+        )
+        .unwrap(),
         commitment::get()
     );
 

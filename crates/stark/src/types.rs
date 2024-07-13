@@ -30,8 +30,8 @@ pub struct StarkUnsentCommitment {
 
 #[serde_as]
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
-pub struct StarkCommitment {
-    pub traces: cairovm_verifier_air::trace::Commitment,
+pub struct StarkCommitment<InteractionElements> {
+    pub traces: cairovm_verifier_air::trace::Commitment<InteractionElements>,
     pub composition: cairovm_verifier_commitment::table::types::Commitment,
     #[serde_as(as = "UfeHex")]
     pub interaction_after_composition: Felt,

@@ -9,6 +9,7 @@ repository.workspace = true
 version.workspace = true
 
 [dependencies]
+bail-out.workspace = true
 serde.workspace = true
 serde_with.workspace = true
 starknet-crypto.workspace = true

@@ -1,3 +1,4 @@
+use cairovm_verifier_transcript::transcript::Transcript;
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
 use starknet_core::serde::unsigned_field_element::UfeHex;
@@ -91,4 +92,17 @@ pub struct InteractionElements {
     pub diluted_check_interaction_z: Felt,
     #[serde_as(as = "UfeHex")]
     pub diluted_check_interaction_alpha: Felt,
+}
+
+impl InteractionElements {
+    pub fn new(transcript: &mut Transcript) -> Self {
+        Self {
+            memory_multi_column_perm_perm_interaction_elm: transcript.random_felt_to_prover(),
+            memory_multi_column_perm_hash_interaction_elm0: transcript.random_felt_to_prover(),
+            range_check16_perm_interaction_elm: transcript.random_felt_to_prover(),
+            diluted_check_permutation_interaction_elm: transcript.random_felt_to_prover(),
+            diluted_check_interaction_z: transcript.random_felt_to_prover(),
+            diluted_check_interaction_alpha: transcript.random_felt_to_prover(),
+        }
+    }
 }

@@ -6,9 +6,9 @@ use starknet_crypto::Felt;
 pub fn eval_composition_polynomial_inner(
     mask_values: &[Felt],
     constraint_coefficients: &[Felt],
-    point: Felt,
-    trace_generator: Felt,
-    global_values: GlobalValues,
+    point: &Felt,
+    trace_generator: &Felt,
+    global_values: &GlobalValues,
 ) -> Felt {
     // Compute powers.
     let pow0 = point.pow_felt(
@@ -866,9 +866,9 @@ pub fn eval_oods_polynomial_inner(
     column_values: &[Felt],
     oods_values: &[Felt],
     constraint_coefficients: &[Felt],
-    point: Felt,
-    oods_point: Felt,
-    trace_generator: Felt,
+    point: &Felt,
+    oods_point: &Felt,
+    trace_generator: &Felt,
 ) -> Felt {
     // Compute powers.
     let pow0 = trace_generator.pow(0_u128);
