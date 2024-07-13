@@ -427,11 +427,11 @@ pub fn eval_composition_polynomial_inner(
     let mut value = (cpu_decode_opcode_range_check_bit_0 * cpu_decode_opcode_range_check_bit_0
         - cpu_decode_opcode_range_check_bit_0)
         * domain4.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
-    total_sum = total_sum + constraint_coefficients[0] * value;
+    total_sum += constraint_coefficients[0] * value;
 
     // Constraint: cpu/decode/opcode_range_check/zero.
     value = (column0_row0).field_div(&NonZeroFelt::from_felt_unchecked(domain4));
-    total_sum = total_sum + constraint_coefficients[1] * value;
+    total_sum += constraint_coefficients[1] * value;
 
     // Constraint: cpu/decode/opcode_range_check_input.
     value = (column1_row1
@@ -441,30 +441,30 @@ pub fn eval_composition_polynomial_inner(
             * global_values.offset_size
             + column4_row0))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[2] * value;
+    total_sum += constraint_coefficients[2] * value;
 
     // Constraint: cpu/decode/flag_op1_base_op0_bit.
     value = (cpu_decode_flag_op1_base_op0_0 * cpu_decode_flag_op1_base_op0_0
         - cpu_decode_flag_op1_base_op0_0)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[3] * value;
+    total_sum += constraint_coefficients[3] * value;
 
     // Constraint: cpu/decode/flag_res_op1_bit.
     value = (cpu_decode_flag_res_op1_0 * cpu_decode_flag_res_op1_0 - cpu_decode_flag_res_op1_0)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[4] * value;
+    total_sum += constraint_coefficients[4] * value;
 
     // Constraint: cpu/decode/flag_pc_update_regular_bit.
     value = (cpu_decode_flag_pc_update_regular_0 * cpu_decode_flag_pc_update_regular_0
         - cpu_decode_flag_pc_update_regular_0)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[5] * value;
+    total_sum += constraint_coefficients[5] * value;
 
     // Constraint: cpu/decode/fp_update_regular_bit.
     value = (cpu_decode_fp_update_regular_0 * cpu_decode_fp_update_regular_0
         - cpu_decode_fp_update_regular_0)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[6] * value;
+    total_sum += constraint_coefficients[6] * value;
 
     // Constraint: cpu/operands/mem_dst_addr.
     value = (column1_row8 + global_values.half_offset_size
@@ -472,7 +472,7 @@ pub fn eval_composition_polynomial_inner(
             + (Felt::ONE - cpu_decode_opcode_range_check_bit_0) * column5_row0
             + column4_row0))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[7] * value;
+    total_sum += constraint_coefficients[7] * value;
 
     // Constraint: cpu/operands/mem0_addr.
     value = (column1_row4 + global_values.half_offset_size
@@ -480,7 +480,7 @@ pub fn eval_composition_polynomial_inner(
             + (Felt::ONE - cpu_decode_opcode_range_check_bit_1) * column5_row0
             + column4_row8))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[8] * value;
+    total_sum += constraint_coefficients[8] * value;
 
     // Constraint: cpu/operands/mem1_addr.
     value = (column1_row12 + global_values.half_offset_size
@@ -490,12 +490,12 @@ pub fn eval_composition_polynomial_inner(
             + cpu_decode_flag_op1_base_op0_0 * column1_row5
             + column4_row4))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[9] * value;
+    total_sum += constraint_coefficients[9] * value;
 
     // Constraint: cpu/operands/ops_mul.
     value = (column5_row4 - column1_row5 * column1_row13)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[10] * value;
+    total_sum += constraint_coefficients[10] * value;
 
     // Constraint: cpu/operands/res.
     value = ((Felt::ONE - cpu_decode_opcode_range_check_bit_9) * column5_row12
@@ -503,17 +503,17 @@ pub fn eval_composition_polynomial_inner(
             + cpu_decode_opcode_range_check_bit_6 * column5_row4
             + cpu_decode_flag_res_op1_0 * column1_row13))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[11] * value;
+    total_sum += constraint_coefficients[11] * value;
 
     // Constraint: cpu/update_registers/update_pc/tmp0.
     value = (column5_row2 - cpu_decode_opcode_range_check_bit_9 * column1_row9)
         * domain24.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[12] * value;
+    total_sum += constraint_coefficients[12] * value;
 
     // Constraint: cpu/update_registers/update_pc/tmp1.
     value = (column5_row10 - column5_row2 * column5_row12)
         * domain24.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[13] * value;
+    total_sum += constraint_coefficients[13] * value;
 
     // Constraint: cpu/update_registers/update_pc/pc_cond_negative.
     value = ((Felt::ONE - cpu_decode_opcode_range_check_bit_9) * column1_row16
@@ -522,12 +522,12 @@ pub fn eval_composition_polynomial_inner(
             + cpu_decode_opcode_range_check_bit_7 * column5_row12
             + cpu_decode_opcode_range_check_bit_8 * (column1_row0 + column5_row12)))
         * domain24.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[14] * value;
+    total_sum += constraint_coefficients[14] * value;
 
     // Constraint: cpu/update_registers/update_pc/pc_cond_positive.
     value = ((column5_row10 - cpu_decode_opcode_range_check_bit_9) * (column1_row16 - npc_reg_0))
         * domain24.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[15] * value;
+    total_sum += constraint_coefficients[15] * value;
 
     // Constraint: cpu/update_registers/update_ap/ap_update.
     value = (column5_row16
@@ -536,7 +536,7 @@ pub fn eval_composition_polynomial_inner(
             + cpu_decode_opcode_range_check_bit_11
             + cpu_decode_opcode_range_check_bit_12 * Felt::TWO))
         * domain24.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[16] * value;
+    total_sum += constraint_coefficients[16] * value;
 
     // Constraint: cpu/update_registers/update_fp/fp_update.
     value = (column5_row24
@@ -544,30 +544,30 @@ pub fn eval_composition_polynomial_inner(
             + cpu_decode_opcode_range_check_bit_13 * column1_row9
             + cpu_decode_opcode_range_check_bit_12 * (column5_row0 + 2)))
         * domain24.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[17] * value;
+    total_sum += constraint_coefficients[17] * value;
 
     // Constraint: cpu/opcodes/call/push_fp.
     value = (cpu_decode_opcode_range_check_bit_12 * (column1_row9 - column5_row8))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[18] * value;
+    total_sum += constraint_coefficients[18] * value;
 
     // Constraint: cpu/opcodes/call/push_pc.
     value = (cpu_decode_opcode_range_check_bit_12
         * (column1_row5 - (column1_row0 + cpu_decode_opcode_range_check_bit_2 + 1)))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[19] * value;
+    total_sum += constraint_coefficients[19] * value;
 
     // Constraint: cpu/opcodes/call/off0.
     value = (cpu_decode_opcode_range_check_bit_12
         * (column4_row0 - global_values.half_offset_size))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[20] * value;
+    total_sum += constraint_coefficients[20] * value;
 
     // Constraint: cpu/opcodes/call/off1.
     value = (cpu_decode_opcode_range_check_bit_12
         * (column4_row8 - (global_values.half_offset_size + 1)))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[21] * value;
+    total_sum += constraint_coefficients[21] * value;
 
     // Constraint: cpu/opcodes/call/flags.
     value = (cpu_decode_opcode_range_check_bit_12
@@ -577,19 +577,19 @@ pub fn eval_composition_polynomial_inner(
             + Felt::ONE
             - (cpu_decode_opcode_range_check_bit_0 + cpu_decode_opcode_range_check_bit_1 + 4)))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[22] * value;
+    total_sum += constraint_coefficients[22] * value;
 
     // Constraint: cpu/opcodes/ret/off0.
     value = (cpu_decode_opcode_range_check_bit_13
         * (column4_row0 + 2 - global_values.half_offset_size))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[23] * value;
+    total_sum += constraint_coefficients[23] * value;
 
     // Constraint: cpu/opcodes/ret/off2.
     value = (cpu_decode_opcode_range_check_bit_13
         * (column4_row4 + Felt::ONE - global_values.half_offset_size))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[24] * value;
+    total_sum += constraint_coefficients[24] * value;
 
     // Constraint: cpu/opcodes/ret/flags.
     value = (cpu_decode_opcode_range_check_bit_13
@@ -599,42 +599,42 @@ pub fn eval_composition_polynomial_inner(
             + cpu_decode_flag_res_op1_0
             - 4))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[25] * value;
+    total_sum += constraint_coefficients[25] * value;
 
     // Constraint: cpu/opcodes/assert_eq/assert_eq.
     value = (cpu_decode_opcode_range_check_bit_14 * (column1_row9 - column5_row12))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[26] * value;
+    total_sum += constraint_coefficients[26] * value;
 
     // Constraint: initial_ap.
     value = (column5_row0 - global_values.initial_ap)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain25));
-    total_sum = total_sum + constraint_coefficients[27] * value;
+    total_sum += constraint_coefficients[27] * value;
 
     // Constraint: initial_fp.
     value = (column5_row8 - global_values.initial_ap)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain25));
-    total_sum = total_sum + constraint_coefficients[28] * value;
+    total_sum += constraint_coefficients[28] * value;
 
     // Constraint: initial_pc.
     value = (column1_row0 - global_values.initial_pc)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain25));
-    total_sum = total_sum + constraint_coefficients[29] * value;
+    total_sum += constraint_coefficients[29] * value;
 
     // Constraint: final_ap.
     value = (column5_row0 - global_values.final_ap)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain24));
-    total_sum = total_sum + constraint_coefficients[30] * value;
+    total_sum += constraint_coefficients[30] * value;
 
     // Constraint: final_fp.
     value = (column5_row8 - global_values.initial_ap)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain24));
-    total_sum = total_sum + constraint_coefficients[31] * value;
+    total_sum += constraint_coefficients[31] * value;
 
     // Constraint: final_pc.
     value = (column1_row0 - global_values.final_pc)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain24));
-    total_sum = total_sum + constraint_coefficients[32] * value;
+    total_sum += constraint_coefficients[32] * value;
 
     // Constraint: memory/multi_column_perm/perm/init0.
     value = ((global_values.memory_multi_column_perm_perm_interaction_elm
@@ -645,7 +645,7 @@ pub fn eval_composition_polynomial_inner(
         + global_values.memory_multi_column_perm_hash_interaction_elm0 * column1_row1
         - global_values.memory_multi_column_perm_perm_interaction_elm)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain25));
-    total_sum = total_sum + constraint_coefficients[33] * value;
+    total_sum += constraint_coefficients[33] * value;
 
     // Constraint: memory/multi_column_perm/perm/step0.
     value = ((global_values.memory_multi_column_perm_perm_interaction_elm
@@ -657,34 +657,34 @@ pub fn eval_composition_polynomial_inner(
                 + global_values.memory_multi_column_perm_hash_interaction_elm0 * column1_row3))
             * column6_inter1_row0)
         * domain26.field_div(&NonZeroFelt::from_felt_unchecked(domain1));
-    total_sum = total_sum + constraint_coefficients[34] * value;
+    total_sum += constraint_coefficients[34] * value;
 
     // Constraint: memory/multi_column_perm/perm/last.
     value = (column6_inter1_row0 - global_values.memory_multi_column_perm_perm_public_memory_prod)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain26));
-    total_sum = total_sum + constraint_coefficients[35] * value;
+    total_sum += constraint_coefficients[35] * value;
 
     // Constraint: memory/diff_is_bit.
     value = (memory_address_diff_0 * memory_address_diff_0 - memory_address_diff_0)
         * domain26.field_div(&NonZeroFelt::from_felt_unchecked(domain1));
-    total_sum = total_sum + constraint_coefficients[36] * value;
+    total_sum += constraint_coefficients[36] * value;
 
     // Constraint: memory/is_func.
     value = ((memory_address_diff_0 - 1) * (column2_row1 - column2_row3))
         * domain26.field_div(&NonZeroFelt::from_felt_unchecked(domain1));
-    total_sum = total_sum + constraint_coefficients[37] * value;
+    total_sum += constraint_coefficients[37] * value;
 
     // Constraint: memory/initial_addr.
     value = (column2_row0 - 1).field_div(&NonZeroFelt::from_felt_unchecked(domain25));
-    total_sum = total_sum + constraint_coefficients[38] * value;
+    total_sum += constraint_coefficients[38] * value;
 
     // Constraint: public_memory_addr_zero.
     value = (column1_row2).field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[39] * value;
+    total_sum += constraint_coefficients[39] * value;
 
     // Constraint: public_memory_value_zero.
     value = (column1_row3).field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[40] * value;
+    total_sum += constraint_coefficients[40] * value;
 
     // Constraint: range_check16/perm/init0.
     value = ((global_values.range_check16_perm_interaction_elm - column4_row2)
@@ -692,34 +692,34 @@ pub fn eval_composition_polynomial_inner(
         + column4_row0
         - global_values.range_check16_perm_interaction_elm)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain25));
-    total_sum = total_sum + constraint_coefficients[41] * value;
+    total_sum += constraint_coefficients[41] * value;
 
     // Constraint: range_check16/perm/step0.
     value = ((global_values.range_check16_perm_interaction_elm - column4_row6)
         * column7_inter1_row5
         - (global_values.range_check16_perm_interaction_elm - column4_row4) * column7_inter1_row1)
         * domain27.field_div(&NonZeroFelt::from_felt_unchecked(domain2));
-    total_sum = total_sum + constraint_coefficients[42] * value;
+    total_sum += constraint_coefficients[42] * value;
 
     // Constraint: range_check16/perm/last.
     value = (column7_inter1_row1 - global_values.range_check16_perm_public_memory_prod)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain27));
-    total_sum = total_sum + constraint_coefficients[43] * value;
+    total_sum += constraint_coefficients[43] * value;
 
     // Constraint: range_check16/diff_is_bit.
     value = (range_check16_diff_0 * range_check16_diff_0 - range_check16_diff_0)
         * domain27.field_div(&NonZeroFelt::from_felt_unchecked(domain2));
-    total_sum = total_sum + constraint_coefficients[44] * value;
+    total_sum += constraint_coefficients[44] * value;
 
     // Constraint: range_check16/minimum.
     value = (column4_row2 - global_values.range_check_min)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain25));
-    total_sum = total_sum + constraint_coefficients[45] * value;
+    total_sum += constraint_coefficients[45] * value;
 
     // Constraint: range_check16/maximum.
     value = (column4_row2 - global_values.range_check_max)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain27));
-    total_sum = total_sum + constraint_coefficients[46] * value;
+    total_sum += constraint_coefficients[46] * value;
 
     // Constraint: diluted_check/permutation/init0.
     value = ((global_values.diluted_check_permutation_interaction_elm - column3_row1)
@@ -727,7 +727,7 @@ pub fn eval_composition_polynomial_inner(
         + column3_row0
         - global_values.diluted_check_permutation_interaction_elm)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain25));
-    total_sum = total_sum + constraint_coefficients[47] * value;
+    total_sum += constraint_coefficients[47] * value;
 
     // Constraint: diluted_check/permutation/step0.
     value = ((global_values.diluted_check_permutation_interaction_elm - column3_row3)
@@ -735,21 +735,21 @@ pub fn eval_composition_polynomial_inner(
         - (global_values.diluted_check_permutation_interaction_elm - column3_row2)
             * column7_inter1_row0)
         * domain26.field_div(&NonZeroFelt::from_felt_unchecked(domain1));
-    total_sum = total_sum + constraint_coefficients[48] * value;
+    total_sum += constraint_coefficients[48] * value;
 
     // Constraint: diluted_check/permutation/last.
     value = (column7_inter1_row0 - global_values.diluted_check_permutation_public_memory_prod)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain26));
-    total_sum = total_sum + constraint_coefficients[49] * value;
+    total_sum += constraint_coefficients[49] * value;
 
     // Constraint: diluted_check/init.
     value = (column6_inter1_row1 - 1).field_div(&NonZeroFelt::from_felt_unchecked(domain25));
-    total_sum = total_sum + constraint_coefficients[50] * value;
+    total_sum += constraint_coefficients[50] * value;
 
     // Constraint: diluted_check/first_element.
     value = (column3_row1 - global_values.diluted_check_first_elm)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain25));
-    total_sum = total_sum + constraint_coefficients[51] * value;
+    total_sum += constraint_coefficients[51] * value;
 
     // Constraint: diluted_check/step.
     value = (column6_inter1_row3
@@ -760,17 +760,17 @@ pub fn eval_composition_polynomial_inner(
                 * (column3_row3 - column3_row1)
                 * (column3_row3 - column3_row1)))
         * domain26.field_div(&NonZeroFelt::from_felt_unchecked(domain1));
-    total_sum = total_sum + constraint_coefficients[52] * value;
+    total_sum += constraint_coefficients[52] * value;
 
     // Constraint: diluted_check/last.
     value = (column6_inter1_row1 - global_values.diluted_check_final_cum_val)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain26));
-    total_sum = total_sum + constraint_coefficients[53] * value;
+    total_sum += constraint_coefficients[53] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/last_one_is_zero.
     value = (column5_row57 * (column4_row3 - (column4_row11 + column4_row11)))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain19));
-    total_sum = total_sum + constraint_coefficients[54] * value;
+    total_sum += constraint_coefficients[54] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/zeroes_between_ones0.
     value = (column5_row57
@@ -778,252 +778,252 @@ pub fn eval_composition_polynomial_inner(
             - Felt::from_hex_unchecked("0x800000000000000000000000000000000000000000000000")
                 * column4_row1539))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain19));
-    total_sum = total_sum + constraint_coefficients[55] * value;
+    total_sum += constraint_coefficients[55] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/cumulative_bit192.
     value = (column5_row57
         - column4_row2047 * (column4_row1539 - (column4_row1547 + column4_row1547)))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain19));
-    total_sum = total_sum + constraint_coefficients[56] * value;
+    total_sum += constraint_coefficients[56] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/zeroes_between_ones192.
     value = (column4_row2047 * (column4_row1547 - Felt::from(8) * column4_row1571))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain19));
-    total_sum = total_sum + constraint_coefficients[57] * value;
+    total_sum += constraint_coefficients[57] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/cumulative_bit196.
     value = (column4_row2047
         - (column4_row2011 - (column4_row2019 + column4_row2019))
             * (column4_row1571 - (column4_row1579 + column4_row1579)))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain19));
-    total_sum = total_sum + constraint_coefficients[58] * value;
+    total_sum += constraint_coefficients[58] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/zeroes_between_ones196.
     value = ((column4_row2011 - (column4_row2019 + column4_row2019))
         * (column4_row1579 - Felt::from_hex_unchecked("0x40000000000000") * column4_row2011))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain19));
-    total_sum = total_sum + constraint_coefficients[59] * value;
+    total_sum += constraint_coefficients[59] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/booleanity_test.
     value = (pedersen_hash0_ec_subset_sum_bit_0 * (pedersen_hash0_ec_subset_sum_bit_0 - 1))
         * domain20.field_div(&NonZeroFelt::from_felt_unchecked(domain3));
-    total_sum = total_sum + constraint_coefficients[60] * value;
+    total_sum += constraint_coefficients[60] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/bit_extraction_end.
     value = (column4_row3).field_div(&NonZeroFelt::from_felt_unchecked(domain21));
-    total_sum = total_sum + constraint_coefficients[61] * value;
+    total_sum += constraint_coefficients[61] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/zeros_tail.
     value = (column4_row3).field_div(&NonZeroFelt::from_felt_unchecked(domain20));
-    total_sum = total_sum + constraint_coefficients[62] * value;
+    total_sum += constraint_coefficients[62] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/add_points/slope.
     value = (pedersen_hash0_ec_subset_sum_bit_0 * (column4_row5 - global_values.pedersen_points_y)
         - column4_row7 * (column4_row1 - global_values.pedersen_points_x))
         * domain20.field_div(&NonZeroFelt::from_felt_unchecked(domain3));
-    total_sum = total_sum + constraint_coefficients[63] * value;
+    total_sum += constraint_coefficients[63] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/add_points/x.
     value = (column4_row7 * column4_row7
         - pedersen_hash0_ec_subset_sum_bit_0
             * (column4_row1 + global_values.pedersen_points_x + column4_row9))
         * domain20.field_div(&NonZeroFelt::from_felt_unchecked(domain3));
-    total_sum = total_sum + constraint_coefficients[64] * value;
+    total_sum += constraint_coefficients[64] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/add_points/y.
     value = (pedersen_hash0_ec_subset_sum_bit_0 * (column4_row5 + column4_row13)
         - column4_row7 * (column4_row1 - column4_row9))
         * domain20.field_div(&NonZeroFelt::from_felt_unchecked(domain3));
-    total_sum = total_sum + constraint_coefficients[65] * value;
+    total_sum += constraint_coefficients[65] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/copy_point/x.
     value = (pedersen_hash0_ec_subset_sum_bit_neg_0 * (column4_row9 - column4_row1))
         * domain20.field_div(&NonZeroFelt::from_felt_unchecked(domain3));
-    total_sum = total_sum + constraint_coefficients[66] * value;
+    total_sum += constraint_coefficients[66] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/copy_point/y.
     value = (pedersen_hash0_ec_subset_sum_bit_neg_0 * (column4_row13 - column4_row5))
         * domain20.field_div(&NonZeroFelt::from_felt_unchecked(domain3));
-    total_sum = total_sum + constraint_coefficients[67] * value;
+    total_sum += constraint_coefficients[67] * value;
 
     // Constraint: pedersen/hash0/copy_point/x.
     value = (column4_row2049 - column4_row2041)
         * domain22.field_div(&NonZeroFelt::from_felt_unchecked(domain19));
-    total_sum = total_sum + constraint_coefficients[68] * value;
+    total_sum += constraint_coefficients[68] * value;
 
     // Constraint: pedersen/hash0/copy_point/y.
     value = (column4_row2053 - column4_row2045)
         * domain22.field_div(&NonZeroFelt::from_felt_unchecked(domain19));
-    total_sum = total_sum + constraint_coefficients[69] * value;
+    total_sum += constraint_coefficients[69] * value;
 
     // Constraint: pedersen/hash0/init/x.
     value = (column4_row1 - global_values.pedersen_shift_point.x)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain23));
-    total_sum = total_sum + constraint_coefficients[70] * value;
+    total_sum += constraint_coefficients[70] * value;
 
     // Constraint: pedersen/hash0/init/y.
     value = (column4_row5 - global_values.pedersen_shift_point.y)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain23));
-    total_sum = total_sum + constraint_coefficients[71] * value;
+    total_sum += constraint_coefficients[71] * value;
 
     // Constraint: pedersen/input0_value0.
     value = (column1_row11 - column4_row3).field_div(&NonZeroFelt::from_felt_unchecked(domain23));
-    total_sum = total_sum + constraint_coefficients[72] * value;
+    total_sum += constraint_coefficients[72] * value;
 
     // Constraint: pedersen/input0_addr.
     value = (column1_row4106 - (column1_row1034 + 1))
         * domain28.field_div(&NonZeroFelt::from_felt_unchecked(domain23));
-    total_sum = total_sum + constraint_coefficients[73] * value;
+    total_sum += constraint_coefficients[73] * value;
 
     // Constraint: pedersen/init_addr.
     value = (column1_row10 - global_values.initial_pedersen_addr)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain25));
-    total_sum = total_sum + constraint_coefficients[74] * value;
+    total_sum += constraint_coefficients[74] * value;
 
     // Constraint: pedersen/input1_value0.
     value =
         (column1_row2059 - column4_row2051).field_div(&NonZeroFelt::from_felt_unchecked(domain23));
-    total_sum = total_sum + constraint_coefficients[75] * value;
+    total_sum += constraint_coefficients[75] * value;
 
     // Constraint: pedersen/input1_addr.
     value = (column1_row2058 - (column1_row10 + 1))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain23));
-    total_sum = total_sum + constraint_coefficients[76] * value;
+    total_sum += constraint_coefficients[76] * value;
 
     // Constraint: pedersen/output_value0.
     value =
         (column1_row1035 - column4_row4089).field_div(&NonZeroFelt::from_felt_unchecked(domain23));
-    total_sum = total_sum + constraint_coefficients[77] * value;
+    total_sum += constraint_coefficients[77] * value;
 
     // Constraint: pedersen/output_addr.
     value = (column1_row1034 - (column1_row2058 + 1))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain23));
-    total_sum = total_sum + constraint_coefficients[78] * value;
+    total_sum += constraint_coefficients[78] * value;
 
     // Constraint: range_check_builtin/value.
     value = (range_check_builtin_value7_0 - column1_row139)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain9));
-    total_sum = total_sum + constraint_coefficients[79] * value;
+    total_sum += constraint_coefficients[79] * value;
 
     // Constraint: range_check_builtin/addr_step.
     value = (column1_row394 - (column1_row138 + 1))
         * domain29.field_div(&NonZeroFelt::from_felt_unchecked(domain9));
-    total_sum = total_sum + constraint_coefficients[80] * value;
+    total_sum += constraint_coefficients[80] * value;
 
     // Constraint: range_check_builtin/init_addr.
     value = (column1_row138 - global_values.initial_range_check_addr)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain25));
-    total_sum = total_sum + constraint_coefficients[81] * value;
+    total_sum += constraint_coefficients[81] * value;
 
     // Constraint: bitwise/init_var_pool_addr.
     value = (column1_row42 - global_values.initial_bitwise_addr)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain25));
-    total_sum = total_sum + constraint_coefficients[82] * value;
+    total_sum += constraint_coefficients[82] * value;
 
     // Constraint: bitwise/step_var_pool_addr.
     value = (column1_row106 - (column1_row42 + 1))
         * domain10.field_div(&NonZeroFelt::from_felt_unchecked(domain7));
-    total_sum = total_sum + constraint_coefficients[83] * value;
+    total_sum += constraint_coefficients[83] * value;
 
     // Constraint: bitwise/x_or_y_addr.
     value = (column1_row74 - (column1_row234 + 1))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain9));
-    total_sum = total_sum + constraint_coefficients[84] * value;
+    total_sum += constraint_coefficients[84] * value;
 
     // Constraint: bitwise/next_var_pool_addr.
     value = (column1_row298 - (column1_row74 + 1))
         * domain29.field_div(&NonZeroFelt::from_felt_unchecked(domain9));
-    total_sum = total_sum + constraint_coefficients[85] * value;
+    total_sum += constraint_coefficients[85] * value;
 
     // Constraint: bitwise/partition.
     value = (bitwise_sum_var_0_0 + bitwise_sum_var_8_0 - column1_row43)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain7));
-    total_sum = total_sum + constraint_coefficients[86] * value;
+    total_sum += constraint_coefficients[86] * value;
 
     // Constraint: bitwise/or_is_and_plus_xor.
     value = (column1_row75 - (column1_row171 + column1_row235))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain9));
-    total_sum = total_sum + constraint_coefficients[87] * value;
+    total_sum += constraint_coefficients[87] * value;
 
     // Constraint: bitwise/addition_is_xor_with_and.
     value = (column3_row0 + column3_row64 - (column3_row192 + column3_row128 + column3_row128))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain11));
-    total_sum = total_sum + constraint_coefficients[88] * value;
+    total_sum += constraint_coefficients[88] * value;
 
     // Constraint: bitwise/unique_unpacking192.
     value = ((column3_row176 + column3_row240) * Felt::from(16) - column3_row2)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain9));
-    total_sum = total_sum + constraint_coefficients[89] * value;
+    total_sum += constraint_coefficients[89] * value;
 
     // Constraint: bitwise/unique_unpacking193.
     value = ((column3_row180 + column3_row244) * Felt::from(16) - column3_row130)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain9));
-    total_sum = total_sum + constraint_coefficients[90] * value;
+    total_sum += constraint_coefficients[90] * value;
 
     // Constraint: bitwise/unique_unpacking194.
     value = ((column3_row184 + column3_row248) * Felt::from(16) - column3_row66)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain9));
-    total_sum = total_sum + constraint_coefficients[91] * value;
+    total_sum += constraint_coefficients[91] * value;
 
     // Constraint: bitwise/unique_unpacking195.
     value = ((column3_row188 + column3_row252) * Felt::from(256) - column3_row194)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain9));
-    total_sum = total_sum + constraint_coefficients[92] * value;
+    total_sum += constraint_coefficients[92] * value;
 
     // Constraint: poseidon/param_0/init_input_output_addr.
     value = (column1_row266 - global_values.initial_poseidon_addr)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain25));
-    total_sum = total_sum + constraint_coefficients[93] * value;
+    total_sum += constraint_coefficients[93] * value;
 
     // Constraint: poseidon/param_0/addr_input_output_step.
     value = (column1_row778 - (column1_row266 + 3))
         * domain30.field_div(&NonZeroFelt::from_felt_unchecked(domain12));
-    total_sum = total_sum + constraint_coefficients[94] * value;
+    total_sum += constraint_coefficients[94] * value;
 
     // Constraint: poseidon/param_1/init_input_output_addr.
     value = (column1_row202 - (global_values.initial_poseidon_addr + 1))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain25));
-    total_sum = total_sum + constraint_coefficients[95] * value;
+    total_sum += constraint_coefficients[95] * value;
 
     // Constraint: poseidon/param_1/addr_input_output_step.
     value = (column1_row714 - (column1_row202 + 3))
         * domain30.field_div(&NonZeroFelt::from_felt_unchecked(domain12));
-    total_sum = total_sum + constraint_coefficients[96] * value;
+    total_sum += constraint_coefficients[96] * value;
 
     // Constraint: poseidon/param_2/init_input_output_addr.
     value = (column1_row458 - (global_values.initial_poseidon_addr + 2))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain25));
-    total_sum = total_sum + constraint_coefficients[97] * value;
+    total_sum += constraint_coefficients[97] * value;
 
     // Constraint: poseidon/param_2/addr_input_output_step.
     value = (column1_row970 - (column1_row458 + 3))
         * domain30.field_div(&NonZeroFelt::from_felt_unchecked(domain12));
-    total_sum = total_sum + constraint_coefficients[98] * value;
+    total_sum += constraint_coefficients[98] * value;
 
     // Constraint: poseidon/poseidon/full_rounds_state0_squaring.
     value = (column5_row9 * column5_row9 - column5_row105)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
-    total_sum = total_sum + constraint_coefficients[99] * value;
+    total_sum += constraint_coefficients[99] * value;
 
     // Constraint: poseidon/poseidon/full_rounds_state1_squaring.
     value = (column5_row73 * column5_row73 - column5_row25)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
-    total_sum = total_sum + constraint_coefficients[100] * value;
+    total_sum += constraint_coefficients[100] * value;
 
     // Constraint: poseidon/poseidon/full_rounds_state2_squaring.
     value = (column5_row41 * column5_row41 - column5_row89)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
-    total_sum = total_sum + constraint_coefficients[101] * value;
+    total_sum += constraint_coefficients[101] * value;
 
     // Constraint: poseidon/poseidon/partial_rounds_state0_squaring.
     value = (column5_row6 * column5_row6 - column5_row14)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[102] * value;
+    total_sum += constraint_coefficients[102] * value;
 
     // Constraint: poseidon/poseidon/partial_rounds_state1_squaring.
     value = (column5_row1 * column5_row1 - column5_row17)
         * domain15.field_div(&NonZeroFelt::from_felt_unchecked(domain6));
-    total_sum = total_sum + constraint_coefficients[103] * value;
+    total_sum += constraint_coefficients[103] * value;
 
     // Constraint: poseidon/poseidon/add_first_round_key0.
     value = (column1_row267
@@ -1032,7 +1032,7 @@ pub fn eval_composition_polynomial_inner(
         )
         - column5_row9)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain16));
-    total_sum = total_sum + constraint_coefficients[104] * value;
+    total_sum += constraint_coefficients[104] * value;
 
     // Constraint: poseidon/poseidon/add_first_round_key1.
     value = (column1_row203
@@ -1041,7 +1041,7 @@ pub fn eval_composition_polynomial_inner(
         )
         - column5_row73)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain16));
-    total_sum = total_sum + constraint_coefficients[105] * value;
+    total_sum += constraint_coefficients[105] * value;
 
     // Constraint: poseidon/poseidon/add_first_round_key2.
     value = (column1_row459
@@ -1050,7 +1050,7 @@ pub fn eval_composition_polynomial_inner(
         )
         - column5_row41)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain16));
-    total_sum = total_sum + constraint_coefficients[106] * value;
+    total_sum += constraint_coefficients[106] * value;
 
     // Constraint: poseidon/poseidon/full_round0.
     value = (column5_row137
@@ -1061,7 +1061,7 @@ pub fn eval_composition_polynomial_inner(
             + poseidon_poseidon_full_rounds_state2_cubed_0
             + global_values.poseidon_poseidon_full_round_key0))
         * domain13.field_div(&NonZeroFelt::from_felt_unchecked(domain8));
-    total_sum = total_sum + constraint_coefficients[107] * value;
+    total_sum += constraint_coefficients[107] * value;
 
     // Constraint: poseidon/poseidon/full_round1.
     value = (column5_row201 + poseidon_poseidon_full_rounds_state1_cubed_0
@@ -1069,7 +1069,7 @@ pub fn eval_composition_polynomial_inner(
             + poseidon_poseidon_full_rounds_state2_cubed_0
             + global_values.poseidon_poseidon_full_round_key1))
         * domain13.field_div(&NonZeroFelt::from_felt_unchecked(domain8));
-    total_sum = total_sum + constraint_coefficients[108] * value;
+    total_sum += constraint_coefficients[108] * value;
 
     // Constraint: poseidon/poseidon/full_round2.
     value = (column5_row169
@@ -1079,7 +1079,7 @@ pub fn eval_composition_polynomial_inner(
             + poseidon_poseidon_full_rounds_state1_cubed_0
             + global_values.poseidon_poseidon_full_round_key2))
         * domain13.field_div(&NonZeroFelt::from_felt_unchecked(domain8));
-    total_sum = total_sum + constraint_coefficients[109] * value;
+    total_sum += constraint_coefficients[109] * value;
 
     // Constraint: poseidon/poseidon/last_full_round0.
     value = (column1_row779
@@ -1089,14 +1089,14 @@ pub fn eval_composition_polynomial_inner(
             + poseidon_poseidon_full_rounds_state1_cubed_7
             + poseidon_poseidon_full_rounds_state2_cubed_7))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain16));
-    total_sum = total_sum + constraint_coefficients[110] * value;
+    total_sum += constraint_coefficients[110] * value;
 
     // Constraint: poseidon/poseidon/last_full_round1.
     value = (column1_row715 + poseidon_poseidon_full_rounds_state1_cubed_7
         - (poseidon_poseidon_full_rounds_state0_cubed_7
             + poseidon_poseidon_full_rounds_state2_cubed_7))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain16));
-    total_sum = total_sum + constraint_coefficients[111] * value;
+    total_sum += constraint_coefficients[111] * value;
 
     // Constraint: poseidon/poseidon/last_full_round2.
     value = (column1_row971
@@ -1105,20 +1105,20 @@ pub fn eval_composition_polynomial_inner(
         - (poseidon_poseidon_full_rounds_state0_cubed_7
             + poseidon_poseidon_full_rounds_state1_cubed_7))
         .field_div(&NonZeroFelt::from_felt_unchecked(domain16));
-    total_sum = total_sum + constraint_coefficients[112] * value;
+    total_sum += constraint_coefficients[112] * value;
 
     // Constraint: poseidon/poseidon/copy_partial_rounds0_i0.
     value = (column5_row982 - column5_row1).field_div(&NonZeroFelt::from_felt_unchecked(domain16));
-    total_sum = total_sum + constraint_coefficients[113] * value;
+    total_sum += constraint_coefficients[113] * value;
 
     // Constraint: poseidon/poseidon/copy_partial_rounds0_i1.
     value = (column5_row998 - column5_row33).field_div(&NonZeroFelt::from_felt_unchecked(domain16));
-    total_sum = total_sum + constraint_coefficients[114] * value;
+    total_sum += constraint_coefficients[114] * value;
 
     // Constraint: poseidon/poseidon/copy_partial_rounds0_i2.
     value =
         (column5_row1014 - column5_row65).field_div(&NonZeroFelt::from_felt_unchecked(domain16));
-    total_sum = total_sum + constraint_coefficients[115] * value;
+    total_sum += constraint_coefficients[115] * value;
 
     // Constraint: poseidon/poseidon/margin_full_to_partial0.
     value = (column5_row6
@@ -1130,7 +1130,7 @@ pub fn eval_composition_polynomial_inner(
                 "0x4B085EB1DF4258C3453CC97445954BF3433B6AB9DD5A99592864C00F54A3F9A",
             )))
     .field_div(&NonZeroFelt::from_felt_unchecked(domain16));
-    total_sum = total_sum + constraint_coefficients[116] * value;
+    total_sum += constraint_coefficients[116] * value;
 
     // Constraint: poseidon/poseidon/margin_full_to_partial1.
     value = (column5_row22
@@ -1146,7 +1146,7 @@ pub fn eval_composition_polynomial_inner(
                 "0x46FB825257FEC76C50FE043684D4E6D2D2F2FDFE9B7C8D7128CA7ACC0F66F30",
             )))
     .field_div(&NonZeroFelt::from_felt_unchecked(domain16));
-    total_sum = total_sum + constraint_coefficients[117] * value;
+    total_sum += constraint_coefficients[117] * value;
 
     // Constraint: poseidon/poseidon/margin_full_to_partial2.
     value = (column5_row38
@@ -1162,7 +1162,7 @@ pub fn eval_composition_polynomial_inner(
                 "0xF2193BA0C7EA33CE6222D9446C1E166202AE5461005292F4A2BCB93420151A",
             )))
     .field_div(&NonZeroFelt::from_felt_unchecked(domain16));
-    total_sum = total_sum + constraint_coefficients[118] * value;
+    total_sum += constraint_coefficients[118] * value;
 
     // Constraint: poseidon/poseidon/partial_round0.
     value = (column5_row54
@@ -1176,7 +1176,7 @@ pub fn eval_composition_polynomial_inner(
             ) * poseidon_poseidon_partial_rounds_state0_cubed_2
             + global_values.poseidon_poseidon_partial_round_key0))
         * domain17.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
-    total_sum = total_sum + constraint_coefficients[119] * value;
+    total_sum += constraint_coefficients[119] * value;
 
     // Constraint: poseidon/poseidon/partial_round1.
     value = (column5_row97
@@ -1190,7 +1190,7 @@ pub fn eval_composition_polynomial_inner(
             ) * poseidon_poseidon_partial_rounds_state1_cubed_2
             + global_values.poseidon_poseidon_partial_round_key1))
         * domain18.field_div(&NonZeroFelt::from_felt_unchecked(domain6));
-    total_sum = total_sum + constraint_coefficients[120] * value;
+    total_sum += constraint_coefficients[120] * value;
 
     // Constraint: poseidon/poseidon/margin_partial_to_full0.
     value = (column5_row521
@@ -1203,7 +1203,7 @@ pub fn eval_composition_polynomial_inner(
                 "0x13D1B5CFD87693224F0AC561AB2C15CA53365D768311AF59CEFAF701BC53B37",
             )))
     .field_div(&NonZeroFelt::from_felt_unchecked(domain16));
-    total_sum = total_sum + constraint_coefficients[121] * value;
+    total_sum += constraint_coefficients[121] * value;
 
     // Constraint: poseidon/poseidon/margin_partial_to_full1.
     value = (column5_row585
@@ -1215,7 +1215,7 @@ pub fn eval_composition_polynomial_inner(
                 "0x3195D6B2D930E71CEDE286D5B8B41D49296DDF222BCD3BF3717A12A9A6947FF",
             )))
     .field_div(&NonZeroFelt::from_felt_unchecked(domain16));
-    total_sum = total_sum + constraint_coefficients[122] * value;
+    total_sum += constraint_coefficients[122] * value;
 
     // Constraint: poseidon/poseidon/margin_partial_to_full2.
     value = (column5_row553
@@ -1231,7 +1231,7 @@ pub fn eval_composition_polynomial_inner(
                 "0x2C14FCCABC26929170CC7AC9989C823608B9008BEF3B8E16B6089A5D33CD72E",
             )))
     .field_div(&NonZeroFelt::from_felt_unchecked(domain16));
-    total_sum = total_sum + constraint_coefficients[123] * value;
+    total_sum += constraint_coefficients[123] * value;
 
     total_sum
 }
@@ -1395,771 +1395,771 @@ pub fn eval_oods_polynomial_inner(
 
     let mut value = (column0 - oods_values[0])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow0 * oods_point));
-    total_sum = total_sum + constraint_coefficients[0] * value;
+    total_sum += constraint_coefficients[0] * value;
 
     value = (column0 - oods_values[1])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow4 * oods_point));
-    total_sum = total_sum + constraint_coefficients[1] * value;
+    total_sum += constraint_coefficients[1] * value;
 
     value = (column0 - oods_values[2])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow5 * oods_point));
-    total_sum = total_sum + constraint_coefficients[2] * value;
+    total_sum += constraint_coefficients[2] * value;
 
     value = (column0 - oods_values[3])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow6 * oods_point));
-    total_sum = total_sum + constraint_coefficients[3] * value;
+    total_sum += constraint_coefficients[3] * value;
 
     value = (column0 - oods_values[4])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow7 * oods_point));
-    total_sum = total_sum + constraint_coefficients[4] * value;
+    total_sum += constraint_coefficients[4] * value;
 
     value = (column0 - oods_values[5])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow8 * oods_point));
-    total_sum = total_sum + constraint_coefficients[5] * value;
+    total_sum += constraint_coefficients[5] * value;
 
     value = (column0 - oods_values[6])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow9 * oods_point));
-    total_sum = total_sum + constraint_coefficients[6] * value;
+    total_sum += constraint_coefficients[6] * value;
 
     value = (column0 - oods_values[7])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow10 * oods_point));
-    total_sum = total_sum + constraint_coefficients[7] * value;
+    total_sum += constraint_coefficients[7] * value;
 
     value = (column0 - oods_values[8])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow11 * oods_point));
-    total_sum = total_sum + constraint_coefficients[8] * value;
+    total_sum += constraint_coefficients[8] * value;
 
     value = (column0 - oods_values[9])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow13 * oods_point));
-    total_sum = total_sum + constraint_coefficients[9] * value;
+    total_sum += constraint_coefficients[9] * value;
 
     value = (column0 - oods_values[10])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow14 * oods_point));
-    total_sum = total_sum + constraint_coefficients[10] * value;
+    total_sum += constraint_coefficients[10] * value;
 
     value = (column0 - oods_values[11])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow15 * oods_point));
-    total_sum = total_sum + constraint_coefficients[11] * value;
+    total_sum += constraint_coefficients[11] * value;
 
     value = (column0 - oods_values[12])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow16 * oods_point));
-    total_sum = total_sum + constraint_coefficients[12] * value;
+    total_sum += constraint_coefficients[12] * value;
 
     value = (column0 - oods_values[13])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow17 * oods_point));
-    total_sum = total_sum + constraint_coefficients[13] * value;
+    total_sum += constraint_coefficients[13] * value;
 
     value = (column0 - oods_values[14])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow18 * oods_point));
-    total_sum = total_sum + constraint_coefficients[14] * value;
+    total_sum += constraint_coefficients[14] * value;
 
     value = (column0 - oods_values[15])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow19 * oods_point));
-    total_sum = total_sum + constraint_coefficients[15] * value;
+    total_sum += constraint_coefficients[15] * value;
 
     value = (column1 - oods_values[16])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow0 * oods_point));
-    total_sum = total_sum + constraint_coefficients[16] * value;
+    total_sum += constraint_coefficients[16] * value;
 
     value = (column1 - oods_values[17])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow4 * oods_point));
-    total_sum = total_sum + constraint_coefficients[17] * value;
+    total_sum += constraint_coefficients[17] * value;
 
     value = (column1 - oods_values[18])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow5 * oods_point));
-    total_sum = total_sum + constraint_coefficients[18] * value;
+    total_sum += constraint_coefficients[18] * value;
 
     value = (column1 - oods_values[19])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow6 * oods_point));
-    total_sum = total_sum + constraint_coefficients[19] * value;
+    total_sum += constraint_coefficients[19] * value;
 
     value = (column1 - oods_values[20])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow7 * oods_point));
-    total_sum = total_sum + constraint_coefficients[20] * value;
+    total_sum += constraint_coefficients[20] * value;
 
     value = (column1 - oods_values[21])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow8 * oods_point));
-    total_sum = total_sum + constraint_coefficients[21] * value;
+    total_sum += constraint_coefficients[21] * value;
 
     value = (column1 - oods_values[22])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow11 * oods_point));
-    total_sum = total_sum + constraint_coefficients[22] * value;
+    total_sum += constraint_coefficients[22] * value;
 
     value = (column1 - oods_values[23])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow13 * oods_point));
-    total_sum = total_sum + constraint_coefficients[23] * value;
+    total_sum += constraint_coefficients[23] * value;
 
     value = (column1 - oods_values[24])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow14 * oods_point));
-    total_sum = total_sum + constraint_coefficients[24] * value;
+    total_sum += constraint_coefficients[24] * value;
 
     value = (column1 - oods_values[25])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow15 * oods_point));
-    total_sum = total_sum + constraint_coefficients[25] * value;
+    total_sum += constraint_coefficients[25] * value;
 
     value = (column1 - oods_values[26])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow16 * oods_point));
-    total_sum = total_sum + constraint_coefficients[26] * value;
+    total_sum += constraint_coefficients[26] * value;
 
     value = (column1 - oods_values[27])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow17 * oods_point));
-    total_sum = total_sum + constraint_coefficients[27] * value;
+    total_sum += constraint_coefficients[27] * value;
 
     value = (column1 - oods_values[28])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow20 * oods_point));
-    total_sum = total_sum + constraint_coefficients[28] * value;
+    total_sum += constraint_coefficients[28] * value;
 
     value = (column1 - oods_values[29])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow35 * oods_point));
-    total_sum = total_sum + constraint_coefficients[29] * value;
+    total_sum += constraint_coefficients[29] * value;
 
     value = (column1 - oods_values[30])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow36 * oods_point));
-    total_sum = total_sum + constraint_coefficients[30] * value;
+    total_sum += constraint_coefficients[30] * value;
 
     value = (column1 - oods_values[31])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow50 * oods_point));
-    total_sum = total_sum + constraint_coefficients[31] * value;
+    total_sum += constraint_coefficients[31] * value;
 
     value = (column1 - oods_values[32])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow51 * oods_point));
-    total_sum = total_sum + constraint_coefficients[32] * value;
+    total_sum += constraint_coefficients[32] * value;
 
     value = (column1 - oods_values[33])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow57 * oods_point));
-    total_sum = total_sum + constraint_coefficients[33] * value;
+    total_sum += constraint_coefficients[33] * value;
 
     value = (column1 - oods_values[34])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow62 * oods_point));
-    total_sum = total_sum + constraint_coefficients[34] * value;
+    total_sum += constraint_coefficients[34] * value;
 
     value = (column1 - oods_values[35])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow63 * oods_point));
-    total_sum = total_sum + constraint_coefficients[35] * value;
+    total_sum += constraint_coefficients[35] * value;
 
     value = (column1 - oods_values[36])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow65 * oods_point));
-    total_sum = total_sum + constraint_coefficients[36] * value;
+    total_sum += constraint_coefficients[36] * value;
 
     value = (column1 - oods_values[37])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow75 * oods_point));
-    total_sum = total_sum + constraint_coefficients[37] * value;
+    total_sum += constraint_coefficients[37] * value;
 
     value = (column1 - oods_values[38])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow76 * oods_point));
-    total_sum = total_sum + constraint_coefficients[38] * value;
+    total_sum += constraint_coefficients[38] * value;
 
     value = (column1 - oods_values[39])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow79 * oods_point));
-    total_sum = total_sum + constraint_coefficients[39] * value;
+    total_sum += constraint_coefficients[39] * value;
 
     value = (column1 - oods_values[40])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow80 * oods_point));
-    total_sum = total_sum + constraint_coefficients[40] * value;
+    total_sum += constraint_coefficients[40] * value;
 
     value = (column1 - oods_values[41])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow86 * oods_point));
-    total_sum = total_sum + constraint_coefficients[41] * value;
+    total_sum += constraint_coefficients[41] * value;
 
     value = (column1 - oods_values[42])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow87 * oods_point));
-    total_sum = total_sum + constraint_coefficients[42] * value;
+    total_sum += constraint_coefficients[42] * value;
 
     value = (column1 - oods_values[43])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow115 * oods_point));
-    total_sum = total_sum + constraint_coefficients[43] * value;
+    total_sum += constraint_coefficients[43] * value;
 
     value = (column1 - oods_values[44])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow88 * oods_point));
-    total_sum = total_sum + constraint_coefficients[44] * value;
+    total_sum += constraint_coefficients[44] * value;
 
     value = (column1 - oods_values[45])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow92 * oods_point));
-    total_sum = total_sum + constraint_coefficients[45] * value;
+    total_sum += constraint_coefficients[45] * value;
 
     value = (column1 - oods_values[46])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow93 * oods_point));
-    total_sum = total_sum + constraint_coefficients[46] * value;
+    total_sum += constraint_coefficients[46] * value;
 
     value = (column1 - oods_values[47])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow109 * oods_point));
-    total_sum = total_sum + constraint_coefficients[47] * value;
+    total_sum += constraint_coefficients[47] * value;
 
     value = (column1 - oods_values[48])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow113 * oods_point));
-    total_sum = total_sum + constraint_coefficients[48] * value;
+    total_sum += constraint_coefficients[48] * value;
 
     value = (column1 - oods_values[49])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow110 * oods_point));
-    total_sum = total_sum + constraint_coefficients[49] * value;
+    total_sum += constraint_coefficients[49] * value;
 
     value = (column1 - oods_values[50])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow114 * oods_point));
-    total_sum = total_sum + constraint_coefficients[50] * value;
+    total_sum += constraint_coefficients[50] * value;
 
     value = (column1 - oods_values[51])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow111 * oods_point));
-    total_sum = total_sum + constraint_coefficients[51] * value;
+    total_sum += constraint_coefficients[51] * value;
 
     value = (column1 - oods_values[52])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow116 * oods_point));
-    total_sum = total_sum + constraint_coefficients[52] * value;
+    total_sum += constraint_coefficients[52] * value;
 
     value = (column1 - oods_values[53])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow122 * oods_point));
-    total_sum = total_sum + constraint_coefficients[53] * value;
+    total_sum += constraint_coefficients[53] * value;
 
     value = (column1 - oods_values[54])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow127 * oods_point));
-    total_sum = total_sum + constraint_coefficients[54] * value;
+    total_sum += constraint_coefficients[54] * value;
 
     value = (column1 - oods_values[55])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow131 * oods_point));
-    total_sum = total_sum + constraint_coefficients[55] * value;
+    total_sum += constraint_coefficients[55] * value;
 
     value = (column1 - oods_values[56])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow132 * oods_point));
-    total_sum = total_sum + constraint_coefficients[56] * value;
+    total_sum += constraint_coefficients[56] * value;
 
     value = (column1 - oods_values[57])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow133 * oods_point));
-    total_sum = total_sum + constraint_coefficients[57] * value;
+    total_sum += constraint_coefficients[57] * value;
 
     value = (column2 - oods_values[58])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow0 * oods_point));
-    total_sum = total_sum + constraint_coefficients[58] * value;
+    total_sum += constraint_coefficients[58] * value;
 
     value = (column2 - oods_values[59])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow4 * oods_point));
-    total_sum = total_sum + constraint_coefficients[59] * value;
+    total_sum += constraint_coefficients[59] * value;
 
     value = (column2 - oods_values[60])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow5 * oods_point));
-    total_sum = total_sum + constraint_coefficients[60] * value;
+    total_sum += constraint_coefficients[60] * value;
 
     value = (column2 - oods_values[61])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow6 * oods_point));
-    total_sum = total_sum + constraint_coefficients[61] * value;
+    total_sum += constraint_coefficients[61] * value;
 
     value = (column3 - oods_values[62])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow0 * oods_point));
-    total_sum = total_sum + constraint_coefficients[62] * value;
+    total_sum += constraint_coefficients[62] * value;
 
     value = (column3 - oods_values[63])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow4 * oods_point));
-    total_sum = total_sum + constraint_coefficients[63] * value;
+    total_sum += constraint_coefficients[63] * value;
 
     value = (column3 - oods_values[64])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow5 * oods_point));
-    total_sum = total_sum + constraint_coefficients[64] * value;
+    total_sum += constraint_coefficients[64] * value;
 
     value = (column3 - oods_values[65])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow6 * oods_point));
-    total_sum = total_sum + constraint_coefficients[65] * value;
+    total_sum += constraint_coefficients[65] * value;
 
     value = (column3 - oods_values[66])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow7 * oods_point));
-    total_sum = total_sum + constraint_coefficients[66] * value;
+    total_sum += constraint_coefficients[66] * value;
 
     value = (column3 - oods_values[67])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow11 * oods_point));
-    total_sum = total_sum + constraint_coefficients[67] * value;
+    total_sum += constraint_coefficients[67] * value;
 
     value = (column3 - oods_values[68])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow16 * oods_point));
-    total_sum = total_sum + constraint_coefficients[68] * value;
+    total_sum += constraint_coefficients[68] * value;
 
     value = (column3 - oods_values[69])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow20 * oods_point));
-    total_sum = total_sum + constraint_coefficients[69] * value;
+    total_sum += constraint_coefficients[69] * value;
 
     value = (column3 - oods_values[70])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow22 * oods_point));
-    total_sum = total_sum + constraint_coefficients[70] * value;
+    total_sum += constraint_coefficients[70] * value;
 
     value = (column3 - oods_values[71])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow24 * oods_point));
-    total_sum = total_sum + constraint_coefficients[71] * value;
+    total_sum += constraint_coefficients[71] * value;
 
     value = (column3 - oods_values[72])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow26 * oods_point));
-    total_sum = total_sum + constraint_coefficients[72] * value;
+    total_sum += constraint_coefficients[72] * value;
 
     value = (column3 - oods_values[73])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow28 * oods_point));
-    total_sum = total_sum + constraint_coefficients[73] * value;
+    total_sum += constraint_coefficients[73] * value;
 
     value = (column3 - oods_values[74])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow31 * oods_point));
-    total_sum = total_sum + constraint_coefficients[74] * value;
+    total_sum += constraint_coefficients[74] * value;
 
     value = (column3 - oods_values[75])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow33 * oods_point));
-    total_sum = total_sum + constraint_coefficients[75] * value;
+    total_sum += constraint_coefficients[75] * value;
 
     value = (column3 - oods_values[76])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow37 * oods_point));
-    total_sum = total_sum + constraint_coefficients[76] * value;
+    total_sum += constraint_coefficients[76] * value;
 
     value = (column3 - oods_values[77])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow39 * oods_point));
-    total_sum = total_sum + constraint_coefficients[77] * value;
+    total_sum += constraint_coefficients[77] * value;
 
     value = (column3 - oods_values[78])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow41 * oods_point));
-    total_sum = total_sum + constraint_coefficients[78] * value;
+    total_sum += constraint_coefficients[78] * value;
 
     value = (column3 - oods_values[79])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow43 * oods_point));
-    total_sum = total_sum + constraint_coefficients[79] * value;
+    total_sum += constraint_coefficients[79] * value;
 
     value = (column3 - oods_values[80])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow45 * oods_point));
-    total_sum = total_sum + constraint_coefficients[80] * value;
+    total_sum += constraint_coefficients[80] * value;
 
     value = (column3 - oods_values[81])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow46 * oods_point));
-    total_sum = total_sum + constraint_coefficients[81] * value;
+    total_sum += constraint_coefficients[81] * value;
 
     value = (column3 - oods_values[82])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow48 * oods_point));
-    total_sum = total_sum + constraint_coefficients[82] * value;
+    total_sum += constraint_coefficients[82] * value;
 
     value = (column3 - oods_values[83])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow59 * oods_point));
-    total_sum = total_sum + constraint_coefficients[83] * value;
+    total_sum += constraint_coefficients[83] * value;
 
     value = (column3 - oods_values[84])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow60 * oods_point));
-    total_sum = total_sum + constraint_coefficients[84] * value;
+    total_sum += constraint_coefficients[84] * value;
 
     value = (column3 - oods_values[85])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow68 * oods_point));
-    total_sum = total_sum + constraint_coefficients[85] * value;
+    total_sum += constraint_coefficients[85] * value;
 
     value = (column3 - oods_values[86])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow69 * oods_point));
-    total_sum = total_sum + constraint_coefficients[86] * value;
+    total_sum += constraint_coefficients[86] * value;
 
     value = (column3 - oods_values[87])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow70 * oods_point));
-    total_sum = total_sum + constraint_coefficients[87] * value;
+    total_sum += constraint_coefficients[87] * value;
 
     value = (column3 - oods_values[88])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow71 * oods_point));
-    total_sum = total_sum + constraint_coefficients[88] * value;
+    total_sum += constraint_coefficients[88] * value;
 
     value = (column3 - oods_values[89])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow72 * oods_point));
-    total_sum = total_sum + constraint_coefficients[89] * value;
+    total_sum += constraint_coefficients[89] * value;
 
     value = (column3 - oods_values[90])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow73 * oods_point));
-    total_sum = total_sum + constraint_coefficients[90] * value;
+    total_sum += constraint_coefficients[90] * value;
 
     value = (column3 - oods_values[91])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow82 * oods_point));
-    total_sum = total_sum + constraint_coefficients[91] * value;
+    total_sum += constraint_coefficients[91] * value;
 
     value = (column3 - oods_values[92])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow83 * oods_point));
-    total_sum = total_sum + constraint_coefficients[92] * value;
+    total_sum += constraint_coefficients[92] * value;
 
     value = (column3 - oods_values[93])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow84 * oods_point));
-    total_sum = total_sum + constraint_coefficients[93] * value;
+    total_sum += constraint_coefficients[93] * value;
 
     value = (column3 - oods_values[94])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow85 * oods_point));
-    total_sum = total_sum + constraint_coefficients[94] * value;
+    total_sum += constraint_coefficients[94] * value;
 
     value = (column4 - oods_values[95])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow0 * oods_point));
-    total_sum = total_sum + constraint_coefficients[95] * value;
+    total_sum += constraint_coefficients[95] * value;
 
     value = (column4 - oods_values[96])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow4 * oods_point));
-    total_sum = total_sum + constraint_coefficients[96] * value;
+    total_sum += constraint_coefficients[96] * value;
 
     value = (column4 - oods_values[97])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow5 * oods_point));
-    total_sum = total_sum + constraint_coefficients[97] * value;
+    total_sum += constraint_coefficients[97] * value;
 
     value = (column4 - oods_values[98])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow6 * oods_point));
-    total_sum = total_sum + constraint_coefficients[98] * value;
+    total_sum += constraint_coefficients[98] * value;
 
     value = (column4 - oods_values[99])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow7 * oods_point));
-    total_sum = total_sum + constraint_coefficients[99] * value;
+    total_sum += constraint_coefficients[99] * value;
 
     value = (column4 - oods_values[100])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow8 * oods_point));
-    total_sum = total_sum + constraint_coefficients[100] * value;
+    total_sum += constraint_coefficients[100] * value;
 
     value = (column4 - oods_values[101])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow9 * oods_point));
-    total_sum = total_sum + constraint_coefficients[101] * value;
+    total_sum += constraint_coefficients[101] * value;
 
     value = (column4 - oods_values[102])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow10 * oods_point));
-    total_sum = total_sum + constraint_coefficients[102] * value;
+    total_sum += constraint_coefficients[102] * value;
 
     value = (column4 - oods_values[103])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow11 * oods_point));
-    total_sum = total_sum + constraint_coefficients[103] * value;
+    total_sum += constraint_coefficients[103] * value;
 
     value = (column4 - oods_values[104])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow13 * oods_point));
-    total_sum = total_sum + constraint_coefficients[104] * value;
+    total_sum += constraint_coefficients[104] * value;
 
     value = (column4 - oods_values[105])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow15 * oods_point));
-    total_sum = total_sum + constraint_coefficients[105] * value;
+    total_sum += constraint_coefficients[105] * value;
 
     value = (column4 - oods_values[106])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow16 * oods_point));
-    total_sum = total_sum + constraint_coefficients[106] * value;
+    total_sum += constraint_coefficients[106] * value;
 
     value = (column4 - oods_values[107])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow17 * oods_point));
-    total_sum = total_sum + constraint_coefficients[107] * value;
+    total_sum += constraint_coefficients[107] * value;
 
     value = (column4 - oods_values[108])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow37 * oods_point));
-    total_sum = total_sum + constraint_coefficients[108] * value;
+    total_sum += constraint_coefficients[108] * value;
 
     value = (column4 - oods_values[109])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow52 * oods_point));
-    total_sum = total_sum + constraint_coefficients[109] * value;
+    total_sum += constraint_coefficients[109] * value;
 
     value = (column4 - oods_values[110])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow58 * oods_point));
-    total_sum = total_sum + constraint_coefficients[110] * value;
+    total_sum += constraint_coefficients[110] * value;
 
     value = (column4 - oods_values[111])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow66 * oods_point));
-    total_sum = total_sum + constraint_coefficients[111] * value;
+    total_sum += constraint_coefficients[111] * value;
 
     value = (column4 - oods_values[112])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow67 * oods_point));
-    total_sum = total_sum + constraint_coefficients[112] * value;
+    total_sum += constraint_coefficients[112] * value;
 
     value = (column4 - oods_values[113])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow78 * oods_point));
-    total_sum = total_sum + constraint_coefficients[113] * value;
+    total_sum += constraint_coefficients[113] * value;
 
     value = (column4 - oods_values[114])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow81 * oods_point));
-    total_sum = total_sum + constraint_coefficients[114] * value;
+    total_sum += constraint_coefficients[114] * value;
 
     value = (column4 - oods_values[115])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow3 * oods_point));
-    total_sum = total_sum + constraint_coefficients[115] * value;
+    total_sum += constraint_coefficients[115] * value;
 
     value = (column4 - oods_values[116])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow12 * oods_point));
-    total_sum = total_sum + constraint_coefficients[116] * value;
+    total_sum += constraint_coefficients[116] * value;
 
     value = (column4 - oods_values[117])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow30 * oods_point));
-    total_sum = total_sum + constraint_coefficients[117] * value;
+    total_sum += constraint_coefficients[117] * value;
 
     value = (column4 - oods_values[118])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow112 * oods_point));
-    total_sum = total_sum + constraint_coefficients[118] * value;
+    total_sum += constraint_coefficients[118] * value;
 
     value = (column4 - oods_values[119])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow2 * oods_point));
-    total_sum = total_sum + constraint_coefficients[119] * value;
+    total_sum += constraint_coefficients[119] * value;
 
     value = (column4 - oods_values[120])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow123 * oods_point));
-    total_sum = total_sum + constraint_coefficients[120] * value;
+    total_sum += constraint_coefficients[120] * value;
 
     value = (column4 - oods_values[121])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow124 * oods_point));
-    total_sum = total_sum + constraint_coefficients[121] * value;
+    total_sum += constraint_coefficients[121] * value;
 
     value = (column4 - oods_values[122])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow125 * oods_point));
-    total_sum = total_sum + constraint_coefficients[122] * value;
+    total_sum += constraint_coefficients[122] * value;
 
     value = (column4 - oods_values[123])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow126 * oods_point));
-    total_sum = total_sum + constraint_coefficients[123] * value;
+    total_sum += constraint_coefficients[123] * value;
 
     value = (column4 - oods_values[124])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow128 * oods_point));
-    total_sum = total_sum + constraint_coefficients[124] * value;
+    total_sum += constraint_coefficients[124] * value;
 
     value = (column4 - oods_values[125])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow129 * oods_point));
-    total_sum = total_sum + constraint_coefficients[125] * value;
+    total_sum += constraint_coefficients[125] * value;
 
     value = (column4 - oods_values[126])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow130 * oods_point));
-    total_sum = total_sum + constraint_coefficients[126] * value;
+    total_sum += constraint_coefficients[126] * value;
 
     value = (column4 - oods_values[127])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow1 * oods_point));
-    total_sum = total_sum + constraint_coefficients[127] * value;
+    total_sum += constraint_coefficients[127] * value;
 
     value = (column5 - oods_values[128])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow0 * oods_point));
-    total_sum = total_sum + constraint_coefficients[128] * value;
+    total_sum += constraint_coefficients[128] * value;
 
     value = (column5 - oods_values[129])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow4 * oods_point));
-    total_sum = total_sum + constraint_coefficients[129] * value;
+    total_sum += constraint_coefficients[129] * value;
 
     value = (column5 - oods_values[130])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow5 * oods_point));
-    total_sum = total_sum + constraint_coefficients[130] * value;
+    total_sum += constraint_coefficients[130] * value;
 
     value = (column5 - oods_values[131])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow7 * oods_point));
-    total_sum = total_sum + constraint_coefficients[131] * value;
+    total_sum += constraint_coefficients[131] * value;
 
     value = (column5 - oods_values[132])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow9 * oods_point));
-    total_sum = total_sum + constraint_coefficients[132] * value;
+    total_sum += constraint_coefficients[132] * value;
 
     value = (column5 - oods_values[133])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow11 * oods_point));
-    total_sum = total_sum + constraint_coefficients[133] * value;
+    total_sum += constraint_coefficients[133] * value;
 
     value = (column5 - oods_values[134])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow13 * oods_point));
-    total_sum = total_sum + constraint_coefficients[134] * value;
+    total_sum += constraint_coefficients[134] * value;
 
     value = (column5 - oods_values[135])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow14 * oods_point));
-    total_sum = total_sum + constraint_coefficients[135] * value;
+    total_sum += constraint_coefficients[135] * value;
 
     value = (column5 - oods_values[136])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow16 * oods_point));
-    total_sum = total_sum + constraint_coefficients[136] * value;
+    total_sum += constraint_coefficients[136] * value;
 
     value = (column5 - oods_values[137])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow18 * oods_point));
-    total_sum = total_sum + constraint_coefficients[137] * value;
+    total_sum += constraint_coefficients[137] * value;
 
     value = (column5 - oods_values[138])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow20 * oods_point));
-    total_sum = total_sum + constraint_coefficients[138] * value;
+    total_sum += constraint_coefficients[138] * value;
 
     value = (column5 - oods_values[139])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow21 * oods_point));
-    total_sum = total_sum + constraint_coefficients[139] * value;
+    total_sum += constraint_coefficients[139] * value;
 
     value = (column5 - oods_values[140])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow23 * oods_point));
-    total_sum = total_sum + constraint_coefficients[140] * value;
+    total_sum += constraint_coefficients[140] * value;
 
     value = (column5 - oods_values[141])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow24 * oods_point));
-    total_sum = total_sum + constraint_coefficients[141] * value;
+    total_sum += constraint_coefficients[141] * value;
 
     value = (column5 - oods_values[142])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow25 * oods_point));
-    total_sum = total_sum + constraint_coefficients[142] * value;
+    total_sum += constraint_coefficients[142] * value;
 
     value = (column5 - oods_values[143])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow27 * oods_point));
-    total_sum = total_sum + constraint_coefficients[143] * value;
+    total_sum += constraint_coefficients[143] * value;
 
     value = (column5 - oods_values[144])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow29 * oods_point));
-    total_sum = total_sum + constraint_coefficients[144] * value;
+    total_sum += constraint_coefficients[144] * value;
 
     value = (column5 - oods_values[145])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow32 * oods_point));
-    total_sum = total_sum + constraint_coefficients[145] * value;
+    total_sum += constraint_coefficients[145] * value;
 
     value = (column5 - oods_values[146])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow34 * oods_point));
-    total_sum = total_sum + constraint_coefficients[146] * value;
+    total_sum += constraint_coefficients[146] * value;
 
     value = (column5 - oods_values[147])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow38 * oods_point));
-    total_sum = total_sum + constraint_coefficients[147] * value;
+    total_sum += constraint_coefficients[147] * value;
 
     value = (column5 - oods_values[148])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow40 * oods_point));
-    total_sum = total_sum + constraint_coefficients[148] * value;
+    total_sum += constraint_coefficients[148] * value;
 
     value = (column5 - oods_values[149])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow42 * oods_point));
-    total_sum = total_sum + constraint_coefficients[149] * value;
+    total_sum += constraint_coefficients[149] * value;
 
     value = (column5 - oods_values[150])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow44 * oods_point));
-    total_sum = total_sum + constraint_coefficients[150] * value;
+    total_sum += constraint_coefficients[150] * value;
 
     value = (column5 - oods_values[151])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow47 * oods_point));
-    total_sum = total_sum + constraint_coefficients[151] * value;
+    total_sum += constraint_coefficients[151] * value;
 
     value = (column5 - oods_values[152])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow49 * oods_point));
-    total_sum = total_sum + constraint_coefficients[152] * value;
+    total_sum += constraint_coefficients[152] * value;
 
     value = (column5 - oods_values[153])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow53 * oods_point));
-    total_sum = total_sum + constraint_coefficients[153] * value;
+    total_sum += constraint_coefficients[153] * value;
 
     value = (column5 - oods_values[154])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow54 * oods_point));
-    total_sum = total_sum + constraint_coefficients[154] * value;
+    total_sum += constraint_coefficients[154] * value;
 
     value = (column5 - oods_values[155])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow55 * oods_point));
-    total_sum = total_sum + constraint_coefficients[155] * value;
+    total_sum += constraint_coefficients[155] * value;
 
     value = (column5 - oods_values[156])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow56 * oods_point));
-    total_sum = total_sum + constraint_coefficients[156] * value;
+    total_sum += constraint_coefficients[156] * value;
 
     value = (column5 - oods_values[157])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow61 * oods_point));
-    total_sum = total_sum + constraint_coefficients[157] * value;
+    total_sum += constraint_coefficients[157] * value;
 
     value = (column5 - oods_values[158])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow64 * oods_point));
-    total_sum = total_sum + constraint_coefficients[158] * value;
+    total_sum += constraint_coefficients[158] * value;
 
     value = (column5 - oods_values[159])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow74 * oods_point));
-    total_sum = total_sum + constraint_coefficients[159] * value;
+    total_sum += constraint_coefficients[159] * value;
 
     value = (column5 - oods_values[160])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow77 * oods_point));
-    total_sum = total_sum + constraint_coefficients[160] * value;
+    total_sum += constraint_coefficients[160] * value;
 
     value = (column5 - oods_values[161])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow89 * oods_point));
-    total_sum = total_sum + constraint_coefficients[161] * value;
+    total_sum += constraint_coefficients[161] * value;
 
     value = (column5 - oods_values[162])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow90 * oods_point));
-    total_sum = total_sum + constraint_coefficients[162] * value;
+    total_sum += constraint_coefficients[162] * value;
 
     value = (column5 - oods_values[163])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow91 * oods_point));
-    total_sum = total_sum + constraint_coefficients[163] * value;
+    total_sum += constraint_coefficients[163] * value;
 
     value = (column5 - oods_values[164])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow94 * oods_point));
-    total_sum = total_sum + constraint_coefficients[164] * value;
+    total_sum += constraint_coefficients[164] * value;
 
     value = (column5 - oods_values[165])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow95 * oods_point));
-    total_sum = total_sum + constraint_coefficients[165] * value;
+    total_sum += constraint_coefficients[165] * value;
 
     value = (column5 - oods_values[166])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow96 * oods_point));
-    total_sum = total_sum + constraint_coefficients[166] * value;
+    total_sum += constraint_coefficients[166] * value;
 
     value = (column5 - oods_values[167])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow97 * oods_point));
-    total_sum = total_sum + constraint_coefficients[167] * value;
+    total_sum += constraint_coefficients[167] * value;
 
     value = (column5 - oods_values[168])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow98 * oods_point));
-    total_sum = total_sum + constraint_coefficients[168] * value;
+    total_sum += constraint_coefficients[168] * value;
 
     value = (column5 - oods_values[169])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow99 * oods_point));
-    total_sum = total_sum + constraint_coefficients[169] * value;
+    total_sum += constraint_coefficients[169] * value;
 
     value = (column5 - oods_values[170])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow100 * oods_point));
-    total_sum = total_sum + constraint_coefficients[170] * value;
+    total_sum += constraint_coefficients[170] * value;
 
     value = (column5 - oods_values[171])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow101 * oods_point));
-    total_sum = total_sum + constraint_coefficients[171] * value;
+    total_sum += constraint_coefficients[171] * value;
 
     value = (column5 - oods_values[172])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow102 * oods_point));
-    total_sum = total_sum + constraint_coefficients[172] * value;
+    total_sum += constraint_coefficients[172] * value;
 
     value = (column5 - oods_values[173])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow104 * oods_point));
-    total_sum = total_sum + constraint_coefficients[173] * value;
+    total_sum += constraint_coefficients[173] * value;
 
     value = (column5 - oods_values[174])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow106 * oods_point));
-    total_sum = total_sum + constraint_coefficients[174] * value;
+    total_sum += constraint_coefficients[174] * value;
 
     value = (column5 - oods_values[175])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow103 * oods_point));
-    total_sum = total_sum + constraint_coefficients[175] * value;
+    total_sum += constraint_coefficients[175] * value;
 
     value = (column5 - oods_values[176])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow105 * oods_point));
-    total_sum = total_sum + constraint_coefficients[176] * value;
+    total_sum += constraint_coefficients[176] * value;
 
     value = (column5 - oods_values[177])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow107 * oods_point));
-    total_sum = total_sum + constraint_coefficients[177] * value;
+    total_sum += constraint_coefficients[177] * value;
 
     value = (column5 - oods_values[178])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow108 * oods_point));
-    total_sum = total_sum + constraint_coefficients[178] * value;
+    total_sum += constraint_coefficients[178] * value;
 
     value = (column5 - oods_values[179])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow117 * oods_point));
-    total_sum = total_sum + constraint_coefficients[179] * value;
+    total_sum += constraint_coefficients[179] * value;
 
     value = (column5 - oods_values[180])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow118 * oods_point));
-    total_sum = total_sum + constraint_coefficients[180] * value;
+    total_sum += constraint_coefficients[180] * value;
 
     value = (column5 - oods_values[181])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow119 * oods_point));
-    total_sum = total_sum + constraint_coefficients[181] * value;
+    total_sum += constraint_coefficients[181] * value;
 
     value = (column5 - oods_values[182])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow120 * oods_point));
-    total_sum = total_sum + constraint_coefficients[182] * value;
+    total_sum += constraint_coefficients[182] * value;
 
     value = (column5 - oods_values[183])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow121 * oods_point));
-    total_sum = total_sum + constraint_coefficients[183] * value;
+    total_sum += constraint_coefficients[183] * value;
 
     value = (column6 - oods_values[184])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow0 * oods_point));
-    total_sum = total_sum + constraint_coefficients[184] * value;
+    total_sum += constraint_coefficients[184] * value;
 
     value = (column6 - oods_values[185])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow4 * oods_point));
-    total_sum = total_sum + constraint_coefficients[185] * value;
+    total_sum += constraint_coefficients[185] * value;
 
     value = (column6 - oods_values[186])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow5 * oods_point));
-    total_sum = total_sum + constraint_coefficients[186] * value;
+    total_sum += constraint_coefficients[186] * value;
 
     value = (column6 - oods_values[187])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow6 * oods_point));
-    total_sum = total_sum + constraint_coefficients[187] * value;
+    total_sum += constraint_coefficients[187] * value;
 
     value = (column7 - oods_values[188])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow0 * oods_point));
-    total_sum = total_sum + constraint_coefficients[188] * value;
+    total_sum += constraint_coefficients[188] * value;
 
     value = (column7 - oods_values[189])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow4 * oods_point));
-    total_sum = total_sum + constraint_coefficients[189] * value;
+    total_sum += constraint_coefficients[189] * value;
 
     value = (column7 - oods_values[190])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow5 * oods_point));
-    total_sum = total_sum + constraint_coefficients[190] * value;
+    total_sum += constraint_coefficients[190] * value;
 
     value = (column7 - oods_values[191])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - pow8 * oods_point));
-    total_sum = total_sum + constraint_coefficients[191] * value;
+    total_sum += constraint_coefficients[191] * value;
 
     // Sum the OODS boundary constraints on the composition polynomials.
     let oods_point_to_deg = oods_point.pow(CONSTRAINT_DEGREE);
