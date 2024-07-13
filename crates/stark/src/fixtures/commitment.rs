@@ -1,3 +1,4 @@
+use cairovm_verifier_air::layout::recursive::global_values::InteractionElements;
 use cairovm_verifier_commitment::{
     table::{config::Config as TableCommitmentConfig, types::Commitment as TableCommitment},
     vector::{config::Config as VectorCommitmentConfig, types::Commitment as VectorCommitment},
@@ -8,7 +9,7 @@ use crate::types::StarkCommitment;
 
 use super::oods_values;
 
-pub fn get() -> StarkCommitment {
+pub fn get() -> StarkCommitment<InteractionElements> {
     StarkCommitment {
         traces: cairovm_verifier_air::fixtures::commitment::get(),
         composition: TableCommitment {

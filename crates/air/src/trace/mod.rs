@@ -1,7 +1,6 @@
 pub mod config;
 pub mod decommit;
 
-use crate::layout::recursive::global_values::InteractionElements;
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
 use starknet_core::serde::unsigned_field_element::UfeHex;
@@ -20,7 +19,7 @@ pub struct UnsentCommitment {
 
 // Commitment for the Traces component.
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
-pub struct Commitment {
+pub struct Commitment<InteractionElements> {
     // Commitment to the first trace.
     pub original: cairovm_verifier_commitment::table::types::Commitment,
     // The interaction elements that were sent to the prover after the first trace commitment (e.g.

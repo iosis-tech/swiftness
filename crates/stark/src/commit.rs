@@ -1,6 +1,9 @@
 use cairovm_verifier_air::{
     domains::StarkDomains,
-    layout::recursive::{trace::traces_commit, CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS},
+    layout::{
+        recursive::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS},
+        LayoutTrait,
+    },
     public_memory::PublicInput,
 };
 use cairovm_verifier_commitment::table::commit::table_commit;
@@ -11,21 +14,21 @@ use starknet_crypto::Felt;
 
 use crate::{
     config::StarkConfig,
-    oods::verify_oods,
+    oods::{self, verify_oods},
     types::{StarkCommitment, StarkUnsentCommitment},
 };
 
 // STARK commitment phase.
-pub fn stark_commit(
+pub fn stark_commit<Layout: LayoutTrait>(
     transcript: &mut Transcript,
     public_input: &PublicInput,
     unsent_commitment: &StarkUnsentCommitment,
     config: &StarkConfig,
     stark_domains: &StarkDomains,
-) -> Result<StarkCommitment, Error> {
+) -> Result<StarkCommitment<Layout::InteractionElements>, Error> {
     // Read the commitment of the 'traces' component.
     let traces_commitment =
-        traces_commit(transcript, &unsent_commitment.traces, config.traces.to_owned());
+        Layout::traces_commit(transcript, &unsent_commitment.traces, config.traces.to_owned());
 
     // Generate interaction values after traces commitment.
     let composition_alpha = transcript.random_felt_to_prover();
@@ -42,15 +45,15 @@ pub fn stark_commit(
     transcript.read_felt_vector_from_prover(&unsent_commitment.oods_values);
 
     // Check that the trace and the composition agree at oods_point.
-    verify_oods(
+    verify_oods::<Layout>(
         &unsent_commitment.oods_values,
-        traces_commitment.interaction_elements.to_owned(),
+        &traces_commitment.interaction_elements,
         public_input,
         &traces_coefficients,
-        interaction_after_composition,
-        stark_domains.trace_domain_size,
-        stark_domains.trace_generator,
-    );
+        &interaction_after_composition,
+        &stark_domains.trace_domain_size,
+        &stark_domains.trace_generator,
+    )?;
 
     // Generate interaction values after OODS.
     let oods_alpha = transcript.random_felt_to_prover();
@@ -92,4 +95,7 @@ use thiserror::Error;
 pub enum Error {
     #[error("POW Error")]
     POW(#[from] pow::Error),
+
+    #[error("OodsVerifyError Error")]
+    Oods(#[from] oods::OodsVerifyError),
 }
