@@ -25,10 +25,10 @@ pub trait LayoutTrait {
         trace_generator: &Felt,
     ) -> Felt;
 
-    fn validate(
+    fn validate_public_input(
         public_input: &PublicInput,
         stark_domains: &StarkDomains,
-    ) -> Result<(), PublicInputValidateError>;
+    ) -> Result<(), PublicInputError>;
 
     fn traces_commit(
         transcript: &mut Transcript,
@@ -42,6 +42,8 @@ pub trait LayoutTrait {
         decommitment: crate::trace::Decommitment,
         witness: crate::trace::Witness,
     ) -> Result<(), crate::trace::decommit::Error>;
+
+    fn verify_public_input(public_input: &PublicInput) -> Result<(Felt, Felt), PublicInputError>;
 }
 
 use thiserror::Error;
@@ -53,7 +55,7 @@ pub enum CompositionPolyEvalError {
 }
 
 #[derive(Error, Debug)]
-pub enum PublicInputValidateError {
+pub enum PublicInputError {
     #[error("max steps exceeded")]
     MaxSteps,
 
@@ -71,4 +73,10 @@ pub enum PublicInputValidateError {
 
     #[error("invalid number of builtin uses")]
     UsesInvalid,
+}
+
+pub mod segments {
+    pub const EXECUTION: usize = 1;
+    pub const OUTPUT: usize = 2;
+    pub const PROGRAM: usize = 0;
 }

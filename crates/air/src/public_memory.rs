@@ -5,7 +5,9 @@ use starknet_core::{serde::unsigned_field_element::UfeHex, types::NonZeroFelt};
 use starknet_crypto::{pedersen_hash, poseidon_hash_many, Felt};
 
 pub const MAX_LOG_N_STEPS: Felt = Felt::from_hex_unchecked("50");
-pub const MAX_RANGE_CHECK: Felt = Felt::from_hex_unchecked("0xffff"); // 2 ** 16 - 1
+pub const MAX_RANGE_CHECK: Felt = Felt::from_hex_unchecked("0xffff");
+pub const MAX_ADDRESS: Felt = Felt::from_hex_unchecked("0xffffffffffffffff");
+pub const INITIAL_PC: Felt = Felt::from_hex_unchecked("0x1");
 
 #[serde_as]
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
@@ -65,7 +67,7 @@ impl PublicInput {
         (prod, total_length)
     }
 
-    pub fn get_public_input_hash(&self) -> Felt {
+    pub fn get_hash(&self) -> Felt {
         let mut main_page_hash = Felt::ZERO;
         for memory in self.main_page.iter() {
             main_page_hash = pedersen_hash(&main_page_hash, &memory.address);

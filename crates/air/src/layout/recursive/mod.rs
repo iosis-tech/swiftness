@@ -4,15 +4,15 @@ pub mod global_values;
 use crate::{
     diluted::get_diluted_product,
     periodic_columns::{eval_pedersen_x, eval_pedersen_y},
-    public_memory::{PublicInput, MAX_LOG_N_STEPS, MAX_RANGE_CHECK},
+    public_memory::{PublicInput, INITIAL_PC, MAX_ADDRESS, MAX_LOG_N_STEPS, MAX_RANGE_CHECK},
 };
 use bail_out::ensure;
 use cairovm_verifier_commitment::table::{commit::table_commit, decommit::table_decommit};
 use global_values::{EcPoint, GlobalValues, InteractionElements};
 use starknet_core::types::NonZeroFelt;
-use starknet_crypto::Felt;
+use starknet_crypto::{poseidon_hash_many, Felt};
 
-use super::{CompositionPolyEvalError, LayoutTrait, PublicInputValidateError};
+use super::{CompositionPolyEvalError, LayoutTrait, PublicInputError};
 
 // Recursive layout consts
 pub const BITWISE_RATIO: u32 = 8;
@@ -51,11 +51,8 @@ pub const RANGE_CHECK_N_PARTS: u32 = 8;
 
 pub mod segments {
     pub const BITWISE: usize = 5;
-    pub const EXECUTION: usize = 1;
     pub const N_SEGMENTS: usize = 6;
-    pub const OUTPUT: usize = 2;
     pub const PEDERSEN: usize = 3;
-    pub const PROGRAM: usize = 0;
     pub const RANGE_CHECK: usize = 4;
 }
 
@@ -127,23 +124,31 @@ impl LayoutTrait for RecursiveLayout {
             trace_length: *trace_domain_size,
             initial_pc: public_input
                 .segments
-                .get(segments::PROGRAM)
-                .ok_or(CompositionPolyEvalError::SegmentMissing { segment: segments::PROGRAM })?
+                .get(crate::layout::segments::PROGRAM)
+                .ok_or(CompositionPolyEvalError::SegmentMissing {
+                    segment: crate::layout::segments::PROGRAM,
+                })?
                 .begin_addr,
             final_pc: public_input
                 .segments
-                .get(segments::PROGRAM)
-                .ok_or(CompositionPolyEvalError::SegmentMissing { segment: segments::PROGRAM })?
+                .get(crate::layout::segments::PROGRAM)
+                .ok_or(CompositionPolyEvalError::SegmentMissing {
+                    segment: crate::layout::segments::PROGRAM,
+                })?
                 .stop_ptr,
             initial_ap: public_input
                 .segments
-                .get(segments::EXECUTION)
-                .ok_or(CompositionPolyEvalError::SegmentMissing { segment: segments::EXECUTION })?
+                .get(crate::layout::segments::EXECUTION)
+                .ok_or(CompositionPolyEvalError::SegmentMissing {
+                    segment: crate::layout::segments::EXECUTION,
+                })?
                 .begin_addr,
             final_ap: public_input
                 .segments
-                .get(segments::EXECUTION)
-                .ok_or(CompositionPolyEvalError::SegmentMissing { segment: segments::EXECUTION })?
+                .get(crate::layout::segments::EXECUTION)
+                .ok_or(CompositionPolyEvalError::SegmentMissing {
+                    segment: crate::layout::segments::EXECUTION,
+                })?
                 .stop_ptr,
             initial_pedersen_addr: public_input
                 .segments
@@ -243,64 +248,62 @@ impl LayoutTrait for RecursiveLayout {
                 witness.interaction,
             ))?)
     }
-    fn validate(
+    fn validate_public_input(
         public_input: &PublicInput,
         stark_domains: &crate::domains::StarkDomains,
-    ) -> Result<(), PublicInputValidateError> {
-        ensure!(public_input.log_n_steps < MAX_LOG_N_STEPS, PublicInputValidateError::MaxSteps);
+    ) -> Result<(), PublicInputError> {
+        ensure!(public_input.log_n_steps < MAX_LOG_N_STEPS, PublicInputError::MaxSteps);
 
         let n_steps = Felt::TWO.pow_felt(&public_input.log_n_steps);
         let trace_length = stark_domains.trace_domain_size;
         ensure!(
             n_steps * Felt::from(CPU_COMPONENT_HEIGHT) * Felt::from(CPU_COMPONENT_STEP)
                 == trace_length,
-            PublicInputValidateError::TraceLengthInvalid
+            PublicInputError::TraceLengthInvalid
         );
 
-        ensure!(
-            Felt::ZERO <= public_input.range_check_min,
-            PublicInputValidateError::RangeCheckInvalid
-        );
+        ensure!(Felt::ZERO <= public_input.range_check_min, PublicInputError::RangeCheckInvalid);
         ensure!(
             public_input.range_check_min < public_input.range_check_max,
-            PublicInputValidateError::RangeCheckInvalid
+            PublicInputError::RangeCheckInvalid
         );
         ensure!(
             public_input.range_check_max <= MAX_RANGE_CHECK,
-            PublicInputValidateError::RangeCheckInvalid
+            PublicInputError::RangeCheckInvalid
         );
 
-        ensure!(
-            public_input.layout == LAYOUT_CODE.into(),
-            PublicInputValidateError::LayoutCodeInvalid
-        );
+        ensure!(public_input.layout == LAYOUT_CODE.into(), PublicInputError::LayoutCodeInvalid);
 
         let output_uses = public_input
             .segments
-            .get(segments::OUTPUT)
-            .ok_or(PublicInputValidateError::SegmentMissing { segment: segments::OUTPUT })?
+            .get(crate::layout::segments::OUTPUT)
+            .ok_or(PublicInputError::SegmentMissing { segment: crate::layout::segments::OUTPUT })?
             .stop_ptr
             - public_input
                 .segments
-                .get(segments::OUTPUT)
-                .ok_or(PublicInputValidateError::SegmentMissing { segment: segments::OUTPUT })?
+                .get(crate::layout::segments::OUTPUT)
+                .ok_or(PublicInputError::SegmentMissing {
+                    segment: crate::layout::segments::OUTPUT,
+                })?
                 .begin_addr;
-        ensure!(output_uses < u128::MAX.into(), PublicInputValidateError::UsesInvalid);
+        ensure!(output_uses < u128::MAX.into(), PublicInputError::UsesInvalid);
 
         let pedersen_copies = trace_length
             .field_div(&NonZeroFelt::from_felt_unchecked(Felt::from(PEDERSEN_BUILTIN_ROW_RATIO)));
         let pedersen_uses = (public_input
             .segments
             .get(segments::PEDERSEN)
-            .ok_or(PublicInputValidateError::SegmentMissing { segment: segments::OUTPUT })?
+            .ok_or(PublicInputError::SegmentMissing { segment: crate::layout::segments::OUTPUT })?
             .stop_ptr
             - public_input
                 .segments
                 .get(segments::PEDERSEN)
-                .ok_or(PublicInputValidateError::SegmentMissing { segment: segments::OUTPUT })?
+                .ok_or(PublicInputError::SegmentMissing {
+                    segment: crate::layout::segments::OUTPUT,
+                })?
                 .begin_addr)
             .field_div(&NonZeroFelt::from_felt_unchecked(Felt::THREE));
-        ensure!(pedersen_uses < pedersen_copies, PublicInputValidateError::UsesInvalid);
+        ensure!(pedersen_uses < pedersen_copies, PublicInputError::UsesInvalid);
 
         let range_check_copies = trace_length.field_div(&NonZeroFelt::from_felt_unchecked(
             Felt::from(RANGE_CHECK_BUILTIN_ROW_RATIO),
@@ -308,29 +311,92 @@ impl LayoutTrait for RecursiveLayout {
         let range_check_uses = public_input
             .segments
             .get(segments::RANGE_CHECK)
-            .ok_or(PublicInputValidateError::SegmentMissing { segment: segments::OUTPUT })?
+            .ok_or(PublicInputError::SegmentMissing { segment: crate::layout::segments::OUTPUT })?
             .stop_ptr
             - public_input
                 .segments
                 .get(segments::RANGE_CHECK)
-                .ok_or(PublicInputValidateError::SegmentMissing { segment: segments::OUTPUT })?
+                .ok_or(PublicInputError::SegmentMissing {
+                    segment: crate::layout::segments::OUTPUT,
+                })?
                 .begin_addr;
-        ensure!(range_check_uses < range_check_copies, PublicInputValidateError::UsesInvalid);
+        ensure!(range_check_uses < range_check_copies, PublicInputError::UsesInvalid);
 
         let bitwise_copies = trace_length
             .field_div(&NonZeroFelt::from_felt_unchecked(Felt::from(BITWISE_ROW_RATIO)));
         let bitwise_uses = (public_input
             .segments
             .get(segments::BITWISE)
-            .ok_or(PublicInputValidateError::SegmentMissing { segment: segments::OUTPUT })?
+            .ok_or(PublicInputError::SegmentMissing { segment: crate::layout::segments::OUTPUT })?
             .stop_ptr
             - public_input
                 .segments
                 .get(segments::BITWISE)
-                .ok_or(PublicInputValidateError::SegmentMissing { segment: segments::OUTPUT })?
+                .ok_or(PublicInputError::SegmentMissing {
+                    segment: crate::layout::segments::OUTPUT,
+                })?
                 .begin_addr)
             .field_div(&NonZeroFelt::from_felt_unchecked(Felt::from(0x5)));
-        ensure!(bitwise_uses < bitwise_copies, PublicInputValidateError::UsesInvalid);
+        ensure!(bitwise_uses < bitwise_copies, PublicInputError::UsesInvalid);
         Ok(())
+    }
+
+    fn verify_public_input(public_input: &PublicInput) -> Result<(Felt, Felt), PublicInputError> {
+        let public_segments = &public_input.segments;
+
+        let initial_pc = public_segments
+            .get(crate::layout::segments::PROGRAM)
+            .ok_or(PublicInputError::SegmentMissing { segment: crate::layout::segments::PROGRAM })?
+            .begin_addr;
+        let final_pc = public_segments
+            .get(crate::layout::segments::PROGRAM)
+            .ok_or(PublicInputError::SegmentMissing { segment: crate::layout::segments::PROGRAM })?
+            .stop_ptr;
+        let initial_ap = public_segments
+            .get(crate::layout::segments::EXECUTION)
+            .ok_or(PublicInputError::SegmentMissing { segment: crate::layout::segments::PROGRAM })?
+            .begin_addr;
+        let initial_fp = initial_ap;
+        let final_ap = public_segments
+            .get(crate::layout::segments::EXECUTION)
+            .ok_or(PublicInputError::SegmentMissing { segment: crate::layout::segments::PROGRAM })?
+            .stop_ptr;
+        let output_start = public_segments
+            .get(crate::layout::segments::OUTPUT)
+            .ok_or(PublicInputError::SegmentMissing { segment: crate::layout::segments::PROGRAM })?
+            .begin_addr;
+        let output_stop = public_segments
+            .get(crate::layout::segments::OUTPUT)
+            .ok_or(PublicInputError::SegmentMissing { segment: crate::layout::segments::PROGRAM })?
+            .stop_ptr;
+
+        ensure!(initial_ap < MAX_ADDRESS, PublicInputError::MaxSteps);
+        ensure!(final_ap < MAX_ADDRESS, PublicInputError::MaxSteps);
+
+        // TODO support more pages?
+        ensure!(public_input.continuous_page_headers.is_empty(), PublicInputError::MaxSteps);
+
+        let memory = &public_input
+            .main_page
+            .iter()
+            .flat_map(|v| vec![v.address, v.value])
+            .collect::<Vec<Felt>>();
+
+        // 1. Program segment
+        ensure!(initial_pc == INITIAL_PC, PublicInputError::MaxSteps);
+        ensure!(final_pc == INITIAL_PC + 4, PublicInputError::MaxSteps);
+
+        let program_end_pc = initial_fp - 2;
+        let program = &memory[initial_pc.to_bigint().try_into().unwrap()
+            ..program_end_pc.to_bigint().try_into().unwrap()];
+
+        let program_hash = poseidon_hash_many(program);
+
+        let output_len: usize = (output_stop - output_start).to_bigint().try_into().unwrap();
+        // 3. Output segment
+        let output = &memory[memory.len() - output_len..memory.len()];
+        let output_hash = poseidon_hash_many(output);
+
+        Ok((program_hash, output_hash))
     }
 }
