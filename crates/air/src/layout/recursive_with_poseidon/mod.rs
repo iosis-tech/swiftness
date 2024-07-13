@@ -3,7 +3,11 @@ pub mod global_values;
 
 use crate::{
     diluted::get_diluted_product,
-    periodic_columns::{eval_pedersen_x, eval_pedersen_y},
+    periodic_columns::{
+        eval_pedersen_x, eval_pedersen_y, eval_poseidon_poseidon_full_round_key0,
+        eval_poseidon_poseidon_full_round_key1, eval_poseidon_poseidon_full_round_key2,
+        eval_poseidon_poseidon_partial_round_key0, eval_poseidon_poseidon_partial_round_key1,
+    },
     public_memory::{PublicInput, INITIAL_PC, MAX_ADDRESS, MAX_LOG_N_STEPS, MAX_RANGE_CHECK},
 };
 use bail_out::ensure;
@@ -14,9 +18,9 @@ use starknet_crypto::{poseidon_hash_many, Felt};
 
 use super::{CompositionPolyEvalError, LayoutTrait, PublicInputError};
 
-// Recursive layout consts
-pub const BITWISE_RATIO: u32 = 8;
-pub const BITWISE_ROW_RATIO: u32 = 128;
+// Recursive with poseidon layout
+pub const BITWISE_RATIO: u32 = 16;
+pub const BITWISE_ROW_RATIO: u32 = 256;
 pub const BITWISE_TOTAL_N_BITS: u32 = 251;
 pub const CONSTRAINT_DEGREE: u32 = 2;
 pub const CPU_COMPONENT_HEIGHT: u32 = 16;
@@ -30,29 +34,36 @@ pub const HAS_ECDSA_BUILTIN: u32 = 0;
 pub const HAS_KECCAK_BUILTIN: u32 = 0;
 pub const HAS_OUTPUT_BUILTIN: u32 = 1;
 pub const HAS_PEDERSEN_BUILTIN: u32 = 1;
-pub const HAS_POSEIDON_BUILTIN: u32 = 0;
+pub const HAS_POSEIDON_BUILTIN: u32 = 1;
 pub const HAS_RANGE_CHECK_BUILTIN: u32 = 1;
 pub const HAS_RANGE_CHECK96_BUILTIN: u32 = 0;
 pub const IS_DYNAMIC_AIR: u32 = 0;
-pub const LAYOUT_CODE: Felt = Felt::from_hex_unchecked("0x726563757273697665");
+pub const LAYOUT_CODE: Felt =
+    Felt::from_hex_unchecked("0x7265637572736976655f776974685f706f736569646f6e");
 pub const LOG_CPU_COMPONENT_HEIGHT: u32 = 4;
-pub const MASK_SIZE: u32 = 133;
-pub const N_CONSTRAINTS: u32 = 93;
+pub const MASK_SIZE: u32 = 192;
+pub const N_CONSTRAINTS: u32 = 124;
 pub const N_DYNAMIC_PARAMS: u32 = 0;
-pub const NUM_COLUMNS_FIRST: u32 = 7;
-pub const NUM_COLUMNS_SECOND: u32 = 3;
-pub const PEDERSEN_BUILTIN_RATIO: u32 = 128;
+pub const NUM_COLUMNS_FIRST: u32 = 6;
+pub const NUM_COLUMNS_SECOND: u32 = 2;
+pub const PEDERSEN_BUILTIN_RATIO: u32 = 256;
 pub const PEDERSEN_BUILTIN_REPETITIONS: u32 = 1;
-pub const PEDERSEN_BUILTIN_ROW_RATIO: u32 = 2048;
+pub const PEDERSEN_BUILTIN_ROW_RATIO: u32 = 4096;
+pub const POSEIDON_M: u32 = 3;
+pub const POSEIDON_RATIO: u32 = 64;
+pub const POSEIDON_ROUNDS_FULL: u32 = 8;
+pub const POSEIDON_ROUNDS_PARTIAL: u32 = 83;
+pub const POSEIDON_ROW_RATIO: u32 = 1024;
 pub const PUBLIC_MEMORY_STEP: u32 = 16;
-pub const RANGE_CHECK_BUILTIN_RATIO: u32 = 8;
-pub const RANGE_CHECK_BUILTIN_ROW_RATIO: u32 = 128;
+pub const RANGE_CHECK_BUILTIN_RATIO: u32 = 16;
+pub const RANGE_CHECK_BUILTIN_ROW_RATIO: u32 = 256;
 pub const RANGE_CHECK_N_PARTS: u32 = 8;
 
 pub mod segments {
     pub const BITWISE: usize = 5;
-    pub const N_SEGMENTS: usize = 6;
+    pub const N_SEGMENTS: usize = 7;
     pub const PEDERSEN: usize = 3;
+    pub const POSEIDON: usize = 6;
     pub const RANGE_CHECK: usize = 4;
 }
 
@@ -63,6 +74,7 @@ pub mod builtins {
     pub const PEDERSEN: Felt = Felt::from_hex_unchecked("0x706564657273656E");
     pub const RANGE_CHECK: Felt = Felt::from_hex_unchecked("0x72616E67655F636865636B");
     pub const BITWISE: Felt = Felt::from_hex_unchecked("0x62697477697365");
+    pub const POSEIDON: Felt = Felt::from_hex_unchecked("0x706F736569646F6E");
 }
 
 // Pedersen builtin
@@ -71,8 +83,13 @@ pub const SHIFT_POINT_X: Felt =
 pub const SHIFT_POINT_Y: Felt =
     Felt::from_hex_unchecked("0x3ca0cfe4b3bc6ddf346d49d06ea0ed34e621062c0e056c1d0405d266e10268a");
 
-pub const BUILTINS: [Felt; 4] =
-    [builtins::OUTPUT, builtins::PEDERSEN, builtins::RANGE_CHECK, builtins::BITWISE];
+pub const BUILTINS: [Felt; 5] = [
+    builtins::OUTPUT,
+    builtins::PEDERSEN,
+    builtins::RANGE_CHECK,
+    builtins::BITWISE,
+    builtins::POSEIDON,
+];
 
 pub struct RecursiveLayout {}
 
@@ -120,6 +137,21 @@ impl LayoutTrait for RecursiveLayout {
         let pedersen_points_x = eval_pedersen_x(pedersen_point);
         let pedersen_points_y = eval_pedersen_y(pedersen_point);
 
+        let n_poseidon_copies =
+            n_steps.field_div(&NonZeroFelt::from_felt_unchecked(Felt::from(POSEIDON_RATIO)));
+        assert!(n_pedersen_hash_copies < u128::MAX.into());
+        let poseidon_point = point.pow_felt(&n_poseidon_copies);
+        let poseidon_poseidon_full_round_key0 =
+            eval_poseidon_poseidon_full_round_key0(poseidon_point);
+        let poseidon_poseidon_full_round_key1 =
+            eval_poseidon_poseidon_full_round_key1(poseidon_point);
+        let poseidon_poseidon_full_round_key2 =
+            eval_poseidon_poseidon_full_round_key2(poseidon_point);
+        let poseidon_poseidon_partial_round_key0 =
+            eval_poseidon_poseidon_partial_round_key0(poseidon_point);
+        let poseidon_poseidon_partial_round_key1 =
+            eval_poseidon_poseidon_partial_round_key1(poseidon_point);
+
         let global_values = GlobalValues {
             trace_length: *trace_domain_size,
             initial_pc: public_input
@@ -165,6 +197,11 @@ impl LayoutTrait for RecursiveLayout {
                 .get(segments::BITWISE)
                 .ok_or(CompositionPolyEvalError::SegmentMissing { segment: segments::BITWISE })?
                 .begin_addr,
+            initial_poseidon_addr: public_input
+                .segments
+                .get(segments::POSEIDON)
+                .ok_or(CompositionPolyEvalError::SegmentMissing { segment: segments::POSEIDON })?
+                .begin_addr,
             range_check_min: public_input.range_check_min,
             range_check_max: public_input.range_check_max,
             offset_size: Felt::from(0x10000),     // 2**16
@@ -172,6 +209,11 @@ impl LayoutTrait for RecursiveLayout {
             pedersen_shift_point: EcPoint { x: SHIFT_POINT_X, y: SHIFT_POINT_Y },
             pedersen_points_x,
             pedersen_points_y,
+            poseidon_poseidon_full_round_key0,
+            poseidon_poseidon_full_round_key1,
+            poseidon_poseidon_full_round_key2,
+            poseidon_poseidon_partial_round_key0,
+            poseidon_poseidon_partial_round_key1,
             memory_multi_column_perm_perm_interaction_elm: memory_z,
             memory_multi_column_perm_hash_interaction_elm0: memory_alpha,
             range_check16_perm_interaction_elm: interaction_elements
