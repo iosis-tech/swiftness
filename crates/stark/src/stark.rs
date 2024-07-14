@@ -3,17 +3,17 @@ use crate::{
 };
 
 impl StarkProof {
-    pub fn verify<Layout: LayoutTrait>(&self, security_bits: Felt) -> Result<Felt, Error> {
+    pub fn verify<Layout: LayoutTrait>(&self, security_bits: Felt) -> Result<(Felt, Felt), Error> {
         self.config.validate(security_bits)?;
 
         // Validate the public input.
         let stark_domains =
             StarkDomains::new(self.config.log_trace_domain_size, self.config.log_n_cosets);
 
-        Layout::validate(&self.public_input, &stark_domains)?;
+        Layout::validate_public_input(&self.public_input, &stark_domains)?;
 
         // Compute the initial hash seed for the Fiat-Shamir transcript.
-        let digest = self.public_input.get_public_input_hash();
+        let digest = self.public_input.get_hash();
         // Construct the transcript.
         let mut transcript = Transcript::new(digest);
 
@@ -43,7 +43,7 @@ impl StarkProof {
             &stark_domains,
         )?;
 
-        Ok(digest)
+        Ok(Layout::verify_public_input(&self.public_input)?)
     }
 }
 
@@ -51,7 +51,7 @@ use cairovm_verifier_air::{
     domains::StarkDomains,
     layout::{
         recursive::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND},
-        LayoutTrait, PublicInputValidateError,
+        LayoutTrait, PublicInputError,
     },
 };
 use cairovm_verifier_transcript::transcript::Transcript;
@@ -63,8 +63,8 @@ pub enum Error {
     #[error("Vector Error")]
     Validation(#[from] crate::config::Error),
 
-    #[error("PublicInputValidateError Error")]
-    PublicInputValidateError(#[from] PublicInputValidateError),
+    #[error("PublicInputError Error")]
+    PublicInputError(#[from] PublicInputError),
 
     #[error("Commit Error")]
     Commit(#[from] crate::commit::Error),
