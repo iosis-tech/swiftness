@@ -9,15 +9,15 @@ repository.workspace = true
 version.workspace = true
 
 [dependencies]
-serde.workspace = true
-serde_with.workspace = true
-starknet-crypto.workspace = true
-starknet-core.workspace = true
-thiserror.workspace = true
 bail-out.workspace = true
+serde_with.workspace = true
+serde.workspace = true
+starknet-core.workspace = true
+starknet-crypto.workspace = true
+thiserror.workspace = true
 
 cairovm_verifier_air.workspace = true
-cairovm_verifier_pow.workspace = true
-cairovm_verifier_fri.workspace = true
-cairovm_verifier_transcript.workspace = true
 cairovm_verifier_commitment.workspace = true
+cairovm_verifier_fri.workspace = true
+cairovm_verifier_pow.workspace = true
+cairovm_verifier_transcript.workspace = true
