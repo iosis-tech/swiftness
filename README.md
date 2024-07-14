@@ -36,4 +36,4 @@ cargo test
 
 ## Contributing
 
-Feel free to open issues or submit pull requests to help us improve this project.
+Feel free to open issues or submit pull requests to help improve this project.
