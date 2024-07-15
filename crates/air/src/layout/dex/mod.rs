@@ -330,7 +330,7 @@ impl LayoutTrait for RecursiveLayout {
                     segment: crate::layout::segments::OUTPUT,
                 })?
                 .begin_addr)
-            .field_div(&NonZeroFelt::from_felt_unchecked(Felt::from(0x5)));
+            .field_div(&NonZeroFelt::from_felt_unchecked(Felt::TWO));
         ensure!(ecdsa_uses < ecdsa_copies, PublicInputError::UsesInvalid);
         Ok(())
     }
