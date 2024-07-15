@@ -26,9 +26,9 @@ cargo test
   - [x] dex
   - [x] recursive
   - [x] recursive_with_poseidon
-  - [ ] small
-  - [ ] starknet
-  - [ ] starknet_with_keccak
+  - [x] small
+  - [x] starknet
+  - [x] starknet_with_keccak
 
 - **WASM Support:**
   - [ ] Wasm bindings for integration with web applications

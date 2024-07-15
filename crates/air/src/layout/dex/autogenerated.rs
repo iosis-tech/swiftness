@@ -362,11 +362,11 @@ pub fn eval_composition_polynomial_inner(
     // Constraint: cpu/decode/opcode_range_check/bit.
     let mut value = (cpu_decode_opcode_range_check_bit_0 * cpu_decode_opcode_range_check_bit_0
         - cpu_decode_opcode_range_check_bit_0)
-        * domain4.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain4.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[0] * value;
 
     // Constraint: cpu/decode/opcode_range_check/zero.
-    value = (column0_row0).floor_div(&NonZeroFelt::from_felt_unchecked(domain4));
+    value = (column0_row0).field_div(&NonZeroFelt::from_felt_unchecked(domain4));
     total_sum += constraint_coefficients[1] * value;
 
     // Constraint: cpu/decode/opcode_range_check_input.
@@ -376,30 +376,30 @@ pub fn eval_composition_polynomial_inner(
             + column19_row8)
             * global_values.offset_size
             + column19_row0))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[2] * value;
 
     // Constraint: cpu/decode/flag_op1_base_op0_bit.
     value = (cpu_decode_flag_op1_base_op0_0 * cpu_decode_flag_op1_base_op0_0
         - cpu_decode_flag_op1_base_op0_0)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[3] * value;
 
     // Constraint: cpu/decode/flag_res_op1_bit.
     value = (cpu_decode_flag_res_op1_0 * cpu_decode_flag_res_op1_0 - cpu_decode_flag_res_op1_0)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[4] * value;
 
     // Constraint: cpu/decode/flag_pc_update_regular_bit.
     value = (cpu_decode_flag_pc_update_regular_0 * cpu_decode_flag_pc_update_regular_0
         - cpu_decode_flag_pc_update_regular_0)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[5] * value;
 
     // Constraint: cpu/decode/fp_update_regular_bit.
     value = (cpu_decode_fp_update_regular_0 * cpu_decode_fp_update_regular_0
         - cpu_decode_fp_update_regular_0)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[6] * value;
 
     // Constraint: cpu/operands/mem_dst_addr.
@@ -407,7 +407,7 @@ pub fn eval_composition_polynomial_inner(
         - (cpu_decode_opcode_range_check_bit_0 * column19_row9
             + (Felt::ONE - cpu_decode_opcode_range_check_bit_0) * column19_row1
             + column19_row0))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[7] * value;
 
     // Constraint: cpu/operands/mem0_addr.
@@ -415,7 +415,7 @@ pub fn eval_composition_polynomial_inner(
         - (cpu_decode_opcode_range_check_bit_1 * column19_row9
             + (Felt::ONE - cpu_decode_opcode_range_check_bit_1) * column19_row1
             + column19_row8))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[8] * value;
 
     // Constraint: cpu/operands/mem1_addr.
@@ -425,12 +425,12 @@ pub fn eval_composition_polynomial_inner(
             + cpu_decode_opcode_range_check_bit_3 * column19_row9
             + cpu_decode_flag_op1_base_op0_0 * column17_row5
             + column19_row4))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[9] * value;
 
     // Constraint: cpu/operands/ops_mul.
     value = (column19_row5 - column17_row5 * column17_row13)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[10] * value;
 
     // Constraint: cpu/operands/res.
@@ -438,17 +438,17 @@ pub fn eval_composition_polynomial_inner(
         - (cpu_decode_opcode_range_check_bit_5 * (column17_row5 + column17_row13)
             + cpu_decode_opcode_range_check_bit_6 * column19_row5
             + cpu_decode_flag_res_op1_0 * column17_row13))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[11] * value;
 
     // Constraint: cpu/update_registers/update_pc/tmp0.
     value = (column19_row3 - cpu_decode_opcode_range_check_bit_9 * column17_row9)
-        * domain19.floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        * domain19.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[12] * value;
 
     // Constraint: cpu/update_registers/update_pc/tmp1.
     value = (column19_row11 - column19_row3 * column19_row13)
-        * domain19.floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        * domain19.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[13] * value;
 
     // Constraint: cpu/update_registers/update_pc/pc_cond_negative.
@@ -457,12 +457,12 @@ pub fn eval_composition_polynomial_inner(
         - (cpu_decode_flag_pc_update_regular_0 * npc_reg_0
             + cpu_decode_opcode_range_check_bit_7 * column19_row13
             + cpu_decode_opcode_range_check_bit_8 * (column17_row0 + column19_row13)))
-        * domain19.floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        * domain19.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[14] * value;
 
     // Constraint: cpu/update_registers/update_pc/pc_cond_positive.
     value = ((column19_row11 - cpu_decode_opcode_range_check_bit_9) * (column17_row16 - npc_reg_0))
-        * domain19.floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        * domain19.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[15] * value;
 
     // Constraint: cpu/update_registers/update_ap/ap_update.
@@ -471,7 +471,7 @@ pub fn eval_composition_polynomial_inner(
             + cpu_decode_opcode_range_check_bit_10 * column19_row13
             + cpu_decode_opcode_range_check_bit_11
             + cpu_decode_opcode_range_check_bit_12 * Felt::TWO))
-        * domain19.floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        * domain19.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[16] * value;
 
     // Constraint: cpu/update_registers/update_fp/fp_update.
@@ -479,49 +479,49 @@ pub fn eval_composition_polynomial_inner(
         - (cpu_decode_fp_update_regular_0 * column19_row9
             + cpu_decode_opcode_range_check_bit_13 * column17_row9
             + cpu_decode_opcode_range_check_bit_12 * (column19_row1 + 2)))
-        * domain19.floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        * domain19.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[17] * value;
 
     // Constraint: cpu/opcodes/call/push_fp.
     value = (cpu_decode_opcode_range_check_bit_12 * (column17_row9 - column19_row9))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[18] * value;
 
     // Constraint: cpu/opcodes/call/push_pc.
     value = (cpu_decode_opcode_range_check_bit_12
         * (column17_row5 - (column17_row0 + cpu_decode_opcode_range_check_bit_2 + 1)))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[19] * value;
 
     // Constraint: cpu/opcodes/call/off0.
     value = (cpu_decode_opcode_range_check_bit_12
         * (column19_row0 - global_values.half_offset_size))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[20] * value;
 
     // Constraint: cpu/opcodes/call/off1.
     value = (cpu_decode_opcode_range_check_bit_12
         * (column19_row8 - (global_values.half_offset_size + 1)))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[21] * value;
 
     // Constraint: cpu/opcodes/call/flags.
     value = (cpu_decode_opcode_range_check_bit_12
         * (cpu_decode_opcode_range_check_bit_12 + cpu_decode_opcode_range_check_bit_12 + 1 + 1
             - (cpu_decode_opcode_range_check_bit_0 + cpu_decode_opcode_range_check_bit_1 + 4)))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[22] * value;
 
     // Constraint: cpu/opcodes/ret/off0.
     value = (cpu_decode_opcode_range_check_bit_13
         * (column19_row0 + 2 - global_values.half_offset_size))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[23] * value;
 
     // Constraint: cpu/opcodes/ret/off2.
     value = (cpu_decode_opcode_range_check_bit_13
         * (column19_row4 + 1 - global_values.half_offset_size))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[24] * value;
 
     // Constraint: cpu/opcodes/ret/flags.
@@ -531,42 +531,42 @@ pub fn eval_composition_polynomial_inner(
             + cpu_decode_opcode_range_check_bit_3
             + cpu_decode_flag_res_op1_0
             - 4))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[25] * value;
 
     // Constraint: cpu/opcodes/assert_eq/assert_eq.
     value = (cpu_decode_opcode_range_check_bit_14 * (column17_row9 - column19_row13))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[26] * value;
 
     // Constraint: initial_ap.
     value = (column19_row1 - global_values.initial_ap)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain20));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain20));
     total_sum += constraint_coefficients[27] * value;
 
     // Constraint: initial_fp.
     value = (column19_row9 - global_values.initial_ap)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain20));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain20));
     total_sum += constraint_coefficients[28] * value;
 
     // Constraint: initial_pc.
     value = (column17_row0 - global_values.initial_pc)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain20));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain20));
     total_sum += constraint_coefficients[29] * value;
 
     // Constraint: final_ap.
     value = (column19_row1 - global_values.final_ap)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain19));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain19));
     total_sum += constraint_coefficients[30] * value;
 
     // Constraint: final_fp.
     value = (column19_row9 - global_values.initial_ap)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain19));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain19));
     total_sum += constraint_coefficients[31] * value;
 
     // Constraint: final_pc.
     value = (column17_row0 - global_values.final_pc)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain19));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain19));
     total_sum += constraint_coefficients[32] * value;
 
     // Constraint: memory/multi_column_perm/perm/init0.
@@ -577,7 +577,7 @@ pub fn eval_composition_polynomial_inner(
         + column17_row0
         + global_values.memory_multi_column_perm_hash_interaction_elm0 * column17_row1
         - global_values.memory_multi_column_perm_perm_interaction_elm)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain20));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain20));
     total_sum += constraint_coefficients[33] * value;
 
     // Constraint: memory/multi_column_perm/perm/step0.
@@ -589,34 +589,34 @@ pub fn eval_composition_polynomial_inner(
             - (column17_row2
                 + global_values.memory_multi_column_perm_hash_interaction_elm0 * column17_row3))
             * column21_inter1_row0)
-        * domain21.floor_div(&NonZeroFelt::from_felt_unchecked(domain1));
+        * domain21.field_div(&NonZeroFelt::from_felt_unchecked(domain1));
     total_sum += constraint_coefficients[34] * value;
 
     // Constraint: memory/multi_column_perm/perm/last.
     value = (column21_inter1_row0 - global_values.memory_multi_column_perm_perm_public_memory_prod)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain21));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain21));
     total_sum += constraint_coefficients[35] * value;
 
     // Constraint: memory/diff_is_bit.
     value = (memory_address_diff_0 * memory_address_diff_0 - memory_address_diff_0)
-        * domain21.floor_div(&NonZeroFelt::from_felt_unchecked(domain1));
+        * domain21.field_div(&NonZeroFelt::from_felt_unchecked(domain1));
     total_sum += constraint_coefficients[36] * value;
 
     // Constraint: memory/is_func.
     value = ((memory_address_diff_0 - 1) * (column18_row1 - column18_row3))
-        * domain21.floor_div(&NonZeroFelt::from_felt_unchecked(domain1));
+        * domain21.field_div(&NonZeroFelt::from_felt_unchecked(domain1));
     total_sum += constraint_coefficients[37] * value;
 
     // Constraint: memory/initial_addr.
-    value = (column18_row0 - 1).floor_div(&NonZeroFelt::from_felt_unchecked(domain20));
+    value = (column18_row0 - 1).field_div(&NonZeroFelt::from_felt_unchecked(domain20));
     total_sum += constraint_coefficients[38] * value;
 
     // Constraint: public_memory_addr_zero.
-    value = (column17_row2).floor_div(&NonZeroFelt::from_felt_unchecked(domain3));
+    value = (column17_row2).field_div(&NonZeroFelt::from_felt_unchecked(domain3));
     total_sum += constraint_coefficients[39] * value;
 
     // Constraint: public_memory_value_zero.
-    value = (column17_row3).floor_div(&NonZeroFelt::from_felt_unchecked(domain3));
+    value = (column17_row3).field_div(&NonZeroFelt::from_felt_unchecked(domain3));
     total_sum += constraint_coefficients[40] * value;
 
     // Constraint: range_check16/perm/init0.
@@ -624,7 +624,7 @@ pub fn eval_composition_polynomial_inner(
         * column21_inter1_row1
         + column19_row0
         - global_values.range_check16_perm_interaction_elm)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain20));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain20));
     total_sum += constraint_coefficients[41] * value;
 
     // Constraint: range_check16/perm/step0.
@@ -632,32 +632,32 @@ pub fn eval_composition_polynomial_inner(
         * column21_inter1_row5
         - (global_values.range_check16_perm_interaction_elm - column19_row4)
             * column21_inter1_row1)
-        * domain22.floor_div(&NonZeroFelt::from_felt_unchecked(domain2));
+        * domain22.field_div(&NonZeroFelt::from_felt_unchecked(domain2));
     total_sum += constraint_coefficients[42] * value;
 
     // Constraint: range_check16/perm/last.
     value = (column21_inter1_row1 - global_values.range_check16_perm_public_memory_prod)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain22));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain22));
     total_sum += constraint_coefficients[43] * value;
 
     // Constraint: range_check16/diff_is_bit.
     value = (range_check16_diff_0 * range_check16_diff_0 - range_check16_diff_0)
-        * domain22.floor_div(&NonZeroFelt::from_felt_unchecked(domain2));
+        * domain22.field_div(&NonZeroFelt::from_felt_unchecked(domain2));
     total_sum += constraint_coefficients[44] * value;
 
     // Constraint: range_check16/minimum.
     value = (column19_row2 - global_values.range_check_min)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain20));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain20));
     total_sum += constraint_coefficients[45] * value;
 
     // Constraint: range_check16/maximum.
     value = (column19_row2 - global_values.range_check_max)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain22));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain22));
     total_sum += constraint_coefficients[46] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/last_one_is_zero.
     value = (column14_row255 * (column3_row0 - (column3_row1 + column3_row1)))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[47] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/zeroes_between_ones0.
@@ -665,98 +665,98 @@ pub fn eval_composition_polynomial_inner(
         * (column3_row1
             - Felt::from_hex_unchecked("0x800000000000000000000000000000000000000000000000")
                 * column3_row192))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[48] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/cumulative_bit192.
     value = (column14_row255
         - column13_row255 * (column3_row192 - (column3_row193 + column3_row193)))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[49] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/zeroes_between_ones192.
     value = (column13_row255 * (column3_row193 - Felt::from(8) * column3_row196))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[50] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/cumulative_bit196.
     value = (column13_row255
         - (column3_row251 - (column3_row252 + column3_row252))
             * (column3_row196 - (column3_row197 + column3_row197)))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[51] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/zeroes_between_ones196.
     value = ((column3_row251 - (column3_row252 + column3_row252))
         * (column3_row197 - Felt::from_hex_unchecked("0x40000000000000") * column3_row251))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[52] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/booleanity_test.
     value = (pedersen_hash0_ec_subset_sum_bit_0 * (pedersen_hash0_ec_subset_sum_bit_0 - 1))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[53] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/bit_extraction_end.
-    value = (column3_row0).floor_div(&NonZeroFelt::from_felt_unchecked(domain10));
+    value = (column3_row0).field_div(&NonZeroFelt::from_felt_unchecked(domain10));
     total_sum += constraint_coefficients[54] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/zeros_tail.
-    value = (column3_row0).floor_div(&NonZeroFelt::from_felt_unchecked(domain9));
+    value = (column3_row0).field_div(&NonZeroFelt::from_felt_unchecked(domain9));
     total_sum += constraint_coefficients[55] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/add_points/slope.
     value = (pedersen_hash0_ec_subset_sum_bit_0 * (column2_row0 - global_values.pedersen_points_y)
         - column13_row0 * (column1_row0 - global_values.pedersen_points_x))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[56] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/add_points/x.
     value = (column13_row0 * column13_row0
         - pedersen_hash0_ec_subset_sum_bit_0
             * (column1_row0 + global_values.pedersen_points_x + column1_row1))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[57] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/add_points/y.
     value = (pedersen_hash0_ec_subset_sum_bit_0 * (column2_row0 + column2_row1)
         - column13_row0 * (column1_row0 - column1_row1))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[58] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/copy_point/x.
     value = (pedersen_hash0_ec_subset_sum_bit_neg_0 * (column1_row1 - column1_row0))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[59] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/copy_point/y.
     value = (pedersen_hash0_ec_subset_sum_bit_neg_0 * (column2_row1 - column2_row0))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[60] * value;
 
     // Constraint: pedersen/hash0/copy_point/x.
     value = (column1_row256 - column1_row255)
-        * domain11.floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        * domain11.field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[61] * value;
 
     // Constraint: pedersen/hash0/copy_point/y.
     value = (column2_row256 - column2_row255)
-        * domain11.floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        * domain11.field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[62] * value;
 
     // Constraint: pedersen/hash0/init/x.
     value = (column1_row0 - global_values.pedersen_shift_point.x)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[63] * value;
 
     // Constraint: pedersen/hash0/init/y.
     value = (column2_row0 - global_values.pedersen_shift_point.y)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[64] * value;
 
     // Constraint: pedersen/hash1/ec_subset_sum/bit_unpacking/last_one_is_zero.
     value = (column16_row255 * (column6_row0 - (column6_row1 + column6_row1)))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[65] * value;
 
     // Constraint: pedersen/hash1/ec_subset_sum/bit_unpacking/zeroes_between_ones0.
@@ -764,98 +764,98 @@ pub fn eval_composition_polynomial_inner(
         * (column6_row1
             - Felt::from_hex_unchecked("0x800000000000000000000000000000000000000000000000")
                 * column6_row192))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[66] * value;
 
     // Constraint: pedersen/hash1/ec_subset_sum/bit_unpacking/cumulative_bit192.
     value = (column16_row255
         - column15_row255 * (column6_row192 - (column6_row193 + column6_row193)))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[67] * value;
 
     // Constraint: pedersen/hash1/ec_subset_sum/bit_unpacking/zeroes_between_ones192.
     value = (column15_row255 * (column6_row193 - Felt::from(8) * column6_row196))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[68] * value;
 
     // Constraint: pedersen/hash1/ec_subset_sum/bit_unpacking/cumulative_bit196.
     value = (column15_row255
         - (column6_row251 - (column6_row252 + column6_row252))
             * (column6_row196 - (column6_row197 + column6_row197)))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[69] * value;
 
     // Constraint: pedersen/hash1/ec_subset_sum/bit_unpacking/zeroes_between_ones196.
     value = ((column6_row251 - (column6_row252 + column6_row252))
         * (column6_row197 - Felt::from_hex_unchecked("0x40000000000000") * column6_row251))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[70] * value;
 
     // Constraint: pedersen/hash1/ec_subset_sum/booleanity_test.
     value = (pedersen_hash1_ec_subset_sum_bit_0 * (pedersen_hash1_ec_subset_sum_bit_0 - 1))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[71] * value;
 
     // Constraint: pedersen/hash1/ec_subset_sum/bit_extraction_end.
-    value = (column6_row0).floor_div(&NonZeroFelt::from_felt_unchecked(domain10));
+    value = (column6_row0).field_div(&NonZeroFelt::from_felt_unchecked(domain10));
     total_sum += constraint_coefficients[72] * value;
 
     // Constraint: pedersen/hash1/ec_subset_sum/zeros_tail.
-    value = (column6_row0).floor_div(&NonZeroFelt::from_felt_unchecked(domain9));
+    value = (column6_row0).field_div(&NonZeroFelt::from_felt_unchecked(domain9));
     total_sum += constraint_coefficients[73] * value;
 
     // Constraint: pedersen/hash1/ec_subset_sum/add_points/slope.
     value = (pedersen_hash1_ec_subset_sum_bit_0 * (column5_row0 - global_values.pedersen_points_y)
         - column14_row0 * (column4_row0 - global_values.pedersen_points_x))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[74] * value;
 
     // Constraint: pedersen/hash1/ec_subset_sum/add_points/x.
     value = (column14_row0 * column14_row0
         - pedersen_hash1_ec_subset_sum_bit_0
             * (column4_row0 + global_values.pedersen_points_x + column4_row1))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[75] * value;
 
     // Constraint: pedersen/hash1/ec_subset_sum/add_points/y.
     value = (pedersen_hash1_ec_subset_sum_bit_0 * (column5_row0 + column5_row1)
         - column14_row0 * (column4_row0 - column4_row1))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[76] * value;
 
     // Constraint: pedersen/hash1/ec_subset_sum/copy_point/x.
     value = (pedersen_hash1_ec_subset_sum_bit_neg_0 * (column4_row1 - column4_row0))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[77] * value;
 
     // Constraint: pedersen/hash1/ec_subset_sum/copy_point/y.
     value = (pedersen_hash1_ec_subset_sum_bit_neg_0 * (column5_row1 - column5_row0))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[78] * value;
 
     // Constraint: pedersen/hash1/copy_point/x.
     value = (column4_row256 - column4_row255)
-        * domain11.floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        * domain11.field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[79] * value;
 
     // Constraint: pedersen/hash1/copy_point/y.
     value = (column5_row256 - column5_row255)
-        * domain11.floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        * domain11.field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[80] * value;
 
     // Constraint: pedersen/hash1/init/x.
     value = (column4_row0 - global_values.pedersen_shift_point.x)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[81] * value;
 
     // Constraint: pedersen/hash1/init/y.
     value = (column5_row0 - global_values.pedersen_shift_point.y)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[82] * value;
 
     // Constraint: pedersen/hash2/ec_subset_sum/bit_unpacking/last_one_is_zero.
     value = (column20_row145 * (column9_row0 - (column9_row1 + column9_row1)))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[83] * value;
 
     // Constraint: pedersen/hash2/ec_subset_sum/bit_unpacking/zeroes_between_ones0.
@@ -863,98 +863,98 @@ pub fn eval_composition_polynomial_inner(
         * (column9_row1
             - Felt::from_hex_unchecked("0x800000000000000000000000000000000000000000000000")
                 * column9_row192))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[84] * value;
 
     // Constraint: pedersen/hash2/ec_subset_sum/bit_unpacking/cumulative_bit192.
     value = (column20_row145
         - column20_row17 * (column9_row192 - (column9_row193 + column9_row193)))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[85] * value;
 
     // Constraint: pedersen/hash2/ec_subset_sum/bit_unpacking/zeroes_between_ones192.
     value = (column20_row17 * (column9_row193 - Felt::from(8) * column9_row196))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[86] * value;
 
     // Constraint: pedersen/hash2/ec_subset_sum/bit_unpacking/cumulative_bit196.
     value = (column20_row17
         - (column9_row251 - (column9_row252 + column9_row252))
             * (column9_row196 - (column9_row197 + column9_row197)))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[87] * value;
 
     // Constraint: pedersen/hash2/ec_subset_sum/bit_unpacking/zeroes_between_ones196.
     value = ((column9_row251 - (column9_row252 + column9_row252))
         * (column9_row197 - Felt::from_hex_unchecked("0x40000000000000") * column9_row251))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[88] * value;
 
     // Constraint: pedersen/hash2/ec_subset_sum/booleanity_test.
     value = (pedersen_hash2_ec_subset_sum_bit_0 * (pedersen_hash2_ec_subset_sum_bit_0 - 1))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[89] * value;
 
     // Constraint: pedersen/hash2/ec_subset_sum/bit_extraction_end.
-    value = (column9_row0).floor_div(&NonZeroFelt::from_felt_unchecked(domain10));
+    value = (column9_row0).field_div(&NonZeroFelt::from_felt_unchecked(domain10));
     total_sum += constraint_coefficients[90] * value;
 
     // Constraint: pedersen/hash2/ec_subset_sum/zeros_tail.
-    value = (column9_row0).floor_div(&NonZeroFelt::from_felt_unchecked(domain9));
+    value = (column9_row0).field_div(&NonZeroFelt::from_felt_unchecked(domain9));
     total_sum += constraint_coefficients[91] * value;
 
     // Constraint: pedersen/hash2/ec_subset_sum/add_points/slope.
     value = (pedersen_hash2_ec_subset_sum_bit_0 * (column8_row0 - global_values.pedersen_points_y)
         - column15_row0 * (column7_row0 - global_values.pedersen_points_x))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[92] * value;
 
     // Constraint: pedersen/hash2/ec_subset_sum/add_points/x.
     value = (column15_row0 * column15_row0
         - pedersen_hash2_ec_subset_sum_bit_0
             * (column7_row0 + global_values.pedersen_points_x + column7_row1))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[93] * value;
 
     // Constraint: pedersen/hash2/ec_subset_sum/add_points/y.
     value = (pedersen_hash2_ec_subset_sum_bit_0 * (column8_row0 + column8_row1)
         - column15_row0 * (column7_row0 - column7_row1))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[94] * value;
 
     // Constraint: pedersen/hash2/ec_subset_sum/copy_point/x.
     value = (pedersen_hash2_ec_subset_sum_bit_neg_0 * (column7_row1 - column7_row0))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[95] * value;
 
     // Constraint: pedersen/hash2/ec_subset_sum/copy_point/y.
     value = (pedersen_hash2_ec_subset_sum_bit_neg_0 * (column8_row1 - column8_row0))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[96] * value;
 
     // Constraint: pedersen/hash2/copy_point/x.
     value = (column7_row256 - column7_row255)
-        * domain11.floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        * domain11.field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[97] * value;
 
     // Constraint: pedersen/hash2/copy_point/y.
     value = (column8_row256 - column8_row255)
-        * domain11.floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        * domain11.field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[98] * value;
 
     // Constraint: pedersen/hash2/init/x.
     value = (column7_row0 - global_values.pedersen_shift_point.x)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[99] * value;
 
     // Constraint: pedersen/hash2/init/y.
     value = (column8_row0 - global_values.pedersen_shift_point.y)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[100] * value;
 
     // Constraint: pedersen/hash3/ec_subset_sum/bit_unpacking/last_one_is_zero.
     value = (column20_row209 * (column12_row0 - (column12_row1 + column12_row1)))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[101] * value;
 
     // Constraint: pedersen/hash3/ec_subset_sum/bit_unpacking/zeroes_between_ones0.
@@ -962,186 +962,186 @@ pub fn eval_composition_polynomial_inner(
         * (column12_row1
             - Felt::from_hex_unchecked("0x800000000000000000000000000000000000000000000000")
                 * column12_row192))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[102] * value;
 
     // Constraint: pedersen/hash3/ec_subset_sum/bit_unpacking/cumulative_bit192.
     value = (column20_row209
         - column20_row81 * (column12_row192 - (column12_row193 + column12_row193)))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[103] * value;
 
     // Constraint: pedersen/hash3/ec_subset_sum/bit_unpacking/zeroes_between_ones192.
     value = (column20_row81 * (column12_row193 - Felt::from(8) * column12_row196))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[104] * value;
 
     // Constraint: pedersen/hash3/ec_subset_sum/bit_unpacking/cumulative_bit196.
     value = (column20_row81
         - (column12_row251 - (column12_row252 + column12_row252))
             * (column12_row196 - (column12_row197 + column12_row197)))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[105] * value;
 
     // Constraint: pedersen/hash3/ec_subset_sum/bit_unpacking/zeroes_between_ones196.
     value = ((column12_row251 - (column12_row252 + column12_row252))
         * (column12_row197 - Felt::from_hex_unchecked("0x40000000000000") * column12_row251))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[106] * value;
 
     // Constraint: pedersen/hash3/ec_subset_sum/booleanity_test.
     value = (pedersen_hash3_ec_subset_sum_bit_0 * (pedersen_hash3_ec_subset_sum_bit_0 - 1))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[107] * value;
 
     // Constraint: pedersen/hash3/ec_subset_sum/bit_extraction_end.
-    value = (column12_row0).floor_div(&NonZeroFelt::from_felt_unchecked(domain10));
+    value = (column12_row0).field_div(&NonZeroFelt::from_felt_unchecked(domain10));
     total_sum += constraint_coefficients[108] * value;
 
     // Constraint: pedersen/hash3/ec_subset_sum/zeros_tail.
-    value = (column12_row0).floor_div(&NonZeroFelt::from_felt_unchecked(domain9));
+    value = (column12_row0).field_div(&NonZeroFelt::from_felt_unchecked(domain9));
     total_sum += constraint_coefficients[109] * value;
 
     // Constraint: pedersen/hash3/ec_subset_sum/add_points/slope.
     value = (pedersen_hash3_ec_subset_sum_bit_0
         * (column11_row0 - global_values.pedersen_points_y)
         - column16_row0 * (column10_row0 - global_values.pedersen_points_x))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[110] * value;
 
     // Constraint: pedersen/hash3/ec_subset_sum/add_points/x.
     value = (column16_row0 * column16_row0
         - pedersen_hash3_ec_subset_sum_bit_0
             * (column10_row0 + global_values.pedersen_points_x + column10_row1))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[111] * value;
 
     // Constraint: pedersen/hash3/ec_subset_sum/add_points/y.
     value = (pedersen_hash3_ec_subset_sum_bit_0 * (column11_row0 + column11_row1)
         - column16_row0 * (column10_row0 - column10_row1))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[112] * value;
 
     // Constraint: pedersen/hash3/ec_subset_sum/copy_point/x.
     value = (pedersen_hash3_ec_subset_sum_bit_neg_0 * (column10_row1 - column10_row0))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[113] * value;
 
     // Constraint: pedersen/hash3/ec_subset_sum/copy_point/y.
     value = (pedersen_hash3_ec_subset_sum_bit_neg_0 * (column11_row1 - column11_row0))
-        * domain9.floor_div(&NonZeroFelt::from_felt_unchecked(domain0));
+        * domain9.field_div(&NonZeroFelt::from_felt_unchecked(domain0));
     total_sum += constraint_coefficients[114] * value;
 
     // Constraint: pedersen/hash3/copy_point/x.
     value = (column10_row256 - column10_row255)
-        * domain11.floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        * domain11.field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[115] * value;
 
     // Constraint: pedersen/hash3/copy_point/y.
     value = (column11_row256 - column11_row255)
-        * domain11.floor_div(&NonZeroFelt::from_felt_unchecked(domain8));
+        * domain11.field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[116] * value;
 
     // Constraint: pedersen/hash3/init/x.
     value = (column10_row0 - global_values.pedersen_shift_point.x)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[117] * value;
 
     // Constraint: pedersen/hash3/init/y.
     value = (column11_row0 - global_values.pedersen_shift_point.y)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[118] * value;
 
     // Constraint: pedersen/input0_value0.
-    value = (column17_row7 - column3_row0).floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+    value = (column17_row7 - column3_row0).field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[119] * value;
 
     // Constraint: pedersen/input0_value1.
-    value = (column17_row135 - column6_row0).floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+    value = (column17_row135 - column6_row0).field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[120] * value;
 
     // Constraint: pedersen/input0_value2.
-    value = (column17_row263 - column9_row0).floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+    value = (column17_row263 - column9_row0).field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[121] * value;
 
     // Constraint: pedersen/input0_value3.
     value =
-        (column17_row391 - column12_row0).floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+        (column17_row391 - column12_row0).field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[122] * value;
 
     // Constraint: pedersen/input0_addr.
     value = (column17_row134 - (column17_row38 + 1))
-        * domain23.floor_div(&NonZeroFelt::from_felt_unchecked(domain7));
+        * domain23.field_div(&NonZeroFelt::from_felt_unchecked(domain7));
     total_sum += constraint_coefficients[123] * value;
 
     // Constraint: pedersen/init_addr.
     value = (column17_row6 - global_values.initial_pedersen_addr)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain20));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain20));
     total_sum += constraint_coefficients[124] * value;
 
     // Constraint: pedersen/input1_value0.
     value =
-        (column17_row71 - column3_row256).floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+        (column17_row71 - column3_row256).field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[125] * value;
 
     // Constraint: pedersen/input1_value1.
     value =
-        (column17_row199 - column6_row256).floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+        (column17_row199 - column6_row256).field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[126] * value;
 
     // Constraint: pedersen/input1_value2.
     value =
-        (column17_row327 - column9_row256).floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+        (column17_row327 - column9_row256).field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[127] * value;
 
     // Constraint: pedersen/input1_value3.
     value =
-        (column17_row455 - column12_row256).floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+        (column17_row455 - column12_row256).field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[128] * value;
 
     // Constraint: pedersen/input1_addr.
     value = (column17_row70 - (column17_row6 + 1))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain7));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain7));
     total_sum += constraint_coefficients[129] * value;
 
     // Constraint: pedersen/output_value0.
     value =
-        (column17_row39 - column1_row511).floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+        (column17_row39 - column1_row511).field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[130] * value;
 
     // Constraint: pedersen/output_value1.
     value =
-        (column17_row167 - column4_row511).floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+        (column17_row167 - column4_row511).field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[131] * value;
 
     // Constraint: pedersen/output_value2.
     value =
-        (column17_row295 - column7_row511).floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+        (column17_row295 - column7_row511).field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[132] * value;
 
     // Constraint: pedersen/output_value3.
     value =
-        (column17_row423 - column10_row511).floor_div(&NonZeroFelt::from_felt_unchecked(domain12));
+        (column17_row423 - column10_row511).field_div(&NonZeroFelt::from_felt_unchecked(domain12));
     total_sum += constraint_coefficients[133] * value;
 
     // Constraint: pedersen/output_addr.
     value = (column17_row38 - (column17_row70 + 1))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain7));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain7));
     total_sum += constraint_coefficients[134] * value;
 
     // Constraint: range_check_builtin/value.
     value = (range_check_builtin_value7_0 - column17_row103)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain7));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain7));
     total_sum += constraint_coefficients[135] * value;
 
     // Constraint: range_check_builtin/addr_step.
     value = (column17_row230 - (column17_row102 + 1))
-        * domain23.floor_div(&NonZeroFelt::from_felt_unchecked(domain7));
+        * domain23.field_div(&NonZeroFelt::from_felt_unchecked(domain7));
     total_sum += constraint_coefficients[136] * value;
 
     // Constraint: range_check_builtin/init_addr.
     value = (column17_row102 - global_values.initial_range_check_addr)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain20));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain20));
     total_sum += constraint_coefficients[137] * value;
 
     // Constraint: ecdsa/signature0/doubling_key/slope.
@@ -1150,190 +1150,190 @@ pub fn eval_composition_polynomial_inner(
         + ecdsa_signature0_doubling_key_x_squared
         + global_values.ecdsa_sig_config.alpha
         - (column19_row15 + column19_row15) * column20_row12)
-        * domain13.floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        * domain13.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[138] * value;
 
     // Constraint: ecdsa/signature0/doubling_key/x.
     value = (column20_row12 * column20_row12 - (column19_row7 + column19_row7 + column19_row23))
-        * domain13.floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        * domain13.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[139] * value;
 
     // Constraint: ecdsa/signature0/doubling_key/y.
     value = (column19_row15 + column19_row31 - column20_row12 * (column19_row7 - column19_row23))
-        * domain13.floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        * domain13.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[140] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_generator/booleanity_test.
     value = (ecdsa_signature0_exponentiate_generator_bit_0
         * (ecdsa_signature0_exponentiate_generator_bit_0 - 1))
-        * domain16.floor_div(&NonZeroFelt::from_felt_unchecked(domain6));
+        * domain16.field_div(&NonZeroFelt::from_felt_unchecked(domain6));
     total_sum += constraint_coefficients[141] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_generator/bit_extraction_end.
-    value = (column20_row14).floor_div(&NonZeroFelt::from_felt_unchecked(domain17));
+    value = (column20_row14).field_div(&NonZeroFelt::from_felt_unchecked(domain17));
     total_sum += constraint_coefficients[142] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_generator/zeros_tail.
-    value = (column20_row14).floor_div(&NonZeroFelt::from_felt_unchecked(domain6));
+    value = (column20_row14).field_div(&NonZeroFelt::from_felt_unchecked(domain6));
     total_sum += constraint_coefficients[143] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_generator/add_points/slope.
     value = (ecdsa_signature0_exponentiate_generator_bit_0
         * (column20_row22 - global_values.ecdsa_generator_points_y)
         - column20_row30 * (column20_row6 - global_values.ecdsa_generator_points_x))
-        * domain16.floor_div(&NonZeroFelt::from_felt_unchecked(domain6));
+        * domain16.field_div(&NonZeroFelt::from_felt_unchecked(domain6));
     total_sum += constraint_coefficients[144] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_generator/add_points/x.
     value = (column20_row30 * column20_row30
         - ecdsa_signature0_exponentiate_generator_bit_0
             * (column20_row6 + global_values.ecdsa_generator_points_x + column20_row38))
-        * domain16.floor_div(&NonZeroFelt::from_felt_unchecked(domain6));
+        * domain16.field_div(&NonZeroFelt::from_felt_unchecked(domain6));
     total_sum += constraint_coefficients[145] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_generator/add_points/y.
     value = (ecdsa_signature0_exponentiate_generator_bit_0 * (column20_row22 + column20_row54)
         - column20_row30 * (column20_row6 - column20_row38))
-        * domain16.floor_div(&NonZeroFelt::from_felt_unchecked(domain6));
+        * domain16.field_div(&NonZeroFelt::from_felt_unchecked(domain6));
     total_sum += constraint_coefficients[146] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_generator/add_points/x_diff_inv.
     value = (column20_row1 * (column20_row6 - global_values.ecdsa_generator_points_x) - 1)
-        * domain16.floor_div(&NonZeroFelt::from_felt_unchecked(domain6));
+        * domain16.field_div(&NonZeroFelt::from_felt_unchecked(domain6));
     total_sum += constraint_coefficients[147] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_generator/copy_point/x.
     value = (ecdsa_signature0_exponentiate_generator_bit_neg_0 * (column20_row38 - column20_row6))
-        * domain16.floor_div(&NonZeroFelt::from_felt_unchecked(domain6));
+        * domain16.field_div(&NonZeroFelt::from_felt_unchecked(domain6));
     total_sum += constraint_coefficients[148] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_generator/copy_point/y.
     value = (ecdsa_signature0_exponentiate_generator_bit_neg_0 * (column20_row54 - column20_row22))
-        * domain16.floor_div(&NonZeroFelt::from_felt_unchecked(domain6));
+        * domain16.field_div(&NonZeroFelt::from_felt_unchecked(domain6));
     total_sum += constraint_coefficients[149] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_key/booleanity_test.
     value = (ecdsa_signature0_exponentiate_key_bit_0
         * (ecdsa_signature0_exponentiate_key_bit_0 - 1))
-        * domain13.floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        * domain13.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[150] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_key/bit_extraction_end.
-    value = (column20_row4).floor_div(&NonZeroFelt::from_felt_unchecked(domain14));
+    value = (column20_row4).field_div(&NonZeroFelt::from_felt_unchecked(domain14));
     total_sum += constraint_coefficients[151] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_key/zeros_tail.
-    value = (column20_row4).floor_div(&NonZeroFelt::from_felt_unchecked(domain13));
+    value = (column20_row4).field_div(&NonZeroFelt::from_felt_unchecked(domain13));
     total_sum += constraint_coefficients[152] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_key/add_points/slope.
     value = (ecdsa_signature0_exponentiate_key_bit_0 * (column20_row8 - column19_row15)
         - column20_row2 * (column20_row0 - column19_row7))
-        * domain13.floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        * domain13.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[153] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_key/add_points/x.
     value = (column20_row2 * column20_row2
         - ecdsa_signature0_exponentiate_key_bit_0
             * (column20_row0 + column19_row7 + column20_row16))
-        * domain13.floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        * domain13.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[154] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_key/add_points/y.
     value = (ecdsa_signature0_exponentiate_key_bit_0 * (column20_row8 + column20_row24)
         - column20_row2 * (column20_row0 - column20_row16))
-        * domain13.floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        * domain13.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[155] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_key/add_points/x_diff_inv.
     value = (column20_row10 * (column20_row0 - column19_row7) - 1)
-        * domain13.floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        * domain13.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[156] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_key/copy_point/x.
     value = (ecdsa_signature0_exponentiate_key_bit_neg_0 * (column20_row16 - column20_row0))
-        * domain13.floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        * domain13.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[157] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_key/copy_point/y.
     value = (ecdsa_signature0_exponentiate_key_bit_neg_0 * (column20_row24 - column20_row8))
-        * domain13.floor_div(&NonZeroFelt::from_felt_unchecked(domain5));
+        * domain13.field_div(&NonZeroFelt::from_felt_unchecked(domain5));
     total_sum += constraint_coefficients[158] * value;
 
     // Constraint: ecdsa/signature0/init_gen/x.
     value = (column20_row6 - global_values.ecdsa_sig_config.shift_point.x)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain18));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain18));
     total_sum += constraint_coefficients[159] * value;
 
     // Constraint: ecdsa/signature0/init_gen/y.
     value = (column20_row22 + global_values.ecdsa_sig_config.shift_point.y)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain18));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain18));
     total_sum += constraint_coefficients[160] * value;
 
     // Constraint: ecdsa/signature0/init_key/x.
     value = (column20_row0 - global_values.ecdsa_sig_config.shift_point.x)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain15));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain15));
     total_sum += constraint_coefficients[161] * value;
 
     // Constraint: ecdsa/signature0/init_key/y.
     value = (column20_row8 - global_values.ecdsa_sig_config.shift_point.y)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain15));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain15));
     total_sum += constraint_coefficients[162] * value;
 
     // Constraint: ecdsa/signature0/add_results/slope.
     value = (column20_row8182
         - (column20_row4088 + column20_row8190 * (column20_row8166 - column20_row4080)))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain18));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain18));
     total_sum += constraint_coefficients[163] * value;
 
     // Constraint: ecdsa/signature0/add_results/x.
     value = (column20_row8190 * column20_row8190
         - (column20_row8166 + column20_row4080 + column19_row4103))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain18));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain18));
     total_sum += constraint_coefficients[164] * value;
 
     // Constraint: ecdsa/signature0/add_results/y.
     value = (column20_row8182 + column19_row4111
         - column20_row8190 * (column20_row8166 - column19_row4103))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain18));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain18));
     total_sum += constraint_coefficients[165] * value;
 
     // Constraint: ecdsa/signature0/add_results/x_diff_inv.
     value = (column20_row8161 * (column20_row8166 - column20_row4080) - 1)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain18));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain18));
     total_sum += constraint_coefficients[166] * value;
 
     // Constraint: ecdsa/signature0/extract_r/slope.
     value = (column20_row8184 + global_values.ecdsa_sig_config.shift_point.y
         - column20_row4082 * (column20_row8176 - global_values.ecdsa_sig_config.shift_point.x))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain18));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain18));
     total_sum += constraint_coefficients[167] * value;
 
     // Constraint: ecdsa/signature0/extract_r/x.
     value = (column20_row4082 * column20_row4082
         - (column20_row8176 + global_values.ecdsa_sig_config.shift_point.x + column20_row4))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain18));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain18));
     total_sum += constraint_coefficients[168] * value;
 
     // Constraint: ecdsa/signature0/extract_r/x_diff_inv.
     value = (column20_row8178 * (column20_row8176 - global_values.ecdsa_sig_config.shift_point.x)
         - 1)
-    .floor_div(&NonZeroFelt::from_felt_unchecked(domain18));
+    .field_div(&NonZeroFelt::from_felt_unchecked(domain18));
     total_sum += constraint_coefficients[169] * value;
 
     // Constraint: ecdsa/signature0/z_nonzero.
     value = (column20_row14 * column20_row4090 - 1)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain18));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain18));
     total_sum += constraint_coefficients[170] * value;
 
     // Constraint: ecdsa/signature0/r_and_w_nonzero.
     value = (column20_row4 * column20_row4092 - 1)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain15));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain15));
     total_sum += constraint_coefficients[171] * value;
 
     // Constraint: ecdsa/signature0/q_on_curve/x_squared.
     value = (column20_row8186 - column19_row7 * column19_row7)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain18));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain18));
     total_sum += constraint_coefficients[172] * value;
 
     // Constraint: ecdsa/signature0/q_on_curve/on_curve.
@@ -1341,31 +1341,31 @@ pub fn eval_composition_polynomial_inner(
         - (column19_row7 * column20_row8186
             + global_values.ecdsa_sig_config.alpha * column19_row7
             + global_values.ecdsa_sig_config.beta))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain18));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain18));
     total_sum += constraint_coefficients[173] * value;
 
     // Constraint: ecdsa/init_addr.
     value = (column17_row22 - global_values.initial_ecdsa_addr)
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain20));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain20));
     total_sum += constraint_coefficients[174] * value;
 
     // Constraint: ecdsa/message_addr.
     value = (column17_row4118 - (column17_row22 + 1))
-        .floor_div(&NonZeroFelt::from_felt_unchecked(domain18));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain18));
     total_sum += constraint_coefficients[175] * value;
 
     // Constraint: ecdsa/pubkey_addr.
     value = (column17_row8214 - (column17_row4118 + 1))
-        * domain24.floor_div(&NonZeroFelt::from_felt_unchecked(domain18));
+        * domain24.field_div(&NonZeroFelt::from_felt_unchecked(domain18));
     total_sum += constraint_coefficients[176] * value;
 
     // Constraint: ecdsa/message_value0.
     value =
-        (column17_row4119 - column20_row14).floor_div(&NonZeroFelt::from_felt_unchecked(domain18));
+        (column17_row4119 - column20_row14).field_div(&NonZeroFelt::from_felt_unchecked(domain18));
     total_sum += constraint_coefficients[177] * value;
 
     // Constraint: ecdsa/pubkey_value0.
-    value = (column17_row23 - column19_row7).floor_div(&NonZeroFelt::from_felt_unchecked(domain18));
+    value = (column17_row23 - column19_row7).field_div(&NonZeroFelt::from_felt_unchecked(domain18));
     total_sum += constraint_coefficients[178] * value;
 
     total_sum

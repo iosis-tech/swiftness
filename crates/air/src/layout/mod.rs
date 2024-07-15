@@ -5,6 +5,9 @@ use starknet_crypto::Felt;
 pub mod dex;
 pub mod recursive;
 pub mod recursive_with_poseidon;
+pub mod small;
+pub mod starknet;
+pub mod starknet_with_keccak;
 
 // StarkCurve
 pub mod stark_curve {

@@ -1,5 +1,5 @@
 use super::global_values::GlobalValues;
-use crate::layout::recursive::{CONSTRAINT_DEGREE, NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
+use super::{CONSTRAINT_DEGREE, NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
 use starknet_core::types::NonZeroFelt;
 use starknet_crypto::Felt;
 
