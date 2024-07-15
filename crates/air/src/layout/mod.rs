@@ -6,6 +6,7 @@ pub mod dex;
 pub mod recursive;
 pub mod recursive_with_poseidon;
 pub mod small;
+pub mod starknet;
 
 // StarkCurve
 pub mod stark_curve {
