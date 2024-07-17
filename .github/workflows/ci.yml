@@ -48,6 +48,7 @@ jobs:
   verify-proof:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         layout: ["dex", "recursive", "recursive_with_poseidon", "small", "starknet", "starknet_with_keccak"]
     steps:
