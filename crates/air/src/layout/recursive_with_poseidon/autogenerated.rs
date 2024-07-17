@@ -39,7 +39,7 @@ pub fn eval_composition_polynomial_inner(
         &(Felt::from(255)
             * global_values
                 .trace_length
-                .floor_div(&NonZeroFelt::from_felt_unchecked(Felt::from(2056)))),
+                .floor_div(&NonZeroFelt::from_felt_unchecked(Felt::from(256)))),
     );
     let pow21 = trace_generator.pow_felt(
         &(global_values.trace_length.floor_div(&NonZeroFelt::from_felt_unchecked(Felt::from(64)))),
