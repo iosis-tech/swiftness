@@ -636,7 +636,7 @@ pub fn eval_composition_polynomial_inner(
 
     // Constraint: range_check16/perm/last.
     value = (column23_inter1_row0 - global_values.range_check16_perm_public_memory_prod)
-        .field_div(&NonZeroFelt::from_felt_unchecked(domain2));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain21));
     total_sum += constraint_coefficients[43] * value;
 
     // Constraint: range_check16/diff_is_bit.
@@ -651,7 +651,7 @@ pub fn eval_composition_polynomial_inner(
 
     // Constraint: range_check16/maximum.
     value = (column2_row0 - global_values.range_check_max)
-        .field_div(&NonZeroFelt::from_felt_unchecked(domain2));
+        .field_div(&NonZeroFelt::from_felt_unchecked(domain21));
     total_sum += constraint_coefficients[46] * value;
 
     // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/last_one_is_zero.
