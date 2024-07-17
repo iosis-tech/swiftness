@@ -1,6 +1,5 @@
-use std::collections::HashMap;
-
 use crate::json_parser::MemorySegmentAddress;
+use std::collections::HashMap;
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub enum Builtin {

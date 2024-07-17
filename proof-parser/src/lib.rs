@@ -1,9 +1,4 @@
-use std::convert::TryFrom;
-
-use crate::{json_parser::ProofJSON, stark_proof::StarkProof};
-
 mod annotations;
-mod ast;
 mod builtins;
 mod conversion;
 mod json_parser;
@@ -11,20 +6,13 @@ mod layout;
 mod stark_proof;
 mod utils;
 
+use crate::{json_parser::ProofJSON, stark_proof::StarkProof};
+use std::convert::TryFrom;
 extern crate clap;
 extern crate num_bigint;
 extern crate regex;
 extern crate serde;
-
-pub use ast::{Expr, Exprs};
 use cairovm_verifier_stark::types::StarkProof as StarkProofFromVerifier;
-
-pub struct ParseStarkProof {
-    pub config: Exprs,
-    pub public_input: Exprs,
-    pub unsent_commitment: Exprs,
-    pub witness: Exprs,
-}
 
 pub fn parse(input: String) -> anyhow::Result<StarkProofFromVerifier> {
     let proof_json = serde_json::from_str::<ProofJSON>(&input)?;

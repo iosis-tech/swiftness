@@ -1,7 +1,6 @@
-use std::{collections::BTreeMap, convert::TryInto, fmt::Display};
-
 use num_bigint::BigUint;
 use serde::Deserialize;
+use std::{collections::BTreeMap, convert::TryInto, fmt::Display};
 
 // For now only the recursive and starknet layouts is supported
 #[derive(Debug, Clone, PartialEq, Deserialize)]

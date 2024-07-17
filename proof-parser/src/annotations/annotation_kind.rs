@@ -1,6 +1,5 @@
-use num_bigint::BigUint;
-
 use super::extract::{extract_annotations, extract_z_and_alpha};
+use num_bigint::BigUint;
 
 #[derive(Debug, Clone, PartialEq, PartialOrd)]
 pub struct ZAlpha {

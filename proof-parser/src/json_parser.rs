@@ -1,17 +1,15 @@
-use std::{
-    collections::{BTreeMap, HashMap},
-    convert::TryFrom,
-};
-
-use num_bigint::BigUint;
-use serde::Deserialize;
-
 use crate::{
     annotations::{extract::FromStrHex, Annotations},
     builtins::Builtin,
     layout::Layout,
     stark_proof::*,
     utils::log2_if_power_of_2,
+};
+use num_bigint::BigUint;
+use serde::Deserialize;
+use std::{
+    collections::{BTreeMap, HashMap},
+    convert::TryFrom,
 };
 
 #[derive(Deserialize, Debug, Clone, PartialEq)]

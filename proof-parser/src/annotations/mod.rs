@@ -1,9 +1,8 @@
-use num_bigint::BigUint;
-
-use self::annotation_kind::{Annotation, ZAlpha};
-
 pub mod annotation_kind;
 pub mod extract;
+
+use self::annotation_kind::{Annotation, ZAlpha};
+use num_bigint::BigUint;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Annotations {

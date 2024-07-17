@@ -1,7 +1,6 @@
+use super::annotation_kind::ZAlpha;
 use num_bigint::BigUint;
 use regex::Regex;
-
-use super::annotation_kind::ZAlpha;
 
 pub trait FromStrHex: Sized {
     fn from_str_hex(val: &str) -> Option<Self>;
