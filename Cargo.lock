@@ -128,7 +128,7 @@ checksum = "79296716171880943b8470b5f8d03aa55eb2e645a4874bdbb28adb49162e012c"
 
 [[package]]
 name = "cairovm_verifier_air"
-version = "0.0.1"
+version = "0.0.3"
 dependencies = [
  "bail-out",
  "cairovm_verifier_commitment",
@@ -142,7 +142,7 @@ dependencies = [
 
 [[package]]
 name = "cairovm_verifier_cli"
-version = "0.0.1"
+version = "0.0.3"
 dependencies = [
  "cairovm_verifier_air",
  "cairovm_verifier_proof_parser",
@@ -154,7 +154,7 @@ dependencies = [
 
 [[package]]
 name = "cairovm_verifier_commitment"
-version = "0.0.1"
+version = "0.0.3"
 dependencies = [
  "cairovm_verifier_transcript",
  "serde",
@@ -167,7 +167,7 @@ dependencies = [
 
 [[package]]
 name = "cairovm_verifier_fri"
-version = "0.0.1"
+version = "0.0.3"
 dependencies = [
  "cairovm_verifier_air",
  "cairovm_verifier_commitment",
@@ -182,7 +182,7 @@ dependencies = [
 
 [[package]]
 name = "cairovm_verifier_pow"
-version = "0.0.1"
+version = "0.0.3"
 dependencies = [
  "cairovm_verifier_transcript",
  "serde",
@@ -194,7 +194,7 @@ dependencies = [
 
 [[package]]
 name = "cairovm_verifier_proof_parser"
-version = "0.0.1"
+version = "0.0.3"
 dependencies = [
  "anyhow",
  "cairovm_verifier_air",
@@ -213,7 +213,7 @@ dependencies = [
 
 [[package]]
 name = "cairovm_verifier_stark"
-version = "0.0.1"
+version = "0.0.3"
 dependencies = [
  "bail-out",
  "cairovm_verifier_air",
@@ -230,16 +230,16 @@ dependencies = [
 
 [[package]]
 name = "cairovm_verifier_transcript"
-version = "0.0.1"
+version = "0.0.3"
 dependencies = [
  "starknet-crypto",
 ]
 
 [[package]]
 name = "cc"
-version = "1.1.1"
+version = "1.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "907d8581360765417f8f2e0e7d602733bbed60156b4465b7617243689ef9b83d"
+checksum = "324c74f2155653c90b04f25b2a47a8a631360cb908f92a772695f430c7e31052"
 
 [[package]]
 name = "cfg-if"
