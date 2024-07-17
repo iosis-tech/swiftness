@@ -26,13 +26,14 @@ pub struct StarkConfig {
 }
 
 impl StarkConfig {
+    pub fn security_bits(&self) -> Felt {
+        self.n_queries * self.log_n_cosets + Felt::from(self.proof_of_work.n_bits)
+    }
+
     pub fn validate(&self, security_bits: Felt) -> Result<(), Error> {
         self.proof_of_work.validate()?;
 
-        assert!(
-            security_bits
-                <= self.n_queries * self.log_n_cosets + Felt::from(self.proof_of_work.n_bits)
-        );
+        assert!(security_bits <= self.security_bits());
 
         // Validate traces config.
         let log_eval_domain_size = self.log_trace_domain_size + self.log_n_cosets;

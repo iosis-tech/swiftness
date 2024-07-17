@@ -127,6 +127,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "79296716171880943b8470b5f8d03aa55eb2e645a4874bdbb28adb49162e012c"
 
 [[package]]
+name = "cairovm-verifier_cli"
+version = "0.0.1"
+dependencies = [
+ "cairovm_verifier_air",
+ "cairovm_verifier_proof_parser",
+ "cairovm_verifier_stark",
+ "clap",
+ "starknet-crypto",
+ "thiserror",
+]
+
+[[package]]
 name = "cairovm_verifier_air"
 version = "0.0.1"
 dependencies = [
@@ -176,6 +188,25 @@ dependencies = [
  "serde",
  "sha3",
  "starknet-crypto",
+ "starknet-types-core",
+ "thiserror",
+]
+
+[[package]]
+name = "cairovm_verifier_proof_parser"
+version = "0.0.1"
+dependencies = [
+ "anyhow",
+ "cairovm_verifier_air",
+ "cairovm_verifier_commitment",
+ "cairovm_verifier_fri",
+ "cairovm_verifier_pow",
+ "cairovm_verifier_stark",
+ "clap",
+ "num-bigint",
+ "regex",
+ "serde",
+ "serde_json",
  "starknet-types-core",
  "thiserror",
 ]
@@ -602,25 +633,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5e719e8df665df0d1c8fbfd238015744736151d4445ec0836b8e628aae103b77"
 dependencies = [
  "unicode-ident",
-]
-
-[[package]]
-name = "proof-parser"
-version = "0.0.1"
-dependencies = [
- "anyhow",
- "cairovm_verifier_air",
- "cairovm_verifier_commitment",
- "cairovm_verifier_fri",
- "cairovm_verifier_pow",
- "cairovm_verifier_stark",
- "clap",
- "num-bigint",
- "regex",
- "serde",
- "serde_json",
- "starknet-types-core",
- "thiserror",
 ]
 
 [[package]]

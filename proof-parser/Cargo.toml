@@ -1,5 +1,5 @@
 [package]
-name = "proof-parser"
+name = "cairovm_verifier_proof_parser"
 description.workspace = true
 edition.workspace = true
 homepage.workspace = true

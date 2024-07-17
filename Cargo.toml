@@ -11,6 +11,7 @@ members = [
     "crates/pow",
     "crates/stark",
     "proof-parser",
+    "cli",
 ]
 exclude = []
 
@@ -40,3 +41,4 @@ cairovm_verifier_fri = { path = "crates/fri" }
 cairovm_verifier_pow = { path = "crates/pow" }
 cairovm_verifier_stark = { path = "crates/stark" }
 cairovm_verifier_transcript = { path = "crates/transcript" }
+cairovm_verifier_proof_parser = { path = "proof-parser" }
