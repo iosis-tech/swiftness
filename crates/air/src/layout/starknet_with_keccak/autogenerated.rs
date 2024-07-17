@@ -7835,13 +7835,13 @@ pub fn eval_composition_polynomial_inner(
         + column1_row160 * Felt::from_hex_unchecked("0x400000000000000000000000000000000")
         + column1_row176 * Felt::from_hex_unchecked("0x800000000000000000000000000000000")
         + column1_row192
-            * Felt::from_hex_unchecked("0x800000000000000000000000000000000000000000000000")
-        + column1_row208
             * Felt::from_hex_unchecked("0x1000000000000000000000000000000000000000000000000")
-        + column1_row224
+        + column1_row208
             * Felt::from_hex_unchecked("0x2000000000000000000000000000000000000000000000000")
+        + column1_row224
+            * Felt::from_hex_unchecked("0x4000000000000000000000000000000000000000000000000")
         + column1_row240
-            * Felt::from_hex_unchecked("0x4000000000000000000000000000000000000000000000000");
+            * Felt::from_hex_unchecked("0x8000000000000000000000000000000000000000000000000");
     let ec_op_doubling_q_x_squared_0 = column11_row41 * column11_row41;
     let ec_op_ec_subset_sum_bit_0 = column11_row21 - (column11_row85 + column11_row85);
     let ec_op_ec_subset_sum_bit_neg_0 = Felt::ONE - ec_op_ec_subset_sum_bit_0;
@@ -8738,7 +8738,7 @@ pub fn eval_composition_polynomial_inner(
     total_sum += constraint_coefficients[126] * value;
 
     // Constraint: bitwise/partition.
-    value = (bitwise_sum_var_0_0 + bitwise_sum_var_8_0 - column8_row199)
+    value = (bitwise_sum_var_0_0 + bitwise_sum_var_8_0 - column8_row199) // ISSUE is here
         .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[127] * value;
 
