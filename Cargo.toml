@@ -10,6 +10,7 @@ members = [
     "crates/fri",
     "crates/pow",
     "crates/stark",
+    "proof-parser",
 ]
 exclude = []
 
@@ -31,6 +32,7 @@ starknet-core = "0.11.1"
 starknet-crypto = "0.7.1"
 starknet-types-core = "0.1.5"
 thiserror = "1.0.61"
+num-bigint = { version = "0.4.4", features = ["serde"] }
 
 cairovm_verifier_air = { path = "crates/air" }
 cairovm_verifier_commitment = { path = "crates/commitment" }
