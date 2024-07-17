@@ -1,6 +1,18 @@
 use bail_out::assure;
+#[cfg(feature = "dex")]
+use cairovm_verifier_air::layout::dex::CONSTRAINT_DEGREE;
+#[cfg(feature = "recursive")]
+use cairovm_verifier_air::layout::recursive::CONSTRAINT_DEGREE;
+#[cfg(feature = "recursive_with_poseidon")]
+use cairovm_verifier_air::layout::recursive_with_poseidon::CONSTRAINT_DEGREE;
+#[cfg(feature = "small")]
+use cairovm_verifier_air::layout::small::CONSTRAINT_DEGREE;
+#[cfg(feature = "starknet")]
+use cairovm_verifier_air::layout::starknet::CONSTRAINT_DEGREE;
+#[cfg(feature = "starknet_with_keccak")]
+use cairovm_verifier_air::layout::starknet_with_keccak::CONSTRAINT_DEGREE;
 use cairovm_verifier_air::{
-    layout::{recursive::CONSTRAINT_DEGREE, CompositionPolyEvalError, LayoutTrait},
+    layout::{CompositionPolyEvalError, LayoutTrait},
     public_memory::PublicInput,
     trace,
 };

@@ -1,22 +1,24 @@
+#[cfg(feature = "dex")]
+use cairovm_verifier_air::layout::dex::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
+#[cfg(feature = "recursive")]
+use cairovm_verifier_air::layout::recursive::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
+#[cfg(feature = "recursive_with_poseidon")]
+use cairovm_verifier_air::layout::recursive_with_poseidon::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
+#[cfg(feature = "small")]
+use cairovm_verifier_air::layout::small::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
+#[cfg(feature = "starknet")]
+use cairovm_verifier_air::layout::starknet::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
+#[cfg(feature = "starknet_with_keccak")]
+use cairovm_verifier_air::layout::starknet_with_keccak::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
+
 use cairovm_verifier_air::{
-    domains::StarkDomains,
-    layout::{
-        recursive::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS},
-        LayoutTrait,
-    },
-    public_memory::PublicInput,
+    domains::StarkDomains, layout::LayoutTrait, public_memory::PublicInput
 };
 use cairovm_verifier_commitment::table::commit::table_commit;
 use cairovm_verifier_fri::fri::fri_commit;
 use cairovm_verifier_pow::pow;
 use cairovm_verifier_transcript::transcript::Transcript;
 use starknet_crypto::Felt;
-
-use crate::{
-    config::StarkConfig,
-    oods::{self, verify_oods},
-    types::{StarkCommitment, StarkUnsentCommitment},
-};
 
 // STARK commitment phase.
 pub fn stark_commit<Layout: LayoutTrait>(
@@ -90,6 +92,8 @@ fn powers_array(initial: Felt, alpha: Felt, n: u32) -> Vec<Felt> {
 }
 
 use thiserror::Error;
+
+use crate::{config::StarkConfig, oods::{self, verify_oods}, types::{StarkCommitment, StarkUnsentCommitment}};
 
 #[derive(Error, Debug)]
 pub enum Error {

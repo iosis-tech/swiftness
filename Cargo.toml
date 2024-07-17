@@ -35,10 +35,10 @@ starknet-types-core = "0.1.5"
 thiserror = "1.0.61"
 num-bigint = { version = "0.4.4", features = ["serde"] }
 
-cairovm_verifier_air = { path = "crates/air" }
+cairovm_verifier_air = { path = "crates/air", default-features=false}
 cairovm_verifier_commitment = { path = "crates/commitment" }
 cairovm_verifier_fri = { path = "crates/fri" }
 cairovm_verifier_pow = { path = "crates/pow" }
-cairovm_verifier_stark = { path = "crates/stark" }
+cairovm_verifier_stark = { path = "crates/stark", default-features=false}
 cairovm_verifier_transcript = { path = "crates/transcript" }
 cairovm_verifier_proof_parser = { path = "proof-parser" }

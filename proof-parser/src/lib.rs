@@ -28,7 +28,7 @@ mod tests {
     #[test]
     fn test_parse() {
         let input = include_str!(
-            "../../example/fibonacci_proof_generator/recursive/cairo0_example_proof.json"
+            "../../examples/proofs/recursive/cairo0_example_proof.json"
         );
         let proof_json = serde_json::from_str::<ProofJSON>(input).unwrap();
         let stark_proof = StarkProof::try_from(proof_json).unwrap();

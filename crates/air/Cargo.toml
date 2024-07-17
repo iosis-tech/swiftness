@@ -18,3 +18,12 @@ thiserror.workspace = true
 
 cairovm_verifier_commitment.workspace = true
 cairovm_verifier_transcript.workspace = true
+
+[features]
+default = ["recursive"]
+dex = []
+recursive = []
+recursive_with_poseidon = []
+small = []
+starknet = []
+starknet_with_keccak = []

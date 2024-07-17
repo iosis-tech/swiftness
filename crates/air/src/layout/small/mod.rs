@@ -73,9 +73,9 @@ pub const SHIFT_POINT_Y: Felt =
 pub const BUILTINS: [Felt; 4] =
     [builtins::OUTPUT, builtins::PEDERSEN, builtins::RANGE_CHECK, builtins::ECDSA];
 
-pub struct RecursiveLayout {}
+pub struct Layout {}
 
-impl LayoutTrait for RecursiveLayout {
+impl LayoutTrait for Layout {
     type InteractionElements = InteractionElements;
     fn eval_composition_polynomial(
         interaction_elements: &Self::InteractionElements,

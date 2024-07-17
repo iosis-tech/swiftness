@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: "**"
 
 jobs:
   build:
@@ -44,3 +44,18 @@ jobs:
 
     - name: Run tests
       run: cargo test --verbose
+
+  verify-proof:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        layout: ["dex", "recursive", "recursive_with_poseidon", "small", "starknet", "starknet_with_keccak"]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Setup Rust toolchain
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+      
+      - name: Run verification
+        run: cargo run --release --bin cairovm_verifier_cli --features ${{ matrix.layout }} --no-default-features -- --proof examples/proofs/${{ matrix.layout }}/cairo0_example_proof.json

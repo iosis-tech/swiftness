@@ -127,18 +127,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "79296716171880943b8470b5f8d03aa55eb2e645a4874bdbb28adb49162e012c"
 
 [[package]]
-name = "cairovm-verifier_cli"
-version = "0.0.1"
-dependencies = [
- "cairovm_verifier_air",
- "cairovm_verifier_proof_parser",
- "cairovm_verifier_stark",
- "clap",
- "starknet-crypto",
- "thiserror",
-]
-
-[[package]]
 name = "cairovm_verifier_air"
 version = "0.0.1"
 dependencies = [
@@ -148,6 +136,18 @@ dependencies = [
  "serde",
  "serde_with",
  "starknet-core",
+ "starknet-crypto",
+ "thiserror",
+]
+
+[[package]]
+name = "cairovm_verifier_cli"
+version = "0.0.1"
+dependencies = [
+ "cairovm_verifier_air",
+ "cairovm_verifier_proof_parser",
+ "cairovm_verifier_stark",
+ "clap",
  "starknet-crypto",
  "thiserror",
 ]

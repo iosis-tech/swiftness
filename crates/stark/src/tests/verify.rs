@@ -3,7 +3,7 @@ use crate::{
     verify::stark_verify,
 };
 use cairovm_verifier_air::layout::recursive::{
-    RecursiveLayout, NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND,
+    Layout, NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND,
 };
 use cairovm_verifier_fri::fixtures::queries;
 
@@ -14,7 +14,7 @@ pub fn test_stark_verify() {
     let witness = witness::get();
     let stark_domains = domains::get();
 
-    stark_verify::<RecursiveLayout>(
+    stark_verify::<Layout>(
         NUM_COLUMNS_FIRST as usize,
         NUM_COLUMNS_SECOND as usize,
         &queries,
