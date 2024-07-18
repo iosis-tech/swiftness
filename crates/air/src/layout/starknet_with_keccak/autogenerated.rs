@@ -8738,7 +8738,7 @@ pub fn eval_composition_polynomial_inner(
     total_sum += constraint_coefficients[126] * value;
 
     // Constraint: bitwise/partition.
-    value = (bitwise_sum_var_0_0 + bitwise_sum_var_8_0 - column8_row199) // ISSUE is here
+    value = (bitwise_sum_var_0_0 + bitwise_sum_var_8_0 - column8_row199)
         .field_div(&NonZeroFelt::from_felt_unchecked(domain8));
     total_sum += constraint_coefficients[127] * value;
 
