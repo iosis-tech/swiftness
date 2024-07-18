@@ -35,7 +35,7 @@ cargo test
 
 - **Usage:**
 
-  - [ ] CLI support for easy interaction
+  - [x] CLI support for easy interaction
 
 - **Implemented Layouts:**
 
