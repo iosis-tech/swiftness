@@ -13,7 +13,15 @@ serde_with.workspace = true
 serde.workspace = true
 sha3.workspace = true
 starknet-core.workspace = true
+starknet-types-core.workspace = true
 starknet-crypto.workspace = true
 thiserror.workspace = true
+crypto-bigint.workspace = true
+blake2.workspace = true
 
 cairovm_verifier_transcript.workspace = true
+
+[features]
+default = ["keccak"]
+keccak = []
+blake2s = []

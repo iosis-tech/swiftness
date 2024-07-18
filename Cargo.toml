@@ -32,13 +32,15 @@ sha3 = "0.10.8"
 starknet-core = "0.11.1"
 starknet-crypto = "0.7.1"
 starknet-types-core = "0.1.5"
+crypto-bigint = "0.5.5"
 thiserror = "1.0.61"
 num-bigint = { version = "0.4.4", features = ["serde"] }
+blake2 = "0.10.6"
 
 cairovm_verifier_air = { path = "crates/air", default-features=false}
-cairovm_verifier_commitment = { path = "crates/commitment" }
-cairovm_verifier_fri = { path = "crates/fri" }
-cairovm_verifier_pow = { path = "crates/pow" }
+cairovm_verifier_commitment = { path = "crates/commitment", default-features=false}
+cairovm_verifier_fri = { path = "crates/fri",default-features=false}
+cairovm_verifier_pow = { path = "crates/pow", default-features=false}
 cairovm_verifier_stark = { path = "crates/stark", default-features=false}
-cairovm_verifier_transcript = { path = "crates/transcript" }
-cairovm_verifier_proof_parser = { path = "proof-parser" }
+cairovm_verifier_transcript = { path = "crates/transcript", default-features=false}
+cairovm_verifier_proof_parser = { path = "proof-parser", default-features=false}
