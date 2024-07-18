@@ -1,12 +1,12 @@
-#[cfg(feature = "blake2s")]
-use blake2::Digest;
+use super::types::{Commitment, Query, QueryWithDepth, Witness};
 #[cfg(feature = "blake2s")]
 use blake2::Blake2s256;
+#[cfg(feature = "blake2s")]
+use blake2::Digest;
 #[cfg(feature = "keccak")]
 use sha3::Digest;
 #[cfg(feature = "keccak")]
 use sha3::Keccak256;
-use super::types::{Commitment, Query, QueryWithDepth, Witness};
 use starknet_core::types::NonZeroFelt;
 use starknet_crypto::{poseidon_hash, Felt};
 use thiserror::Error;
