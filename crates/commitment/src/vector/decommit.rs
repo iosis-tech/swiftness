@@ -1,5 +1,11 @@
 use super::types::{Commitment, Query, QueryWithDepth, Witness};
+#[cfg(feature = "blake2s")]
+use blake2::Blake2s256;
+#[cfg(feature = "blake2s")]
+use blake2::Digest;
+#[cfg(feature = "keccak")]
 use sha3::Digest;
+#[cfg(feature = "keccak")]
 use sha3::Keccak256;
 use starknet_core::types::NonZeroFelt;
 use starknet_crypto::{poseidon_hash, Felt};
@@ -102,20 +108,20 @@ pub fn compute_root_from_queries(
 
 fn hash_friendly_unfriendly(x: Felt, y: Felt, is_verifier_friendly: bool) -> Felt {
     if is_verifier_friendly {
-        // poseidon hash
         poseidon_hash(x, y)
     } else {
         // keccak hash
+        let mut hash_data = Vec::with_capacity(64);
+        hash_data.extend(&x.to_bytes_be());
+        hash_data.extend(&y.to_bytes_be());
+
+        #[cfg(feature = "keccak")]
         let mut hasher = Keccak256::new();
-        let mut hash_data = Vec::with_capacity(40);
-        hash_data.extend_from_slice(&x.to_bytes_be());
-        hash_data.extend_from_slice(&y.to_bytes_be());
+        #[cfg(feature = "blake2s")]
+        let mut hasher = Blake2s256::new();
+
         hasher.update(&hash_data);
-        Felt::from_bytes_be_slice(hasher.finalize().to_vec().as_slice()).floor_div(
-            &NonZeroFelt::from_felt_unchecked(Felt::from_hex_unchecked(
-                "0x10000000000000000000000000000000000000000",
-            )),
-        )
+        Felt::from_bytes_be_slice(&hasher.finalize().to_vec().as_slice()[12..32])
     }
 }
 

@@ -1,9 +1,15 @@
 use crate::vector::{decommit::vector_commitment_decommit, types::Query};
-use sha3::Digest;
-use sha3::Keccak256;
-use starknet_core::types::NonZeroFelt;
 use starknet_crypto::{poseidon_hash_many, Felt};
 use thiserror::Error;
+
+#[cfg(feature = "blake2s")]
+use blake2::Blake2s256;
+#[cfg(feature = "blake2s")]
+use blake2::Digest;
+#[cfg(feature = "keccak")]
+use sha3::Digest;
+#[cfg(feature = "keccak")]
+use sha3::Keccak256;
 
 use super::types::{Commitment, Decommitment, Witness};
 
@@ -63,17 +69,17 @@ fn generate_vector_queries(
             let slice = &values[(i * n_columns as usize)..((i + 1) * n_columns as usize)];
             let mut data = Vec::new();
             data.extend(slice.iter().flat_map(|x| x.to_bytes_be().to_vec()));
-            // keccak hash
+
+            #[cfg(feature = "keccak")]
             let mut hasher = Keccak256::new();
+            #[cfg(feature = "blake2s")]
+            let mut hasher = Blake2s256::new();
+
             hasher.update(&data);
-            Felt::from_bytes_be_slice(hasher.finalize().to_vec().as_slice()).floor_div(
-                &NonZeroFelt::from_felt_unchecked(Felt::from_hex_unchecked(
-                    "0x10000000000000000000000000000000000000000",
-                )),
-            )
+            Felt::from_bytes_be_slice(&hasher.finalize().to_vec().as_slice()[12..32])
         };
 
-        vector_queries.push(Query { index: queries[i], value: hash });
+        vector_queries.push(Query { index: queries[i], value: hash })
     }
 
     vector_queries

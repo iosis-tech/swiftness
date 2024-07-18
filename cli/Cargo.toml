@@ -1,5 +1,5 @@
 [package]
-name = "cairovm_verifier_air"
+name = "cairovm_verifier_cli"
 description.workspace = true
 edition.workspace = true
 homepage.workspace = true
@@ -9,15 +9,13 @@ repository.workspace = true
 version.workspace = true
 
 [dependencies]
-bail-out.workspace = true
-serde_with.workspace = true
-serde.workspace = true
-starknet-core.workspace = true
-starknet-crypto.workspace = true
+clap = { version = "4.4.4", features = ["derive"] }
 thiserror.workspace = true
+starknet-crypto.workspace = true
+cairovm_verifier_proof_parser.workspace = true
+cairovm_verifier_stark.workspace = true
+cairovm_verifier_air.workspace = true
 
-cairovm_verifier_commitment.workspace = true
-cairovm_verifier_transcript.workspace = true
 
 [features]
 default = ["recursive"]

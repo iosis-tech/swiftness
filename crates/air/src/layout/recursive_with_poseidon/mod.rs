@@ -91,9 +91,9 @@ pub const BUILTINS: [Felt; 5] = [
     builtins::POSEIDON,
 ];
 
-pub struct RecursiveLayout {}
+pub struct Layout {}
 
-impl LayoutTrait for RecursiveLayout {
+impl LayoutTrait for Layout {
     type InteractionElements = InteractionElements;
     fn eval_composition_polynomial(
         interaction_elements: &Self::InteractionElements,

@@ -5,6 +5,20 @@
 
 This is the Rust implementation of the Cairo-VM STARK verifier with layouts. The code is inspired by StarkWare's [Cairo-verifier](https://github.com/starkware-libs/cairo-lang) implementation in Cairo0.
 
+## CLI Usage
+
+Install cli:
+
+```sh
+cargo install  -f --path cli
+```
+
+Verify example project:
+
+```sh
+cairovm-verifier_cli --proof example/fibonacci_proof_generator/recursive/cairo0_example_proof.json
+```
+
 ## Build Project
 
 ```sh
@@ -20,9 +34,11 @@ cargo test
 ## Features
 
 - **Usage:**
+
   - [ ] CLI support for easy interaction
 
 - **Implemented Layouts:**
+
   - [x] dex
   - [x] recursive
   - [x] recursive_with_poseidon

@@ -1,4 +1,16 @@
+#[cfg(feature = "dex")]
+use crate::layout::dex::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
+#[cfg(feature = "recursive")]
 use crate::layout::recursive::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
+#[cfg(feature = "recursive_with_poseidon")]
+use crate::layout::recursive_with_poseidon::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
+#[cfg(feature = "small")]
+use crate::layout::small::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
+#[cfg(feature = "starknet")]
+use crate::layout::starknet::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
+#[cfg(feature = "starknet_with_keccak")]
+use crate::layout::starknet_with_keccak::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
+
 use cairovm_verifier_commitment::vector;
 use serde::{Deserialize, Serialize};
 use starknet_crypto::Felt;

@@ -2,7 +2,7 @@ use crate::{
     fixtures::{config, unsent_commitment, witness},
     types::StarkProof,
 };
-use cairovm_verifier_air::{fixtures::public_input, layout::recursive::RecursiveLayout};
+use cairovm_verifier_air::{fixtures::public_input, layout::recursive::Layout};
 use starknet_crypto::Felt;
 
 #[test]
@@ -16,7 +16,7 @@ fn test_stark_proof_fibonacci_verify() {
         witness: witness::get(),
     };
 
-    let (program_hash, output_hash) = stark_proof.verify::<RecursiveLayout>(security_bits).unwrap();
+    let (program_hash, output_hash) = stark_proof.verify::<Layout>(security_bits).unwrap();
     assert_eq!(
         program_hash,
         Felt::from_hex_unchecked(

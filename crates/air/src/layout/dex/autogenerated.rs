@@ -1174,7 +1174,7 @@ pub fn eval_composition_polynomial_inner(
     total_sum += constraint_coefficients[142] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_generator/zeros_tail.
-    value = (column20_row14).field_div(&NonZeroFelt::from_felt_unchecked(domain6));
+    value = (column20_row14).field_div(&NonZeroFelt::from_felt_unchecked(domain16));
     total_sum += constraint_coefficients[143] * value;
 
     // Constraint: ecdsa/signature0/exponentiate_generator/add_points/slope.

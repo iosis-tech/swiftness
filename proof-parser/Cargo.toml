@@ -1,5 +1,5 @@
 [package]
-name = "cairovm_verifier_stark"
+name = "cairovm_verifier_proof_parser"
 description.workspace = true
 edition.workspace = true
 homepage.workspace = true
@@ -9,24 +9,17 @@ repository.workspace = true
 version.workspace = true
 
 [dependencies]
-bail-out.workspace = true
-serde_with.workspace = true
 serde.workspace = true
-starknet-core.workspace = true
-starknet-crypto.workspace = true
 thiserror.workspace = true
+starknet-types-core.workspace = true
+num-bigint.workspace = true
+anyhow = "1.0.80"
+clap = { version = "4.5.1", features = ["derive"] }
+regex = "1.10.3"
+serde_json = "1.0.114"
 
-cairovm_verifier_air.workspace = true
+cairovm_verifier_stark.workspace = true
 cairovm_verifier_commitment.workspace = true
 cairovm_verifier_fri.workspace = true
+cairovm_verifier_air.workspace = true
 cairovm_verifier_pow.workspace = true
-cairovm_verifier_transcript.workspace = true
-
-[features]
-default = ["recursive"]
-dex = []
-recursive = []
-recursive_with_poseidon = []
-small = []
-starknet = []
-starknet_with_keccak = []
