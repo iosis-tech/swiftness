@@ -12,16 +12,18 @@ version.workspace = true
 clap = { version = "4.4.4", features = ["derive"] }
 thiserror.workspace = true
 starknet-crypto.workspace = true
-cairovm_verifier_proof_parser.workspace = true
-cairovm_verifier_stark.workspace = true
-cairovm_verifier_air.workspace = true
 
+cairovm_verifier_air = { workspace = true, default-features = false }
+cairovm_verifier_stark = { workspace = true, default-features = false }
+cairovm_verifier_proof_parser = { workspace = true, default-features = false }
 
 [features]
-default = ["recursive"]
+default = ["recursive", "keccak"]
 dex = []
 recursive = []
 recursive_with_poseidon = []
 small = []
 starknet = []
 starknet_with_keccak = []
+keccak = []
+blake2s = []

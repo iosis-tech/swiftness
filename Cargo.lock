@@ -251,6 +251,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "cairovm_verifier_wasm"
+version = "0.0.3"
+dependencies = [
+ "cairovm_verifier_air",
+ "cairovm_verifier_proof_parser",
+ "cairovm_verifier_stark",
+ "getrandom",
+ "serde_json",
+ "wasm-bindgen",
+]
+
+[[package]]
 name = "cc"
 version = "1.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1048,17 +1060,6 @@ name = "wasm-bindgen-shared"
 version = "0.2.92"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "af190c94f2773fdb3729c55b007a722abb5384da03bc0986df4c289bf5567e96"
-
-[[package]]
-name = "wasm-binding"
-version = "0.0.3"
-dependencies = [
- "cairovm_verifier_air",
- "cairovm_verifier_proof_parser",
- "getrandom",
- "serde_json",
- "wasm-bindgen",
-]
 
 [[package]]
 name = "windows-core"
