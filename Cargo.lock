@@ -240,6 +240,7 @@ dependencies = [
  "starknet-core",
  "starknet-crypto",
  "thiserror",
+ "wasm-bindgen",
 ]
 
 [[package]]
@@ -455,8 +456,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c4567c8db10ae91089c99af84c68c38da3ec2f087c3f82960bcdbf3656b6f4d7"
 dependencies = [
  "cfg-if",
+ "js-sys",
  "libc",
  "wasi",
+ "wasm-bindgen",
 ]
 
 [[package]]
@@ -1045,6 +1048,17 @@ name = "wasm-bindgen-shared"
 version = "0.2.92"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "af190c94f2773fdb3729c55b007a722abb5384da03bc0986df4c289bf5567e96"
+
+[[package]]
+name = "wasm-binding"
+version = "0.0.3"
+dependencies = [
+ "cairovm_verifier_air",
+ "cairovm_verifier_proof_parser",
+ "getrandom",
+ "serde_json",
+ "wasm-bindgen",
+]
 
 [[package]]
 name = "windows-core"
