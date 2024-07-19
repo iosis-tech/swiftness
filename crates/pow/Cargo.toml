@@ -20,6 +20,6 @@ blake2.workspace = true
 cairovm_verifier_transcript.workspace = true
 
 [features]
-default = ["keccak"]
+default = ["blake2s"]
 keccak = []
 blake2s = []

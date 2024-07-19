@@ -20,7 +20,7 @@ cairovm_verifier_commitment.workspace = true
 cairovm_verifier_transcript.workspace = true
 
 [features]
-default = ["recursive"]
+default = ["starknet_with_keccak"]
 dex = []
 recursive = []
 recursive_with_poseidon = []
