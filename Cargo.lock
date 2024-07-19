@@ -240,6 +240,7 @@ dependencies = [
  "starknet-core",
  "starknet-crypto",
  "thiserror",
+ "wasm-bindgen",
 ]
 
 [[package]]
@@ -247,6 +248,18 @@ name = "cairovm_verifier_transcript"
 version = "0.0.3"
 dependencies = [
  "starknet-crypto",
+]
+
+[[package]]
+name = "cairovm_verifier_wasm"
+version = "0.0.3"
+dependencies = [
+ "cairovm_verifier_air",
+ "cairovm_verifier_proof_parser",
+ "cairovm_verifier_stark",
+ "getrandom",
+ "serde_json",
+ "wasm-bindgen",
 ]
 
 [[package]]
@@ -455,8 +468,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c4567c8db10ae91089c99af84c68c38da3ec2f087c3f82960bcdbf3656b6f4d7"
 dependencies = [
  "cfg-if",
+ "js-sys",
  "libc",
  "wasi",
+ "wasm-bindgen",
 ]
 
 [[package]]

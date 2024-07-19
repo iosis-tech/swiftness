@@ -11,7 +11,7 @@ members = [
     "crates/pow",
     "crates/stark",
     "proof-parser",
-    "cli",
+    "cli", "wasm-binding",
 ]
 exclude = []
 
@@ -26,6 +26,7 @@ version = "0.0.3"
 
 [workspace.dependencies]
 bail-out = "0.2.0"
+serde_json = "1.0.114"
 serde = { version = "1.0", features = ["derive"] }
 serde_with = "2.3.2"
 sha3 = "0.10.8"
@@ -36,11 +37,12 @@ crypto-bigint = "0.5.5"
 thiserror = "1.0.61"
 num-bigint = { version = "0.4.4", features = ["serde"] }
 blake2 = "0.10.6"
+wasm-bindgen = "0.2"
 
-cairovm_verifier_air = { path = "crates/air", default-features=false}
-cairovm_verifier_commitment = { path = "crates/commitment", default-features=false}
-cairovm_verifier_fri = { path = "crates/fri",default-features=false}
-cairovm_verifier_pow = { path = "crates/pow", default-features=false}
-cairovm_verifier_stark = { path = "crates/stark", default-features=false}
-cairovm_verifier_transcript = { path = "crates/transcript", default-features=false}
-cairovm_verifier_proof_parser = { path = "proof-parser", default-features=false}
+cairovm_verifier_air = { path = "crates/air", default-features = false }
+cairovm_verifier_commitment = { path = "crates/commitment", default-features = false }
+cairovm_verifier_fri = { path = "crates/fri", default-features = false }
+cairovm_verifier_pow = { path = "crates/pow", default-features = false }
+cairovm_verifier_stark = { path = "crates/stark", default-features = false }
+cairovm_verifier_transcript = { path = "crates/transcript", default-features = false }
+cairovm_verifier_proof_parser = { path = "proof-parser", default-features = false }
