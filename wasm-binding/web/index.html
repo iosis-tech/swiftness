@@ -6,12 +6,17 @@
     <title>Test Rust WASM</title>
   </head>
   <body>
-    <h1>Test Rust Verifier</h1>
-    <h2>Layout: starknet_with_keccak</h2>
-    <h2>Commitment Hash: blake2s</h2>
-    <h2>Proof of Work Hash: blake2s</h2>
+    <h1>Rust Cairo VM Verifier in wasm</h1>
+    <h3>Layout: starknet_with_keccak</h3>
+    <h3>Commitment Hash: blake2s</h3>
+    <h3>Proof of Work Hash: blake2s</h3>
     <input type="file" id="file-input" accept=".json" />
     <button id="verify-button">Verify</button>
+    <div id="result">
+      <p id="program-hash">Program Hash:</p>
+      <p id="output-hash">Output Hash:</p>
+      <p id="verification-time">Verification Time:</p>
+    </div>
     <pre id="output"></pre>
     <script type="module" src="main.js"></script>
   </body>
