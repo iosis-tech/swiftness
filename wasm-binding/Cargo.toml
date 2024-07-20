@@ -3,7 +3,7 @@ name = "swiftness_wasm"
 description = "Swiftness CairoVM Verifier | swiftness-{layout}-{commitment hash}"
 edition.workspace = true
 license = "Apache-2.0"
-readme.workspace = true
+readme = "README.md"
 repository.workspace = true
 version = "0.0.3"
 
