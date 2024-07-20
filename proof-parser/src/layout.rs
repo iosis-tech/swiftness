@@ -1,3 +1,7 @@
+use alloc::{
+    string::{String, ToString},
+    vec::Vec,
+};
 use num_bigint::BigUint;
 use serde::Deserialize;
 use std::{collections::BTreeMap, convert::TryInto, fmt::Display};

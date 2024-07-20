@@ -86,8 +86,28 @@ impl Config {
     }
 }
 
+#[cfg(feature = "std")]
+use thiserror::Error;
+
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
+pub enum Error {
+    #[error("value out of bounds {min} - {max}")]
+    OutOfBounds { min: u64, max: u64 },
+    #[error("invalid first fri step")]
+    FirstFriStepInvalid,
+    #[error("invalid value for column count, expected {expected}, got {actual}")]
+    InvalidColumnCount { expected: Felt, actual: Felt },
+    #[error("log input size mismatch, expected {expected}, got {actual}")]
+    LogInputSizeMismatch { expected: Felt, actual: Felt },
+    #[error("vector validation failed: {0}")]
+    VectorValidationFailed(#[from] cairovm_verifier_commitment::vector::config::Error),
+}
+
+#[cfg(not(feature = "std"))]
 use thiserror_no_std::Error;
 
+#[cfg(not(feature = "std"))]
 #[derive(Error, Debug)]
 pub enum Error {
     #[error("value out of bounds {min} - {max}")]

@@ -34,8 +34,20 @@ impl Config {
     }
 }
 
+#[cfg(feature = "std")]
+use thiserror::Error;
+
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
+pub enum Error {
+    #[error("mismatch value {value} expected {expected}")]
+    MisMatch { value: Felt, expected: Felt },
+}
+
+#[cfg(not(feature = "std"))]
 use thiserror_no_std::Error;
 
+#[cfg(not(feature = "std"))]
 #[derive(Error, Debug)]
 pub enum Error {
     #[error("mismatch value {value} expected {expected}")]

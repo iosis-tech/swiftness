@@ -2,6 +2,7 @@ pub mod annotation_kind;
 pub mod extract;
 
 use self::annotation_kind::{Annotation, ZAlpha};
+use alloc::vec::Vec;
 use num_bigint::BigUint;
 
 #[derive(Debug, Clone, PartialEq)]

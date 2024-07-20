@@ -1,7 +1,6 @@
 use crate::vector::{decommit::vector_commitment_decommit, types::Query};
 use alloc::vec::Vec;
 use starknet_crypto::{poseidon_hash_many, Felt};
-use thiserror_no_std::Error;
 
 #[cfg(feature = "blake2s")]
 use blake2::Blake2s256;
@@ -86,6 +85,23 @@ fn generate_vector_queries(
     vector_queries
 }
 
+#[cfg(feature = "std")]
+use thiserror::Error;
+
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
+pub enum Error {
+    #[error("Invalid decommitment length")]
+    DecommitmentLength,
+
+    #[error("Vector Error")]
+    Vector(#[from] crate::vector::decommit::Error),
+}
+
+#[cfg(not(feature = "std"))]
+use thiserror_no_std::Error;
+
+#[cfg(not(feature = "std"))]
 #[derive(Error, Debug)]
 pub enum Error {
     #[error("Invalid decommitment length")]

@@ -67,13 +67,13 @@ use thiserror::Error;
 #[cfg(feature = "std")]
 #[derive(Error, Debug)]
 pub enum Error {
-    #[error("Fri Error")]
+    #[cfg_attr(feature = "std", error("Fri Error"))]
     FriError(#[from] fri::Error),
 
-    #[error("TraceDecommit Error")]
+    #[cfg_attr(feature = "std", error("TraceDecommit Error"))]
     TraceDecommitError(#[from] cairovm_verifier_air::trace::decommit::Error),
 
-    #[error("TableDecommit Error")]
+    #[cfg_attr(feature = "std", error("TableDecommit Error"))]
     TableDecommitError(#[from] cairovm_verifier_commitment::table::decommit::Error),
 }
 

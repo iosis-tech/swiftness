@@ -10,7 +10,6 @@ use sha3::Digest;
 use sha3::Keccak256;
 use starknet_core::types::NonZeroFelt;
 use starknet_crypto::{poseidon_hash, Felt};
-use thiserror_no_std::Error;
 
 pub fn vector_commitment_decommit(
     commitment: Commitment,
@@ -126,6 +125,26 @@ fn hash_friendly_unfriendly(x: Felt, y: Felt, is_verifier_friendly: bool) -> Fel
     }
 }
 
+#[cfg(feature = "std")]
+use thiserror::Error;
+
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
+pub enum Error {
+    #[error("mismatch value {value} expected {expected}")]
+    MisMatch { value: Felt, expected: Felt },
+    #[error("authentications length is invalid")]
+    AuthenticationInvalid,
+    #[error("root tree-node error")]
+    RootInvalid,
+    #[error("root tree-node error")]
+    IndexInvalid,
+}
+
+#[cfg(not(feature = "std"))]
+use thiserror_no_std::Error;
+
+#[cfg(not(feature = "std"))]
 #[derive(Error, Debug)]
 pub enum Error {
     #[error("mismatch value {value} expected {expected}")]

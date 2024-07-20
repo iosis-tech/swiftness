@@ -5,6 +5,7 @@ use crate::{
     stark_proof::*,
     utils::log2_if_power_of_2,
 };
+use alloc::{string::String, vec, vec::Vec};
 use num_bigint::BigUint;
 use serde::Deserialize;
 use std::{

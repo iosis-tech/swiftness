@@ -1,3 +1,7 @@
+use alloc::string::String;
+use alloc::vec;
+use alloc::vec::Vec;
+
 use crate::json_parser::MemorySegmentAddress;
 use std::collections::HashMap;
 

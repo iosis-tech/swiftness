@@ -12,9 +12,9 @@ version.workspace = true
 clap = { version = "4.4.4", features = ["derive"] }
 starknet-crypto.workspace = true
 
-cairovm_verifier_air = { workspace = true, default-features = false }
-cairovm_verifier_stark = { workspace = true, default-features = false }
-cairovm_verifier_proof_parser = { workspace = true, default-features = false }
+cairovm_verifier_air = { workspace = true, features = ["std"] }
+cairovm_verifier_stark = { workspace = true, features = ["std"] }
+cairovm_verifier_proof_parser = { workspace = true, features = ["std"] }
 
 [features]
 default = ["recursive", "keccak"]

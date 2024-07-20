@@ -8,12 +8,17 @@ readme.workspace = true
 repository.workspace = true
 version.workspace = true
 
+[features]
+default = ["std"]
+std = ["dep:thiserror"]
+
 [dependencies]
 serde_with.workspace = true
 serde.workspace = true
 sha3.workspace = true
 starknet-core.workspace = true
 starknet-crypto.workspace = true
+thiserror = { optional = true, workspace = true }
 thiserror-no-std.workspace = true
 
 cairovm_verifier_air.workspace = true

@@ -181,8 +181,26 @@ pub fn fri_verify(
     Ok(())
 }
 
+#[cfg(feature = "std")]
+use thiserror::Error;
+
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
+pub enum Error {
+    #[error("Invalid length: expected {expected}, actual {actual}")]
+    InvalidLength { expected: usize, actual: usize },
+
+    #[error("Invalid value")]
+    InvalidValue,
+
+    #[error("Last layer verification error")]
+    LastLayerVerificationError,
+}
+
+#[cfg(not(feature = "std"))]
 use thiserror_no_std::Error;
 
+#[cfg(not(feature = "std"))]
 #[derive(Error, Debug)]
 pub enum Error {
     #[error("Invalid length: expected {expected}, actual {actual}")]

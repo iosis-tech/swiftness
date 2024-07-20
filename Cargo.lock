@@ -146,6 +146,7 @@ dependencies = [
  "serde_with",
  "starknet-core",
  "starknet-crypto",
+ "thiserror",
  "thiserror-no-std",
 ]
 
@@ -173,6 +174,7 @@ dependencies = [
  "starknet-core",
  "starknet-crypto",
  "starknet-types-core",
+ "thiserror",
  "thiserror-no-std",
 ]
 
@@ -188,6 +190,7 @@ dependencies = [
  "sha3",
  "starknet-core",
  "starknet-crypto",
+ "thiserror",
  "thiserror-no-std",
 ]
 
@@ -202,6 +205,7 @@ dependencies = [
  "sha3",
  "starknet-crypto",
  "starknet-types-core",
+ "thiserror",
  "thiserror-no-std",
 ]
 
@@ -221,6 +225,7 @@ dependencies = [
  "serde",
  "serde_json",
  "starknet-types-core",
+ "thiserror",
  "thiserror-no-std",
 ]
 

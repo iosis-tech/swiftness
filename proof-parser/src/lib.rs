@@ -1,3 +1,10 @@
+#![no_std]
+#![cfg_attr(not(feature = "std"), no_std)]
+extern crate alloc;
+
+#[cfg(feature = "std")]
+extern crate std;
+
 mod annotations;
 mod builtins;
 mod conversion;
@@ -12,6 +19,7 @@ extern crate clap;
 extern crate num_bigint;
 extern crate regex;
 extern crate serde;
+use alloc::string::String;
 use cairovm_verifier_stark::types::StarkProof as StarkProofFromVerifier;
 
 pub fn parse(input: String) -> anyhow::Result<StarkProofFromVerifier> {
@@ -30,7 +38,6 @@ mod tests {
         let input = include_str!("../../examples/proofs/recursive/cairo0_example_proof.json");
         let proof_json = serde_json::from_str::<ProofJSON>(input).unwrap();
         let stark_proof = StarkProof::try_from(proof_json).unwrap();
-        let stark_proof_verifier: StarkProofFromVerifier = stark_proof.into();
-        println!("{:?}", stark_proof_verifier);
+        let _: StarkProofFromVerifier = stark_proof.into();
     }
 }

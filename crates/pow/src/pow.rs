@@ -70,8 +70,20 @@ pub fn verify_pow(digest: [u8; 32], n_bits: u8, nonce: u64) -> Result<(), Error>
     )
 }
 
+#[cfg(feature = "std")]
+use thiserror::Error;
+
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
+pub enum Error {
+    #[cfg_attr(feature = "std", error("proof of work verification fail"))]
+    ProofOfWorkFail,
+}
+
+#[cfg(not(feature = "std"))]
 use thiserror_no_std::Error;
 
+#[cfg(not(feature = "std"))]
 #[derive(Error, Debug)]
 pub enum Error {
     #[error("proof of work verification fail")]

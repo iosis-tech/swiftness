@@ -8,8 +8,13 @@ readme.workspace = true
 repository.workspace = true
 version.workspace = true
 
+[features]
+default = ["std"]
+std = ["dep:thiserror"]
+
 [dependencies]
 serde.workspace = true
+thiserror = { optional = true, workspace = true }
 thiserror-no-std.workspace = true
 starknet-types-core.workspace = true
 num-bigint.workspace = true

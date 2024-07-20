@@ -67,8 +67,30 @@ use cairovm_verifier_air::{
 };
 use cairovm_verifier_transcript::transcript::Transcript;
 use starknet_crypto::Felt;
+
+#[cfg(feature = "std")]
+use thiserror::Error;
+
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
+pub enum Error {
+    #[error("Vector Error")]
+    Validation(#[from] crate::config::Error),
+
+    #[error("PublicInputError Error")]
+    PublicInputError(#[from] PublicInputError),
+
+    #[error("Commit Error")]
+    Commit(#[from] crate::commit::Error),
+
+    #[error("Verify Error")]
+    Verify(#[from] crate::verify::Error),
+}
+
+#[cfg(not(feature = "std"))]
 use thiserror_no_std::Error;
 
+#[cfg(not(feature = "std"))]
 #[derive(Error, Debug)]
 pub enum Error {
     #[error("Vector Error")]

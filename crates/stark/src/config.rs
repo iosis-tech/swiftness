@@ -51,8 +51,27 @@ impl StarkConfig {
 }
 
 use cairovm_verifier_commitment::vector;
+
+#[cfg(feature = "std")]
+use thiserror::Error;
+
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
+pub enum Error {
+    #[error("Vector Error")]
+    Vector(#[from] vector::config::Error),
+    #[error("Fri Error")]
+    Fri(#[from] cairovm_verifier_fri::config::Error),
+    #[error("Pow Error")]
+    Pow(#[from] cairovm_verifier_pow::config::Error),
+    #[error("Trace Error")]
+    Trace(#[from] cairovm_verifier_air::trace::config::Error),
+}
+
+#[cfg(not(feature = "std"))]
 use thiserror_no_std::Error;
 
+#[cfg(not(feature = "std"))]
 #[derive(Error, Debug)]
 pub enum Error {
     #[error("Vector Error")]
