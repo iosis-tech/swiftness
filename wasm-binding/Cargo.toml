@@ -1,6 +1,6 @@
 [package]
 name = "swiftness_wasm"
-description = "CairoVM verifier - starknet_with_keccak & blake2s"
+description = "Swiftness CairoVM Verifier | swiftness-{layout}-{commitment hash}"
 edition.workspace = true
 license = "Apache-2.0"
 readme.workspace = true
