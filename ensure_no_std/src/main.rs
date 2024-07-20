@@ -18,6 +18,8 @@ pub extern "C" fn _start() -> ! {
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 #[allow(unused_imports)]
-use starknet_types_core;
+use cairovm_verifier_air;
 #[allow(unused_imports)]
-use starknet_types_rpc;
+use cairovm_verifier_proof_parser;
+#[allow(unused_imports)]
+use cairovm_verifier_stark;
