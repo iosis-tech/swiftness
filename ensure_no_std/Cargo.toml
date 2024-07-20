@@ -4,9 +4,9 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-cairovm_verifier_air = { path = "crates/air", default-features = false }
-cairovm_verifier_stark = { path = "crates/stark", default-features = false }
-cairovm_verifier_proof_parser = { path = "proof-parser", default-features = false }
+cairovm_verifier_air = { path = "../crates/air", default-features = false }
+cairovm_verifier_stark = { path = "../crates/stark", default-features = false }
+cairovm_verifier_proof_parser = { path = "../proof-parser", default-features = false }
 
 [features]
 default = ["recursive", "keccak"]
