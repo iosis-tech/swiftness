@@ -5,13 +5,16 @@
 
 This is the Rust implementation of the Cairo-VM STARK verifier with layouts. The code is inspired by StarkWare's [Cairo-verifier](https://github.com/starkware-libs/cairo-lang) implementation in Cairo0.
 
-### Install wasm-pack
-```sh
-cargo install wasm-pack
+### Example usage
+```js
+import init, { cairovm_verify } from 'cairovm_verifier_wasm';
+
+async function run(proof_json) {
+    await init();  // Initialize the Wasm module
+    const [programHash, outputHash] = await cairovm_verify(proof_json);
+}
 ```
 
-### Build WASM:
+## Contributing
 
-```sh
-wasm-pack build --target bundler --workspace --features starknet_with_keccak,blake2s --no-default-features
-```
+Feel free to open issues or submit pull requests to help improve this project.
