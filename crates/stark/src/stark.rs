@@ -67,7 +67,7 @@ use cairovm_verifier_air::{
 };
 use cairovm_verifier_transcript::transcript::Transcript;
 use starknet_crypto::Felt;
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 #[derive(Error, Debug)]
 pub enum Error {

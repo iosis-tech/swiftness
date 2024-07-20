@@ -1,3 +1,5 @@
+use alloc::vec;
+use alloc::vec::Vec;
 use starknet_crypto::{poseidon_hash, poseidon_hash_many, Felt};
 
 pub struct Transcript {

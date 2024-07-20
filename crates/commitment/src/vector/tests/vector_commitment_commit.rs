@@ -1,3 +1,4 @@
+use alloc::borrow::ToOwned;
 use cairovm_verifier_transcript::transcript::Transcript;
 use starknet_crypto::Felt;
 

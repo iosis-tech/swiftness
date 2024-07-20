@@ -1,4 +1,5 @@
 use super::types::{Commitment, Query, QueryWithDepth, Witness};
+use alloc::vec::Vec;
 #[cfg(feature = "blake2s")]
 use blake2::Blake2s256;
 #[cfg(feature = "blake2s")]
@@ -9,7 +10,7 @@ use sha3::Digest;
 use sha3::Keccak256;
 use starknet_core::types::NonZeroFelt;
 use starknet_crypto::{poseidon_hash, Felt};
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 pub fn vector_commitment_decommit(
     commitment: Commitment,

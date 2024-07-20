@@ -1,5 +1,6 @@
 use super::config::Config;
 use crate::vector;
+use alloc::vec::Vec;
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
 use starknet_core::serde::unsigned_field_element::UfeHex;

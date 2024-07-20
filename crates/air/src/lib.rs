@@ -1,3 +1,7 @@
+#![no_std]
+
+extern crate alloc;
+
 pub mod diluted;
 pub mod domains;
 pub mod fixtures;

@@ -1,3 +1,4 @@
+use alloc::vec;
 use cairovm_verifier_commitment::{
     table::types::{Decommitment as TableDecommitment, Witness as TableCommitmentWitness},
     vector::types::Witness as VectorCommitmentWitness,

@@ -1,6 +1,7 @@
 use crate::vector::{decommit::vector_commitment_decommit, types::Query};
+use alloc::vec::Vec;
 use starknet_crypto::{poseidon_hash_many, Felt};
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 #[cfg(feature = "blake2s")]
 use blake2::Blake2s256;

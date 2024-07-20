@@ -1,3 +1,4 @@
+use alloc::vec::Vec;
 use cairovm_verifier_air::domains::StarkDomains;
 use cairovm_verifier_transcript::transcript::Transcript;
 use starknet_core::types::NonZeroFelt;

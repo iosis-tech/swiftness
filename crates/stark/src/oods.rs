@@ -1,3 +1,4 @@
+use alloc::vec::Vec;
 use bail_out::assure;
 #[cfg(feature = "dex")]
 use cairovm_verifier_air::layout::dex::CONSTRAINT_DEGREE;
@@ -59,7 +60,7 @@ pub fn verify_oods<Layout: LayoutTrait>(
     )
 }
 
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 #[derive(Error, Debug)]
 pub enum OodsVerifyError {

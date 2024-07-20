@@ -1,3 +1,5 @@
+use alloc::vec;
+use alloc::vec::Vec;
 use starknet_crypto::Felt;
 
 // Returns the elements of the multiplicative subgroup of order 16, in bit-reversed order for the

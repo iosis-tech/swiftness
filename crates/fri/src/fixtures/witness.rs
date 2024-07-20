@@ -1,4 +1,4 @@
-use std::vec;
+use alloc::vec;
 
 use crate::types::{LayerWitness, Witness};
 use cairovm_verifier_commitment::{

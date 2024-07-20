@@ -1,4 +1,5 @@
 use crate::trace::Witness;
+use alloc::vec;
 use cairovm_verifier_commitment::{table, vector};
 use starknet_crypto::Felt;
 

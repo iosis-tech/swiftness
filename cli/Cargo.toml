@@ -10,7 +10,6 @@ version.workspace = true
 
 [dependencies]
 clap = { version = "4.4.4", features = ["derive"] }
-thiserror.workspace = true
 starknet-crypto.workspace = true
 
 cairovm_verifier_air = { workspace = true, default-features = false }

@@ -2,6 +2,7 @@ use crate::{
     public_memory::PublicInput,
     types::{AddrValue, Page, SegmentInfo},
 };
+use alloc::vec;
 use starknet_crypto::Felt;
 
 pub fn get() -> PublicInput {

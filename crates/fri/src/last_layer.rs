@@ -1,3 +1,4 @@
+use alloc::vec::Vec;
 use starknet_core::types::NonZeroFelt;
 use starknet_crypto::Felt;
 
@@ -33,7 +34,7 @@ fn horner_eval(coefs: &[Felt], point: Felt) -> Felt {
     result
 }
 
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 #[derive(Error, Debug)]
 pub enum Error {
@@ -43,7 +44,8 @@ pub enum Error {
 
 #[cfg(test)]
 mod tests {
-    use std::vec;
+    use alloc::vec;
+    use alloc::vec::Vec;
 
     use super::*;
 

@@ -1,3 +1,4 @@
+use alloc::vec::Vec;
 #[cfg(feature = "blake2s")]
 use blake2::Blake2s256;
 #[cfg(feature = "blake2s")]
@@ -69,7 +70,7 @@ pub fn verify_pow(digest: [u8; 32], n_bits: u8, nonce: u64) -> Result<(), Error>
     )
 }
 
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 #[derive(Error, Debug)]
 pub enum Error {

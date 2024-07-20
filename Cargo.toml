@@ -11,7 +11,8 @@ members = [
     "crates/pow",
     "crates/stark",
     "proof-parser",
-    "cli", "wasm-binding",
+    "cli",
+    "wasm-binding",
 ]
 exclude = []
 
@@ -34,6 +35,7 @@ starknet-core = "0.11.1"
 starknet-crypto = "0.7.1"
 starknet-types-core = "0.1.5"
 crypto-bigint = "0.5.5"
+thiserror-no-std = "=2.0.2"
 thiserror = "1.0.61"
 num-bigint = { version = "0.4.4", features = ["serde"] }
 blake2 = "0.10.6"

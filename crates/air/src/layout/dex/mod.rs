@@ -6,6 +6,8 @@ use crate::{
     periodic_columns::{eval_ecdsa_x, eval_ecdsa_y, eval_pedersen_x, eval_pedersen_y},
     public_memory::{PublicInput, INITIAL_PC, MAX_ADDRESS, MAX_LOG_N_STEPS, MAX_RANGE_CHECK},
 };
+use alloc::vec;
+use alloc::vec::Vec;
 use bail_out::ensure;
 use cairovm_verifier_commitment::table::{commit::table_commit, decommit::table_decommit};
 use global_values::{EcPoint, EcdsaSigConfig, GlobalValues, InteractionElements};

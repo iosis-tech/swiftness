@@ -1,3 +1,4 @@
+use alloc::{borrow::ToOwned, vec::Vec};
 use cairovm_verifier_commitment::table::{
     commit::table_commit,
     config::Config as TableCommitmentConfig,
@@ -11,7 +12,7 @@ use crate::{
     config::Config as FriConfig,
     first_layer::gather_first_layer_queries,
     group::get_fri_group,
-    last_layer::{self, verify_last_layer},
+    last_layer::verify_last_layer,
     layer::{compute_next_layer, FriLayerComputationParams, FriLayerQuery},
     types::{
         self, Commitment as FriCommitment, Decommitment as FriDecommitment, LayerWitness, Witness,
@@ -175,11 +176,12 @@ pub fn fri_verify(
         return Err(Error::InvalidValue);
     };
 
-    verify_last_layer(last_queries, commitment.last_layer_coefficients)?;
+    verify_last_layer(last_queries, commitment.last_layer_coefficients)
+        .map_err(|_| Error::LastLayerVerificationError)?;
     Ok(())
 }
 
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 #[derive(Error, Debug)]
 pub enum Error {
@@ -189,6 +191,6 @@ pub enum Error {
     #[error("Invalid value")]
     InvalidValue,
 
-    #[error("Last layer verification error: {0}")]
-    LastLayerVerificationError(#[from] last_layer::Error),
+    #[error("Last layer verification error")]
+    LastLayerVerificationError,
 }

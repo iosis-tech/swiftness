@@ -70,7 +70,7 @@ pub trait LayoutTrait {
     fn verify_public_input(public_input: &PublicInput) -> Result<(Felt, Felt), PublicInputError>;
 }
 
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 #[derive(Error, Debug)]
 pub enum CompositionPolyEvalError {

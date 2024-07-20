@@ -1,5 +1,5 @@
-use std::ops::Deref;
-
+use alloc::vec::Vec;
+use core::ops::Deref;
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
 use starknet_core::serde::unsigned_field_element::UfeHex;

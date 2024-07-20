@@ -1,3 +1,4 @@
+use alloc::{borrow::ToOwned, vec::Vec};
 #[cfg(feature = "dex")]
 use cairovm_verifier_air::layout::dex::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
 #[cfg(feature = "recursive")]
@@ -95,7 +96,7 @@ fn powers_array(initial: Felt, alpha: Felt, n: u32) -> Vec<Felt> {
     array
 }
 
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 use crate::{
     config::StarkConfig,

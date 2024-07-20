@@ -14,7 +14,7 @@ serde_with.workspace = true
 serde.workspace = true
 starknet-core.workspace = true
 starknet-crypto.workspace = true
-thiserror.workspace = true
+thiserror-no-std.workspace = true
 
 cairovm_verifier_commitment.workspace = true
 cairovm_verifier_transcript.workspace = true

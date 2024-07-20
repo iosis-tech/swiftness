@@ -1,3 +1,4 @@
+use alloc::vec;
 use cairovm_verifier_commitment::{
     table::{config::Config as TableCommitmentConfig, types::Commitment as TableCommitment},
     vector::{config::Config as VectorCommitmentConfig, types::Commitment as VectorCommitment},

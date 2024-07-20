@@ -1,3 +1,4 @@
+use alloc::vec;
 use starknet_crypto::Felt;
 
 use crate::vector::{

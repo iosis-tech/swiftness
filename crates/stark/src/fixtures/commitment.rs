@@ -1,3 +1,4 @@
+use alloc::vec;
 use cairovm_verifier_air::layout::recursive::global_values::InteractionElements;
 use cairovm_verifier_commitment::{
     table::{config::Config as TableCommitmentConfig, types::Commitment as TableCommitment},
