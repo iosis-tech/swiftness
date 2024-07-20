@@ -7,11 +7,15 @@ This is the Rust implementation of the Cairo-VM STARK verifier with layouts. The
 
 ### Example usage
 ```js
-import init, { cairovm_verify } from 'cairovm_verifier_wasm';
+import init, { cairovm_verify } from 'cairovm_verifier';
 
 async function run(proof_json) {
-    await init();  // Initialize the Wasm module
-    const [programHash, outputHash] = await cairovm_verify(proof_json);
+  await init();  // Initialize the Wasm module
+  try {
+    const [programHash, programOutput] = JSON.parse( await cairovm_verify(proof_json) );
+  } catch (err) {
+    console.error(`Verification failed: ${err}`);
+  }
 }
 ```
 

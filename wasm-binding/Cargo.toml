@@ -1,9 +1,9 @@
 [package]
 name = "cairovm_verifier_wasm"
-description.workspace = true
+description = "CairoVM verifier - starknet_with_keccak & blake2s"
 edition.workspace = true
 homepage.workspace = true
-license-file.workspace = true
+license = "Apache-2.0"
 readme.workspace = true
 repository.workspace = true
 version.workspace = true
@@ -23,7 +23,7 @@ crate-type = ["cdylib", "rlib"]
 getrandom = { version = "0.2.15", features = ["js"] }
 
 [features]
-default = ["recursive", "keccak"]
+default = ["starknet_with_keccak", "keccak"]
 dex = []
 recursive = []
 recursive_with_poseidon = []

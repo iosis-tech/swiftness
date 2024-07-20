@@ -1,6 +1,7 @@
 {
-  "name": "cairovm_verifier_wasm",
+  "name": "cairovm_verifier",
   "type": "module",
+  "keywords": ["stark", "wasm", "verifier", "cairovm"],
   "description": "CairoVM verifier - starknet_with_keccak & blake2s",
   "version": "0.0.3",
   "license": "Apache-2.0",
@@ -11,14 +12,12 @@
   "files": [
     "cairovm_verifier_wasm_bg.wasm",
     "cairovm_verifier_wasm.js",
-    "cairovm_verifier_wasm_bg.js",
     "cairovm_verifier_wasm.d.ts"
   ],
   "main": "cairovm_verifier_wasm.js",
   "homepage": "",
   "types": "cairovm_verifier_wasm.d.ts",
   "sideEffects": [
-    "./cairovm_verifier_wasm.js",
     "./snippets/*"
   ]
 }
