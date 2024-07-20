@@ -16,7 +16,7 @@ members = [
 exclude = []
 
 [workspace.package]
-description = ""
+description = "Swiftness CairoVM Verifier"
 edition = "2021"
 homepage = ""
 license-file = "LICENSE"
