@@ -2,7 +2,7 @@ name: Rust CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
     branches: "**"
 
@@ -11,46 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out the repository
-      uses: actions/checkout@v2
+      - name: Check out the repository
+        uses: actions/checkout@v2
 
-    - name: Setup Rust toolchain
-      uses: actions-rust-lang/setup-rust-toolchain@v1
-
-    - name: Cache Cargo registry
-      uses: actions/cache@v2
-      with:
-        path: |
-          ~/.cargo/registry
-          ~/.cargo/git
-        key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-cargo-registry-
-
-    - name: Cache Cargo build
-      uses: actions/cache@v2
-      with:
-        path: target
-        key: ${{ runner.os }}-cargo-build-${{ hashFiles('**/Cargo.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-cargo-build-
-
-    - name: Run tests
-      run: cargo test --verbose
-
-  verify-proof:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        layout: ["dex", "recursive", "recursive_with_poseidon", "small", "starknet", "starknet_with_keccak"]
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      
       - name: Setup Rust toolchain
         uses: actions-rust-lang/setup-rust-toolchain@v1
-  
+
       - name: Cache Cargo registry
         uses: actions/cache@v2
         with:
@@ -60,7 +26,7 @@ jobs:
           key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: |
             ${{ runner.os }}-cargo-registry-
-  
+
       - name: Cache Cargo build
         uses: actions/cache@v2
         with:
@@ -68,6 +34,48 @@ jobs:
           key: ${{ runner.os }}-cargo-build-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: |
             ${{ runner.os }}-cargo-build-
-      
+
+      - name: Run tests
+        run: cargo test --verbose
+
+  verify-proof:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        layout:
+          [
+            "dex",
+            "recursive",
+            "recursive_with_poseidon",
+            "small",
+            "starknet",
+            "starknet_with_keccak",
+          ]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Rust toolchain
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+
+      - name: Cache Cargo registry
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-registry-
+
+      - name: Cache Cargo build
+        uses: actions/cache@v2
+        with:
+          path: target
+          key: ${{ runner.os }}-cargo-build-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-build-
+
       - name: Run verification
-        run: cargo run --release --bin cairovm_verifier_cli --features ${{ matrix.layout }},keccak --no-default-features -- --proof examples/proofs/${{ matrix.layout }}/cairo0_example_proof.json
+        run: cargo run --release --bin cairovm_verifier_cli --features ${{ matrix.layout }},keccak,std --no-default-features -- --proof examples/proofs/${{ matrix.layout }}/cairo0_example_proof.json
