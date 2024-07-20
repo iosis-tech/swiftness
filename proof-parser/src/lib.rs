@@ -12,7 +12,7 @@ extern crate clap;
 extern crate num_bigint;
 extern crate regex;
 extern crate serde;
-use cairovm_verifier_stark::types::StarkProof as StarkProofFromVerifier;
+use swiftness_stark::types::StarkProof as StarkProofFromVerifier;
 
 pub fn parse(input: String) -> anyhow::Result<StarkProofFromVerifier> {
     let proof_json = serde_json::from_str::<ProofJSON>(&input)?;

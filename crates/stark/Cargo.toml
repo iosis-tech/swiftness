@@ -1,5 +1,5 @@
 [package]
-name = "cairovm_verifier_stark"
+name = "swiftness_stark"
 description.workspace = true
 edition.workspace = true
 homepage.workspace = true
@@ -17,11 +17,11 @@ starknet-crypto.workspace = true
 thiserror.workspace = true
 wasm-bindgen.workspace = true
 
-cairovm_verifier_air.workspace = true
-cairovm_verifier_commitment.workspace = true
-cairovm_verifier_fri.workspace = true
-cairovm_verifier_pow.workspace = true
-cairovm_verifier_transcript.workspace = true
+swiftness_air.workspace = true
+swiftness_commitment.workspace = true
+swiftness_fri.workspace = true
+swiftness_pow.workspace = true
+swiftness_transcript.workspace = true
 
 [features]
 default = ["recursive"]

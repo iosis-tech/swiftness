@@ -8,7 +8,7 @@ This is the Rust implementation of the Cairo-VM STARK verifier with layouts. The
 ### Verify example proof:
 
 ```sh
-cargo run --release --bin cairovm_verifier_cli --features starknet_with_keccak,keccak --no-default-features -- --proof examples/proofs/starknet_with_keccak/cairo0_example_proof.json 
+cargo run --release --bin swiftness_cli --features starknet_with_keccak,keccak --no-default-features -- --proof examples/proofs/starknet_with_keccak/cairo0_example_proof.json 
 ```
 
 ## Run Tests

@@ -1,5 +1,5 @@
 [package]
-name = "cairovm_verifier_transcript"
+name = "swiftness_transcript"
 description.workspace = true
 edition.workspace = true
 homepage.workspace = true

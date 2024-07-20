@@ -1,5 +1,5 @@
 [package]
-name = "cairovm_verifier_wasm"
+name = "swiftness_wasm"
 description = "CairoVM verifier - starknet_with_keccak & blake2s"
 edition.workspace = true
 homepage.workspace = true
@@ -12,9 +12,9 @@ version.workspace = true
 serde_json.workspace = true
 wasm-bindgen.workspace = true
 
-cairovm_verifier_air = { workspace = true, default-features = false }
-cairovm_verifier_stark = { workspace = true, default-features = false }
-cairovm_verifier_proof_parser = { workspace = true, default-features = false }
+swiftness_air = { workspace = true, default-features = false }
+swiftness_stark = { workspace = true, default-features = false }
+swiftness_proof_parser = { workspace = true, default-features = false }
 
 [lib]
 crate-type = ["cdylib", "rlib"]

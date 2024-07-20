@@ -1,5 +1,5 @@
-use cairovm_verifier_transcript::transcript::Transcript;
 use starknet_crypto::Felt;
+use swiftness_transcript::transcript::Transcript;
 
 use crate::{
     fixtures::{commitment, config, unsent_commitment},

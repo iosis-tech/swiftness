@@ -21,7 +21,7 @@ edition = "2021"
 homepage = ""
 license-file = "LICENSE"
 readme = "README.md"
-repository = "https://github.com/iosis-tech/cairovm-verifier"
+repository = "https://github.com/iosis-tech/swiftness"
 version = "0.0.3"
 
 [workspace.dependencies]
@@ -39,10 +39,10 @@ num-bigint = { version = "0.4.4", features = ["serde"] }
 blake2 = "0.10.6"
 wasm-bindgen = "0.2"
 
-cairovm_verifier_air = { path = "crates/air", default-features = false }
-cairovm_verifier_commitment = { path = "crates/commitment", default-features = false }
-cairovm_verifier_fri = { path = "crates/fri", default-features = false }
-cairovm_verifier_pow = { path = "crates/pow", default-features = false }
-cairovm_verifier_stark = { path = "crates/stark", default-features = false }
-cairovm_verifier_transcript = { path = "crates/transcript", default-features = false }
-cairovm_verifier_proof_parser = { path = "proof-parser", default-features = false }
+swiftness_air = { path = "crates/air", default-features = false }
+swiftness_commitment = { path = "crates/commitment", default-features = false }
+swiftness_fri = { path = "crates/fri", default-features = false }
+swiftness_pow = { path = "crates/pow", default-features = false }
+swiftness_stark = { path = "crates/stark", default-features = false }
+swiftness_transcript = { path = "crates/transcript", default-features = false }
+swiftness_proof_parser = { path = "proof-parser", default-features = false }

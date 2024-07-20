@@ -136,133 +136,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "79296716171880943b8470b5f8d03aa55eb2e645a4874bdbb28adb49162e012c"
 
 [[package]]
-name = "cairovm_verifier_air"
-version = "0.0.3"
-dependencies = [
- "bail-out",
- "cairovm_verifier_commitment",
- "cairovm_verifier_transcript",
- "serde",
- "serde_with",
- "starknet-core",
- "starknet-crypto",
- "thiserror",
-]
-
-[[package]]
-name = "cairovm_verifier_cli"
-version = "0.0.3"
-dependencies = [
- "cairovm_verifier_air",
- "cairovm_verifier_proof_parser",
- "cairovm_verifier_stark",
- "clap",
- "starknet-crypto",
- "thiserror",
-]
-
-[[package]]
-name = "cairovm_verifier_commitment"
-version = "0.0.3"
-dependencies = [
- "blake2",
- "cairovm_verifier_transcript",
- "crypto-bigint",
- "serde",
- "serde_with",
- "sha3",
- "starknet-core",
- "starknet-crypto",
- "starknet-types-core",
- "thiserror",
-]
-
-[[package]]
-name = "cairovm_verifier_fri"
-version = "0.0.3"
-dependencies = [
- "cairovm_verifier_air",
- "cairovm_verifier_commitment",
- "cairovm_verifier_transcript",
- "serde",
- "serde_with",
- "sha3",
- "starknet-core",
- "starknet-crypto",
- "thiserror",
-]
-
-[[package]]
-name = "cairovm_verifier_pow"
-version = "0.0.3"
-dependencies = [
- "bail-out",
- "blake2",
- "cairovm_verifier_transcript",
- "serde",
- "sha3",
- "starknet-crypto",
- "starknet-types-core",
- "thiserror",
-]
-
-[[package]]
-name = "cairovm_verifier_proof_parser"
-version = "0.0.3"
-dependencies = [
- "anyhow",
- "cairovm_verifier_air",
- "cairovm_verifier_commitment",
- "cairovm_verifier_fri",
- "cairovm_verifier_pow",
- "cairovm_verifier_stark",
- "clap",
- "num-bigint",
- "regex",
- "serde",
- "serde_json",
- "starknet-types-core",
- "thiserror",
-]
-
-[[package]]
-name = "cairovm_verifier_stark"
-version = "0.0.3"
-dependencies = [
- "bail-out",
- "cairovm_verifier_air",
- "cairovm_verifier_commitment",
- "cairovm_verifier_fri",
- "cairovm_verifier_pow",
- "cairovm_verifier_transcript",
- "serde",
- "serde_with",
- "starknet-core",
- "starknet-crypto",
- "thiserror",
- "wasm-bindgen",
-]
-
-[[package]]
-name = "cairovm_verifier_transcript"
-version = "0.0.3"
-dependencies = [
- "starknet-crypto",
-]
-
-[[package]]
-name = "cairovm_verifier_wasm"
-version = "0.0.3"
-dependencies = [
- "cairovm_verifier_air",
- "cairovm_verifier_proof_parser",
- "cairovm_verifier_stark",
- "getrandom",
- "serde_json",
- "wasm-bindgen",
-]
-
-[[package]]
 name = "cc"
 version = "1.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -914,6 +787,133 @@ name = "subtle"
 version = "2.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
+
+[[package]]
+name = "swiftness_air"
+version = "0.0.3"
+dependencies = [
+ "bail-out",
+ "serde",
+ "serde_with",
+ "starknet-core",
+ "starknet-crypto",
+ "swiftness_commitment",
+ "swiftness_transcript",
+ "thiserror",
+]
+
+[[package]]
+name = "swiftness_cli"
+version = "0.0.3"
+dependencies = [
+ "clap",
+ "starknet-crypto",
+ "swiftness_air",
+ "swiftness_proof_parser",
+ "swiftness_stark",
+ "thiserror",
+]
+
+[[package]]
+name = "swiftness_commitment"
+version = "0.0.3"
+dependencies = [
+ "blake2",
+ "crypto-bigint",
+ "serde",
+ "serde_with",
+ "sha3",
+ "starknet-core",
+ "starknet-crypto",
+ "starknet-types-core",
+ "swiftness_transcript",
+ "thiserror",
+]
+
+[[package]]
+name = "swiftness_fri"
+version = "0.0.3"
+dependencies = [
+ "serde",
+ "serde_with",
+ "sha3",
+ "starknet-core",
+ "starknet-crypto",
+ "swiftness_air",
+ "swiftness_commitment",
+ "swiftness_transcript",
+ "thiserror",
+]
+
+[[package]]
+name = "swiftness_pow"
+version = "0.0.3"
+dependencies = [
+ "bail-out",
+ "blake2",
+ "serde",
+ "sha3",
+ "starknet-crypto",
+ "starknet-types-core",
+ "swiftness_transcript",
+ "thiserror",
+]
+
+[[package]]
+name = "swiftness_proof_parser"
+version = "0.0.3"
+dependencies = [
+ "anyhow",
+ "clap",
+ "num-bigint",
+ "regex",
+ "serde",
+ "serde_json",
+ "starknet-types-core",
+ "swiftness_air",
+ "swiftness_commitment",
+ "swiftness_fri",
+ "swiftness_pow",
+ "swiftness_stark",
+ "thiserror",
+]
+
+[[package]]
+name = "swiftness_stark"
+version = "0.0.3"
+dependencies = [
+ "bail-out",
+ "serde",
+ "serde_with",
+ "starknet-core",
+ "starknet-crypto",
+ "swiftness_air",
+ "swiftness_commitment",
+ "swiftness_fri",
+ "swiftness_pow",
+ "swiftness_transcript",
+ "thiserror",
+ "wasm-bindgen",
+]
+
+[[package]]
+name = "swiftness_transcript"
+version = "0.0.3"
+dependencies = [
+ "starknet-crypto",
+]
+
+[[package]]
+name = "swiftness_wasm"
+version = "0.0.3"
+dependencies = [
+ "getrandom",
+ "serde_json",
+ "swiftness_air",
+ "swiftness_proof_parser",
+ "swiftness_stark",
+ "wasm-bindgen",
+]
 
 [[package]]
 name = "syn"

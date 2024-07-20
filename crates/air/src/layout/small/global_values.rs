@@ -1,8 +1,8 @@
-use cairovm_verifier_transcript::transcript::Transcript;
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
 use starknet_core::serde::unsigned_field_element::UfeHex;
 use starknet_crypto::Felt;
+use swiftness_transcript::transcript::Transcript;
 
 #[serde_as]
 #[derive(Debug, PartialEq, Serialize, Deserialize)]

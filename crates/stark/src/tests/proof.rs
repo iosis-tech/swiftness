@@ -2,8 +2,8 @@ use crate::{
     fixtures::{config, unsent_commitment, witness},
     types::StarkProof,
 };
-use cairovm_verifier_air::{fixtures::public_input, layout::recursive::Layout};
 use starknet_crypto::Felt;
+use swiftness_air::{fixtures::public_input, layout::recursive::Layout};
 
 #[test]
 fn test_stark_proof_fibonacci_verify() {

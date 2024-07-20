@@ -11,17 +11,17 @@ use crate::layout::starknet::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
 #[cfg(feature = "starknet_with_keccak")]
 use crate::layout::starknet_with_keccak::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
 
-use cairovm_verifier_commitment::vector;
 use serde::{Deserialize, Serialize};
 use starknet_crypto::Felt;
+use swiftness_commitment::vector;
 
 const MAX_N_COLUMNS: Felt = Felt::from_hex_unchecked("0x80");
 
 // Configuration for the Traces component.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Config {
-    pub original: cairovm_verifier_commitment::table::config::Config,
-    pub interaction: cairovm_verifier_commitment::table::config::Config,
+    pub original: swiftness_commitment::table::config::Config,
+    pub interaction: swiftness_commitment::table::config::Config,
 }
 
 impl Config {

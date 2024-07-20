@@ -1,5 +1,5 @@
-use cairovm_verifier_commitment::table;
 use starknet_crypto::Felt;
+use swiftness_commitment::table;
 
 use crate::trace;
 

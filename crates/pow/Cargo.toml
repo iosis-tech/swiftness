@@ -1,5 +1,5 @@
 [package]
-name = "cairovm_verifier_pow"
+name = "swiftness_pow"
 description.workspace = true
 edition.workspace = true
 homepage.workspace = true
@@ -17,7 +17,7 @@ starknet-types-core.workspace = true
 thiserror.workspace = true
 blake2.workspace = true
 
-cairovm_verifier_transcript.workspace = true
+swiftness_transcript.workspace = true
 
 [features]
 default = ["keccak"]

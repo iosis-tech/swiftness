@@ -1,4 +1,4 @@
-use cairovm_verifier_commitment::table;
+use swiftness_commitment::table;
 use thiserror::Error;
 
 #[derive(Error, Debug)]

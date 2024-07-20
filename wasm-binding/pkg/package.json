@@ -1,5 +1,5 @@
 {
-  "name": "cairovm_verifier",
+  "name": "swiftness",
   "type": "module",
   "keywords": ["stark", "wasm", "verifier", "cairovm"],
   "description": "CairoVM verifier - starknet_with_keccak & blake2s",
@@ -10,13 +10,13 @@
     "url": "https://github.com/iosis-tech/cairovm-verifier"
   },
   "files": [
-    "cairovm_verifier_wasm_bg.wasm",
-    "cairovm_verifier_wasm.js",
-    "cairovm_verifier_wasm.d.ts"
+    "swiftness_wasm_bg.wasm",
+    "swiftness_wasm.js",
+    "swiftness_wasm.d.ts"
   ],
-  "main": "cairovm_verifier_wasm.js",
+  "main": "swiftness_wasm.js",
   "homepage": "",
-  "types": "cairovm_verifier_wasm.d.ts",
+  "types": "swiftness_wasm.d.ts",
   "sideEffects": [
     "./snippets/*"
   ]
