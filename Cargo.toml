@@ -16,7 +16,7 @@ members = [
 exclude = []
 
 [workspace.package]
-description = "Swiftness CairoVM Verifier"
+description = "Swiftness - Rust CairoVM Verifier implementation"
 edition = "2021"
 license-file = "LICENSE"
 readme = "README.md"
