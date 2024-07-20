@@ -17,6 +17,17 @@ cargo run --release --bin swiftness --features starknet_with_keccak,keccak --no-
 cargo test
 ```
 
+### Install wasm-pack
+```sh
+cargo install wasm-pack
+```
+
+### Build WASM:
+
+```sh
+cd wasm-binding && wasm-pack build --target bundler --workspace --features starknet_with_keccak,blake2s --no-default-features
+```
+
 ## Features
 
 - **Usage:**
