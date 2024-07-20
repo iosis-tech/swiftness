@@ -1,5 +1,5 @@
 [package]
-name = "swiftness_cli"
+name = "swiftness"
 description.workspace = true
 edition.workspace = true
 homepage.workspace = true
@@ -18,7 +18,7 @@ swiftness_stark = { workspace = true, default-features = false }
 swiftness_proof_parser = { workspace = true, default-features = false }
 
 [features]
-default = ["recursive", "keccak"]
+default = ["starknet_with_keccak", "blake2s"]
 dex = []
 recursive = []
 recursive_with_poseidon = []

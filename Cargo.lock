@@ -789,6 +789,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
 
 [[package]]
+name = "swiftness"
+version = "0.0.3"
+dependencies = [
+ "clap",
+ "starknet-crypto",
+ "swiftness_air",
+ "swiftness_proof_parser",
+ "swiftness_stark",
+ "thiserror",
+]
+
+[[package]]
 name = "swiftness_air"
 version = "0.0.3"
 dependencies = [
@@ -799,18 +811,6 @@ dependencies = [
  "starknet-crypto",
  "swiftness_commitment",
  "swiftness_transcript",
- "thiserror",
-]
-
-[[package]]
-name = "swiftness_cli"
-version = "0.0.3"
-dependencies = [
- "clap",
- "starknet-crypto",
- "swiftness_air",
- "swiftness_proof_parser",
- "swiftness_stark",
  "thiserror",
 ]
 

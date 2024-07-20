@@ -1,4 +1,6 @@
 use std::path::PathBuf;
+pub use swiftness_proof_parser::*;
+pub use swiftness_stark::*;
 
 #[cfg(feature = "dex")]
 use swiftness_air::layout::dex::Layout;
@@ -14,7 +16,6 @@ use swiftness_air::layout::starknet::Layout;
 use swiftness_air::layout::starknet_with_keccak::Layout;
 
 use clap::Parser;
-use swiftness_proof_parser::parse;
 
 #[derive(Parser)]
 #[command(author, version, about)]
