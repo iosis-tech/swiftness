@@ -79,3 +79,14 @@ jobs:
 
       - name: Run verification
         run: cargo run --release --bin cairovm_verifier_cli --features ${{ matrix.layout }},keccak,std --no-default-features -- --proof examples/proofs/${{ matrix.layout }}/cairo0_example_proof.json
+
+  no-std-build:
+    name: Test no_std support
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check wasm compatibility
+        run: |-
+          cd ensure_no_std
+          rustup show
+          cargo build -r
