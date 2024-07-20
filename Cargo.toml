@@ -39,10 +39,10 @@ num-bigint = { version = "0.4.4", features = ["serde"] }
 blake2 = "0.10.6"
 wasm-bindgen = "0.2"
 
-swiftness_air = { path = "crates/air", default-features = false }
-swiftness_commitment = { path = "crates/commitment", default-features = false }
-swiftness_fri = { path = "crates/fri", default-features = false }
-swiftness_pow = { path = "crates/pow", default-features = false }
-swiftness_stark = { path = "crates/stark", default-features = false }
-swiftness_transcript = { path = "crates/transcript", default-features = false }
-swiftness_proof_parser = { path = "proof-parser", default-features = false }
+swiftness_air = { version = "0.0.3", path = "crates/air", default-features = false }
+swiftness_commitment = { version = "0.0.3", path = "crates/commitment", default-features = false }
+swiftness_fri = { version = "0.0.3", path = "crates/fri", default-features = false }
+swiftness_pow = { version = "0.0.3", path = "crates/pow", default-features = false }
+swiftness_stark = { version = "0.0.3", path = "crates/stark", default-features = false }
+swiftness_transcript = { version = "0.0.3", path = "crates/transcript", default-features = false }
+swiftness_proof_parser = { version = "0.0.3", path = "proof-parser", default-features = false }
