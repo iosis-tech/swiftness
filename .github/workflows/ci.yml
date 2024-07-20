@@ -83,10 +83,22 @@ jobs:
   no-std-build:
     name: Test no_std support
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        layout:
+          [
+            "dex",
+            "recursive",
+            "recursive_with_poseidon",
+            "small",
+            "starknet",
+            "starknet_with_keccak",
+          ]
     steps:
       - uses: actions/checkout@v3
       - name: Check wasm compatibility
         run: |-
           cd ensure_no_std
           rustup show
-          cargo build -r
+          cargo build -r --features ${{ matrix.layout }},keccak
