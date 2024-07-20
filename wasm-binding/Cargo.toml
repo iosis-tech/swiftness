@@ -2,7 +2,6 @@
 name = "swiftness_wasm"
 description = "CairoVM verifier - starknet_with_keccak & blake2s"
 edition.workspace = true
-homepage.workspace = true
 license = "Apache-2.0"
 readme.workspace = true
 repository.workspace = true

@@ -18,7 +18,6 @@ exclude = []
 [workspace.package]
 description = "Swiftness CairoVM Verifier"
 edition = "2021"
-homepage = ""
 license-file = "LICENSE"
 readme = "README.md"
 repository = "https://github.com/iosis-tech/swiftness"
