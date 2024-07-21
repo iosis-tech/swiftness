@@ -2,11 +2,6 @@ name: Manual Publish to npm
 
 on:
   workflow_dispatch:
-    inputs:
-      npm_version:
-        description: 'Version to publish'
-        required: true
-        default: 'patch'  # could be 'patch', 'minor', 'major', or a specific version
 
 jobs:
   publish:
