@@ -101,4 +101,4 @@ jobs:
         run: |-
           cd ensure_no_std
           rustup show
-          cargo build -r --features ${{ matrix.layout }},keccak
+          cargo build -r --features ${{ matrix.layout }},keccak --no-default-features

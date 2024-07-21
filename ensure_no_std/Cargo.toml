@@ -13,11 +13,43 @@ getrandom = { version = "0.2.15", features = ["js"] }
 
 [features]
 default = ["recursive", "keccak"]
-dex = []
-recursive = []
-recursive_with_poseidon = []
-small = []
-starknet = []
-starknet_with_keccak = []
-keccak = []
-blake2s = []
+dex = [
+    "cairovm_verifier_air/dex",
+    "cairovm_verifier_stark/dex",
+    "cairovm_verifier_proof_parser/dex",
+]
+recursive = [
+    "cairovm_verifier_air/recursive",
+    "cairovm_verifier_stark/recursive",
+    "cairovm_verifier_proof_parser/recursive",
+]
+recursive_with_poseidon = [
+    "cairovm_verifier_air/recursive_with_poseidon",
+    "cairovm_verifier_stark/recursive_with_poseidon",
+    "cairovm_verifier_proof_parser/recursive_with_poseidon",
+]
+small = [
+    "cairovm_verifier_air/small",
+    "cairovm_verifier_stark/small",
+    "cairovm_verifier_proof_parser/small",
+]
+starknet = [
+    "cairovm_verifier_air/starknet",
+    "cairovm_verifier_stark/starknet",
+    "cairovm_verifier_proof_parser/starknet",
+]
+starknet_with_keccak = [
+    "cairovm_verifier_air/starknet_with_keccak",
+    "cairovm_verifier_stark/starknet_with_keccak",
+    "cairovm_verifier_proof_parser/starknet_with_keccak",
+]
+keccak = [
+    "cairovm_verifier_air/keccak",
+    "cairovm_verifier_stark/keccak",
+    "cairovm_verifier_proof_parser/keccak",
+]
+blake2s = [
+    "cairovm_verifier_air/blake2s",
+    "cairovm_verifier_stark/blake2s",
+    "cairovm_verifier_proof_parser/blake2s",
+]
