@@ -30,10 +30,6 @@ jobs:
         with:
           node-version: '18'  # specify your desired Node.js version
 
-      - name: Update version
-        run: npm version ${{ github.event.inputs.npm_version }} --no-git-tag-version
-        working-directory: ${{ env.WORKING_DIR }}
-
       - name: Configure npm
         run: npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
         working-directory: ${{ env.WORKING_DIR }}
