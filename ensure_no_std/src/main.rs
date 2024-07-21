@@ -22,6 +22,6 @@ use cairovm_verifier_air;
 #[allow(unused_imports)]
 use cairovm_verifier_commitment;
 #[allow(unused_imports)]
-use cairovm_verifier_proof_parser;
+use cairovm_verifier_pow;
 #[allow(unused_imports)]
 use cairovm_verifier_stark;

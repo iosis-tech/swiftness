@@ -18,9 +18,7 @@ cairovm_verifier_air = { path = "../crates/air", features = [
 cairovm_verifier_stark = { path = "../crates/stark", features = [
     "std",
 ], default-features = false }
-cairovm_verifier_proof_parser = { path = "../proof-parser", features = [
-    "std",
-], default-features = false }
+cairovm_verifier_proof_parser = { path = "../proof-parser", default-features = false }
 
 [features]
 default = ["recursive", "keccak"]

@@ -1,4 +1,3 @@
-use alloc::vec;
 use cairovm_verifier_air::{
     public_memory::PublicInput as PublicInputVerifier,
     trace::{
