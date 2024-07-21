@@ -1,1 +1,0 @@
-# Swiftness Commitment CairoVM Verifier

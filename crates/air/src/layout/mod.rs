@@ -1,6 +1,6 @@
 use crate::{domains::StarkDomains, public_memory::PublicInput};
+use cairovm_verifier_transcript::transcript::Transcript;
 use starknet_crypto::Felt;
-use swiftness_transcript::transcript::Transcript;
 
 pub mod dex;
 pub mod recursive;

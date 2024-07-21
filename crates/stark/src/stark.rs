@@ -2,17 +2,19 @@ use crate::{
     commit::stark_commit, queries::generate_queries, types::StarkProof, verify::stark_verify,
 };
 #[cfg(feature = "dex")]
-use swiftness_air::layout::dex::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
+use cairovm_verifier_air::layout::dex::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
 #[cfg(feature = "recursive")]
-use swiftness_air::layout::recursive::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
+use cairovm_verifier_air::layout::recursive::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
 #[cfg(feature = "recursive_with_poseidon")]
-use swiftness_air::layout::recursive_with_poseidon::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
+use cairovm_verifier_air::layout::recursive_with_poseidon::{
+    NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND,
+};
 #[cfg(feature = "small")]
-use swiftness_air::layout::small::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
+use cairovm_verifier_air::layout::small::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
 #[cfg(feature = "starknet")]
-use swiftness_air::layout::starknet::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
+use cairovm_verifier_air::layout::starknet::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
 #[cfg(feature = "starknet_with_keccak")]
-use swiftness_air::layout::starknet_with_keccak::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
+use cairovm_verifier_air::layout::starknet_with_keccak::{NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
 
 impl StarkProof {
     pub fn verify<Layout: LayoutTrait>(&self, security_bits: Felt) -> Result<(Felt, Felt), Error> {
@@ -59,12 +61,12 @@ impl StarkProof {
     }
 }
 
-use starknet_crypto::Felt;
-use swiftness_air::{
+use cairovm_verifier_air::{
     domains::StarkDomains,
     layout::{LayoutTrait, PublicInputError},
 };
-use swiftness_transcript::transcript::Transcript;
+use cairovm_verifier_transcript::transcript::Transcript;
+use starknet_crypto::Felt;
 use thiserror::Error;
 
 #[derive(Error, Debug)]

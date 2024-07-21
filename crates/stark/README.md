@@ -1,1 +1,0 @@
-# Swiftness Stark CairoVM Verifier

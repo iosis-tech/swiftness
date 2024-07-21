@@ -1,22 +1,28 @@
 #[cfg(feature = "dex")]
-use swiftness_air::layout::dex::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
+use cairovm_verifier_air::layout::dex::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
 #[cfg(feature = "recursive")]
-use swiftness_air::layout::recursive::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
+use cairovm_verifier_air::layout::recursive::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
 #[cfg(feature = "recursive_with_poseidon")]
-use swiftness_air::layout::recursive_with_poseidon::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
+use cairovm_verifier_air::layout::recursive_with_poseidon::{
+    CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS,
+};
 #[cfg(feature = "small")]
-use swiftness_air::layout::small::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
+use cairovm_verifier_air::layout::small::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
 #[cfg(feature = "starknet")]
-use swiftness_air::layout::starknet::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
+use cairovm_verifier_air::layout::starknet::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
 #[cfg(feature = "starknet_with_keccak")]
-use swiftness_air::layout::starknet_with_keccak::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
+use cairovm_verifier_air::layout::starknet_with_keccak::{
+    CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS,
+};
 
+use cairovm_verifier_air::{
+    domains::StarkDomains, layout::LayoutTrait, public_memory::PublicInput,
+};
+use cairovm_verifier_commitment::table::commit::table_commit;
+use cairovm_verifier_fri::fri::fri_commit;
+use cairovm_verifier_pow::pow;
+use cairovm_verifier_transcript::transcript::Transcript;
 use starknet_crypto::Felt;
-use swiftness_air::{domains::StarkDomains, layout::LayoutTrait, public_memory::PublicInput};
-use swiftness_commitment::table::commit::table_commit;
-use swiftness_fri::fri::fri_commit;
-use swiftness_pow::pow;
-use swiftness_transcript::transcript::Transcript;
 
 // STARK commitment phase.
 pub fn stark_commit<Layout: LayoutTrait>(

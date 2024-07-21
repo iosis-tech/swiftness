@@ -21,12 +21,12 @@ pub struct UnsentCommitment {
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Commitment<InteractionElements> {
     // Commitment to the first trace.
-    pub original: swiftness_commitment::table::types::Commitment,
+    pub original: cairovm_verifier_commitment::table::types::Commitment,
     // The interaction elements that were sent to the prover after the first trace commitment (e.g.
     // memory interaction).
     pub interaction_elements: InteractionElements,
     // Commitment to the second (interaction) trace.
-    pub interaction: swiftness_commitment::table::types::Commitment,
+    pub interaction: cairovm_verifier_commitment::table::types::Commitment,
 }
 
 // Responses for queries to the AIR commitment.
@@ -34,14 +34,14 @@ pub struct Commitment<InteractionElements> {
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Decommitment {
     // Responses for queries to the original trace.
-    pub original: swiftness_commitment::table::types::Decommitment,
+    pub original: cairovm_verifier_commitment::table::types::Decommitment,
     // Responses for queries to the interaction trace.
-    pub interaction: swiftness_commitment::table::types::Decommitment,
+    pub interaction: cairovm_verifier_commitment::table::types::Decommitment,
 }
 
 // A witness for a decommitment of the AIR traces over queries.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Witness {
-    pub original: swiftness_commitment::table::types::Witness,
-    pub interaction: swiftness_commitment::table::types::Witness,
+    pub original: cairovm_verifier_commitment::table::types::Witness,
+    pub interaction: cairovm_verifier_commitment::table::types::Witness,
 }

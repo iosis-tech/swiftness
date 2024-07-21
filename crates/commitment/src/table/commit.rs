@@ -1,7 +1,7 @@
 use super::{config::Config, types::Commitment};
 use crate::vector::commit::vector_commit;
+use cairovm_verifier_transcript::transcript::Transcript;
 use starknet_crypto::Felt;
-use swiftness_transcript::transcript::Transcript;
 
 pub fn table_commit(
     transcript: &mut Transcript,

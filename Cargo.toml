@@ -16,11 +16,13 @@ members = [
 exclude = []
 
 [workspace.package]
-description = "Swiftness - Rust CairoVM Verifier implementation"
+description = ""
 edition = "2021"
+homepage = ""
 license-file = "LICENSE"
 readme = "README.md"
-repository = "https://github.com/iosis-tech/swiftness"
+repository = "https://github.com/iosis-tech/cairovm-verifier"
+version = "0.0.3"
 
 [workspace.dependencies]
 bail-out = "0.2.0"
@@ -37,10 +39,10 @@ num-bigint = { version = "0.4.4", features = ["serde"] }
 blake2 = "0.10.6"
 wasm-bindgen = "0.2"
 
-swiftness_air = { path = "crates/air", default-features = false, version = "0.0.3" }
-swiftness_commitment = { path = "crates/commitment", default-features = false, version = "0.0.3" }
-swiftness_fri = { path = "crates/fri", default-features = false, version = "0.0.3" }
-swiftness_pow = { path = "crates/pow", default-features = false, version = "0.0.3" }
-swiftness_stark = { path = "crates/stark", default-features = false, version = "0.0.3" }
-swiftness_transcript = { path = "crates/transcript", default-features = false, version = "0.0.3" }
-swiftness_proof_parser = { path = "proof-parser", default-features = false, version = "0.0.3" }
+cairovm_verifier_air = { path = "crates/air", default-features = false }
+cairovm_verifier_commitment = { path = "crates/commitment", default-features = false }
+cairovm_verifier_fri = { path = "crates/fri", default-features = false }
+cairovm_verifier_pow = { path = "crates/pow", default-features = false }
+cairovm_verifier_stark = { path = "crates/stark", default-features = false }
+cairovm_verifier_transcript = { path = "crates/transcript", default-features = false }
+cairovm_verifier_proof_parser = { path = "proof-parser", default-features = false }

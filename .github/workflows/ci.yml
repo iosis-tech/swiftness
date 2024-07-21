@@ -70,4 +70,4 @@ jobs:
             ${{ runner.os }}-cargo-build-
       
       - name: Run verification
-        run: cargo run --release --bin swiftness --features ${{ matrix.layout }},keccak --no-default-features -- --proof examples/proofs/${{ matrix.layout }}/cairo0_example_proof.json
+        run: cargo run --release --bin cairovm_verifier_cli --features ${{ matrix.layout }},keccak --no-default-features -- --proof examples/proofs/${{ matrix.layout }}/cairo0_example_proof.json

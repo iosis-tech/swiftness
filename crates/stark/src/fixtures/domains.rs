@@ -1,5 +1,5 @@
+use cairovm_verifier_air::domains::StarkDomains;
 use starknet_crypto::Felt;
-use swiftness_air::domains::StarkDomains;
 
 pub fn get() -> StarkDomains {
     StarkDomains {
