@@ -30,10 +30,6 @@ jobs:
         with:
           node-version: '18'  # specify your desired Node.js version
 
-      - name: Install dependencies
-        run: npm install
-        working-directory: ${{ env.WORKING_DIR }}
-
       - name: Update version
         run: npm version ${{ github.event.inputs.npm_version }} --no-git-tag-version
         working-directory: ${{ env.WORKING_DIR }}
