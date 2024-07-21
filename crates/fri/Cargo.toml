@@ -23,6 +23,6 @@ starknet-crypto.workspace = true
 thiserror = { optional = true, workspace = true }
 thiserror-no-std.workspace = true
 
-cairovm_verifier_air.workspace = true
-cairovm_verifier_commitment.workspace = true
-cairovm_verifier_transcript.workspace = true
+cairovm_verifier_air = { path = "../air", default-features = false }
+cairovm_verifier_commitment = { path = "../commitment", default-features = false }
+cairovm_verifier_transcript = { path = "../transcript", default-features = false }

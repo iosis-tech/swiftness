@@ -27,4 +27,4 @@ thiserror-no-std.workspace = true
 crypto-bigint.workspace = true
 blake2.workspace = true
 
-cairovm_verifier_transcript.workspace = true
+cairovm_verifier_transcript = { path = "../transcript", default-features = false }

@@ -14,11 +14,6 @@ mod stark_proof;
 mod utils;
 
 use crate::{json_parser::ProofJSON, stark_proof::StarkProof};
-use std::convert::TryFrom;
-extern crate clap;
-extern crate num_bigint;
-extern crate regex;
-extern crate serde;
 use alloc::string::String;
 use cairovm_verifier_stark::types::StarkProof as StarkProofFromVerifier;
 

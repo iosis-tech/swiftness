@@ -11,6 +11,8 @@ version.workspace = true
 [features]
 default = ["std"]
 std = ["dep:thiserror"]
+keccak = []
+blake2s = []
 
 [dependencies]
 serde.workspace = true
@@ -23,8 +25,8 @@ clap = { version = "4.5.1", features = ["derive"] }
 regex = "1.10.3"
 serde_json = "1.0.114"
 
-cairovm_verifier_stark.workspace = true
-cairovm_verifier_commitment.workspace = true
-cairovm_verifier_fri.workspace = true
-cairovm_verifier_air.workspace = true
-cairovm_verifier_pow.workspace = true
+cairovm_verifier_stark = { path = "../crates/stark", default-features = false }
+cairovm_verifier_commitment = { path = "../crates/commitment", default-features = false }
+cairovm_verifier_fri = { path = "../crates/fri", default-features = false }
+cairovm_verifier_air = { path = "../crates/air", default-features = false }
+cairovm_verifier_pow = { path = "../crates/pow", default-features = false }

@@ -40,11 +40,3 @@ thiserror = "1.0.61"
 num-bigint = { version = "0.4.4", features = ["serde"] }
 blake2 = "0.10.6"
 wasm-bindgen = "0.2"
-
-cairovm_verifier_air = { path = "crates/air", default-features = false }
-cairovm_verifier_commitment = { path = "crates/commitment", default-features = false }
-cairovm_verifier_fri = { path = "crates/fri", default-features = false }
-cairovm_verifier_pow = { path = "crates/pow", default-features = false }
-cairovm_verifier_stark = { path = "crates/stark", default-features = false }
-cairovm_verifier_transcript = { path = "crates/transcript", default-features = false }
-cairovm_verifier_proof_parser = { path = "proof-parser", default-features = false }

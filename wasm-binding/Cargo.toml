@@ -12,9 +12,9 @@ version.workspace = true
 serde_json.workspace = true
 wasm-bindgen.workspace = true
 
-cairovm_verifier_air = { workspace = true, default-features = false }
-cairovm_verifier_stark = { workspace = true, default-features = false }
-cairovm_verifier_proof_parser = { workspace = true, default-features = false }
+cairovm_verifier_air = { path = "../crates/air", default-features = false }
+cairovm_verifier_stark = { path = "../crates/stark", default-features = false }
+cairovm_verifier_proof_parser = { path = "../proof-parser", default-features = false }
 
 [lib]
 crate-type = ["cdylib", "rlib"]
