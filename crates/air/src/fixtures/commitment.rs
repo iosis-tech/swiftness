@@ -1,7 +1,7 @@
 use super::{config, interaction_elements, unsent_commitment};
 use crate::{layout::recursive::global_values::InteractionElements, trace::Commitment};
-use cairovm_verifier_commitment::{table, vector};
 use starknet_crypto::Felt;
+use swiftness_commitment::{table, vector};
 
 pub fn get() -> Commitment<InteractionElements> {
     let unsent_commitment = unsent_commitment::get();
