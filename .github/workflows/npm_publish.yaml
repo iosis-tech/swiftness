@@ -38,7 +38,7 @@ jobs:
         run: cargo install wasm-pack
       
       - name: Build package
-        run: wasm-pack build --target web --workspace --features ${{ matrix.layout }},${{ matrix.hash }} --no-default-features --out-dir pkg
+        run: wasm-pack build --out-dir pkg --target web --workspace --features ${{ matrix.layout }},${{ matrix.hash }} --no-default-features
         working-directory: ${{ env.WORKING_DIR }}
       
       - name: Rename package
