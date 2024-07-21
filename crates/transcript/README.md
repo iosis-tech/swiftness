@@ -1,1 +1,0 @@
-# Swiftness Transcript CairoVM Verifier

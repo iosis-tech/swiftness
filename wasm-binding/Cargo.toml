@@ -1,19 +1,20 @@
 [package]
-name = "swiftness_wasm"
-description = "Swiftness CairoVM Verifier | swiftness-{layout}-{commitment hash}"
+name = "cairovm_verifier_wasm"
+description = "CairoVM verifier - starknet_with_keccak & blake2s"
 edition.workspace = true
+homepage.workspace = true
 license = "Apache-2.0"
-readme = "README.md"
+readme.workspace = true
 repository.workspace = true
-version = "0.0.3"
+version.workspace = true
 
 [dependencies]
 serde_json.workspace = true
 wasm-bindgen.workspace = true
 
-swiftness_air = { workspace = true }
-swiftness_stark = { workspace = true }
-swiftness_proof_parser = { workspace = true }
+cairovm_verifier_air = { workspace = true, default-features = false }
+cairovm_verifier_stark = { workspace = true, default-features = false }
+cairovm_verifier_proof_parser = { workspace = true, default-features = false }
 
 [lib]
 crate-type = ["cdylib", "rlib"]
@@ -22,7 +23,7 @@ crate-type = ["cdylib", "rlib"]
 getrandom = { version = "0.2.15", features = ["js"] }
 
 [features]
-default = ["starknet_with_keccak", "blake2s"]
+default = ["starknet_with_keccak", "keccak"]
 dex = []
 recursive = []
 recursive_with_poseidon = []

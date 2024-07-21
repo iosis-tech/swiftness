@@ -1,11 +1,11 @@
-use starknet_crypto::Felt;
-use swiftness_commitment::table::{
+use cairovm_verifier_commitment::table::{
     commit::table_commit,
     config::Config as TableCommitmentConfig,
     decommit::table_decommit,
     types::{Commitment as TableCommitment, Decommitment as TableDecommitment},
 };
-use swiftness_transcript::transcript::Transcript;
+use cairovm_verifier_transcript::transcript::Transcript;
+use starknet_crypto::Felt;
 
 use crate::{
     config::Config as FriConfig,

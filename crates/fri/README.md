@@ -1,1 +1,0 @@
-# Swiftness Fri CairoVM Verifier

@@ -2,8 +2,8 @@ use crate::{
     fixtures::{commitment, domains, witness},
     verify::stark_verify,
 };
-use swiftness_air::layout::recursive::{Layout, NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
-use swiftness_fri::fixtures::queries;
+use cairovm_verifier_air::layout::recursive::{Layout, NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
+use cairovm_verifier_fri::fixtures::queries;
 
 #[test]
 pub fn test_stark_verify() {

@@ -1,6 +1,6 @@
+use cairovm_verifier_air::{fixtures::public_input, layout::recursive::Layout};
+use cairovm_verifier_transcript::transcript::Transcript;
 use starknet_crypto::Felt;
-use swiftness_air::{fixtures::public_input, layout::recursive::Layout};
-use swiftness_transcript::transcript::Transcript;
 
 use crate::{
     commit::stark_commit,
