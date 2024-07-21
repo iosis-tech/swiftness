@@ -1,24 +1,23 @@
 [package]
-name = "cairovm_verifier_cli"
+name = "swiftness"
 description.workspace = true
 edition.workspace = true
-homepage.workspace = true
 license-file.workspace = true
 readme.workspace = true
 repository.workspace = true
-version.workspace = true
+version = "0.0.3"
 
 [dependencies]
 clap = { version = "4.4.4", features = ["derive"] }
 thiserror.workspace = true
 starknet-crypto.workspace = true
 
-cairovm_verifier_air = { workspace = true, default-features = false }
-cairovm_verifier_stark = { workspace = true, default-features = false }
-cairovm_verifier_proof_parser = { workspace = true, default-features = false }
+swiftness_air = { workspace = true }
+swiftness_stark = { workspace = true }
+swiftness_proof_parser = { workspace = true }
 
 [features]
-default = ["recursive", "keccak"]
+default = ["starknet_with_keccak", "blake2s"]
 dex = []
 recursive = []
 recursive_with_poseidon = []

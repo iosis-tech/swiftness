@@ -1,12 +1,11 @@
 [package]
-name = "cairovm_verifier_fri"
+name = "swiftness_fri"
 description.workspace = true
 edition.workspace = true
-homepage.workspace = true
 license-file.workspace = true
-readme.workspace = true
+readme = "README.md"
 repository.workspace = true
-version.workspace = true
+version = "0.0.3"
 
 [dependencies]
 serde_with.workspace = true
@@ -16,6 +15,6 @@ starknet-core.workspace = true
 starknet-crypto.workspace = true
 thiserror.workspace = true
 
-cairovm_verifier_air.workspace = true
-cairovm_verifier_commitment.workspace = true
-cairovm_verifier_transcript.workspace = true
+swiftness_air.workspace = true
+swiftness_commitment.workspace = true
+swiftness_transcript.workspace = true

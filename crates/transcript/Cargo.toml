@@ -1,12 +1,11 @@
 [package]
-name = "cairovm_verifier_transcript"
+name = "swiftness_transcript"
 description.workspace = true
 edition.workspace = true
-homepage.workspace = true
 license-file.workspace = true
-readme.workspace = true
+readme = "README.md"
 repository.workspace = true
-version.workspace = true
+version = "0.0.3"
 
 [dependencies]
 starknet-crypto.workspace = true

@@ -1,4 +1,4 @@
-use cairovm_verifier_air::{
+use swiftness_air::{
     public_memory::PublicInput as PublicInputVerifier,
     trace::{
         config::Config as TraceConfigVerifier, Decommitment as TraceDecommitmentVerifier,
@@ -6,7 +6,7 @@ use cairovm_verifier_air::{
     },
     types::{AddrValue, Page, SegmentInfo as SegmentInfoVerifier},
 };
-use cairovm_verifier_commitment::{
+use swiftness_commitment::{
     table::{
         config::Config as TableConfigVerifier,
         types::{
@@ -17,17 +17,17 @@ use cairovm_verifier_commitment::{
         config::Config as VectorConfigVerifier, types::Witness as VectorCommitmentWitnessVerifier,
     },
 };
-use cairovm_verifier_fri::{
+use swiftness_fri::{
     config::Config as FriConfigVerifier,
     types::{
         LayerWitness, UnsentCommitment as FriUnsentCommitmentVerifier,
         Witness as FriWitnessVerifier,
     },
 };
-use cairovm_verifier_pow::{
+use swiftness_pow::{
     config::Config as PowConfigVerifier, pow::UnsentCommitment as PowUnsentCommitmentVerifier,
 };
-use cairovm_verifier_stark::{
+use swiftness_stark::{
     config::StarkConfig as StarkConfigVerifier,
     types::{
         StarkProof as StarkProofVerifier, StarkUnsentCommitment as StarkUnsentCommitmentVerifier,
