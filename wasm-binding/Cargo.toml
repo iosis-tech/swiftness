@@ -11,9 +11,9 @@ version = "0.0.3"
 serde_json.workspace = true
 wasm-bindgen.workspace = true
 
-swiftness_air = { workspace = true, default-features = false }
-swiftness_stark = { workspace = true, default-features = false }
-swiftness_proof_parser = { workspace = true, default-features = false }
+swiftness_air = { workspace = true }
+swiftness_stark = { workspace = true }
+swiftness_proof_parser = { workspace = true }
 
 [lib]
 crate-type = ["cdylib", "rlib"]
@@ -22,7 +22,7 @@ crate-type = ["cdylib", "rlib"]
 getrandom = { version = "0.2.15", features = ["js"] }
 
 [features]
-default = ["starknet_with_keccak", "keccak"]
+default = ["starknet_with_keccak", "blake2s"]
 dex = []
 recursive = []
 recursive_with_poseidon = []

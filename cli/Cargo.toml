@@ -12,9 +12,9 @@ clap = { version = "4.4.4", features = ["derive"] }
 thiserror.workspace = true
 starknet-crypto.workspace = true
 
-swiftness_air = { workspace = true, default-features = false }
-swiftness_stark = { workspace = true, default-features = false }
-swiftness_proof_parser = { workspace = true, default-features = false }
+swiftness_air = { workspace = true }
+swiftness_stark = { workspace = true }
+swiftness_proof_parser = { workspace = true }
 
 [features]
 default = ["starknet_with_keccak", "blake2s"]

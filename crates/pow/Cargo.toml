@@ -19,6 +19,6 @@ blake2.workspace = true
 swiftness_transcript.workspace = true
 
 [features]
-default = ["keccak"]
+default = ["blake2s"]
 keccak = []
 blake2s = []
