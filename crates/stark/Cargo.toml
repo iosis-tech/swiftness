@@ -23,7 +23,7 @@ swiftness_pow.workspace = true
 swiftness_transcript.workspace = true
 
 [features]
-default = ["starknet_with_keccak"]
+default = ["recursive"]
 dex = []
 recursive = []
 recursive_with_poseidon = []
