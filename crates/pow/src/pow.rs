@@ -8,9 +8,9 @@ use sha3::Digest;
 use sha3::Keccak256;
 
 use bail_out::assure;
-use cairovm_verifier_transcript::transcript::Transcript;
 use serde::{Deserialize, Serialize};
 use starknet_crypto::Felt;
+use swiftness_transcript::transcript::Transcript;
 
 use crate::config::Config;
 
