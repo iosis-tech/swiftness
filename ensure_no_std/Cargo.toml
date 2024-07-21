@@ -7,6 +7,7 @@ edition = "2021"
 cairovm_verifier_air = { path = "../crates/air", default-features = false }
 cairovm_verifier_stark = { path = "../crates/stark", default-features = false }
 cairovm_verifier_proof_parser = { path = "../proof-parser", default-features = false }
+cairovm_verifier_commitment = { path = "../crates/commitment", default-features = false }
 
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 getrandom = { version = "0.2.15", features = ["js"] }
@@ -28,5 +29,5 @@ starknet_with_keccak = [
     "cairovm_verifier_air/starknet_with_keccak",
     "cairovm_verifier_stark/starknet_with_keccak",
 ]
-keccak = []
-blake2s = []
+keccak = ["cairovm_verifier_commitment/keccak"]
+blake2s = ["cairovm_verifier_commitment/blake2s"]

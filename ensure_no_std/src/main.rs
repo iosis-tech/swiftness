@@ -20,6 +20,8 @@ static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 #[allow(unused_imports)]
 use cairovm_verifier_air;
 #[allow(unused_imports)]
+use cairovm_verifier_commitment;
+#[allow(unused_imports)]
 use cairovm_verifier_proof_parser;
 #[allow(unused_imports)]
 use cairovm_verifier_stark;
