@@ -11,6 +11,8 @@ version.workspace = true
 [features]
 default = ["std"]
 std = ["dep:thiserror"]
+keccak = []
+blake2s = []
 
 [dependencies]
 serde_with.workspace = true
