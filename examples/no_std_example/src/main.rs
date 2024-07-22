@@ -18,10 +18,10 @@ pub extern "C" fn _start() -> ! {
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 #[allow(unused_imports)]
-use cairovm_verifier_air;
+use swiftness_air;
 #[allow(unused_imports)]
-use cairovm_verifier_commitment;
+use swiftness_commitment;
 #[allow(unused_imports)]
-use cairovm_verifier_pow;
+use swiftness_pow;
 #[allow(unused_imports)]
-use cairovm_verifier_stark;
+use swiftness_stark;

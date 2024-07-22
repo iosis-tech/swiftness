@@ -14,7 +14,7 @@ members = [
     "cli",
     "wasm-binding",
 ]
-exclude = ["examples/no_std"]
+exclude = ["examples/no_std_example"]
 
 [workspace.package]
 description = "Swiftness - Rust CairoVM Verifier implementation"
