@@ -9,7 +9,10 @@ version.workspace = true
 
 [features]
 default = ["std", "keccak"]
-std = ["dep:thiserror"]
+std = [
+    "dep:thiserror",
+    "swiftness_transcript/std",
+]
 keccak = []
 blake2s = []
 

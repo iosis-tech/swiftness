@@ -8,7 +8,7 @@ This is the Rust implementation of the Cairo-VM STARK verifier with layouts. The
 ### Verify example proof:
 
 ```sh
-cargo run --release --bin swiftness --features starknet_with_keccak,keccak --no-default-features -- --proof examples/proofs/starknet_with_keccak/cairo0_example_proof.json 
+cargo run --release --bin swiftness --features std,starknet_with_keccak,keccak --no-default-features -- --proof examples/proofs/starknet_with_keccak/cairo0_example_proof.json 
 ```
 
 ## Run Tests
@@ -25,7 +25,7 @@ cargo install wasm-pack
 ### Build WASM:
 
 ```sh
-cd wasm-binding && wasm-pack build --target web --workspace --features starknet_with_keccak,blake2s --no-default-features
+cd wasm-binding && wasm-pack build --target web --workspace --features std,starknet_with_keccak,blake2s --no-default-features
 ```
 
 ## Features

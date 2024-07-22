@@ -8,7 +8,7 @@ repository.workspace = true
 version.workspace = true
 
 [features]
-default = ["std", "recursive"]
+default = ["std", "recursive", "keccak"]
 std = [
     "dep:thiserror",
     "swiftness_commitment/std",
@@ -20,6 +20,12 @@ recursive_with_poseidon = []
 small = []
 starknet = []
 starknet_with_keccak = []
+keccak = [
+    "swiftness_commitment/keccak",
+]
+blake2s = [
+    "swiftness_commitment/blake2s",
+]
 
 [dependencies]
 bail-out.workspace = true

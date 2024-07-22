@@ -67,13 +67,13 @@ use thiserror::Error;
 #[cfg(feature = "std")]
 #[derive(Error, Debug)]
 pub enum Error {
-    #[cfg_attr(feature = "std", error("Fri Error"))]
+    #[error("Fri Error")]
     FriError(#[from] fri::Error),
 
-    #[cfg_attr(feature = "std", error("TraceDecommit Error"))]
+    #[error("TraceDecommit Error")]
     TraceDecommitError(#[from] swiftness_air::trace::decommit::Error),
 
-    #[cfg_attr(feature = "std", error("TableDecommit Error"))]
+    #[error("TableDecommit Error")]
     TableDecommitError(#[from] swiftness_commitment::table::decommit::Error),
 }
 

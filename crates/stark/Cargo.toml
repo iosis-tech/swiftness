@@ -8,7 +8,7 @@ repository.workspace = true
 version.workspace = true
 
 [features]
-default = ["std", "recursive"]
+default = ["std", "recursive", "keccak"]
 std = [
     "dep:thiserror",
     "swiftness_air/std",
@@ -16,12 +16,24 @@ std = [
     "swiftness_fri/std",
     "swiftness_pow/std",
 ]
-dex = []
-recursive = []
-recursive_with_poseidon = []
-small = []
-starknet = []
-starknet_with_keccak = []
+dex = ["swiftness_air/dex"]
+recursive = [
+    "swiftness_air/recursive",
+]
+recursive_with_poseidon = [
+    "swiftness_air/recursive_with_poseidon",
+]
+small = ["swiftness_air/small"]
+starknet = ["swiftness_air/starknet"]
+starknet_with_keccak = [
+    "swiftness_air/starknet_with_keccak",
+]
+keccak = [
+    "swiftness_commitment/keccak",
+]
+blake2s = [
+    "swiftness_commitment/blake2s",
+]
 
 [dependencies]
 bail-out.workspace = true
