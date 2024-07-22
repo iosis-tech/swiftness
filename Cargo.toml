@@ -12,7 +12,7 @@ members = [
     "crates/stark",
     "proof_parser",
     "cli",
-    "wasm-binding",
+    "wasm_bindings",
 ]
 exclude = ["examples/no_std_example"]
 
