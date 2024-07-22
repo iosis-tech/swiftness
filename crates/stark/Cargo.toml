@@ -31,9 +31,11 @@ starknet_with_keccak = [
     "swiftness_air/starknet_with_keccak",
 ]
 keccak = [
+    "swiftness_pow/keccak",
     "swiftness_commitment/keccak",
 ]
 blake2s = [
+    "swiftness_pow/blake2s",
     "swiftness_commitment/blake2s",
 ]
 

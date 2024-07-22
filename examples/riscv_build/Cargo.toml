@@ -1,5 +1,5 @@
 [package]
-name = "no_std_build"
+name = "riscv_build"
 version = "0.1.0"
 edition = "2021"
 
@@ -13,7 +13,7 @@ swiftness_transcript = { path = "../../crates/transcript", default-features = fa
 embedded-alloc = "0.5.1"
 
 [features]
-default = ["recursive", "keccak"]
+default = ["recursive", "blake2s"]
 dex = ["swiftness_air/dex", "swiftness_stark/dex"]
 recursive = [
     "swiftness_air/recursive",
