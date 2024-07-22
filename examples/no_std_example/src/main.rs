@@ -14,9 +14,6 @@ pub extern "C" fn _start() -> ! {
     loop {}
 }
 
-#[global_allocator]
-static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
-
 #[allow(unused_imports)]
 use swiftness_air;
 #[allow(unused_imports)]
