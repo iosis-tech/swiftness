@@ -1,4 +1,4 @@
-use cairovm_verifier_commitment::table;
+use swiftness_commitment::table;
 
 #[cfg(feature = "std")]
 use thiserror::Error;

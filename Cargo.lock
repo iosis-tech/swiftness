@@ -136,141 +136,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "79296716171880943b8470b5f8d03aa55eb2e645a4874bdbb28adb49162e012c"
 
 [[package]]
-name = "cairovm_verifier_air"
-version = "0.0.3"
-dependencies = [
- "bail-out",
- "cairovm_verifier_commitment",
- "cairovm_verifier_transcript",
- "serde",
- "serde_with",
- "starknet-core",
- "starknet-crypto",
- "thiserror",
- "thiserror-no-std",
-]
-
-[[package]]
-name = "cairovm_verifier_cli"
-version = "0.0.3"
-dependencies = [
- "cairovm_verifier_air",
- "cairovm_verifier_proof_parser",
- "cairovm_verifier_stark",
- "clap",
- "starknet-crypto",
-]
-
-[[package]]
-name = "cairovm_verifier_commitment"
-version = "0.0.3"
-dependencies = [
- "blake2",
- "cairovm_verifier_transcript",
- "crypto-bigint",
- "serde",
- "serde_with",
- "sha3",
- "starknet-core",
- "starknet-crypto",
- "starknet-types-core",
- "thiserror",
- "thiserror-no-std",
-]
-
-[[package]]
-name = "cairovm_verifier_fri"
-version = "0.0.3"
-dependencies = [
- "cairovm_verifier_air",
- "cairovm_verifier_commitment",
- "cairovm_verifier_transcript",
- "serde",
- "serde_with",
- "sha3",
- "starknet-core",
- "starknet-crypto",
- "thiserror",
- "thiserror-no-std",
-]
-
-[[package]]
-name = "cairovm_verifier_pow"
-version = "0.0.3"
-dependencies = [
- "bail-out",
- "blake2",
- "cairovm_verifier_transcript",
- "serde",
- "sha3",
- "starknet-crypto",
- "starknet-types-core",
- "thiserror",
- "thiserror-no-std",
-]
-
-[[package]]
-name = "cairovm_verifier_proof_parser"
-version = "0.0.3"
-dependencies = [
- "anyhow",
- "cairovm_verifier_air",
- "cairovm_verifier_commitment",
- "cairovm_verifier_fri",
- "cairovm_verifier_pow",
- "cairovm_verifier_stark",
- "clap",
- "num-bigint",
- "regex",
- "serde",
- "serde_json",
- "starknet-types-core",
- "thiserror",
-]
-
-[[package]]
-name = "cairovm_verifier_stark"
-version = "0.0.3"
-dependencies = [
- "bail-out",
- "cairovm_verifier_air",
- "cairovm_verifier_commitment",
- "cairovm_verifier_fri",
- "cairovm_verifier_pow",
- "cairovm_verifier_transcript",
- "serde",
- "serde_with",
- "starknet-core",
- "starknet-crypto",
- "thiserror",
- "thiserror-no-std",
- "wasm-bindgen",
-]
-
-[[package]]
-name = "cairovm_verifier_transcript"
-version = "0.0.3"
-dependencies = [
- "starknet-crypto",
-]
-
-[[package]]
-name = "cairovm_verifier_wasm"
-version = "0.0.3"
-dependencies = [
- "cairovm_verifier_air",
- "cairovm_verifier_proof_parser",
- "cairovm_verifier_stark",
- "getrandom",
- "serde_json",
- "wasm-bindgen",
-]
-
-[[package]]
 name = "cc"
-version = "1.1.5"
+version = "1.1.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "324c74f2155653c90b04f25b2a47a8a631360cb908f92a772695f430c7e31052"
+checksum = "2aba8f4e9906c7ce3c73463f62a7f0c65183ada1a2d47e397cc8810827f9694f"
 
 [[package]]
 name = "cfg-if"
@@ -322,7 +191,7 @@ dependencies = [
  "heck",
  "proc-macro2",
  "quote",
- "syn 2.0.71",
+ "syn 2.0.72",
 ]
 
 [[package]]
@@ -404,7 +273,7 @@ dependencies = [
  "proc-macro2",
  "quote",
  "strsim",
- "syn 2.0.71",
+ "syn 2.0.72",
 ]
 
 [[package]]
@@ -415,7 +284,7 @@ checksum = "d336a2a514f6ccccaa3e09b02d41d35330c07ddf03a62165fcec10bb561c7806"
 dependencies = [
  "darling_core",
  "quote",
- "syn 2.0.71",
+ "syn 2.0.72",
 ]
 
 [[package]]
@@ -760,7 +629,7 @@ checksum = "e0cd7e117be63d3c3678776753929474f3b04a43a080c744d6b0ae2a8c28e222"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.71",
+ "syn 2.0.72",
 ]
 
 [[package]]
@@ -810,7 +679,7 @@ dependencies = [
  "darling",
  "proc-macro2",
  "quote",
- "syn 2.0.71",
+ "syn 2.0.72",
 ]
 
 [[package]]
@@ -881,7 +750,7 @@ checksum = "2e179dedc3fa6da064e56811d3e05d446aa2f7459e4eb0e3e49378a337235437"
 dependencies = [
  "starknet-curve",
  "starknet-types-core",
- "syn 2.0.71",
+ "syn 2.0.72",
 ]
 
 [[package]]
@@ -920,6 +789,137 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
 
 [[package]]
+name = "swiftness"
+version = "0.0.4"
+dependencies = [
+ "clap",
+ "starknet-crypto",
+ "swiftness_air",
+ "swiftness_proof_parser",
+ "swiftness_stark",
+]
+
+[[package]]
+name = "swiftness_air"
+version = "0.0.4"
+dependencies = [
+ "bail-out",
+ "serde",
+ "serde_with",
+ "starknet-core",
+ "starknet-crypto",
+ "swiftness_commitment",
+ "swiftness_transcript",
+ "thiserror",
+ "thiserror-no-std",
+]
+
+[[package]]
+name = "swiftness_commitment"
+version = "0.0.4"
+dependencies = [
+ "blake2",
+ "crypto-bigint",
+ "serde",
+ "serde_with",
+ "sha3",
+ "starknet-core",
+ "starknet-crypto",
+ "starknet-types-core",
+ "swiftness_transcript",
+ "thiserror",
+ "thiserror-no-std",
+]
+
+[[package]]
+name = "swiftness_fri"
+version = "0.0.4"
+dependencies = [
+ "serde",
+ "serde_with",
+ "sha3",
+ "starknet-core",
+ "starknet-crypto",
+ "swiftness_air",
+ "swiftness_commitment",
+ "swiftness_transcript",
+ "thiserror",
+ "thiserror-no-std",
+]
+
+[[package]]
+name = "swiftness_pow"
+version = "0.0.4"
+dependencies = [
+ "bail-out",
+ "blake2",
+ "serde",
+ "sha3",
+ "starknet-crypto",
+ "starknet-types-core",
+ "swiftness_transcript",
+ "thiserror",
+ "thiserror-no-std",
+]
+
+[[package]]
+name = "swiftness_proof_parser"
+version = "0.0.4"
+dependencies = [
+ "anyhow",
+ "clap",
+ "num-bigint",
+ "regex",
+ "serde",
+ "serde_json",
+ "starknet-types-core",
+ "swiftness_air",
+ "swiftness_commitment",
+ "swiftness_fri",
+ "swiftness_pow",
+ "swiftness_stark",
+ "thiserror",
+]
+
+[[package]]
+name = "swiftness_stark"
+version = "0.0.4"
+dependencies = [
+ "bail-out",
+ "serde",
+ "serde_with",
+ "starknet-core",
+ "starknet-crypto",
+ "swiftness_air",
+ "swiftness_commitment",
+ "swiftness_fri",
+ "swiftness_pow",
+ "swiftness_transcript",
+ "thiserror",
+ "thiserror-no-std",
+ "wasm-bindgen",
+]
+
+[[package]]
+name = "swiftness_transcript"
+version = "0.0.4"
+dependencies = [
+ "starknet-crypto",
+]
+
+[[package]]
+name = "swiftness_wasm"
+version = "0.0.4"
+dependencies = [
+ "getrandom",
+ "serde_json",
+ "swiftness_air",
+ "swiftness_proof_parser",
+ "swiftness_stark",
+ "wasm-bindgen",
+]
+
+[[package]]
 name = "syn"
 version = "1.0.109"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -932,9 +932,9 @@ dependencies = [
 
 [[package]]
 name = "syn"
-version = "2.0.71"
+version = "2.0.72"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b146dcf730474b4bcd16c311627b31ede9ab149045db4d6088b3becaea046462"
+checksum = "dc4b9b9bf2add8093d3f2c0204471e951b2285580335de42f9d2534f3ae7a8af"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -958,7 +958,7 @@ checksum = "a4558b58466b9ad7ca0f102865eccc95938dca1a74a856f2b57b6629050da261"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.71",
+ "syn 2.0.72",
 ]
 
 [[package]]
@@ -1063,7 +1063,7 @@ dependencies = [
  "once_cell",
  "proc-macro2",
  "quote",
- "syn 2.0.71",
+ "syn 2.0.72",
  "wasm-bindgen-shared",
 ]
 
@@ -1085,7 +1085,7 @@ checksum = "e94f17b526d0a461a191c78ea52bbce64071ed5c04c9ffe424dcb38f74171bb7"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.71",
+ "syn 2.0.72",
  "wasm-bindgen-backend",
  "wasm-bindgen-shared",
 ]

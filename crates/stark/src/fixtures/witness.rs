@@ -1,16 +1,16 @@
 use alloc::vec;
-use cairovm_verifier_commitment::{
+use starknet_crypto::Felt;
+use swiftness_commitment::{
     table::types::{Decommitment as TableDecommitment, Witness as TableCommitmentWitness},
     vector::types::Witness as VectorCommitmentWitness,
 };
-use starknet_crypto::Felt;
 
 use crate::types::StarkWitness;
 
 pub fn get() -> StarkWitness {
     StarkWitness {
-        traces_decommitment: cairovm_verifier_air::fixtures::decommitment::get(),
-        traces_witness: cairovm_verifier_air::fixtures::witness::get(),
+        traces_decommitment: swiftness_air::fixtures::decommitment::get(),
+        traces_witness: swiftness_air::fixtures::witness::get(),
         composition_decommitment: TableDecommitment {
             values: vec![
                 Felt::from_hex_unchecked(
@@ -561,6 +561,6 @@ pub fn get() -> StarkWitness {
                 ],
             },
         },
-        fri_witness: cairovm_verifier_fri::fixtures::witness::get(),
+        fri_witness: swiftness_fri::fixtures::witness::get(),
     }
 }

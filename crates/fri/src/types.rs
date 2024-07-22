@@ -24,7 +24,7 @@ pub struct UnsentCommitment {
 pub struct Commitment {
     pub config: Config,
     // Array of size n_layers - 1 containing table commitments for each inner layer.
-    pub inner_layers: Vec<cairovm_verifier_commitment::table::types::Commitment>,
+    pub inner_layers: Vec<swiftness_commitment::table::types::Commitment>,
     // Array of size n_layers, of one evaluation point for each layer.
     #[serde_as(as = "Vec<UfeHex>")]
     pub eval_points: Vec<Felt>,
@@ -62,5 +62,5 @@ pub struct LayerWitness {
     #[serde_as(as = "Vec<UfeHex>")]
     pub leaves: Vec<Felt>,
     // Table commitment witnesses for decommiting all the leaves.
-    pub table_witness: cairovm_verifier_commitment::table::types::Witness,
+    pub table_witness: swiftness_commitment::table::types::Witness,
 }

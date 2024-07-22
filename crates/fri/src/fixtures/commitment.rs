@@ -1,9 +1,9 @@
 use alloc::vec;
-use cairovm_verifier_commitment::{
+use starknet_crypto::Felt;
+use swiftness_commitment::{
     table::{config::Config as TableCommitmentConfig, types::Commitment as TableCommitment},
     vector::{config::Config as VectorCommitmentConfig, types::Commitment as VectorCommitment},
 };
-use starknet_crypto::Felt;
 
 use crate::types::Commitment as FriCommitment;
 

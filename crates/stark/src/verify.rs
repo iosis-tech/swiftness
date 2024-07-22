@@ -1,11 +1,11 @@
 use alloc::borrow::ToOwned;
-use cairovm_verifier_air::{domains::StarkDomains, layout::LayoutTrait};
-use cairovm_verifier_commitment::table::decommit::table_decommit;
-use cairovm_verifier_fri::{
+use starknet_crypto::Felt;
+use swiftness_air::{domains::StarkDomains, layout::LayoutTrait};
+use swiftness_commitment::table::decommit::table_decommit;
+use swiftness_fri::{
     fri::{self, fri_verify},
     types,
 };
-use starknet_crypto::Felt;
 
 use crate::{
     oods::{eval_oods_boundary_poly_at_points, OodsEvaluationInfo},
@@ -71,10 +71,10 @@ pub enum Error {
     FriError(#[from] fri::Error),
 
     #[cfg_attr(feature = "std", error("TraceDecommit Error"))]
-    TraceDecommitError(#[from] cairovm_verifier_air::trace::decommit::Error),
+    TraceDecommitError(#[from] swiftness_air::trace::decommit::Error),
 
     #[cfg_attr(feature = "std", error("TableDecommit Error"))]
-    TableDecommitError(#[from] cairovm_verifier_commitment::table::decommit::Error),
+    TableDecommitError(#[from] swiftness_commitment::table::decommit::Error),
 }
 
 #[cfg(not(feature = "std"))]
@@ -87,8 +87,8 @@ pub enum Error {
     FriError(#[from] fri::Error),
 
     #[error("TraceDecommit Error")]
-    TraceDecommitError(#[from] cairovm_verifier_air::trace::decommit::Error),
+    TraceDecommitError(#[from] swiftness_air::trace::decommit::Error),
 
     #[error("TableDecommit Error")]
-    TableDecommitError(#[from] cairovm_verifier_commitment::table::decommit::Error),
+    TableDecommitError(#[from] swiftness_commitment::table::decommit::Error),
 }

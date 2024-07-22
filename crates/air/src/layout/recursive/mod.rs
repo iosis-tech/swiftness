@@ -9,10 +9,10 @@ use crate::{
 use alloc::vec;
 use alloc::vec::Vec;
 use bail_out::ensure;
-use cairovm_verifier_commitment::table::{commit::table_commit, decommit::table_decommit};
 use global_values::{EcPoint, GlobalValues, InteractionElements};
 use starknet_core::types::NonZeroFelt;
 use starknet_crypto::{poseidon_hash_many, Felt};
+use swiftness_commitment::table::{commit::table_commit, decommit::table_decommit};
 
 use super::{CompositionPolyEvalError, LayoutTrait, PublicInputError};
 
@@ -215,7 +215,7 @@ impl LayoutTrait for Layout {
         )
     }
     fn traces_commit(
-        transcript: &mut cairovm_verifier_transcript::transcript::Transcript,
+        transcript: &mut swiftness_transcript::transcript::Transcript,
         unsent_commitment: &crate::trace::UnsentCommitment,
         config: crate::trace::config::Config,
     ) -> crate::trace::Commitment<Self::InteractionElements> {

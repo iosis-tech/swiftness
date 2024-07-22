@@ -1,6 +1,6 @@
 use crate::trace;
-use cairovm_verifier_commitment::{table, vector};
 use starknet_crypto::Felt;
+use swiftness_commitment::{table, vector};
 
 pub fn get() -> trace::config::Config {
     trace::config::Config {

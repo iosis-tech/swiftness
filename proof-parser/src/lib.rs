@@ -7,7 +7,12 @@ mod stark_proof;
 mod utils;
 
 use crate::{json_parser::ProofJSON, stark_proof::StarkProof};
-use cairovm_verifier_stark::types::StarkProof as StarkProofFromVerifier;
+use std::convert::TryFrom;
+extern crate clap;
+extern crate num_bigint;
+extern crate regex;
+extern crate serde;
+use swiftness_stark::types::StarkProof as StarkProofFromVerifier;
 
 pub fn parse(input: String) -> anyhow::Result<StarkProofFromVerifier> {
     let proof_json = serde_json::from_str::<ProofJSON>(&input)?;

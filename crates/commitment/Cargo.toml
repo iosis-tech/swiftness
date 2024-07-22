@@ -1,10 +1,9 @@
 [package]
-name = "cairovm_verifier_commitment"
+name = "swiftness_commitment"
 description.workspace = true
 edition.workspace = true
-homepage.workspace = true
 license-file.workspace = true
-readme.workspace = true
+readme = "README.md"
 repository.workspace = true
 version.workspace = true
 
@@ -13,7 +12,6 @@ default = ["std", "keccak"]
 std = ["dep:thiserror"]
 keccak = []
 blake2s = []
-
 
 [dependencies]
 serde_with.workspace = true
@@ -27,4 +25,4 @@ thiserror-no-std.workspace = true
 crypto-bigint.workspace = true
 blake2.workspace = true
 
-cairovm_verifier_transcript = { path = "../transcript", default-features = false }
+swiftness_transcript.workspace = true

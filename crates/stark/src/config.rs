@@ -6,10 +6,10 @@ use starknet_crypto::Felt;
 #[serde_as]
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct StarkConfig {
-    pub traces: cairovm_verifier_air::trace::config::Config,
-    pub composition: cairovm_verifier_commitment::table::config::Config,
-    pub fri: cairovm_verifier_fri::config::Config,
-    pub proof_of_work: cairovm_verifier_pow::config::Config,
+    pub traces: swiftness_air::trace::config::Config,
+    pub composition: swiftness_commitment::table::config::Config,
+    pub fri: swiftness_fri::config::Config,
+    pub proof_of_work: swiftness_pow::config::Config,
     // Log2 of the trace domain size.
     #[serde_as(as = "UfeHex")]
     pub log_trace_domain_size: Felt,
@@ -50,7 +50,7 @@ impl StarkConfig {
     }
 }
 
-use cairovm_verifier_commitment::vector;
+use swiftness_commitment::vector;
 
 #[cfg(feature = "std")]
 use thiserror::Error;
@@ -61,11 +61,11 @@ pub enum Error {
     #[error("Vector Error")]
     Vector(#[from] vector::config::Error),
     #[error("Fri Error")]
-    Fri(#[from] cairovm_verifier_fri::config::Error),
+    Fri(#[from] swiftness_fri::config::Error),
     #[error("Pow Error")]
-    Pow(#[from] cairovm_verifier_pow::config::Error),
+    Pow(#[from] swiftness_pow::config::Error),
     #[error("Trace Error")]
-    Trace(#[from] cairovm_verifier_air::trace::config::Error),
+    Trace(#[from] swiftness_air::trace::config::Error),
 }
 
 #[cfg(not(feature = "std"))]
@@ -77,9 +77,9 @@ pub enum Error {
     #[error("Vector Error")]
     Vector(#[from] vector::config::Error),
     #[error("Fri Error")]
-    Fri(#[from] cairovm_verifier_fri::config::Error),
+    Fri(#[from] swiftness_fri::config::Error),
     #[error("Pow Error")]
-    Pow(#[from] cairovm_verifier_pow::config::Error),
+    Pow(#[from] swiftness_pow::config::Error),
     #[error("Trace Error")]
-    Trace(#[from] cairovm_verifier_air::trace::config::Error),
+    Trace(#[from] swiftness_air::trace::config::Error),
 }

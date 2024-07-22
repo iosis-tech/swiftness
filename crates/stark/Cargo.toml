@@ -1,10 +1,9 @@
 [package]
-name = "cairovm_verifier_stark"
+name = "swiftness_stark"
 description.workspace = true
 edition.workspace = true
-homepage.workspace = true
 license-file.workspace = true
-readme.workspace = true
+readme = "README.md"
 repository.workspace = true
 version.workspace = true
 
@@ -12,10 +11,10 @@ version.workspace = true
 default = ["std", "recursive"]
 std = [
     "dep:thiserror",
-    "cairovm_verifier_air/std",
-    "cairovm_verifier_commitment/std",
-    "cairovm_verifier_fri/std",
-    "cairovm_verifier_pow/std",
+    "swiftness_air/std",
+    "swiftness_commitment/std",
+    "swiftness_fri/std",
+    "swiftness_pow/std",
 ]
 dex = []
 recursive = []
@@ -34,8 +33,8 @@ thiserror = { optional = true, workspace = true }
 thiserror-no-std.workspace = true
 wasm-bindgen.workspace = true
 
-cairovm_verifier_air = { path = "../air", default-features = false }
-cairovm_verifier_commitment = { path = "../commitment", default-features = false }
-cairovm_verifier_fri = { path = "../fri", default-features = false }
-cairovm_verifier_pow = { path = "../pow", default-features = false }
-cairovm_verifier_transcript = { path = "../transcript", default-features = false }
+swiftness_air.workspace = true
+swiftness_commitment.workspace = true
+swiftness_fri.workspace = true
+swiftness_pow.workspace = true
+swiftness_transcript.workspace = true

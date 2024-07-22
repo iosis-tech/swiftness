@@ -1,10 +1,10 @@
 use alloc::vec;
-use cairovm_verifier_air::layout::recursive::global_values::InteractionElements;
-use cairovm_verifier_commitment::{
+use starknet_crypto::Felt;
+use swiftness_air::layout::recursive::global_values::InteractionElements;
+use swiftness_commitment::{
     table::{config::Config as TableCommitmentConfig, types::Commitment as TableCommitment},
     vector::{config::Config as VectorCommitmentConfig, types::Commitment as VectorCommitment},
 };
-use starknet_crypto::Felt;
 
 use crate::types::StarkCommitment;
 
@@ -12,7 +12,7 @@ use super::oods_values;
 
 pub fn get() -> StarkCommitment<InteractionElements> {
     StarkCommitment {
-        traces: cairovm_verifier_air::fixtures::commitment::get(),
+        traces: swiftness_air::fixtures::commitment::get(),
         composition: TableCommitment {
             config: TableCommitmentConfig {
                 n_columns: Felt::from_hex_unchecked("0x2"),
@@ -440,6 +440,6 @@ pub fn get() -> StarkCommitment<InteractionElements> {
                 "0x7a702a902f300a47fb79f18195691f2f1cd57fa870b6d4e12d365ed59231506",
             ),
         ],
-        fri: cairovm_verifier_fri::fixtures::commitment::get(),
+        fri: swiftness_fri::fixtures::commitment::get(),
     }
 }

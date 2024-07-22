@@ -1,10 +1,9 @@
 [package]
-name = "cairovm_verifier_air"
+name = "swiftness_air"
 description.workspace = true
 edition.workspace = true
-homepage.workspace = true
 license-file.workspace = true
-readme.workspace = true
+readme = "README.md"
 repository.workspace = true
 version.workspace = true
 
@@ -12,8 +11,8 @@ version.workspace = true
 default = ["std", "recursive"]
 std = [
     "dep:thiserror",
-    "cairovm_verifier_commitment/std",
-    "cairovm_verifier_transcript/std",
+    "swiftness_commitment/std",
+    "swiftness_transcript/std",
 ]
 dex = []
 recursive = []
@@ -31,5 +30,5 @@ starknet-crypto.workspace = true
 thiserror = { optional = true, workspace = true }
 thiserror-no-std.workspace = true
 
-cairovm_verifier_commitment = { path = "../commitment", default-features = false }
-cairovm_verifier_transcript = { path = "../transcript", default-features = false }
+swiftness_commitment.workspace = true
+swiftness_transcript.workspace = true

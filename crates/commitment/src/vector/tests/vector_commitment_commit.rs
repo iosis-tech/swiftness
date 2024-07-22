@@ -1,6 +1,6 @@
 use alloc::borrow::ToOwned;
-use cairovm_verifier_transcript::transcript::Transcript;
 use starknet_crypto::Felt;
+use swiftness_transcript::transcript::Transcript;
 
 use crate::vector::{commit::vector_commit, config::Config, types::Commitment};
 

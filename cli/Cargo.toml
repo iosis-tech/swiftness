@@ -1,8 +1,7 @@
 [package]
-name = "cairovm_verifier_cli"
+name = "swiftness"
 description.workspace = true
 edition.workspace = true
-homepage.workspace = true
 license-file.workspace = true
 readme.workspace = true
 repository.workspace = true
@@ -12,30 +11,17 @@ version.workspace = true
 clap = { version = "4.4.4", features = ["derive"] }
 starknet-crypto.workspace = true
 
-cairovm_verifier_air = { path = "../crates/air", features = [
-    "std",
-], default-features = false }
-cairovm_verifier_stark = { path = "../crates/stark", features = [
-    "std",
-], default-features = false }
-cairovm_verifier_proof_parser = { path = "../proof-parser", default-features = false }
+swiftness_air = { workspace = true }
+swiftness_stark = { workspace = true }
+swiftness_proof_parser = { workspace = true }
 
 [features]
-default = ["recursive", "keccak"]
-dex = ["cairovm_verifier_air/dex", "cairovm_verifier_stark/dex"]
-recursive = [
-    "cairovm_verifier_air/recursive",
-    "cairovm_verifier_stark/recursive",
-]
-recursive_with_poseidon = [
-    "cairovm_verifier_air/recursive_with_poseidon",
-    "cairovm_verifier_stark/recursive_with_poseidon",
-]
-small = ["cairovm_verifier_air/small", "cairovm_verifier_stark/small"]
-starknet = ["cairovm_verifier_air/starknet", "cairovm_verifier_stark/starknet"]
-starknet_with_keccak = [
-    "cairovm_verifier_air/starknet_with_keccak",
-    "cairovm_verifier_stark/starknet_with_keccak",
-]
+default = ["starknet_with_keccak", "blake2s"]
+dex = []
+recursive = []
+recursive_with_poseidon = []
+small = []
+starknet = []
+starknet_with_keccak = []
 keccak = []
 blake2s = []

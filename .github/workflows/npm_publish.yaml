@@ -1,0 +1,66 @@
+name: Manual Publish to npm
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    env:
+      WORKING_DIR: wasm-binding  # define the working directory here
+
+    strategy:
+      fail-fast: false
+      matrix:
+        layout: ["dex", "recursive", "recursive_with_poseidon", "small", "starknet", "starknet_with_keccak"]
+        hash: ["blake2s", "keccak"]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  # specify your desired Node.js version
+
+      - name: Configure npm
+        run: npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+        working-directory: ${{ env.WORKING_DIR }}
+
+      - name: Cache Cargo registry
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-registry-
+  
+      - name: Cache Cargo build
+        uses: actions/cache@v2
+        with:
+          path: target
+          key: ${{ runner.os }}-cargo-build-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-build-
+      
+      - name: Install wasm-pack
+        run: cargo install wasm-pack
+      
+      - name: Build package
+        run: wasm-pack build --out-dir pkg --target web --workspace --features ${{ matrix.layout }},${{ matrix.hash }} --no-default-features
+        working-directory: ${{ env.WORKING_DIR }}
+      
+      - name: Rename package
+        run: |
+          jq --arg layout "${{ matrix.layout }}" --arg hash "${{ matrix.hash }}" \
+            '.name = "swiftness-\($layout | gsub("_"; "-"))-\($hash | gsub("_"; "-"))"' \
+            package.json > tmp.json && mv tmp.json package.json
+        working-directory: ${{ env.WORKING_DIR }}/pkg
+
+      - name: Publish to npm
+        run: npm publish
+        working-directory: ${{ env.WORKING_DIR }}/pkg

@@ -1,11 +1,11 @@
 use alloc::vec;
 
 use crate::types::{LayerWitness, Witness};
-use cairovm_verifier_commitment::{
+use starknet_crypto::Felt;
+use swiftness_commitment::{
     table::types::Witness as TableCommitmentWitness,
     vector::types::Witness as VectorCommitmentWitness,
 };
-use starknet_crypto::Felt;
 
 pub fn get() -> Witness {
     Witness {

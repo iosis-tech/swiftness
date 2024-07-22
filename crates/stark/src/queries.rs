@@ -1,8 +1,8 @@
 use alloc::vec::Vec;
-use cairovm_verifier_air::domains::StarkDomains;
-use cairovm_verifier_transcript::transcript::Transcript;
 use starknet_core::types::NonZeroFelt;
 use starknet_crypto::Felt;
+use swiftness_air::domains::StarkDomains;
+use swiftness_transcript::transcript::Transcript;
 
 const FIELD_GENERATOR: Felt = Felt::from_hex_unchecked("0x3");
 
