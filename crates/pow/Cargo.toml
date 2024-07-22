@@ -12,6 +12,7 @@ default = ["std", "keccak"]
 std = [
     "dep:thiserror",
     "swiftness_transcript/std",
+    "starknet-crypto/std",
 ]
 keccak = []
 blake2s = []

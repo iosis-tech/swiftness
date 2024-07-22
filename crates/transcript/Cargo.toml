@@ -12,4 +12,6 @@ starknet-crypto.workspace = true
 
 [features]
 default = ["std"]
-std = []
+std = [
+    "starknet-crypto/std",
+]

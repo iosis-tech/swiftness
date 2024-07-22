@@ -11,6 +11,8 @@ version.workspace = true
 default = ["std", "recursive", "keccak"]
 std = [
     "dep:thiserror",
+    "starknet-core/std",
+    "starknet-crypto/std",
     "swiftness_air/std",
     "swiftness_commitment/std",
     "swiftness_fri/std",

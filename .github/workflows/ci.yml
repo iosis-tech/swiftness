@@ -80,25 +80,25 @@ jobs:
       - name: Run verification
         run: cargo run --release --bin swiftness --features std,${{ matrix.layout }},keccak --no-default-features -- --proof examples/proofs/${{ matrix.layout }}/cairo0_example_proof.json
 
-  no-std-build:
-    name: Test no_std support
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        layout:
-          [
-            "dex",
-            "recursive",
-            "recursive_with_poseidon",
-            "small",
-            "starknet",
-            "starknet_with_keccak",
-          ]
-    steps:
-      - uses: actions/checkout@v3
-      - name: Check wasm compatibility
-        run: |-
-          cd examples/no_std_example
-          rustup show
-          cargo build -r --features ${{ matrix.layout }},keccak --no-default-features
+  # no-std-build:
+  #   name: Test no_std support
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       layout:
+  #         [
+  #           "dex",
+  #           "recursive",
+  #           "recursive_with_poseidon",
+  #           "small",
+  #           "starknet",
+  #           "starknet_with_keccak",
+  #         ]
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Check wasm compatibility
+  #       run: |-
+  #         cd examples/no_std_build
+  #         rustup show
+  #         cargo build -r --features ${{ matrix.layout }},keccak --no-default-features

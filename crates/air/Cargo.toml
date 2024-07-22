@@ -13,6 +13,8 @@ std = [
     "dep:thiserror",
     "swiftness_commitment/std",
     "swiftness_transcript/std",
+    "starknet-core/std",
+    "starknet-crypto/std",
 ]
 dex = []
 recursive = []
