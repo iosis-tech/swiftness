@@ -21,6 +21,7 @@ edition = "2021"
 license-file = "LICENSE"
 readme = "README.md"
 repository = "https://github.com/iosis-tech/swiftness"
+version = "0.0.4"
 
 [workspace.dependencies]
 bail-out = "0.2.0"
@@ -37,10 +38,10 @@ num-bigint = { version = "0.4.4", features = ["serde"] }
 blake2 = "0.10.6"
 wasm-bindgen = "0.2"
 
-swiftness_air = { path = "crates/air", default-features = false, version = "0.0.3" }
-swiftness_commitment = { path = "crates/commitment", default-features = false, version = "0.0.3" }
-swiftness_fri = { path = "crates/fri", default-features = false, version = "0.0.3" }
-swiftness_pow = { path = "crates/pow", default-features = false, version = "0.0.3" }
-swiftness_stark = { path = "crates/stark", default-features = false, version = "0.0.3" }
-swiftness_transcript = { path = "crates/transcript", default-features = false, version = "0.0.3" }
-swiftness_proof_parser = { path = "proof-parser", default-features = false, version = "0.0.3" }
+swiftness_air = { path = "crates/air", default-features = false, version = "0.0.4" }
+swiftness_commitment = { path = "crates/commitment", default-features = false, version = "0.0.4" }
+swiftness_fri = { path = "crates/fri", default-features = false, version = "0.0.4" }
+swiftness_pow = { path = "crates/pow", default-features = false, version = "0.0.4" }
+swiftness_stark = { path = "crates/stark", default-features = false, version = "0.0.4" }
+swiftness_transcript = { path = "crates/transcript", default-features = false, version = "0.0.4" }
+swiftness_proof_parser = { path = "proof-parser", default-features = false, version = "0.0.4" }
