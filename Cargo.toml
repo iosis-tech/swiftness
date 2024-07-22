@@ -10,7 +10,7 @@ members = [
     "crates/fri",
     "crates/pow",
     "crates/stark",
-    "proof-parser",
+    "proof_parser",
     "cli",
     "wasm-binding",
 ]
@@ -46,4 +46,4 @@ swiftness_fri = { path = "crates/fri", default-features = false, version = "0.0.
 swiftness_pow = { path = "crates/pow", default-features = false, version = "0.0.5" }
 swiftness_stark = { path = "crates/stark", default-features = false, version = "0.0.5" }
 swiftness_transcript = { path = "crates/transcript", default-features = false, version = "0.0.5" }
-swiftness_proof_parser = { path = "proof-parser", default-features = false, version = "0.0.5" }
+swiftness_proof_parser = { path = "proof_parser", default-features = false, version = "0.0.5" }
