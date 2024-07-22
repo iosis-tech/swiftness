@@ -11,9 +11,6 @@ swiftness_pow = { path = "../../crates/pow", default-features = false }
 swiftness_fri = { path = "../../crates/fri", default-features = false }
 swiftness_transcript = { path = "../../crates/transcript", default-features = false }
 
-[target.'cfg(target_arch = "wasm32")'.dependencies]
-getrandom = { version = "0.2.15", features = ["js"] }
-
 [features]
 default = ["recursive", "keccak"]
 dex = ["swiftness_air/dex", "swiftness_stark/dex"]
