@@ -99,6 +99,6 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check wasm compatibility
         run: |-
-          cd examples/no_std
+          cd examples/no_std_example
           rustup show
           cargo build -r --features ${{ matrix.layout }},keccak --no-default-features
