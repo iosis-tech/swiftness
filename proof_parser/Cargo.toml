@@ -8,7 +8,16 @@ repository.workspace = true
 version.workspace = true
 
 [features]
-default = ["keccak", "recursive"]
+default = ["std", "keccak", "recursive"]
+std = [
+    "serde/std",
+    "starknet-types-core/std",
+    "num-bigint/std",
+    "anyhow/std",
+    "clap/std",
+    "regex/std",
+    "serde_json/std",
+]
 dex = []
 recursive = []
 recursive_with_poseidon = []

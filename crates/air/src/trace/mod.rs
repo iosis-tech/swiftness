@@ -3,7 +3,6 @@ pub mod decommit;
 
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
-use starknet_core::serde::unsigned_field_element::UfeHex;
 use starknet_crypto::Felt;
 
 // Commitment values for the Traces component. Used to generate a commitment by "reading" these
@@ -11,9 +10,15 @@ use starknet_crypto::Felt;
 #[serde_as]
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct UnsentCommitment {
-    #[serde_as(as = "UfeHex")]
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
     pub original: Felt,
-    #[serde_as(as = "UfeHex")]
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
     pub interaction: Felt,
 }
 

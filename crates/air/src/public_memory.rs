@@ -3,7 +3,7 @@ use alloc::vec;
 use alloc::vec::Vec;
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
-use starknet_core::{serde::unsigned_field_element::UfeHex, types::NonZeroFelt};
+use starknet_core::types::NonZeroFelt;
 use starknet_crypto::{pedersen_hash, poseidon_hash_many, Felt};
 
 pub const MAX_LOG_N_STEPS: Felt = Felt::from_hex_unchecked("50");
@@ -14,20 +14,41 @@ pub const INITIAL_PC: Felt = Felt::from_hex_unchecked("0x1");
 #[serde_as]
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct PublicInput {
-    #[serde_as(as = "UfeHex")]
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
     pub log_n_steps: Felt,
-    #[serde_as(as = "UfeHex")]
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
     pub range_check_min: Felt,
-    #[serde_as(as = "UfeHex")]
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
     pub range_check_max: Felt,
-    #[serde_as(as = "UfeHex")]
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
     pub layout: Felt,
-    #[serde_as(as = "Vec<UfeHex>")]
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "Vec<starknet_core::serde::unsigned_field_element::UfeHex>")
+    )]
     pub dynamic_params: Vec<Felt>,
     pub segments: Vec<SegmentInfo>,
-    #[serde_as(as = "UfeHex")]
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
     pub padding_addr: Felt,
-    #[serde_as(as = "UfeHex")]
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
     pub padding_value: Felt,
     pub main_page: Page,
     pub continuous_page_headers: Vec<ContinuousPageHeader>,

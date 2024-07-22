@@ -8,12 +8,12 @@ repository.workspace = true
 version.workspace = true
 
 [dependencies]
-clap = { version = "4.4.4", features = ["derive"] }
 starknet-crypto.workspace = true
+clap = { version = "4.4.4", features = ["derive"] }
+swiftness_proof_parser = { path = "../proof_parser", default-features = false, version = "0.0.5" }
 
 swiftness_air = { workspace = true }
 swiftness_stark = { workspace = true }
-swiftness_proof_parser = { workspace = true }
 
 [features]
 default = ["std", "recursive", "keccak"]
