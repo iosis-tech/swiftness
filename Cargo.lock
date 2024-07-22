@@ -790,7 +790,7 @@ checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
 
 [[package]]
 name = "swiftness"
-version = "0.0.3"
+version = "0.0.4"
 dependencies = [
  "clap",
  "starknet-crypto",
@@ -802,7 +802,7 @@ dependencies = [
 
 [[package]]
 name = "swiftness_air"
-version = "0.0.3"
+version = "0.0.4"
 dependencies = [
  "bail-out",
  "serde",
@@ -816,7 +816,7 @@ dependencies = [
 
 [[package]]
 name = "swiftness_commitment"
-version = "0.0.3"
+version = "0.0.4"
 dependencies = [
  "blake2",
  "crypto-bigint",
@@ -832,7 +832,7 @@ dependencies = [
 
 [[package]]
 name = "swiftness_fri"
-version = "0.0.3"
+version = "0.0.4"
 dependencies = [
  "serde",
  "serde_with",
@@ -847,7 +847,7 @@ dependencies = [
 
 [[package]]
 name = "swiftness_pow"
-version = "0.0.3"
+version = "0.0.4"
 dependencies = [
  "bail-out",
  "blake2",
@@ -861,7 +861,7 @@ dependencies = [
 
 [[package]]
 name = "swiftness_proof_parser"
-version = "0.0.3"
+version = "0.0.4"
 dependencies = [
  "anyhow",
  "clap",
@@ -880,7 +880,7 @@ dependencies = [
 
 [[package]]
 name = "swiftness_stark"
-version = "0.0.3"
+version = "0.0.4"
 dependencies = [
  "bail-out",
  "serde",
@@ -898,14 +898,14 @@ dependencies = [
 
 [[package]]
 name = "swiftness_transcript"
-version = "0.0.3"
+version = "0.0.4"
 dependencies = [
  "starknet-crypto",
 ]
 
 [[package]]
 name = "swiftness_wasm"
-version = "0.0.3"
+version = "0.0.4"
 dependencies = [
  "getrandom",
  "serde_json",
