@@ -10,6 +10,7 @@ swiftness_commitment = { path = "../../crates/commitment", default-features = fa
 swiftness_pow = { path = "../../crates/pow", default-features = false }
 swiftness_fri = { path = "../../crates/fri", default-features = false }
 swiftness_transcript = { path = "../../crates/transcript", default-features = false }
+embedded-alloc = "0.5.1"
 
 [features]
 default = ["recursive", "keccak"]
