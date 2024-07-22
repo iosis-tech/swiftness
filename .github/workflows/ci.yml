@@ -78,7 +78,7 @@ jobs:
             ${{ runner.os }}-cargo-build-
 
       - name: Run verification
-        run: cargo run --release --bin swiftness --features ${{ matrix.layout }},keccak,std --no-default-features -- --proof examples/proofs/${{ matrix.layout }}/cairo0_example_proof.json
+        run: cargo run --release --bin swiftness --features std,${{ matrix.layout }},keccak --no-default-features -- --proof examples/proofs/${{ matrix.layout }}/cairo0_example_proof.json
 
   no-std-build:
     name: Test no_std support
@@ -99,6 +99,6 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check wasm compatibility
         run: |-
-          cd ensure_no_std
+          cd examples/no_std
           rustup show
           cargo build -r --features ${{ matrix.layout }},keccak --no-default-features
