@@ -25,7 +25,7 @@ cargo install wasm-pack
 ### Build WASM:
 
 ```sh
-cd wasm-binding && wasm-pack build --target web --workspace --features std,starknet_with_keccak,blake2s --no-default-features
+cd wasm-binding && wasm-pack build --target web --features std,starknet_with_keccak,blake2s --no-default-features
 ```
 
 ## Features
