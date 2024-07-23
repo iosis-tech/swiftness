@@ -74,7 +74,7 @@ pub fn eval_oods_boundary_poly_at_points<Layout: LayoutTrait>(
         "Invalid value"
     );
     assert!(
-        composition_decommitment.values.len() == points.len() * Layout::CONSTRAINT_DEGREE as usize,
+        composition_decommitment.values.len() == points.len() * Layout::CONSTRAINT_DEGREE,
         "Invalid value"
     );
 
@@ -82,7 +82,7 @@ pub fn eval_oods_boundary_poly_at_points<Layout: LayoutTrait>(
 
     for (i, &point) in points.iter().enumerate() {
         let mut column_values = Vec::with_capacity(
-            n_original_columns + n_interaction_columns + Layout::CONSTRAINT_DEGREE as usize,
+            n_original_columns + n_interaction_columns + Layout::CONSTRAINT_DEGREE,
         );
 
         column_values.extend(
@@ -93,8 +93,8 @@ pub fn eval_oods_boundary_poly_at_points<Layout: LayoutTrait>(
                 [i * n_interaction_columns..(i + 1) * n_interaction_columns],
         );
         column_values.extend(
-            &composition_decommitment.values[i * Layout::CONSTRAINT_DEGREE as usize
-                ..(i + 1) * Layout::CONSTRAINT_DEGREE as usize],
+            &composition_decommitment.values
+                [i * Layout::CONSTRAINT_DEGREE..(i + 1) * Layout::CONSTRAINT_DEGREE],
         );
 
         evaluations.push(Layout::eval_oods_polynomial(

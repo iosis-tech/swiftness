@@ -13,8 +13,8 @@ pub fn test_stark_verify() {
     let stark_domains = domains::get();
 
     stark_verify::<Layout>(
-        Layout::NUM_COLUMNS_FIRST as usize,
-        Layout::NUM_COLUMNS_SECOND as usize,
+        Layout::NUM_COLUMNS_FIRST,
+        Layout::NUM_COLUMNS_SECOND,
         &queries,
         commitment,
         &witness,

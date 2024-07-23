@@ -13726,12 +13726,12 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
     // Sum the OODS boundary constraints on the composition polynomials.
     let oods_point_to_deg = oods_point.pow(Layout::CONSTRAINT_DEGREE as u128);
 
-    value = (column_values[(Layout::NUM_COLUMNS_FIRST + Layout::NUM_COLUMNS_SECOND) as usize]
+    value = (column_values[Layout::NUM_COLUMNS_FIRST + Layout::NUM_COLUMNS_SECOND]
         - oods_values[734])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - oods_point_to_deg));
     total_sum += constraint_coefficients[734] * value;
 
-    value = (column_values[(Layout::NUM_COLUMNS_FIRST + Layout::NUM_COLUMNS_SECOND + 1) as usize]
+    value = (column_values[Layout::NUM_COLUMNS_FIRST + Layout::NUM_COLUMNS_SECOND + 1]
         - oods_values[735])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - oods_point_to_deg));
     total_sum += constraint_coefficients[735] * value;

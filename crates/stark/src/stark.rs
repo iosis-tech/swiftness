@@ -35,8 +35,8 @@ impl StarkProof {
 
         // STARK verify phase.
         stark_verify::<Layout>(
-            Layout::NUM_COLUMNS_FIRST as usize,
-            Layout::NUM_COLUMNS_SECOND as usize,
+            Layout::NUM_COLUMNS_FIRST,
+            Layout::NUM_COLUMNS_SECOND,
             &queries,
             stark_commitment,
             &self.witness,
