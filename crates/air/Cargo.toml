@@ -30,7 +30,6 @@ blake2s = [
 ]
 
 [dependencies]
-bail-out.workspace = true
 serde_with.workspace = true
 serde.workspace = true
 starknet-core.workspace = true

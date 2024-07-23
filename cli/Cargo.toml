@@ -1,19 +1,18 @@
 [package]
 name = "swiftness"
-description.workspace = true
-edition.workspace = true
-license-file.workspace = true
-readme.workspace = true
-repository.workspace = true
-version.workspace = true
+description = "Swiftness - Rust CairoVM Verifier implementation"
+edition = "2021"
+license-file = "LICENSE"
+readme = "README.md"
+repository = "https://github.com/iosis-tech/swiftness"
+version = "0.0.5"
 
 [dependencies]
 clap = { version = "4.4.4", features = ["derive"] }
-starknet-crypto.workspace = true
 
-swiftness_air = { workspace = true }
-swiftness_stark = { workspace = true }
-swiftness_proof_parser = { workspace = true }
+swiftness_air = { path = "../crates/air", default-features = false, version = "0.0.5" }
+swiftness_stark = { path = "../crates/stark", default-features = false, version = "0.0.5" }
+swiftness_proof_parser = { path = "../proof_parser", default-features = false, version = "0.0.5" }
 
 [features]
 default = ["std", "recursive", "keccak"]

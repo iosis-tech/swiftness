@@ -8,10 +8,9 @@ use sha3::Digest;
 #[cfg(feature = "keccak")]
 use sha3::Keccak256;
 
-use bail_out::assure;
 use serde::{Deserialize, Serialize};
 use starknet_crypto::Felt;
-use swiftness_transcript::transcript::Transcript;
+use swiftness_transcript::{assure, transcript::Transcript};
 
 use crate::config::Config;
 

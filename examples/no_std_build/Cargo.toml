@@ -10,12 +10,10 @@ swiftness_commitment = { path = "../../crates/commitment", default-features = fa
 swiftness_pow = { path = "../../crates/pow", default-features = false }
 swiftness_fri = { path = "../../crates/fri", default-features = false }
 swiftness_transcript = { path = "../../crates/transcript", default-features = false }
-
-[target.'cfg(target_arch = "wasm32")'.dependencies]
-getrandom = { version = "0.2.15", features = ["js"] }
+embedded-alloc = "0.5.1"
 
 [features]
-default = ["recursive", "keccak"]
+default = ["recursive", "blake2s"]
 dex = ["swiftness_air/dex", "swiftness_stark/dex"]
 recursive = [
     "swiftness_air/recursive",

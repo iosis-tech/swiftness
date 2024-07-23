@@ -8,11 +8,11 @@ use crate::{
 };
 use alloc::vec;
 use alloc::vec::Vec;
-use bail_out::ensure;
 use global_values::{EcPoint, EcdsaSigConfig, GlobalValues, InteractionElements};
 use starknet_core::types::NonZeroFelt;
 use starknet_crypto::{poseidon_hash_many, Felt};
 use swiftness_commitment::table::{commit::table_commit, decommit::table_decommit};
+use swiftness_transcript::ensure;
 
 use super::{CompositionPolyEvalError, LayoutTrait, PublicInputError};
 

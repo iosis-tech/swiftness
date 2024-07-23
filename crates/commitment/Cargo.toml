@@ -26,7 +26,6 @@ starknet-types-core.workspace = true
 starknet-crypto.workspace = true
 thiserror = { optional = true, workspace = true }
 thiserror-no-std.workspace = true
-crypto-bigint.workspace = true
 blake2.workspace = true
 
 swiftness_transcript.workspace = true

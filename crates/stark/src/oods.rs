@@ -1,5 +1,4 @@
 use alloc::vec::Vec;
-use bail_out::assure;
 use starknet_crypto::Felt;
 #[cfg(feature = "dex")]
 use swiftness_air::layout::dex::CONSTRAINT_DEGREE;
@@ -60,6 +59,7 @@ pub fn verify_oods<Layout: LayoutTrait>(
     )
 }
 
+use swiftness_transcript::assure;
 #[cfg(feature = "std")]
 use thiserror::Error;
 

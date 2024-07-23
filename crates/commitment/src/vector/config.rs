@@ -1,14 +1,19 @@
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
-use starknet_core::serde::unsigned_field_element::UfeHex;
 use starknet_crypto::Felt;
 
 #[serde_as]
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Config {
-    #[serde_as(as = "UfeHex")]
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
     pub height: Felt,
-    #[serde_as(as = "UfeHex")]
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
     pub n_verifier_friendly_commitment_layers: Felt,
 }
 

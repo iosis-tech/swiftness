@@ -18,7 +18,6 @@ keccak = []
 blake2s = []
 
 [dependencies]
-bail-out.workspace = true
 serde.workspace = true
 sha3.workspace = true
 starknet-crypto.workspace = true

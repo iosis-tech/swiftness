@@ -2,6 +2,7 @@
 #![no_main]
 
 use core::panic::PanicInfo;
+use embedded_alloc::Heap;
 
 /// This function is called on panic.
 #[panic_handler]
@@ -13,6 +14,9 @@ fn panic(_info: &PanicInfo) -> ! {
 pub extern "C" fn _start() -> ! {
     loop {}
 }
+
+#[global_allocator]
+static HEAP: Heap = Heap::empty();
 
 #[allow(unused_imports)]
 use swiftness_air;

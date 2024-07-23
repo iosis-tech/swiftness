@@ -1,6 +1,10 @@
 [toolchain]
 channel = "1.79.0"
 components = ["rustfmt", "clippy"]
+targets = [
+    "armebv7r-none-eabi",
+    "riscv64imac-unknown-none-elf"
+]
 profile = "minimal"
 
 [profile.dev]
