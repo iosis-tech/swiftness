@@ -52,7 +52,7 @@ jobs:
             "starknet",
             "starknet_with_keccak",
           ]
-    
+
     env:
       PROOFS_DIR: ${{ github.workspace }}/examples/proofs
       WORKING_DIR: ${{ github.workspace }}/cli
@@ -83,7 +83,7 @@ jobs:
             ${{ runner.os }}-cargo-build-
 
       - name: Run verification
-        run: cargo run -r --bin swiftness --features std,${{ matrix.layout }},keccak --no-default-features -- --proof ${{ env.PROOFS_DIR }}/${{ matrix.layout }}/cairo0_example_proof.json
+        run: cargo run -r --bin swiftness --features ${{ matrix.layout }},keccak --no-default-features -- --proof ${{ env.PROOFS_DIR }}/${{ matrix.layout }}/cairo0_example_proof.json
         working-directory: ${{ env.WORKING_DIR }}
 
   no-std-build:
@@ -92,7 +92,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        layout: ["dex", "recursive", "recursive_with_poseidon", "small", "starknet", "starknet_with_keccak"]
+        layout:
+          [
+            "dex",
+            "recursive",
+            "recursive_with_poseidon",
+            "small",
+            "starknet",
+            "starknet_with_keccak",
+          ]
         hash: ["blake2s", "keccak"]
         target: ["armebv7r-none-eabi", "riscv64imac-unknown-none-elf"]
 
@@ -102,7 +110,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      
+
       - name: Setup Rust toolchain
         uses: actions-rust-lang/setup-rust-toolchain@v1
 
@@ -131,7 +139,7 @@ jobs:
       - name: Build project
         run: cargo build -r --features ${{ matrix.layout }},${{ matrix.hash }} --no-default-features --target ${{ matrix.target }}
         working-directory: ${{ env.WORKING_DIR }}
-        
+
       - name: Print binary metadata
         run: file target/${{ matrix.target }}/release/no_std_build
         working-directory: ${{ env.WORKING_DIR }}

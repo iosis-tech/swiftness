@@ -1,6 +1,6 @@
 [package]
 name = "swiftness_proof_parser"
-description = "Swiftness - Rust CairoVM Verifier implementation"
+description = "Json Proof Parser for Swiftness - Rust CairoVM Verifier implementation"
 edition = "2021"
 license-file = "LICENSE"
 readme = "README.md"

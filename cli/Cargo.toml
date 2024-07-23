@@ -1,6 +1,6 @@
 [package]
 name = "swiftness"
-description = "Swiftness - Rust CairoVM Verifier implementation"
+description = "CLI toolkit to use Swiftness - Rust CairoVM Verifier implementation"
 edition = "2021"
 license-file = "LICENSE"
 readme = "README.md"
@@ -10,21 +10,20 @@ version = "0.0.5"
 [dependencies]
 clap = { version = "4.4.4", features = ["derive"] }
 
-swiftness_air = { path = "../crates/air", default-features = false, version = "0.0.5" }
-swiftness_stark = { path = "../crates/stark", default-features = false, version = "0.0.5" }
-swiftness_proof_parser = { path = "../proof_parser", default-features = false, version = "0.0.5" }
+swiftness_air = { path = "../crates/air", default-features = false, features = [
+    "std",
+], version = "0.0.5" }
+swiftness_stark = { path = "../crates/stark", default-features = false, features = [
+    "std",
+], version = "0.0.5" }
+swiftness_proof_parser = { path = "../proof_parser", default-features = false, features = [
+    "std",
+], version = "0.0.5" }
 
 [features]
-default = ["std", "recursive", "keccak"]
-std = [
-    "swiftness_air/std",
-    "swiftness_stark/std",
-]
+default = []
 dex = ["swiftness_air/dex", "swiftness_stark/dex"]
-recursive = [
-    "swiftness_air/recursive",
-    "swiftness_stark/recursive",
-]
+recursive = ["swiftness_air/recursive", "swiftness_stark/recursive"]
 recursive_with_poseidon = [
     "swiftness_air/recursive_with_poseidon",
     "swiftness_stark/recursive_with_poseidon",
@@ -35,9 +34,5 @@ starknet_with_keccak = [
     "swiftness_air/starknet_with_keccak",
     "swiftness_stark/starknet_with_keccak",
 ]
-keccak = [
-    "swiftness_stark/keccak",
-]
-blake2s = [
-    "swiftness_stark/blake2s",
-]
+keccak = ["swiftness_stark/keccak"]
+blake2s = ["swiftness_stark/blake2s"]
