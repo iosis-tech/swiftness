@@ -10,10 +10,13 @@ members = [
     "crates/fri",
     "crates/pow",
     "crates/stark",
-    "proof-parser",
-    "cli", "wasm-binding",
 ]
-exclude = []
+exclude = [
+    "cli",
+    "proof_parser",
+    "wasm_bindings",
+    "examples/no_std_build",
+]
 
 [workspace.package]
 description = "Swiftness - Rust CairoVM Verifier implementation"
@@ -21,27 +24,23 @@ edition = "2021"
 license-file = "LICENSE"
 readme = "README.md"
 repository = "https://github.com/iosis-tech/swiftness"
-version = "0.0.4"
+version = "0.0.5"
 
 [workspace.dependencies]
-bail-out = "0.2.0"
-serde_json = "1.0.114"
-serde = { version = "1.0", features = ["derive"] }
-serde_with = "2.3.2"
-sha3 = "0.10.8"
-starknet-core = "0.11.1"
-starknet-crypto = "0.7.1"
-starknet-types-core = "0.1.5"
-crypto-bigint = "0.5.5"
+blake2 = { version = "0.10.6",  default-features = false }
+serde = { version = "1.0", default-features = false, features = ["derive"] }
+serde_json = { version = "1.0.114",  default-features = false }
+serde_with = { version = "3.8.3",  default-features = false, features = ["macros"] }
+sha3 = { version = "0.10.8",  default-features = false }
+starknet-core = { version = "0.11.1", default-features = false }
+starknet-crypto = { version = "0.7.1", default-features = false }
+starknet-types-core = { version = "0.1.5", default-features = false }
 thiserror = "1.0.61"
-num-bigint = { version = "0.4.4", features = ["serde"] }
-blake2 = "0.10.6"
-wasm-bindgen = "0.2"
+thiserror-no-std = "2.0.2"
 
-swiftness_air = { path = "crates/air", default-features = false, version = "0.0.4" }
-swiftness_commitment = { path = "crates/commitment", default-features = false, version = "0.0.4" }
-swiftness_fri = { path = "crates/fri", default-features = false, version = "0.0.4" }
-swiftness_pow = { path = "crates/pow", default-features = false, version = "0.0.4" }
-swiftness_stark = { path = "crates/stark", default-features = false, version = "0.0.4" }
-swiftness_transcript = { path = "crates/transcript", default-features = false, version = "0.0.4" }
-swiftness_proof_parser = { path = "proof-parser", default-features = false, version = "0.0.4" }
+swiftness_air = { path = "crates/air", default-features = false, version = "0.0.5" }
+swiftness_commitment = { path = "crates/commitment", default-features = false, version = "0.0.5" }
+swiftness_fri = { path = "crates/fri", default-features = false, version = "0.0.5" }
+swiftness_pow = { path = "crates/pow", default-features = false, version = "0.0.5" }
+swiftness_stark = { path = "crates/stark", default-features = false, version = "0.0.5" }
+swiftness_transcript = { path = "crates/transcript", default-features = false, version = "0.0.5" }

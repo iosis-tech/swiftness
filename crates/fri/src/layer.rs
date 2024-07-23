@@ -1,3 +1,4 @@
+use alloc::vec::Vec;
 use starknet_crypto::Felt;
 
 pub struct FriLayerComputationParams {
@@ -105,7 +106,7 @@ pub fn compute_next_layer(
     Ok((next_queries, verify_indices, verify_y_values))
 }
 
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 use crate::formula::fri_formula;
 

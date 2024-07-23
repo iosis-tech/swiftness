@@ -7,14 +7,30 @@ readme = "README.md"
 repository.workspace = true
 version.workspace = true
 
+[features]
+default = ["std", "keccak"]
+std = [
+    "dep:thiserror",
+    "swiftness_commitment/std",
+    "swiftness_transcript/std",
+    "starknet-core/std",
+    "starknet-crypto/std",
+]
+keccak = [
+    "swiftness_commitment/keccak",
+]
+blake2s = [
+    "swiftness_commitment/blake2s",
+]
+
 [dependencies]
 serde_with.workspace = true
 serde.workspace = true
 sha3.workspace = true
 starknet-core.workspace = true
 starknet-crypto.workspace = true
-thiserror.workspace = true
+thiserror = { optional = true, workspace = true }
+thiserror-no-std.workspace = true
 
-swiftness_air.workspace = true
 swiftness_commitment.workspace = true
 swiftness_transcript.workspace = true

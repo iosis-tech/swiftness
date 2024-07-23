@@ -7,26 +7,48 @@ readme = "README.md"
 repository.workspace = true
 version.workspace = true
 
+[features]
+default = ["std", "recursive", "keccak"]
+std = [
+    "dep:thiserror",
+    "starknet-core/std",
+    "starknet-crypto/std",
+    "swiftness_air/std",
+    "swiftness_commitment/std",
+    "swiftness_fri/std",
+    "swiftness_pow/std",
+]
+dex = ["swiftness_air/dex"]
+recursive = [
+    "swiftness_air/recursive",
+]
+recursive_with_poseidon = [
+    "swiftness_air/recursive_with_poseidon",
+]
+small = ["swiftness_air/small"]
+starknet = ["swiftness_air/starknet"]
+starknet_with_keccak = [
+    "swiftness_air/starknet_with_keccak",
+]
+keccak = [
+    "swiftness_pow/keccak",
+    "swiftness_commitment/keccak",
+]
+blake2s = [
+    "swiftness_pow/blake2s",
+    "swiftness_commitment/blake2s",
+]
+
 [dependencies]
-bail-out.workspace = true
 serde_with.workspace = true
 serde.workspace = true
 starknet-core.workspace = true
 starknet-crypto.workspace = true
-thiserror.workspace = true
-wasm-bindgen.workspace = true
+thiserror = { optional = true, workspace = true }
+thiserror-no-std.workspace = true
 
 swiftness_air.workspace = true
 swiftness_commitment.workspace = true
 swiftness_fri.workspace = true
 swiftness_pow.workspace = true
 swiftness_transcript.workspace = true
-
-[features]
-default = ["recursive"]
-dex = []
-recursive = []
-recursive_with_poseidon = []
-small = []
-starknet = []
-starknet_with_keccak = []

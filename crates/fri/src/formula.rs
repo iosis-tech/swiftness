@@ -1,3 +1,4 @@
+use alloc::vec::Vec;
 use starknet_crypto::Felt;
 
 // Constants representing primitive roots of unity for orders 2, 4, 8, and 16.
@@ -91,7 +92,7 @@ pub fn fri_formula(
     }
 }
 
-use thiserror::Error;
+use thiserror_no_std::Error;
 
 #[derive(Error, Debug)]
 pub enum Error {

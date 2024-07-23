@@ -30,7 +30,6 @@ mod tests {
         let input = include_str!("../../examples/proofs/recursive/cairo0_example_proof.json");
         let proof_json = serde_json::from_str::<ProofJSON>(input).unwrap();
         let stark_proof = StarkProof::try_from(proof_json).unwrap();
-        let stark_proof_verifier: StarkProofFromVerifier = stark_proof.into();
-        println!("{:?}", stark_proof_verifier);
+        let _: StarkProofFromVerifier = stark_proof.into();
     }
 }

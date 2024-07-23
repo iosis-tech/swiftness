@@ -1,27 +1,38 @@
-use std::ops::Deref;
-
+use alloc::vec::Vec;
+use core::ops::Deref;
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
-use starknet_core::serde::unsigned_field_element::UfeHex;
 use starknet_crypto::Felt;
 
 #[serde_as]
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct SegmentInfo {
     // Start address of the memory segment.
-    #[serde_as(as = "UfeHex")]
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
     pub begin_addr: Felt,
     // Stop pointer of the segment - not necessarily the end of the segment.
-    #[serde_as(as = "UfeHex")]
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
     pub stop_ptr: Felt,
 }
 
 #[serde_as]
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct AddrValue {
-    #[serde_as(as = "UfeHex")]
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
     pub address: Felt,
-    #[serde_as(as = "UfeHex")]
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
     pub value: Felt,
 }
 
@@ -65,15 +76,27 @@ impl Page {
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct ContinuousPageHeader {
     // Start address.
-    #[serde_as(as = "UfeHex")]
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
     pub start_address: Felt,
     // Size of the page.
-    #[serde_as(as = "UfeHex")]
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
     pub size: Felt,
     // Hash of the page.
-    #[serde_as(as = "UfeHex")]
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
     pub hash: Felt,
     // Cumulative product of the page.
-    #[serde_as(as = "UfeHex")]
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
     pub prod: Felt,
 }

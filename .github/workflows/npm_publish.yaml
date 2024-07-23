@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      WORKING_DIR: wasm-binding  # define the working directory here
+      WORKING_DIR: ${{ github.workspace }}/wasm_bindings
 
     strategy:
       fail-fast: false
@@ -51,7 +51,7 @@ jobs:
         run: cargo install wasm-pack
       
       - name: Build package
-        run: wasm-pack build --out-dir pkg --target web --workspace --features ${{ matrix.layout }},${{ matrix.hash }} --no-default-features
+        run: wasm-pack build --out-dir pkg --target web --features std,${{ matrix.layout }},${{ matrix.hash }} --no-default-features
         working-directory: ${{ env.WORKING_DIR }}
       
       - name: Rename package

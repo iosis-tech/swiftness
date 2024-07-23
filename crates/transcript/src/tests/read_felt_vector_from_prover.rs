@@ -1,4 +1,5 @@
 use crate::transcript::Transcript;
+use alloc::vec;
 use starknet_crypto::Felt;
 
 #[test]

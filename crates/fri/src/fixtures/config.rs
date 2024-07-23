@@ -1,4 +1,5 @@
 use crate::config::Config;
+use alloc::vec;
 use starknet_crypto::Felt;
 use swiftness_commitment::{table, vector};
 

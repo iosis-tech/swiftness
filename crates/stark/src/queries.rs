@@ -1,3 +1,4 @@
+use alloc::vec::Vec;
 use starknet_core::types::NonZeroFelt;
 use starknet_crypto::Felt;
 use swiftness_air::domains::StarkDomains;

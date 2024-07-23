@@ -1,3 +1,4 @@
+use alloc::vec::Vec;
 #[cfg(feature = "blake2s")]
 use blake2::Blake2s256;
 #[cfg(feature = "blake2s")]
@@ -7,10 +8,9 @@ use sha3::Digest;
 #[cfg(feature = "keccak")]
 use sha3::Keccak256;
 
-use bail_out::assure;
 use serde::{Deserialize, Serialize};
 use starknet_crypto::Felt;
-use swiftness_transcript::transcript::Transcript;
+use swiftness_transcript::{assure, transcript::Transcript};
 
 use crate::config::Config;
 
@@ -69,8 +69,20 @@ pub fn verify_pow(digest: [u8; 32], n_bits: u8, nonce: u64) -> Result<(), Error>
     )
 }
 
+#[cfg(feature = "std")]
 use thiserror::Error;
 
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
+pub enum Error {
+    #[cfg_attr(feature = "std", error("proof of work verification fail"))]
+    ProofOfWorkFail,
+}
+
+#[cfg(not(feature = "std"))]
+use thiserror_no_std::Error;
+
+#[cfg(not(feature = "std"))]
 #[derive(Error, Debug)]
 pub enum Error {
     #[error("proof of work verification fail")]
