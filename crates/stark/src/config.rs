@@ -30,14 +30,15 @@ impl StarkConfig {
         self.n_queries * self.log_n_cosets + Felt::from(self.proof_of_work.n_bits)
     }
 
-    pub fn validate(&self, security_bits: Felt) -> Result<(), Error> {
+    pub fn validate<Layout: LayoutTrait>(&self, security_bits: Felt) -> Result<(), Error> {
         self.proof_of_work.validate()?;
 
         assert!(security_bits <= self.security_bits());
 
         // Validate traces config.
         let log_eval_domain_size = self.log_trace_domain_size + self.log_n_cosets;
-        self.traces.validate(log_eval_domain_size, self.n_verifier_friendly_commitment_layers)?;
+        self.traces
+            .validate::<Layout>(log_eval_domain_size, self.n_verifier_friendly_commitment_layers)?;
 
         // Validate composition config.
         self.composition
@@ -50,6 +51,7 @@ impl StarkConfig {
     }
 }
 
+use swiftness_air::layout::LayoutTrait;
 use swiftness_commitment::vector;
 use thiserror::Error;
 

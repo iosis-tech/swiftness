@@ -30,6 +30,13 @@ pub mod stark_curve {
 
 pub trait LayoutTrait {
     type InteractionElements;
+
+    const CONSTRAINT_DEGREE: usize;
+    const NUM_COLUMNS_FIRST: usize;
+    const NUM_COLUMNS_SECOND: usize;
+    const N_CONSTRAINTS: usize;
+    const MASK_SIZE: usize;
+
     fn eval_composition_polynomial(
         interaction_elements: &Self::InteractionElements,
         public_input: &PublicInput,

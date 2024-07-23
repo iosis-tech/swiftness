@@ -1,16 +1,3 @@
-#[cfg(feature = "dex")]
-use swiftness_air::layout::dex::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
-#[cfg(feature = "recursive")]
-use swiftness_air::layout::recursive::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
-#[cfg(feature = "recursive_with_poseidon")]
-use swiftness_air::layout::recursive_with_poseidon::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
-#[cfg(feature = "small")]
-use swiftness_air::layout::small::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
-#[cfg(feature = "starknet")]
-use swiftness_air::layout::starknet::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
-#[cfg(feature = "starknet_with_keccak")]
-use swiftness_air::layout::starknet_with_keccak::{CONSTRAINT_DEGREE, MASK_SIZE, N_CONSTRAINTS};
-
 use starknet_crypto::Felt;
 use swiftness_air::{domains::StarkDomains, layout::LayoutTrait, public_memory::PublicInput};
 use swiftness_commitment::table::commit::table_commit;
@@ -32,7 +19,8 @@ pub fn stark_commit<Layout: LayoutTrait>(
 
     // Generate interaction values after traces commitment.
     let composition_alpha = transcript.random_felt_to_prover();
-    let traces_coefficients = powers_array(Felt::ONE, composition_alpha, N_CONSTRAINTS);
+    let traces_coefficients =
+        powers_array(Felt::ONE, composition_alpha, Layout::N_CONSTRAINTS as u32);
 
     // Read composition commitment.
     let composition_commitment =
@@ -57,7 +45,8 @@ pub fn stark_commit<Layout: LayoutTrait>(
 
     // Generate interaction values after OODS.
     let oods_alpha = transcript.random_felt_to_prover();
-    let oods_coefficients = powers_array(Felt::ONE, oods_alpha, MASK_SIZE + CONSTRAINT_DEGREE);
+    let oods_coefficients =
+        powers_array(Felt::ONE, oods_alpha, (Layout::MASK_SIZE + Layout::CONSTRAINT_DEGREE) as u32);
 
     // Read fri commitment.
     let fri_commitment =
