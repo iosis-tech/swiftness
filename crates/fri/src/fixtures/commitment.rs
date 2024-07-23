@@ -1,3 +1,4 @@
+use alloc::vec;
 use starknet_crypto::Felt;
 use swiftness_commitment::{
     table::{config::Config as TableCommitmentConfig, types::Commitment as TableCommitment},

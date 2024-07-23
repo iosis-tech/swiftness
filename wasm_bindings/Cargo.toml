@@ -1,0 +1,50 @@
+[package]
+name = "swiftness_wasm"
+description = "Swiftness CairoVM Verifier | swiftness-{layout}-{commitment hash}"
+edition = "2021"
+license-file = "LICENSE"
+readme = "README.md"
+repository = "https://github.com/iosis-tech/swiftness"
+version = "0.0.5"
+
+[dependencies]
+wasm-bindgen = "0.2"
+serde_json = "1.0.114"
+
+swiftness_air = { path = "../crates/air", default-features = false, version = "0.0.5" }
+swiftness_stark = { path = "../crates/stark", default-features = false, version = "0.0.5" }
+swiftness_proof_parser = { path = "../proof_parser", default-features = false, version = "0.0.5" }
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+getrandom = { version = "0.2.15", features = ["js"] }
+
+[features]
+default = ["std", "recursive", "keccak"]
+std = [
+    "swiftness_air/std",
+    "swiftness_stark/std",
+]
+dex = ["swiftness_air/dex", "swiftness_stark/dex"]
+recursive = [
+    "swiftness_air/recursive",
+    "swiftness_stark/recursive",
+]
+recursive_with_poseidon = [
+    "swiftness_air/recursive_with_poseidon",
+    "swiftness_stark/recursive_with_poseidon",
+]
+small = ["swiftness_air/small", "swiftness_stark/small"]
+starknet = ["swiftness_air/starknet", "swiftness_stark/starknet"]
+starknet_with_keccak = [
+    "swiftness_air/starknet_with_keccak",
+    "swiftness_stark/starknet_with_keccak",
+]
+keccak = [
+    "swiftness_stark/keccak",
+]
+blake2s = [
+    "swiftness_stark/blake2s",
+]

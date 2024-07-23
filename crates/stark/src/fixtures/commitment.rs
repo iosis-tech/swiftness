@@ -1,3 +1,4 @@
+use alloc::vec;
 use starknet_crypto::Felt;
 use swiftness_air::layout::recursive::global_values::InteractionElements;
 use swiftness_commitment::{

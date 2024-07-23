@@ -19,8 +19,20 @@ impl Config {
     }
 }
 
+#[cfg(feature = "std")]
 use thiserror::Error;
 
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
+pub enum Error {
+    #[error("value out of bounds {min} - {max}")]
+    OutOfBounds { min: u8, max: u8 },
+}
+
+#[cfg(not(feature = "std"))]
+use thiserror_no_std::Error;
+
+#[cfg(not(feature = "std"))]
 #[derive(Error, Debug)]
 pub enum Error {
     #[error("value out of bounds {min} - {max}")]

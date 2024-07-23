@@ -1,3 +1,4 @@
+use alloc::{borrow::ToOwned, vec::Vec};
 use starknet_crypto::Felt;
 use swiftness_commitment::table::{
     commit::table_commit,
@@ -11,7 +12,7 @@ use crate::{
     config::Config as FriConfig,
     first_layer::gather_first_layer_queries,
     group::get_fri_group,
-    last_layer::{self, verify_last_layer},
+    last_layer::verify_last_layer,
     layer::{compute_next_layer, FriLayerComputationParams, FriLayerQuery},
     types::{
         self, Commitment as FriCommitment, Decommitment as FriDecommitment, LayerWitness, Witness,
@@ -175,12 +176,15 @@ pub fn fri_verify(
         return Err(Error::InvalidValue);
     };
 
-    verify_last_layer(last_queries, commitment.last_layer_coefficients)?;
+    verify_last_layer(last_queries, commitment.last_layer_coefficients)
+        .map_err(|_| Error::LastLayerVerificationError)?;
     Ok(())
 }
 
+#[cfg(feature = "std")]
 use thiserror::Error;
 
+#[cfg(feature = "std")]
 #[derive(Error, Debug)]
 pub enum Error {
     #[error("Invalid length: expected {expected}, actual {actual}")]
@@ -189,6 +193,22 @@ pub enum Error {
     #[error("Invalid value")]
     InvalidValue,
 
-    #[error("Last layer verification error: {0}")]
-    LastLayerVerificationError(#[from] last_layer::Error),
+    #[error("Last layer verification error")]
+    LastLayerVerificationError,
+}
+
+#[cfg(not(feature = "std"))]
+use thiserror_no_std::Error;
+
+#[cfg(not(feature = "std"))]
+#[derive(Error, Debug)]
+pub enum Error {
+    #[error("Invalid length: expected {expected}, actual {actual}")]
+    InvalidLength { expected: usize, actual: usize },
+
+    #[error("Invalid value")]
+    InvalidValue,
+
+    #[error("Last layer verification error")]
+    LastLayerVerificationError,
 }

@@ -7,6 +7,16 @@ readme = "README.md"
 repository.workspace = true
 version.workspace = true
 
+[features]
+default = ["std", "keccak"]
+std = [
+    "dep:thiserror",
+    "swiftness_transcript/std",
+    "starknet-crypto/std",
+]
+keccak = []
+blake2s = []
+
 [dependencies]
 serde_with.workspace = true
 serde.workspace = true
@@ -14,13 +24,8 @@ sha3.workspace = true
 starknet-core.workspace = true
 starknet-types-core.workspace = true
 starknet-crypto.workspace = true
-thiserror.workspace = true
-crypto-bigint.workspace = true
+thiserror = { optional = true, workspace = true }
+thiserror-no-std.workspace = true
 blake2.workspace = true
 
 swiftness_transcript.workspace = true
-
-[features]
-default = ["keccak"]
-keccak = []
-blake2s = []

@@ -1,4 +1,4 @@
-use std::vec;
+use alloc::vec;
 
 use crate::types::{LayerWitness, Witness};
 use starknet_crypto::Felt;

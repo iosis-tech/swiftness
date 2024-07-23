@@ -78,14 +78,29 @@ fn powers_array(initial: Felt, alpha: Felt, n: u32) -> Vec<Felt> {
     array
 }
 
-use thiserror::Error;
-
 use crate::{
     config::StarkConfig,
     oods::{self, verify_oods},
     types::{StarkCommitment, StarkUnsentCommitment},
 };
 
+#[cfg(feature = "std")]
+use thiserror::Error;
+
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
+pub enum Error {
+    #[error("POW Error")]
+    POW(#[from] pow::Error),
+
+    #[error("OodsVerifyError Error")]
+    Oods(#[from] oods::OodsVerifyError),
+}
+
+#[cfg(not(feature = "std"))]
+use thiserror_no_std::Error;
+
+#[cfg(not(feature = "std"))]
 #[derive(Error, Debug)]
 pub enum Error {
     #[error("POW Error")]

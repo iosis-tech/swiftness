@@ -77,14 +77,49 @@ pub trait LayoutTrait {
     fn verify_public_input(public_input: &PublicInput) -> Result<(Felt, Felt), PublicInputError>;
 }
 
+#[cfg(feature = "std")]
 use thiserror::Error;
 
+#[cfg(feature = "std")]
 #[derive(Error, Debug)]
 pub enum CompositionPolyEvalError {
     #[error("segment not present {segment}")]
     SegmentMissing { segment: usize },
 }
 
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
+pub enum PublicInputError {
+    #[error("max steps exceeded")]
+    MaxSteps,
+
+    #[error("trace length invalid")]
+    TraceLengthInvalid,
+
+    #[error("segment not present {segment}")]
+    SegmentMissing { segment: usize },
+
+    #[error("layout code invalid")]
+    LayoutCodeInvalid,
+
+    #[error("range_check invalid")]
+    RangeCheckInvalid,
+
+    #[error("invalid number of builtin uses")]
+    UsesInvalid,
+}
+
+#[cfg(not(feature = "std"))]
+use thiserror_no_std::Error;
+
+#[cfg(not(feature = "std"))]
+#[derive(Error, Debug)]
+pub enum CompositionPolyEvalError {
+    #[error("segment not present {segment}")]
+    SegmentMissing { segment: usize },
+}
+
+#[cfg(not(feature = "std"))]
 #[derive(Error, Debug)]
 pub enum PublicInputError {
     #[error("max steps exceeded")]

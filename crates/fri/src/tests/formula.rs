@@ -1,4 +1,5 @@
 use crate::formula::fri_formula;
+use alloc::vec;
 use starknet_crypto::Felt;
 
 #[test]

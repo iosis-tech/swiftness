@@ -9,3 +9,9 @@ version.workspace = true
 
 [dependencies]
 starknet-crypto.workspace = true
+
+[features]
+default = ["std"]
+std = [
+    "starknet-crypto/std",
+]

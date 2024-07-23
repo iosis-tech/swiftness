@@ -1,0 +1,41 @@
+[package]
+name = "no_std_build"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+swiftness_air = { path = "../../crates/air", default-features = false }
+swiftness_stark = { path = "../../crates/stark", default-features = false }
+swiftness_commitment = { path = "../../crates/commitment", default-features = false }
+swiftness_pow = { path = "../../crates/pow", default-features = false }
+swiftness_fri = { path = "../../crates/fri", default-features = false }
+swiftness_transcript = { path = "../../crates/transcript", default-features = false }
+embedded-alloc = "0.5.1"
+
+[features]
+default = ["recursive", "blake2s"]
+dex = ["swiftness_air/dex", "swiftness_stark/dex"]
+recursive = [
+    "swiftness_air/recursive",
+    "swiftness_stark/recursive",
+]
+recursive_with_poseidon = [
+    "swiftness_air/recursive_with_poseidon",
+    "swiftness_stark/recursive_with_poseidon",
+]
+small = ["swiftness_air/small", "swiftness_stark/small"]
+starknet = ["swiftness_air/starknet", "swiftness_stark/starknet"]
+starknet_with_keccak = [
+    "swiftness_air/starknet_with_keccak",
+    "swiftness_stark/starknet_with_keccak",
+]
+keccak = [
+    "swiftness_commitment/keccak",
+    "swiftness_pow/keccak",
+    "swiftness_fri/keccak",
+]
+blake2s = [
+    "swiftness_commitment/blake2s",
+    "swiftness_pow/blake2s",
+    "swiftness_fri/blake2s",
+]

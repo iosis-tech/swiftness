@@ -1,5 +1,6 @@
 use super::{config::Config, types::Commitment};
 use crate::vector::commit::vector_commit;
+use alloc::borrow::ToOwned;
 use starknet_crypto::Felt;
 use swiftness_transcript::transcript::Transcript;
 

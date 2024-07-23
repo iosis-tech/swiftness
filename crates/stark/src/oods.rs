@@ -1,4 +1,4 @@
-use bail_out::assure;
+use alloc::vec::Vec;
 use starknet_crypto::Felt;
 use swiftness_air::{
     layout::{CompositionPolyEvalError, LayoutTrait},
@@ -47,8 +47,23 @@ pub fn verify_oods<Layout: LayoutTrait>(
     )
 }
 
+use swiftness_transcript::assure;
+#[cfg(feature = "std")]
 use thiserror::Error;
 
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
+pub enum OodsVerifyError {
+    #[error("oods invalid {expected} - {actual}")]
+    EvaluationInvalid { expected: Felt, actual: Felt },
+    #[error("CompositionPolyEval Error")]
+    CompositionPolyEvalError(#[from] CompositionPolyEvalError),
+}
+
+#[cfg(not(feature = "std"))]
+use thiserror_no_std::Error;
+
+#[cfg(not(feature = "std"))]
 #[derive(Error, Debug)]
 pub enum OodsVerifyError {
     #[error("oods invalid {expected} - {actual}")]

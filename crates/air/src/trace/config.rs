@@ -45,8 +45,26 @@ impl Config {
     }
 }
 
+#[cfg(feature = "std")]
 use thiserror::Error;
 
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
+pub enum Error {
+    #[error("value out of bounds {min} - {max}")]
+    OutOfBounds { min: Felt, max: Felt },
+
+    #[error("wrong numbers of columns")]
+    ColumnsNumInvalid,
+
+    #[error("Vector Error")]
+    Vector(#[from] vector::config::Error),
+}
+
+#[cfg(not(feature = "std"))]
+use thiserror_no_std::Error;
+
+#[cfg(not(feature = "std"))]
 #[derive(Error, Debug)]
 pub enum Error {
     #[error("value out of bounds {min} - {max}")]
