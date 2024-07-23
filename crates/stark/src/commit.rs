@@ -1,3 +1,4 @@
+use alloc::vec::Vec;
 use starknet_crypto::Felt;
 use swiftness_air::{domains::StarkDomains, layout::LayoutTrait, public_memory::PublicInput};
 use swiftness_commitment::table::commit::table_commit;
@@ -15,7 +16,7 @@ pub fn stark_commit<Layout: LayoutTrait>(
 ) -> Result<StarkCommitment<Layout::InteractionElements>, Error> {
     // Read the commitment of the 'traces' component.
     let traces_commitment =
-        Layout::traces_commit(transcript, &unsent_commitment.traces, config.traces.to_owned());
+        Layout::traces_commit(transcript, &unsent_commitment.traces, config.traces.clone());
 
     // Generate interaction values after traces commitment.
     let composition_alpha = transcript.random_felt_to_prover();
@@ -24,7 +25,7 @@ pub fn stark_commit<Layout: LayoutTrait>(
 
     // Read composition commitment.
     let composition_commitment =
-        table_commit(transcript, unsent_commitment.composition, config.composition.to_owned());
+        table_commit(transcript, unsent_commitment.composition, config.composition.clone());
 
     // Generate interaction values after composition.
     let interaction_after_composition = transcript.random_felt_to_prover();
@@ -49,8 +50,7 @@ pub fn stark_commit<Layout: LayoutTrait>(
         powers_array(Felt::ONE, oods_alpha, (Layout::MASK_SIZE + Layout::CONSTRAINT_DEGREE) as u32);
 
     // Read fri commitment.
-    let fri_commitment =
-        fri_commit(transcript, unsent_commitment.fri.to_owned(), config.fri.to_owned());
+    let fri_commitment = fri_commit(transcript, unsent_commitment.fri.clone(), config.fri.clone());
 
     // Proof of work commitment phase.
     unsent_commitment.proof_of_work.commit(transcript, &config.proof_of_work)?;
@@ -60,7 +60,7 @@ pub fn stark_commit<Layout: LayoutTrait>(
         traces: traces_commitment,
         composition: composition_commitment,
         interaction_after_composition,
-        oods_values: unsent_commitment.oods_values.to_owned(),
+        oods_values: unsent_commitment.oods_values.clone(),
         interaction_after_oods: oods_coefficients,
         fri: fri_commitment,
     })
