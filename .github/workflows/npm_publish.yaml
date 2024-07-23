@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      WORKING_DIR: wasm_bindings  # define the working directory here
+      WORKING_DIR: ${{ github.workspace }}/wasm_bindings
 
     strategy:
       fail-fast: false

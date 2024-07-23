@@ -54,8 +54,8 @@ jobs:
           ]
     
     env:
-      PROOFS_DIR: examples/proofs
-      WORKING_DIR: cli
+      PROOFS_DIR: ${{ github.workspace }}/examples/proofs
+      WORKING_DIR: ${{ github.workspace }}/cli
 
     steps:
       - name: Checkout repository
@@ -98,7 +98,7 @@ jobs:
         arch: ["arm", "riscv"]
 
     env:
-      WORKING_DIR: examples/${{ matrix.arch }}_build
+      WORKING_DIR: ${{ github.workspace }}/examples/${{ matrix.arch }}_build
 
     steps:
       - name: Checkout repository
