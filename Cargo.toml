@@ -15,8 +15,7 @@ exclude = [
     "cli",
     "proof_parser",
     "wasm_bindings",
-    "examples/arm_build",
-    "examples/riscv_build",
+    "examples/no_std_build",
 ]
 
 [workspace.package]

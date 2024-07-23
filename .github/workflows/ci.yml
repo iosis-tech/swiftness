@@ -87,7 +87,6 @@ jobs:
         working-directory: ${{ env.WORKING_DIR }}
 
   no-std-build:
-    name: Build no_std examples
     runs-on: ubuntu-latest
     needs: verify-proof
     strategy:
@@ -95,10 +94,10 @@ jobs:
       matrix:
         layout: ["dex", "recursive", "recursive_with_poseidon", "small", "starknet", "starknet_with_keccak"]
         hash: ["blake2s", "keccak"]
-        arch: ["arm", "riscv"]
+        target: ["armebv7r-none-eabi", "riscv64imac-unknown-none-elf"]
 
     env:
-      WORKING_DIR: ${{ github.workspace }}/examples/${{ matrix.arch }}_build
+      WORKING_DIR: ${{ github.workspace }}/examples/no_std_build
 
     steps:
       - name: Checkout repository
@@ -130,5 +129,9 @@ jobs:
         working-directory: ${{ env.WORKING_DIR }}
 
       - name: Build project
-        run: cargo build -r --features ${{ matrix.layout }},${{ matrix.hash }} --no-default-features
+        run: cargo build -r --features ${{ matrix.layout }},${{ matrix.hash }} --no-default-features --target ${{ matrix.target }}
+        working-directory: ${{ env.WORKING_DIR }}
+        
+      - name: Print binary metadata
+        run: file target/${{ matrix.target }}/release/no_std_build
         working-directory: ${{ env.WORKING_DIR }}
