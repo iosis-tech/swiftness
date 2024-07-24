@@ -1,5 +1,5 @@
 use super::global_values::GlobalValues;
-use super::{CONSTRAINT_DEGREE, NUM_COLUMNS_FIRST, NUM_COLUMNS_SECOND};
+use crate::layout::LayoutTrait;
 use starknet_core::types::NonZeroFelt;
 use starknet_crypto::Felt;
 
@@ -1236,7 +1236,7 @@ pub fn eval_composition_polynomial_inner(
     total_sum
 }
 
-pub fn eval_oods_polynomial_inner(
+pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
     column_values: &[Felt],
     oods_values: &[Felt],
     constraint_coefficients: &[Felt],
@@ -2162,13 +2162,14 @@ pub fn eval_oods_polynomial_inner(
     total_sum += constraint_coefficients[191] * value;
 
     // Sum the OODS boundary constraints on the composition polynomials.
-    let oods_point_to_deg = oods_point.pow(CONSTRAINT_DEGREE);
+    let oods_point_to_deg = oods_point.pow(Layout::CONSTRAINT_DEGREE as u128);
 
-    value = (column_values[(NUM_COLUMNS_FIRST + NUM_COLUMNS_SECOND) as usize] - oods_values[192])
+    value = (column_values[Layout::NUM_COLUMNS_FIRST + Layout::NUM_COLUMNS_SECOND]
+        - oods_values[192])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - oods_point_to_deg));
     total_sum += constraint_coefficients[192] * value;
 
-    value = (column_values[(NUM_COLUMNS_FIRST + NUM_COLUMNS_SECOND + 1) as usize]
+    value = (column_values[Layout::NUM_COLUMNS_FIRST + Layout::NUM_COLUMNS_SECOND + 1]
         - oods_values[193])
         .field_div(&NonZeroFelt::from_felt_unchecked(point - oods_point_to_deg));
     total_sum += constraint_coefficients[193] * value;

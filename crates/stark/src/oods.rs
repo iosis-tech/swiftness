@@ -1,17 +1,5 @@
 use alloc::vec::Vec;
 use starknet_crypto::Felt;
-#[cfg(feature = "dex")]
-use swiftness_air::layout::dex::CONSTRAINT_DEGREE;
-#[cfg(feature = "recursive")]
-use swiftness_air::layout::recursive::CONSTRAINT_DEGREE;
-#[cfg(feature = "recursive_with_poseidon")]
-use swiftness_air::layout::recursive_with_poseidon::CONSTRAINT_DEGREE;
-#[cfg(feature = "small")]
-use swiftness_air::layout::small::CONSTRAINT_DEGREE;
-#[cfg(feature = "starknet")]
-use swiftness_air::layout::starknet::CONSTRAINT_DEGREE;
-#[cfg(feature = "starknet_with_keccak")]
-use swiftness_air::layout::starknet_with_keccak::CONSTRAINT_DEGREE;
 use swiftness_air::{
     layout::{CompositionPolyEvalError, LayoutTrait},
     public_memory::PublicInput,
@@ -101,7 +89,7 @@ pub fn eval_oods_boundary_poly_at_points<Layout: LayoutTrait>(
         "Invalid value"
     );
     assert!(
-        composition_decommitment.values.len() == points.len() * CONSTRAINT_DEGREE as usize,
+        composition_decommitment.values.len() == points.len() * Layout::CONSTRAINT_DEGREE,
         "Invalid value"
     );
 
@@ -109,7 +97,7 @@ pub fn eval_oods_boundary_poly_at_points<Layout: LayoutTrait>(
 
     for (i, &point) in points.iter().enumerate() {
         let mut column_values = Vec::with_capacity(
-            n_original_columns + n_interaction_columns + CONSTRAINT_DEGREE as usize,
+            n_original_columns + n_interaction_columns + Layout::CONSTRAINT_DEGREE,
         );
 
         column_values.extend(
@@ -121,7 +109,7 @@ pub fn eval_oods_boundary_poly_at_points<Layout: LayoutTrait>(
         );
         column_values.extend(
             &composition_decommitment.values
-                [i * CONSTRAINT_DEGREE as usize..(i + 1) * CONSTRAINT_DEGREE as usize],
+                [i * Layout::CONSTRAINT_DEGREE..(i + 1) * Layout::CONSTRAINT_DEGREE],
         );
 
         evaluations.push(Layout::eval_oods_polynomial(
