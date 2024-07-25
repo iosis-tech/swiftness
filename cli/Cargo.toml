@@ -3,7 +3,7 @@ name = "swiftness"
 description = "CLI toolkit to use Swiftness - Rust CairoVM Verifier implementation"
 edition = "2021"
 license-file = "LICENSE"
-readme = "README.md"
+readme = "../README.md"
 repository = "https://github.com/iosis-tech/swiftness"
 version = "0.0.5"
 
@@ -21,7 +21,7 @@ swiftness_proof_parser = { path = "../proof_parser", default-features = false, f
 ], version = "0.0.5" }
 
 [features]
-default = []
+default = ["recursive", "keccak"]
 dex = ["swiftness_air/dex", "swiftness_stark/dex"]
 recursive = ["swiftness_air/recursive", "swiftness_stark/recursive"]
 recursive_with_poseidon = [

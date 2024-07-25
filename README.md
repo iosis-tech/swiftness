@@ -1,87 +1,97 @@
 # Swiftness CairoVM Verifier
 
-![Version](https://img.shields.io/badge/v0.0.3-green?style=flat-square&logo=git&logoColor=white&label=version)
+![Version](https://img.shields.io/badge/v0.0.5-green?style=flat-square&logo=git&logoColor=white&label=version)
 ![Continuous Integration](https://img.shields.io/github/actions/workflow/status/iosis-tech/swiftness/ci.yml?style=flat-square&logo=githubactions&logoColor=white&label=Continuous%20Integration)
 
-This is the Rust implementation of the Cairo-VM STARK verifier with layouts. The code is inspired by StarkWare's [Cairo-verifier](https://github.com/starkware-libs/cairo-lang) implementation in Cairo0.
+Swiftness is a Rust implementation of the Cairo-VM STARK verifier with layouts, inspired by StarkWare's [Cairo-verifier](https://github.com/starkware-libs/cairo-lang) in Cairo0.
 
-### Verify example proof:
+## Getting Started
 
-1. Install `swiftness`
+### Verify an Example Proof
 
-```sh
+1. **Install `swiftness`:**
 
-# cargo install  -f --path cli/ --features {layout},{hash}
-cargo install  -f --path cli/ --features starknet_with_keccak,keccak
-```
+   ```sh
+   cargo install -f --path cli/ --features starknet_with_keccak,keccak --no-default-features
+   ```
 
-2. Run the following command to verify the proof:
-   Note: use proof that is corresponding to layout and hash you built binary
+2. **Verify the proof:**
 
-```sh
-swiftness --proof examples/proofs/starknet_with_keccak/cairo0_example_proof.json
-```
+   Ensure you use a proof corresponding to the layout and hash used to build the binary.
 
-for local run:
+   ```sh
+   swiftness --proof examples/proofs/starknet_with_keccak/cairo0_example_proof.json
+   ```
 
-```sh
-cd cli && cargo run --release --bin swiftness --features starknet_with_keccak,keccak --no-default-features -- --proof ../examples/proofs/starknet_with_keccak/cairo0_example_proof.json
-```
+3. **Local Run:**
 
-## Run Tests
+   ```sh
+   cd cli && cargo run --release --bin swiftness --features starknet_with_keccak,keccak --no-default-features -- --proof ../examples/proofs/starknet_with_keccak/cairo0_example_proof.json
+   ```
+
+## Running Tests
 
 ```sh
 cargo test
 ```
 
-### Install wasm-pack
+## WebAssembly (WASM) Setup
 
-```sh
-cargo install wasm-pack
-```
+1. **Install `wasm-pack`:**
 
-### Build WASM:
+   ```sh
+   cargo install wasm-pack
+   ```
 
-```sh
-cd wasm-binding && wasm-pack build --target web --features std,starknet_with_keccak,blake2s --no-default-features
-```
+2. **Build WASM:**
+
+   ```sh
+   cd wasm_bindings && wasm-pack build --target web --features starknet_with_keccak,blake2s --no-default-features
+   ```
 
 ## Features
 
-- **Usage:**
+### Usage
 
-  - [x] CLI support for easy interaction
+- [x] CLI
 
-- **Implemented Layouts:**
+### Implemented Layouts
 
-  - [x] dex
-  - [x] recursive
-  - [x] recursive_with_poseidon
-  - [x] small
-  - [x] starknet
-  - [x] starknet_with_keccak
+- [x] dex
+- [x] recursive
+- [x] recursive_with_poseidon
+- [x] small
+- [x] starknet
+- [x] starknet_with_keccak
 
-- **Web Support:**
-  - [x] Wasm Support
-  - [X] Web Demo [link](https://swiftness-dataprocessor-demo.vercel.app/)
-  - [x] NPM packages published
-    - [swiftness](https://www.npmjs.com/package/swiftness-dex-blake2s) - layout: `dex` - hash: `blake2s`
-    - [swiftness](https://www.npmjs.com/package/swiftness-dex-keccak) - layout: `dex` - hash: `keccak`
-    - [swiftness](https://www.npmjs.com/package/swiftness-recursive-blake2s) - layout: `recursive` - hash: `blake2s`
-    - [swiftness](https://www.npmjs.com/package/swiftness-recursive-keccak) - layout: `recursive` - hash: `keccak`
-    - [swiftness](https://www.npmjs.com/package/swiftness-recursive-with-poseidon-blake2s) - layout: `recursive_with_poseidon` - hash: `blake2s`
-    - [swiftness](https://www.npmjs.com/package/swiftness-recursive-with-poseidon-keccak) - layout: `recursive_with_poseidon` - hash: `keccak`
-    - [swiftness](https://www.npmjs.com/package/swiftness-small-blake2s) - layout: `small` - hash: `blake2s`
-    - [swiftness](https://www.npmjs.com/package/swiftness-small-keccak) - layout: `small` - hash: `keccak`
-    - [swiftness](https://www.npmjs.com/package/swiftness-starknet-blake2s) - layout: `starknet` - hash: `blake2s`
-    - [swiftness](https://www.npmjs.com/package/swiftness-starknet-keccak) - layout: `starknet` - hash: `keccak`
-    - [swiftness](https://www.npmjs.com/package/swiftness-starknet-with-keccak-blake2s) - layout: `starknet_with_keccak` - hash: `blake2s`
-    - [swiftness](https://www.npmjs.com/package/swiftness-starknet-with-keccak-keccak) - layout: `starknet_with_keccak` - hash: `keccak`
+### Commitment Hashes
 
-- **Other Platforms Support:**
-  - [X] Bare Armv7-R, Big Endian - `armebv7r-none-eabi`
-  - [X] Bare RISC-V (RV64IMAC ISA) - `riscv64imac-unknown-none-elf`
+- [x] keccak
+- [x] blake2s
+
+### Web Support
+
+- [x] WASM support
+- [x] [Web Demo](https://swiftness-dataprocessor-demo.vercel.app/)
+- [x] NPM packages:
+  - [swiftness-dex-blake2s](https://www.npmjs.com/package/swiftness-dex-blake2s)
+  - [swiftness-dex-keccak](https://www.npmjs.com/package/swiftness-dex-keccak)
+  - [swiftness-recursive-blake2s](https://www.npmjs.com/package/swiftness-recursive-blake2s)
+  - [swiftness-recursive-keccak](https://www.npmjs.com/package/swiftness-recursive-keccak)
+  - [swiftness-recursive-with-poseidon-blake2s](https://www.npmjs.com/package/swiftness-recursive-with-poseidon-blake2s)
+  - [swiftness-recursive-with-poseidon-keccak](https://www.npmjs.com/package/swiftness-recursive-with-poseidon-keccak)
+  - [swiftness-small-blake2s](https://www.npmjs.com/package/swiftness-small-blake2s)
+  - [swiftness-small-keccak](https://www.npmjs.com/package/swiftness-small-keccak)
+  - [swiftness-starknet-blake2s](https://www.npmjs.com/package/swiftness-starknet-blake2s)
+  - [swiftness-starknet-keccak](https://www.npmjs.com/package/swiftness-starknet-keccak)
+  - [swiftness-starknet-with-keccak-blake2s](https://www.npmjs.com/package/swiftness-starknet-with-keccak-blake2s)
+  - [swiftness-starknet-with-keccak-keccak](https://www.npmjs.com/package/swiftness-starknet-with-keccak-keccak)
+
+### Other Platforms Support
+
+- [x] Bare Armv7-R, Big Endian - `armebv7r-none-eabi`
+- [x] Bare RISC-V (RV64IMAC ISA) - `riscv64imac-unknown-none-elf`
 
 ## Contributing
 
-Feel free to open issues or submit pull requests to help improve this project.
+Contributions are welcome! Feel free to open issues or submit pull requests to help improve this project.
