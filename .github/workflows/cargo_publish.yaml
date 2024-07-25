@@ -1,0 +1,61 @@
+name: Manual Publish to Crates.io
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    env:
+      WORKING_DIR: ${{ github.workspace }}
+      WORKING_DIR_CLI: ${{ github.workspace }}/cli
+      WORKING_DIR_PROOF_PARSER: ${{ github.workspace }}/proof_parser
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+
+      - name: Cache Cargo registry
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-registry-
+  
+      - name: Cache Cargo build
+        uses: actions/cache@v2
+        with:
+          path: target
+          key: ${{ runner.os }}-cargo-build-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-build-
+    
+      - name: Install dependencies
+        run: cargo fetch
+
+      - name: Run tests
+        run: cargo test --all
+
+      - name: Publish crates to crates.io
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
+        run: |
+          cargo publish -p swiftness_transcript --token $CARGO_REGISTRY_TOKEN --manifest-path ${{ env.WORKING_DIR }}/Cargo.toml
+          cargo publish -p swiftness_pow --token $CARGO_REGISTRY_TOKEN --manifest-path ${{ env.WORKING_DIR }}/Cargo.toml
+          cargo publish -p swiftness_commitment --token $CARGO_REGISTRY_TOKEN --manifest-path ${{ env.WORKING_DIR }}/Cargo.toml
+          cargo publish -p swiftness_fri --token $CARGO_REGISTRY_TOKEN --manifest-path ${{ env.WORKING_DIR }}/Cargo.toml
+          cargo publish -p swiftness_air --token $CARGO_REGISTRY_TOKEN --manifest-path ${{ env.WORKING_DIR }}/Cargo.toml
+          cargo publish -p swiftness_stark --token $CARGO_REGISTRY_TOKEN --manifest-path ${{ env.WORKING_DIR }}/Cargo.toml
+          cargo publish -p swiftness_proof_parser --token $CARGO_REGISTRY_TOKEN --manifest-path ${{ env.WORKING_DIR_PROOF_PARSER }}/Cargo.toml
+          cargo publish -p swiftness --token $CARGO_REGISTRY_TOKEN --manifest-path ${{ env.WORKING_DIR_CLI }}/Cargo.toml
