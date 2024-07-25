@@ -8,7 +8,7 @@ repository = "https://github.com/iosis-tech/swiftness"
 version = "0.0.5"
 
 [features]
-default = ["std", "keccak", "recursive"]
+default = ["std"]
 std = [
     "swiftness_air/std",
     "swiftness_commitment/std",
@@ -17,14 +17,6 @@ std = [
     "swiftness_stark/std",
     "swiftness_transcript/std",
 ]
-dex = []
-recursive = []
-recursive_with_poseidon = []
-small = []
-starknet = []
-starknet_with_keccak = []
-keccak = []
-blake2s = []
 
 
 [dependencies]
@@ -37,9 +29,9 @@ clap = { version = "4.5.1", features = ["derive"] }
 regex = "1.10.3"
 serde_json = "1.0.114"
 
-swiftness_air = { path = "../crates/air", default-features = false, version = "0.0.5" }
-swiftness_commitment = { path = "../crates/commitment", default-features = false, version = "0.0.5" }
-swiftness_fri = { path = "../crates/fri", default-features = false, version = "0.0.5" }
-swiftness_pow = { path = "../crates/pow", default-features = false, version = "0.0.5" }
-swiftness_stark = { path = "../crates/stark", default-features = false, version = "0.0.5" }
-swiftness_transcript = { path = "../crates/transcript", default-features = false, version = "0.0.5" }
+swiftness_air = { path = "../crates/air", version = "0.0.5" }
+swiftness_commitment = { path = "../crates/commitment", version = "0.0.5" }
+swiftness_fri = { path = "../crates/fri", version = "0.0.5" }
+swiftness_pow = { path = "../crates/pow", version = "0.0.5" }
+swiftness_stark = { path = "../crates/stark", version = "0.0.5" }
+swiftness_transcript = { path = "../crates/transcript", version = "0.0.5" }
