@@ -25,7 +25,7 @@ swiftness --proof examples/proofs/starknet_with_keccak/cairo0_example_proof.json
 for local run:
 
 ```sh
-cargo run --release --bin swiftness --features starknet_with_keccak,keccak --no-default-features -- --proof examples/proofs/starknet_with_keccak/cairo0_example_proof.json
+cd cli && cargo run --release --bin swiftness --features starknet_with_keccak,keccak --no-default-features -- --proof ../examples/proofs/starknet_with_keccak/cairo0_example_proof.json
 ```
 
 ## Run Tests
@@ -63,6 +63,7 @@ cd wasm-binding && wasm-pack build --target web --features std,starknet_with_kec
 
 - **Web Support:**
   - [x] Wasm Support
+  - [X] Web Demo [link](https://swiftness-dataprocessor-demo.vercel.app/)
   - [x] NPM packages published
     - [swiftness](https://www.npmjs.com/package/swiftness-dex-blake2s) - layout: `dex` - hash: `blake2s`
     - [swiftness](https://www.npmjs.com/package/swiftness-dex-keccak) - layout: `dex` - hash: `keccak`
@@ -76,6 +77,10 @@ cd wasm-binding && wasm-pack build --target web --features std,starknet_with_kec
     - [swiftness](https://www.npmjs.com/package/swiftness-starknet-keccak) - layout: `starknet` - hash: `keccak`
     - [swiftness](https://www.npmjs.com/package/swiftness-starknet-with-keccak-blake2s) - layout: `starknet_with_keccak` - hash: `blake2s`
     - [swiftness](https://www.npmjs.com/package/swiftness-starknet-with-keccak-keccak) - layout: `starknet_with_keccak` - hash: `keccak`
+
+- **Other Platforms Support:**
+  - [X] Bare Armv7-R, Big Endian - `armebv7r-none-eabi`
+  - [X] Bare RISC-V (RV64IMAC ISA) - `riscv64imac-unknown-none-elf`
 
 ## Contributing
 
