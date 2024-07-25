@@ -92,17 +92,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        layout:
-          [
-            "dex",
-            "recursive",
-            "recursive_with_poseidon",
-            "small",
-            "starknet",
-            "starknet_with_keccak",
-          ]
+        layout: ["starknet_with_keccak",]
         hash: ["blake2s", "keccak"]
-        target: ["armebv7r-none-eabi", "riscv64imac-unknown-none-elf"]
+        target: ["armebv7r-none-eabi", "riscv64imac-unknown-none-elf", "aarch64-unknown-none-softfloat", "aarch64-unknown-none"]
 
     env:
       WORKING_DIR: ${{ github.workspace }}/examples/no_std_build

@@ -91,6 +91,8 @@ cargo test
 
 - [x] Bare Armv7-R, Big Endian - `armebv7r-none-eabi`
 - [x] Bare RISC-V (RV64IMAC ISA) - `riscv64imac-unknown-none-elf`
+- [x] Bare ARM64, softfloat - `aarch64-unknown-none-softfloat`
+- [x] Bare ARM64, hardfloat - `aarch64-unknown-none`
 
 ## Contributing
 
