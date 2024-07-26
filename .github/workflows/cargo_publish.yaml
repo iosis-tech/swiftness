@@ -32,7 +32,7 @@ jobs:
           key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: |
             ${{ runner.os }}-cargo-registry-
-  
+
       - name: Cache Cargo build
         uses: actions/cache@v2
         with:
@@ -40,7 +40,7 @@ jobs:
           key: ${{ runner.os }}-cargo-build-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: |
             ${{ runner.os }}-cargo-build-
-    
+
       - name: Install dependencies
         run: cargo fetch
 

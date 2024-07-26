@@ -14,12 +14,14 @@ Swiftness is a Rust implementation of the Cairo-VM STARK verifier with layouts, 
 ## Example Usage
 
 ```js
-import init, { verify_proof } from 'swiftness-{layout}-{commitment hash}';
+import init, { verify_proof } from "swiftness-{layout}-{commitment hash}";
 
 async function run(proof_json) {
-  await init();  // Initialize the Wasm module
+  await init(); // Initialize the Wasm module
   try {
-    const [programHash, programOutput] = JSON.parse(await verify_proof(proof_json));
+    const [programHash, programOutput] = JSON.parse(
+      await verify_proof(proof_json),
+    );
   } catch (err) {
     console.error(`Verification failed: ${err}`);
   }
