@@ -9,7 +9,7 @@ on:
         default: "latest"
 
 jobs:
-  build-and-push:
+  docker-build-push:
     runs-on: ubuntu-latest
 
     strategy:
