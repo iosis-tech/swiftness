@@ -34,5 +34,13 @@ starknet_with_keccak = [
     "swiftness_air/starknet_with_keccak",
     "swiftness_stark/starknet_with_keccak",
 ]
-keccak = ["swiftness_stark/keccak"]
-blake2s = ["swiftness_stark/blake2s"]
+keccak = [
+    "swiftness_air/keccak",
+    "swiftness_stark/keccak",
+    "swiftness_proof_parser/keccak"
+]
+blake2s = [
+    "swiftness_air/blake2s",
+    "swiftness_stark/blake2s",
+    "swiftness_proof_parser/blake2s"
+]

@@ -1,0 +1,36 @@
+# Ignore the entire target directory, as it's used for build artifacts
+/target
+
+# Ignore any generated documentation
+/doc
+
+# Ignore temporary files
+*.rs.bk
+*.rs.swp
+*.rs.swo
+
+# Ignore build scripts output
+/build.rs
+
+# Ignore files for specific editors or IDEs
+*.iml
+*.idea
+.vscode
+*.swp
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore backup and log files
+*.log
+*.bak
+*.tmp
+*.old
+*.swp
+
+# Ignore git-related files
+.git
+.gitignore
+
+Dockerfile
