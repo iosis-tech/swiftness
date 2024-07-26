@@ -13,7 +13,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        layout: ["dex", "recursive", "recursive_with_poseidon", "small", "starknet", "starknet_with_keccak"]
+        layout:
+          [
+            "dex",
+            "recursive",
+            "recursive_with_poseidon",
+            "small",
+            "starknet",
+            "starknet_with_keccak",
+          ]
         hash: ["blake2s", "keccak"]
 
     steps:
@@ -23,7 +31,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # specify your desired Node.js version
+          node-version: "18" # specify your desired Node.js version
 
       - name: Configure npm
         run: npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
@@ -38,7 +46,7 @@ jobs:
           key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: |
             ${{ runner.os }}-cargo-registry-
-  
+
       - name: Cache Cargo build
         uses: actions/cache@v2
         with:
@@ -46,14 +54,14 @@ jobs:
           key: ${{ runner.os }}-cargo-build-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: |
             ${{ runner.os }}-cargo-build-
-      
+
       - name: Install wasm-pack
         run: cargo install wasm-pack
-      
+
       - name: Build package
         run: wasm-pack build --out-dir pkg --target web --features ${{ matrix.layout }},${{ matrix.hash }} --no-default-features
         working-directory: ${{ env.WORKING_DIR }}
-      
+
       - name: Rename package
         run: |
           jq --arg layout "${{ matrix.layout }}" --arg hash "${{ matrix.hash }}" \

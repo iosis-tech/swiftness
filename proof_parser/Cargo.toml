@@ -8,7 +8,7 @@ repository = "https://github.com/iosis-tech/swiftness"
 version = "0.0.5"
 
 [features]
-default = ["std", "keccak", "recursive"]
+default = ["std", "keccak"]
 std = [
     "swiftness_air/std",
     "swiftness_commitment/std",
@@ -17,14 +17,14 @@ std = [
     "swiftness_stark/std",
     "swiftness_transcript/std",
 ]
-dex = []
-recursive = []
-recursive_with_poseidon = []
-small = []
-starknet = []
-starknet_with_keccak = []
-keccak = []
-blake2s = []
+keccak = [
+    "swiftness_pow/keccak",
+    "swiftness_commitment/keccak",
+]
+blake2s = [
+    "swiftness_pow/blake2s",
+    "swiftness_commitment/blake2s",
+]
 
 
 [dependencies]
