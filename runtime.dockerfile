@@ -7,9 +7,6 @@ WORKDIR /swiftness
 # Copy the project files into the container
 COPY . .
 
-# Build the Rust project with optimizations
-RUN cargo build --release
-
 # Define build arguments for features
 ARG FEATURES="starknet_with_keccak,blake2s"
 
