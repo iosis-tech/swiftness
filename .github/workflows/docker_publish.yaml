@@ -12,6 +12,20 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: false
+      matrix:
+        layout:
+          [
+            "dex",
+            "recursive",
+            "recursive_with_poseidon",
+            "small",
+            "starknet",
+            "starknet_with_keccak",
+          ]
+        hash: ["blake2s", "keccak"]
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -36,4 +50,4 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
           build-args: |
-            FEATURES=starknet_with_keccak,blake2s
+            FEATURES=${{ matrix.layout }},${{ matrix.hash }}
