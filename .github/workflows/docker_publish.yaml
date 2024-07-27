@@ -1,4 +1,4 @@
-name: Publish Docker Image
+name: Manual Publish to Docker Hub
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ on:
         default: "latest"
 
 jobs:
-  build-and-push:
+  docker-build-push:
     runs-on: ubuntu-latest
 
     strategy:
@@ -46,7 +46,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           file: runtime.dockerfile
-          tags: "okm165/swiftness:${{ github.event.inputs.version }}"
+          tags: "okm165/swiftness:${{ github.event.inputs.version }}-${{ matrix.layout }}-${{ matrix.hash }}"
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
           build-args: |
