@@ -507,11 +507,12 @@ dependencies = [
 
 [[package]]
 name = "serde_json"
-version = "1.0.120"
+version = "1.0.121"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4e0d21c9a8cae1235ad58a00c11cb40d4b1e5c784f1ef2c537876ed6ffd8b7c5"
+checksum = "4ab380d7d9f22ef3f21ad3e6c1ebe8e4fc7a2000ccba2e4d71fc96f15b2cb609"
 dependencies = [
  "itoa",
+ "memchr",
  "ryu",
  "serde",
 ]
@@ -685,7 +686,7 @@ checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
 
 [[package]]
 name = "swiftness_air"
-version = "0.0.5"
+version = "0.0.6"
 dependencies = [
  "serde",
  "serde_with 3.9.0",
@@ -699,7 +700,7 @@ dependencies = [
 
 [[package]]
 name = "swiftness_commitment"
-version = "0.0.5"
+version = "0.0.6"
 dependencies = [
  "blake2",
  "serde",
@@ -715,7 +716,7 @@ dependencies = [
 
 [[package]]
 name = "swiftness_fri"
-version = "0.0.5"
+version = "0.0.6"
 dependencies = [
  "serde",
  "serde_with 3.9.0",
@@ -730,7 +731,7 @@ dependencies = [
 
 [[package]]
 name = "swiftness_pow"
-version = "0.0.5"
+version = "0.0.6"
 dependencies = [
  "blake2",
  "serde",
@@ -744,7 +745,7 @@ dependencies = [
 
 [[package]]
 name = "swiftness_proof_parser"
-version = "0.0.5"
+version = "0.0.6"
 dependencies = [
  "anyhow",
  "clap",
@@ -764,7 +765,7 @@ dependencies = [
 
 [[package]]
 name = "swiftness_stark"
-version = "0.0.5"
+version = "0.0.6"
 dependencies = [
  "serde",
  "serde_with 3.9.0",
@@ -781,7 +782,7 @@ dependencies = [
 
 [[package]]
 name = "swiftness_transcript"
-version = "0.0.5"
+version = "0.0.6"
 dependencies = [
  "starknet-crypto",
 ]
