@@ -431,14 +431,12 @@ impl LayoutTrait for Layout {
         ensure!(final_pc == INITIAL_PC + 4, PublicInputError::MaxSteps);
 
         let program_end_pc = initial_fp - 2;
-        let program = &memory[initial_pc.to_bigint().try_into().unwrap()
-            ..program_end_pc.to_bigint().try_into().unwrap()];
-
+        let program = &memory[0..program_end_pc.to_bigint().try_into().unwrap()];
         let program_hash = poseidon_hash_many(program);
 
-        let output_len: usize = (output_stop - output_start).to_bigint().try_into().unwrap();
         // 3. Output segment
-        let output = &memory[memory.len() - output_len..memory.len()];
+        let output_len: usize = (output_stop - output_start).to_bigint().try_into().unwrap();
+        let output = &memory[memory.len() - output_len * 2..memory.len()];
         let output_hash = poseidon_hash_many(output);
 
         Ok((program_hash, output_hash))
