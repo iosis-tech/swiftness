@@ -76,7 +76,7 @@ fn generate_vector_queries(
             let mut hasher = Blake2s256::new();
 
             hasher.update(&data);
-            Felt::from_bytes_be_slice(&hasher.finalize().to_vec().as_slice()[12..32])
+            Felt::from_bytes_be_slice(&hasher.finalize().to_vec().as_slice()[1..32])
         };
 
         vector_queries.push(Query { index: queries[i], value: hash })

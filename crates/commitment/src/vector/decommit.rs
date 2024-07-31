@@ -121,7 +121,7 @@ fn hash_friendly_unfriendly(x: Felt, y: Felt, is_verifier_friendly: bool) -> Fel
         let mut hasher = Blake2s256::new();
 
         hasher.update(&hash_data);
-        Felt::from_bytes_be_slice(&hasher.finalize().to_vec().as_slice()[12..32])
+        Felt::from_bytes_be_slice(&hasher.finalize().to_vec().as_slice()[1..32])
     }
 }
 

@@ -13,7 +13,7 @@ impl StarkProof {
         Layout::validate_public_input(&self.public_input, &stark_domains)?;
 
         // Compute the initial hash seed for the Fiat-Shamir transcript.
-        let digest = self.public_input.get_hash();
+        let digest = self.public_input.get_hash(self.config.n_verifier_friendly_commitment_layers);
         // Construct the transcript.
         let mut transcript = Transcript::new(digest);
 

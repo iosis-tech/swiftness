@@ -90,7 +90,7 @@ impl PublicInput {
         (prod, total_length)
     }
 
-    pub fn get_hash(&self) -> Felt {
+    pub fn get_hash(&self, n_verifier_friendly_commitment_layers: Felt) -> Felt {
         let mut main_page_hash = Felt::ZERO;
         for memory in self.main_page.iter() {
             main_page_hash = pedersen_hash(&main_page_hash, &memory.address);
@@ -99,8 +99,13 @@ impl PublicInput {
         main_page_hash =
             pedersen_hash(&main_page_hash, &(Felt::TWO * Felt::from(self.main_page.len())));
 
-        let mut hash_data =
-            vec![self.log_n_steps, self.range_check_min, self.range_check_max, self.layout];
+        let mut hash_data = vec![
+            n_verifier_friendly_commitment_layers,
+            self.log_n_steps,
+            self.range_check_min,
+            self.range_check_max,
+            self.layout,
+        ];
         hash_data.extend(self.dynamic_params.iter());
 
         // Segments.
