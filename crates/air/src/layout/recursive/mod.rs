@@ -10,7 +10,7 @@ use alloc::vec;
 use alloc::vec::Vec;
 use global_values::{EcPoint, GlobalValues, InteractionElements};
 use starknet_core::types::NonZeroFelt;
-use starknet_crypto::{poseidon_hash_many, Felt};
+use starknet_crypto::{pedersen_hash, Felt};
 use swiftness_commitment::table::{commit::table_commit, decommit::table_decommit};
 use swiftness_transcript::ensure;
 
@@ -384,20 +384,24 @@ impl LayoutTrait for Layout {
             .flat_map(|v| vec![v.address, v.value])
             .collect::<Vec<Felt>>();
 
-        // 1. Program segment
         ensure!(initial_pc == INITIAL_PC, PublicInputError::MaxSteps);
         ensure!(final_pc == INITIAL_PC + 4, PublicInputError::MaxSteps);
 
         let program_end_pc = initial_fp - 2;
-        let program = &memory[initial_pc.to_bigint().try_into().unwrap()
-            ..program_end_pc.to_bigint().try_into().unwrap()];
 
-        let program_hash = poseidon_hash_many(program);
+        let program: Vec<&Felt> = memory
+            .iter()
+            .skip(initial_pc.to_bigint().try_into().unwrap())
+            .step_by(2)
+            .take((program_end_pc - Felt::ONE).to_bigint().try_into().unwrap())
+            .collect();
+
+        let hash = program.iter().fold(Felt::ZERO, |acc, &e| pedersen_hash(&acc, e));
+        let program_hash = pedersen_hash(&hash, &Felt::from(program.len()));
 
         let output_len: usize = (output_stop - output_start).to_bigint().try_into().unwrap();
-        // 3. Output segment
-        let output = &memory[memory.len() - output_len..memory.len()];
-        let output_hash = poseidon_hash_many(output);
+        let output = &memory[memory.len() - output_len..];
+        let output_hash = output.iter().fold(Felt::ZERO, |acc, e| pedersen_hash(&acc, e));
 
         Ok((program_hash, output_hash))
     }

@@ -20,13 +20,13 @@ fn test_stark_proof_fibonacci_verify() {
     assert_eq!(
         program_hash,
         Felt::from_hex_unchecked(
-            "0x603f45d671891116de1e763d11d71d25102ff93707dafc97a8d06e18145baf5"
+            "0x9f6693f4a5610a46b5d71ef573c43bef5f0d111fc1c5e506d509c458a29bae"
         )
     );
     assert_eq!(
         output_hash,
         Felt::from_hex_unchecked(
-            "0x21e35055ced9a22156eed737abcea133f8406f7f7e78222cf4f0f1271216adb"
+            "0x615be5409121774c863b7dfefd55d0bcab6d1d09eeecbbc4ee3b88daaa69c81"
         )
     );
 }
