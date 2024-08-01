@@ -80,7 +80,7 @@ cargo test
 ### Web Support
 
 - [x] WASM support
-- [x] [Web Demo](https://swiftness-dataprocessor-demo.vercel.app/)
+- [x] [Web Demo](https://demo.swiftness.iosis.tech/)
 - [x] NPM packages:
   - [swiftness-dex-blake2s](https://www.npmjs.com/package/swiftness-dex-blake2s)
   - [swiftness-dex-keccak](https://www.npmjs.com/package/swiftness-dex-keccak)
