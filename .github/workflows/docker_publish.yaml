@@ -44,10 +44,14 @@ jobs:
 
       - name: Create remote Kubernetes builder
         run: |
+          echo "${{ secrets.BUILDKIT_CA_PEM }}" > client-ca.pem
+          echo "${{ secrets.BUILDKIT_CERT_PEM }}" > client-cert.pem
+          echo "${{ secrets.BUILDKIT_KEY_PEM }}" > client-key.pem
+
           docker buildx create \
             --name remote-kubernetes \
             --driver remote \
-            --driver-opt cacert=${{ secrets.BUILDKIT_CA_PEM }},cert=${{ secrets.BUILDKIT_CERT_PEM }},key=${{ secrets.BUILDKIT_KEY_PEM }} \
+            --driver-opt cacert=$(PWD)/client-ca.pem,cert=$(PWD)/client-cert.pem,key=$(PWD)/client-key.pem \
             tcp://buildkit.iosis.tech:30500
           docker buildx use remote-kubernetes
           docker buildx inspect --bootstrap
