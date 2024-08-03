@@ -25,6 +25,7 @@ jobs:
             "starknet_with_keccak",
           ]
         hash: ["blake2s", "keccak"]
+      max-parallel: 3
 
     steps:
       - name: Checkout code
@@ -40,7 +41,16 @@ jobs:
         uses: docker/setup-buildx-action@v3
         with:
           version: latest
-          driver: docker-container
+
+      - name: Create remote Kubernetes builder
+        run: |
+          docker buildx create \
+            --name remote-kubernetes \
+            --driver remote \
+            --driver-opt cacert=${{ secrets.BUILDKIT_CA_PEM }},cert=${{ secrets.BUILDKIT_CERT_PEM }},key=${{ secrets.BUILDKIT_KEY_PEM }} \
+            tcp://buildkit.iosis.tech:30500
+          docker buildx use remote-kubernetes
+          docker buildx inspect --bootstrap
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
