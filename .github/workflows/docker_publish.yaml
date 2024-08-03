@@ -25,7 +25,6 @@ jobs:
             "starknet_with_keccak",
           ]
         hash: ["blake2s", "keccak"]
-      max-parallel: 3
 
     steps:
       - name: Checkout code
