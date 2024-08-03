@@ -51,7 +51,7 @@ jobs:
           docker buildx create \
             --name remote-kubernetes \
             --driver remote \
-            --driver-opt cacert=$(PWD)/client-ca.pem,cert=$(PWD)/client-cert.pem,key=$(PWD)/client-key.pem \
+            --driver-opt cacert=$(pwd)/client-ca.pem,cert=$(pwd)/client-cert.pem,key=$(pwd)/client-key.pem \
             tcp://buildkit.iosis.tech:30500
           docker buildx use remote-kubernetes
           docker buildx inspect --bootstrap
