@@ -1,17 +1,11 @@
+use super::types::{Commitment, Decommitment, Witness};
 use crate::vector::{decommit::vector_commitment_decommit, types::Query};
 use alloc::vec::Vec;
+#[cfg(any(feature = "blake2s_160_lsb", feature = "blake2s_248_lsb"))]
+use blake2::{Blake2s256, Digest};
+#[cfg(any(feature = "keccak_160_lsb", feature = "keccak_248_lsb"))]
+use sha3::{Digest, Keccak256};
 use starknet_crypto::{poseidon_hash_many, Felt};
-
-#[cfg(feature = "blake2s")]
-use blake2::Blake2s256;
-#[cfg(feature = "blake2s")]
-use blake2::Digest;
-#[cfg(feature = "keccak")]
-use sha3::Digest;
-#[cfg(feature = "keccak")]
-use sha3::Keccak256;
-
-use super::types::{Commitment, Decommitment, Witness};
 
 const MONTGOMERY_R: Felt =
     Felt::from_hex_unchecked("0x7FFFFFFFFFFFDF0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE1");
@@ -70,13 +64,30 @@ fn generate_vector_queries(
             let mut data = Vec::new();
             data.extend(slice.iter().flat_map(|x| x.to_bytes_be().to_vec()));
 
-            #[cfg(feature = "keccak")]
-            let mut hasher = Keccak256::new();
-            #[cfg(feature = "blake2s")]
-            let mut hasher = Blake2s256::new();
+            let mut hasher = {
+                #[cfg(any(feature = "keccak_160_lsb", feature = "keccak_248_lsb"))]
+                {
+                    Keccak256::new()
+                }
+                #[cfg(any(feature = "blake2s_160_lsb", feature = "blake2s_248_lsb"))]
+                {
+                    Blake2s256::new()
+                }
+            };
 
             hasher.update(&data);
-            Felt::from_bytes_be_slice(&hasher.finalize().to_vec().as_slice()[1..32])
+
+            {
+                #[cfg(any(feature = "keccak_160_lsb", feature = "blake2s_160_lsb"))]
+                {
+                    Felt::from_bytes_be_slice(&hasher.finalize().as_slice()[12..32])
+                }
+
+                #[cfg(any(feature = "keccak_248_lsb", feature = "blake2s_248_lsb"))]
+                {
+                    Felt::from_bytes_be_slice(&hasher.finalize().as_slice()[1..32])
+                }
+            }
         };
 
         vector_queries.push(Query { index: queries[i], value: hash })
