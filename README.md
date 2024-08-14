@@ -20,7 +20,7 @@ Swiftness is a Rust implementation of the Cairo-VM STARK verifier with layouts, 
 1. **Install `swiftness`:**
 
    ```sh
-   cargo install -f --path cli/ --features starknet_with_keccak,keccak --no-default-features
+   cargo install -f --path cli/ --features starknet_with_keccak,keccak_160_lsb --no-default-features
    ```
 
 2. **Verify the proof:**
@@ -34,7 +34,7 @@ Swiftness is a Rust implementation of the Cairo-VM STARK verifier with layouts, 
 3. **Local Run:**
 
    ```sh
-   cd cli && cargo run --release --bin swiftness --features starknet_with_keccak,keccak --no-default-features -- --proof ../examples/proofs/starknet_with_keccak/cairo0_example_proof.json
+   cd cli && cargo run --release --bin swiftness --features starknet_with_keccak,keccak_160_lsb --no-default-features -- --proof ../examples/proofs/starknet_with_keccak/cairo0_example_proof.json
    ```
 
 ## Running Tests
@@ -54,7 +54,7 @@ cargo test
 2. **Build WASM:**
 
    ```sh
-   cd wasm_bindings && wasm-pack build --target web --features starknet_with_keccak,blake2s --no-default-features
+   cd wasm_bindings && wasm-pack build --target web --features recursive_with_poseidon,blake2s_248_lsb --no-default-features
    ```
 
 ## Features
@@ -74,8 +74,10 @@ cargo test
 
 ### Commitment Hashes
 
-- [x] keccak
-- [x] blake2s
+- [x] keccak_160_lsb
+- [x] keccak_248_lsb
+- [x] blake2s_160_lsb
+- [x] blake2s_248_lsb
 
 ### Web Support
 
