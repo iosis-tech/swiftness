@@ -442,8 +442,10 @@ impl LayoutTrait for Layout {
         let program_hash = pedersen_hash(&hash, &Felt::from(program.len()));
 
         let output_len: usize = (output_stop - output_start).to_bigint().try_into().unwrap();
-        let output = &memory[memory.len() - output_len..];
-        let output_hash = output.iter().fold(Felt::ZERO, |acc, e| pedersen_hash(&acc, e));
+        let output = &memory[memory.len() - output_len * 2..];
+        let hash =
+            output.iter().skip(1).step_by(2).fold(Felt::ZERO, |acc, e| pedersen_hash(&acc, e));
+        let output_hash = pedersen_hash(&hash, &Felt::from(output_len));
 
         Ok((program_hash, output_hash))
     }

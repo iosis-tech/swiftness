@@ -2,7 +2,7 @@ use crate::{
     fixtures::{config, unsent_commitment, witness},
     types::StarkProof,
 };
-use starknet_crypto::Felt;
+use starknet_crypto::{pedersen_hash, Felt};
 use swiftness_air::{fixtures::public_input, layout::recursive::Layout};
 
 #[test]
@@ -25,8 +25,12 @@ fn test_stark_proof_fibonacci_verify() {
     );
     assert_eq!(
         output_hash,
-        Felt::from_hex_unchecked(
-            "0x615be5409121774c863b7dfefd55d0bcab6d1d09eeecbbc4ee3b88daaa69c81"
+        pedersen_hash(
+            &pedersen_hash(
+                &pedersen_hash(&Felt::ZERO, &Felt::from_hex_unchecked("0xa")),
+                &Felt::from_hex_unchecked("0x90")
+            ),
+            &Felt::TWO
         )
     );
 }
