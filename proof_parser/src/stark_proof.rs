@@ -1,5 +1,5 @@
 use num_bigint::BigUint;
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct StarkProof {
@@ -140,7 +140,7 @@ pub struct CairoPublicInput {
     pub range_check_min: u32,
     pub range_check_max: u32,
     pub layout: BigUint,
-    pub dynamic_params: HashMap<String, u32>,
+    pub dynamic_params: BTreeMap<String, u32>,
     pub n_segments: usize,
     pub segments: Vec<SegmentInfo>,
     pub padding_addr: u32,

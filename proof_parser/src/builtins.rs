@@ -1,5 +1,4 @@
-use std::collections::HashMap;
-
+use std::collections::BTreeMap;
 use crate::json_parser::MemorySegmentAddress;
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
@@ -55,7 +54,7 @@ impl Builtin {
         ]
     }
     pub fn sort_segments(
-        memory_segments: HashMap<String, MemorySegmentAddress>,
+        memory_segments: BTreeMap<String, MemorySegmentAddress>,
     ) -> Vec<MemorySegmentAddress> {
         let mut segments = memory_segments
             .into_iter()

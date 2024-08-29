@@ -1,5 +1,5 @@
 use serde::Deserialize;
-use std::{collections::HashMap, fmt::Display};
+use std::{collections::BTreeMap, fmt::Display};
 
 // For now only the recursive and starknet layouts is supported
 #[derive(Debug, Clone, PartialEq, Deserialize)]
@@ -30,7 +30,7 @@ impl Layout {
     }
     pub fn get_dynamics_or_consts(
         &self,
-        dynamic_params: &Option<HashMap<String, u32>>,
+        dynamic_params: &Option<BTreeMap<String, u32>>,
     ) -> Option<LayoutConstants> {
         let consts = self.get_consts();
 

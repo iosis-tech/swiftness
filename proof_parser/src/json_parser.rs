@@ -7,7 +7,7 @@ use crate::{
 };
 use num_bigint::BigUint;
 use serde::Deserialize;
-use std::{collections::HashMap, convert::TryFrom};
+use std::{collections::BTreeMap, convert::TryFrom};
 
 #[derive(Deserialize, Debug, Clone, PartialEq)]
 pub struct ProofJSON {
@@ -52,9 +52,9 @@ pub struct PublicMemoryElement {
 
 #[derive(Deserialize, Debug, Clone, PartialEq)]
 pub struct PublicInput {
-    dynamic_params: Option<HashMap<String, u32>>,
+    dynamic_params: Option<BTreeMap<String, u32>>,
     layout: Layout,
-    memory_segments: HashMap<String, MemorySegmentAddress>,
+    memory_segments: BTreeMap<String, MemorySegmentAddress>,
     n_steps: u32,
     public_memory: Vec<PublicMemoryElement>,
     rc_min: u32,
