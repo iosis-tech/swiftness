@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/v0.0.6-green?style=flat-square&logo=git&logoColor=white&label=version)
+![Version](https://img.shields.io/badge/v0.0.8-green?style=flat-square&logo=git&logoColor=white&label=version)
 ![Continuous Integration](https://img.shields.io/github/actions/workflow/status/iosis-tech/swiftness/ci.yml?style=flat-square&logo=githubactions&logoColor=white&label=Continuous%20Integration)
 
 [![Crates.io Version](https://img.shields.io/crates/v/swiftness?style=flat-square&logo=lootcrate)](https://crates.io/crates/swiftness)
@@ -82,7 +82,7 @@ cargo test
 ### Web Support
 
 - [x] WASM support
-- [x] [Web Demo](https://swiftness-dataprocessor-demo.vercel.app/)
+- [x] [Web Demo](https://demo.swiftness.iosis.tech/)
 - [x] NPM packages:
   - [swiftness-dex-blake2s](https://www.npmjs.com/package/swiftness-dex-blake2s)
   - [swiftness-dex-keccak](https://www.npmjs.com/package/swiftness-dex-keccak)
