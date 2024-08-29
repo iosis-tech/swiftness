@@ -41,7 +41,7 @@ impl StarkConfig {
         self.n_queries * self.log_n_cosets + Felt::from(self.proof_of_work.n_bits)
     }
 
-    pub fn validate<Layout: LayoutTrait>(&self, security_bits: Felt) -> Result<(), Error> {
+    pub fn validate<Layout: StaticLayoutTrait>(&self, security_bits: Felt) -> Result<(), Error> {
         self.proof_of_work.validate()?;
 
         assert!(security_bits <= self.security_bits());
@@ -62,7 +62,7 @@ impl StarkConfig {
     }
 }
 
-use swiftness_air::layout::LayoutTrait;
+use swiftness_air::layout::StaticLayoutTrait;
 use swiftness_commitment::vector;
 
 #[cfg(feature = "std")]

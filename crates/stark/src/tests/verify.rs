@@ -2,7 +2,7 @@ use crate::{
     fixtures::{commitment, domains, witness},
     verify::stark_verify,
 };
-use swiftness_air::layout::{recursive::Layout, LayoutTrait};
+use swiftness_air::layout::{recursive::Layout, StaticLayoutTrait};
 use swiftness_fri::fixtures::queries;
 
 #[test]

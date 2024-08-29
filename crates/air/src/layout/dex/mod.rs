@@ -14,7 +14,7 @@ use starknet_crypto::{pedersen_hash, Felt};
 use swiftness_commitment::table::{commit::table_commit, decommit::table_decommit};
 use swiftness_transcript::ensure;
 
-use super::{CompositionPolyEvalError, LayoutTrait, PublicInputError};
+use super::{CompositionPolyEvalError, LayoutTrait, PublicInputError, StaticLayoutTrait};
 
 pub const CPU_COMPONENT_HEIGHT: usize = 16;
 pub const CPU_COMPONENT_STEP: usize = 1;
@@ -72,12 +72,15 @@ pub const BUILTINS: [Felt; 4] =
 
 pub struct Layout {}
 
+impl StaticLayoutTrait for Layout {
+    const NUM_COLUMNS_FIRST: usize = 21;
+    const NUM_COLUMNS_SECOND: usize = 1;
+}
+
 impl LayoutTrait for Layout {
     const CONSTRAINT_DEGREE: usize = 2;
     const MASK_SIZE: usize = 200;
     const N_CONSTRAINTS: usize = 179;
-    const NUM_COLUMNS_FIRST: usize = 21;
-    const NUM_COLUMNS_SECOND: usize = 1;
     type InteractionElements = InteractionElements;
 
     fn eval_composition_polynomial(

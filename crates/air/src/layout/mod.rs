@@ -32,8 +32,6 @@ pub trait LayoutTrait {
     type InteractionElements;
 
     const CONSTRAINT_DEGREE: usize;
-    const NUM_COLUMNS_FIRST: usize;
-    const NUM_COLUMNS_SECOND: usize;
     const N_CONSTRAINTS: usize;
     const MASK_SIZE: usize;
 
@@ -76,6 +74,13 @@ pub trait LayoutTrait {
 
     fn verify_public_input(public_input: &PublicInput) -> Result<(Felt, Felt), PublicInputError>;
 }
+
+pub trait StaticLayoutTrait {
+    const NUM_COLUMNS_FIRST: usize;
+    const NUM_COLUMNS_SECOND: usize;
+}
+
+pub trait DynamicLayoutTrait {}
 
 #[cfg(feature = "std")]
 use thiserror::Error;

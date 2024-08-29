@@ -3,7 +3,10 @@ use crate::{
 };
 
 impl StarkProof {
-    pub fn verify<Layout: LayoutTrait>(&self, security_bits: Felt) -> Result<(Felt, Felt), Error> {
+    pub fn verify<Layout: LayoutTrait + StaticLayoutTrait>(
+        &self,
+        security_bits: Felt,
+    ) -> Result<(Felt, Felt), Error> {
         self.config.validate::<Layout>(security_bits)?;
 
         // Validate the public input.
@@ -50,7 +53,7 @@ impl StarkProof {
 use starknet_crypto::Felt;
 use swiftness_air::{
     domains::StarkDomains,
-    layout::{LayoutTrait, PublicInputError},
+    layout::{LayoutTrait, PublicInputError, StaticLayoutTrait},
 };
 use swiftness_transcript::transcript::Transcript;
 

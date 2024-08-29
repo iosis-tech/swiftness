@@ -1,6 +1,9 @@
 use alloc::borrow::ToOwned;
 use starknet_crypto::Felt;
-use swiftness_air::{domains::StarkDomains, layout::LayoutTrait};
+use swiftness_air::{
+    domains::StarkDomains,
+    layout::{LayoutTrait, StaticLayoutTrait},
+};
 use swiftness_commitment::table::decommit::table_decommit;
 use swiftness_fri::{
     fri::{self, fri_verify},
@@ -14,7 +17,7 @@ use crate::{
 };
 
 // STARK verify phase.
-pub fn stark_verify<Layout: LayoutTrait>(
+pub fn stark_verify<Layout: LayoutTrait + StaticLayoutTrait>(
     n_original_columns: usize,
     n_interaction_columns: usize,
     queries: &[Felt],

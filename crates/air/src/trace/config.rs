@@ -1,4 +1,4 @@
-use crate::layout::LayoutTrait;
+use crate::layout::StaticLayoutTrait;
 use serde::{Deserialize, Serialize};
 use starknet_crypto::Felt;
 use swiftness_commitment::vector;
@@ -13,7 +13,7 @@ pub struct Config {
 }
 
 impl Config {
-    pub fn validate<Layout: LayoutTrait>(
+    pub fn validate<Layout: StaticLayoutTrait>(
         &self,
         log_eval_domain_size: Felt,
         n_verifier_friendly_commitment_layers: Felt,
