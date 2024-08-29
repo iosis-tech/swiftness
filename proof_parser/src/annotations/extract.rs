@@ -33,7 +33,7 @@ pub fn extract_z_and_alpha(annotations: &[&str]) -> anyhow::Result<ZAlpha> {
     }
 
     // Make sure the number of interaction_elements is as expected
-    if ![3, 6].contains(&interaction_elements.len()) {
+    if ![3, 6, 8].contains(&interaction_elements.len()) {
         anyhow::bail!("Unexpected number of interaction elements: {}", interaction_elements.len());
     }
 
