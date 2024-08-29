@@ -5,14 +5,30 @@ extern crate alloc;
 #[cfg(feature = "std")]
 extern crate std;
 
-pub mod commit;
+macro_rules! import_module_if_layout {
+    ($mod_name:ident) => {
+        #[cfg(any(
+            feature = "dex",
+            feature = "recursive",
+            feature = "recursive_with_poseidon",
+            feature = "small",
+            feature = "starknet",
+            feature = "starknet_with_keccak",
+            feature = "dynamic"
+        ))]
+        pub mod $mod_name;
+    };
+}
+
+import_module_if_layout!(commit);
+import_module_if_layout!(oods);
+import_module_if_layout!(stark);
+import_module_if_layout!(verify);
+import_module_if_layout!(fixtures);
+
 pub mod config;
-pub mod fixtures;
-pub mod oods;
 pub mod queries;
-pub mod stark;
 pub mod types;
-pub mod verify;
 
 #[cfg(test)]
 pub mod tests;

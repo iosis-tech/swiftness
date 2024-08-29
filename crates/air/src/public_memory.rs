@@ -37,6 +37,7 @@ pub struct PublicInput {
         serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
     )]
     pub layout: Felt,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub dynamic_params: Option<DynamicParams>,
     pub segments: Vec<SegmentInfo>,
     #[cfg_attr(
@@ -105,11 +106,12 @@ impl PublicInput {
             self.range_check_max,
             self.layout,
         ];
-        hash_data.extend(
-            self.dynamic_params
-                .clone()
-                .map_or(vec![], |f| f.into_iter().map(Felt::from).collect::<Vec<Felt>>()),
-        );
+
+        if let Some(dynamic_params) = &self.dynamic_params {
+            let dynamic_params_vec: Vec<usize> = dynamic_params.clone().into();
+
+            hash_data.extend(dynamic_params_vec.into_iter().map(Felt::from).collect::<Vec<Felt>>());
+        }
 
         // Segments.
         hash_data.extend(self.segments.iter().flat_map(|s| vec![s.begin_addr, s.stop_ptr]));

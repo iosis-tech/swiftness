@@ -38,7 +38,6 @@ mod tests {
         let input = include_str!("../../examples/proofs/dynamic/cairo0_example_proof.json");
         let proof_json = serde_json::from_str::<ProofJSON>(input).unwrap();
         let stark_proof = StarkProof::try_from(proof_json).unwrap();
-        println!("{:?}", stark_proof.public_input);
         let _: StarkProofFromVerifier = stark_proof.into();
     }
 
