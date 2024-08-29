@@ -1,9 +1,39 @@
 use crate::{
     commit::stark_commit, queries::generate_queries, types::StarkProof, verify::stark_verify,
 };
+use starknet_crypto::Felt;
+#[cfg(any(feature = "dynamic"))]
+use swiftness_air::layout::DynamicLayoutTrait;
+#[cfg(any(
+    feature = "dex",
+    feature = "recursive",
+    feature = "recursive_with_poseidon",
+    feature = "small",
+    feature = "starknet",
+    feature = "starknet_with_keccak"
+))]
+use swiftness_air::layout::StaticLayoutTrait;
+use swiftness_air::{
+    domains::StarkDomains,
+    layout::{LayoutTrait, PublicInputError},
+};
+use swiftness_transcript::transcript::Transcript;
+
+#[cfg(any(
+    feature = "dex",
+    feature = "recursive",
+    feature = "recursive_with_poseidon",
+    feature = "small",
+    feature = "starknet",
+    feature = "starknet_with_keccak"
+))]
+pub trait LayoutTraitSwitch: LayoutTrait + StaticLayoutTrait {}
+
+#[cfg(any(feature = "dynamic"))]
+pub trait LayoutTraitSwitch: LayoutTrait + DynamicLayoutTrait {}
 
 impl StarkProof {
-    pub fn verify<Layout: LayoutTrait + StaticLayoutTrait>(
+    pub fn verify<Layout: LayoutTraitSwitch>(
         &self,
         security_bits: Felt,
     ) -> Result<(Felt, Felt), Error> {
@@ -36,10 +66,35 @@ impl StarkProof {
             stark_domains.eval_domain_size,
         );
 
+        #[cfg(any(
+            feature = "dex",
+            feature = "recursive",
+            feature = "recursive_with_poseidon",
+            feature = "small",
+            feature = "starknet",
+            feature = "starknet_with_keccak"
+        ))]
+        let (n_original_columns, n_interaction_columns) =
+            (Layout::NUM_COLUMNS_FIRST, Layout::NUM_COLUMNS_SECOND);
+
+        #[cfg(any(feature = "dynamic"))]
+        let (n_original_columns, n_interaction_columns) = (
+            self.public_input
+                .dynamic_params
+                .as_ref()
+                .expect("DynamicParams not present")
+                .num_columns_first,
+            self.public_input
+                .dynamic_params
+                .as_ref()
+                .expect("DynamicParams not present")
+                .num_columns_second,
+        );
+
         // STARK verify phase.
         stark_verify::<Layout>(
-            Layout::NUM_COLUMNS_FIRST,
-            Layout::NUM_COLUMNS_SECOND,
+            n_original_columns,
+            n_interaction_columns,
             &queries,
             stark_commitment,
             &self.witness,
@@ -49,13 +104,6 @@ impl StarkProof {
         Ok(Layout::verify_public_input(&self.public_input)?)
     }
 }
-
-use starknet_crypto::Felt;
-use swiftness_air::{
-    domains::StarkDomains,
-    layout::{LayoutTrait, PublicInputError, StaticLayoutTrait},
-};
-use swiftness_transcript::transcript::Transcript;
 
 #[cfg(feature = "std")]
 use thiserror::Error;

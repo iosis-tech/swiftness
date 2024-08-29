@@ -7,6 +7,7 @@ extern crate std;
 
 pub mod diluted;
 pub mod domains;
+pub mod dynamic;
 pub mod fixtures;
 pub mod layout;
 pub mod periodic_columns;

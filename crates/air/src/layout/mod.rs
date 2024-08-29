@@ -80,7 +80,11 @@ pub trait StaticLayoutTrait {
     const NUM_COLUMNS_SECOND: usize;
 }
 
-pub trait DynamicLayoutTrait {}
+pub trait DynamicLayoutTrait {
+    type DynamicParams;
+
+    fn get_dynamic_params(public_input: &PublicInput) -> Self::DynamicParams;
+}
 
 #[cfg(feature = "std")]
 use thiserror::Error;
