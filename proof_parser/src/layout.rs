@@ -1,6 +1,5 @@
-use num_bigint::BigUint;
 use serde::Deserialize;
-use std::{collections::BTreeMap, convert::TryInto, fmt::Display};
+use std::{collections::HashMap, fmt::Display};
 
 // For now only the recursive and starknet layouts is supported
 #[derive(Debug, Clone, PartialEq, Deserialize)]
@@ -13,6 +12,7 @@ pub enum Layout {
     Small,
     Starknet,
     StarknetWithKeccak,
+    Dynamic,
 }
 
 impl Layout {
@@ -25,11 +25,12 @@ impl Layout {
             Layout::Small => LayoutConstants::small(),
             Layout::Starknet => LayoutConstants::starknet(),
             Layout::StarknetWithKeccak => LayoutConstants::starknet_with_keccak(),
+            Layout::Dynamic => LayoutConstants::dynamic(),
         }
     }
     pub fn get_dynamics_or_consts(
         &self,
-        dynamic_params: &Option<BTreeMap<String, BigUint>>,
+        dynamic_params: &Option<HashMap<String, u32>>,
     ) -> Option<LayoutConstants> {
         let consts = self.get_consts();
 
@@ -39,26 +40,18 @@ impl Layout {
         };
 
         Some(LayoutConstants {
-            cpu_component_step: dynamic_params
+            cpu_component_step: *dynamic_params
                 .get("cpu_component_step")
-                .map(<&BigUint>::try_into)
-                .map(Result::ok)?
-                .unwrap_or(consts.cpu_component_step),
-            constraint_degree: dynamic_params
+                .unwrap_or(&consts.cpu_component_step),
+            constraint_degree: *dynamic_params
                 .get("constraint_degree")
-                .map(<&BigUint>::try_into)
-                .map(Result::ok)?
-                .unwrap_or(consts.constraint_degree),
-            num_columns_first: dynamic_params
+                .unwrap_or(&consts.cpu_component_step),
+            num_columns_first: *dynamic_params
                 .get("num_columns_first")
-                .map(<&BigUint>::try_into)
-                .map(Result::ok)?
-                .unwrap_or(consts.num_columns_first),
-            num_columns_second: dynamic_params
+                .unwrap_or(&consts.cpu_component_step),
+            num_columns_second: *dynamic_params
                 .get("num_columns_second")
-                .map(<&BigUint>::try_into)
-                .map(Result::ok)?
-                .unwrap_or(consts.num_columns_second),
+                .unwrap_or(&consts.cpu_component_step),
         })
     }
     pub fn bytes_encode(&self) -> Vec<u8> {
@@ -76,6 +69,7 @@ impl Display for Layout {
             Layout::Small => write!(f, "small"),
             Layout::Starknet => write!(f, "starknet"),
             Layout::StarknetWithKeccak => write!(f, "starknet_with_keccak"),
+            Layout::Dynamic => write!(f, "dynamic"),
         }
     }
 }
@@ -142,6 +136,14 @@ impl LayoutConstants {
             cpu_component_step: 1,
             num_columns_first: 21,
             num_columns_second: 1,
+        }
+    }
+    pub fn dynamic() -> Self {
+        LayoutConstants {
+            constraint_degree: 2,
+            cpu_component_step: 1,
+            num_columns_first: 0,
+            num_columns_second: 0,
         }
     }
 }

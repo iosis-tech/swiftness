@@ -1,3 +1,4 @@
+use starknet_types_core::felt::Felt;
 use swiftness_air::{
     public_memory::PublicInput as PublicInputVerifier,
     trace::{
@@ -118,7 +119,7 @@ impl From<CairoPublicInput> for PublicInputVerifier {
             range_check_min: public_input.range_check_min.into(),
             range_check_max: public_input.range_check_max.into(),
             layout: public_input.layout.into(),
-            dynamic_params: public_input.dynamic_params.values().map(|x| x.into()).collect(),
+            dynamic_params: public_input.dynamic_params.values().map(|x| Felt::from(*x)).collect(),
             segments: public_input.segments.into_iter().map(|x| x.into()).collect(),
             padding_addr: public_input.padding_addr.into(),
             padding_value: public_input.padding_value.into(),

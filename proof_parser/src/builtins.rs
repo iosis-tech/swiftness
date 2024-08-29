@@ -14,6 +14,9 @@ pub enum Builtin {
     EcOp,
     Keccak,
     Poseidon,
+    RangeCheck96,
+    AddMod,
+    MulMod,
 }
 
 impl Builtin {
@@ -29,6 +32,9 @@ impl Builtin {
             "ec_op" => Some(Builtin::EcOp),
             "keccak" => Some(Builtin::Keccak),
             "poseidon" => Some(Builtin::Poseidon),
+            "range_check96" => Some(Builtin::RangeCheck96),
+            "add_mod" => Some(Builtin::AddMod),
+            "mul_mod" => Some(Builtin::MulMod),
             _ => None,
         }
     }
@@ -44,6 +50,8 @@ impl Builtin {
             Builtin::EcOp,
             Builtin::Keccak,
             Builtin::Poseidon,
+            Builtin::AddMod,
+            Builtin::MulMod,
         ]
     }
     pub fn sort_segments(
