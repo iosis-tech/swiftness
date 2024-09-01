@@ -5,6 +5,7 @@ use crate::{
     layout::{safe_div, CompositionPolyEvalError, LayoutTrait},
 };
 use starknet_crypto::Felt;
+use starknet_types_core::felt::NonZeroFelt;
 
 pub fn eval_composition_polynomial_inner(
     mask_values: &[Felt],
@@ -523,8 +524,10 @@ pub fn eval_composition_polynomial_inner(
     let felt_3 = Felt::from(3);
     let felt_4 = Felt::from(4);
     let felt_5 = Felt::from(5);
+    let felt_6 = Felt::from(6);
     let felt_7 = Felt::from(7);
     let felt_8 = Felt::from(8);
+    let felt_10 = Felt::from(10);
     let felt_11 = Felt::from(11);
     let felt_13 = Felt::from(13);
     let felt_15 = Felt::from(15);
@@ -577,6 +580,53 @@ pub fn eval_composition_polynomial_inner(
     let felt_1208925819614629174706176 = Felt::from_hex_unchecked("0x100000000000000000000");
     let felt_79228162514264337593543950336 =
         Felt::from_hex_unchecked("0x1000000000000000000000000");
+    let felt_3138550867693340381917894711603833208051177722232017256448 =
+        Felt::from_hex_unchecked("0x800000000000000000000000000000000000000000000000");
+    let felt_2950795762459345168613727575620414179244544320470208355568817838579231751791 =
+        Felt::from_hex_unchecked(
+            "0x6861759EA556A2339DD92F9562A30B9E58E2AD98109AE4780B7FD8EAC77FE6F",
+        );
+    let felt_1587446564224215276866294500450702039420286416111469274423465069420553242820 =
+        Felt::from_hex_unchecked(
+            "0x3827681995D5AF9FFC8397A3D00425A3DA43F76ABF28A64E4AB1A22F27508C4",
+        );
+    let felt_1645965921169490687904413452218868659025437693527479459426157555728339600137 =
+        Felt::from_hex_unchecked(
+            "0x3A3956D2FAD44D0E7F760A2277DC7CB2CAC75DC279B2D687A0DBE17704A8309",
+        );
+    let felt_2121140748740143694053732746913428481442990369183417228688865837805149503386 =
+        Felt::from_hex_unchecked(
+            "0x4B085EB1DF4258C3453CC97445954BF3433B6AB9DD5A99592864C00F54A3F9A",
+        );
+    let felt_3618502788666131213697322783095070105623107215331596699973092056135872020477 =
+        Felt::from_hex_unchecked(
+            "0x800000000000010FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD",
+        );
+    let felt_3618502788666131213697322783095070105623107215331596699973092056135872020479 =
+        Felt::from_hex_unchecked(
+            "0x800000000000010FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+        );
+    let felt_2006642341318481906727563724340978325665491359415674592697055778067937914672 =
+        Felt::from_hex_unchecked(
+            "0x46FB825257FEC76C50FE043684D4E6D2D2F2FDFE9B7C8D7128CA7ACC0F66F30",
+        );
+    let felt_1246177936547655338400308396717835700699368047388302793172818304164989556526 =
+        Felt::from_hex_unchecked(
+            "0x2C14FCCABC26929170CC7AC9989C823608B9008BEF3B8E16B6089A5D33CD72E",
+        );
+    let felt_427751140904099001132521606468025610873158555767197326325930641757709538586 =
+        Felt::from_hex_unchecked(
+            "0xF2193BA0C7EA33CE6222D9446C1E166202AE5461005292F4A2BCB93420151A",
+        );
+    let felt_18014398509481984 = Felt::from_hex_unchecked("0x40000000000000");
+    let felt_560279373700919169769089400651532183647886248799764942664266404650165812023 =
+        Felt::from_hex_unchecked(
+            "0x13D1B5CFD87693224F0AC561AB2C15CA53365D768311AF59CEFAF701BC53B37",
+        );
+    let felt_1401754474293352309994371631695783042590401941592571735921592823982231996415 =
+        Felt::from_hex_unchecked(
+            "0x3195D6B2D930E71CEDE286D5B8B41D49296DDF222BCD3BF3717A12A9A6947FF",
+        );
 
     // Compute powers.
     let pow0: Felt =
@@ -7584,16 +7634,16 @@ pub fn eval_composition_polynomial_inner(
         domain13 = point - 1;
         domain14 = point - pow12;
     }
-    let domain1: Felt;
-    let domain1: Felt;
-    let domain1: Felt;
-    let domain1: Felt;
-    let domain1: Felt;
-    let domain2: Felt;
+    let domain15: Felt;
+    let domain16: Felt;
+    let domain17: Felt;
+    let domain18: Felt;
+    let domain19: Felt;
+    let domain20: Felt;
     if (uses_bitwise_builtin != 0) {
-        let domain15 = pow14 - felt_1;
-        let domain16 = pow13 - pow31;
-        let domain17 = pow13 - felt_1;
+        domain15 = pow14 - felt_1;
+        domain16 = pow13 - pow31;
+        domain17 = pow13 - felt_1;
         let temp = pow13 - pow16;
         temp = temp * (pow13 - pow17);
         temp = temp * (pow13 - pow18);
@@ -7609,9 +7659,9 @@ pub fn eval_composition_polynomial_inner(
         temp = temp * (pow13 - pow28);
         temp = temp * (pow13 - pow29);
         temp = temp * (pow13 - pow30);
-        let domain18 = temp * (domain17);
-        let domain19 = point - felt_1;
-        let domain20 = point - pow15;
+        domain18 = temp * (domain17);
+        domain19 = point - felt_1;
+        domain20 = point - pow15;
     }
     let domain21: Felt;
     let domain22: Felt;
@@ -12489,7 +12539,7 @@ pub fn eval_composition_polynomial_inner(
         cpu_decode_opcode_range_check_column_column_row_expr685
             - (cpu_decode_opcode_range_check_column_column_row_expr686
                 + cpu_decode_opcode_range_check_column_column_row_expr686);
-    let cpu_decode_flag_op1_base_op0_0 = 1
+    let cpu_decode_flag_op1_base_op0_0 = felt_1
         - (cpu_decode_opcode_range_check_bit_2
             + cpu_decode_opcode_range_check_bit_4
             + cpu_decode_opcode_range_check_bit_3);
@@ -12505,7 +12555,7 @@ pub fn eval_composition_polynomial_inner(
         cpu_decode_opcode_range_check_column_column_row_expr691
             - (cpu_decode_opcode_range_check_column_column_row_expr692
                 + cpu_decode_opcode_range_check_column_column_row_expr692);
-    let cpu_decode_flag_res_op1_0 = 1
+    let cpu_decode_flag_res_op1_0 = felt_1
         - (cpu_decode_opcode_range_check_bit_5
             + cpu_decode_opcode_range_check_bit_6
             + cpu_decode_opcode_range_check_bit_9);
@@ -12517,7 +12567,7 @@ pub fn eval_composition_polynomial_inner(
         cpu_decode_opcode_range_check_column_column_row_expr695
             - (cpu_decode_opcode_range_check_column_column_row_expr696
                 + cpu_decode_opcode_range_check_column_column_row_expr696);
-    let cpu_decode_flag_pc_update_regular_0 = 1
+    let cpu_decode_flag_pc_update_regular_0 = felt_1
         - (cpu_decode_opcode_range_check_bit_7
             + cpu_decode_opcode_range_check_bit_8
             + cpu_decode_opcode_range_check_bit_9);
@@ -12578,12 +12628,13 @@ pub fn eval_composition_polynomial_inner(
             - (ecdsa_signature0_exponentiate_generator_selector_column_row_expr716
                 + ecdsa_signature0_exponentiate_generator_selector_column_row_expr716);
     let ecdsa_signature0_exponentiate_generator_bit_neg_0 =
-        1 - ecdsa_signature0_exponentiate_generator_bit_0;
+        felt_1 - ecdsa_signature0_exponentiate_generator_bit_0;
     let ecdsa_signature0_exponentiate_key_bit_0 =
         ecdsa_signature0_exponentiate_key_selector_column_row_expr90
             - (ecdsa_signature0_exponentiate_key_selector_column_row_expr717
                 + ecdsa_signature0_exponentiate_key_selector_column_row_expr717);
-    let ecdsa_signature0_exponentiate_key_bit_neg_0 = 1 - ecdsa_signature0_exponentiate_key_bit_0;
+    let ecdsa_signature0_exponentiate_key_bit_neg_0 =
+        felt_1 - ecdsa_signature0_exponentiate_key_bit_0;
     let bitwise_sum_var_0_0 = diluted_pool_column_row_expr126
         + diluted_pool_column_row_expr718 * felt_2
         + diluted_pool_column_row_expr719 * felt_4
@@ -12610,7 +12661,7 @@ pub fn eval_composition_polynomial_inner(
     let ec_op_ec_subset_sum_bit_0 = ec_op_ec_subset_sum_selector_column_row_expr158
         - (ec_op_ec_subset_sum_selector_column_row_expr159
             + ec_op_ec_subset_sum_selector_column_row_expr159);
-    let ec_op_ec_subset_sum_bit_neg_0 = 1 - ec_op_ec_subset_sum_bit_0;
+    let ec_op_ec_subset_sum_bit_neg_0 = felt_1 - ec_op_ec_subset_sum_bit_0;
     let keccak_keccak_parse_to_diluted_sum_words_over_instances0_0 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr733
             - keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr734
@@ -12960,12 +13011,12 @@ pub fn eval_composition_polynomial_inner(
     // Constraint: cpu/decode/opcode_range_check/bit.
     value = (cpu_decode_opcode_range_check_bit_0 * cpu_decode_opcode_range_check_bit_0
         - cpu_decode_opcode_range_check_bit_0)
-        * domain1
-        / domain0;
+        * domain1.field_div(&NonZeroFelt::try_from(domain0)?);
     total_sum = total_sum + constraint_coefficients[0] * value;
 
     // Constraint: cpu/decode/opcode_range_check/zero.
-    value = (cpu_decode_opcode_range_check_column_column_row_expr0) / domain1;
+    value = (cpu_decode_opcode_range_check_column_column_row_expr0)
+        .field_div(&NonZeroFelt::try_from(domain1)?);
     total_sum = total_sum + constraint_coefficients[1] * value;
 
     // Constraint: cpu/decode/opcode_range_check_input.
@@ -12976,46 +13027,46 @@ pub fn eval_composition_polynomial_inner(
             + range_check16_pool_column_row_expr3)
             * global_values.offset_size
             + range_check16_pool_column_row_expr4))
-        / domain2;
+        .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[2] * value;
 
     // Constraint: cpu/decode/flag_op1_base_op0_bit.
     value = (cpu_decode_flag_op1_base_op0_0 * cpu_decode_flag_op1_base_op0_0
         - cpu_decode_flag_op1_base_op0_0)
-        / domain2;
+        .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[3] * value;
 
     // Constraint: cpu/decode/flag_res_op1_bit.
     value = (cpu_decode_flag_res_op1_0 * cpu_decode_flag_res_op1_0 - cpu_decode_flag_res_op1_0)
-        / domain2;
+        .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[4] * value;
 
     // Constraint: cpu/decode/flag_pc_update_regular_bit.
     value = (cpu_decode_flag_pc_update_regular_0 * cpu_decode_flag_pc_update_regular_0
         - cpu_decode_flag_pc_update_regular_0)
-        / domain2;
+        .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[5] * value;
 
     // Constraint: cpu/decode/fp_update_regular_bit.
     value = (cpu_decode_fp_update_regular_0 * cpu_decode_fp_update_regular_0
         - cpu_decode_fp_update_regular_0)
-        / domain2;
+        .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[6] * value;
 
     // Constraint: cpu/operands/mem_dst_addr.
     value = (mem_pool_addr_column_row_expr5 + global_values.half_offset_size
         - (cpu_decode_opcode_range_check_bit_0 * cpu_registers_fp_column_row_expr6
-            + (1 - cpu_decode_opcode_range_check_bit_0) * cpu_registers_ap_column_row_expr7
+            + (felt_1 - cpu_decode_opcode_range_check_bit_0) * cpu_registers_ap_column_row_expr7
             + range_check16_pool_column_row_expr4))
-        / domain2;
+        .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[7] * value;
 
     // Constraint: cpu/operands/mem0_addr.
     value = (mem_pool_addr_column_row_expr8 + global_values.half_offset_size
         - (cpu_decode_opcode_range_check_bit_1 * cpu_registers_fp_column_row_expr6
-            + (1 - cpu_decode_opcode_range_check_bit_1) * cpu_registers_ap_column_row_expr7
+            + (felt_1 - cpu_decode_opcode_range_check_bit_1) * cpu_registers_ap_column_row_expr7
             + range_check16_pool_column_row_expr3))
-        / domain2;
+        .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[8] * value;
 
     // Constraint: cpu/operands/mem1_addr.
@@ -13025,41 +13076,39 @@ pub fn eval_composition_polynomial_inner(
             + cpu_decode_opcode_range_check_bit_3 * cpu_registers_fp_column_row_expr6
             + cpu_decode_flag_op1_base_op0_0 * mem_pool_value_column_row_expr11
             + range_check16_pool_column_row_expr2))
-        / domain2;
+        .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[9] * value;
 
     // Constraint: cpu/operands/ops_mul.
     value = (cpu_operands_ops_mul_column_row_expr12
         - mem_pool_value_column_row_expr11 * mem_pool_value_column_row_expr13)
-        / domain2;
+        .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[10] * value;
 
     // Constraint: cpu/operands/res.
-    value = ((1 - cpu_decode_opcode_range_check_bit_9) * cpu_operands_res_column_row_expr14
+    value = ((felt_1 - cpu_decode_opcode_range_check_bit_9) * cpu_operands_res_column_row_expr14
         - (cpu_decode_opcode_range_check_bit_5
             * (mem_pool_value_column_row_expr11 + mem_pool_value_column_row_expr13)
             + cpu_decode_opcode_range_check_bit_6 * cpu_operands_ops_mul_column_row_expr12
             + cpu_decode_flag_res_op1_0 * mem_pool_value_column_row_expr13))
-        / domain2;
+        .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[11] * value;
 
     // Constraint: cpu/update_registers/update_pc/tmp0.
     value = (cpu_update_registers_update_pc_tmp0_column_row_expr15
         - cpu_decode_opcode_range_check_bit_9 * mem_pool_value_column_row_expr16)
-        * domain7
-        / domain2;
+        * domain7.field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[12] * value;
 
     // Constraint: cpu/update_registers/update_pc/tmp1.
     value = (cpu_update_registers_update_pc_tmp1_column_row_expr17
         - cpu_update_registers_update_pc_tmp0_column_row_expr15
             * cpu_operands_res_column_row_expr14)
-        * domain7
-        / domain2;
+        * domain7.field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[13] * value;
 
     // Constraint: cpu/update_registers/update_pc/pc_cond_negative.
-    value = ((1 - cpu_decode_opcode_range_check_bit_9) * mem_pool_addr_column_row_expr18
+    value = ((felt_1 - cpu_decode_opcode_range_check_bit_9) * mem_pool_addr_column_row_expr18
         + cpu_update_registers_update_pc_tmp0_column_row_expr15
             * (mem_pool_addr_column_row_expr18
                 - (mem_pool_addr_column_row_expr10 + mem_pool_value_column_row_expr13))
@@ -13067,16 +13116,14 @@ pub fn eval_composition_polynomial_inner(
             + cpu_decode_opcode_range_check_bit_7 * cpu_operands_res_column_row_expr14
             + cpu_decode_opcode_range_check_bit_8
                 * (mem_pool_addr_column_row_expr10 + cpu_operands_res_column_row_expr14)))
-        * domain7
-        / domain2;
+        * domain7.field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[14] * value;
 
     // Constraint: cpu/update_registers/update_pc/pc_cond_positive.
     value = ((cpu_update_registers_update_pc_tmp1_column_row_expr17
         - cpu_decode_opcode_range_check_bit_9)
         * (mem_pool_addr_column_row_expr18 - npc_reg_0))
-        * domain7
-        / domain2;
+        * domain7.field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[15] * value;
 
     // Constraint: cpu/update_registers/update_ap/ap_update.
@@ -13084,62 +13131,65 @@ pub fn eval_composition_polynomial_inner(
         - (cpu_registers_ap_column_row_expr7
             + cpu_decode_opcode_range_check_bit_10 * cpu_operands_res_column_row_expr14
             + cpu_decode_opcode_range_check_bit_11
-            + cpu_decode_opcode_range_check_bit_12 * 2))
-        * domain7
-        / domain2;
+            + cpu_decode_opcode_range_check_bit_12 * felt_2))
+        * domain7.field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[16] * value;
 
     // Constraint: cpu/update_registers/update_fp/fp_update.
     value = (cpu_registers_fp_column_row_expr20
         - (cpu_decode_fp_update_regular_0 * cpu_registers_fp_column_row_expr6
             + cpu_decode_opcode_range_check_bit_13 * mem_pool_value_column_row_expr16
-            + cpu_decode_opcode_range_check_bit_12 * (cpu_registers_ap_column_row_expr7 + 2)))
-        * domain7
-        / domain2;
+            + cpu_decode_opcode_range_check_bit_12 * (cpu_registers_ap_column_row_expr7 + felt_2)))
+        * domain7.field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[17] * value;
 
     // Constraint: cpu/opcodes/call/push_fp.
     value = (cpu_decode_opcode_range_check_bit_12
         * (mem_pool_value_column_row_expr16 - cpu_registers_fp_column_row_expr6))
-        / domain2;
+        .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[18] * value;
 
     // Constraint: cpu/opcodes/call/push_pc.
     value = (cpu_decode_opcode_range_check_bit_12
         * (mem_pool_value_column_row_expr11
-            - (mem_pool_addr_column_row_expr10 + cpu_decode_opcode_range_check_bit_2 + 1)))
-        / domain2;
+            - (mem_pool_addr_column_row_expr10 + cpu_decode_opcode_range_check_bit_2 + felt_1)))
+        .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[19] * value;
 
     // Constraint: cpu/opcodes/call/off0.
     value = (cpu_decode_opcode_range_check_bit_12
         * (range_check16_pool_column_row_expr4 - global_values.half_offset_size))
-        / domain2;
+        .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[20] * value;
 
     // Constraint: cpu/opcodes/call/off1.
     value = (cpu_decode_opcode_range_check_bit_12
-        * (range_check16_pool_column_row_expr3 - (global_values.half_offset_size + 1)))
-        / domain2;
+        * (range_check16_pool_column_row_expr3 - (global_values.half_offset_size + felt_1)))
+        .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[21] * value;
 
     // Constraint: cpu/opcodes/call/flags.
     value = (cpu_decode_opcode_range_check_bit_12
-        * (cpu_decode_opcode_range_check_bit_12 + cpu_decode_opcode_range_check_bit_12 + 1 + 1
-            - (cpu_decode_opcode_range_check_bit_0 + cpu_decode_opcode_range_check_bit_1 + 4)))
-        / domain2;
+        * (cpu_decode_opcode_range_check_bit_12
+            + cpu_decode_opcode_range_check_bit_12
+            + felt_1
+            + felt_1
+            - (cpu_decode_opcode_range_check_bit_0
+                + cpu_decode_opcode_range_check_bit_1
+                + felt_4)))
+        .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[22] * value;
 
     // Constraint: cpu/opcodes/ret/off0.
     value = (cpu_decode_opcode_range_check_bit_13
-        * (range_check16_pool_column_row_expr4 + 2 - global_values.half_offset_size))
-        / domain2;
+        * (range_check16_pool_column_row_expr4 + felt_2 - global_values.half_offset_size))
+        .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[23] * value;
 
     // Constraint: cpu/opcodes/ret/off2.
     value = (cpu_decode_opcode_range_check_bit_13
-        * (range_check16_pool_column_row_expr2 + 1 - global_values.half_offset_size))
-        / domain2;
+        * (range_check16_pool_column_row_expr2 + felt_1 - global_values.half_offset_size))
+        .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[24] * value;
 
     // Constraint: cpu/opcodes/ret/flags.
@@ -13149,37 +13199,43 @@ pub fn eval_composition_polynomial_inner(
             + cpu_decode_opcode_range_check_bit_3
             + cpu_decode_flag_res_op1_0
             - 4))
-        / domain2;
+        .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[25] * value;
 
     // Constraint: cpu/opcodes/assert_eq/assert_eq.
     value = (cpu_decode_opcode_range_check_bit_14
         * (mem_pool_value_column_row_expr16 - cpu_operands_res_column_row_expr14))
-        / domain2;
+        .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum = total_sum + constraint_coefficients[26] * value;
 
     // Constraint: initial_ap.
-    value = (cpu_registers_ap_column_row_expr7 - global_values.initial_ap) / domain8;
+    value = (cpu_registers_ap_column_row_expr7 - global_values.initial_ap)
+        .field_div(&NonZeroFelt::try_from(domain8)?);
     total_sum = total_sum + constraint_coefficients[27] * value;
 
     // Constraint: initial_fp.
-    value = (cpu_registers_fp_column_row_expr6 - global_values.initial_ap) / domain8;
+    value = (cpu_registers_fp_column_row_expr6 - global_values.initial_ap)
+        .field_div(&NonZeroFelt::try_from(domain8)?);
     total_sum = total_sum + constraint_coefficients[28] * value;
 
     // Constraint: initial_pc.
-    value = (mem_pool_addr_column_row_expr10 - global_values.initial_pc) / domain8;
+    value = (mem_pool_addr_column_row_expr10 - global_values.initial_pc)
+        .field_div(&NonZeroFelt::try_from(domain8)?);
     total_sum = total_sum + constraint_coefficients[29] * value;
 
     // Constraint: final_ap.
-    value = (cpu_registers_ap_column_row_expr7 - global_values.final_ap) / domain7;
+    value = (cpu_registers_ap_column_row_expr7 - global_values.final_ap)
+        .field_div(&NonZeroFelt::try_from(domain7)?);
     total_sum = total_sum + constraint_coefficients[30] * value;
 
     // Constraint: final_fp.
-    value = (cpu_registers_fp_column_row_expr6 - global_values.initial_ap) / domain7;
+    value = (cpu_registers_fp_column_row_expr6 - global_values.initial_ap)
+        .field_div(&NonZeroFelt::try_from(domain7)?);
     total_sum = total_sum + constraint_coefficients[31] * value;
 
     // Constraint: final_pc.
-    value = (mem_pool_addr_column_row_expr10 - global_values.final_pc) / domain7;
+    value = (mem_pool_addr_column_row_expr10 - global_values.final_pc)
+        .field_div(&NonZeroFelt::try_from(domain7)?);
     total_sum = total_sum + constraint_coefficients[32] * value;
 
     // Constraint: memory/multi_column_perm/perm/init0.
@@ -13192,7 +13248,7 @@ pub fn eval_composition_polynomial_inner(
         + global_values.memory_multi_column_perm_hash_interaction_elm0
             * mem_pool_value_column_row_expr25
         - global_values.memory_multi_column_perm_perm_interaction_elm)
-        / domain8;
+        .field_div(&NonZeroFelt::try_from(domain8)?);
     total_sum = total_sum + constraint_coefficients[33] * value;
 
     // Constraint: memory/multi_column_perm/perm/step0.
@@ -13206,38 +13262,36 @@ pub fn eval_composition_polynomial_inner(
                 + global_values.memory_multi_column_perm_hash_interaction_elm0
                     * mem_pool_value_column_row_expr30))
             * memory_multi_column_perm_perm_cum_prod0_column_row_expr23)
-        * domain9
-        / domain4;
+        * domain9.field_div(&NonZeroFelt::try_from(domain4)?);
     total_sum = total_sum + constraint_coefficients[34] * value;
 
     // Constraint: memory/multi_column_perm/perm/last.
     value = (memory_multi_column_perm_perm_cum_prod0_column_row_expr23
         - global_values.memory_multi_column_perm_perm_public_memory_prod)
-        / domain9;
+        .field_div(&NonZeroFelt::try_from(domain9)?);
     total_sum = total_sum + constraint_coefficients[35] * value;
 
     // Constraint: memory/diff_is_bit.
-    value =
-        (memory_address_diff_0 * memory_address_diff_0 - memory_address_diff_0) * domain9 / domain4;
+    value = (memory_address_diff_0 * memory_address_diff_0 - memory_address_diff_0)
+        * domain9.field_div(&NonZeroFelt::try_from(domain4)?);
     total_sum = total_sum + constraint_coefficients[36] * value;
 
     // Constraint: memory/is_func.
     value = ((memory_address_diff_0 - 1)
         * (memory_sorted_value_column_row_expr22 - memory_sorted_value_column_row_expr27))
-        * domain9
-        / domain4;
+        * domain9.field_div(&NonZeroFelt::try_from(domain4)?);
     total_sum = total_sum + constraint_coefficients[37] * value;
 
     // Constraint: memory/initial_addr.
-    value = (memory_sorted_addr_column_row_expr21 - 1) / domain8;
+    value = (memory_sorted_addr_column_row_expr21 - 1).field_div(&NonZeroFelt::try_from(domain8)?);
     total_sum = total_sum + constraint_coefficients[38] * value;
 
     // Constraint: public_memory_addr_zero.
-    value = (mem_pool_addr_column_row_expr31) / domain5;
+    value = (mem_pool_addr_column_row_expr31).field_div(&NonZeroFelt::try_from(domain5)?);
     total_sum = total_sum + constraint_coefficients[39] * value;
 
     // Constraint: public_memory_value_zero.
-    value = (mem_pool_value_column_row_expr32) / domain5;
+    value = (mem_pool_value_column_row_expr32).field_div(&NonZeroFelt::try_from(domain5)?);
     total_sum = total_sum + constraint_coefficients[40] * value;
 
     // Constraint: range_check16/perm/init0.
@@ -13246,7 +13300,7 @@ pub fn eval_composition_polynomial_inner(
         * range_check16_perm_cum_prod0_column_row_expr34
         + range_check16_pool_column_row_expr35
         - global_values.range_check16_perm_interaction_elm)
-        / domain8;
+        .field_div(&NonZeroFelt::try_from(domain8)?);
     total_sum = total_sum + constraint_coefficients[41] * value;
 
     // Constraint: range_check16/perm/step0.
@@ -13256,27 +13310,28 @@ pub fn eval_composition_polynomial_inner(
         - (global_values.range_check16_perm_interaction_elm
             - range_check16_pool_column_row_expr38)
             * range_check16_perm_cum_prod0_column_row_expr34)
-        * domain10
-        / domain6;
+        * domain10.field_div(&NonZeroFelt::try_from(domain6)?);
     total_sum = total_sum + constraint_coefficients[42] * value;
 
     // Constraint: range_check16/perm/last.
     value = (range_check16_perm_cum_prod0_column_row_expr34
         - global_values.range_check16_perm_public_memory_prod)
-        / domain10;
+        .field_div(&NonZeroFelt::try_from(domain10)?);
     total_sum = total_sum + constraint_coefficients[43] * value;
 
     // Constraint: range_check16/diff_is_bit.
-    value =
-        (range_check16_diff_0 * range_check16_diff_0 - range_check16_diff_0) * domain10 / domain6;
+    value = (range_check16_diff_0 * range_check16_diff_0 - range_check16_diff_0)
+        * domain10.field_div(&NonZeroFelt::try_from(domain6)?);
     total_sum = total_sum + constraint_coefficients[44] * value;
 
     // Constraint: range_check16/minimum.
-    value = (range_check16_sorted_column_row_expr33 - global_values.range_check_min) / domain8;
+    value = (range_check16_sorted_column_row_expr33 - global_values.range_check_min)
+        .field_div(&NonZeroFelt::try_from(domain8)?);
     total_sum = total_sum + constraint_coefficients[45] * value;
 
     // Constraint: range_check16/maximum.
-    value = (range_check16_sorted_column_row_expr33 - global_values.range_check_max) / domain10;
+    value = (range_check16_sorted_column_row_expr33 - global_values.range_check_max)
+        .field_div(&NonZeroFelt::try_from(domain10)?);
     total_sum = total_sum + constraint_coefficients[46] * value;
 
     // Constraint: diluted_check/permutation/init0.
@@ -13285,7 +13340,7 @@ pub fn eval_composition_polynomial_inner(
         * diluted_check_permutation_cum_prod0_column_row_expr40
         + diluted_pool_column_row_expr41
         - global_values.diluted_check_permutation_interaction_elm)
-        / domain8;
+        .field_div(&NonZeroFelt::try_from(domain8)?);
     total_sum = total_sum + constraint_coefficients[47] * value;
 
     // Constraint: diluted_check/permutation/step0.
@@ -13295,45 +13350,45 @@ pub fn eval_composition_polynomial_inner(
         - (global_values.diluted_check_permutation_interaction_elm
             - diluted_pool_column_row_expr44)
             * diluted_check_permutation_cum_prod0_column_row_expr40)
-        * domain11
-        / domain3;
+        * domain11.field_div(&NonZeroFelt::try_from(domain3)?);
     total_sum = total_sum + constraint_coefficients[48] * value;
 
     // Constraint: diluted_check/permutation/last.
     value = (diluted_check_permutation_cum_prod0_column_row_expr40
         - global_values.diluted_check_permutation_public_memory_prod)
-        / domain11;
+        .field_div(&NonZeroFelt::try_from(domain11)?);
     total_sum = total_sum + constraint_coefficients[49] * value;
 
     // Constraint: diluted_check/init.
-    value = (diluted_check_cumulative_value_column_row_expr45 - 1) / domain8;
+    value = (diluted_check_cumulative_value_column_row_expr45 - 1)
+        .field_div(&NonZeroFelt::try_from(domain8)?);
     total_sum = total_sum + constraint_coefficients[50] * value;
 
     // Constraint: diluted_check/first_element.
     value = (diluted_check_permuted_values_column_row_expr39
         - global_values.diluted_check_first_elm)
-        / domain8;
+        .field_div(&NonZeroFelt::try_from(domain8)?);
     total_sum = total_sum + constraint_coefficients[51] * value;
 
     // Constraint: diluted_check/step.
     value = (diluted_check_cumulative_value_column_row_expr46
         - (diluted_check_cumulative_value_column_row_expr45
-            * (1 + global_values.diluted_check_interaction_z
-                * (diluted_check_permuted_values_column_row_expr42
-                    - diluted_check_permuted_values_column_row_expr39))
+            * (felt_1
+                + global_values.diluted_check_interaction_z
+                    * (diluted_check_permuted_values_column_row_expr42
+                        - diluted_check_permuted_values_column_row_expr39))
             + global_values.diluted_check_interaction_alpha
                 * (diluted_check_permuted_values_column_row_expr42
                     - diluted_check_permuted_values_column_row_expr39)
                 * (diluted_check_permuted_values_column_row_expr42
                     - diluted_check_permuted_values_column_row_expr39)))
-        * domain11
-        / domain3;
+        * domain11.field_div(&NonZeroFelt::try_from(domain3)?);
     total_sum = total_sum + constraint_coefficients[52] * value;
 
     // Constraint: diluted_check/last.
     value = (diluted_check_cumulative_value_column_row_expr45
         - global_values.diluted_check_final_cum_val)
-        / domain11;
+        .field_div(&NonZeroFelt::try_from(domain11)?);
     total_sum = total_sum + constraint_coefficients[53] * value;
 
     if (uses_pedersen_builtin != 0) {
@@ -13342,15 +13397,15 @@ pub fn eval_composition_polynomial_inner(
             * (pedersen_hash0_ec_subset_sum_selector_column_row_expr48
                 - (pedersen_hash0_ec_subset_sum_selector_column_row_expr49
                     + pedersen_hash0_ec_subset_sum_selector_column_row_expr49)))
-            / domain159;
+            .field_div(&NonZeroFelt::try_from(domain159)?);
         total_sum = total_sum + constraint_coefficients[54] * value;
 
         // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/zeroes_between_ones0.
         value = (pedersen_hash0_ec_subset_sum_bit_unpacking_prod_ones192_column_row_expr47
             * (pedersen_hash0_ec_subset_sum_selector_column_row_expr49
-                - 3138550867693340381917894711603833208051177722232017256448
+                - felt_3138550867693340381917894711603833208051177722232017256448
                     * pedersen_hash0_ec_subset_sum_selector_column_row_expr50))
-            / domain159;
+            .field_div(&NonZeroFelt::try_from(domain159)?);
         total_sum = total_sum + constraint_coefficients[55] * value;
 
         // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/cumulative_bit192.
@@ -13359,14 +13414,14 @@ pub fn eval_composition_polynomial_inner(
                 * (pedersen_hash0_ec_subset_sum_selector_column_row_expr50
                     - (pedersen_hash0_ec_subset_sum_selector_column_row_expr52
                         + pedersen_hash0_ec_subset_sum_selector_column_row_expr52)))
-            / domain159;
+            .field_div(&NonZeroFelt::try_from(domain159)?);
         total_sum = total_sum + constraint_coefficients[56] * value;
 
         // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/zeroes_between_ones192.
         value = (pedersen_hash0_ec_subset_sum_bit_unpacking_prod_ones196_column_row_expr51
             * (pedersen_hash0_ec_subset_sum_selector_column_row_expr52
-                - 8 * pedersen_hash0_ec_subset_sum_selector_column_row_expr53))
-            / domain159;
+                - felt_8 * pedersen_hash0_ec_subset_sum_selector_column_row_expr53))
+            .field_div(&NonZeroFelt::try_from(domain159)?);
         total_sum = total_sum + constraint_coefficients[57] * value;
 
         // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/cumulative_bit196.
@@ -13377,7 +13432,7 @@ pub fn eval_composition_polynomial_inner(
                 * (pedersen_hash0_ec_subset_sum_selector_column_row_expr53
                     - (pedersen_hash0_ec_subset_sum_selector_column_row_expr56
                         + pedersen_hash0_ec_subset_sum_selector_column_row_expr56)))
-            / domain159;
+            .field_div(&NonZeroFelt::try_from(domain159)?);
         total_sum = total_sum + constraint_coefficients[58] * value;
 
         // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/zeroes_between_ones196.
@@ -13385,22 +13440,24 @@ pub fn eval_composition_polynomial_inner(
             - (pedersen_hash0_ec_subset_sum_selector_column_row_expr55
                 + pedersen_hash0_ec_subset_sum_selector_column_row_expr55))
             * (pedersen_hash0_ec_subset_sum_selector_column_row_expr56
-                - 18014398509481984 * pedersen_hash0_ec_subset_sum_selector_column_row_expr54))
-            / domain159;
+                - felt_18014398509481984
+                    * pedersen_hash0_ec_subset_sum_selector_column_row_expr54))
+            .field_div(&NonZeroFelt::try_from(domain159)?);
         total_sum = total_sum + constraint_coefficients[59] * value;
 
         // Constraint: pedersen/hash0/ec_subset_sum/booleanity_test.
         value = (pedersen_hash0_ec_subset_sum_bit_0 * (pedersen_hash0_ec_subset_sum_bit_0 - 1))
-            * domain160
-            / domain158;
+            * domain160.field_div(&NonZeroFelt::try_from(domain158)?);
         total_sum = total_sum + constraint_coefficients[60] * value;
 
         // Constraint: pedersen/hash0/ec_subset_sum/bit_extraction_end.
-        value = (pedersen_hash0_ec_subset_sum_selector_column_row_expr48) / domain161;
+        value = (pedersen_hash0_ec_subset_sum_selector_column_row_expr48)
+            .field_div(&NonZeroFelt::try_from(domain161)?);
         total_sum = total_sum + constraint_coefficients[61] * value;
 
         // Constraint: pedersen/hash0/ec_subset_sum/zeros_tail.
-        value = (pedersen_hash0_ec_subset_sum_selector_column_row_expr48) / domain160;
+        value = (pedersen_hash0_ec_subset_sum_selector_column_row_expr48)
+            .field_div(&NonZeroFelt::try_from(domain160)?);
         total_sum = total_sum + constraint_coefficients[62] * value;
 
         // Constraint: pedersen/hash0/ec_subset_sum/add_points/slope.
@@ -13410,8 +13467,7 @@ pub fn eval_composition_polynomial_inner(
             - pedersen_hash0_ec_subset_sum_slope_column_row_expr58
                 * (pedersen_hash0_ec_subset_sum_partial_sum_x_column_row_expr59
                     - global_values.pedersen_points_x))
-            * domain160
-            / domain158;
+            * domain160.field_div(&NonZeroFelt::try_from(domain158)?);
         total_sum = total_sum + constraint_coefficients[63] * value;
 
         // Constraint: pedersen/hash0/ec_subset_sum/add_points/x.
@@ -13421,8 +13477,7 @@ pub fn eval_composition_polynomial_inner(
                 * (pedersen_hash0_ec_subset_sum_partial_sum_x_column_row_expr59
                     + global_values.pedersen_points_x
                     + pedersen_hash0_ec_subset_sum_partial_sum_x_column_row_expr60))
-            * domain160
-            / domain158;
+            * domain160.field_div(&NonZeroFelt::try_from(domain158)?);
         total_sum = total_sum + constraint_coefficients[64] * value;
 
         // Constraint: pedersen/hash0/ec_subset_sum/add_points/y.
@@ -13432,104 +13487,99 @@ pub fn eval_composition_polynomial_inner(
             - pedersen_hash0_ec_subset_sum_slope_column_row_expr58
                 * (pedersen_hash0_ec_subset_sum_partial_sum_x_column_row_expr59
                     - pedersen_hash0_ec_subset_sum_partial_sum_x_column_row_expr60))
-            * domain160
-            / domain158;
+            * domain160.field_div(&NonZeroFelt::try_from(domain158)?);
         total_sum = total_sum + constraint_coefficients[65] * value;
 
         // Constraint: pedersen/hash0/ec_subset_sum/copy_point/x.
         value = (pedersen_hash0_ec_subset_sum_bit_neg_0
             * (pedersen_hash0_ec_subset_sum_partial_sum_x_column_row_expr60
                 - pedersen_hash0_ec_subset_sum_partial_sum_x_column_row_expr59))
-            * domain160
-            / domain158;
+            * domain160.field_div(&NonZeroFelt::try_from(domain158)?);
         total_sum = total_sum + constraint_coefficients[66] * value;
 
         // Constraint: pedersen/hash0/ec_subset_sum/copy_point/y.
         value = (pedersen_hash0_ec_subset_sum_bit_neg_0
             * (pedersen_hash0_ec_subset_sum_partial_sum_y_column_row_expr61
                 - pedersen_hash0_ec_subset_sum_partial_sum_y_column_row_expr57))
-            * domain160
-            / domain158;
+            * domain160.field_div(&NonZeroFelt::try_from(domain158)?);
         total_sum = total_sum + constraint_coefficients[67] * value;
 
         // Constraint: pedersen/hash0/copy_point/x.
         value = (pedersen_hash0_ec_subset_sum_partial_sum_x_column_row_expr62
             - pedersen_hash0_ec_subset_sum_partial_sum_x_column_row_expr63)
-            * domain162
-            / domain159;
+            * domain162.field_div(&NonZeroFelt::try_from(domain159)?);
         total_sum = total_sum + constraint_coefficients[68] * value;
 
         // Constraint: pedersen/hash0/copy_point/y.
         value = (pedersen_hash0_ec_subset_sum_partial_sum_y_column_row_expr64
             - pedersen_hash0_ec_subset_sum_partial_sum_y_column_row_expr65)
-            * domain162
-            / domain159;
+            * domain162.field_div(&NonZeroFelt::try_from(domain159)?);
         total_sum = total_sum + constraint_coefficients[69] * value;
 
         // Constraint: pedersen/hash0/init/x.
         value = (pedersen_hash0_ec_subset_sum_partial_sum_x_column_row_expr59
             - global_values.pedersen_shift_point.x)
-            / domain163;
+            .field_div(&NonZeroFelt::try_from(domain163)?);
         total_sum = total_sum + constraint_coefficients[70] * value;
 
         // Constraint: pedersen/hash0/init/y.
         value = (pedersen_hash0_ec_subset_sum_partial_sum_y_column_row_expr57
             - global_values.pedersen_shift_point.y)
-            / domain163;
+            .field_div(&NonZeroFelt::try_from(domain163)?);
         total_sum = total_sum + constraint_coefficients[71] * value;
 
         // Constraint: pedersen/input0_value0.
         value = (mem_pool_value_column_row_expr66
             - pedersen_hash0_ec_subset_sum_selector_column_row_expr48)
-            / domain163;
+            .field_div(&NonZeroFelt::try_from(domain163)?);
         total_sum = total_sum + constraint_coefficients[72] * value;
 
         // Constraint: pedersen/input0_addr.
-        value = (mem_pool_addr_column_row_expr67 - (mem_pool_addr_column_row_expr68 + 1))
-            * domain164
-            / domain163;
+        value = (mem_pool_addr_column_row_expr67 - (mem_pool_addr_column_row_expr68 + felt_1))
+            * domain164.field_div(&NonZeroFelt::try_from(domain163)?);
         total_sum = total_sum + constraint_coefficients[73] * value;
 
         // Constraint: pedersen/init_addr.
-        value = (mem_pool_addr_column_row_expr69 - global_values.initial_pedersen_addr) / domain165;
+        value = (mem_pool_addr_column_row_expr69 - global_values.initial_pedersen_addr)
+            .field_div(&NonZeroFelt::try_from(domain165)?);
         total_sum = total_sum + constraint_coefficients[74] * value;
 
         // Constraint: pedersen/input1_value0.
         value = (mem_pool_value_column_row_expr70
             - pedersen_hash0_ec_subset_sum_selector_column_row_expr71)
-            / domain163;
+            .field_div(&NonZeroFelt::try_from(domain163)?);
         total_sum = total_sum + constraint_coefficients[75] * value;
 
         // Constraint: pedersen/input1_addr.
-        value =
-            (mem_pool_addr_column_row_expr72 - (mem_pool_addr_column_row_expr69 + 1)) / domain163;
+        value = (mem_pool_addr_column_row_expr72 - (mem_pool_addr_column_row_expr69 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain163)?);
         total_sum = total_sum + constraint_coefficients[76] * value;
 
         // Constraint: pedersen/output_value0.
         value = (mem_pool_value_column_row_expr73
             - pedersen_hash0_ec_subset_sum_partial_sum_x_column_row_expr74)
-            / domain163;
+            .field_div(&NonZeroFelt::try_from(domain163)?);
         total_sum = total_sum + constraint_coefficients[77] * value;
 
         // Constraint: pedersen/output_addr.
-        value =
-            (mem_pool_addr_column_row_expr68 - (mem_pool_addr_column_row_expr72 + 1)) / domain163;
+        value = (mem_pool_addr_column_row_expr68 - (mem_pool_addr_column_row_expr72 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain163)?);
         total_sum = total_sum + constraint_coefficients[78] * value;
     }
     if (uses_range_check_builtin != 0) {
         // Constraint: range_check_builtin/value.
-        value = (range_check_builtin_value7_0 - mem_pool_value_column_row_expr75) / domain181;
+        value = (range_check_builtin_value7_0 - mem_pool_value_column_row_expr75)
+            .field_div(&NonZeroFelt::try_from(domain181)?);
         total_sum = total_sum + constraint_coefficients[79] * value;
 
         // Constraint: range_check_builtin/addr_step.
-        value = (mem_pool_addr_column_row_expr76 - (mem_pool_addr_column_row_expr77 + 1))
-            * domain182
-            / domain181;
+        value = (mem_pool_addr_column_row_expr76 - (mem_pool_addr_column_row_expr77 + felt_1))
+            * domain182.field_div(&NonZeroFelt::try_from(domain181)?);
         total_sum = total_sum + constraint_coefficients[80] * value;
 
         // Constraint: range_check_builtin/init_addr.
-        value =
-            (mem_pool_addr_column_row_expr77 - global_values.initial_range_check_addr) / domain183;
+        value = (mem_pool_addr_column_row_expr77 - global_values.initial_range_check_addr)
+            .field_div(&NonZeroFelt::try_from(domain183)?);
         total_sum = total_sum + constraint_coefficients[81] * value;
     }
     if (uses_ecdsa_builtin != 0) {
@@ -13541,8 +13591,7 @@ pub fn eval_composition_polynomial_inner(
             - (ecdsa_signature0_key_points_y_column_row_expr78
                 + ecdsa_signature0_key_points_y_column_row_expr78)
                 * ecdsa_signature0_doubling_slope_column_row_expr79)
-            * domain29
-            / domain27;
+            * domain29.field_div(&NonZeroFelt::try_from(domain27)?);
         total_sum = total_sum + constraint_coefficients[82] * value;
 
         // Constraint: ecdsa/signature0/doubling_key/x.
@@ -13551,8 +13600,7 @@ pub fn eval_composition_polynomial_inner(
             - (ecdsa_signature0_key_points_x_column_row_expr80
                 + ecdsa_signature0_key_points_x_column_row_expr80
                 + ecdsa_signature0_key_points_x_column_row_expr81))
-            * domain29
-            / domain27;
+            * domain29.field_div(&NonZeroFelt::try_from(domain27)?);
         total_sum = total_sum + constraint_coefficients[83] * value;
 
         // Constraint: ecdsa/signature0/doubling_key/y.
@@ -13561,23 +13609,23 @@ pub fn eval_composition_polynomial_inner(
             - ecdsa_signature0_doubling_slope_column_row_expr79
                 * (ecdsa_signature0_key_points_x_column_row_expr80
                     - ecdsa_signature0_key_points_x_column_row_expr81))
-            * domain29
-            / domain27;
+            * domain29.field_div(&NonZeroFelt::try_from(domain27)?);
         total_sum = total_sum + constraint_coefficients[84] * value;
 
         // Constraint: ecdsa/signature0/exponentiate_generator/booleanity_test.
         value = (ecdsa_signature0_exponentiate_generator_bit_0
             * (ecdsa_signature0_exponentiate_generator_bit_0 - 1))
-            * domain32
-            / domain28;
+            * domain32.field_div(&NonZeroFelt::try_from(domain28)?);
         total_sum = total_sum + constraint_coefficients[85] * value;
 
         // Constraint: ecdsa/signature0/exponentiate_generator/bit_extraction_end.
-        value = (ecdsa_signature0_exponentiate_generator_selector_column_row_expr83) / domain33;
+        value = (ecdsa_signature0_exponentiate_generator_selector_column_row_expr83)
+            .field_div(&NonZeroFelt::try_from(domain33)?);
         total_sum = total_sum + constraint_coefficients[86] * value;
 
         // Constraint: ecdsa/signature0/exponentiate_generator/zeros_tail.
-        value = (ecdsa_signature0_exponentiate_generator_selector_column_row_expr83) / domain32;
+        value = (ecdsa_signature0_exponentiate_generator_selector_column_row_expr83)
+            .field_div(&NonZeroFelt::try_from(domain32)?);
         total_sum = total_sum + constraint_coefficients[87] * value;
 
         // Constraint: ecdsa/signature0/exponentiate_generator/add_points/slope.
@@ -13587,8 +13635,7 @@ pub fn eval_composition_polynomial_inner(
             - ecdsa_signature0_exponentiate_generator_slope_column_row_expr85
                 * (ecdsa_signature0_exponentiate_generator_partial_sum_x_column_row_expr86
                     - global_values.ecdsa_generator_points_x))
-            * domain32
-            / domain28;
+            * domain32.field_div(&NonZeroFelt::try_from(domain28)?);
         total_sum = total_sum + constraint_coefficients[88] * value;
 
         // Constraint: ecdsa/signature0/exponentiate_generator/add_points/x.
@@ -13598,8 +13645,7 @@ pub fn eval_composition_polynomial_inner(
                 * (ecdsa_signature0_exponentiate_generator_partial_sum_x_column_row_expr86
                     + global_values.ecdsa_generator_points_x
                     + ecdsa_signature0_exponentiate_generator_partial_sum_x_column_row_expr87))
-            * domain32
-            / domain28;
+            * domain32.field_div(&NonZeroFelt::try_from(domain28)?);
         total_sum = total_sum + constraint_coefficients[89] * value;
 
         // Constraint: ecdsa/signature0/exponentiate_generator/add_points/y.
@@ -13609,8 +13655,7 @@ pub fn eval_composition_polynomial_inner(
             - ecdsa_signature0_exponentiate_generator_slope_column_row_expr85
                 * (ecdsa_signature0_exponentiate_generator_partial_sum_x_column_row_expr86
                     - ecdsa_signature0_exponentiate_generator_partial_sum_x_column_row_expr87))
-            * domain32
-            / domain28;
+            * domain32.field_div(&NonZeroFelt::try_from(domain28)?);
         total_sum = total_sum + constraint_coefficients[90] * value;
 
         // Constraint: ecdsa/signature0/exponentiate_generator/add_points/x_diff_inv.
@@ -13618,39 +13663,37 @@ pub fn eval_composition_polynomial_inner(
             * (ecdsa_signature0_exponentiate_generator_partial_sum_x_column_row_expr86
                 - global_values.ecdsa_generator_points_x)
             - 1)
-            * domain32
-            / domain28;
+            * domain32.field_div(&NonZeroFelt::try_from(domain28)?);
         total_sum = total_sum + constraint_coefficients[91] * value;
 
         // Constraint: ecdsa/signature0/exponentiate_generator/copy_point/x.
         value = (ecdsa_signature0_exponentiate_generator_bit_neg_0
             * (ecdsa_signature0_exponentiate_generator_partial_sum_x_column_row_expr87
                 - ecdsa_signature0_exponentiate_generator_partial_sum_x_column_row_expr86))
-            * domain32
-            / domain28;
+            * domain32.field_div(&NonZeroFelt::try_from(domain28)?);
         total_sum = total_sum + constraint_coefficients[92] * value;
 
         // Constraint: ecdsa/signature0/exponentiate_generator/copy_point/y.
         value = (ecdsa_signature0_exponentiate_generator_bit_neg_0
             * (ecdsa_signature0_exponentiate_generator_partial_sum_y_column_row_expr88
                 - ecdsa_signature0_exponentiate_generator_partial_sum_y_column_row_expr84))
-            * domain32
-            / domain28;
+            * domain32.field_div(&NonZeroFelt::try_from(domain28)?);
         total_sum = total_sum + constraint_coefficients[93] * value;
 
         // Constraint: ecdsa/signature0/exponentiate_key/booleanity_test.
         value = (ecdsa_signature0_exponentiate_key_bit_0
             * (ecdsa_signature0_exponentiate_key_bit_0 - 1))
-            * domain29
-            / domain27;
+            * domain29.field_div(&NonZeroFelt::try_from(domain27)?);
         total_sum = total_sum + constraint_coefficients[94] * value;
 
         // Constraint: ecdsa/signature0/exponentiate_key/bit_extraction_end.
-        value = (ecdsa_signature0_exponentiate_key_selector_column_row_expr90) / domain30;
+        value = (ecdsa_signature0_exponentiate_key_selector_column_row_expr90)
+            .field_div(&NonZeroFelt::try_from(domain30)?);
         total_sum = total_sum + constraint_coefficients[95] * value;
 
         // Constraint: ecdsa/signature0/exponentiate_key/zeros_tail.
-        value = (ecdsa_signature0_exponentiate_key_selector_column_row_expr90) / domain29;
+        value = (ecdsa_signature0_exponentiate_key_selector_column_row_expr90)
+            .field_div(&NonZeroFelt::try_from(domain29)?);
         total_sum = total_sum + constraint_coefficients[96] * value;
 
         // Constraint: ecdsa/signature0/exponentiate_key/add_points/slope.
@@ -13660,8 +13703,7 @@ pub fn eval_composition_polynomial_inner(
             - ecdsa_signature0_exponentiate_key_slope_column_row_expr92
                 * (ecdsa_signature0_exponentiate_key_partial_sum_x_column_row_expr93
                     - ecdsa_signature0_key_points_x_column_row_expr80))
-            * domain29
-            / domain27;
+            * domain29.field_div(&NonZeroFelt::try_from(domain27)?);
         total_sum = total_sum + constraint_coefficients[97] * value;
 
         // Constraint: ecdsa/signature0/exponentiate_key/add_points/x.
@@ -13671,8 +13713,7 @@ pub fn eval_composition_polynomial_inner(
                 * (ecdsa_signature0_exponentiate_key_partial_sum_x_column_row_expr93
                     + ecdsa_signature0_key_points_x_column_row_expr80
                     + ecdsa_signature0_exponentiate_key_partial_sum_x_column_row_expr94))
-            * domain29
-            / domain27;
+            * domain29.field_div(&NonZeroFelt::try_from(domain27)?);
         total_sum = total_sum + constraint_coefficients[98] * value;
 
         // Constraint: ecdsa/signature0/exponentiate_key/add_points/y.
@@ -13682,8 +13723,7 @@ pub fn eval_composition_polynomial_inner(
             - ecdsa_signature0_exponentiate_key_slope_column_row_expr92
                 * (ecdsa_signature0_exponentiate_key_partial_sum_x_column_row_expr93
                     - ecdsa_signature0_exponentiate_key_partial_sum_x_column_row_expr94))
-            * domain29
-            / domain27;
+            * domain29.field_div(&NonZeroFelt::try_from(domain27)?);
         total_sum = total_sum + constraint_coefficients[99] * value;
 
         // Constraint: ecdsa/signature0/exponentiate_key/add_points/x_diff_inv.
@@ -13691,48 +13731,45 @@ pub fn eval_composition_polynomial_inner(
             * (ecdsa_signature0_exponentiate_key_partial_sum_x_column_row_expr93
                 - ecdsa_signature0_key_points_x_column_row_expr80)
             - 1)
-            * domain29
-            / domain27;
+            * domain29.field_div(&NonZeroFelt::try_from(domain27)?);
         total_sum = total_sum + constraint_coefficients[100] * value;
 
         // Constraint: ecdsa/signature0/exponentiate_key/copy_point/x.
         value = (ecdsa_signature0_exponentiate_key_bit_neg_0
             * (ecdsa_signature0_exponentiate_key_partial_sum_x_column_row_expr94
                 - ecdsa_signature0_exponentiate_key_partial_sum_x_column_row_expr93))
-            * domain29
-            / domain27;
+            * domain29.field_div(&NonZeroFelt::try_from(domain27)?);
         total_sum = total_sum + constraint_coefficients[101] * value;
 
         // Constraint: ecdsa/signature0/exponentiate_key/copy_point/y.
         value = (ecdsa_signature0_exponentiate_key_bit_neg_0
             * (ecdsa_signature0_exponentiate_key_partial_sum_y_column_row_expr95
                 - ecdsa_signature0_exponentiate_key_partial_sum_y_column_row_expr91))
-            * domain29
-            / domain27;
+            * domain29.field_div(&NonZeroFelt::try_from(domain27)?);
         total_sum = total_sum + constraint_coefficients[102] * value;
 
         // Constraint: ecdsa/signature0/init_gen/x.
         value = (ecdsa_signature0_exponentiate_generator_partial_sum_x_column_row_expr86
             - global_values.ecdsa_sig_config.shift_point.x)
-            / domain34;
+            .field_div(&NonZeroFelt::try_from(domain34)?);
         total_sum = total_sum + constraint_coefficients[103] * value;
 
         // Constraint: ecdsa/signature0/init_gen/y.
         value = (ecdsa_signature0_exponentiate_generator_partial_sum_y_column_row_expr84
             + global_values.ecdsa_sig_config.shift_point.y)
-            / domain34;
+            .field_div(&NonZeroFelt::try_from(domain34)?);
         total_sum = total_sum + constraint_coefficients[104] * value;
 
         // Constraint: ecdsa/signature0/init_key/x.
         value = (ecdsa_signature0_exponentiate_key_partial_sum_x_column_row_expr93
             - global_values.ecdsa_sig_config.shift_point.x)
-            / domain31;
+            .field_div(&NonZeroFelt::try_from(domain31)?);
         total_sum = total_sum + constraint_coefficients[105] * value;
 
         // Constraint: ecdsa/signature0/init_key/y.
         value = (ecdsa_signature0_exponentiate_key_partial_sum_y_column_row_expr91
             - global_values.ecdsa_sig_config.shift_point.y)
-            / domain31;
+            .field_div(&NonZeroFelt::try_from(domain31)?);
         total_sum = total_sum + constraint_coefficients[106] * value;
 
         // Constraint: ecdsa/signature0/add_results/slope.
@@ -13741,7 +13778,7 @@ pub fn eval_composition_polynomial_inner(
                 + ecdsa_signature0_add_results_slope_column_row_expr99
                     * (ecdsa_signature0_exponentiate_generator_partial_sum_x_column_row_expr100
                         - ecdsa_signature0_exponentiate_key_partial_sum_x_column_row_expr101)))
-            / domain34;
+            .field_div(&NonZeroFelt::try_from(domain34)?);
         total_sum = total_sum + constraint_coefficients[107] * value;
 
         // Constraint: ecdsa/signature0/add_results/x.
@@ -13750,7 +13787,7 @@ pub fn eval_composition_polynomial_inner(
             - (ecdsa_signature0_exponentiate_generator_partial_sum_x_column_row_expr100
                 + ecdsa_signature0_exponentiate_key_partial_sum_x_column_row_expr101
                 + ecdsa_signature0_key_points_x_column_row_expr102))
-            / domain34;
+            .field_div(&NonZeroFelt::try_from(domain34)?);
         total_sum = total_sum + constraint_coefficients[108] * value;
 
         // Constraint: ecdsa/signature0/add_results/y.
@@ -13759,7 +13796,7 @@ pub fn eval_composition_polynomial_inner(
             - ecdsa_signature0_add_results_slope_column_row_expr99
                 * (ecdsa_signature0_exponentiate_generator_partial_sum_x_column_row_expr100
                     - ecdsa_signature0_key_points_x_column_row_expr102))
-            / domain34;
+            .field_div(&NonZeroFelt::try_from(domain34)?);
         total_sum = total_sum + constraint_coefficients[109] * value;
 
         // Constraint: ecdsa/signature0/add_results/x_diff_inv.
@@ -13767,7 +13804,7 @@ pub fn eval_composition_polynomial_inner(
             * (ecdsa_signature0_exponentiate_generator_partial_sum_x_column_row_expr100
                 - ecdsa_signature0_exponentiate_key_partial_sum_x_column_row_expr101)
             - 1)
-            / domain34;
+        .field_div(&NonZeroFelt::try_from(domain34)?);
         total_sum = total_sum + constraint_coefficients[110] * value;
 
         // Constraint: ecdsa/signature0/extract_r/slope.
@@ -13776,7 +13813,7 @@ pub fn eval_composition_polynomial_inner(
             - ecdsa_signature0_extract_r_slope_column_row_expr106
                 * (ecdsa_signature0_exponentiate_key_partial_sum_x_column_row_expr107
                     - global_values.ecdsa_sig_config.shift_point.x))
-            / domain34;
+            .field_div(&NonZeroFelt::try_from(domain34)?);
         total_sum = total_sum + constraint_coefficients[111] * value;
 
         // Constraint: ecdsa/signature0/extract_r/x.
@@ -13785,7 +13822,7 @@ pub fn eval_composition_polynomial_inner(
             - (ecdsa_signature0_exponentiate_key_partial_sum_x_column_row_expr107
                 + global_values.ecdsa_sig_config.shift_point.x
                 + ecdsa_signature0_exponentiate_key_selector_column_row_expr90))
-            / domain34;
+            .field_div(&NonZeroFelt::try_from(domain34)?);
         total_sum = total_sum + constraint_coefficients[112] * value;
 
         // Constraint: ecdsa/signature0/extract_r/x_diff_inv.
@@ -13793,28 +13830,28 @@ pub fn eval_composition_polynomial_inner(
             * (ecdsa_signature0_exponentiate_key_partial_sum_x_column_row_expr107
                 - global_values.ecdsa_sig_config.shift_point.x)
             - 1)
-            / domain34;
+        .field_div(&NonZeroFelt::try_from(domain34)?);
         total_sum = total_sum + constraint_coefficients[113] * value;
 
         // Constraint: ecdsa/signature0/z_nonzero.
         value = (ecdsa_signature0_exponentiate_generator_selector_column_row_expr83
             * ecdsa_signature0_z_inv_column_row_expr109
             - 1)
-            / domain34;
+        .field_div(&NonZeroFelt::try_from(domain34)?);
         total_sum = total_sum + constraint_coefficients[114] * value;
 
         // Constraint: ecdsa/signature0/r_and_w_nonzero.
         value = (ecdsa_signature0_exponentiate_key_selector_column_row_expr90
             * ecdsa_signature0_r_w_inv_column_row_expr110
             - 1)
-            / domain31;
+        .field_div(&NonZeroFelt::try_from(domain31)?);
         total_sum = total_sum + constraint_coefficients[115] * value;
 
         // Constraint: ecdsa/signature0/q_on_curve/x_squared.
         value = (ecdsa_signature0_q_x_squared_column_row_expr111
             - ecdsa_signature0_key_points_x_column_row_expr80
                 * ecdsa_signature0_key_points_x_column_row_expr80)
-            / domain34;
+            .field_div(&NonZeroFelt::try_from(domain34)?);
         total_sum = total_sum + constraint_coefficients[116] * value;
 
         // Constraint: ecdsa/signature0/q_on_curve/on_curve.
@@ -13825,67 +13862,66 @@ pub fn eval_composition_polynomial_inner(
                 + global_values.ecdsa_sig_config.alpha
                     * ecdsa_signature0_key_points_x_column_row_expr80
                 + global_values.ecdsa_sig_config.beta))
-            / domain34;
+            .field_div(&NonZeroFelt::try_from(domain34)?);
         total_sum = total_sum + constraint_coefficients[117] * value;
 
         // Constraint: ecdsa/init_addr.
-        value = (mem_pool_addr_column_row_expr112 - global_values.initial_ecdsa_addr) / domain35;
+        value = (mem_pool_addr_column_row_expr112 - global_values.initial_ecdsa_addr)
+            .field_div(&NonZeroFelt::try_from(domain35)?);
         total_sum = total_sum + constraint_coefficients[118] * value;
 
         // Constraint: ecdsa/message_addr.
-        value =
-            (mem_pool_addr_column_row_expr113 - (mem_pool_addr_column_row_expr112 + 1)) / domain34;
+        value = (mem_pool_addr_column_row_expr113 - (mem_pool_addr_column_row_expr112 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain34)?);
         total_sum = total_sum + constraint_coefficients[119] * value;
 
         // Constraint: ecdsa/pubkey_addr.
-        value = (mem_pool_addr_column_row_expr114 - (mem_pool_addr_column_row_expr113 + 1))
-            * domain36
-            / domain34;
+        value = (mem_pool_addr_column_row_expr114 - (mem_pool_addr_column_row_expr113 + felt_1))
+            * domain36.field_div(&NonZeroFelt::try_from(domain34)?);
         total_sum = total_sum + constraint_coefficients[120] * value;
 
         // Constraint: ecdsa/message_value0.
         value = (mem_pool_value_column_row_expr115
             - ecdsa_signature0_exponentiate_generator_selector_column_row_expr83)
-            / domain34;
+            .field_div(&NonZeroFelt::try_from(domain34)?);
         total_sum = total_sum + constraint_coefficients[121] * value;
 
         // Constraint: ecdsa/pubkey_value0.
         value = (mem_pool_value_column_row_expr116
             - ecdsa_signature0_key_points_x_column_row_expr80)
-            / domain34;
+            .field_div(&NonZeroFelt::try_from(domain34)?);
         total_sum = total_sum + constraint_coefficients[122] * value;
     }
     if (uses_bitwise_builtin != 0) {
         // Constraint: bitwise/init_var_pool_addr.
-        value = (mem_pool_addr_column_row_expr117 - global_values.initial_bitwise_addr) / domain19;
+        value = (mem_pool_addr_column_row_expr117 - global_values.initial_bitwise_addr)
+            .field_div(&NonZeroFelt::try_from(domain19)?);
         total_sum = total_sum + constraint_coefficients[123] * value;
 
         // Constraint: bitwise/step_var_pool_addr.
-        value = (mem_pool_addr_column_row_expr118 - (mem_pool_addr_column_row_expr117 + 1))
-            * domain16
-            / domain15;
+        value = (mem_pool_addr_column_row_expr118 - (mem_pool_addr_column_row_expr117 + felt_1))
+            * domain16.field_div(&NonZeroFelt::try_from(domain15)?);
         total_sum = total_sum + constraint_coefficients[124] * value;
 
         // Constraint: bitwise/x_or_y_addr.
-        value =
-            (mem_pool_addr_column_row_expr119 - (mem_pool_addr_column_row_expr120 + 1)) / domain17;
+        value = (mem_pool_addr_column_row_expr119 - (mem_pool_addr_column_row_expr120 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain17)?);
         total_sum = total_sum + constraint_coefficients[125] * value;
 
         // Constraint: bitwise/next_var_pool_addr.
-        value = (mem_pool_addr_column_row_expr121 - (mem_pool_addr_column_row_expr119 + 1))
-            * domain20
-            / domain17;
+        value = (mem_pool_addr_column_row_expr121 - (mem_pool_addr_column_row_expr119 + felt_1))
+            * domain20.field_div(&NonZeroFelt::try_from(domain17)?);
         total_sum = total_sum + constraint_coefficients[126] * value;
 
         // Constraint: bitwise/partition.
         value = (bitwise_sum_var_0_0 + bitwise_sum_var_8_0 - mem_pool_value_column_row_expr122)
-            / domain15;
+            .field_div(&NonZeroFelt::try_from(domain15)?);
         total_sum = total_sum + constraint_coefficients[127] * value;
 
         // Constraint: bitwise/or_is_and_plus_xor.
         value = (mem_pool_value_column_row_expr123
             - (mem_pool_value_column_row_expr124 + mem_pool_value_column_row_expr125))
-            / domain17;
+            .field_div(&NonZeroFelt::try_from(domain17)?);
         total_sum = total_sum + constraint_coefficients[128] * value;
 
         // Constraint: bitwise/addition_is_xor_with_and.
@@ -13893,72 +13929,72 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr128
                 + diluted_pool_column_row_expr129
                 + diluted_pool_column_row_expr129))
-            / domain18;
+            .field_div(&NonZeroFelt::try_from(domain18)?);
         total_sum = total_sum + constraint_coefficients[129] * value;
 
         // Constraint: bitwise/unique_unpacking192.
-        value = ((diluted_pool_column_row_expr130 + diluted_pool_column_row_expr131) * 16
+        value = ((diluted_pool_column_row_expr130 + diluted_pool_column_row_expr131) * felt_16
             - diluted_pool_column_row_expr132)
-            / domain17;
+            .field_div(&NonZeroFelt::try_from(domain17)?);
         total_sum = total_sum + constraint_coefficients[130] * value;
 
         // Constraint: bitwise/unique_unpacking193.
-        value = ((diluted_pool_column_row_expr133 + diluted_pool_column_row_expr134) * 16
+        value = ((diluted_pool_column_row_expr133 + diluted_pool_column_row_expr134) * felt_16
             - diluted_pool_column_row_expr135)
-            / domain17;
+            .field_div(&NonZeroFelt::try_from(domain17)?);
         total_sum = total_sum + constraint_coefficients[131] * value;
 
         // Constraint: bitwise/unique_unpacking194.
-        value = ((diluted_pool_column_row_expr136 + diluted_pool_column_row_expr137) * 16
+        value = ((diluted_pool_column_row_expr136 + diluted_pool_column_row_expr137) * felt_16
             - diluted_pool_column_row_expr138)
-            / domain17;
+            .field_div(&NonZeroFelt::try_from(domain17)?);
         total_sum = total_sum + constraint_coefficients[132] * value;
 
         // Constraint: bitwise/unique_unpacking195.
-        value = ((diluted_pool_column_row_expr139 + diluted_pool_column_row_expr140) * 256
+        value = ((diluted_pool_column_row_expr139 + diluted_pool_column_row_expr140) * felt_256
             - diluted_pool_column_row_expr141)
-            / domain17;
+            .field_div(&NonZeroFelt::try_from(domain17)?);
         total_sum = total_sum + constraint_coefficients[133] * value;
     }
     if (uses_ec_op_builtin != 0) {
         // Constraint: ec_op/init_addr.
-        value = (mem_pool_addr_column_row_expr142 - global_values.initial_ec_op_addr) / domain25;
+        value = (mem_pool_addr_column_row_expr142 - global_values.initial_ec_op_addr)
+            .field_div(&NonZeroFelt::try_from(domain25)?);
         total_sum = total_sum + constraint_coefficients[134] * value;
 
         // Constraint: ec_op/p_x_addr.
-        value = (mem_pool_addr_column_row_expr143 - (mem_pool_addr_column_row_expr142 + 7))
-            * domain26
-            / domain22;
+        value = (mem_pool_addr_column_row_expr143 - (mem_pool_addr_column_row_expr142 + felt_7))
+            * domain26.field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[135] * value;
 
         // Constraint: ec_op/p_y_addr.
-        value =
-            (mem_pool_addr_column_row_expr144 - (mem_pool_addr_column_row_expr142 + 1)) / domain22;
+        value = (mem_pool_addr_column_row_expr144 - (mem_pool_addr_column_row_expr142 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[136] * value;
 
         // Constraint: ec_op/q_x_addr.
-        value =
-            (mem_pool_addr_column_row_expr145 - (mem_pool_addr_column_row_expr144 + 1)) / domain22;
+        value = (mem_pool_addr_column_row_expr145 - (mem_pool_addr_column_row_expr144 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[137] * value;
 
         // Constraint: ec_op/q_y_addr.
-        value =
-            (mem_pool_addr_column_row_expr146 - (mem_pool_addr_column_row_expr145 + 1)) / domain22;
+        value = (mem_pool_addr_column_row_expr146 - (mem_pool_addr_column_row_expr145 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[138] * value;
 
         // Constraint: ec_op/m_addr.
-        value =
-            (mem_pool_addr_column_row_expr147 - (mem_pool_addr_column_row_expr146 + 1)) / domain22;
+        value = (mem_pool_addr_column_row_expr147 - (mem_pool_addr_column_row_expr146 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[139] * value;
 
         // Constraint: ec_op/r_x_addr.
-        value =
-            (mem_pool_addr_column_row_expr148 - (mem_pool_addr_column_row_expr147 + 1)) / domain22;
+        value = (mem_pool_addr_column_row_expr148 - (mem_pool_addr_column_row_expr147 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[140] * value;
 
         // Constraint: ec_op/r_y_addr.
-        value =
-            (mem_pool_addr_column_row_expr149 - (mem_pool_addr_column_row_expr148 + 1)) / domain22;
+        value = (mem_pool_addr_column_row_expr149 - (mem_pool_addr_column_row_expr148 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[141] * value;
 
         // Constraint: ec_op/doubling_q/slope.
@@ -13969,8 +14005,7 @@ pub fn eval_composition_polynomial_inner(
             - (ec_op_doubled_points_y_column_row_expr150
                 + ec_op_doubled_points_y_column_row_expr150)
                 * ec_op_doubling_slope_column_row_expr151)
-            * domain23
-            / domain21;
+            * domain23.field_div(&NonZeroFelt::try_from(domain21)?);
         total_sum = total_sum + constraint_coefficients[142] * value;
 
         // Constraint: ec_op/doubling_q/x.
@@ -13978,8 +14013,7 @@ pub fn eval_composition_polynomial_inner(
             - (ec_op_doubled_points_x_column_row_expr152
                 + ec_op_doubled_points_x_column_row_expr152
                 + ec_op_doubled_points_x_column_row_expr153))
-            * domain23
-            / domain21;
+            * domain23.field_div(&NonZeroFelt::try_from(domain21)?);
         total_sum = total_sum + constraint_coefficients[143] * value;
 
         // Constraint: ec_op/doubling_q/y.
@@ -13988,18 +14022,17 @@ pub fn eval_composition_polynomial_inner(
             - ec_op_doubling_slope_column_row_expr151
                 * (ec_op_doubled_points_x_column_row_expr152
                     - ec_op_doubled_points_x_column_row_expr153))
-            * domain23
-            / domain21;
+            * domain23.field_div(&NonZeroFelt::try_from(domain21)?);
         total_sum = total_sum + constraint_coefficients[144] * value;
 
         // Constraint: ec_op/get_q_x.
         value = (mem_pool_value_column_row_expr155 - ec_op_doubled_points_x_column_row_expr152)
-            / domain22;
+            .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[145] * value;
 
         // Constraint: ec_op/get_q_y.
         value = (mem_pool_value_column_row_expr156 - ec_op_doubled_points_y_column_row_expr150)
-            / domain22;
+            .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[146] * value;
 
         // Constraint: ec_op/ec_subset_sum/bit_unpacking/last_one_is_zero.
@@ -14007,15 +14040,15 @@ pub fn eval_composition_polynomial_inner(
             * (ec_op_ec_subset_sum_selector_column_row_expr158
                 - (ec_op_ec_subset_sum_selector_column_row_expr159
                     + ec_op_ec_subset_sum_selector_column_row_expr159)))
-            / domain22;
+            .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[147] * value;
 
         // Constraint: ec_op/ec_subset_sum/bit_unpacking/zeroes_between_ones0.
         value = (ec_op_ec_subset_sum_bit_unpacking_prod_ones192_column_row_expr157
             * (ec_op_ec_subset_sum_selector_column_row_expr159
-                - 3138550867693340381917894711603833208051177722232017256448
+                - felt_3138550867693340381917894711603833208051177722232017256448
                     * ec_op_ec_subset_sum_selector_column_row_expr160))
-            / domain22;
+            .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[148] * value;
 
         // Constraint: ec_op/ec_subset_sum/bit_unpacking/cumulative_bit192.
@@ -14024,14 +14057,14 @@ pub fn eval_composition_polynomial_inner(
                 * (ec_op_ec_subset_sum_selector_column_row_expr160
                     - (ec_op_ec_subset_sum_selector_column_row_expr162
                         + ec_op_ec_subset_sum_selector_column_row_expr162)))
-            / domain22;
+            .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[149] * value;
 
         // Constraint: ec_op/ec_subset_sum/bit_unpacking/zeroes_between_ones192.
         value = (ec_op_ec_subset_sum_bit_unpacking_prod_ones196_column_row_expr161
             * (ec_op_ec_subset_sum_selector_column_row_expr162
-                - 8 * ec_op_ec_subset_sum_selector_column_row_expr163))
-            / domain22;
+                - felt_8 * ec_op_ec_subset_sum_selector_column_row_expr163))
+            .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[150] * value;
 
         // Constraint: ec_op/ec_subset_sum/bit_unpacking/cumulative_bit196.
@@ -14042,7 +14075,7 @@ pub fn eval_composition_polynomial_inner(
                 * (ec_op_ec_subset_sum_selector_column_row_expr163
                     - (ec_op_ec_subset_sum_selector_column_row_expr166
                         + ec_op_ec_subset_sum_selector_column_row_expr166)))
-            / domain22;
+            .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[151] * value;
 
         // Constraint: ec_op/ec_subset_sum/bit_unpacking/zeroes_between_ones196.
@@ -14050,20 +14083,23 @@ pub fn eval_composition_polynomial_inner(
             - (ec_op_ec_subset_sum_selector_column_row_expr165
                 + ec_op_ec_subset_sum_selector_column_row_expr165))
             * (ec_op_ec_subset_sum_selector_column_row_expr166
-                - 18014398509481984 * ec_op_ec_subset_sum_selector_column_row_expr164))
-            / domain22;
+                - felt_18014398509481984 * ec_op_ec_subset_sum_selector_column_row_expr164))
+            .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[152] * value;
 
         // Constraint: ec_op/ec_subset_sum/booleanity_test.
-        value = (ec_op_ec_subset_sum_bit_0 * (ec_op_ec_subset_sum_bit_0 - 1)) * domain23 / domain21;
+        value = (ec_op_ec_subset_sum_bit_0 * (ec_op_ec_subset_sum_bit_0 - 1))
+            * domain23.field_div(&NonZeroFelt::try_from(domain21)?);
         total_sum = total_sum + constraint_coefficients[153] * value;
 
         // Constraint: ec_op/ec_subset_sum/bit_extraction_end.
-        value = (ec_op_ec_subset_sum_selector_column_row_expr158) / domain24;
+        value = (ec_op_ec_subset_sum_selector_column_row_expr158)
+            .field_div(&NonZeroFelt::try_from(domain24)?);
         total_sum = total_sum + constraint_coefficients[154] * value;
 
         // Constraint: ec_op/ec_subset_sum/zeros_tail.
-        value = (ec_op_ec_subset_sum_selector_column_row_expr158) / domain23;
+        value = (ec_op_ec_subset_sum_selector_column_row_expr158)
+            .field_div(&NonZeroFelt::try_from(domain23)?);
         total_sum = total_sum + constraint_coefficients[155] * value;
 
         // Constraint: ec_op/ec_subset_sum/add_points/slope.
@@ -14073,8 +14109,7 @@ pub fn eval_composition_polynomial_inner(
             - ec_op_ec_subset_sum_slope_column_row_expr168
                 * (ec_op_ec_subset_sum_partial_sum_x_column_row_expr169
                     - ec_op_doubled_points_x_column_row_expr152))
-            * domain23
-            / domain21;
+            * domain23.field_div(&NonZeroFelt::try_from(domain21)?);
         total_sum = total_sum + constraint_coefficients[156] * value;
 
         // Constraint: ec_op/ec_subset_sum/add_points/x.
@@ -14084,8 +14119,7 @@ pub fn eval_composition_polynomial_inner(
                 * (ec_op_ec_subset_sum_partial_sum_x_column_row_expr169
                     + ec_op_doubled_points_x_column_row_expr152
                     + ec_op_ec_subset_sum_partial_sum_x_column_row_expr170))
-            * domain23
-            / domain21;
+            * domain23.field_div(&NonZeroFelt::try_from(domain21)?);
         total_sum = total_sum + constraint_coefficients[157] * value;
 
         // Constraint: ec_op/ec_subset_sum/add_points/y.
@@ -14095,8 +14129,7 @@ pub fn eval_composition_polynomial_inner(
             - ec_op_ec_subset_sum_slope_column_row_expr168
                 * (ec_op_ec_subset_sum_partial_sum_x_column_row_expr169
                     - ec_op_ec_subset_sum_partial_sum_x_column_row_expr170))
-            * domain23
-            / domain21;
+            * domain23.field_div(&NonZeroFelt::try_from(domain21)?);
         total_sum = total_sum + constraint_coefficients[158] * value;
 
         // Constraint: ec_op/ec_subset_sum/add_points/x_diff_inv.
@@ -14104,421 +14137,415 @@ pub fn eval_composition_polynomial_inner(
             * (ec_op_ec_subset_sum_partial_sum_x_column_row_expr169
                 - ec_op_doubled_points_x_column_row_expr152)
             - 1)
-            * domain23
-            / domain21;
+            * domain23.field_div(&NonZeroFelt::try_from(domain21)?);
         total_sum = total_sum + constraint_coefficients[159] * value;
 
         // Constraint: ec_op/ec_subset_sum/copy_point/x.
         value = (ec_op_ec_subset_sum_bit_neg_0
             * (ec_op_ec_subset_sum_partial_sum_x_column_row_expr170
                 - ec_op_ec_subset_sum_partial_sum_x_column_row_expr169))
-            * domain23
-            / domain21;
+            * domain23.field_div(&NonZeroFelt::try_from(domain21)?);
         total_sum = total_sum + constraint_coefficients[160] * value;
 
         // Constraint: ec_op/ec_subset_sum/copy_point/y.
         value = (ec_op_ec_subset_sum_bit_neg_0
             * (ec_op_ec_subset_sum_partial_sum_y_column_row_expr171
                 - ec_op_ec_subset_sum_partial_sum_y_column_row_expr167))
-            * domain23
-            / domain21;
+            * domain23.field_div(&NonZeroFelt::try_from(domain21)?);
         total_sum = total_sum + constraint_coefficients[161] * value;
 
         // Constraint: ec_op/get_m.
         value = (ec_op_ec_subset_sum_selector_column_row_expr158
             - mem_pool_value_column_row_expr173)
-            / domain22;
+            .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[162] * value;
 
         // Constraint: ec_op/get_p_x.
         value = (mem_pool_value_column_row_expr174
             - ec_op_ec_subset_sum_partial_sum_x_column_row_expr169)
-            / domain22;
+            .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[163] * value;
 
         // Constraint: ec_op/get_p_y.
         value = (mem_pool_value_column_row_expr175
             - ec_op_ec_subset_sum_partial_sum_y_column_row_expr167)
-            / domain22;
+            .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[164] * value;
 
         // Constraint: ec_op/set_r_x.
         value = (mem_pool_value_column_row_expr176
             - ec_op_ec_subset_sum_partial_sum_x_column_row_expr177)
-            / domain22;
+            .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[165] * value;
 
         // Constraint: ec_op/set_r_y.
         value = (mem_pool_value_column_row_expr178
             - ec_op_ec_subset_sum_partial_sum_y_column_row_expr179)
-            / domain22;
+            .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum = total_sum + constraint_coefficients[166] * value;
     }
     if (uses_keccak_builtin != 0) {
         // Constraint: keccak/init_input_output_addr.
-        value = (mem_pool_addr_column_row_expr180 - global_values.initial_keccak_addr) / domain153;
+        value = (mem_pool_addr_column_row_expr180 - global_values.initial_keccak_addr)
+            .field_div(&NonZeroFelt::try_from(domain153)?);
         total_sum = total_sum + constraint_coefficients[167] * value;
 
         // Constraint: keccak/addr_input_output_step.
-        value = (mem_pool_addr_column_row_expr181 - (mem_pool_addr_column_row_expr180 + 1))
-            * domain154
-            / domain40;
+        value = (mem_pool_addr_column_row_expr181 - (mem_pool_addr_column_row_expr180 + felt_1))
+            * domain154.field_div(&NonZeroFelt::try_from(domain40)?);
         total_sum = total_sum + constraint_coefficients[168] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_intermediate0_w0.
         value = (mem_pool_value_column_row_expr182
             - keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr183)
-            / domain45;
+            .field_div(&NonZeroFelt::try_from(domain45)?);
         total_sum = total_sum + constraint_coefficients[169] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_intermediate0_w1.
         value = (mem_pool_value_column_row_expr184
             - keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr185)
-            / domain45;
+            .field_div(&NonZeroFelt::try_from(domain45)?);
         total_sum = total_sum + constraint_coefficients[170] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_intermediate0_w2.
         value = (mem_pool_value_column_row_expr186
             - keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr187)
-            / domain45;
+            .field_div(&NonZeroFelt::try_from(domain45)?);
         total_sum = total_sum + constraint_coefficients[171] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_intermediate0_w3.
         value = (mem_pool_value_column_row_expr188
             - keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr189)
-            / domain45;
+            .field_div(&NonZeroFelt::try_from(domain45)?);
         total_sum = total_sum + constraint_coefficients[172] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_intermediate0_w4.
         value = (mem_pool_value_column_row_expr190
             - keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr191)
-            / domain45;
+            .field_div(&NonZeroFelt::try_from(domain45)?);
         total_sum = total_sum + constraint_coefficients[173] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_intermediate0_w5.
         value = (mem_pool_value_column_row_expr192
             - keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr193)
-            / domain45;
+            .field_div(&NonZeroFelt::try_from(domain45)?);
         total_sum = total_sum + constraint_coefficients[174] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_intermediate0_w6.
         value = (mem_pool_value_column_row_expr194
             - keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr195)
-            / domain45;
+            .field_div(&NonZeroFelt::try_from(domain45)?);
         total_sum = total_sum + constraint_coefficients[175] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_intermediate0_w7.
         value = (mem_pool_value_column_row_expr196
             - keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr197)
-            / domain45;
+            .field_div(&NonZeroFelt::try_from(domain45)?);
         total_sum = total_sum + constraint_coefficients[176] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_intermediate1_w0.
         value = (mem_pool_value_column_row_expr198
             - keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr199)
-            / domain45;
+            .field_div(&NonZeroFelt::try_from(domain45)?);
         total_sum = total_sum + constraint_coefficients[177] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_intermediate1_w1.
         value = (mem_pool_value_column_row_expr200
             - keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr201)
-            / domain45;
+            .field_div(&NonZeroFelt::try_from(domain45)?);
         total_sum = total_sum + constraint_coefficients[178] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_intermediate1_w2.
         value = (mem_pool_value_column_row_expr202
             - keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr203)
-            / domain45;
+            .field_div(&NonZeroFelt::try_from(domain45)?);
         total_sum = total_sum + constraint_coefficients[179] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_intermediate1_w3.
         value = (mem_pool_value_column_row_expr204
             - keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr205)
-            / domain45;
+            .field_div(&NonZeroFelt::try_from(domain45)?);
         total_sum = total_sum + constraint_coefficients[180] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_intermediate1_w4.
         value = (mem_pool_value_column_row_expr206
             - keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr207)
-            / domain45;
+            .field_div(&NonZeroFelt::try_from(domain45)?);
         total_sum = total_sum + constraint_coefficients[181] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_intermediate1_w5.
         value = (mem_pool_value_column_row_expr208
             - keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr209)
-            / domain45;
+            .field_div(&NonZeroFelt::try_from(domain45)?);
         total_sum = total_sum + constraint_coefficients[182] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_intermediate1_w6.
         value = (mem_pool_value_column_row_expr210
             - keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr211)
-            / domain45;
+            .field_div(&NonZeroFelt::try_from(domain45)?);
         total_sum = total_sum + constraint_coefficients[183] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_intermediate1_w7.
         value = (mem_pool_value_column_row_expr212
             - keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr213)
-            / domain45;
+            .field_div(&NonZeroFelt::try_from(domain45)?);
         total_sum = total_sum + constraint_coefficients[184] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_final0.
         value = (keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr183
             - keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr214)
-            / domain48;
+            .field_div(&NonZeroFelt::try_from(domain48)?);
         total_sum = total_sum + constraint_coefficients[185] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_final1.
         value = (keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr215
             - keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr216)
-            / domain48;
+            .field_div(&NonZeroFelt::try_from(domain48)?);
         total_sum = total_sum + constraint_coefficients[186] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_final2.
         value = (keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr217
             - keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr218)
-            / domain48;
+            .field_div(&NonZeroFelt::try_from(domain48)?);
         total_sum = total_sum + constraint_coefficients[187] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_final3.
         value = (keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr219
             - keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr220)
-            / domain48;
+            .field_div(&NonZeroFelt::try_from(domain48)?);
         total_sum = total_sum + constraint_coefficients[188] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_final4.
         value = (keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr221
             - keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr222)
-            / domain48;
+            .field_div(&NonZeroFelt::try_from(domain48)?);
         total_sum = total_sum + constraint_coefficients[189] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_final5.
         value = (keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr223
             - keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr224)
-            / domain48;
+            .field_div(&NonZeroFelt::try_from(domain48)?);
         total_sum = total_sum + constraint_coefficients[190] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_final6.
         value = (keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr225
             - keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr226)
-            / domain48;
+            .field_div(&NonZeroFelt::try_from(domain48)?);
         total_sum = total_sum + constraint_coefficients[191] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_final7.
         value = (keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr227
             - keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr228)
-            / domain48;
+            .field_div(&NonZeroFelt::try_from(domain48)?);
         total_sum = total_sum + constraint_coefficients[192] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_final8.
         value = (keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr229
             - keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr230)
-            / domain48;
+            .field_div(&NonZeroFelt::try_from(domain48)?);
         total_sum = total_sum + constraint_coefficients[193] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_final9.
         value = (keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr231
             - keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr232)
-            / domain48;
+            .field_div(&NonZeroFelt::try_from(domain48)?);
         total_sum = total_sum + constraint_coefficients[194] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_final10.
         value = (keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr233
             - keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr234)
-            / domain48;
+            .field_div(&NonZeroFelt::try_from(domain48)?);
         total_sum = total_sum + constraint_coefficients[195] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_final11.
         value = (keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr235
             - keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr236)
-            / domain48;
+            .field_div(&NonZeroFelt::try_from(domain48)?);
         total_sum = total_sum + constraint_coefficients[196] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_final12.
         value = (keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr237
             - keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr238)
-            / domain48;
+            .field_div(&NonZeroFelt::try_from(domain48)?);
         total_sum = total_sum + constraint_coefficients[197] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_final13.
         value = (keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr239
             - keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr240)
-            / domain48;
+            .field_div(&NonZeroFelt::try_from(domain48)?);
         total_sum = total_sum + constraint_coefficients[198] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_final14.
         value = (keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr241
             - keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr242)
-            / domain48;
+            .field_div(&NonZeroFelt::try_from(domain48)?);
         total_sum = total_sum + constraint_coefficients[199] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/reshape_final15.
         value = (keccak_keccak_parse_to_diluted_reshaped_intermediate_column_row_expr243
             - keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr244)
-            / domain48;
+            .field_div(&NonZeroFelt::try_from(domain48)?);
         total_sum = total_sum + constraint_coefficients[200] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/start_accumulation.
-        value = (keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr245) / domain52;
+        value = (keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr245)
+            .field_div(&NonZeroFelt::try_from(domain52)?);
         total_sum = total_sum + constraint_coefficients[201] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/init_first_invocation0.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr214
             - keccak_keccak_parse_to_diluted_sum_words_over_instances0_0)
-            / domain47;
+            .field_div(&NonZeroFelt::try_from(domain47)?);
         total_sum = total_sum + constraint_coefficients[202] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/init_other_invocations0.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr216
-            + keccak_keccak_parse_to_diluted_sum_words_over_instances0_0 * 16
+            + keccak_keccak_parse_to_diluted_sum_words_over_instances0_0 * felt_16
             - keccak_keccak_parse_to_diluted_sum_words_over_instances0_2)
-            / domain51;
+            .field_div(&NonZeroFelt::try_from(domain51)?);
         total_sum = total_sum + constraint_coefficients[203] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/init_first_invocation1.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr246
             - keccak_keccak_parse_to_diluted_sum_words_over_instances1_0)
-            / domain47;
+            .field_div(&NonZeroFelt::try_from(domain47)?);
         total_sum = total_sum + constraint_coefficients[204] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/init_other_invocations1.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr247
-            + keccak_keccak_parse_to_diluted_sum_words_over_instances1_0 * 16
+            + keccak_keccak_parse_to_diluted_sum_words_over_instances1_0 * felt_16
             - keccak_keccak_parse_to_diluted_sum_words_over_instances1_2)
-            / domain51;
+            .field_div(&NonZeroFelt::try_from(domain51)?);
         total_sum = total_sum + constraint_coefficients[205] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/init_first_invocation2.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr248
             - keccak_keccak_parse_to_diluted_sum_words_over_instances2_0)
-            / domain47;
+            .field_div(&NonZeroFelt::try_from(domain47)?);
         total_sum = total_sum + constraint_coefficients[206] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/init_other_invocations2.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr249
-            + keccak_keccak_parse_to_diluted_sum_words_over_instances2_0 * 16
+            + keccak_keccak_parse_to_diluted_sum_words_over_instances2_0 * felt_16
             - keccak_keccak_parse_to_diluted_sum_words_over_instances2_2)
-            / domain51;
+            .field_div(&NonZeroFelt::try_from(domain51)?);
         total_sum = total_sum + constraint_coefficients[207] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/init_first_invocation3.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr250
             - keccak_keccak_parse_to_diluted_sum_words_over_instances3_0)
-            / domain47;
+            .field_div(&NonZeroFelt::try_from(domain47)?);
         total_sum = total_sum + constraint_coefficients[208] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/init_other_invocations3.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr251
-            + keccak_keccak_parse_to_diluted_sum_words_over_instances3_0 * 16
+            + keccak_keccak_parse_to_diluted_sum_words_over_instances3_0 * felt_16
             - keccak_keccak_parse_to_diluted_sum_words_over_instances3_2)
-            / domain51;
+            .field_div(&NonZeroFelt::try_from(domain51)?);
         total_sum = total_sum + constraint_coefficients[209] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/init_first_invocation4.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr252
             - keccak_keccak_parse_to_diluted_sum_words_over_instances4_0)
-            / domain47;
+            .field_div(&NonZeroFelt::try_from(domain47)?);
         total_sum = total_sum + constraint_coefficients[210] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/init_other_invocations4.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr253
-            + keccak_keccak_parse_to_diluted_sum_words_over_instances4_0 * 16
+            + keccak_keccak_parse_to_diluted_sum_words_over_instances4_0 * felt_16
             - keccak_keccak_parse_to_diluted_sum_words_over_instances4_2)
-            / domain51;
+            .field_div(&NonZeroFelt::try_from(domain51)?);
         total_sum = total_sum + constraint_coefficients[211] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/init_first_invocation5.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr254
             - keccak_keccak_parse_to_diluted_sum_words_over_instances5_0)
-            / domain47;
+            .field_div(&NonZeroFelt::try_from(domain47)?);
         total_sum = total_sum + constraint_coefficients[212] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/init_other_invocations5.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr255
-            + keccak_keccak_parse_to_diluted_sum_words_over_instances5_0 * 16
+            + keccak_keccak_parse_to_diluted_sum_words_over_instances5_0 * felt_16
             - keccak_keccak_parse_to_diluted_sum_words_over_instances5_2)
-            / domain51;
+            .field_div(&NonZeroFelt::try_from(domain51)?);
         total_sum = total_sum + constraint_coefficients[213] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/init_first_invocation6.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr256
             - keccak_keccak_parse_to_diluted_sum_words_over_instances6_0)
-            / domain47;
+            .field_div(&NonZeroFelt::try_from(domain47)?);
         total_sum = total_sum + constraint_coefficients[214] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/init_other_invocations6.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr257
-            + keccak_keccak_parse_to_diluted_sum_words_over_instances6_0 * 16
+            + keccak_keccak_parse_to_diluted_sum_words_over_instances6_0 * felt_16
             - keccak_keccak_parse_to_diluted_sum_words_over_instances6_2)
-            / domain51;
+            .field_div(&NonZeroFelt::try_from(domain51)?);
         total_sum = total_sum + constraint_coefficients[215] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/init_first_invocation7.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr258
             - keccak_keccak_parse_to_diluted_sum_words_over_instances7_0)
-            / domain47;
+            .field_div(&NonZeroFelt::try_from(domain47)?);
         total_sum = total_sum + constraint_coefficients[216] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/init_other_invocations7.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr259
-            + keccak_keccak_parse_to_diluted_sum_words_over_instances7_0 * 16
+            + keccak_keccak_parse_to_diluted_sum_words_over_instances7_0 * felt_16
             - keccak_keccak_parse_to_diluted_sum_words_over_instances7_2)
-            / domain51;
+            .field_div(&NonZeroFelt::try_from(domain51)?);
         total_sum = total_sum + constraint_coefficients[217] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/extract_bit_first_invocation1.
         value = (keccak_keccak_parse_to_diluted_partial_diluted1_0
             * keccak_keccak_parse_to_diluted_partial_diluted1_0
             - keccak_keccak_parse_to_diluted_partial_diluted1_0)
-            / domain55;
+            .field_div(&NonZeroFelt::try_from(domain55)?);
         total_sum = total_sum + constraint_coefficients[218] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/extract_bit_other_invocations1.
         value = (keccak_keccak_parse_to_diluted_bit_other1_0
             * keccak_keccak_parse_to_diluted_bit_other1_0
             - keccak_keccak_parse_to_diluted_bit_other1_0)
-            / domain56;
+            .field_div(&NonZeroFelt::try_from(domain56)?);
         total_sum = total_sum + constraint_coefficients[219] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/to_diluted0_p1.
         value = (keccak_keccak_parse_to_diluted_partial_diluted1_30
             - diluted_pool_column_row_expr260)
-            / domain57;
+            .field_div(&NonZeroFelt::try_from(domain57)?);
         total_sum = total_sum + constraint_coefficients[220] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/to_diluted1_p1.
         value = (keccak_keccak_parse_to_diluted_partial_diluted1_31
             - diluted_pool_column_row_expr261)
-            / domain57;
+            .field_div(&NonZeroFelt::try_from(domain57)?);
         total_sum = total_sum + constraint_coefficients[221] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/extract_bit_first_invocation0.
         value = (keccak_keccak_parse_to_diluted_partial_diluted0_0
             * keccak_keccak_parse_to_diluted_partial_diluted0_0
             - keccak_keccak_parse_to_diluted_partial_diluted0_0)
-            * domain61
-            / domain39;
+            * domain61.field_div(&NonZeroFelt::try_from(domain39)?);
         total_sum = total_sum + constraint_coefficients[222] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/extract_bit_other_invocations0.
         value = (keccak_keccak_parse_to_diluted_bit_other0_0
             * keccak_keccak_parse_to_diluted_bit_other0_0
             - keccak_keccak_parse_to_diluted_bit_other0_0)
-            * domain64
-            / domain37;
+            * domain64.field_div(&NonZeroFelt::try_from(domain37)?);
         total_sum = total_sum + constraint_coefficients[223] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/to_diluted0_p0.
         value = (keccak_keccak_parse_to_diluted_partial_diluted0_30
             - diluted_pool_column_row_expr262)
-            * domain65
-            / domain38;
+            * domain65.field_div(&NonZeroFelt::try_from(domain38)?);
         total_sum = total_sum + constraint_coefficients[224] * value;
 
         // Constraint: keccak/keccak/parse_to_diluted/to_diluted1_p0.
         value = (keccak_keccak_parse_to_diluted_partial_diluted0_31
             - diluted_pool_column_row_expr263)
-            * domain65
-            / domain38;
+            * domain65.field_div(&NonZeroFelt::try_from(domain38)?);
         total_sum = total_sum + constraint_coefficients[225] * value;
 
         // Constraint: keccak/keccak/parity0.
@@ -14530,8 +14557,8 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr268
                 + diluted_pool_column_row_expr269
                 + diluted_pool_column_row_expr269
-                + diluted_pool_column_row_expr270 * 4))
-            / domain42;
+                + diluted_pool_column_row_expr270 * felt_4))
+            .field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[226] * value;
 
         // Constraint: keccak/keccak/parity1.
@@ -14543,8 +14570,8 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr276
                 + diluted_pool_column_row_expr277
                 + diluted_pool_column_row_expr277
-                + diluted_pool_column_row_expr278 * 4))
-            / domain42;
+                + diluted_pool_column_row_expr278 * felt_4))
+            .field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[227] * value;
 
         // Constraint: keccak/keccak/parity2.
@@ -14556,8 +14583,8 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr284
                 + diluted_pool_column_row_expr285
                 + diluted_pool_column_row_expr285
-                + diluted_pool_column_row_expr286 * 4))
-            / domain42;
+                + diluted_pool_column_row_expr286 * felt_4))
+            .field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[228] * value;
 
         // Constraint: keccak/keccak/parity3.
@@ -14569,8 +14596,8 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr292
                 + diluted_pool_column_row_expr293
                 + diluted_pool_column_row_expr293
-                + diluted_pool_column_row_expr294 * 4))
-            / domain42;
+                + diluted_pool_column_row_expr294 * felt_4))
+            .field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[229] * value;
 
         // Constraint: keccak/keccak/parity4.
@@ -14582,73 +14609,68 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr300
                 + diluted_pool_column_row_expr301
                 + diluted_pool_column_row_expr301
-                + diluted_pool_column_row_expr302 * 4))
-            / domain42;
+                + diluted_pool_column_row_expr302 * felt_4))
+            .field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[230] * value;
 
         // Constraint: keccak/keccak/rotate_parity0/n0.
         value = (keccak_keccak_rotated_parity0_column_row_expr303
             - diluted_pool_column_row_expr304)
-            / domain50;
+            .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum = total_sum + constraint_coefficients[231] * value;
 
         // Constraint: keccak/keccak/rotate_parity0/n1.
         value = (keccak_keccak_rotated_parity0_column_row_expr305
             - diluted_pool_column_row_expr268)
-            * domain67
-            / domain42;
+            * domain67.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[232] * value;
 
         // Constraint: keccak/keccak/rotate_parity1/n0.
         value = (keccak_keccak_rotated_parity1_column_row_expr306
             - diluted_pool_column_row_expr307)
-            / domain50;
+            .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum = total_sum + constraint_coefficients[233] * value;
 
         // Constraint: keccak/keccak/rotate_parity1/n1.
         value = (keccak_keccak_rotated_parity1_column_row_expr308
             - diluted_pool_column_row_expr276)
-            * domain67
-            / domain42;
+            * domain67.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[234] * value;
 
         // Constraint: keccak/keccak/rotate_parity2/n0.
         value = (keccak_keccak_rotated_parity2_column_row_expr309
             - diluted_pool_column_row_expr310)
-            / domain50;
+            .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum = total_sum + constraint_coefficients[235] * value;
 
         // Constraint: keccak/keccak/rotate_parity2/n1.
         value = (keccak_keccak_rotated_parity2_column_row_expr311
             - diluted_pool_column_row_expr284)
-            * domain67
-            / domain42;
+            * domain67.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[236] * value;
 
         // Constraint: keccak/keccak/rotate_parity3/n0.
         value = (keccak_keccak_rotated_parity3_column_row_expr312
             - diluted_pool_column_row_expr313)
-            / domain50;
+            .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum = total_sum + constraint_coefficients[237] * value;
 
         // Constraint: keccak/keccak/rotate_parity3/n1.
         value = (keccak_keccak_rotated_parity3_column_row_expr314
             - diluted_pool_column_row_expr292)
-            * domain67
-            / domain42;
+            * domain67.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[238] * value;
 
         // Constraint: keccak/keccak/rotate_parity4/n0.
         value = (keccak_keccak_rotated_parity4_column_row_expr315
             - diluted_pool_column_row_expr316)
-            / domain50;
+            .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum = total_sum + constraint_coefficients[239] * value;
 
         // Constraint: keccak/keccak/rotate_parity4/n1.
         value = (keccak_keccak_rotated_parity4_column_row_expr317
             - diluted_pool_column_row_expr300)
-            * domain67
-            / domain42;
+            * domain67.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[240] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i0_j0.
@@ -14656,7 +14678,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr318
                 + diluted_pool_column_row_expr319
                 + diluted_pool_column_row_expr319))
-            / domain42;
+            .field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[241] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i0_j1/n0.
@@ -14664,8 +14686,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr320
                 + diluted_pool_column_row_expr321
                 + diluted_pool_column_row_expr321))
-            * domain67
-            / domain42;
+            * domain67.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[242] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i0_j1/n1.
@@ -14673,7 +14694,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr323
                 + diluted_pool_column_row_expr324
                 + diluted_pool_column_row_expr324))
-            / domain50;
+            .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum = total_sum + constraint_coefficients[243] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i0_j2/n0.
@@ -14681,7 +14702,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr325
                 + diluted_pool_column_row_expr326
                 + diluted_pool_column_row_expr326))
-            / domain70;
+            .field_div(&NonZeroFelt::try_from(domain70)?);
         total_sum = total_sum + constraint_coefficients[244] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i0_j2/n1.
@@ -14689,8 +14710,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr328
                 + diluted_pool_column_row_expr329
                 + diluted_pool_column_row_expr329))
-            * domain72
-            / domain42;
+            * domain72.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[245] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i0_j3/n0.
@@ -14698,8 +14718,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr330
                 + diluted_pool_column_row_expr331
                 + diluted_pool_column_row_expr331))
-            * domain98
-            / domain42;
+            * domain98.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[246] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i0_j3/n1.
@@ -14707,7 +14726,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr333
                 + diluted_pool_column_row_expr334
                 + diluted_pool_column_row_expr334))
-            / domain127;
+            .field_div(&NonZeroFelt::try_from(domain127)?);
         total_sum = total_sum + constraint_coefficients[247] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i0_j4/n0.
@@ -14715,8 +14734,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr335
                 + diluted_pool_column_row_expr336
                 + diluted_pool_column_row_expr336))
-            * domain97
-            / domain42;
+            * domain97.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[248] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i0_j4/n1.
@@ -14724,7 +14742,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr338
                 + diluted_pool_column_row_expr339
                 + diluted_pool_column_row_expr339))
-            / domain126;
+            .field_div(&NonZeroFelt::try_from(domain126)?);
         total_sum = total_sum + constraint_coefficients[249] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i1_j0/n0.
@@ -14732,7 +14750,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr340
                 + diluted_pool_column_row_expr341
                 + diluted_pool_column_row_expr341))
-            / domain127;
+            .field_div(&NonZeroFelt::try_from(domain127)?);
         total_sum = total_sum + constraint_coefficients[250] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i1_j0/n1.
@@ -14740,8 +14758,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr343
                 + diluted_pool_column_row_expr344
                 + diluted_pool_column_row_expr344))
-            * domain98
-            / domain42;
+            * domain98.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[251] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i1_j1/n0.
@@ -14749,7 +14766,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr345
                 + diluted_pool_column_row_expr346
                 + diluted_pool_column_row_expr346))
-            / domain120;
+            .field_div(&NonZeroFelt::try_from(domain120)?);
         total_sum = total_sum + constraint_coefficients[252] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i1_j1/n1.
@@ -14757,8 +14774,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr348
                 + diluted_pool_column_row_expr349
                 + diluted_pool_column_row_expr349))
-            * domain91
-            / domain42;
+            * domain91.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[253] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i1_j2/n0.
@@ -14766,8 +14782,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr350
                 + diluted_pool_column_row_expr351
                 + diluted_pool_column_row_expr351))
-            * domain76
-            / domain42;
+            * domain76.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[254] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i1_j2/n1.
@@ -14775,7 +14790,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr353
                 + diluted_pool_column_row_expr354
                 + diluted_pool_column_row_expr354))
-            / domain103;
+            .field_div(&NonZeroFelt::try_from(domain103)?);
         total_sum = total_sum + constraint_coefficients[255] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i1_j3/n0.
@@ -14783,7 +14798,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr355
                 + diluted_pool_column_row_expr356
                 + diluted_pool_column_row_expr356))
-            / domain130;
+            .field_div(&NonZeroFelt::try_from(domain130)?);
         total_sum = total_sum + constraint_coefficients[256] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i1_j3/n1.
@@ -14791,7 +14806,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr358
                 + diluted_pool_column_row_expr359
                 + diluted_pool_column_row_expr359))
-            / domain130;
+            .field_div(&NonZeroFelt::try_from(domain130)?);
         total_sum = total_sum + constraint_coefficients[257] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i1_j3/n2.
@@ -14799,7 +14814,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr361
                 + diluted_pool_column_row_expr362
                 + diluted_pool_column_row_expr362))
-            / domain130;
+            .field_div(&NonZeroFelt::try_from(domain130)?);
         total_sum = total_sum + constraint_coefficients[258] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i1_j3/n3.
@@ -14807,8 +14822,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr364
                 + diluted_pool_column_row_expr365
                 + diluted_pool_column_row_expr365))
-            * domain133
-            / domain41;
+            * domain133.field_div(&NonZeroFelt::try_from(domain41)?);
         total_sum = total_sum + constraint_coefficients[259] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i1_j3/n4.
@@ -14816,8 +14830,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr367
                 + diluted_pool_column_row_expr368
                 + diluted_pool_column_row_expr368))
-            * domain133
-            / domain41;
+            * domain133.field_div(&NonZeroFelt::try_from(domain41)?);
         total_sum = total_sum + constraint_coefficients[260] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i1_j3/n5.
@@ -14825,8 +14838,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr370
                 + diluted_pool_column_row_expr371
                 + diluted_pool_column_row_expr371))
-            * domain133
-            / domain41;
+            * domain133.field_div(&NonZeroFelt::try_from(domain41)?);
         total_sum = total_sum + constraint_coefficients[261] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i1_j4/n0.
@@ -14834,8 +14846,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr372
                 + diluted_pool_column_row_expr373
                 + diluted_pool_column_row_expr373))
-            * domain91
-            / domain42;
+            * domain91.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[262] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i1_j4/n1.
@@ -14843,7 +14854,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr375
                 + diluted_pool_column_row_expr376
                 + diluted_pool_column_row_expr376))
-            / domain120;
+            .field_div(&NonZeroFelt::try_from(domain120)?);
         total_sum = total_sum + constraint_coefficients[263] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i2_j0/n0.
@@ -14851,8 +14862,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr377
                 + diluted_pool_column_row_expr378
                 + diluted_pool_column_row_expr378))
-            * domain134
-            / domain42;
+            * domain134.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[264] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i2_j0/n1.
@@ -14860,7 +14870,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr380
                 + diluted_pool_column_row_expr381
                 + diluted_pool_column_row_expr381))
-            / domain135;
+            .field_div(&NonZeroFelt::try_from(domain135)?);
         total_sum = total_sum + constraint_coefficients[265] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i2_j1/n0.
@@ -14868,8 +14878,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr382
                 + diluted_pool_column_row_expr383
                 + diluted_pool_column_row_expr383))
-            * domain81
-            / domain42;
+            * domain81.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[266] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i2_j1/n1.
@@ -14877,7 +14886,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr385
                 + diluted_pool_column_row_expr386
                 + diluted_pool_column_row_expr386))
-            / domain109;
+            .field_div(&NonZeroFelt::try_from(domain109)?);
         total_sum = total_sum + constraint_coefficients[267] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i2_j2/n0.
@@ -14885,7 +14894,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr387
                 + diluted_pool_column_row_expr388
                 + diluted_pool_column_row_expr388))
-            / domain122;
+            .field_div(&NonZeroFelt::try_from(domain122)?);
         total_sum = total_sum + constraint_coefficients[268] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i2_j2/n1.
@@ -14893,8 +14902,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr390
                 + diluted_pool_column_row_expr391
                 + diluted_pool_column_row_expr391))
-            * domain93
-            / domain42;
+            * domain93.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[269] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i2_j3/n0.
@@ -14902,8 +14910,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr392
                 + diluted_pool_column_row_expr393
                 + diluted_pool_column_row_expr393))
-            * domain96
-            / domain42;
+            * domain96.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[270] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i2_j3/n1.
@@ -14911,7 +14918,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr395
                 + diluted_pool_column_row_expr396
                 + diluted_pool_column_row_expr396))
-            / domain125;
+            .field_div(&NonZeroFelt::try_from(domain125)?);
         total_sum = total_sum + constraint_coefficients[271] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i2_j4/n0.
@@ -14919,7 +14926,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr397
                 + diluted_pool_column_row_expr398
                 + diluted_pool_column_row_expr398))
-            / domain137;
+            .field_div(&NonZeroFelt::try_from(domain137)?);
         total_sum = total_sum + constraint_coefficients[272] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i2_j4/n1.
@@ -14927,7 +14934,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr400
                 + diluted_pool_column_row_expr401
                 + diluted_pool_column_row_expr401))
-            / domain137;
+            .field_div(&NonZeroFelt::try_from(domain137)?);
         total_sum = total_sum + constraint_coefficients[273] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i2_j4/n2.
@@ -14935,7 +14942,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr403
                 + diluted_pool_column_row_expr404
                 + diluted_pool_column_row_expr404))
-            / domain137;
+            .field_div(&NonZeroFelt::try_from(domain137)?);
         total_sum = total_sum + constraint_coefficients[274] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i2_j4/n3.
@@ -14943,8 +14950,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr406
                 + diluted_pool_column_row_expr407
                 + diluted_pool_column_row_expr407))
-            * domain139
-            / domain41;
+            * domain139.field_div(&NonZeroFelt::try_from(domain41)?);
         total_sum = total_sum + constraint_coefficients[275] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i2_j4/n4.
@@ -14952,8 +14958,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr409
                 + diluted_pool_column_row_expr410
                 + diluted_pool_column_row_expr410))
-            * domain139
-            / domain41;
+            * domain139.field_div(&NonZeroFelt::try_from(domain41)?);
         total_sum = total_sum + constraint_coefficients[276] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i2_j4/n5.
@@ -14961,8 +14966,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr412
                 + diluted_pool_column_row_expr413
                 + diluted_pool_column_row_expr413))
-            * domain139
-            / domain41;
+            * domain139.field_div(&NonZeroFelt::try_from(domain41)?);
         total_sum = total_sum + constraint_coefficients[277] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i3_j0/n0.
@@ -14970,7 +14974,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr414
                 + diluted_pool_column_row_expr415
                 + diluted_pool_column_row_expr415))
-            / domain140;
+            .field_div(&NonZeroFelt::try_from(domain140)?);
         total_sum = total_sum + constraint_coefficients[278] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i3_j0/n1.
@@ -14978,7 +14982,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr417
                 + diluted_pool_column_row_expr418
                 + diluted_pool_column_row_expr418))
-            / domain140;
+            .field_div(&NonZeroFelt::try_from(domain140)?);
         total_sum = total_sum + constraint_coefficients[279] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i3_j0/n2.
@@ -14986,7 +14990,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr420
                 + diluted_pool_column_row_expr421
                 + diluted_pool_column_row_expr421))
-            / domain140;
+            .field_div(&NonZeroFelt::try_from(domain140)?);
         total_sum = total_sum + constraint_coefficients[280] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i3_j0/n3.
@@ -14994,8 +14998,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr423
                 + diluted_pool_column_row_expr424
                 + diluted_pool_column_row_expr424))
-            * domain141
-            / domain41;
+            * domain141.field_div(&NonZeroFelt::try_from(domain41)?);
         total_sum = total_sum + constraint_coefficients[281] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i3_j0/n4.
@@ -15003,8 +15006,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr426
                 + diluted_pool_column_row_expr427
                 + diluted_pool_column_row_expr427))
-            * domain141
-            / domain41;
+            * domain141.field_div(&NonZeroFelt::try_from(domain41)?);
         total_sum = total_sum + constraint_coefficients[282] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i3_j0/n5.
@@ -15012,8 +15014,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr429
                 + diluted_pool_column_row_expr430
                 + diluted_pool_column_row_expr430))
-            * domain141
-            / domain41;
+            * domain141.field_div(&NonZeroFelt::try_from(domain41)?);
         total_sum = total_sum + constraint_coefficients[283] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i3_j1/n0.
@@ -15021,7 +15022,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr431
                 + diluted_pool_column_row_expr432
                 + diluted_pool_column_row_expr432))
-            / domain142;
+            .field_div(&NonZeroFelt::try_from(domain142)?);
         total_sum = total_sum + constraint_coefficients[284] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i3_j1/n1.
@@ -15029,8 +15030,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr434
                 + diluted_pool_column_row_expr435
                 + diluted_pool_column_row_expr435))
-            * domain143
-            / domain42;
+            * domain143.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[285] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i3_j2/n0.
@@ -15038,8 +15038,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr436
                 + diluted_pool_column_row_expr437
                 + diluted_pool_column_row_expr437))
-            * domain144
-            / domain42;
+            * domain144.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[286] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i3_j2/n1.
@@ -15047,7 +15046,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr439
                 + diluted_pool_column_row_expr440
                 + diluted_pool_column_row_expr440))
-            / domain145;
+            .field_div(&NonZeroFelt::try_from(domain145)?);
         total_sum = total_sum + constraint_coefficients[287] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i3_j3/n0.
@@ -15055,8 +15054,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr441
                 + diluted_pool_column_row_expr442
                 + diluted_pool_column_row_expr442))
-            * domain93
-            / domain42;
+            * domain93.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[288] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i3_j3/n1.
@@ -15064,7 +15062,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr444
                 + diluted_pool_column_row_expr445
                 + diluted_pool_column_row_expr445))
-            / domain122;
+            .field_div(&NonZeroFelt::try_from(domain122)?);
         total_sum = total_sum + constraint_coefficients[289] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i3_j4/n0.
@@ -15072,8 +15070,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr446
                 + diluted_pool_column_row_expr447
                 + diluted_pool_column_row_expr447))
-            * domain146
-            / domain42;
+            * domain146.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[290] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i3_j4/n1.
@@ -15081,7 +15078,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr449
                 + diluted_pool_column_row_expr450
                 + diluted_pool_column_row_expr450))
-            / domain147;
+            .field_div(&NonZeroFelt::try_from(domain147)?);
         total_sum = total_sum + constraint_coefficients[291] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i4_j0/n0.
@@ -15089,8 +15086,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr451
                 + diluted_pool_column_row_expr452
                 + diluted_pool_column_row_expr452))
-            * domain148
-            / domain42;
+            * domain148.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[292] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i4_j0/n1.
@@ -15098,7 +15094,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr454
                 + diluted_pool_column_row_expr455
                 + diluted_pool_column_row_expr455))
-            / domain149;
+            .field_div(&NonZeroFelt::try_from(domain149)?);
         total_sum = total_sum + constraint_coefficients[293] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i4_j1/n0.
@@ -15106,8 +15102,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr456
                 + diluted_pool_column_row_expr457
                 + diluted_pool_column_row_expr457))
-            * domain131
-            / domain41;
+            * domain131.field_div(&NonZeroFelt::try_from(domain41)?);
         total_sum = total_sum + constraint_coefficients[294] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i4_j1/n1.
@@ -15115,8 +15110,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr459
                 + diluted_pool_column_row_expr460
                 + diluted_pool_column_row_expr460))
-            * domain131
-            / domain41;
+            * domain131.field_div(&NonZeroFelt::try_from(domain41)?);
         total_sum = total_sum + constraint_coefficients[295] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i4_j1/n2.
@@ -15124,8 +15118,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr462
                 + diluted_pool_column_row_expr463
                 + diluted_pool_column_row_expr463))
-            * domain131
-            / domain41;
+            * domain131.field_div(&NonZeroFelt::try_from(domain41)?);
         total_sum = total_sum + constraint_coefficients[296] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i4_j1/n3.
@@ -15133,7 +15126,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr465
                 + diluted_pool_column_row_expr466
                 + diluted_pool_column_row_expr466))
-            / domain128;
+            .field_div(&NonZeroFelt::try_from(domain128)?);
         total_sum = total_sum + constraint_coefficients[297] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i4_j1/n4.
@@ -15141,7 +15134,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr468
                 + diluted_pool_column_row_expr469
                 + diluted_pool_column_row_expr469))
-            / domain128;
+            .field_div(&NonZeroFelt::try_from(domain128)?);
         total_sum = total_sum + constraint_coefficients[298] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i4_j1/n5.
@@ -15149,7 +15142,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr471
                 + diluted_pool_column_row_expr472
                 + diluted_pool_column_row_expr472))
-            / domain128;
+            .field_div(&NonZeroFelt::try_from(domain128)?);
         total_sum = total_sum + constraint_coefficients[299] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i4_j2/n0.
@@ -15157,7 +15150,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr473
                 + diluted_pool_column_row_expr474
                 + diluted_pool_column_row_expr474))
-            / domain135;
+            .field_div(&NonZeroFelt::try_from(domain135)?);
         total_sum = total_sum + constraint_coefficients[300] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i4_j2/n1.
@@ -15165,8 +15158,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr476
                 + diluted_pool_column_row_expr477
                 + diluted_pool_column_row_expr477))
-            * domain134
-            / domain42;
+            * domain134.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[301] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i4_j3/n0.
@@ -15174,7 +15166,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr478
                 + diluted_pool_column_row_expr479
                 + diluted_pool_column_row_expr479))
-            / domain147;
+            .field_div(&NonZeroFelt::try_from(domain147)?);
         total_sum = total_sum + constraint_coefficients[302] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i4_j3/n1.
@@ -15182,8 +15174,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr481
                 + diluted_pool_column_row_expr482
                 + diluted_pool_column_row_expr482))
-            * domain146
-            / domain42;
+            * domain146.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[303] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i4_j4/n0.
@@ -15191,8 +15182,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr483
                 + diluted_pool_column_row_expr484
                 + diluted_pool_column_row_expr484))
-            * domain150
-            / domain42;
+            * domain150.field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum = total_sum + constraint_coefficients[304] * value;
 
         // Constraint: keccak/keccak/theta_rho_pi_i4_j4/n1.
@@ -15200,7 +15190,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr486
                 + diluted_pool_column_row_expr487
                 + diluted_pool_column_row_expr487))
-            / domain151;
+            .field_div(&NonZeroFelt::try_from(domain151)?);
         total_sum = total_sum + constraint_coefficients[305] * value;
 
         // Constraint: keccak/keccak/chi_iota0.
@@ -15212,8 +15202,8 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr488
                 + diluted_pool_column_row_expr489
                 + diluted_pool_column_row_expr489
-                + diluted_pool_column_row_expr490 * 4))
-            / domain50;
+                + diluted_pool_column_row_expr490 * felt_4))
+            .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum = total_sum + constraint_coefficients[306] * value;
 
         // Constraint: keccak/keccak/chi_iota1.
@@ -15225,8 +15215,8 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr493
                 + diluted_pool_column_row_expr494
                 + diluted_pool_column_row_expr494
-                + diluted_pool_column_row_expr495 * 4))
-            / domain50;
+                + diluted_pool_column_row_expr495 * felt_4))
+            .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum = total_sum + constraint_coefficients[307] * value;
 
         // Constraint: keccak/keccak/chi_iota3.
@@ -15238,8 +15228,8 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr498
                 + diluted_pool_column_row_expr499
                 + diluted_pool_column_row_expr499
-                + diluted_pool_column_row_expr500 * 4))
-            / domain50;
+                + diluted_pool_column_row_expr500 * felt_4))
+            .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum = total_sum + constraint_coefficients[308] * value;
 
         // Constraint: keccak/keccak/chi_iota7.
@@ -15251,8 +15241,8 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr503
                 + diluted_pool_column_row_expr504
                 + diluted_pool_column_row_expr504
-                + diluted_pool_column_row_expr505 * 4))
-            / domain50;
+                + diluted_pool_column_row_expr505 * felt_4))
+            .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum = total_sum + constraint_coefficients[309] * value;
 
         // Constraint: keccak/keccak/chi_iota15.
@@ -15264,8 +15254,8 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr508
                 + diluted_pool_column_row_expr509
                 + diluted_pool_column_row_expr509
-                + diluted_pool_column_row_expr510 * 4))
-            / domain50;
+                + diluted_pool_column_row_expr510 * felt_4))
+            .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum = total_sum + constraint_coefficients[310] * value;
 
         // Constraint: keccak/keccak/chi_iota31.
@@ -15277,8 +15267,8 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr513
                 + diluted_pool_column_row_expr514
                 + diluted_pool_column_row_expr514
-                + diluted_pool_column_row_expr515 * 4))
-            / domain50;
+                + diluted_pool_column_row_expr515 * felt_4))
+            .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum = total_sum + constraint_coefficients[311] * value;
 
         // Constraint: keccak/keccak/chi_iota63.
@@ -15290,8 +15280,8 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr518
                 + diluted_pool_column_row_expr519
                 + diluted_pool_column_row_expr519
-                + diluted_pool_column_row_expr520 * 4))
-            / domain50;
+                + diluted_pool_column_row_expr520 * felt_4))
+            .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum = total_sum + constraint_coefficients[312] * value;
 
         // Constraint: keccak/keccak/chi0.
@@ -15302,9 +15292,8 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr488
                 + diluted_pool_column_row_expr489
                 + diluted_pool_column_row_expr489
-                + diluted_pool_column_row_expr490 * 4))
-            * domain152
-            / domain44;
+                + diluted_pool_column_row_expr490 * felt_4))
+            * domain152.field_div(&NonZeroFelt::try_from(domain44)?);
         total_sum = total_sum + constraint_coefficients[313] * value;
 
         // Constraint: keccak/keccak/chi1.
@@ -15315,8 +15304,8 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr521
                 + diluted_pool_column_row_expr522
                 + diluted_pool_column_row_expr522
-                + diluted_pool_column_row_expr523 * 4))
-            / domain43;
+                + diluted_pool_column_row_expr523 * felt_4))
+            .field_div(&NonZeroFelt::try_from(domain43)?);
         total_sum = total_sum + constraint_coefficients[314] * value;
 
         // Constraint: keccak/keccak/chi2.
@@ -15327,99 +15316,95 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr524
                 + diluted_pool_column_row_expr525
                 + diluted_pool_column_row_expr525
-                + diluted_pool_column_row_expr526 * 4))
-            / domain43;
+                + diluted_pool_column_row_expr526 * felt_4))
+            .field_div(&NonZeroFelt::try_from(domain43)?);
         total_sum = total_sum + constraint_coefficients[315] * value;
     }
     if (uses_poseidon_builtin != 0) {
         // Constraint: poseidon/param_0/init_input_output_addr.
-        value =
-            (mem_pool_addr_column_row_expr527 - global_values.initial_poseidon_addr) / domain176;
+        value = (mem_pool_addr_column_row_expr527 - global_values.initial_poseidon_addr)
+            .field_div(&NonZeroFelt::try_from(domain176)?);
         total_sum = total_sum + constraint_coefficients[316] * value;
 
         // Constraint: poseidon/param_0/addr_input_output_step.
-        value = (mem_pool_addr_column_row_expr528 - (mem_pool_addr_column_row_expr527 + 3))
-            * domain177
-            / domain169;
+        value = (mem_pool_addr_column_row_expr528 - (mem_pool_addr_column_row_expr527 + felt_3))
+            * domain177.field_div(&NonZeroFelt::try_from(domain169)?);
         total_sum = total_sum + constraint_coefficients[317] * value;
 
         // Constraint: poseidon/param_1/init_input_output_addr.
-        value = (mem_pool_addr_column_row_expr529 - (global_values.initial_poseidon_addr + 1))
-            / domain176;
+        value = (mem_pool_addr_column_row_expr529 - (global_values.initial_poseidon_addr + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain176)?);
         total_sum = total_sum + constraint_coefficients[318] * value;
 
         // Constraint: poseidon/param_1/addr_input_output_step.
-        value = (mem_pool_addr_column_row_expr530 - (mem_pool_addr_column_row_expr529 + 3))
-            * domain177
-            / domain169;
+        value = (mem_pool_addr_column_row_expr530 - (mem_pool_addr_column_row_expr529 + felt_3))
+            * domain177.field_div(&NonZeroFelt::try_from(domain169)?);
         total_sum = total_sum + constraint_coefficients[319] * value;
 
         // Constraint: poseidon/param_2/init_input_output_addr.
-        value = (mem_pool_addr_column_row_expr531 - (global_values.initial_poseidon_addr + 2))
-            / domain176;
+        value = (mem_pool_addr_column_row_expr531 - (global_values.initial_poseidon_addr + felt_2))
+            .field_div(&NonZeroFelt::try_from(domain176)?);
         total_sum = total_sum + constraint_coefficients[320] * value;
 
         // Constraint: poseidon/param_2/addr_input_output_step.
-        value = (mem_pool_addr_column_row_expr532 - (mem_pool_addr_column_row_expr531 + 3))
-            * domain177
-            / domain169;
+        value = (mem_pool_addr_column_row_expr532 - (mem_pool_addr_column_row_expr531 + felt_3))
+            * domain177.field_div(&NonZeroFelt::try_from(domain169)?);
         total_sum = total_sum + constraint_coefficients[321] * value;
 
         // Constraint: poseidon/poseidon/full_rounds_state0_squaring.
         value = (poseidon_poseidon_full_rounds_state0_column_row_expr533
             * poseidon_poseidon_full_rounds_state0_column_row_expr533
             - poseidon_poseidon_full_rounds_state0_squared_column_row_expr534)
-            / domain168;
+            .field_div(&NonZeroFelt::try_from(domain168)?);
         total_sum = total_sum + constraint_coefficients[322] * value;
 
         // Constraint: poseidon/poseidon/full_rounds_state1_squaring.
         value = (poseidon_poseidon_full_rounds_state1_column_row_expr535
             * poseidon_poseidon_full_rounds_state1_column_row_expr535
             - poseidon_poseidon_full_rounds_state1_squared_column_row_expr536)
-            / domain168;
+            .field_div(&NonZeroFelt::try_from(domain168)?);
         total_sum = total_sum + constraint_coefficients[323] * value;
 
         // Constraint: poseidon/poseidon/full_rounds_state2_squaring.
         value = (poseidon_poseidon_full_rounds_state2_column_row_expr537
             * poseidon_poseidon_full_rounds_state2_column_row_expr537
             - poseidon_poseidon_full_rounds_state2_squared_column_row_expr538)
-            / domain168;
+            .field_div(&NonZeroFelt::try_from(domain168)?);
         total_sum = total_sum + constraint_coefficients[324] * value;
 
         // Constraint: poseidon/poseidon/partial_rounds_state0_squaring.
         value = (poseidon_poseidon_partial_rounds_state0_column_row_expr539
             * poseidon_poseidon_partial_rounds_state0_column_row_expr539
             - poseidon_poseidon_partial_rounds_state0_squared_column_row_expr540)
-            / domain166;
+            .field_div(&NonZeroFelt::try_from(domain166)?);
         total_sum = total_sum + constraint_coefficients[325] * value;
 
         // Constraint: poseidon/poseidon/partial_rounds_state1_squaring.
         value = (poseidon_poseidon_partial_rounds_state1_column_row_expr541
             * poseidon_poseidon_partial_rounds_state1_column_row_expr541
             - poseidon_poseidon_partial_rounds_state1_squared_column_row_expr542)
-            * domain172
-            / domain167;
+            * domain172.field_div(&NonZeroFelt::try_from(domain167)?);
         total_sum = total_sum + constraint_coefficients[326] * value;
 
         // Constraint: poseidon/poseidon/add_first_round_key0.
         value = (mem_pool_value_column_row_expr543
-            + 2950795762459345168613727575620414179244544320470208355568817838579231751791
+            + felt_2950795762459345168613727575620414179244544320470208355568817838579231751791
             - poseidon_poseidon_full_rounds_state0_column_row_expr533)
-            / domain173;
+            .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum = total_sum + constraint_coefficients[327] * value;
 
         // Constraint: poseidon/poseidon/add_first_round_key1.
         value = (mem_pool_value_column_row_expr544
-            + 1587446564224215276866294500450702039420286416111469274423465069420553242820
+            + felt_1587446564224215276866294500450702039420286416111469274423465069420553242820
             - poseidon_poseidon_full_rounds_state1_column_row_expr535)
-            / domain173;
+            .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum = total_sum + constraint_coefficients[328] * value;
 
         // Constraint: poseidon/poseidon/add_first_round_key2.
         value = (mem_pool_value_column_row_expr545
-            + 1645965921169490687904413452218868659025437693527479459426157555728339600137
+            + felt_1645965921169490687904413452218868659025437693527479459426157555728339600137
             - poseidon_poseidon_full_rounds_state2_column_row_expr537)
-            / domain173;
+            .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum = total_sum + constraint_coefficients[329] * value;
 
         // Constraint: poseidon/poseidon/full_round0.
@@ -15430,8 +15415,7 @@ pub fn eval_composition_polynomial_inner(
                 + poseidon_poseidon_full_rounds_state1_cubed_0
                 + poseidon_poseidon_full_rounds_state2_cubed_0
                 + global_values.poseidon_poseidon_full_round_key0))
-            * domain170
-            / domain168;
+            * domain170.field_div(&NonZeroFelt::try_from(domain168)?);
         total_sum = total_sum + constraint_coefficients[330] * value;
 
         // Constraint: poseidon/poseidon/full_round1.
@@ -15440,8 +15424,7 @@ pub fn eval_composition_polynomial_inner(
             - (poseidon_poseidon_full_rounds_state0_cubed_0
                 + poseidon_poseidon_full_rounds_state2_cubed_0
                 + global_values.poseidon_poseidon_full_round_key1))
-            * domain170
-            / domain168;
+            * domain170.field_div(&NonZeroFelt::try_from(domain168)?);
         total_sum = total_sum + constraint_coefficients[331] * value;
 
         // Constraint: poseidon/poseidon/full_round2.
@@ -15451,8 +15434,7 @@ pub fn eval_composition_polynomial_inner(
             - (poseidon_poseidon_full_rounds_state0_cubed_0
                 + poseidon_poseidon_full_rounds_state1_cubed_0
                 + global_values.poseidon_poseidon_full_round_key2))
-            * domain170
-            / domain168;
+            * domain170.field_div(&NonZeroFelt::try_from(domain168)?);
         total_sum = total_sum + constraint_coefficients[332] * value;
 
         // Constraint: poseidon/poseidon/last_full_round0.
@@ -15462,14 +15444,14 @@ pub fn eval_composition_polynomial_inner(
                 + poseidon_poseidon_full_rounds_state0_cubed_7
                 + poseidon_poseidon_full_rounds_state1_cubed_7
                 + poseidon_poseidon_full_rounds_state2_cubed_7))
-            / domain173;
+            .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum = total_sum + constraint_coefficients[333] * value;
 
         // Constraint: poseidon/poseidon/last_full_round1.
         value = (mem_pool_value_column_row_expr550 + poseidon_poseidon_full_rounds_state1_cubed_7
             - (poseidon_poseidon_full_rounds_state0_cubed_7
                 + poseidon_poseidon_full_rounds_state2_cubed_7))
-            / domain173;
+            .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum = total_sum + constraint_coefficients[334] * value;
 
         // Constraint: poseidon/poseidon/last_full_round2.
@@ -15478,25 +15460,25 @@ pub fn eval_composition_polynomial_inner(
             + poseidon_poseidon_full_rounds_state2_cubed_7
             - (poseidon_poseidon_full_rounds_state0_cubed_7
                 + poseidon_poseidon_full_rounds_state1_cubed_7))
-            / domain173;
+            .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum = total_sum + constraint_coefficients[335] * value;
 
         // Constraint: poseidon/poseidon/copy_partial_rounds0_i0.
         value = (poseidon_poseidon_partial_rounds_state0_column_row_expr552
             - poseidon_poseidon_partial_rounds_state1_column_row_expr541)
-            / domain173;
+            .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum = total_sum + constraint_coefficients[336] * value;
 
         // Constraint: poseidon/poseidon/copy_partial_rounds0_i1.
         value = (poseidon_poseidon_partial_rounds_state0_column_row_expr553
             - poseidon_poseidon_partial_rounds_state1_column_row_expr554)
-            / domain173;
+            .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum = total_sum + constraint_coefficients[337] * value;
 
         // Constraint: poseidon/poseidon/copy_partial_rounds0_i2.
         value = (poseidon_poseidon_partial_rounds_state0_column_row_expr555
             - poseidon_poseidon_partial_rounds_state1_column_row_expr556)
-            / domain173;
+            .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum = total_sum + constraint_coefficients[338] * value;
 
         // Constraint: poseidon/poseidon/margin_full_to_partial0.
@@ -15505,320 +15487,312 @@ pub fn eval_composition_polynomial_inner(
             + poseidon_poseidon_full_rounds_state2_cubed_3
             - (poseidon_poseidon_full_rounds_state0_cubed_3
                 + poseidon_poseidon_full_rounds_state1_cubed_3
-                + 2121140748740143694053732746913428481442990369183417228688865837805149503386))
-            / domain173;
+                + felt_2121140748740143694053732746913428481442990369183417228688865837805149503386))
+            .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum = total_sum + constraint_coefficients[339] * value;
 
         // Constraint: poseidon/poseidon/margin_full_to_partial1.
         value = (poseidon_poseidon_partial_rounds_state0_column_row_expr557
-            - (3618502788666131213697322783095070105623107215331596699973092056135872020477
+            - (felt_3618502788666131213697322783095070105623107215331596699973092056135872020477
                 * poseidon_poseidon_full_rounds_state1_cubed_3
-                + 10 * poseidon_poseidon_full_rounds_state2_cubed_3
-                + 4 * poseidon_poseidon_partial_rounds_state0_column_row_expr539
-                + 3618502788666131213697322783095070105623107215331596699973092056135872020479
+                + felt_10 * poseidon_poseidon_full_rounds_state2_cubed_3
+                + felt_4 * poseidon_poseidon_partial_rounds_state0_column_row_expr539
+                + felt_3618502788666131213697322783095070105623107215331596699973092056135872020479
                     * poseidon_poseidon_partial_rounds_state0_cubed_0
-                + 2006642341318481906727563724340978325665491359415674592697055778067937914672))
-            / domain173;
+                + felt_2006642341318481906727563724340978325665491359415674592697055778067937914672))
+            .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum = total_sum + constraint_coefficients[340] * value;
 
         // Constraint: poseidon/poseidon/margin_full_to_partial2.
         value = (poseidon_poseidon_partial_rounds_state0_column_row_expr558
-            - (8 * poseidon_poseidon_full_rounds_state2_cubed_3
-                + 4 * poseidon_poseidon_partial_rounds_state0_column_row_expr539
-                + 6 * poseidon_poseidon_partial_rounds_state0_cubed_0
+            - (felt_8 * poseidon_poseidon_full_rounds_state2_cubed_3
+                + felt_4 * poseidon_poseidon_partial_rounds_state0_column_row_expr539
+                + felt_6 * poseidon_poseidon_partial_rounds_state0_cubed_0
                 + poseidon_poseidon_partial_rounds_state0_column_row_expr557
                 + poseidon_poseidon_partial_rounds_state0_column_row_expr557
-                + 3618502788666131213697322783095070105623107215331596699973092056135872020479
+                + felt_3618502788666131213697322783095070105623107215331596699973092056135872020479
                     * poseidon_poseidon_partial_rounds_state0_cubed_1
-                + 427751140904099001132521606468025610873158555767197326325930641757709538586))
-            / domain173;
+                + felt_427751140904099001132521606468025610873158555767197326325930641757709538586))
+            .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum = total_sum + constraint_coefficients[341] * value;
 
         // Constraint: poseidon/poseidon/partial_round0.
         value = (poseidon_poseidon_partial_rounds_state0_column_row_expr559
-            - (8 * poseidon_poseidon_partial_rounds_state0_cubed_0
-                + 4 * poseidon_poseidon_partial_rounds_state0_column_row_expr557
-                + 6 * poseidon_poseidon_partial_rounds_state0_cubed_1
+            - (felt_8 * poseidon_poseidon_partial_rounds_state0_cubed_0
+                + felt_4 * poseidon_poseidon_partial_rounds_state0_column_row_expr557
+                + felt_6 * poseidon_poseidon_partial_rounds_state0_cubed_1
                 + poseidon_poseidon_partial_rounds_state0_column_row_expr558
                 + poseidon_poseidon_partial_rounds_state0_column_row_expr558
-                + 3618502788666131213697322783095070105623107215331596699973092056135872020479
+                + felt_3618502788666131213697322783095070105623107215331596699973092056135872020479
                     * poseidon_poseidon_partial_rounds_state0_cubed_2
                 + global_values.poseidon_poseidon_partial_round_key0))
-            * domain174
-            / domain166;
+            * domain174.field_div(&NonZeroFelt::try_from(domain166)?);
         total_sum = total_sum + constraint_coefficients[342] * value;
 
         // Constraint: poseidon/poseidon/partial_round1.
         value = (poseidon_poseidon_partial_rounds_state1_column_row_expr560
-            - (8 * poseidon_poseidon_partial_rounds_state1_cubed_0
-                + 4 * poseidon_poseidon_partial_rounds_state1_column_row_expr554
-                + 6 * poseidon_poseidon_partial_rounds_state1_cubed_1
+            - (felt_8 * poseidon_poseidon_partial_rounds_state1_cubed_0
+                + felt_4 * poseidon_poseidon_partial_rounds_state1_column_row_expr554
+                + felt_6 * poseidon_poseidon_partial_rounds_state1_cubed_1
                 + poseidon_poseidon_partial_rounds_state1_column_row_expr556
                 + poseidon_poseidon_partial_rounds_state1_column_row_expr556
-                + 3618502788666131213697322783095070105623107215331596699973092056135872020479
+                + felt_3618502788666131213697322783095070105623107215331596699973092056135872020479
                     * poseidon_poseidon_partial_rounds_state1_cubed_2
                 + global_values.poseidon_poseidon_partial_round_key1))
-            * domain175
-            / domain167;
+            * domain175.field_div(&NonZeroFelt::try_from(domain167)?);
         total_sum = total_sum + constraint_coefficients[343] * value;
 
         // Constraint: poseidon/poseidon/margin_partial_to_full0.
         value = (poseidon_poseidon_full_rounds_state0_column_row_expr561
-            - (16 * poseidon_poseidon_partial_rounds_state1_cubed_19
-                + 8 * poseidon_poseidon_partial_rounds_state1_column_row_expr562
-                + 16 * poseidon_poseidon_partial_rounds_state1_cubed_20
-                + 6 * poseidon_poseidon_partial_rounds_state1_column_row_expr563
+            - (felt_16 * poseidon_poseidon_partial_rounds_state1_cubed_19
+                + felt_8 * poseidon_poseidon_partial_rounds_state1_column_row_expr562
+                + felt_16 * poseidon_poseidon_partial_rounds_state1_cubed_20
+                + felt_6 * poseidon_poseidon_partial_rounds_state1_column_row_expr563
                 + poseidon_poseidon_partial_rounds_state1_cubed_21
-                + 560279373700919169769089400651532183647886248799764942664266404650165812023))
-            / domain173;
+                + felt_560279373700919169769089400651532183647886248799764942664266404650165812023))
+            .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum = total_sum + constraint_coefficients[344] * value;
 
         // Constraint: poseidon/poseidon/margin_partial_to_full1.
         value = (poseidon_poseidon_full_rounds_state1_column_row_expr564
-            - (4 * poseidon_poseidon_partial_rounds_state1_cubed_20
+            - (felt_4 * poseidon_poseidon_partial_rounds_state1_cubed_20
                 + poseidon_poseidon_partial_rounds_state1_column_row_expr563
                 + poseidon_poseidon_partial_rounds_state1_column_row_expr563
                 + poseidon_poseidon_partial_rounds_state1_cubed_21
-                + 1401754474293352309994371631695783042590401941592571735921592823982231996415))
-            / domain173;
+                + felt_1401754474293352309994371631695783042590401941592571735921592823982231996415))
+            .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum = total_sum + constraint_coefficients[345] * value;
 
         // Constraint: poseidon/poseidon/margin_partial_to_full2.
         value = (poseidon_poseidon_full_rounds_state2_column_row_expr565
-            - (8 * poseidon_poseidon_partial_rounds_state1_cubed_19
-                + 4 * poseidon_poseidon_partial_rounds_state1_column_row_expr562
-                + 6 * poseidon_poseidon_partial_rounds_state1_cubed_20
+            - (felt_8 * poseidon_poseidon_partial_rounds_state1_cubed_19
+                + felt_4 * poseidon_poseidon_partial_rounds_state1_column_row_expr562
+                + felt_6 * poseidon_poseidon_partial_rounds_state1_cubed_20
                 + poseidon_poseidon_partial_rounds_state1_column_row_expr563
                 + poseidon_poseidon_partial_rounds_state1_column_row_expr563
-                + 3618502788666131213697322783095070105623107215331596699973092056135872020479
+                + felt_3618502788666131213697322783095070105623107215331596699973092056135872020479
                     * poseidon_poseidon_partial_rounds_state1_cubed_21
-                + 1246177936547655338400308396717835700699368047388302793172818304164989556526))
-            / domain173;
+                + felt_1246177936547655338400308396717835700699368047388302793172818304164989556526))
+            .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum = total_sum + constraint_coefficients[346] * value;
     }
     if (uses_range_check96_builtin != 0) {
         // Constraint: range_check96_builtin/value.
-        value = (range_check96_builtin_value5_0 - mem_pool_value_column_row_expr566) / domain178;
+        value = (range_check96_builtin_value5_0 - mem_pool_value_column_row_expr566)
+            .field_div(&NonZeroFelt::try_from(domain178)?);
         total_sum = total_sum + constraint_coefficients[347] * value;
 
         // Constraint: range_check96_builtin/addr_step.
-        value = (mem_pool_addr_column_row_expr567 - (mem_pool_addr_column_row_expr568 + 1))
-            * domain179
-            / domain178;
+        value = (mem_pool_addr_column_row_expr567 - (mem_pool_addr_column_row_expr568 + felt_1))
+            * domain179.field_div(&NonZeroFelt::try_from(domain178)?);
         total_sum = total_sum + constraint_coefficients[348] * value;
 
         // Constraint: range_check96_builtin/init_addr.
         value = (mem_pool_addr_column_row_expr568 - global_values.initial_range_check96_addr)
-            / domain180;
+            .field_div(&NonZeroFelt::try_from(domain180)?);
         total_sum = total_sum + constraint_coefficients[349] * value;
     }
     if (uses_add_mod_builtin != 0) {
         // Constraint: add_mod/init_p0_address.
-        value =
-            (mem_pool_addr_column_row_expr569 - global_values.add_mod_initial_mod_addr) / domain13;
+        value = (mem_pool_addr_column_row_expr569 - global_values.add_mod_initial_mod_addr)
+            .field_div(&NonZeroFelt::try_from(domain13)?);
         total_sum = total_sum + constraint_coefficients[350] * value;
 
         // Constraint: add_mod/step_p1_addr.
-        value =
-            (mem_pool_addr_column_row_expr570 - (mem_pool_addr_column_row_expr569 + 1)) / domain12;
+        value = (mem_pool_addr_column_row_expr570 - (mem_pool_addr_column_row_expr569 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[351] * value;
 
         // Constraint: add_mod/step_p2_addr.
-        value =
-            (mem_pool_addr_column_row_expr571 - (mem_pool_addr_column_row_expr570 + 1)) / domain12;
+        value = (mem_pool_addr_column_row_expr571 - (mem_pool_addr_column_row_expr570 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[352] * value;
 
         // Constraint: add_mod/step_p3_addr.
-        value =
-            (mem_pool_addr_column_row_expr572 - (mem_pool_addr_column_row_expr571 + 1)) / domain12;
+        value = (mem_pool_addr_column_row_expr572 - (mem_pool_addr_column_row_expr571 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[353] * value;
 
         // Constraint: add_mod/step_values_ptr_addr.
-        value =
-            (mem_pool_addr_column_row_expr573 - (mem_pool_addr_column_row_expr572 + 1)) / domain12;
+        value = (mem_pool_addr_column_row_expr573 - (mem_pool_addr_column_row_expr572 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[354] * value;
 
         // Constraint: add_mod/step_offsets_ptr_addr.
-        value =
-            (mem_pool_addr_column_row_expr574 - (mem_pool_addr_column_row_expr573 + 1)) / domain12;
+        value = (mem_pool_addr_column_row_expr574 - (mem_pool_addr_column_row_expr573 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[355] * value;
 
         // Constraint: add_mod/step_n_addr.
-        value =
-            (mem_pool_addr_column_row_expr575 - (mem_pool_addr_column_row_expr574 + 1)) / domain12;
+        value = (mem_pool_addr_column_row_expr575 - (mem_pool_addr_column_row_expr574 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[356] * value;
 
         // Constraint: add_mod/step_p0_addr.
-        value = (mem_pool_addr_column_row_expr576 - (mem_pool_addr_column_row_expr575 + 1))
-            * domain14
-            / domain12;
+        value = (mem_pool_addr_column_row_expr576 - (mem_pool_addr_column_row_expr575 + felt_1))
+            * domain14.field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[357] * value;
 
         // Constraint: add_mod/step_p0_value.
         value = ((mem_pool_value_column_row_expr577 - mem_pool_value_column_row_expr578)
             * (mem_pool_value_column_row_expr579 - 1))
-            * domain14
-            / domain12;
+            * domain14.field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[358] * value;
 
         // Constraint: add_mod/step_p1_value.
         value = ((mem_pool_value_column_row_expr580 - mem_pool_value_column_row_expr581)
             * (mem_pool_value_column_row_expr579 - 1))
-            * domain14
-            / domain12;
+            * domain14.field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[359] * value;
 
         // Constraint: add_mod/step_p2_value.
         value = ((mem_pool_value_column_row_expr582 - mem_pool_value_column_row_expr583)
             * (mem_pool_value_column_row_expr579 - 1))
-            * domain14
-            / domain12;
+            * domain14.field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[360] * value;
 
         // Constraint: add_mod/step_p3_value.
         value = ((mem_pool_value_column_row_expr584 - mem_pool_value_column_row_expr585)
             * (mem_pool_value_column_row_expr579 - 1))
-            * domain14
-            / domain12;
+            * domain14.field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[361] * value;
 
         // Constraint: add_mod/step_values_ptr_value.
         value = ((mem_pool_value_column_row_expr586 - mem_pool_value_column_row_expr587)
             * (mem_pool_value_column_row_expr579 - 1))
-            * domain14
-            / domain12;
+            * domain14.field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[362] * value;
 
         // Constraint: add_mod/step_offsets_ptr_value.
-        value = ((mem_pool_value_column_row_expr588 - (mem_pool_value_column_row_expr589 + 3))
+        value = ((mem_pool_value_column_row_expr588
+            - (mem_pool_value_column_row_expr589 + felt_3))
             * (mem_pool_value_column_row_expr579 - 1))
-            * domain14
-            / domain12;
+            * domain14.field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[363] * value;
 
         // Constraint: add_mod/step_n_value.
-        value = ((mem_pool_value_column_row_expr590 + 1 - mem_pool_value_column_row_expr579)
+        value = ((mem_pool_value_column_row_expr590 + felt_1 - mem_pool_value_column_row_expr579)
             * (mem_pool_value_column_row_expr579 - 1))
-            * domain14
-            / domain12;
+            * domain14.field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[364] * value;
 
         // Constraint: add_mod/a_offset0.
-        value = (mem_pool_addr_column_row_expr591 - mem_pool_value_column_row_expr589) / domain12;
+        value = (mem_pool_addr_column_row_expr591 - mem_pool_value_column_row_expr589)
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[365] * value;
 
         // Constraint: add_mod/b_offset.
-        value =
-            (mem_pool_addr_column_row_expr592 - (mem_pool_addr_column_row_expr591 + 1)) / domain12;
+        value = (mem_pool_addr_column_row_expr592 - (mem_pool_addr_column_row_expr591 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[366] * value;
 
         // Constraint: add_mod/c_offset.
-        value =
-            (mem_pool_addr_column_row_expr593 - (mem_pool_addr_column_row_expr592 + 1)) / domain12;
+        value = (mem_pool_addr_column_row_expr593 - (mem_pool_addr_column_row_expr592 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[367] * value;
 
         // Constraint: add_mod/a0_value_ind0.
         value = (mem_pool_addr_column_row_expr594
             - (mem_pool_value_column_row_expr595 + mem_pool_value_column_row_expr587))
-            / domain12;
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[368] * value;
 
         // Constraint: add_mod/a1_value.
-        value =
-            (mem_pool_addr_column_row_expr596 - (mem_pool_addr_column_row_expr594 + 1)) / domain12;
+        value = (mem_pool_addr_column_row_expr596 - (mem_pool_addr_column_row_expr594 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[369] * value;
 
         // Constraint: add_mod/a2_value.
-        value =
-            (mem_pool_addr_column_row_expr597 - (mem_pool_addr_column_row_expr596 + 1)) / domain12;
+        value = (mem_pool_addr_column_row_expr597 - (mem_pool_addr_column_row_expr596 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[370] * value;
 
         // Constraint: add_mod/a3_value.
-        value =
-            (mem_pool_addr_column_row_expr598 - (mem_pool_addr_column_row_expr597 + 1)) / domain12;
+        value = (mem_pool_addr_column_row_expr598 - (mem_pool_addr_column_row_expr597 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[371] * value;
 
         // Constraint: add_mod/b0_value_ind0.
         value = (mem_pool_addr_column_row_expr599
             - (mem_pool_value_column_row_expr600 + mem_pool_value_column_row_expr587))
-            / domain12;
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[372] * value;
 
         // Constraint: add_mod/b1_value.
-        value =
-            (mem_pool_addr_column_row_expr601 - (mem_pool_addr_column_row_expr599 + 1)) / domain12;
+        value = (mem_pool_addr_column_row_expr601 - (mem_pool_addr_column_row_expr599 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[373] * value;
 
         // Constraint: add_mod/b2_value.
-        value =
-            (mem_pool_addr_column_row_expr602 - (mem_pool_addr_column_row_expr601 + 1)) / domain12;
+        value = (mem_pool_addr_column_row_expr602 - (mem_pool_addr_column_row_expr601 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[374] * value;
 
         // Constraint: add_mod/b3_value.
-        value =
-            (mem_pool_addr_column_row_expr603 - (mem_pool_addr_column_row_expr602 + 1)) / domain12;
+        value = (mem_pool_addr_column_row_expr603 - (mem_pool_addr_column_row_expr602 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[375] * value;
 
         // Constraint: add_mod/c0_value_ind0.
         value = (mem_pool_addr_column_row_expr604
             - (mem_pool_value_column_row_expr605 + mem_pool_value_column_row_expr587))
-            / domain12;
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[376] * value;
 
         // Constraint: add_mod/c1_value.
-        value =
-            (mem_pool_addr_column_row_expr606 - (mem_pool_addr_column_row_expr604 + 1)) / domain12;
+        value = (mem_pool_addr_column_row_expr606 - (mem_pool_addr_column_row_expr604 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[377] * value;
 
         // Constraint: add_mod/c2_value.
-        value =
-            (mem_pool_addr_column_row_expr607 - (mem_pool_addr_column_row_expr606 + 1)) / domain12;
+        value = (mem_pool_addr_column_row_expr607 - (mem_pool_addr_column_row_expr606 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[378] * value;
 
         // Constraint: add_mod/c3_value.
-        value =
-            (mem_pool_addr_column_row_expr608 - (mem_pool_addr_column_row_expr607 + 1)) / domain12;
+        value = (mem_pool_addr_column_row_expr608 - (mem_pool_addr_column_row_expr607 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[379] * value;
 
         // Constraint: add_mod/sub_p_bit.
         value = (add_mod_sub_p_bit_column_row_expr609 * (add_mod_sub_p_bit_column_row_expr609 - 1))
-            / domain12;
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[380] * value;
 
         // Constraint: add_mod/carry1_bit.
         value = (add_mod_carry1_bit_column_row_expr610
             * (add_mod_carry1_bit_column_row_expr610 - 1))
-            / domain12;
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[381] * value;
 
         // Constraint: add_mod/carry1_sign.
         value = (add_mod_carry1_sign_column_row_expr611 * add_mod_carry1_sign_column_row_expr611
             - 1)
-            / domain12;
+        .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[382] * value;
 
         // Constraint: add_mod/carry2_bit.
         value = (add_mod_carry2_bit_column_row_expr612
             * (add_mod_carry2_bit_column_row_expr612 - 1))
-            / domain12;
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[383] * value;
 
         // Constraint: add_mod/carry2_sign.
         value = (add_mod_carry2_sign_column_row_expr613 * add_mod_carry2_sign_column_row_expr613
             - 1)
-            / domain12;
+        .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[384] * value;
 
         // Constraint: add_mod/carry3_bit.
         value = (add_mod_carry3_bit_column_row_expr614
             * (add_mod_carry3_bit_column_row_expr614 - 1))
-            / domain12;
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[385] * value;
 
         // Constraint: add_mod/carry3_sign.
         value = (add_mod_carry3_sign_column_row_expr615 * add_mod_carry3_sign_column_row_expr615
             - 1)
-            / domain12;
+        .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[386] * value;
 
         // Constraint: add_mod/addition_constraint_0.
@@ -15855,175 +15829,169 @@ pub fn eval_composition_polynomial_inner(
                     * global_values.add_mod_interaction_elm
                     + mem_pool_value_column_row_expr578)
                     * add_mod_sub_p_bit_column_row_expr609))
-            / domain12;
+            .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum = total_sum + constraint_coefficients[387] * value;
     }
     if (uses_mul_mod_builtin != 0) {
         // Constraint: mul_mod/init_p0_address.
-        value =
-            (mem_pool_addr_column_row_expr628 - global_values.mul_mod_initial_mod_addr) / domain156;
+        value = (mem_pool_addr_column_row_expr628 - global_values.mul_mod_initial_mod_addr)
+            .field_div(&NonZeroFelt::try_from(domain156)?);
         total_sum = total_sum + constraint_coefficients[388] * value;
 
         // Constraint: mul_mod/step_p1_addr.
-        value =
-            (mem_pool_addr_column_row_expr629 - (mem_pool_addr_column_row_expr628 + 1)) / domain155;
+        value = (mem_pool_addr_column_row_expr629 - (mem_pool_addr_column_row_expr628 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[389] * value;
 
         // Constraint: mul_mod/step_p2_addr.
-        value =
-            (mem_pool_addr_column_row_expr630 - (mem_pool_addr_column_row_expr629 + 1)) / domain155;
+        value = (mem_pool_addr_column_row_expr630 - (mem_pool_addr_column_row_expr629 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[390] * value;
 
         // Constraint: mul_mod/step_p3_addr.
-        value =
-            (mem_pool_addr_column_row_expr631 - (mem_pool_addr_column_row_expr630 + 1)) / domain155;
+        value = (mem_pool_addr_column_row_expr631 - (mem_pool_addr_column_row_expr630 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[391] * value;
 
         // Constraint: mul_mod/step_values_ptr_addr.
-        value =
-            (mem_pool_addr_column_row_expr632 - (mem_pool_addr_column_row_expr631 + 1)) / domain155;
+        value = (mem_pool_addr_column_row_expr632 - (mem_pool_addr_column_row_expr631 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[392] * value;
 
         // Constraint: mul_mod/step_offsets_ptr_addr.
-        value =
-            (mem_pool_addr_column_row_expr633 - (mem_pool_addr_column_row_expr632 + 1)) / domain155;
+        value = (mem_pool_addr_column_row_expr633 - (mem_pool_addr_column_row_expr632 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[393] * value;
 
         // Constraint: mul_mod/step_n_addr.
-        value =
-            (mem_pool_addr_column_row_expr634 - (mem_pool_addr_column_row_expr633 + 1)) / domain155;
+        value = (mem_pool_addr_column_row_expr634 - (mem_pool_addr_column_row_expr633 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[394] * value;
 
         // Constraint: mul_mod/step_p0_addr.
-        value = (mem_pool_addr_column_row_expr635 - (mem_pool_addr_column_row_expr634 + 1))
-            * domain157
-            / domain155;
+        value = (mem_pool_addr_column_row_expr635 - (mem_pool_addr_column_row_expr634 + felt_1))
+            * domain157.field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[395] * value;
 
         // Constraint: mul_mod/step_p0_value.
         value = ((mem_pool_value_column_row_expr636 - mem_pool_value_column_row_expr637)
             * (mem_pool_value_column_row_expr638 - 1))
-            * domain157
-            / domain155;
+            * domain157.field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[396] * value;
 
         // Constraint: mul_mod/step_p1_value.
         value = ((mem_pool_value_column_row_expr639 - mem_pool_value_column_row_expr640)
             * (mem_pool_value_column_row_expr638 - 1))
-            * domain157
-            / domain155;
+            * domain157.field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[397] * value;
 
         // Constraint: mul_mod/step_p2_value.
         value = ((mem_pool_value_column_row_expr641 - mem_pool_value_column_row_expr642)
             * (mem_pool_value_column_row_expr638 - 1))
-            * domain157
-            / domain155;
+            * domain157.field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[398] * value;
 
         // Constraint: mul_mod/step_p3_value.
         value = ((mem_pool_value_column_row_expr643 - mem_pool_value_column_row_expr644)
             * (mem_pool_value_column_row_expr638 - 1))
-            * domain157
-            / domain155;
+            * domain157.field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[399] * value;
 
         // Constraint: mul_mod/step_values_ptr_value.
         value = ((mem_pool_value_column_row_expr645 - mem_pool_value_column_row_expr646)
             * (mem_pool_value_column_row_expr638 - 1))
-            * domain157
-            / domain155;
+            * domain157.field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[400] * value;
 
         // Constraint: mul_mod/step_offsets_ptr_value.
-        value = ((mem_pool_value_column_row_expr647 - (mem_pool_value_column_row_expr648 + 3))
+        value = ((mem_pool_value_column_row_expr647
+            - (mem_pool_value_column_row_expr648 + felt_3))
             * (mem_pool_value_column_row_expr638 - 1))
-            * domain157
-            / domain155;
+            * domain157.field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[401] * value;
 
         // Constraint: mul_mod/step_n_value.
-        value = ((mem_pool_value_column_row_expr649 + 1 - mem_pool_value_column_row_expr638)
+        value = ((mem_pool_value_column_row_expr649 + felt_1 - mem_pool_value_column_row_expr638)
             * (mem_pool_value_column_row_expr638 - 1))
-            * domain157
-            / domain155;
+            * domain157.field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[402] * value;
 
         // Constraint: mul_mod/a_offset0.
-        value = (mem_pool_addr_column_row_expr650 - mem_pool_value_column_row_expr648) / domain155;
+        value = (mem_pool_addr_column_row_expr650 - mem_pool_value_column_row_expr648)
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[403] * value;
 
         // Constraint: mul_mod/b_offset.
-        value =
-            (mem_pool_addr_column_row_expr651 - (mem_pool_addr_column_row_expr650 + 1)) / domain155;
+        value = (mem_pool_addr_column_row_expr651 - (mem_pool_addr_column_row_expr650 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[404] * value;
 
         // Constraint: mul_mod/c_offset.
-        value =
-            (mem_pool_addr_column_row_expr652 - (mem_pool_addr_column_row_expr651 + 1)) / domain155;
+        value = (mem_pool_addr_column_row_expr652 - (mem_pool_addr_column_row_expr651 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[405] * value;
 
         // Constraint: mul_mod/a0_value_ind0.
         value = (mem_pool_addr_column_row_expr653
             - (mem_pool_value_column_row_expr654 + mem_pool_value_column_row_expr646))
-            / domain155;
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[406] * value;
 
         // Constraint: mul_mod/a1_value.
-        value =
-            (mem_pool_addr_column_row_expr655 - (mem_pool_addr_column_row_expr653 + 1)) / domain155;
+        value = (mem_pool_addr_column_row_expr655 - (mem_pool_addr_column_row_expr653 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[407] * value;
 
         // Constraint: mul_mod/a2_value.
-        value =
-            (mem_pool_addr_column_row_expr656 - (mem_pool_addr_column_row_expr655 + 1)) / domain155;
+        value = (mem_pool_addr_column_row_expr656 - (mem_pool_addr_column_row_expr655 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[408] * value;
 
         // Constraint: mul_mod/a3_value.
-        value =
-            (mem_pool_addr_column_row_expr657 - (mem_pool_addr_column_row_expr656 + 1)) / domain155;
+        value = (mem_pool_addr_column_row_expr657 - (mem_pool_addr_column_row_expr656 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[409] * value;
 
         // Constraint: mul_mod/b0_value_ind0.
         value = (mem_pool_addr_column_row_expr658
             - (mem_pool_value_column_row_expr659 + mem_pool_value_column_row_expr646))
-            / domain155;
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[410] * value;
 
         // Constraint: mul_mod/b1_value.
-        value =
-            (mem_pool_addr_column_row_expr660 - (mem_pool_addr_column_row_expr658 + 1)) / domain155;
+        value = (mem_pool_addr_column_row_expr660 - (mem_pool_addr_column_row_expr658 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[411] * value;
 
         // Constraint: mul_mod/b2_value.
-        value =
-            (mem_pool_addr_column_row_expr661 - (mem_pool_addr_column_row_expr660 + 1)) / domain155;
+        value = (mem_pool_addr_column_row_expr661 - (mem_pool_addr_column_row_expr660 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[412] * value;
 
         // Constraint: mul_mod/b3_value.
-        value =
-            (mem_pool_addr_column_row_expr662 - (mem_pool_addr_column_row_expr661 + 1)) / domain155;
+        value = (mem_pool_addr_column_row_expr662 - (mem_pool_addr_column_row_expr661 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[413] * value;
 
         // Constraint: mul_mod/c0_value_ind0.
         value = (mem_pool_addr_column_row_expr663
             - (mem_pool_value_column_row_expr664 + mem_pool_value_column_row_expr646))
-            / domain155;
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[414] * value;
 
         // Constraint: mul_mod/c1_value.
-        value =
-            (mem_pool_addr_column_row_expr665 - (mem_pool_addr_column_row_expr663 + 1)) / domain155;
+        value = (mem_pool_addr_column_row_expr665 - (mem_pool_addr_column_row_expr663 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[415] * value;
 
         // Constraint: mul_mod/c2_value.
-        value =
-            (mem_pool_addr_column_row_expr666 - (mem_pool_addr_column_row_expr665 + 1)) / domain155;
+        value = (mem_pool_addr_column_row_expr666 - (mem_pool_addr_column_row_expr665 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[416] * value;
 
         // Constraint: mul_mod/c3_value.
-        value =
-            (mem_pool_addr_column_row_expr667 - (mem_pool_addr_column_row_expr666 + 1)) / domain155;
+        value = (mem_pool_addr_column_row_expr667 - (mem_pool_addr_column_row_expr666 + felt_1))
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[417] * value;
 
         // Constraint: mul_mod/multiplication_constraint_0.
@@ -16075,7 +16043,7 @@ pub fn eval_composition_polynomial_inner(
                             * global_values.mul_mod_interaction_elm)
                         * global_values.mul_mod_interaction_elm
                         + mul_mod_p_multiplier0_0)))
-            / domain155;
+            .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum = total_sum + constraint_coefficients[418] * value;
     }
 
