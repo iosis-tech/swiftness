@@ -2,7 +2,7 @@ use crate::{
     commit::stark_commit, queries::generate_queries, types::StarkProof, verify::stark_verify,
 };
 use starknet_crypto::Felt;
-#[cfg(any(feature = "dynamic"))]
+#[cfg(feature = "dynamic")]
 use swiftness_air::layout::DynamicLayoutTrait;
 #[cfg(any(
     feature = "dex",
@@ -29,7 +29,7 @@ use swiftness_transcript::transcript::Transcript;
 ))]
 pub trait LayoutTraitSwitch: LayoutTrait + StaticLayoutTrait {}
 
-#[cfg(any(feature = "dynamic"))]
+#[cfg(feature = "dynamic")]
 pub trait LayoutTraitSwitch: LayoutTrait + DynamicLayoutTrait {}
 
 impl StarkProof {
@@ -77,7 +77,7 @@ impl StarkProof {
         let (n_original_columns, n_interaction_columns) =
             (Layout::NUM_COLUMNS_FIRST, Layout::NUM_COLUMNS_SECOND);
 
-        #[cfg(any(feature = "dynamic"))]
+        #[cfg(feature = "dynamic")]
         let (n_original_columns, n_interaction_columns) = (
             self.public_input
                 .dynamic_params
