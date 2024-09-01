@@ -519,6 +519,7 @@ pub fn eval_composition_polynomial_inner(
     let uses_range_check96_builtin = dynamic_params.uses_range_check96_builtin;
     let uses_range_check_builtin = dynamic_params.uses_range_check_builtin;
 
+    let felt_0 = Felt::from(0);
     let felt_1 = Felt::from(1);
     let felt_2 = Felt::from(2);
     let felt_3 = Felt::from(3);
@@ -550,9 +551,9 @@ pub fn eval_composition_polynomial_inner(
     let felt_512 = Felt::from(512);
     let felt_4096 = Felt::from(4096);
     let felt_524288 = Felt::from(524288);
-    let felt_36893488147419103232 = Felt::from(36893488147419103232);
-    let felt_73786976294838206464 = Felt::from(73786976294838206464);
-    let felt_147573952589676412928 = Felt::from(147573952589676412928);
+    let felt_36893488147419103232 = Felt::from_hex_unchecked("0x20000000000000000");
+    let felt_73786976294838206464 = Felt::from_hex_unchecked("0x40000000000000000");
+    let felt_147573952589676412928 = Felt::from_hex_unchecked("0x80000000000000000");
     let felt_340282366920938463463374607431768211456 =
         Felt::from_hex_unchecked("0x100000000000000000000000000000000");
     let felt_680564733841876926926749214863536422912 =
@@ -577,6 +578,8 @@ pub fn eval_composition_polynomial_inner(
     let felt_281474976710656 = Felt::from_hex_unchecked("0x1000000000000");
     let felt_18446744073709551616 = Felt::from_hex_unchecked("0x10000000000000000");
     let felt_1208925819614629174706176 = Felt::from_hex_unchecked("0x100000000000000000000");
+    let felt_316912650057057350374175801344 =
+        Felt::from_hex_unchecked("0x4000000000000000000000000");
     let felt_79228162514264337593543950336 =
         Felt::from_hex_unchecked("0x1000000000000000000000000");
     let felt_3138550867693340381917894711603833208051177722232017256448 =
@@ -649,6 +652,193 @@ pub fn eval_composition_polynomial_inner(
         trace_generator.pow_felt(&(global_values.trace_length - felt_16 * cpu_component_step));
     let pow10: Felt =
         trace_generator.pow_felt(&(safe_div((felt_15 * global_values.trace_length), felt_16)?));
+
+    // Compute domains.
+    let domain0 = pow5 - 1;
+    let domain1 = pow4 - pow10;
+    let domain2 = pow4 - 1;
+    let domain3 = pow3 - 1;
+    let domain4 = pow2 - 1;
+    let domain5 = pow1 - 1;
+    let domain6 = pow0 - 1;
+    let domain7 = point - pow9;
+    let domain8 = point - 1;
+    let domain9 = point - pow8;
+    let domain10 = point - pow7;
+    let domain11 = point - pow6;
+    let mut domain12: Felt = felt_0;
+    let mut domain13: Felt = felt_0;
+    let mut domain14: Felt = felt_0;
+    let mut domain15: Felt = felt_0;
+    let mut domain16: Felt = felt_0;
+    let mut domain17: Felt = felt_0;
+    let mut domain18: Felt = felt_0;
+    let mut domain19: Felt = felt_0;
+    let mut domain20: Felt = felt_0;
+    let mut domain21: Felt = felt_0;
+    let mut domain22: Felt = felt_0;
+    let mut domain23: Felt = felt_0;
+    let mut domain24: Felt = felt_0;
+    let mut domain25: Felt = felt_0;
+    let mut domain26: Felt = felt_0;
+    let mut domain27: Felt = felt_0;
+    let mut domain28: Felt = felt_0;
+    let mut domain29: Felt = felt_0;
+    let mut domain30: Felt = felt_0;
+    let mut domain31: Felt = felt_0;
+    let mut domain32: Felt = felt_0;
+    let mut domain33: Felt = felt_0;
+    let mut domain34: Felt = felt_0;
+    let mut domain35: Felt = felt_0;
+    let mut domain36: Felt = felt_0;
+    let mut domain37: Felt = felt_0;
+    let mut domain38: Felt = felt_0;
+    let mut domain39: Felt = felt_0;
+    let mut domain40: Felt = felt_0;
+    let mut domain41: Felt = felt_0;
+    let mut domain42: Felt = felt_0;
+    let mut domain43: Felt = felt_0;
+    let mut domain44: Felt = felt_0;
+    let mut domain45: Felt = felt_0;
+    let mut domain46: Felt = felt_0;
+    let mut domain47: Felt = felt_0;
+    let mut domain48: Felt = felt_0;
+    let mut domain49: Felt = felt_0;
+    let mut domain50: Felt = felt_0;
+    let mut domain51: Felt = felt_0;
+    let mut domain52: Felt = felt_0;
+    let mut domain53: Felt = felt_0;
+    let mut domain54: Felt = felt_0;
+    let mut domain55: Felt = felt_0;
+    let mut domain56: Felt = felt_0;
+    let mut domain57: Felt = felt_0;
+    let mut domain58: Felt = felt_0;
+    let mut domain59: Felt = felt_0;
+    let mut domain60: Felt = felt_0;
+    let mut domain61: Felt = felt_0;
+    let mut domain62: Felt = felt_0;
+    let mut domain63: Felt = felt_0;
+    let mut domain64: Felt = felt_0;
+    let mut domain65: Felt = felt_0;
+    let mut domain66: Felt = felt_0;
+    let mut domain67: Felt = felt_0;
+    let mut domain68: Felt = felt_0;
+    let mut domain69: Felt = felt_0;
+    let mut domain70: Felt = felt_0;
+    let mut domain71: Felt = felt_0;
+    let mut domain72: Felt = felt_0;
+    let mut domain73: Felt = felt_0;
+    let mut domain74: Felt = felt_0;
+    let mut domain75: Felt = felt_0;
+    let mut domain76: Felt = felt_0;
+    let mut domain77: Felt = felt_0;
+    let mut domain78: Felt = felt_0;
+    let mut domain79: Felt = felt_0;
+    let mut domain80: Felt = felt_0;
+    let mut domain81: Felt = felt_0;
+    let mut domain82: Felt = felt_0;
+    let mut domain83: Felt = felt_0;
+    let mut domain84: Felt = felt_0;
+    let mut domain85: Felt = felt_0;
+    let mut domain86: Felt = felt_0;
+    let mut domain87: Felt = felt_0;
+    let mut domain88: Felt = felt_0;
+    let mut domain89: Felt = felt_0;
+    let mut domain90: Felt = felt_0;
+    let mut domain91: Felt = felt_0;
+    let mut domain92: Felt = felt_0;
+    let mut domain93: Felt = felt_0;
+    let mut domain94: Felt = felt_0;
+    let mut domain95: Felt = felt_0;
+    let mut domain96: Felt = felt_0;
+    let mut domain97: Felt = felt_0;
+    let mut domain98: Felt = felt_0;
+    let mut domain99: Felt = felt_0;
+    let mut domain100: Felt = felt_0;
+    let mut domain101: Felt = felt_0;
+    let mut domain102: Felt = felt_0;
+    let mut domain103: Felt = felt_0;
+    let mut domain104: Felt = felt_0;
+    let mut domain105: Felt = felt_0;
+    let mut domain106: Felt = felt_0;
+    let mut domain107: Felt = felt_0;
+    let mut domain108: Felt = felt_0;
+    let mut domain109: Felt = felt_0;
+    let mut domain110: Felt = felt_0;
+    let mut domain111: Felt = felt_0;
+    let mut domain112: Felt = felt_0;
+    let mut domain113: Felt = felt_0;
+    let mut domain114: Felt = felt_0;
+    let mut domain115: Felt = felt_0;
+    let mut domain116: Felt = felt_0;
+    let mut domain117: Felt = felt_0;
+    let mut domain118: Felt = felt_0;
+    let mut domain119: Felt = felt_0;
+    let mut domain120: Felt = felt_0;
+    let mut domain121: Felt = felt_0;
+    let mut domain122: Felt = felt_0;
+    let mut domain123: Felt = felt_0;
+    let mut domain124: Felt = felt_0;
+    let mut domain125: Felt = felt_0;
+    let mut domain126: Felt = felt_0;
+    let mut domain127: Felt = felt_0;
+    let mut domain128: Felt = felt_0;
+    let mut domain129: Felt = felt_0;
+    let mut domain130: Felt = felt_0;
+    let mut domain131: Felt = felt_0;
+    let mut domain132: Felt = felt_0;
+    let mut domain133: Felt = felt_0;
+    let mut domain134: Felt = felt_0;
+    let mut domain135: Felt = felt_0;
+    let mut domain136: Felt = felt_0;
+    let mut domain137: Felt = felt_0;
+    let mut domain138: Felt = felt_0;
+    let mut domain139: Felt = felt_0;
+    let mut domain140: Felt = felt_0;
+    let mut domain141: Felt = felt_0;
+    let mut domain142: Felt = felt_0;
+    let mut domain143: Felt = felt_0;
+    let mut domain144: Felt = felt_0;
+    let mut domain145: Felt = felt_0;
+    let mut domain146: Felt = felt_0;
+    let mut domain147: Felt = felt_0;
+    let mut domain148: Felt = felt_0;
+    let mut domain149: Felt = felt_0;
+    let mut domain150: Felt = felt_0;
+    let mut domain151: Felt = felt_0;
+    let mut domain152: Felt = felt_0;
+    let mut domain153: Felt = felt_0;
+    let mut domain154: Felt = felt_0;
+    let mut domain155: Felt = felt_0;
+    let mut domain156: Felt = felt_0;
+    let mut domain157: Felt = felt_0;
+    let mut domain158: Felt = felt_0;
+    let mut domain159: Felt = felt_0;
+    let mut domain160: Felt = felt_0;
+    let mut domain161: Felt = felt_0;
+    let mut domain162: Felt = felt_0;
+    let mut domain163: Felt = felt_0;
+    let mut domain164: Felt = felt_0;
+    let mut domain165: Felt = felt_0;
+    let mut domain166: Felt = felt_0;
+    let mut domain167: Felt = felt_0;
+    let mut domain168: Felt = felt_0;
+    let mut domain169: Felt = felt_0;
+    let mut domain170: Felt = felt_0;
+    let mut domain171: Felt = felt_0;
+    let mut domain172: Felt = felt_0;
+    let mut domain173: Felt = felt_0;
+    let mut domain174: Felt = felt_0;
+    let mut domain175: Felt = felt_0;
+    let mut domain176: Felt = felt_0;
+    let mut domain177: Felt = felt_0;
+    let mut domain178: Felt = felt_0;
+    let mut domain179: Felt = felt_0;
+    let mut domain180: Felt = felt_0;
+    let mut domain181: Felt = felt_0;
+    let mut domain182: Felt = felt_0;
+    let mut domain183: Felt = felt_0;
+
     let pow11: Felt;
     let pow12: Felt;
     if (uses_add_mod_builtin != 0) {
@@ -656,6 +846,10 @@ pub fn eval_composition_polynomial_inner(
         pow11 = temp11;
         let temp12 = trace_generator.pow_felt(&(global_values.trace_length - add_mod_row_ratio));
         pow12 = temp12;
+
+        domain12 = pow11 - 1;
+        domain13 = point - 1;
+        domain14 = point - pow12;
     }
     let pow13: Felt;
     let pow14: Felt;
@@ -703,6 +897,28 @@ pub fn eval_composition_polynomial_inner(
         let temp31 =
             trace_generator.pow_felt(&(safe_div((felt_3 * global_values.trace_length), felt_4)?));
         pow31 = temp31;
+
+        domain15 = pow14 - felt_1;
+        domain16 = pow13 - pow31;
+        domain17 = pow13 - felt_1;
+        let mut temp = pow13 - pow16;
+        temp = temp * (pow13 - pow17);
+        temp = temp * (pow13 - pow18);
+        temp = temp * (pow13 - pow19);
+        temp = temp * (pow13 - pow20);
+        temp = temp * (pow13 - pow21);
+        temp = temp * (pow13 - pow22);
+        temp = temp * (pow13 - pow23);
+        temp = temp * (pow13 - pow24);
+        temp = temp * (pow13 - pow25);
+        temp = temp * (pow13 - pow26);
+        temp = temp * (pow13 - pow27);
+        temp = temp * (pow13 - pow28);
+        temp = temp * (pow13 - pow29);
+        temp = temp * (pow13 - pow30);
+        domain18 = temp * (domain17);
+        domain19 = point - felt_1;
+        domain20 = point - pow15;
     };
     let pow32: Felt;
     let pow33: Felt;
@@ -726,6 +942,13 @@ pub fn eval_composition_polynomial_inner(
         let temp36 = trace_generator
             .pow_felt(&(safe_div((felt_255 * global_values.trace_length), felt_256)?));
         pow36 = temp36;
+
+        domain21 = pow33 - 1;
+        domain22 = pow32 - 1;
+        domain23 = pow32 - pow36;
+        domain24 = pow32 - pow35;
+        domain25 = point - 1;
+        domain26 = point - pow34;
     }
     let pow37: Felt;
     let pow38: Felt;
@@ -753,6 +976,17 @@ pub fn eval_composition_polynomial_inner(
         let temp43 = trace_generator
             .pow_felt(&(safe_div((felt_255 * global_values.trace_length), felt_256)?));
         pow43 = temp43;
+
+        domain27 = pow40 - 1;
+        domain28 = pow39 - 1;
+        domain29 = pow38 - pow43;
+        domain30 = pow38 - pow42;
+        domain31 = pow38 - 1;
+        domain32 = pow37 - pow43;
+        domain33 = pow37 - pow42;
+        domain34 = pow37 - 1;
+        domain35 = point - 1;
+        domain36 = point - pow41;
     };
     let pow44: Felt;
     let pow45: Felt;
@@ -7473,350 +7707,7 @@ pub fn eval_composition_polynomial_inner(
         pow3392 = pow58 * pow3391; // pow(trace_generator, &(safe_div(((16335 * global_values.trace_length)), 16384))).
         pow3393 = pow58 * pow3392; // pow(trace_generator, &(safe_div(((65341 * global_values.trace_length)), 65536))).
         pow3394 = pow67 * pow3393; // pow(trace_generator, &(safe_div(((1021 * global_values.trace_length)), 1024))).
-    };
-    let pow3395;
-    let pow3396;
-    if (uses_mul_mod_builtin != 0) {
-        let temp3395 = point.pow_felt(&(safe_div(global_values.trace_length, mul_mod_row_ratio)?));
-        pow3395 = temp3395;
-        let temp3396 = trace_generator.pow_felt(&(global_values.trace_length - mul_mod_row_ratio));
-        pow3396 = temp3396;
-    };
-    let pow3397;
-    let pow3398;
-    let pow3399;
-    let pow3400;
-    let pow3401;
-    let pow3402;
-    let pow3403;
-    if (uses_pedersen_builtin != 0) {
-        let temp3397 =
-            point.pow_felt(&(safe_div(global_values.trace_length, pedersen_builtin_row_ratio)?));
-        pow3397 = temp3397;
-        pow3398 = pow3397 * pow3397; // pow(point, &(safe_div(((2 * global_values.trace_length)), pedersen_builtin_row_ratio))).
-        let temp3399 = point.pow_felt(
-            &(safe_div((felt_512 * global_values.trace_length), pedersen_builtin_row_ratio)?),
-        );
-        pow3399 = temp3399;
-        let temp3400 =
-            trace_generator.pow_felt(&(global_values.trace_length - pedersen_builtin_row_ratio));
-        pow3400 = temp3400;
-        let temp3401 = trace_generator.pow_felt(&(safe_div(global_values.trace_length, felt_2)?));
-        pow3401 = temp3401;
-        let temp3402 =
-            trace_generator.pow_felt(&(safe_div((felt_63 * global_values.trace_length), felt_64)?));
-        pow3402 = temp3402;
-        let temp3403 = trace_generator
-            .pow_felt(&(safe_div((felt_255 * global_values.trace_length), felt_256)?));
-        pow3403 = temp3403;
-    };
-    let pow3404;
-    let pow3405;
-    let pow3406;
-    let pow3407;
-    let pow3408;
-    let pow3409;
-    let pow3410;
-    let pow3411;
-    let pow3412;
-    let pow3413;
-    let pow3414;
-    let pow3415;
-    let pow3416;
-    let pow3417;
-    let pow3418;
-    let pow3419;
-    let pow3420;
-    let pow3421;
-    let pow3422;
-    let pow3423;
-    let pow3424;
-    if (uses_poseidon_builtin != 0) {
-        let temp3404 = point.pow_felt(&(safe_div(global_values.trace_length, poseidon_row_ratio)?));
-        pow3404 = temp3404;
-        pow3405 = pow3404 * pow3404; // pow(point, &(safe_div(((2 * global_values.trace_length)), poseidon_row_ratio))).
-        let temp3406 =
-            point.pow_felt(&(safe_div((felt_8 * global_values.trace_length), poseidon_row_ratio)?));
-        pow3406 = temp3406;
-        let temp3407 = point
-            .pow_felt(&(safe_div((felt_32 * global_values.trace_length), poseidon_row_ratio)?));
-        pow3407 = temp3407;
-        pow3408 = pow3407 * pow3407; // pow(point, &(safe_div(((64 * global_values.trace_length)), poseidon_row_ratio))).
-        let temp3409 = trace_generator
-            .pow_felt(&(global_values.trace_length - (safe_div(poseidon_row_ratio, felt_2)?)));
-        pow3409 = temp3409;
-        let temp3410 =
-            trace_generator.pow_felt(&(safe_div((felt_21 * global_values.trace_length), felt_32)?));
-        pow3410 = temp3410;
-        let temp3411 =
-            trace_generator.pow_felt(&(safe_div((felt_5 * global_values.trace_length), felt_8)?));
-        pow3411 = temp3411;
-        let temp3412 =
-            trace_generator.pow_felt(&(safe_div((felt_19 * global_values.trace_length), felt_32)?));
-        pow3412 = temp3412;
-        let temp3413 =
-            trace_generator.pow_felt(&(safe_div((felt_63 * global_values.trace_length), felt_64)?));
-        pow3413 = temp3413;
-        let temp3414 =
-            trace_generator.pow_felt(&(safe_div((felt_61 * global_values.trace_length), felt_64)?));
-        pow3414 = temp3414;
-        let temp3415 =
-            trace_generator.pow_felt(&(safe_div((felt_15 * global_values.trace_length), felt_16)?));
-        pow3415 = temp3415;
-        let temp3416 =
-            trace_generator.pow_felt(&(safe_div((felt_29 * global_values.trace_length), felt_32)?));
-        pow3416 = temp3416;
-        let temp3417 =
-            trace_generator.pow_felt(&(safe_div((felt_7 * global_values.trace_length), felt_8)?));
-        pow3417 = temp3417;
-        let temp3418 =
-            trace_generator.pow_felt(&(safe_div((felt_27 * global_values.trace_length), felt_32)?));
-        pow3418 = temp3418;
-        let temp3419 =
-            trace_generator.pow_felt(&(safe_div((felt_13 * global_values.trace_length), felt_16)?));
-        pow3419 = temp3419;
-        let temp3420 =
-            trace_generator.pow_felt(&(safe_div((felt_25 * global_values.trace_length), felt_32)?));
-        pow3420 = temp3420;
-        let temp3421 =
-            trace_generator.pow_felt(&(safe_div((felt_23 * global_values.trace_length), felt_32)?));
-        pow3421 = temp3421;
-        let temp3422 =
-            trace_generator.pow_felt(&(safe_div((felt_11 * global_values.trace_length), felt_16)?));
-        pow3422 = temp3422;
-        let temp3423 =
-            trace_generator.pow_felt(&(safe_div((felt_31 * global_values.trace_length), felt_32)?));
-        pow3423 = temp3423;
-        let temp3424 =
-            trace_generator.pow_felt(&(safe_div((felt_3 * global_values.trace_length), felt_4)?));
-        pow3424 = temp3424;
-    };
-    let pow3425;
-    let pow3426;
-    if (uses_range_check96_builtin != 0) {
-        let temp3425 = point
-            .pow_felt(&(safe_div(global_values.trace_length, range_check96_builtin_row_ratio)?));
-        pow3425 = temp3425;
-        let temp3426 = trace_generator
-            .pow_felt(&(global_values.trace_length - range_check96_builtin_row_ratio));
-        pow3426 = temp3426;
-    };
-    let pow3427;
-    let pow3428;
-    if (uses_range_check_builtin != 0) {
-        let temp3427 =
-            point.pow_felt(&(safe_div(global_values.trace_length, range_check_builtin_row_ratio)?));
-        pow3427 = temp3427;
-        let temp3428 =
-            trace_generator.pow_felt(&(global_values.trace_length - range_check_builtin_row_ratio));
-        pow3428 = temp3428;
-    };
 
-    // Compute domains.
-    let domain0 = pow5 - 1;
-    let domain1 = pow4 - pow10;
-    let domain2 = pow4 - 1;
-    let domain3 = pow3 - 1;
-    let domain4 = pow2 - 1;
-    let domain5 = pow1 - 1;
-    let domain6 = pow0 - 1;
-    let domain7 = point - pow9;
-    let domain8 = point - 1;
-    let domain9 = point - pow8;
-    let domain10 = point - pow7;
-    let domain11 = point - pow6;
-    let domain12: Felt;
-    let domain13: Felt;
-    let domain14: Felt;
-    if (uses_add_mod_builtin != 0) {
-        domain12 = pow11 - 1;
-        domain13 = point - 1;
-        domain14 = point - pow12;
-    }
-    let domain15: Felt;
-    let domain16: Felt;
-    let domain17: Felt;
-    let domain18: Felt;
-    let domain19: Felt;
-    let domain20: Felt;
-    if (uses_bitwise_builtin != 0) {
-        domain15 = pow14 - felt_1;
-        domain16 = pow13 - pow31;
-        domain17 = pow13 - felt_1;
-        let temp = pow13 - pow16;
-        temp = temp * (pow13 - pow17);
-        temp = temp * (pow13 - pow18);
-        temp = temp * (pow13 - pow19);
-        temp = temp * (pow13 - pow20);
-        temp = temp * (pow13 - pow21);
-        temp = temp * (pow13 - pow22);
-        temp = temp * (pow13 - pow23);
-        temp = temp * (pow13 - pow24);
-        temp = temp * (pow13 - pow25);
-        temp = temp * (pow13 - pow26);
-        temp = temp * (pow13 - pow27);
-        temp = temp * (pow13 - pow28);
-        temp = temp * (pow13 - pow29);
-        temp = temp * (pow13 - pow30);
-        domain18 = temp * (domain17);
-        domain19 = point - felt_1;
-        domain20 = point - pow15;
-    }
-    let domain21: Felt;
-    let domain22: Felt;
-    let domain23: Felt;
-    let domain24: Felt;
-    let domain25: Felt;
-    let domain26: Felt;
-    if (uses_ec_op_builtin != 0) {
-        domain21 = pow33 - 1;
-        domain22 = pow32 - 1;
-        domain23 = pow32 - pow36;
-        domain24 = pow32 - pow35;
-        domain25 = point - 1;
-        domain26 = point - pow34;
-    }
-    let domain27: Felt;
-    let domain28: Felt;
-    let domain29: Felt;
-    let domain30: Felt;
-    let domain31: Felt;
-    let domain32: Felt;
-    let domain33: Felt;
-    let domain34: Felt;
-    let domain35: Felt;
-    let domain36: Felt;
-    if (uses_ecdsa_builtin != 0) {
-        domain27 = pow40 - 1;
-        domain28 = pow39 - 1;
-        domain29 = pow38 - pow43;
-        domain30 = pow38 - pow42;
-        domain31 = pow38 - 1;
-        domain32 = pow37 - pow43;
-        domain33 = pow37 - pow42;
-        domain34 = pow37 - 1;
-        domain35 = point - 1;
-        domain36 = point - pow41;
-    }
-    let domain37: Felt;
-    let domain38: Felt;
-    let domain39: Felt;
-    let domain40: Felt;
-    let domain41: Felt;
-    let domain42: Felt;
-    let domain43: Felt;
-    let domain44: Felt;
-    let domain45: Felt;
-    let domain46: Felt;
-    let domain47: Felt;
-    let domain48: Felt;
-    let domain49: Felt;
-    let domain50: Felt;
-    let domain51: Felt;
-    let domain52: Felt;
-    let domain53: Felt;
-    let domain54: Felt;
-    let domain55: Felt;
-    let domain56: Felt;
-    let domain57: Felt;
-    let domain58: Felt;
-    let domain59: Felt;
-    let domain60: Felt;
-    let domain61: Felt;
-    let domain62: Felt;
-    let domain63: Felt;
-    let domain64: Felt;
-    let domain65: Felt;
-    let domain66: Felt;
-    let domain67: Felt;
-    let domain68: Felt;
-    let domain69: Felt;
-    let domain70: Felt;
-    let domain71: Felt;
-    let domain72: Felt;
-    let domain73: Felt;
-    let domain74: Felt;
-    let domain75: Felt;
-    let domain76: Felt;
-    let domain77: Felt;
-    let domain78: Felt;
-    let domain79: Felt;
-    let domain80: Felt;
-    let domain81: Felt;
-    let domain82: Felt;
-    let domain83: Felt;
-    let domain84: Felt;
-    let domain85: Felt;
-    let domain86: Felt;
-    let domain87: Felt;
-    let domain88: Felt;
-    let domain89: Felt;
-    let domain90: Felt;
-    let domain91: Felt;
-    let domain92: Felt;
-    let domain93: Felt;
-    let domain94: Felt;
-    let domain95: Felt;
-    let domain96: Felt;
-    let domain97: Felt;
-    let domain98: Felt;
-    let domain99: Felt;
-    let domain100: Felt;
-    let domain101: Felt;
-    let domain102: Felt;
-    let domain103: Felt;
-    let domain104: Felt;
-    let domain105: Felt;
-    let domain106: Felt;
-    let domain107: Felt;
-    let domain108: Felt;
-    let domain109: Felt;
-    let domain110: Felt;
-    let domain111: Felt;
-    let domain112: Felt;
-    let domain113: Felt;
-    let domain114: Felt;
-    let domain115: Felt;
-    let domain116: Felt;
-    let domain117: Felt;
-    let domain118: Felt;
-    let domain119: Felt;
-    let domain120: Felt;
-    let domain121: Felt;
-    let domain122: Felt;
-    let domain123: Felt;
-    let domain124: Felt;
-    let domain125: Felt;
-    let domain126: Felt;
-    let domain127: Felt;
-    let domain128: Felt;
-    let domain129: Felt;
-    let domain130: Felt;
-    let domain131: Felt;
-    let domain132: Felt;
-    let domain133: Felt;
-    let domain134: Felt;
-    let domain135: Felt;
-    let domain136: Felt;
-    let domain137: Felt;
-    let domain138: Felt;
-    let domain139: Felt;
-    let domain140: Felt;
-    let domain141: Felt;
-    let domain142: Felt;
-    let domain143: Felt;
-    let domain144: Felt;
-    let domain145: Felt;
-    let domain146: Felt;
-    let domain147: Felt;
-    let domain148: Felt;
-    let domain149: Felt;
-    let domain150: Felt;
-    let domain151: Felt;
-    let domain152: Felt;
-    let domain153: Felt;
-    let domain154: Felt;
-    if (uses_keccak_builtin != 0) {
         domain37 = pow49 - 1;
         domain38 = pow48 - 1;
         let mut temp = pow48 - pow850;
@@ -11495,24 +11386,46 @@ pub fn eval_composition_polynomial_inner(
         domain152 = temp * (domain112);
         domain153 = point - 1;
         domain154 = point - pow50;
-    }
-    let domain155: Felt;
-    let domain156: Felt;
-    let domain157: Felt;
+    };
+    let pow3395;
+    let pow3396;
     if (uses_mul_mod_builtin != 0) {
+        let temp3395 = point.pow_felt(&(safe_div(global_values.trace_length, mul_mod_row_ratio)?));
+        pow3395 = temp3395;
+        let temp3396 = trace_generator.pow_felt(&(global_values.trace_length - mul_mod_row_ratio));
+        pow3396 = temp3396;
         domain155 = pow3395 - 1;
         domain156 = point - 1;
         domain157 = point - pow3396;
-    }
-    let domain158: Felt;
-    let domain159: Felt;
-    let domain160: Felt;
-    let domain161: Felt;
-    let domain162: Felt;
-    let domain163: Felt;
-    let domain164: Felt;
-    let domain165: Felt;
+    };
+    let pow3397;
+    let pow3398;
+    let pow3399;
+    let pow3400;
+    let pow3401;
+    let pow3402;
+    let pow3403;
     if (uses_pedersen_builtin != 0) {
+        let temp3397 =
+            point.pow_felt(&(safe_div(global_values.trace_length, pedersen_builtin_row_ratio)?));
+        pow3397 = temp3397;
+        pow3398 = pow3397 * pow3397; // pow(point, &(safe_div(((2 * global_values.trace_length)), pedersen_builtin_row_ratio))).
+        let temp3399 = point.pow_felt(
+            &(safe_div((felt_512 * global_values.trace_length), pedersen_builtin_row_ratio)?),
+        );
+        pow3399 = temp3399;
+        let temp3400 =
+            trace_generator.pow_felt(&(global_values.trace_length - pedersen_builtin_row_ratio));
+        pow3400 = temp3400;
+        let temp3401 = trace_generator.pow_felt(&(safe_div(global_values.trace_length, felt_2)?));
+        pow3401 = temp3401;
+        let temp3402 =
+            trace_generator.pow_felt(&(safe_div((felt_63 * global_values.trace_length), felt_64)?));
+        pow3402 = temp3402;
+        let temp3403 = trace_generator
+            .pow_felt(&(safe_div((felt_255 * global_values.trace_length), felt_256)?));
+        pow3403 = temp3403;
+
         domain158 = pow3399 - 1;
         domain159 = pow3398 - 1;
         domain160 = pow3398 - pow3403;
@@ -11521,20 +11434,88 @@ pub fn eval_composition_polynomial_inner(
         domain163 = pow3397 - 1;
         domain164 = point - pow3400;
         domain165 = point - 1;
-    }
-    let domain166: Felt;
-    let domain167: Felt;
-    let domain168: Felt;
-    let domain169: Felt;
-    let domain170: Felt;
-    let domain171: Felt;
-    let domain172: Felt;
-    let domain173: Felt;
-    let domain174: Felt;
-    let domain175: Felt;
-    let domain176: Felt;
-    let domain177: Felt;
+    };
+    let pow3404;
+    let pow3405;
+    let pow3406;
+    let pow3407;
+    let pow3408;
+    let pow3409;
+    let pow3410;
+    let pow3411;
+    let pow3412;
+    let pow3413;
+    let pow3414;
+    let pow3415;
+    let pow3416;
+    let pow3417;
+    let pow3418;
+    let pow3419;
+    let pow3420;
+    let pow3421;
+    let pow3422;
+    let pow3423;
+    let pow3424;
     if (uses_poseidon_builtin != 0) {
+        let temp3404 = point.pow_felt(&(safe_div(global_values.trace_length, poseidon_row_ratio)?));
+        pow3404 = temp3404;
+        pow3405 = pow3404 * pow3404; // pow(point, &(safe_div(((2 * global_values.trace_length)), poseidon_row_ratio))).
+        let temp3406 =
+            point.pow_felt(&(safe_div((felt_8 * global_values.trace_length), poseidon_row_ratio)?));
+        pow3406 = temp3406;
+        let temp3407 = point
+            .pow_felt(&(safe_div((felt_32 * global_values.trace_length), poseidon_row_ratio)?));
+        pow3407 = temp3407;
+        pow3408 = pow3407 * pow3407; // pow(point, &(safe_div(((64 * global_values.trace_length)), poseidon_row_ratio))).
+        let temp3409 = trace_generator
+            .pow_felt(&(global_values.trace_length - (safe_div(poseidon_row_ratio, felt_2)?)));
+        pow3409 = temp3409;
+        let temp3410 =
+            trace_generator.pow_felt(&(safe_div((felt_21 * global_values.trace_length), felt_32)?));
+        pow3410 = temp3410;
+        let temp3411 =
+            trace_generator.pow_felt(&(safe_div((felt_5 * global_values.trace_length), felt_8)?));
+        pow3411 = temp3411;
+        let temp3412 =
+            trace_generator.pow_felt(&(safe_div((felt_19 * global_values.trace_length), felt_32)?));
+        pow3412 = temp3412;
+        let temp3413 =
+            trace_generator.pow_felt(&(safe_div((felt_63 * global_values.trace_length), felt_64)?));
+        pow3413 = temp3413;
+        let temp3414 =
+            trace_generator.pow_felt(&(safe_div((felt_61 * global_values.trace_length), felt_64)?));
+        pow3414 = temp3414;
+        let temp3415 =
+            trace_generator.pow_felt(&(safe_div((felt_15 * global_values.trace_length), felt_16)?));
+        pow3415 = temp3415;
+        let temp3416 =
+            trace_generator.pow_felt(&(safe_div((felt_29 * global_values.trace_length), felt_32)?));
+        pow3416 = temp3416;
+        let temp3417 =
+            trace_generator.pow_felt(&(safe_div((felt_7 * global_values.trace_length), felt_8)?));
+        pow3417 = temp3417;
+        let temp3418 =
+            trace_generator.pow_felt(&(safe_div((felt_27 * global_values.trace_length), felt_32)?));
+        pow3418 = temp3418;
+        let temp3419 =
+            trace_generator.pow_felt(&(safe_div((felt_13 * global_values.trace_length), felt_16)?));
+        pow3419 = temp3419;
+        let temp3420 =
+            trace_generator.pow_felt(&(safe_div((felt_25 * global_values.trace_length), felt_32)?));
+        pow3420 = temp3420;
+        let temp3421 =
+            trace_generator.pow_felt(&(safe_div((felt_23 * global_values.trace_length), felt_32)?));
+        pow3421 = temp3421;
+        let temp3422 =
+            trace_generator.pow_felt(&(safe_div((felt_11 * global_values.trace_length), felt_16)?));
+        pow3422 = temp3422;
+        let temp3423 =
+            trace_generator.pow_felt(&(safe_div((felt_31 * global_values.trace_length), felt_32)?));
+        pow3423 = temp3423;
+        let temp3424 =
+            trace_generator.pow_felt(&(safe_div((felt_3 * global_values.trace_length), felt_4)?));
+        pow3424 = temp3424;
+
         domain166 = pow3408 - 1;
         domain167 = pow3407 - 1;
         domain168 = pow3406 - 1;
@@ -11561,23 +11542,35 @@ pub fn eval_composition_polynomial_inner(
         domain175 = temp * (domain172);
         domain176 = point - 1;
         domain177 = point - pow3409;
-    }
-    let domain178: Felt;
-    let domain179: Felt;
-    let domain180: Felt;
+    };
+    let pow3425;
+    let pow3426;
     if (uses_range_check96_builtin != 0) {
+        let temp3425 = point
+            .pow_felt(&(safe_div(global_values.trace_length, range_check96_builtin_row_ratio)?));
+        pow3425 = temp3425;
+        let temp3426 = trace_generator
+            .pow_felt(&(global_values.trace_length - range_check96_builtin_row_ratio));
+        pow3426 = temp3426;
+
         domain178 = pow3425 - 1;
         domain179 = point - pow3426;
         domain180 = point - 1;
-    }
-    let domain181: Felt;
-    let domain182: Felt;
-    let domain183: Felt;
+    };
+    let pow3427;
+    let pow3428;
     if (uses_range_check_builtin != 0) {
+        let temp3427 =
+            point.pow_felt(&(safe_div(global_values.trace_length, range_check_builtin_row_ratio)?));
+        pow3427 = temp3427;
+        let temp3428 =
+            trace_generator.pow_felt(&(global_values.trace_length - range_check_builtin_row_ratio));
+        pow3428 = temp3428;
+
         domain181 = pow3427 - 1;
         domain182 = point - pow3428;
         domain183 = point - 1;
-    }
+    };
 
     // Fetch mask variables.
     let cpu_decode_opcode_range_check_column_column_row_expr0 = mask_values[0];
@@ -15812,7 +15805,7 @@ pub fn eval_composition_polynomial_inner(
                     * global_values.add_mod_interaction_elm)
                 * global_values.add_mod_interaction_elm
                 + add_mod_carry1_bit_column_row_expr610 * add_mod_carry1_sign_column_row_expr611)
-                * (global_values.add_mod_interaction_elm - 79228162514264337593543950336)
+                * (global_values.add_mod_interaction_elm - felt_79228162514264337593543950336)
             - ((mem_pool_value_column_row_expr624
                 + (mem_pool_value_column_row_expr625
                     + mem_pool_value_column_row_expr626 * global_values.add_mod_interaction_elm)
@@ -16009,19 +16002,19 @@ pub fn eval_composition_polynomial_inner(
                 + (mul_mod_carry2_0
                     + (mul_mod_carry3_0
                         + (mul_mod_carry4_0
-                            + (mul_mod_carry5_0 - 316912650057057350374175801344)
+                            + (mul_mod_carry5_0 - felt_316912650057057350374175801344)
                                 * global_values.mul_mod_interaction_elm
-                            - 316912650057057350374175801344)
+                            - felt_316912650057057350374175801344)
                             * global_values.mul_mod_interaction_elm
-                        - 316912650057057350374175801344)
+                        - felt_316912650057057350374175801344)
                         * global_values.mul_mod_interaction_elm
-                    - 316912650057057350374175801344)
+                    - felt_316912650057057350374175801344)
                     * global_values.mul_mod_interaction_elm
-                - 316912650057057350374175801344)
+                - felt_316912650057057350374175801344)
                 * global_values.mul_mod_interaction_elm
                 + mul_mod_carry0_0
-                - 316912650057057350374175801344)
-                * (global_values.mul_mod_interaction_elm - 79228162514264337593543950336)
+                - felt_316912650057057350374175801344)
+                * (global_values.mul_mod_interaction_elm - felt_79228162514264337593543950336)
             - ((mem_pool_value_column_row_expr676
                 + (mem_pool_value_column_row_expr677
                     + mem_pool_value_column_row_expr678 * global_values.mul_mod_interaction_elm)
@@ -16058,508 +16051,6 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
     dynamic_params: &DynamicParams,
 ) -> Felt {
     // Fetch dynamic params.
-    let add_mod_a0_suboffset = Felt::from(dynamic_params.add_mod_a0_suboffset);
-    let add_mod_a1_suboffset = Felt::from(dynamic_params.add_mod_a1_suboffset);
-    let add_mod_a2_suboffset = Felt::from(dynamic_params.add_mod_a2_suboffset);
-    let add_mod_a3_suboffset = Felt::from(dynamic_params.add_mod_a3_suboffset);
-    let add_mod_a_offset_suboffset = Felt::from(dynamic_params.add_mod_a_offset_suboffset);
-    let add_mod_b0_suboffset = Felt::from(dynamic_params.add_mod_b0_suboffset);
-    let add_mod_b1_suboffset = Felt::from(dynamic_params.add_mod_b1_suboffset);
-    let add_mod_b2_suboffset = Felt::from(dynamic_params.add_mod_b2_suboffset);
-    let add_mod_b3_suboffset = Felt::from(dynamic_params.add_mod_b3_suboffset);
-    let add_mod_b_offset_suboffset = Felt::from(dynamic_params.add_mod_b_offset_suboffset);
-    let add_mod_c0_suboffset = Felt::from(dynamic_params.add_mod_c0_suboffset);
-    let add_mod_c1_suboffset = Felt::from(dynamic_params.add_mod_c1_suboffset);
-    let add_mod_c2_suboffset = Felt::from(dynamic_params.add_mod_c2_suboffset);
-    let add_mod_c3_suboffset = Felt::from(dynamic_params.add_mod_c3_suboffset);
-    let add_mod_c_offset_suboffset = Felt::from(dynamic_params.add_mod_c_offset_suboffset);
-    let add_mod_carry1_bit_column = Felt::from(dynamic_params.add_mod_carry1_bit_column);
-    let add_mod_carry1_bit_offset = Felt::from(dynamic_params.add_mod_carry1_bit_offset);
-    let add_mod_carry1_sign_column = Felt::from(dynamic_params.add_mod_carry1_sign_column);
-    let add_mod_carry1_sign_offset = Felt::from(dynamic_params.add_mod_carry1_sign_offset);
-    let add_mod_carry2_bit_column = Felt::from(dynamic_params.add_mod_carry2_bit_column);
-    let add_mod_carry2_bit_offset = Felt::from(dynamic_params.add_mod_carry2_bit_offset);
-    let add_mod_carry2_sign_column = Felt::from(dynamic_params.add_mod_carry2_sign_column);
-    let add_mod_carry2_sign_offset = Felt::from(dynamic_params.add_mod_carry2_sign_offset);
-    let add_mod_carry3_bit_column = Felt::from(dynamic_params.add_mod_carry3_bit_column);
-    let add_mod_carry3_bit_offset = Felt::from(dynamic_params.add_mod_carry3_bit_offset);
-    let add_mod_carry3_sign_column = Felt::from(dynamic_params.add_mod_carry3_sign_column);
-    let add_mod_carry3_sign_offset = Felt::from(dynamic_params.add_mod_carry3_sign_offset);
-    let add_mod_n_suboffset = Felt::from(dynamic_params.add_mod_n_suboffset);
-    let add_mod_offsets_ptr_suboffset = Felt::from(dynamic_params.add_mod_offsets_ptr_suboffset);
-    let add_mod_p0_suboffset = Felt::from(dynamic_params.add_mod_p0_suboffset);
-    let add_mod_p1_suboffset = Felt::from(dynamic_params.add_mod_p1_suboffset);
-    let add_mod_p2_suboffset = Felt::from(dynamic_params.add_mod_p2_suboffset);
-    let add_mod_p3_suboffset = Felt::from(dynamic_params.add_mod_p3_suboffset);
-    let add_mod_row_ratio = Felt::from(dynamic_params.add_mod_row_ratio);
-    let add_mod_sub_p_bit_column = Felt::from(dynamic_params.add_mod_sub_p_bit_column);
-    let add_mod_sub_p_bit_offset = Felt::from(dynamic_params.add_mod_sub_p_bit_offset);
-    let add_mod_values_ptr_suboffset = Felt::from(dynamic_params.add_mod_values_ptr_suboffset);
-    let bitwise_diluted_var_pool_suboffset =
-        Felt::from(dynamic_params.bitwise_diluted_var_pool_suboffset);
-    let bitwise_row_ratio = Felt::from(dynamic_params.bitwise_row_ratio);
-    let bitwise_trim_unpacking192_suboffset =
-        Felt::from(dynamic_params.bitwise_trim_unpacking192_suboffset);
-    let bitwise_trim_unpacking193_suboffset =
-        Felt::from(dynamic_params.bitwise_trim_unpacking193_suboffset);
-    let bitwise_trim_unpacking194_suboffset =
-        Felt::from(dynamic_params.bitwise_trim_unpacking194_suboffset);
-    let bitwise_trim_unpacking195_suboffset =
-        Felt::from(dynamic_params.bitwise_trim_unpacking195_suboffset);
-    let bitwise_var_pool_suboffset = Felt::from(dynamic_params.bitwise_var_pool_suboffset);
-    let bitwise_x_or_y_suboffset = Felt::from(dynamic_params.bitwise_x_or_y_suboffset);
-    let cpu_decode_mem_inst_suboffset = Felt::from(dynamic_params.cpu_decode_mem_inst_suboffset);
-    let cpu_decode_off0_suboffset = Felt::from(dynamic_params.cpu_decode_off0_suboffset);
-    let cpu_decode_off1_suboffset = Felt::from(dynamic_params.cpu_decode_off1_suboffset);
-    let cpu_decode_off2_suboffset = Felt::from(dynamic_params.cpu_decode_off2_suboffset);
-    let cpu_decode_opcode_range_check_column_column =
-        Felt::from(dynamic_params.cpu_decode_opcode_range_check_column_column);
-    let cpu_decode_opcode_range_check_column_offset =
-        Felt::from(dynamic_params.cpu_decode_opcode_range_check_column_offset);
-    let cpu_operands_mem_dst_suboffset = Felt::from(dynamic_params.cpu_operands_mem_dst_suboffset);
-    let cpu_operands_mem_op0_suboffset = Felt::from(dynamic_params.cpu_operands_mem_op0_suboffset);
-    let cpu_operands_mem_op1_suboffset = Felt::from(dynamic_params.cpu_operands_mem_op1_suboffset);
-    let cpu_operands_ops_mul_column = Felt::from(dynamic_params.cpu_operands_ops_mul_column);
-    let cpu_operands_ops_mul_offset = Felt::from(dynamic_params.cpu_operands_ops_mul_offset);
-    let cpu_operands_res_column = Felt::from(dynamic_params.cpu_operands_res_column);
-    let cpu_operands_res_offset = Felt::from(dynamic_params.cpu_operands_res_offset);
-    let cpu_registers_ap_column = Felt::from(dynamic_params.cpu_registers_ap_column);
-    let cpu_registers_ap_offset = Felt::from(dynamic_params.cpu_registers_ap_offset);
-    let cpu_registers_fp_column = Felt::from(dynamic_params.cpu_registers_fp_column);
-    let cpu_registers_fp_offset = Felt::from(dynamic_params.cpu_registers_fp_offset);
-    let cpu_update_registers_update_pc_tmp0_column =
-        Felt::from(dynamic_params.cpu_update_registers_update_pc_tmp0_column);
-    let cpu_update_registers_update_pc_tmp0_offset =
-        Felt::from(dynamic_params.cpu_update_registers_update_pc_tmp0_offset);
-    let cpu_update_registers_update_pc_tmp1_column =
-        Felt::from(dynamic_params.cpu_update_registers_update_pc_tmp1_column);
-    let cpu_update_registers_update_pc_tmp1_offset =
-        Felt::from(dynamic_params.cpu_update_registers_update_pc_tmp1_offset);
-    let cpu_component_step = Felt::from(dynamic_params.cpu_component_step);
-    let diluted_check_cumulative_value_column =
-        Felt::from(dynamic_params.diluted_check_cumulative_value_column);
-    let diluted_check_cumulative_value_offset =
-        Felt::from(dynamic_params.diluted_check_cumulative_value_offset);
-    let diluted_check_permutation_cum_prod0_column =
-        Felt::from(dynamic_params.diluted_check_permutation_cum_prod0_column);
-    let diluted_check_permutation_cum_prod0_offset =
-        Felt::from(dynamic_params.diluted_check_permutation_cum_prod0_offset);
-    let diluted_check_permuted_values_column =
-        Felt::from(dynamic_params.diluted_check_permuted_values_column);
-    let diluted_check_permuted_values_offset =
-        Felt::from(dynamic_params.diluted_check_permuted_values_offset);
-    let diluted_pool_column = Felt::from(dynamic_params.diluted_pool_column);
-    let diluted_pool_offset = Felt::from(dynamic_params.diluted_pool_offset);
-    let diluted_units_row_ratio = Felt::from(dynamic_params.diluted_units_row_ratio);
-    let ec_op_doubled_points_x_column = Felt::from(dynamic_params.ec_op_doubled_points_x_column);
-    let ec_op_doubled_points_x_offset = Felt::from(dynamic_params.ec_op_doubled_points_x_offset);
-    let ec_op_doubled_points_y_column = Felt::from(dynamic_params.ec_op_doubled_points_y_column);
-    let ec_op_doubled_points_y_offset = Felt::from(dynamic_params.ec_op_doubled_points_y_offset);
-    let ec_op_doubling_slope_column = Felt::from(dynamic_params.ec_op_doubling_slope_column);
-    let ec_op_doubling_slope_offset = Felt::from(dynamic_params.ec_op_doubling_slope_offset);
-    let ec_op_ec_subset_sum_bit_unpacking_prod_ones192_column =
-        Felt::from(dynamic_params.ec_op_ec_subset_sum_bit_unpacking_prod_ones192_column);
-    let ec_op_ec_subset_sum_bit_unpacking_prod_ones192_offset =
-        Felt::from(dynamic_params.ec_op_ec_subset_sum_bit_unpacking_prod_ones192_offset);
-    let ec_op_ec_subset_sum_bit_unpacking_prod_ones196_column =
-        Felt::from(dynamic_params.ec_op_ec_subset_sum_bit_unpacking_prod_ones196_column);
-    let ec_op_ec_subset_sum_bit_unpacking_prod_ones196_offset =
-        Felt::from(dynamic_params.ec_op_ec_subset_sum_bit_unpacking_prod_ones196_offset);
-    let ec_op_ec_subset_sum_partial_sum_x_column =
-        Felt::from(dynamic_params.ec_op_ec_subset_sum_partial_sum_x_column);
-    let ec_op_ec_subset_sum_partial_sum_x_offset =
-        Felt::from(dynamic_params.ec_op_ec_subset_sum_partial_sum_x_offset);
-    let ec_op_ec_subset_sum_partial_sum_y_column =
-        Felt::from(dynamic_params.ec_op_ec_subset_sum_partial_sum_y_column);
-    let ec_op_ec_subset_sum_partial_sum_y_offset =
-        Felt::from(dynamic_params.ec_op_ec_subset_sum_partial_sum_y_offset);
-    let ec_op_ec_subset_sum_selector_column =
-        Felt::from(dynamic_params.ec_op_ec_subset_sum_selector_column);
-    let ec_op_ec_subset_sum_selector_offset =
-        Felt::from(dynamic_params.ec_op_ec_subset_sum_selector_offset);
-    let ec_op_ec_subset_sum_slope_column =
-        Felt::from(dynamic_params.ec_op_ec_subset_sum_slope_column);
-    let ec_op_ec_subset_sum_slope_offset =
-        Felt::from(dynamic_params.ec_op_ec_subset_sum_slope_offset);
-    let ec_op_ec_subset_sum_x_diff_inv_column =
-        Felt::from(dynamic_params.ec_op_ec_subset_sum_x_diff_inv_column);
-    let ec_op_ec_subset_sum_x_diff_inv_offset =
-        Felt::from(dynamic_params.ec_op_ec_subset_sum_x_diff_inv_offset);
-    let ec_op_m_suboffset = Felt::from(dynamic_params.ec_op_m_suboffset);
-    let ec_op_p_x_suboffset = Felt::from(dynamic_params.ec_op_p_x_suboffset);
-    let ec_op_p_y_suboffset = Felt::from(dynamic_params.ec_op_p_y_suboffset);
-    let ec_op_q_x_suboffset = Felt::from(dynamic_params.ec_op_q_x_suboffset);
-    let ec_op_q_y_suboffset = Felt::from(dynamic_params.ec_op_q_y_suboffset);
-    let ec_op_r_x_suboffset = Felt::from(dynamic_params.ec_op_r_x_suboffset);
-    let ec_op_r_y_suboffset = Felt::from(dynamic_params.ec_op_r_y_suboffset);
-    let ec_op_builtin_row_ratio = Felt::from(dynamic_params.ec_op_builtin_row_ratio);
-    let ecdsa_message_suboffset = Felt::from(dynamic_params.ecdsa_message_suboffset);
-    let ecdsa_pubkey_suboffset = Felt::from(dynamic_params.ecdsa_pubkey_suboffset);
-    let ecdsa_signature0_add_results_inv_column =
-        Felt::from(dynamic_params.ecdsa_signature0_add_results_inv_column);
-    let ecdsa_signature0_add_results_inv_offset =
-        Felt::from(dynamic_params.ecdsa_signature0_add_results_inv_offset);
-    let ecdsa_signature0_add_results_slope_column =
-        Felt::from(dynamic_params.ecdsa_signature0_add_results_slope_column);
-    let ecdsa_signature0_add_results_slope_offset =
-        Felt::from(dynamic_params.ecdsa_signature0_add_results_slope_offset);
-    let ecdsa_signature0_doubling_slope_column =
-        Felt::from(dynamic_params.ecdsa_signature0_doubling_slope_column);
-    let ecdsa_signature0_doubling_slope_offset =
-        Felt::from(dynamic_params.ecdsa_signature0_doubling_slope_offset);
-    let ecdsa_signature0_exponentiate_generator_partial_sum_x_column =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_generator_partial_sum_x_column);
-    let ecdsa_signature0_exponentiate_generator_partial_sum_x_offset =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_generator_partial_sum_x_offset);
-    let ecdsa_signature0_exponentiate_generator_partial_sum_y_column =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_generator_partial_sum_y_column);
-    let ecdsa_signature0_exponentiate_generator_partial_sum_y_offset =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_generator_partial_sum_y_offset);
-    let ecdsa_signature0_exponentiate_generator_selector_column =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_generator_selector_column);
-    let ecdsa_signature0_exponentiate_generator_selector_offset =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_generator_selector_offset);
-    let ecdsa_signature0_exponentiate_generator_slope_column =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_generator_slope_column);
-    let ecdsa_signature0_exponentiate_generator_slope_offset =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_generator_slope_offset);
-    let ecdsa_signature0_exponentiate_generator_x_diff_inv_column =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_generator_x_diff_inv_column);
-    let ecdsa_signature0_exponentiate_generator_x_diff_inv_offset =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_generator_x_diff_inv_offset);
-    let ecdsa_signature0_exponentiate_key_partial_sum_x_column =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_x_column);
-    let ecdsa_signature0_exponentiate_key_partial_sum_x_offset =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_x_offset);
-    let ecdsa_signature0_exponentiate_key_partial_sum_y_column =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_y_column);
-    let ecdsa_signature0_exponentiate_key_partial_sum_y_offset =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_y_offset);
-    let ecdsa_signature0_exponentiate_key_selector_column =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_key_selector_column);
-    let ecdsa_signature0_exponentiate_key_selector_offset =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_key_selector_offset);
-    let ecdsa_signature0_exponentiate_key_slope_column =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_key_slope_column);
-    let ecdsa_signature0_exponentiate_key_slope_offset =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_key_slope_offset);
-    let ecdsa_signature0_exponentiate_key_x_diff_inv_column =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_key_x_diff_inv_column);
-    let ecdsa_signature0_exponentiate_key_x_diff_inv_offset =
-        Felt::from(dynamic_params.ecdsa_signature0_exponentiate_key_x_diff_inv_offset);
-    let ecdsa_signature0_extract_r_inv_column =
-        Felt::from(dynamic_params.ecdsa_signature0_extract_r_inv_column);
-    let ecdsa_signature0_extract_r_inv_offset =
-        Felt::from(dynamic_params.ecdsa_signature0_extract_r_inv_offset);
-    let ecdsa_signature0_extract_r_slope_column =
-        Felt::from(dynamic_params.ecdsa_signature0_extract_r_slope_column);
-    let ecdsa_signature0_extract_r_slope_offset =
-        Felt::from(dynamic_params.ecdsa_signature0_extract_r_slope_offset);
-    let ecdsa_signature0_key_points_x_column =
-        Felt::from(dynamic_params.ecdsa_signature0_key_points_x_column);
-    let ecdsa_signature0_key_points_x_offset =
-        Felt::from(dynamic_params.ecdsa_signature0_key_points_x_offset);
-    let ecdsa_signature0_key_points_y_column =
-        Felt::from(dynamic_params.ecdsa_signature0_key_points_y_column);
-    let ecdsa_signature0_key_points_y_offset =
-        Felt::from(dynamic_params.ecdsa_signature0_key_points_y_offset);
-    let ecdsa_signature0_q_x_squared_column =
-        Felt::from(dynamic_params.ecdsa_signature0_q_x_squared_column);
-    let ecdsa_signature0_q_x_squared_offset =
-        Felt::from(dynamic_params.ecdsa_signature0_q_x_squared_offset);
-    let ecdsa_signature0_r_w_inv_column =
-        Felt::from(dynamic_params.ecdsa_signature0_r_w_inv_column);
-    let ecdsa_signature0_r_w_inv_offset =
-        Felt::from(dynamic_params.ecdsa_signature0_r_w_inv_offset);
-    let ecdsa_signature0_z_inv_column = Felt::from(dynamic_params.ecdsa_signature0_z_inv_column);
-    let ecdsa_signature0_z_inv_offset = Felt::from(dynamic_params.ecdsa_signature0_z_inv_offset);
-    let ecdsa_builtin_row_ratio = Felt::from(dynamic_params.ecdsa_builtin_row_ratio);
-    let keccak_input_output_suboffset = Felt::from(dynamic_params.keccak_input_output_suboffset);
-    let keccak_keccak_diluted_column0_suboffset =
-        Felt::from(dynamic_params.keccak_keccak_diluted_column0_suboffset);
-    let keccak_keccak_diluted_column1_suboffset =
-        Felt::from(dynamic_params.keccak_keccak_diluted_column1_suboffset);
-    let keccak_keccak_diluted_column2_suboffset =
-        Felt::from(dynamic_params.keccak_keccak_diluted_column2_suboffset);
-    let keccak_keccak_diluted_column3_suboffset =
-        Felt::from(dynamic_params.keccak_keccak_diluted_column3_suboffset);
-    let keccak_keccak_parse_to_diluted_cumulative_sum_column =
-        Felt::from(dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column);
-    let keccak_keccak_parse_to_diluted_cumulative_sum_offset =
-        Felt::from(dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_offset);
-    let keccak_keccak_parse_to_diluted_final_reshaped_input_column =
-        Felt::from(dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column);
-    let keccak_keccak_parse_to_diluted_final_reshaped_input_offset =
-        Felt::from(dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_offset);
-    let keccak_keccak_parse_to_diluted_reshaped_intermediate_column =
-        Felt::from(dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column);
-    let keccak_keccak_parse_to_diluted_reshaped_intermediate_offset =
-        Felt::from(dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_offset);
-    let keccak_keccak_rotated_parity0_column =
-        Felt::from(dynamic_params.keccak_keccak_rotated_parity0_column);
-    let keccak_keccak_rotated_parity0_offset =
-        Felt::from(dynamic_params.keccak_keccak_rotated_parity0_offset);
-    let keccak_keccak_rotated_parity1_column =
-        Felt::from(dynamic_params.keccak_keccak_rotated_parity1_column);
-    let keccak_keccak_rotated_parity1_offset =
-        Felt::from(dynamic_params.keccak_keccak_rotated_parity1_offset);
-    let keccak_keccak_rotated_parity2_column =
-        Felt::from(dynamic_params.keccak_keccak_rotated_parity2_column);
-    let keccak_keccak_rotated_parity2_offset =
-        Felt::from(dynamic_params.keccak_keccak_rotated_parity2_offset);
-    let keccak_keccak_rotated_parity3_column =
-        Felt::from(dynamic_params.keccak_keccak_rotated_parity3_column);
-    let keccak_keccak_rotated_parity3_offset =
-        Felt::from(dynamic_params.keccak_keccak_rotated_parity3_offset);
-    let keccak_keccak_rotated_parity4_column =
-        Felt::from(dynamic_params.keccak_keccak_rotated_parity4_column);
-    let keccak_keccak_rotated_parity4_offset =
-        Felt::from(dynamic_params.keccak_keccak_rotated_parity4_offset);
-    let keccak_row_ratio = Felt::from(dynamic_params.keccak_row_ratio);
-    let mem_pool_addr_column = Felt::from(dynamic_params.mem_pool_addr_column);
-    let mem_pool_addr_offset = Felt::from(dynamic_params.mem_pool_addr_offset);
-    let mem_pool_value_column = Felt::from(dynamic_params.mem_pool_value_column);
-    let mem_pool_value_offset = Felt::from(dynamic_params.mem_pool_value_offset);
-    let memory_multi_column_perm_perm_cum_prod0_column =
-        Felt::from(dynamic_params.memory_multi_column_perm_perm_cum_prod0_column);
-    let memory_multi_column_perm_perm_cum_prod0_offset =
-        Felt::from(dynamic_params.memory_multi_column_perm_perm_cum_prod0_offset);
-    let memory_sorted_addr_column = Felt::from(dynamic_params.memory_sorted_addr_column);
-    let memory_sorted_addr_offset = Felt::from(dynamic_params.memory_sorted_addr_offset);
-    let memory_sorted_value_column = Felt::from(dynamic_params.memory_sorted_value_column);
-    let memory_sorted_value_offset = Felt::from(dynamic_params.memory_sorted_value_offset);
-    let memory_units_row_ratio = Felt::from(dynamic_params.memory_units_row_ratio);
-    let mul_mod_a0_suboffset = Felt::from(dynamic_params.mul_mod_a0_suboffset);
-    let mul_mod_a1_suboffset = Felt::from(dynamic_params.mul_mod_a1_suboffset);
-    let mul_mod_a2_suboffset = Felt::from(dynamic_params.mul_mod_a2_suboffset);
-    let mul_mod_a3_suboffset = Felt::from(dynamic_params.mul_mod_a3_suboffset);
-    let mul_mod_a_offset_suboffset = Felt::from(dynamic_params.mul_mod_a_offset_suboffset);
-    let mul_mod_b0_suboffset = Felt::from(dynamic_params.mul_mod_b0_suboffset);
-    let mul_mod_b1_suboffset = Felt::from(dynamic_params.mul_mod_b1_suboffset);
-    let mul_mod_b2_suboffset = Felt::from(dynamic_params.mul_mod_b2_suboffset);
-    let mul_mod_b3_suboffset = Felt::from(dynamic_params.mul_mod_b3_suboffset);
-    let mul_mod_b_offset_suboffset = Felt::from(dynamic_params.mul_mod_b_offset_suboffset);
-    let mul_mod_c0_suboffset = Felt::from(dynamic_params.mul_mod_c0_suboffset);
-    let mul_mod_c1_suboffset = Felt::from(dynamic_params.mul_mod_c1_suboffset);
-    let mul_mod_c2_suboffset = Felt::from(dynamic_params.mul_mod_c2_suboffset);
-    let mul_mod_c3_suboffset = Felt::from(dynamic_params.mul_mod_c3_suboffset);
-    let mul_mod_c_offset_suboffset = Felt::from(dynamic_params.mul_mod_c_offset_suboffset);
-    let mul_mod_carry0_part0_suboffset = Felt::from(dynamic_params.mul_mod_carry0_part0_suboffset);
-    let mul_mod_carry0_part1_suboffset = Felt::from(dynamic_params.mul_mod_carry0_part1_suboffset);
-    let mul_mod_carry0_part2_suboffset = Felt::from(dynamic_params.mul_mod_carry0_part2_suboffset);
-    let mul_mod_carry0_part3_suboffset = Felt::from(dynamic_params.mul_mod_carry0_part3_suboffset);
-    let mul_mod_carry0_part4_suboffset = Felt::from(dynamic_params.mul_mod_carry0_part4_suboffset);
-    let mul_mod_carry0_part5_suboffset = Felt::from(dynamic_params.mul_mod_carry0_part5_suboffset);
-    let mul_mod_carry0_part6_suboffset = Felt::from(dynamic_params.mul_mod_carry0_part6_suboffset);
-    let mul_mod_carry1_part0_suboffset = Felt::from(dynamic_params.mul_mod_carry1_part0_suboffset);
-    let mul_mod_carry1_part1_suboffset = Felt::from(dynamic_params.mul_mod_carry1_part1_suboffset);
-    let mul_mod_carry1_part2_suboffset = Felt::from(dynamic_params.mul_mod_carry1_part2_suboffset);
-    let mul_mod_carry1_part3_suboffset = Felt::from(dynamic_params.mul_mod_carry1_part3_suboffset);
-    let mul_mod_carry1_part4_suboffset = Felt::from(dynamic_params.mul_mod_carry1_part4_suboffset);
-    let mul_mod_carry1_part5_suboffset = Felt::from(dynamic_params.mul_mod_carry1_part5_suboffset);
-    let mul_mod_carry1_part6_suboffset = Felt::from(dynamic_params.mul_mod_carry1_part6_suboffset);
-    let mul_mod_carry2_part0_suboffset = Felt::from(dynamic_params.mul_mod_carry2_part0_suboffset);
-    let mul_mod_carry2_part1_suboffset = Felt::from(dynamic_params.mul_mod_carry2_part1_suboffset);
-    let mul_mod_carry2_part2_suboffset = Felt::from(dynamic_params.mul_mod_carry2_part2_suboffset);
-    let mul_mod_carry2_part3_suboffset = Felt::from(dynamic_params.mul_mod_carry2_part3_suboffset);
-    let mul_mod_carry2_part4_suboffset = Felt::from(dynamic_params.mul_mod_carry2_part4_suboffset);
-    let mul_mod_carry2_part5_suboffset = Felt::from(dynamic_params.mul_mod_carry2_part5_suboffset);
-    let mul_mod_carry2_part6_suboffset = Felt::from(dynamic_params.mul_mod_carry2_part6_suboffset);
-    let mul_mod_carry3_part0_suboffset = Felt::from(dynamic_params.mul_mod_carry3_part0_suboffset);
-    let mul_mod_carry3_part1_suboffset = Felt::from(dynamic_params.mul_mod_carry3_part1_suboffset);
-    let mul_mod_carry3_part2_suboffset = Felt::from(dynamic_params.mul_mod_carry3_part2_suboffset);
-    let mul_mod_carry3_part3_suboffset = Felt::from(dynamic_params.mul_mod_carry3_part3_suboffset);
-    let mul_mod_carry3_part4_suboffset = Felt::from(dynamic_params.mul_mod_carry3_part4_suboffset);
-    let mul_mod_carry3_part5_suboffset = Felt::from(dynamic_params.mul_mod_carry3_part5_suboffset);
-    let mul_mod_carry3_part6_suboffset = Felt::from(dynamic_params.mul_mod_carry3_part6_suboffset);
-    let mul_mod_carry4_part0_suboffset = Felt::from(dynamic_params.mul_mod_carry4_part0_suboffset);
-    let mul_mod_carry4_part1_suboffset = Felt::from(dynamic_params.mul_mod_carry4_part1_suboffset);
-    let mul_mod_carry4_part2_suboffset = Felt::from(dynamic_params.mul_mod_carry4_part2_suboffset);
-    let mul_mod_carry4_part3_suboffset = Felt::from(dynamic_params.mul_mod_carry4_part3_suboffset);
-    let mul_mod_carry4_part4_suboffset = Felt::from(dynamic_params.mul_mod_carry4_part4_suboffset);
-    let mul_mod_carry4_part5_suboffset = Felt::from(dynamic_params.mul_mod_carry4_part5_suboffset);
-    let mul_mod_carry4_part6_suboffset = Felt::from(dynamic_params.mul_mod_carry4_part6_suboffset);
-    let mul_mod_carry5_part0_suboffset = Felt::from(dynamic_params.mul_mod_carry5_part0_suboffset);
-    let mul_mod_carry5_part1_suboffset = Felt::from(dynamic_params.mul_mod_carry5_part1_suboffset);
-    let mul_mod_carry5_part2_suboffset = Felt::from(dynamic_params.mul_mod_carry5_part2_suboffset);
-    let mul_mod_carry5_part3_suboffset = Felt::from(dynamic_params.mul_mod_carry5_part3_suboffset);
-    let mul_mod_carry5_part4_suboffset = Felt::from(dynamic_params.mul_mod_carry5_part4_suboffset);
-    let mul_mod_carry5_part5_suboffset = Felt::from(dynamic_params.mul_mod_carry5_part5_suboffset);
-    let mul_mod_carry5_part6_suboffset = Felt::from(dynamic_params.mul_mod_carry5_part6_suboffset);
-    let mul_mod_n_suboffset = Felt::from(dynamic_params.mul_mod_n_suboffset);
-    let mul_mod_offsets_ptr_suboffset = Felt::from(dynamic_params.mul_mod_offsets_ptr_suboffset);
-    let mul_mod_p0_suboffset = Felt::from(dynamic_params.mul_mod_p0_suboffset);
-    let mul_mod_p1_suboffset = Felt::from(dynamic_params.mul_mod_p1_suboffset);
-    let mul_mod_p2_suboffset = Felt::from(dynamic_params.mul_mod_p2_suboffset);
-    let mul_mod_p3_suboffset = Felt::from(dynamic_params.mul_mod_p3_suboffset);
-    let mul_mod_p_multiplier0_part0_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier0_part0_suboffset);
-    let mul_mod_p_multiplier0_part1_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier0_part1_suboffset);
-    let mul_mod_p_multiplier0_part2_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier0_part2_suboffset);
-    let mul_mod_p_multiplier0_part3_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier0_part3_suboffset);
-    let mul_mod_p_multiplier0_part4_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier0_part4_suboffset);
-    let mul_mod_p_multiplier0_part5_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier0_part5_suboffset);
-    let mul_mod_p_multiplier1_part0_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier1_part0_suboffset);
-    let mul_mod_p_multiplier1_part1_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier1_part1_suboffset);
-    let mul_mod_p_multiplier1_part2_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier1_part2_suboffset);
-    let mul_mod_p_multiplier1_part3_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier1_part3_suboffset);
-    let mul_mod_p_multiplier1_part4_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier1_part4_suboffset);
-    let mul_mod_p_multiplier1_part5_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier1_part5_suboffset);
-    let mul_mod_p_multiplier2_part0_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier2_part0_suboffset);
-    let mul_mod_p_multiplier2_part1_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier2_part1_suboffset);
-    let mul_mod_p_multiplier2_part2_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier2_part2_suboffset);
-    let mul_mod_p_multiplier2_part3_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier2_part3_suboffset);
-    let mul_mod_p_multiplier2_part4_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier2_part4_suboffset);
-    let mul_mod_p_multiplier2_part5_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier2_part5_suboffset);
-    let mul_mod_p_multiplier3_part0_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier3_part0_suboffset);
-    let mul_mod_p_multiplier3_part1_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier3_part1_suboffset);
-    let mul_mod_p_multiplier3_part2_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier3_part2_suboffset);
-    let mul_mod_p_multiplier3_part3_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier3_part3_suboffset);
-    let mul_mod_p_multiplier3_part4_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier3_part4_suboffset);
-    let mul_mod_p_multiplier3_part5_suboffset =
-        Felt::from(dynamic_params.mul_mod_p_multiplier3_part5_suboffset);
-    let mul_mod_row_ratio = Felt::from(dynamic_params.mul_mod_row_ratio);
-    let mul_mod_values_ptr_suboffset = Felt::from(dynamic_params.mul_mod_values_ptr_suboffset);
-    let num_columns_first = Felt::from(dynamic_params.num_columns_first);
-    let num_columns_second = Felt::from(dynamic_params.num_columns_second);
-    let orig_public_memory_suboffset = Felt::from(dynamic_params.orig_public_memory_suboffset);
-    let pedersen_hash0_ec_subset_sum_bit_unpacking_prod_ones192_column =
-        Felt::from(dynamic_params.pedersen_hash0_ec_subset_sum_bit_unpacking_prod_ones192_column);
-    let pedersen_hash0_ec_subset_sum_bit_unpacking_prod_ones192_offset =
-        Felt::from(dynamic_params.pedersen_hash0_ec_subset_sum_bit_unpacking_prod_ones192_offset);
-    let pedersen_hash0_ec_subset_sum_bit_unpacking_prod_ones196_column =
-        Felt::from(dynamic_params.pedersen_hash0_ec_subset_sum_bit_unpacking_prod_ones196_column);
-    let pedersen_hash0_ec_subset_sum_bit_unpacking_prod_ones196_offset =
-        Felt::from(dynamic_params.pedersen_hash0_ec_subset_sum_bit_unpacking_prod_ones196_offset);
-    let pedersen_hash0_ec_subset_sum_partial_sum_x_column =
-        Felt::from(dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_x_column);
-    let pedersen_hash0_ec_subset_sum_partial_sum_x_offset =
-        Felt::from(dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_x_offset);
-    let pedersen_hash0_ec_subset_sum_partial_sum_y_column =
-        Felt::from(dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_y_column);
-    let pedersen_hash0_ec_subset_sum_partial_sum_y_offset =
-        Felt::from(dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_y_offset);
-    let pedersen_hash0_ec_subset_sum_selector_column =
-        Felt::from(dynamic_params.pedersen_hash0_ec_subset_sum_selector_column);
-    let pedersen_hash0_ec_subset_sum_selector_offset =
-        Felt::from(dynamic_params.pedersen_hash0_ec_subset_sum_selector_offset);
-    let pedersen_hash0_ec_subset_sum_slope_column =
-        Felt::from(dynamic_params.pedersen_hash0_ec_subset_sum_slope_column);
-    let pedersen_hash0_ec_subset_sum_slope_offset =
-        Felt::from(dynamic_params.pedersen_hash0_ec_subset_sum_slope_offset);
-    let pedersen_input0_suboffset = Felt::from(dynamic_params.pedersen_input0_suboffset);
-    let pedersen_input1_suboffset = Felt::from(dynamic_params.pedersen_input1_suboffset);
-    let pedersen_output_suboffset = Felt::from(dynamic_params.pedersen_output_suboffset);
-    let pedersen_builtin_row_ratio = Felt::from(dynamic_params.pedersen_builtin_row_ratio);
-    let poseidon_param_0_input_output_suboffset =
-        Felt::from(dynamic_params.poseidon_param_0_input_output_suboffset);
-    let poseidon_param_1_input_output_suboffset =
-        Felt::from(dynamic_params.poseidon_param_1_input_output_suboffset);
-    let poseidon_param_2_input_output_suboffset =
-        Felt::from(dynamic_params.poseidon_param_2_input_output_suboffset);
-    let poseidon_poseidon_full_rounds_state0_column =
-        Felt::from(dynamic_params.poseidon_poseidon_full_rounds_state0_column);
-    let poseidon_poseidon_full_rounds_state0_offset =
-        Felt::from(dynamic_params.poseidon_poseidon_full_rounds_state0_offset);
-    let poseidon_poseidon_full_rounds_state0_squared_column =
-        Felt::from(dynamic_params.poseidon_poseidon_full_rounds_state0_squared_column);
-    let poseidon_poseidon_full_rounds_state0_squared_offset =
-        Felt::from(dynamic_params.poseidon_poseidon_full_rounds_state0_squared_offset);
-    let poseidon_poseidon_full_rounds_state1_column =
-        Felt::from(dynamic_params.poseidon_poseidon_full_rounds_state1_column);
-    let poseidon_poseidon_full_rounds_state1_offset =
-        Felt::from(dynamic_params.poseidon_poseidon_full_rounds_state1_offset);
-    let poseidon_poseidon_full_rounds_state1_squared_column =
-        Felt::from(dynamic_params.poseidon_poseidon_full_rounds_state1_squared_column);
-    let poseidon_poseidon_full_rounds_state1_squared_offset =
-        Felt::from(dynamic_params.poseidon_poseidon_full_rounds_state1_squared_offset);
-    let poseidon_poseidon_full_rounds_state2_column =
-        Felt::from(dynamic_params.poseidon_poseidon_full_rounds_state2_column);
-    let poseidon_poseidon_full_rounds_state2_offset =
-        Felt::from(dynamic_params.poseidon_poseidon_full_rounds_state2_offset);
-    let poseidon_poseidon_full_rounds_state2_squared_column =
-        Felt::from(dynamic_params.poseidon_poseidon_full_rounds_state2_squared_column);
-    let poseidon_poseidon_full_rounds_state2_squared_offset =
-        Felt::from(dynamic_params.poseidon_poseidon_full_rounds_state2_squared_offset);
-    let poseidon_poseidon_partial_rounds_state0_column =
-        Felt::from(dynamic_params.poseidon_poseidon_partial_rounds_state0_column);
-    let poseidon_poseidon_partial_rounds_state0_offset =
-        Felt::from(dynamic_params.poseidon_poseidon_partial_rounds_state0_offset);
-    let poseidon_poseidon_partial_rounds_state0_squared_column =
-        Felt::from(dynamic_params.poseidon_poseidon_partial_rounds_state0_squared_column);
-    let poseidon_poseidon_partial_rounds_state0_squared_offset =
-        Felt::from(dynamic_params.poseidon_poseidon_partial_rounds_state0_squared_offset);
-    let poseidon_poseidon_partial_rounds_state1_column =
-        Felt::from(dynamic_params.poseidon_poseidon_partial_rounds_state1_column);
-    let poseidon_poseidon_partial_rounds_state1_offset =
-        Felt::from(dynamic_params.poseidon_poseidon_partial_rounds_state1_offset);
-    let poseidon_poseidon_partial_rounds_state1_squared_column =
-        Felt::from(dynamic_params.poseidon_poseidon_partial_rounds_state1_squared_column);
-    let poseidon_poseidon_partial_rounds_state1_squared_offset =
-        Felt::from(dynamic_params.poseidon_poseidon_partial_rounds_state1_squared_offset);
-    let poseidon_row_ratio = Felt::from(dynamic_params.poseidon_row_ratio);
-    let range_check16_perm_cum_prod0_column =
-        Felt::from(dynamic_params.range_check16_perm_cum_prod0_column);
-    let range_check16_perm_cum_prod0_offset =
-        Felt::from(dynamic_params.range_check16_perm_cum_prod0_offset);
-    let range_check16_sorted_column = Felt::from(dynamic_params.range_check16_sorted_column);
-    let range_check16_sorted_offset = Felt::from(dynamic_params.range_check16_sorted_offset);
-    let range_check16_pool_column = Felt::from(dynamic_params.range_check16_pool_column);
-    let range_check16_pool_offset = Felt::from(dynamic_params.range_check16_pool_offset);
-    let range_check96_builtin_inner_range_check0_suboffset =
-        Felt::from(dynamic_params.range_check96_builtin_inner_range_check0_suboffset);
-    let range_check96_builtin_inner_range_check1_suboffset =
-        Felt::from(dynamic_params.range_check96_builtin_inner_range_check1_suboffset);
-    let range_check96_builtin_inner_range_check2_suboffset =
-        Felt::from(dynamic_params.range_check96_builtin_inner_range_check2_suboffset);
-    let range_check96_builtin_inner_range_check3_suboffset =
-        Felt::from(dynamic_params.range_check96_builtin_inner_range_check3_suboffset);
-    let range_check96_builtin_inner_range_check4_suboffset =
-        Felt::from(dynamic_params.range_check96_builtin_inner_range_check4_suboffset);
-    let range_check96_builtin_inner_range_check5_suboffset =
-        Felt::from(dynamic_params.range_check96_builtin_inner_range_check5_suboffset);
-    let range_check96_builtin_mem_suboffset =
-        Felt::from(dynamic_params.range_check96_builtin_mem_suboffset);
-    let range_check96_builtin_row_ratio =
-        Felt::from(dynamic_params.range_check96_builtin_row_ratio);
-    let range_check_builtin_inner_range_check_suboffset =
-        Felt::from(dynamic_params.range_check_builtin_inner_range_check_suboffset);
-    let range_check_builtin_mem_suboffset =
-        Felt::from(dynamic_params.range_check_builtin_mem_suboffset);
-    let range_check_builtin_row_ratio = Felt::from(dynamic_params.range_check_builtin_row_ratio);
-    let range_check_units_row_ratio = Felt::from(dynamic_params.range_check_units_row_ratio);
-    let uses_add_mod_builtin = Felt::from(dynamic_params.uses_add_mod_builtin);
-    let uses_bitwise_builtin = Felt::from(dynamic_params.uses_bitwise_builtin);
-    let uses_ec_op_builtin = Felt::from(dynamic_params.uses_ec_op_builtin);
-    let uses_ecdsa_builtin = Felt::from(dynamic_params.uses_ecdsa_builtin);
-    let uses_keccak_builtin = Felt::from(dynamic_params.uses_keccak_builtin);
-    let uses_mul_mod_builtin = Felt::from(dynamic_params.uses_mul_mod_builtin);
-    let uses_pedersen_builtin = Felt::from(dynamic_params.uses_pedersen_builtin);
-    let uses_poseidon_builtin = Felt::from(dynamic_params.uses_poseidon_builtin);
-    let uses_range_check96_builtin = Felt::from(dynamic_params.uses_range_check96_builtin);
-    let uses_range_check_builtin = Felt::from(dynamic_params.uses_range_check_builtin);
 
     todo!()
 }
