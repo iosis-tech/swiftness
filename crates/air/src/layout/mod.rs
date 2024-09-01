@@ -84,6 +84,8 @@ pub trait StaticLayoutTrait {
     const NUM_COLUMNS_SECOND: usize;
 }
 
+pub trait DynamicLayoutTrait {}
+
 pub fn safe_div(value: Felt, divisor: Felt) -> Result<Felt, FeltIsZeroError> {
     Ok(value.floor_div(&NonZeroFelt::try_from(divisor)?))
 }
@@ -148,6 +150,12 @@ use thiserror_no_std::Error;
 #[cfg(not(feature = "std"))]
 #[derive(Error, Debug)]
 pub enum CompositionPolyEvalError {
+    #[error("segment not present {segment}")]
+    SegmentMissing { segment: usize },
+
+    #[error("value out of range")]
+    ValueOutOfRange,
+
     #[error("dynamic params missing")]
     DynamicParamsMissing,
 

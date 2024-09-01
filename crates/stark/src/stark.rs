@@ -37,7 +37,18 @@ impl StarkProof {
         &self,
         security_bits: Felt,
     ) -> Result<(Felt, Felt), Error> {
-        self.config.validate::<Layout>(security_bits)?;
+        #[cfg(any(
+            feature = "dex",
+            feature = "recursive",
+            feature = "recursive_with_poseidon",
+            feature = "small",
+            feature = "starknet",
+            feature = "starknet_with_keccak"
+        ))]
+        self.config.validate_static_layout::<Layout>(security_bits)?;
+
+        #[cfg(feature = "dynamic")]
+        self.config.validate_dynamic_layout::<Layout>(security_bits, &self.public_input)?;
 
         // Validate the public input.
         let stark_domains =

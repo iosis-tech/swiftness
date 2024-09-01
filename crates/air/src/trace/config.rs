@@ -1,4 +1,3 @@
-use crate::layout::StaticLayoutTrait;
 use serde::{Deserialize, Serialize};
 use starknet_crypto::Felt;
 use swiftness_commitment::vector;
@@ -13,10 +12,12 @@ pub struct Config {
 }
 
 impl Config {
-    pub fn validate<Layout: StaticLayoutTrait>(
+    pub fn validate(
         &self,
         log_eval_domain_size: Felt,
         n_verifier_friendly_commitment_layers: Felt,
+        n_columns_original: Felt,
+        n_columns_interaction: Felt,
     ) -> Result<(), Error> {
         if self.original.n_columns < Felt::ONE || self.original.n_columns > MAX_N_COLUMNS {
             return Err(Error::OutOfBounds { min: Felt::ONE, max: MAX_N_COLUMNS });
@@ -25,11 +26,11 @@ impl Config {
             return Err(Error::OutOfBounds { min: Felt::ONE, max: MAX_N_COLUMNS });
         }
 
-        if self.original.n_columns != Layout::NUM_COLUMNS_FIRST.into() {
+        if self.original.n_columns != n_columns_original {
             return Err(Error::ColumnsNumInvalid);
         }
 
-        if self.interaction.n_columns != Layout::NUM_COLUMNS_SECOND.into() {
+        if self.interaction.n_columns != n_columns_interaction {
             return Err(Error::ColumnsNumInvalid);
         }
 
