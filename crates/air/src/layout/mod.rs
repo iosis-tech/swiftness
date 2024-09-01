@@ -3,6 +3,7 @@ use starknet_crypto::Felt;
 use swiftness_transcript::transcript::Transcript;
 
 pub mod dex;
+pub mod dynamic;
 pub mod recursive;
 pub mod recursive_with_poseidon;
 pub mod small;
@@ -80,12 +81,6 @@ pub trait StaticLayoutTrait {
     const NUM_COLUMNS_SECOND: usize;
 }
 
-pub trait DynamicLayoutTrait {
-    type DynamicParams;
-
-    fn get_dynamic_params(public_input: &PublicInput) -> Self::DynamicParams;
-}
-
 #[cfg(feature = "std")]
 use thiserror::Error;
 
@@ -94,6 +89,12 @@ use thiserror::Error;
 pub enum CompositionPolyEvalError {
     #[error("segment not present {segment}")]
     SegmentMissing { segment: usize },
+
+    #[error("value out of range")]
+    ValueOutOfRange,
+
+    #[error("dynamic params missing")]
+    DynamicParamsMissing,
 }
 
 #[cfg(feature = "std")]
@@ -116,6 +117,9 @@ pub enum PublicInputError {
 
     #[error("invalid number of builtin uses")]
     UsesInvalid,
+
+    #[error("dynamic params missing")]
+    DynamicParamsMissing,
 }
 
 #[cfg(not(feature = "std"))]
@@ -126,6 +130,9 @@ use thiserror_no_std::Error;
 pub enum CompositionPolyEvalError {
     #[error("segment not present {segment}")]
     SegmentMissing { segment: usize },
+
+    #[error("dynamic params missing")]
+    DynamicParamsMissing,
 }
 
 #[cfg(not(feature = "std"))]
@@ -148,6 +155,9 @@ pub enum PublicInputError {
 
     #[error("invalid number of builtin uses")]
     UsesInvalid,
+
+    #[error("dynamic params missing")]
+    DynamicParamsMissing,
 }
 
 pub mod segments {

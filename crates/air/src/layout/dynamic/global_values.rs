@@ -118,6 +118,21 @@ pub struct GlobalValues {
         feature = "std",
         serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
     )]
+    pub initial_range_check96_addr: Felt,
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
+    pub add_mod_initial_mod_addr: Felt,
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
+    pub mul_mod_initial_mod_addr: Felt,
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
     pub range_check_min: Felt,
     #[cfg_attr(
         feature = "std",
@@ -250,6 +265,16 @@ pub struct GlobalValues {
         serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
     )]
     pub diluted_check_interaction_alpha: Felt,
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
+    pub add_mod_interaction_elm: Felt,
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
+    pub mul_mod_interaction_elm: Felt,
     // Permutation products.
     #[cfg_attr(
         feature = "std",
@@ -313,6 +338,16 @@ pub struct InteractionElements {
         serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
     )]
     pub diluted_check_interaction_alpha: Felt,
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
+    pub add_mod_interaction_elm: Felt,
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
+    )]
+    pub mul_mod_interaction_elm: Felt,
 }
 
 impl InteractionElements {
@@ -324,6 +359,8 @@ impl InteractionElements {
             diluted_check_permutation_interaction_elm: transcript.random_felt_to_prover(),
             diluted_check_interaction_z: transcript.random_felt_to_prover(),
             diluted_check_interaction_alpha: transcript.random_felt_to_prover(),
+            add_mod_interaction_elm: transcript.random_felt_to_prover(),
+            mul_mod_interaction_elm: transcript.random_felt_to_prover(),
         }
     }
 }
