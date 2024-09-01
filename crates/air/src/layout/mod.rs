@@ -1,5 +1,7 @@
 use crate::{domains::StarkDomains, public_memory::PublicInput};
+use starknet_core::types::NonZeroFelt;
 use starknet_crypto::Felt;
+use starknet_types_core::felt::FeltIsZeroError;
 use swiftness_transcript::transcript::Transcript;
 
 pub mod dex;
@@ -82,6 +84,10 @@ pub trait StaticLayoutTrait {
     const NUM_COLUMNS_SECOND: usize;
 }
 
+pub fn safe_div(value: Felt, divisor: Felt) -> Result<Felt, FeltIsZeroError> {
+    Ok(value.floor_div(&NonZeroFelt::try_from(divisor)?))
+}
+
 #[cfg(feature = "std")]
 use thiserror::Error;
 
@@ -96,6 +102,9 @@ pub enum CompositionPolyEvalError {
 
     #[error("dynamic params missing")]
     DynamicParamsMissing,
+
+    #[error("field element is zero")]
+    FeltIsZero(#[from] FeltIsZeroError),
 }
 
 #[cfg(feature = "std")]

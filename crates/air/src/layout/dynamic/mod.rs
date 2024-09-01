@@ -397,7 +397,7 @@ impl LayoutTrait for Layout {
             trace_generator,
             &global_values,
             &dynamic_params,
-        ))
+        )?)
     }
     fn eval_oods_polynomial(
         public_input: &PublicInput,
