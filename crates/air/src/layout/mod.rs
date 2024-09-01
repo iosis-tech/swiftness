@@ -47,13 +47,14 @@ pub trait LayoutTrait {
     ) -> Result<Felt, CompositionPolyEvalError>;
 
     fn eval_oods_polynomial(
+        public_input: &PublicInput,
         column_values: &[Felt],
         oods_values: &[Felt],
         constraint_coefficients: &[Felt],
         point: &Felt,
         oods_point: &Felt,
         trace_generator: &Felt,
-    ) -> Felt;
+    ) -> Result<Felt, OodsPolyEvalError>;
 
     fn validate_public_input(
         public_input: &PublicInput,
@@ -99,6 +100,13 @@ pub enum CompositionPolyEvalError {
 
 #[cfg(feature = "std")]
 #[derive(Error, Debug)]
+pub enum OodsPolyEvalError {
+    #[error("dynamic params missing")]
+    DynamicParamsMissing,
+}
+
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
 pub enum PublicInputError {
     #[error("max steps exceeded")]
     MaxSteps,
@@ -131,6 +139,13 @@ pub enum CompositionPolyEvalError {
     #[error("segment not present {segment}")]
     SegmentMissing { segment: usize },
 
+    #[error("dynamic params missing")]
+    DynamicParamsMissing,
+}
+
+#[cfg(not(feature = "std"))]
+#[derive(Error, Debug)]
+pub enum OodsPolyEvalError {
     #[error("dynamic params missing")]
     DynamicParamsMissing,
 }

@@ -2,7 +2,7 @@ use alloc::borrow::ToOwned;
 use starknet_crypto::Felt;
 use swiftness_air::{
     domains::StarkDomains,
-    layout::{LayoutTrait, StaticLayoutTrait},
+    layout::{LayoutTrait, StaticLayoutTrait}, public_memory::PublicInput,
 };
 use swiftness_commitment::table::decommit::table_decommit;
 use swiftness_fri::{
@@ -20,6 +20,7 @@ use crate::{
 pub fn stark_verify<Layout: LayoutTrait + StaticLayoutTrait>(
     n_original_columns: usize,
     n_interaction_columns: usize,
+    public_input: &PublicInput,
     queries: &[Felt],
     commitment: StarkCommitment<Layout::InteractionElements>,
     witness: &StarkWitness,
@@ -53,10 +54,11 @@ pub fn stark_verify<Layout: LayoutTrait + StaticLayoutTrait>(
     let oods_poly_evals = eval_oods_boundary_poly_at_points::<Layout>(
         n_original_columns,
         n_interaction_columns,
-        eval_info,
+        public_input,
+        &eval_info,
         &points,
-        witness.traces_decommitment.to_owned(),
-        witness.composition_decommitment.to_owned(),
+        &witness.traces_decommitment,
+        &witness.composition_decommitment,
     );
 
     // Decommit FRI.

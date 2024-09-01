@@ -95,6 +95,7 @@ impl StarkProof {
         stark_verify::<Layout>(
             n_original_columns,
             n_interaction_columns,
+            &self.public_input,
             &queries,
             stark_commitment,
             &self.witness,
