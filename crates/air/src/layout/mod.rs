@@ -112,6 +112,9 @@ pub enum CompositionPolyEvalError {
 pub enum OodsPolyEvalError {
     #[error("dynamic params missing")]
     DynamicParamsMissing,
+
+    #[error("field element is zero")]
+    FeltIsZero(#[from] FeltIsZeroError),
 }
 
 #[cfg(feature = "std")]
@@ -145,11 +148,11 @@ use thiserror_no_std::Error;
 #[cfg(not(feature = "std"))]
 #[derive(Error, Debug)]
 pub enum CompositionPolyEvalError {
-    #[error("segment not present {segment}")]
-    SegmentMissing { segment: usize },
-
     #[error("dynamic params missing")]
     DynamicParamsMissing,
+
+    #[error("field element is zero")]
+    FeltIsZero(#[from] FeltIsZeroError),
 }
 
 #[cfg(not(feature = "std"))]
@@ -157,6 +160,9 @@ pub enum CompositionPolyEvalError {
 pub enum OodsPolyEvalError {
     #[error("dynamic params missing")]
     DynamicParamsMissing,
+
+    #[error("field element is zero")]
+    FeltIsZero(#[from] FeltIsZeroError),
 }
 
 #[cfg(not(feature = "std"))]
