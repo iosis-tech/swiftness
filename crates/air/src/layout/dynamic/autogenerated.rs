@@ -550,7 +550,6 @@ pub fn eval_composition_polynomial_inner(
     let felt_512 = Felt::from(512);
     let felt_4096 = Felt::from(4096);
     let felt_524288 = Felt::from(524288);
-    let felt_18446744073709551616 = Felt::from(18446744073709551616);
     let felt_36893488147419103232 = Felt::from(36893488147419103232);
     let felt_73786976294838206464 = Felt::from(73786976294838206464);
     let felt_147573952589676412928 = Felt::from(147573952589676412928);
@@ -13005,14 +13004,13 @@ pub fn eval_composition_polynomial_inner(
         + felt_79228162514264337593543950336 * range_check16_pool_column_row_expr940;
 
     // Sum constraints.
-    let mut total_sum: Felt = Felt::ZERO;
-    let mut value: Felt = Felt::ZERO;
 
     // Constraint: cpu/decode/opcode_range_check/bit.
-    value = (cpu_decode_opcode_range_check_bit_0 * cpu_decode_opcode_range_check_bit_0
+    let mut value: Felt = (cpu_decode_opcode_range_check_bit_0
+        * cpu_decode_opcode_range_check_bit_0
         - cpu_decode_opcode_range_check_bit_0)
         * domain1.field_div(&NonZeroFelt::try_from(domain0)?);
-    total_sum = total_sum + constraint_coefficients[0] * value;
+    let mut total_sum: Felt = constraint_coefficients[0] * value;
 
     // Constraint: cpu/decode/opcode_range_check/zero.
     value = (cpu_decode_opcode_range_check_column_column_row_expr0)
