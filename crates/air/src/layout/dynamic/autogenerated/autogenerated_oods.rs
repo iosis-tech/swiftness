@@ -670,12 +670,12 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
         trace_generator.pow_felt(&(range_check96_builtin_mem_suboffset * memory_units_row_ratio));
     let pow169 = pow2 * pow168; // pow(trace_generator, range_check96_builtin_row_ratio + (range_check96_builtin_mem_suboffset* memory_units_row_ratio)).
     let pow170 = trace_generator.pow_felt(&(safe_div(poseidon_row_ratio, felt_64)?));
-    let pow171 = trace_generator.pow_felt(&(safe_div((felt_3 * poseidon_row_ratio), felt_8)?));
+    let pow171 = trace_generator.pow_felt(&(safe_div(felt_3 * poseidon_row_ratio, felt_8)?));
     let pow172 = pow170 * pow170; // pow(trace_generator, &(safe_div(poseidon_row_ratio, 32))).
     let pow173 = pow170 * pow172; // pow(trace_generator, &(safe_div((3* poseidon_row_ratio), 64))).
     let pow174 = pow170 * pow173; // pow(trace_generator, &(safe_div(poseidon_row_ratio, 16))).
     let pow175 = pow172 * pow174; // pow(trace_generator, &(safe_div((3* poseidon_row_ratio), 32))).
-    let pow176 = trace_generator.pow_felt(&(safe_div((felt_61 * poseidon_row_ratio), felt_64)?));
+    let pow176 = trace_generator.pow_felt(&(safe_div(felt_61 * poseidon_row_ratio, felt_64)?));
     let pow177 = pow172 * pow175; // pow(trace_generator, &(safe_div(poseidon_row_ratio, 8))).
     let pow178 = pow171 * pow177; // pow(trace_generator, &(safe_div(poseidon_row_ratio, 2))).
     let pow179 = pow175 * pow178; // pow(trace_generator, &(safe_div((19* poseidon_row_ratio), 32))).
@@ -1482,12 +1482,11 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
     let pow972 = pow277 * pow971; // pow(trace_generator, &(safe_div(keccak_row_ratio, 2)) + &(safe_div((3* keccak_row_ratio), 8)) + (keccak_input_output_suboffset* memory_units_row_ratio)).
     let pow973 = pow277 * pow972; // pow(trace_generator, &(safe_div(keccak_row_ratio, 2)) + &(safe_div((7* keccak_row_ratio), 16)) + (keccak_input_output_suboffset* memory_units_row_ratio)).
     let pow974 =
-        trace_generator.pow_felt(&(safe_div((felt_255 * ec_op_builtin_row_ratio), felt_256)?));
+        trace_generator.pow_felt(&(safe_div(felt_255 * ec_op_builtin_row_ratio, felt_256)?));
     let pow975 =
-        trace_generator.pow_felt(&(safe_div((felt_251 * ec_op_builtin_row_ratio), felt_256)?));
-    let pow976 =
-        trace_generator.pow_felt(&(safe_div((felt_49 * ec_op_builtin_row_ratio), felt_64)?));
-    let pow977 = trace_generator.pow_felt(&(safe_div((felt_3 * ec_op_builtin_row_ratio), felt_4)?));
+        trace_generator.pow_felt(&(safe_div(felt_251 * ec_op_builtin_row_ratio, felt_256)?));
+    let pow976 = trace_generator.pow_felt(&(safe_div(felt_49 * ec_op_builtin_row_ratio, felt_64)?));
+    let pow977 = trace_generator.pow_felt(&(safe_div(felt_3 * ec_op_builtin_row_ratio, felt_4)?));
     let pow978 = trace_generator.pow_felt(&(safe_div(ec_op_builtin_row_ratio, felt_256)?));
     let pow979 = pow974 * pow978; // pow(trace_generator, ec_op_builtin_row_ratio).
     let pow980 = pow976 * pow978; // pow(trace_generator, &(safe_div((197* ec_op_builtin_row_ratio), 256))).
@@ -1546,7 +1545,7 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
     let pow1028 = trace_generator.pow_felt(&(ecdsa_message_suboffset * memory_units_row_ratio));
     let pow1029 = trace_generator.pow_felt(&(ecdsa_pubkey_suboffset * memory_units_row_ratio));
     let pow1030 =
-        trace_generator.pow_felt(&(safe_div((felt_255 * ecdsa_builtin_row_ratio), felt_512)?));
+        trace_generator.pow_felt(&(safe_div(felt_255 * ecdsa_builtin_row_ratio, felt_512)?));
     let pow1031 = pow1030 * pow1030; // pow(trace_generator, &(safe_div((255* ecdsa_builtin_row_ratio), 256))).
     let pow1032 = trace_generator.pow_felt(&(safe_div(ecdsa_builtin_row_ratio, felt_512)?));
     let pow1033 = pow1030 * pow1032; // pow(trace_generator, &(safe_div(ecdsa_builtin_row_ratio, 2))).
@@ -1570,13 +1569,13 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
     let pow1049 = trace_generator.pow_felt(&(pedersen_output_suboffset * memory_units_row_ratio));
     let pow1050 = trace_generator.pow_felt(&(pedersen_input0_suboffset * memory_units_row_ratio));
     let pow1051 =
-        trace_generator.pow_felt(&(safe_div((felt_255 * pedersen_builtin_row_ratio), felt_512)?));
+        trace_generator.pow_felt(&(safe_div(felt_255 * pedersen_builtin_row_ratio, felt_512)?));
     let pow1052 =
-        trace_generator.pow_felt(&(safe_div((felt_251 * pedersen_builtin_row_ratio), felt_512)?));
+        trace_generator.pow_felt(&(safe_div(felt_251 * pedersen_builtin_row_ratio, felt_512)?));
     let pow1053 =
-        trace_generator.pow_felt(&(safe_div((felt_49 * pedersen_builtin_row_ratio), felt_128)?));
+        trace_generator.pow_felt(&(safe_div(felt_49 * pedersen_builtin_row_ratio, felt_128)?));
     let pow1054 =
-        trace_generator.pow_felt(&(safe_div((felt_3 * pedersen_builtin_row_ratio), felt_8)?));
+        trace_generator.pow_felt(&(safe_div(felt_3 * pedersen_builtin_row_ratio, felt_8)?));
     let pow1055 = trace_generator.pow_felt(&(safe_div(pedersen_builtin_row_ratio, felt_512)?));
     let pow1056 = pow1054 * pow1055; // pow(trace_generator, &(safe_div((193* pedersen_builtin_row_ratio), 512))).
     let pow1057 = pow1051 * pow1055; // pow(trace_generator, &(safe_div(pedersen_builtin_row_ratio, 2))).
@@ -2568,4065 +2567,4065 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[1])
         .field_div(&NonZeroFelt::try_from(point - pow2004 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[1] * value;
+    total_sum += constraint_coefficients[1] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[2])
         .field_div(&NonZeroFelt::try_from(point - pow2002 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[2] * value;
+    total_sum += constraint_coefficients[2] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[3])
         .field_div(&NonZeroFelt::try_from(point - pow2001 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[3] * value;
+    total_sum += constraint_coefficients[3] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[4])
         .field_div(&NonZeroFelt::try_from(point - pow2000 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[4] * value;
+    total_sum += constraint_coefficients[4] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[5])
         .field_div(&NonZeroFelt::try_from(point - pow1999 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[5] * value;
+    total_sum += constraint_coefficients[5] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[6])
         .field_div(&NonZeroFelt::try_from(point - pow2005 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[6] * value;
+    total_sum += constraint_coefficients[6] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[7])
         .field_div(&NonZeroFelt::try_from(point - pow2006 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[7] * value;
+    total_sum += constraint_coefficients[7] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[8])
         .field_div(&NonZeroFelt::try_from(point - pow2007 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[8] * value;
+    total_sum += constraint_coefficients[8] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[9])
         .field_div(&NonZeroFelt::try_from(point - pow2008 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[9] * value;
+    total_sum += constraint_coefficients[9] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[10])
         .field_div(&NonZeroFelt::try_from(point - pow2006 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[10] * value;
+    total_sum += constraint_coefficients[10] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[11])
         .field_div(&NonZeroFelt::try_from(point - pow2007 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[11] * value;
+    total_sum += constraint_coefficients[11] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[12])
         .field_div(&NonZeroFelt::try_from(point - pow2008 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[12] * value;
+    total_sum += constraint_coefficients[12] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[13])
         .field_div(&NonZeroFelt::try_from(point - pow2009 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[13] * value;
+    total_sum += constraint_coefficients[13] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[14])
         .field_div(&NonZeroFelt::try_from(point - pow2009 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[14] * value;
+    total_sum += constraint_coefficients[14] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[15])
         .field_div(&NonZeroFelt::try_from(point - pow2010 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[15] * value;
+    total_sum += constraint_coefficients[15] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[16])
         .field_div(&NonZeroFelt::try_from(point - pow2012 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[16] * value;
+    total_sum += constraint_coefficients[16] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[17])
         .field_div(&NonZeroFelt::try_from(point - pow2013 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[17] * value;
+    total_sum += constraint_coefficients[17] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[18])
         .field_div(&NonZeroFelt::try_from(point - pow2010 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[18] * value;
+    total_sum += constraint_coefficients[18] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[19])
         .field_div(&NonZeroFelt::try_from(point - pow2011 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[19] * value;
+    total_sum += constraint_coefficients[19] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[20])
         .field_div(&NonZeroFelt::try_from(point - pow2011 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[20] * value;
+    total_sum += constraint_coefficients[20] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[21])
         .field_div(&NonZeroFelt::try_from(point - pow2012 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[21] * value;
+    total_sum += constraint_coefficients[21] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[22])
         .field_div(&NonZeroFelt::try_from(point - pow2015 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[22] * value;
+    total_sum += constraint_coefficients[22] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[23])
         .field_div(&NonZeroFelt::try_from(point - pow2016 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[23] * value;
+    total_sum += constraint_coefficients[23] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[24])
         .field_div(&NonZeroFelt::try_from(point - pow2016 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[24] * value;
+    total_sum += constraint_coefficients[24] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[25])
         .field_div(&NonZeroFelt::try_from(point - pow2017 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[25] * value;
+    total_sum += constraint_coefficients[25] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[26])
         .field_div(&NonZeroFelt::try_from(point - pow1998 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[26] * value;
+    total_sum += constraint_coefficients[26] * value;
 
     value = (column_values[dynamic_params.cpu_registers_fp_column] - oods_values[27])
         .field_div(&NonZeroFelt::try_from(point - pow1996 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[27] * value;
+    total_sum += constraint_coefficients[27] * value;
 
     value = (column_values[dynamic_params.cpu_registers_ap_column] - oods_values[28])
         .field_div(&NonZeroFelt::try_from(point - pow1994 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[28] * value;
+    total_sum += constraint_coefficients[28] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[29])
         .field_div(&NonZeroFelt::try_from(point - pow1993 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[29] * value;
+    total_sum += constraint_coefficients[29] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[30])
         .field_div(&NonZeroFelt::try_from(point - pow2005 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[30] * value;
+    total_sum += constraint_coefficients[30] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[31])
         .field_div(&NonZeroFelt::try_from(point - pow1992 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[31] * value;
+    total_sum += constraint_coefficients[31] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[32])
         .field_div(&NonZeroFelt::try_from(point - pow1990 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[32] * value;
+    total_sum += constraint_coefficients[32] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[33])
         .field_div(&NonZeroFelt::try_from(point - pow1989 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[33] * value;
+    total_sum += constraint_coefficients[33] * value;
 
     value = (column_values[dynamic_params.cpu_operands_ops_mul_column] - oods_values[34])
         .field_div(&NonZeroFelt::try_from(point - pow1988 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[34] * value;
+    total_sum += constraint_coefficients[34] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[35])
         .field_div(&NonZeroFelt::try_from(point - pow1987 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[35] * value;
+    total_sum += constraint_coefficients[35] * value;
 
     value = (column_values[dynamic_params.cpu_operands_res_column] - oods_values[36])
         .field_div(&NonZeroFelt::try_from(point - pow1986 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[36] * value;
+    total_sum += constraint_coefficients[36] * value;
 
     value = (column_values[dynamic_params.cpu_update_registers_update_pc_tmp0_column]
         - oods_values[37])
         .field_div(&NonZeroFelt::try_from(point - pow1985 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[37] * value;
+    total_sum += constraint_coefficients[37] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[38])
         .field_div(&NonZeroFelt::try_from(point - pow1984 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[38] * value;
+    total_sum += constraint_coefficients[38] * value;
 
     value = (column_values[dynamic_params.cpu_update_registers_update_pc_tmp1_column]
         - oods_values[39])
         .field_div(&NonZeroFelt::try_from(point - pow1983 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[39] * value;
+    total_sum += constraint_coefficients[39] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[40])
         .field_div(&NonZeroFelt::try_from(point - pow1991 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[40] * value;
+    total_sum += constraint_coefficients[40] * value;
 
     value = (column_values[dynamic_params.cpu_registers_ap_column] - oods_values[41])
         .field_div(&NonZeroFelt::try_from(point - pow1995 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[41] * value;
+    total_sum += constraint_coefficients[41] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[42])
         .field_div(&NonZeroFelt::try_from(point - pow2013 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[42] * value;
+    total_sum += constraint_coefficients[42] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[43])
         .field_div(&NonZeroFelt::try_from(point - pow2014 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[43] * value;
+    total_sum += constraint_coefficients[43] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[44])
         .field_div(&NonZeroFelt::try_from(point - pow2014 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[44] * value;
+    total_sum += constraint_coefficients[44] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[45])
         .field_div(&NonZeroFelt::try_from(point - pow2015 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[45] * value;
+    total_sum += constraint_coefficients[45] * value;
 
     value = (column_values[dynamic_params.cpu_registers_fp_column] - oods_values[46])
         .field_div(&NonZeroFelt::try_from(point - pow1997 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[46] * value;
+    total_sum += constraint_coefficients[46] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[47])
         .field_div(&NonZeroFelt::try_from(point - pow2017 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[47] * value;
+    total_sum += constraint_coefficients[47] * value;
 
     value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[48])
         .field_div(&NonZeroFelt::try_from(point - pow2018 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[48] * value;
+    total_sum += constraint_coefficients[48] * value;
 
     value = (column_values[dynamic_params.memory_sorted_addr_column] - oods_values[49])
         .field_div(&NonZeroFelt::try_from(point - pow1981 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[49] * value;
+    total_sum += constraint_coefficients[49] * value;
 
     value = (column_values[dynamic_params.memory_sorted_value_column] - oods_values[50])
         .field_div(&NonZeroFelt::try_from(point - pow1979 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[50] * value;
+    total_sum += constraint_coefficients[50] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[51])
         .field_div(&NonZeroFelt::try_from(point - pow1898 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[51] * value;
+    total_sum += constraint_coefficients[51] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[52])
         .field_div(&NonZeroFelt::try_from(point - pow1797 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[52] * value;
+    total_sum += constraint_coefficients[52] * value;
 
     value = (column_values[dynamic_params.memory_sorted_addr_column] - oods_values[53])
         .field_div(&NonZeroFelt::try_from(point - pow1982 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[53] * value;
+    total_sum += constraint_coefficients[53] * value;
 
     value = (column_values[dynamic_params.memory_sorted_value_column] - oods_values[54])
         .field_div(&NonZeroFelt::try_from(point - pow1980 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[54] * value;
+    total_sum += constraint_coefficients[54] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[55])
         .field_div(&NonZeroFelt::try_from(point - pow1978 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[55] * value;
+    total_sum += constraint_coefficients[55] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[56])
         .field_div(&NonZeroFelt::try_from(point - pow1897 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[56] * value;
+    total_sum += constraint_coefficients[56] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[57])
         .field_div(&NonZeroFelt::try_from(point - pow1977 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[57] * value;
+    total_sum += constraint_coefficients[57] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[58])
         .field_div(&NonZeroFelt::try_from(point - pow1896 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[58] * value;
+    total_sum += constraint_coefficients[58] * value;
 
     value = (column_values[dynamic_params.range_check16_sorted_column] - oods_values[59])
         .field_div(&NonZeroFelt::try_from(point - pow1795 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[59] * value;
+    total_sum += constraint_coefficients[59] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[60])
         .field_div(&NonZeroFelt::try_from(point - pow1713 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[60] * value;
+    total_sum += constraint_coefficients[60] * value;
 
     value = (column_values[dynamic_params.range_check16_sorted_column] - oods_values[61])
         .field_div(&NonZeroFelt::try_from(point - pow1796 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[61] * value;
+    total_sum += constraint_coefficients[61] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[62])
         .field_div(&NonZeroFelt::try_from(point - pow1794 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[62] * value;
+    total_sum += constraint_coefficients[62] * value;
 
     value = (column_values[dynamic_params.diluted_check_permuted_values_column] - oods_values[63])
         .field_div(&NonZeroFelt::try_from(point - pow1711 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[63] * value;
+    total_sum += constraint_coefficients[63] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[64])
         .field_div(&NonZeroFelt::try_from(point - pow1376 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[64] * value;
+    total_sum += constraint_coefficients[64] * value;
 
     value = (column_values[dynamic_params.diluted_check_permuted_values_column] - oods_values[65])
         .field_div(&NonZeroFelt::try_from(point - pow1712 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[65] * value;
+    total_sum += constraint_coefficients[65] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[66])
         .field_div(&NonZeroFelt::try_from(point - pow1710 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[66] * value;
+    total_sum += constraint_coefficients[66] * value;
 
     value = (column_values
         [dynamic_params.pedersen_hash0_ec_subset_sum_bit_unpacking_prod_ones192_column]
         - oods_values[67])
         .field_div(&NonZeroFelt::try_from(point - pow1375 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[67] * value;
+    total_sum += constraint_coefficients[67] * value;
 
     value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_selector_column]
         - oods_values[68])
         .field_div(&NonZeroFelt::try_from(point - pow1366 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[68] * value;
+    total_sum += constraint_coefficients[68] * value;
 
     value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_selector_column]
         - oods_values[69])
         .field_div(&NonZeroFelt::try_from(point - pow1370 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[69] * value;
+    total_sum += constraint_coefficients[69] * value;
 
     value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_selector_column]
         - oods_values[70])
         .field_div(&NonZeroFelt::try_from(point - pow1369 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[70] * value;
+    total_sum += constraint_coefficients[70] * value;
 
     value = (column_values
         [dynamic_params.pedersen_hash0_ec_subset_sum_bit_unpacking_prod_ones196_column]
         - oods_values[71])
         .field_div(&NonZeroFelt::try_from(point - pow1365 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[71] * value;
+    total_sum += constraint_coefficients[71] * value;
 
     value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_selector_column]
         - oods_values[72])
         .field_div(&NonZeroFelt::try_from(point - pow1373 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[72] * value;
+    total_sum += constraint_coefficients[72] * value;
 
     value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_selector_column]
         - oods_values[73])
         .field_div(&NonZeroFelt::try_from(point - pow1368 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[73] * value;
+    total_sum += constraint_coefficients[73] * value;
 
     value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_selector_column]
         - oods_values[74])
         .field_div(&NonZeroFelt::try_from(point - pow1367 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[74] * value;
+    total_sum += constraint_coefficients[74] * value;
 
     value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_selector_column]
         - oods_values[75])
         .field_div(&NonZeroFelt::try_from(point - pow1372 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[75] * value;
+    total_sum += constraint_coefficients[75] * value;
 
     value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_selector_column]
         - oods_values[76])
         .field_div(&NonZeroFelt::try_from(point - pow1371 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[76] * value;
+    total_sum += constraint_coefficients[76] * value;
 
     value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_x_column]
         - oods_values[77])
         .field_div(&NonZeroFelt::try_from(point - pow1360 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[77] * value;
+    total_sum += constraint_coefficients[77] * value;
 
     value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_y_column]
         - oods_values[78])
         .field_div(&NonZeroFelt::try_from(point - pow1356 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[78] * value;
+    total_sum += constraint_coefficients[78] * value;
 
     value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_x_column]
         - oods_values[79])
         .field_div(&NonZeroFelt::try_from(point - pow1362 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[79] * value;
+    total_sum += constraint_coefficients[79] * value;
 
     value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_y_column]
         - oods_values[80])
         .field_div(&NonZeroFelt::try_from(point - pow1358 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[80] * value;
+    total_sum += constraint_coefficients[80] * value;
 
     value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_slope_column]
         - oods_values[81])
         .field_div(&NonZeroFelt::try_from(point - pow1355 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[81] * value;
+    total_sum += constraint_coefficients[81] * value;
 
     value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_x_column]
         - oods_values[82])
         .field_div(&NonZeroFelt::try_from(point - pow1361 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[82] * value;
+    total_sum += constraint_coefficients[82] * value;
 
     value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_y_column]
         - oods_values[83])
         .field_div(&NonZeroFelt::try_from(point - pow1357 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[83] * value;
+    total_sum += constraint_coefficients[83] * value;
 
     value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_x_column]
         - oods_values[84])
         .field_div(&NonZeroFelt::try_from(point - pow1363 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[84] * value;
+    total_sum += constraint_coefficients[84] * value;
 
     value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_y_column]
         - oods_values[85])
         .field_div(&NonZeroFelt::try_from(point - pow1359 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[85] * value;
+    total_sum += constraint_coefficients[85] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[86])
         .field_div(&NonZeroFelt::try_from(point - pow1895 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[86] * value;
+    total_sum += constraint_coefficients[86] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[87])
         .field_div(&NonZeroFelt::try_from(point - pow1976 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[87] * value;
+    total_sum += constraint_coefficients[87] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[88])
         .field_div(&NonZeroFelt::try_from(point - pow1975 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[88] * value;
+    total_sum += constraint_coefficients[88] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[89])
         .field_div(&NonZeroFelt::try_from(point - pow1974 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[89] * value;
+    total_sum += constraint_coefficients[89] * value;
 
     value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_selector_column]
         - oods_values[90])
         .field_div(&NonZeroFelt::try_from(point - pow1374 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[90] * value;
+    total_sum += constraint_coefficients[90] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[91])
         .field_div(&NonZeroFelt::try_from(point - pow1894 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[91] * value;
+    total_sum += constraint_coefficients[91] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[92])
         .field_div(&NonZeroFelt::try_from(point - pow1973 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[92] * value;
+    total_sum += constraint_coefficients[92] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[93])
         .field_div(&NonZeroFelt::try_from(point - pow1893 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[93] * value;
+    total_sum += constraint_coefficients[93] * value;
 
     value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_x_column]
         - oods_values[94])
         .field_div(&NonZeroFelt::try_from(point - pow1364 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[94] * value;
+    total_sum += constraint_coefficients[94] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[95])
         .field_div(&NonZeroFelt::try_from(point - pow1892 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[95] * value;
+    total_sum += constraint_coefficients[95] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[96])
         .field_div(&NonZeroFelt::try_from(point - pow1786 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[96] * value;
+    total_sum += constraint_coefficients[96] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[97])
         .field_div(&NonZeroFelt::try_from(point - pow1787 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[97] * value;
+    total_sum += constraint_coefficients[97] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[98])
         .field_div(&NonZeroFelt::try_from(point - pow1788 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[98] * value;
+    total_sum += constraint_coefficients[98] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[99])
         .field_div(&NonZeroFelt::try_from(point - pow1789 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[99] * value;
+    total_sum += constraint_coefficients[99] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[100])
         .field_div(&NonZeroFelt::try_from(point - pow1790 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[100] * value;
+    total_sum += constraint_coefficients[100] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[101])
         .field_div(&NonZeroFelt::try_from(point - pow1791 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[101] * value;
+    total_sum += constraint_coefficients[101] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[102])
         .field_div(&NonZeroFelt::try_from(point - pow1792 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[102] * value;
+    total_sum += constraint_coefficients[102] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[103])
         .field_div(&NonZeroFelt::try_from(point - pow1793 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[103] * value;
+    total_sum += constraint_coefficients[103] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[104])
         .field_div(&NonZeroFelt::try_from(point - pow1972 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[104] * value;
+    total_sum += constraint_coefficients[104] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[105])
         .field_div(&NonZeroFelt::try_from(point - pow1971 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[105] * value;
+    total_sum += constraint_coefficients[105] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_key_points_x_column] - oods_values[106])
         .field_div(&NonZeroFelt::try_from(point - pow1352 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[106] * value;
+    total_sum += constraint_coefficients[106] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_key_points_y_column] - oods_values[107])
         .field_div(&NonZeroFelt::try_from(point - pow1349 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[107] * value;
+    total_sum += constraint_coefficients[107] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_key_points_x_column] - oods_values[108])
         .field_div(&NonZeroFelt::try_from(point - pow1353 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[108] * value;
+    total_sum += constraint_coefficients[108] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_key_points_y_column] - oods_values[109])
         .field_div(&NonZeroFelt::try_from(point - pow1350 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[109] * value;
+    total_sum += constraint_coefficients[109] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_doubling_slope_column]
         - oods_values[110])
         .field_div(&NonZeroFelt::try_from(point - pow1348 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[110] * value;
+    total_sum += constraint_coefficients[110] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_exponentiate_generator_selector_column]
         - oods_values[111])
         .field_div(&NonZeroFelt::try_from(point - pow1346 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[111] * value;
+    total_sum += constraint_coefficients[111] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_exponentiate_generator_selector_column]
         - oods_values[112])
         .field_div(&NonZeroFelt::try_from(point - pow1347 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[112] * value;
+    total_sum += constraint_coefficients[112] * value;
 
     value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_generator_partial_sum_x_column]
         - oods_values[113])
         .field_div(&NonZeroFelt::try_from(point - pow1343 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[113] * value;
+    total_sum += constraint_coefficients[113] * value;
 
     value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_generator_partial_sum_y_column]
         - oods_values[114])
         .field_div(&NonZeroFelt::try_from(point - pow1340 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[114] * value;
+    total_sum += constraint_coefficients[114] * value;
 
     value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_generator_partial_sum_x_column]
         - oods_values[115])
         .field_div(&NonZeroFelt::try_from(point - pow1344 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[115] * value;
+    total_sum += constraint_coefficients[115] * value;
 
     value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_generator_partial_sum_y_column]
         - oods_values[116])
         .field_div(&NonZeroFelt::try_from(point - pow1341 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[116] * value;
+    total_sum += constraint_coefficients[116] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_exponentiate_generator_slope_column]
         - oods_values[117])
         .field_div(&NonZeroFelt::try_from(point - pow1339 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[117] * value;
+    total_sum += constraint_coefficients[117] * value;
 
     value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_generator_x_diff_inv_column]
         - oods_values[118])
         .field_div(&NonZeroFelt::try_from(point - pow1338 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[118] * value;
+    total_sum += constraint_coefficients[118] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_exponentiate_key_selector_column]
         - oods_values[119])
         .field_div(&NonZeroFelt::try_from(point - pow1336 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[119] * value;
+    total_sum += constraint_coefficients[119] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_exponentiate_key_selector_column]
         - oods_values[120])
         .field_div(&NonZeroFelt::try_from(point - pow1337 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[120] * value;
+    total_sum += constraint_coefficients[120] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_x_column]
         - oods_values[121])
         .field_div(&NonZeroFelt::try_from(point - pow1332 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[121] * value;
+    total_sum += constraint_coefficients[121] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_y_column]
         - oods_values[122])
         .field_div(&NonZeroFelt::try_from(point - pow1328 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[122] * value;
+    total_sum += constraint_coefficients[122] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_x_column]
         - oods_values[123])
         .field_div(&NonZeroFelt::try_from(point - pow1333 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[123] * value;
+    total_sum += constraint_coefficients[123] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_y_column]
         - oods_values[124])
         .field_div(&NonZeroFelt::try_from(point - pow1329 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[124] * value;
+    total_sum += constraint_coefficients[124] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_exponentiate_key_slope_column]
         - oods_values[125])
         .field_div(&NonZeroFelt::try_from(point - pow1327 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[125] * value;
+    total_sum += constraint_coefficients[125] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_exponentiate_key_x_diff_inv_column]
         - oods_values[126])
         .field_div(&NonZeroFelt::try_from(point - pow1326 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[126] * value;
+    total_sum += constraint_coefficients[126] * value;
 
     value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_generator_partial_sum_x_column]
         - oods_values[127])
         .field_div(&NonZeroFelt::try_from(point - pow1345 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[127] * value;
+    total_sum += constraint_coefficients[127] * value;
 
     value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_generator_partial_sum_y_column]
         - oods_values[128])
         .field_div(&NonZeroFelt::try_from(point - pow1342 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[128] * value;
+    total_sum += constraint_coefficients[128] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_x_column]
         - oods_values[129])
         .field_div(&NonZeroFelt::try_from(point - pow1334 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[129] * value;
+    total_sum += constraint_coefficients[129] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_y_column]
         - oods_values[130])
         .field_div(&NonZeroFelt::try_from(point - pow1330 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[130] * value;
+    total_sum += constraint_coefficients[130] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_key_points_x_column] - oods_values[131])
         .field_div(&NonZeroFelt::try_from(point - pow1354 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[131] * value;
+    total_sum += constraint_coefficients[131] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_key_points_y_column] - oods_values[132])
         .field_div(&NonZeroFelt::try_from(point - pow1351 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[132] * value;
+    total_sum += constraint_coefficients[132] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_add_results_slope_column]
         - oods_values[133])
         .field_div(&NonZeroFelt::try_from(point - pow1325 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[133] * value;
+    total_sum += constraint_coefficients[133] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_add_results_inv_column]
         - oods_values[134])
         .field_div(&NonZeroFelt::try_from(point - pow1324 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[134] * value;
+    total_sum += constraint_coefficients[134] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_x_column]
         - oods_values[135])
         .field_div(&NonZeroFelt::try_from(point - pow1335 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[135] * value;
+    total_sum += constraint_coefficients[135] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_y_column]
         - oods_values[136])
         .field_div(&NonZeroFelt::try_from(point - pow1331 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[136] * value;
+    total_sum += constraint_coefficients[136] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_extract_r_slope_column]
         - oods_values[137])
         .field_div(&NonZeroFelt::try_from(point - pow1323 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[137] * value;
+    total_sum += constraint_coefficients[137] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_extract_r_inv_column]
         - oods_values[138])
         .field_div(&NonZeroFelt::try_from(point - pow1322 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[138] * value;
+    total_sum += constraint_coefficients[138] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_z_inv_column] - oods_values[139])
         .field_div(&NonZeroFelt::try_from(point - pow1321 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[139] * value;
+    total_sum += constraint_coefficients[139] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_r_w_inv_column] - oods_values[140])
         .field_div(&NonZeroFelt::try_from(point - pow1320 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[140] * value;
+    total_sum += constraint_coefficients[140] * value;
 
     value = (column_values[dynamic_params.ecdsa_signature0_q_x_squared_column] - oods_values[141])
         .field_div(&NonZeroFelt::try_from(point - pow1319 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[141] * value;
+    total_sum += constraint_coefficients[141] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[142])
         .field_div(&NonZeroFelt::try_from(point - pow1969 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[142] * value;
+    total_sum += constraint_coefficients[142] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[143])
         .field_div(&NonZeroFelt::try_from(point - pow1968 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[143] * value;
+    total_sum += constraint_coefficients[143] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[144])
         .field_div(&NonZeroFelt::try_from(point - pow1970 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[144] * value;
+    total_sum += constraint_coefficients[144] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[145])
         .field_div(&NonZeroFelt::try_from(point - pow1891 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[145] * value;
+    total_sum += constraint_coefficients[145] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[146])
         .field_div(&NonZeroFelt::try_from(point - pow1890 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[146] * value;
+    total_sum += constraint_coefficients[146] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[147])
         .field_div(&NonZeroFelt::try_from(point - pow1964 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[147] * value;
+    total_sum += constraint_coefficients[147] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[148])
         .field_div(&NonZeroFelt::try_from(point - pow1965 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[148] * value;
+    total_sum += constraint_coefficients[148] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[149])
         .field_div(&NonZeroFelt::try_from(point - pow1963 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[149] * value;
+    total_sum += constraint_coefficients[149] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[150])
         .field_div(&NonZeroFelt::try_from(point - pow1966 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[150] * value;
+    total_sum += constraint_coefficients[150] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[151])
         .field_div(&NonZeroFelt::try_from(point - pow1967 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[151] * value;
+    total_sum += constraint_coefficients[151] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[152])
         .field_div(&NonZeroFelt::try_from(point - pow1887 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[152] * value;
+    total_sum += constraint_coefficients[152] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[153])
         .field_div(&NonZeroFelt::try_from(point - pow1683 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[153] * value;
+    total_sum += constraint_coefficients[153] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[154])
         .field_div(&NonZeroFelt::try_from(point - pow1684 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[154] * value;
+    total_sum += constraint_coefficients[154] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[155])
         .field_div(&NonZeroFelt::try_from(point - pow1685 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[155] * value;
+    total_sum += constraint_coefficients[155] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[156])
         .field_div(&NonZeroFelt::try_from(point - pow1686 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[156] * value;
+    total_sum += constraint_coefficients[156] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[157])
         .field_div(&NonZeroFelt::try_from(point - pow1687 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[157] * value;
+    total_sum += constraint_coefficients[157] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[158])
         .field_div(&NonZeroFelt::try_from(point - pow1688 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[158] * value;
+    total_sum += constraint_coefficients[158] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[159])
         .field_div(&NonZeroFelt::try_from(point - pow1689 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[159] * value;
+    total_sum += constraint_coefficients[159] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[160])
         .field_div(&NonZeroFelt::try_from(point - pow1690 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[160] * value;
+    total_sum += constraint_coefficients[160] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[161])
         .field_div(&NonZeroFelt::try_from(point - pow1691 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[161] * value;
+    total_sum += constraint_coefficients[161] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[162])
         .field_div(&NonZeroFelt::try_from(point - pow1692 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[162] * value;
+    total_sum += constraint_coefficients[162] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[163])
         .field_div(&NonZeroFelt::try_from(point - pow1693 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[163] * value;
+    total_sum += constraint_coefficients[163] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[164])
         .field_div(&NonZeroFelt::try_from(point - pow1694 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[164] * value;
+    total_sum += constraint_coefficients[164] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[165])
         .field_div(&NonZeroFelt::try_from(point - pow1695 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[165] * value;
+    total_sum += constraint_coefficients[165] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[166])
         .field_div(&NonZeroFelt::try_from(point - pow1696 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[166] * value;
+    total_sum += constraint_coefficients[166] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[167])
         .field_div(&NonZeroFelt::try_from(point - pow1697 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[167] * value;
+    total_sum += constraint_coefficients[167] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[168])
         .field_div(&NonZeroFelt::try_from(point - pow1698 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[168] * value;
+    total_sum += constraint_coefficients[168] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[169])
         .field_div(&NonZeroFelt::try_from(point - pow1886 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[169] * value;
+    total_sum += constraint_coefficients[169] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[170])
         .field_div(&NonZeroFelt::try_from(point - pow1888 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[170] * value;
+    total_sum += constraint_coefficients[170] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[171])
         .field_div(&NonZeroFelt::try_from(point - pow1889 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[171] * value;
+    total_sum += constraint_coefficients[171] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[172])
         .field_div(&NonZeroFelt::try_from(point - pow1700 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[172] * value;
+    total_sum += constraint_coefficients[172] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[173])
         .field_div(&NonZeroFelt::try_from(point - pow1699 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[173] * value;
+    total_sum += constraint_coefficients[173] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[174])
         .field_div(&NonZeroFelt::try_from(point - pow1705 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[174] * value;
+    total_sum += constraint_coefficients[174] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[175])
         .field_div(&NonZeroFelt::try_from(point - pow1682 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[175] * value;
+    total_sum += constraint_coefficients[175] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[176])
         .field_div(&NonZeroFelt::try_from(point - pow1701 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[176] * value;
+    total_sum += constraint_coefficients[176] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[177])
         .field_div(&NonZeroFelt::try_from(point - pow1706 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[177] * value;
+    total_sum += constraint_coefficients[177] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[178])
         .field_div(&NonZeroFelt::try_from(point - pow1681 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[178] * value;
+    total_sum += constraint_coefficients[178] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[179])
         .field_div(&NonZeroFelt::try_from(point - pow1702 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[179] * value;
+    total_sum += constraint_coefficients[179] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[180])
         .field_div(&NonZeroFelt::try_from(point - pow1707 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[180] * value;
+    total_sum += constraint_coefficients[180] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[181])
         .field_div(&NonZeroFelt::try_from(point - pow1680 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[181] * value;
+    total_sum += constraint_coefficients[181] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[182])
         .field_div(&NonZeroFelt::try_from(point - pow1703 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[182] * value;
+    total_sum += constraint_coefficients[182] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[183])
         .field_div(&NonZeroFelt::try_from(point - pow1708 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[183] * value;
+    total_sum += constraint_coefficients[183] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[184])
         .field_div(&NonZeroFelt::try_from(point - pow1679 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[184] * value;
+    total_sum += constraint_coefficients[184] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[185])
         .field_div(&NonZeroFelt::try_from(point - pow1704 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[185] * value;
+    total_sum += constraint_coefficients[185] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[186])
         .field_div(&NonZeroFelt::try_from(point - pow1709 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[186] * value;
+    total_sum += constraint_coefficients[186] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[187])
         .field_div(&NonZeroFelt::try_from(point - pow1955 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[187] * value;
+    total_sum += constraint_coefficients[187] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[188])
         .field_div(&NonZeroFelt::try_from(point - pow1956 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[188] * value;
+    total_sum += constraint_coefficients[188] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[189])
         .field_div(&NonZeroFelt::try_from(point - pow1954 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[189] * value;
+    total_sum += constraint_coefficients[189] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[190])
         .field_div(&NonZeroFelt::try_from(point - pow1953 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[190] * value;
+    total_sum += constraint_coefficients[190] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[191])
         .field_div(&NonZeroFelt::try_from(point - pow1952 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[191] * value;
+    total_sum += constraint_coefficients[191] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[192])
         .field_div(&NonZeroFelt::try_from(point - pow1951 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[192] * value;
+    total_sum += constraint_coefficients[192] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[193])
         .field_div(&NonZeroFelt::try_from(point - pow1950 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[193] * value;
+    total_sum += constraint_coefficients[193] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[194])
         .field_div(&NonZeroFelt::try_from(point - pow1949 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[194] * value;
+    total_sum += constraint_coefficients[194] * value;
 
     value = (column_values[dynamic_params.ec_op_doubling_slope_column] - oods_values[195])
         .field_div(&NonZeroFelt::try_from(point - pow1318 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[195] * value;
+    total_sum += constraint_coefficients[195] * value;
 
     value = (column_values[dynamic_params.ec_op_doubled_points_x_column] - oods_values[196])
         .field_div(&NonZeroFelt::try_from(point - pow1316 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[196] * value;
+    total_sum += constraint_coefficients[196] * value;
 
     value = (column_values[dynamic_params.ec_op_doubled_points_y_column] - oods_values[197])
         .field_div(&NonZeroFelt::try_from(point - pow1314 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[197] * value;
+    total_sum += constraint_coefficients[197] * value;
 
     value = (column_values[dynamic_params.ec_op_doubled_points_x_column] - oods_values[198])
         .field_div(&NonZeroFelt::try_from(point - pow1317 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[198] * value;
+    total_sum += constraint_coefficients[198] * value;
 
     value = (column_values[dynamic_params.ec_op_doubled_points_y_column] - oods_values[199])
         .field_div(&NonZeroFelt::try_from(point - pow1315 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[199] * value;
+    total_sum += constraint_coefficients[199] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[200])
         .field_div(&NonZeroFelt::try_from(point - pow1879 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[200] * value;
+    total_sum += constraint_coefficients[200] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[201])
         .field_div(&NonZeroFelt::try_from(point - pow1878 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[201] * value;
+    total_sum += constraint_coefficients[201] * value;
 
     value = (column_values[dynamic_params.ec_op_ec_subset_sum_bit_unpacking_prod_ones192_column]
         - oods_values[202])
         .field_div(&NonZeroFelt::try_from(point - pow1313 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[202] * value;
+    total_sum += constraint_coefficients[202] * value;
 
     value = (column_values[dynamic_params.ec_op_ec_subset_sum_selector_column] - oods_values[203])
         .field_div(&NonZeroFelt::try_from(point - pow1305 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[203] * value;
+    total_sum += constraint_coefficients[203] * value;
 
     value = (column_values[dynamic_params.ec_op_ec_subset_sum_selector_column] - oods_values[204])
         .field_div(&NonZeroFelt::try_from(point - pow1306 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[204] * value;
+    total_sum += constraint_coefficients[204] * value;
 
     value = (column_values[dynamic_params.ec_op_ec_subset_sum_selector_column] - oods_values[205])
         .field_div(&NonZeroFelt::try_from(point - pow1311 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[205] * value;
+    total_sum += constraint_coefficients[205] * value;
 
     value = (column_values[dynamic_params.ec_op_ec_subset_sum_bit_unpacking_prod_ones196_column]
         - oods_values[206])
         .field_div(&NonZeroFelt::try_from(point - pow1304 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[206] * value;
+    total_sum += constraint_coefficients[206] * value;
 
     value = (column_values[dynamic_params.ec_op_ec_subset_sum_selector_column] - oods_values[207])
         .field_div(&NonZeroFelt::try_from(point - pow1312 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[207] * value;
+    total_sum += constraint_coefficients[207] * value;
 
     value = (column_values[dynamic_params.ec_op_ec_subset_sum_selector_column] - oods_values[208])
         .field_div(&NonZeroFelt::try_from(point - pow1309 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[208] * value;
+    total_sum += constraint_coefficients[208] * value;
 
     value = (column_values[dynamic_params.ec_op_ec_subset_sum_selector_column] - oods_values[209])
         .field_div(&NonZeroFelt::try_from(point - pow1307 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[209] * value;
+    total_sum += constraint_coefficients[209] * value;
 
     value = (column_values[dynamic_params.ec_op_ec_subset_sum_selector_column] - oods_values[210])
         .field_div(&NonZeroFelt::try_from(point - pow1308 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[210] * value;
+    total_sum += constraint_coefficients[210] * value;
 
     value = (column_values[dynamic_params.ec_op_ec_subset_sum_selector_column] - oods_values[211])
         .field_div(&NonZeroFelt::try_from(point - pow1310 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[211] * value;
+    total_sum += constraint_coefficients[211] * value;
 
     value = (column_values[dynamic_params.ec_op_ec_subset_sum_partial_sum_x_column]
         - oods_values[212])
         .field_div(&NonZeroFelt::try_from(point - pow1301 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[212] * value;
+    total_sum += constraint_coefficients[212] * value;
 
     value = (column_values[dynamic_params.ec_op_ec_subset_sum_partial_sum_y_column]
         - oods_values[213])
         .field_div(&NonZeroFelt::try_from(point - pow1298 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[213] * value;
+    total_sum += constraint_coefficients[213] * value;
 
     value = (column_values[dynamic_params.ec_op_ec_subset_sum_partial_sum_x_column]
         - oods_values[214])
         .field_div(&NonZeroFelt::try_from(point - pow1303 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[214] * value;
+    total_sum += constraint_coefficients[214] * value;
 
     value = (column_values[dynamic_params.ec_op_ec_subset_sum_partial_sum_y_column]
         - oods_values[215])
         .field_div(&NonZeroFelt::try_from(point - pow1300 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[215] * value;
+    total_sum += constraint_coefficients[215] * value;
 
     value = (column_values[dynamic_params.ec_op_ec_subset_sum_slope_column] - oods_values[216])
         .field_div(&NonZeroFelt::try_from(point - pow1297 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[216] * value;
+    total_sum += constraint_coefficients[216] * value;
 
     value = (column_values[dynamic_params.ec_op_ec_subset_sum_x_diff_inv_column]
         - oods_values[217])
         .field_div(&NonZeroFelt::try_from(point - pow1296 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[217] * value;
+    total_sum += constraint_coefficients[217] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[218])
         .field_div(&NonZeroFelt::try_from(point - pow1876 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[218] * value;
+    total_sum += constraint_coefficients[218] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[219])
         .field_div(&NonZeroFelt::try_from(point - pow1875 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[219] * value;
+    total_sum += constraint_coefficients[219] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[220])
         .field_div(&NonZeroFelt::try_from(point - pow1874 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[220] * value;
+    total_sum += constraint_coefficients[220] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[221])
         .field_div(&NonZeroFelt::try_from(point - pow1873 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[221] * value;
+    total_sum += constraint_coefficients[221] * value;
 
     value = (column_values[dynamic_params.ec_op_ec_subset_sum_partial_sum_x_column]
         - oods_values[222])
         .field_div(&NonZeroFelt::try_from(point - pow1302 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[222] * value;
+    total_sum += constraint_coefficients[222] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[223])
         .field_div(&NonZeroFelt::try_from(point - pow1872 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[223] * value;
+    total_sum += constraint_coefficients[223] * value;
 
     value = (column_values[dynamic_params.ec_op_ec_subset_sum_partial_sum_y_column]
         - oods_values[224])
         .field_div(&NonZeroFelt::try_from(point - pow1299 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[224] * value;
+    total_sum += constraint_coefficients[224] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[225])
         .field_div(&NonZeroFelt::try_from(point - pow1947 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[225] * value;
+    total_sum += constraint_coefficients[225] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[226])
         .field_div(&NonZeroFelt::try_from(point - pow1948 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[226] * value;
+    total_sum += constraint_coefficients[226] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[227])
         .field_div(&NonZeroFelt::try_from(point - pow1265 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[227] * value;
+    total_sum += constraint_coefficients[227] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[228])
         .field_div(&NonZeroFelt::try_from(point - pow1856 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[228] * value;
+    total_sum += constraint_coefficients[228] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[229])
         .field_div(&NonZeroFelt::try_from(point - pow1270 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[229] * value;
+    total_sum += constraint_coefficients[229] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[230])
         .field_div(&NonZeroFelt::try_from(point - pow1857 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[230] * value;
+    total_sum += constraint_coefficients[230] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[231])
         .field_div(&NonZeroFelt::try_from(point - pow1271 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[231] * value;
+    total_sum += constraint_coefficients[231] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[232])
         .field_div(&NonZeroFelt::try_from(point - pow1858 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[232] * value;
+    total_sum += constraint_coefficients[232] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[233])
         .field_div(&NonZeroFelt::try_from(point - pow1272 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[233] * value;
+    total_sum += constraint_coefficients[233] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[234])
         .field_div(&NonZeroFelt::try_from(point - pow1859 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[234] * value;
+    total_sum += constraint_coefficients[234] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[235])
         .field_div(&NonZeroFelt::try_from(point - pow1273 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[235] * value;
+    total_sum += constraint_coefficients[235] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[236])
         .field_div(&NonZeroFelt::try_from(point - pow1860 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[236] * value;
+    total_sum += constraint_coefficients[236] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[237])
         .field_div(&NonZeroFelt::try_from(point - pow1274 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[237] * value;
+    total_sum += constraint_coefficients[237] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[238])
         .field_div(&NonZeroFelt::try_from(point - pow1861 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[238] * value;
+    total_sum += constraint_coefficients[238] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[239])
         .field_div(&NonZeroFelt::try_from(point - pow1275 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[239] * value;
+    total_sum += constraint_coefficients[239] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[240])
         .field_div(&NonZeroFelt::try_from(point - pow1862 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[240] * value;
+    total_sum += constraint_coefficients[240] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[241])
         .field_div(&NonZeroFelt::try_from(point - pow1276 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[241] * value;
+    total_sum += constraint_coefficients[241] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[242])
         .field_div(&NonZeroFelt::try_from(point - pow1863 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[242] * value;
+    total_sum += constraint_coefficients[242] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[243])
         .field_div(&NonZeroFelt::try_from(point - pow1277 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[243] * value;
+    total_sum += constraint_coefficients[243] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[244])
         .field_div(&NonZeroFelt::try_from(point - pow1864 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[244] * value;
+    total_sum += constraint_coefficients[244] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[245])
         .field_div(&NonZeroFelt::try_from(point - pow1278 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[245] * value;
+    total_sum += constraint_coefficients[245] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[246])
         .field_div(&NonZeroFelt::try_from(point - pow1865 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[246] * value;
+    total_sum += constraint_coefficients[246] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[247])
         .field_div(&NonZeroFelt::try_from(point - pow1279 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[247] * value;
+    total_sum += constraint_coefficients[247] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[248])
         .field_div(&NonZeroFelt::try_from(point - pow1866 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[248] * value;
+    total_sum += constraint_coefficients[248] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[249])
         .field_div(&NonZeroFelt::try_from(point - pow1280 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[249] * value;
+    total_sum += constraint_coefficients[249] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[250])
         .field_div(&NonZeroFelt::try_from(point - pow1867 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[250] * value;
+    total_sum += constraint_coefficients[250] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[251])
         .field_div(&NonZeroFelt::try_from(point - pow1281 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[251] * value;
+    total_sum += constraint_coefficients[251] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[252])
         .field_div(&NonZeroFelt::try_from(point - pow1868 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[252] * value;
+    total_sum += constraint_coefficients[252] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[253])
         .field_div(&NonZeroFelt::try_from(point - pow1282 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[253] * value;
+    total_sum += constraint_coefficients[253] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[254])
         .field_div(&NonZeroFelt::try_from(point - pow1869 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[254] * value;
+    total_sum += constraint_coefficients[254] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[255])
         .field_div(&NonZeroFelt::try_from(point - pow1283 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[255] * value;
+    total_sum += constraint_coefficients[255] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[256])
         .field_div(&NonZeroFelt::try_from(point - pow1870 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[256] * value;
+    total_sum += constraint_coefficients[256] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[257])
         .field_div(&NonZeroFelt::try_from(point - pow1284 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[257] * value;
+    total_sum += constraint_coefficients[257] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[258])
         .field_div(&NonZeroFelt::try_from(point - pow1871 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[258] * value;
+    total_sum += constraint_coefficients[258] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[259])
         .field_div(&NonZeroFelt::try_from(point - pow1235 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[259] * value;
+    total_sum += constraint_coefficients[259] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[260])
         .field_div(&NonZeroFelt::try_from(point - pow1243 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[260] * value;
+    total_sum += constraint_coefficients[260] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[261])
         .field_div(&NonZeroFelt::try_from(point - pow1266 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[261] * value;
+    total_sum += constraint_coefficients[261] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[262])
         .field_div(&NonZeroFelt::try_from(point - pow1251 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[262] * value;
+    total_sum += constraint_coefficients[262] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[263])
         .field_div(&NonZeroFelt::try_from(point - pow1267 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[263] * value;
+    total_sum += constraint_coefficients[263] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[264])
         .field_div(&NonZeroFelt::try_from(point - pow1252 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[264] * value;
+    total_sum += constraint_coefficients[264] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[265])
         .field_div(&NonZeroFelt::try_from(point - pow1268 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[265] * value;
+    total_sum += constraint_coefficients[265] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[266])
         .field_div(&NonZeroFelt::try_from(point - pow1253 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[266] * value;
+    total_sum += constraint_coefficients[266] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[267])
         .field_div(&NonZeroFelt::try_from(point - pow1269 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[267] * value;
+    total_sum += constraint_coefficients[267] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[268])
         .field_div(&NonZeroFelt::try_from(point - pow1254 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[268] * value;
+    total_sum += constraint_coefficients[268] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[269])
         .field_div(&NonZeroFelt::try_from(point - pow1285 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[269] * value;
+    total_sum += constraint_coefficients[269] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[270])
         .field_div(&NonZeroFelt::try_from(point - pow1255 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[270] * value;
+    total_sum += constraint_coefficients[270] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[271])
         .field_div(&NonZeroFelt::try_from(point - pow1286 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[271] * value;
+    total_sum += constraint_coefficients[271] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[272])
         .field_div(&NonZeroFelt::try_from(point - pow1256 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[272] * value;
+    total_sum += constraint_coefficients[272] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[273])
         .field_div(&NonZeroFelt::try_from(point - pow1287 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[273] * value;
+    total_sum += constraint_coefficients[273] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[274])
         .field_div(&NonZeroFelt::try_from(point - pow1257 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[274] * value;
+    total_sum += constraint_coefficients[274] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[275])
         .field_div(&NonZeroFelt::try_from(point - pow1288 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[275] * value;
+    total_sum += constraint_coefficients[275] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[276])
         .field_div(&NonZeroFelt::try_from(point - pow1258 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[276] * value;
+    total_sum += constraint_coefficients[276] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[277])
         .field_div(&NonZeroFelt::try_from(point - pow1289 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[277] * value;
+    total_sum += constraint_coefficients[277] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[278])
         .field_div(&NonZeroFelt::try_from(point - pow1259 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[278] * value;
+    total_sum += constraint_coefficients[278] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[279])
         .field_div(&NonZeroFelt::try_from(point - pow1290 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[279] * value;
+    total_sum += constraint_coefficients[279] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[280])
         .field_div(&NonZeroFelt::try_from(point - pow1260 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[280] * value;
+    total_sum += constraint_coefficients[280] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[281])
         .field_div(&NonZeroFelt::try_from(point - pow1291 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[281] * value;
+    total_sum += constraint_coefficients[281] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[282])
         .field_div(&NonZeroFelt::try_from(point - pow1261 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[282] * value;
+    total_sum += constraint_coefficients[282] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[283])
         .field_div(&NonZeroFelt::try_from(point - pow1292 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[283] * value;
+    total_sum += constraint_coefficients[283] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[284])
         .field_div(&NonZeroFelt::try_from(point - pow1262 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[284] * value;
+    total_sum += constraint_coefficients[284] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[285])
         .field_div(&NonZeroFelt::try_from(point - pow1293 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[285] * value;
+    total_sum += constraint_coefficients[285] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[286])
         .field_div(&NonZeroFelt::try_from(point - pow1263 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[286] * value;
+    total_sum += constraint_coefficients[286] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[287])
         .field_div(&NonZeroFelt::try_from(point - pow1294 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[287] * value;
+    total_sum += constraint_coefficients[287] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[288])
         .field_div(&NonZeroFelt::try_from(point - pow1264 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[288] * value;
+    total_sum += constraint_coefficients[288] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[289])
         .field_div(&NonZeroFelt::try_from(point - pow1295 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[289] * value;
+    total_sum += constraint_coefficients[289] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[290])
         .field_div(&NonZeroFelt::try_from(point - pow1219 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[290] * value;
+    total_sum += constraint_coefficients[290] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[291])
         .field_div(&NonZeroFelt::try_from(point - pow1203 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[291] * value;
+    total_sum += constraint_coefficients[291] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[292])
         .field_div(&NonZeroFelt::try_from(point - pow1211 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[292] * value;
+    total_sum += constraint_coefficients[292] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[293])
         .field_div(&NonZeroFelt::try_from(point - pow1204 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[293] * value;
+    total_sum += constraint_coefficients[293] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[294])
         .field_div(&NonZeroFelt::try_from(point - pow1214 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[294] * value;
+    total_sum += constraint_coefficients[294] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[295])
         .field_div(&NonZeroFelt::try_from(point - pow1212 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[295] * value;
+    total_sum += constraint_coefficients[295] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[296])
         .field_div(&NonZeroFelt::try_from(point - pow1236 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[296] * value;
+    total_sum += constraint_coefficients[296] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[297])
         .field_div(&NonZeroFelt::try_from(point - pow1215 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[297] * value;
+    total_sum += constraint_coefficients[297] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[298])
         .field_div(&NonZeroFelt::try_from(point - pow1244 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[298] * value;
+    total_sum += constraint_coefficients[298] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[299])
         .field_div(&NonZeroFelt::try_from(point - pow1213 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[299] * value;
+    total_sum += constraint_coefficients[299] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[300])
         .field_div(&NonZeroFelt::try_from(point - pow1237 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[300] * value;
+    total_sum += constraint_coefficients[300] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[301])
         .field_div(&NonZeroFelt::try_from(point - pow1217 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[301] * value;
+    total_sum += constraint_coefficients[301] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[302])
         .field_div(&NonZeroFelt::try_from(point - pow1245 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[302] * value;
+    total_sum += constraint_coefficients[302] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[303])
         .field_div(&NonZeroFelt::try_from(point - pow1216 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[303] * value;
+    total_sum += constraint_coefficients[303] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[304])
         .field_div(&NonZeroFelt::try_from(point - pow1238 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[304] * value;
+    total_sum += constraint_coefficients[304] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[305])
         .field_div(&NonZeroFelt::try_from(point - pow1218 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[305] * value;
+    total_sum += constraint_coefficients[305] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[306])
         .field_div(&NonZeroFelt::try_from(point - pow1246 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[306] * value;
+    total_sum += constraint_coefficients[306] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[307])
         .field_div(&NonZeroFelt::try_from(point - pow1221 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[307] * value;
+    total_sum += constraint_coefficients[307] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[308])
         .field_div(&NonZeroFelt::try_from(point - pow1239 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[308] * value;
+    total_sum += constraint_coefficients[308] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[309])
         .field_div(&NonZeroFelt::try_from(point - pow1226 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[309] * value;
+    total_sum += constraint_coefficients[309] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[310])
         .field_div(&NonZeroFelt::try_from(point - pow1247 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[310] * value;
+    total_sum += constraint_coefficients[310] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[311])
         .field_div(&NonZeroFelt::try_from(point - pow1222 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[311] * value;
+    total_sum += constraint_coefficients[311] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[312])
         .field_div(&NonZeroFelt::try_from(point - pow1240 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[312] * value;
+    total_sum += constraint_coefficients[312] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[313])
         .field_div(&NonZeroFelt::try_from(point - pow1227 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[313] * value;
+    total_sum += constraint_coefficients[313] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[314])
         .field_div(&NonZeroFelt::try_from(point - pow1248 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[314] * value;
+    total_sum += constraint_coefficients[314] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[315])
         .field_div(&NonZeroFelt::try_from(point - pow1223 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[315] * value;
+    total_sum += constraint_coefficients[315] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[316])
         .field_div(&NonZeroFelt::try_from(point - pow1241 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[316] * value;
+    total_sum += constraint_coefficients[316] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[317])
         .field_div(&NonZeroFelt::try_from(point - pow1231 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[317] * value;
+    total_sum += constraint_coefficients[317] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[318])
         .field_div(&NonZeroFelt::try_from(point - pow1249 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[318] * value;
+    total_sum += constraint_coefficients[318] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[319])
         .field_div(&NonZeroFelt::try_from(point - pow1242 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[319] * value;
+    total_sum += constraint_coefficients[319] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[320])
         .field_div(&NonZeroFelt::try_from(point - pow1225 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[320] * value;
+    total_sum += constraint_coefficients[320] * value;
 
     value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[321])
         .field_div(&NonZeroFelt::try_from(point - pow1250 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[321] * value;
+    total_sum += constraint_coefficients[321] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[322])
         .field_div(&NonZeroFelt::try_from(point - pow1224 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[322] * value;
+    total_sum += constraint_coefficients[322] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[323])
         .field_div(&NonZeroFelt::try_from(point - pow1207 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[323] * value;
+    total_sum += constraint_coefficients[323] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[324])
         .field_div(&NonZeroFelt::try_from(point - pow1232 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[324] * value;
+    total_sum += constraint_coefficients[324] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[325])
         .field_div(&NonZeroFelt::try_from(point - pow1208 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[325] * value;
+    total_sum += constraint_coefficients[325] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[326])
         .field_div(&NonZeroFelt::try_from(point - pow1673 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[326] * value;
+    total_sum += constraint_coefficients[326] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[327])
         .field_div(&NonZeroFelt::try_from(point - pow1233 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[327] * value;
+    total_sum += constraint_coefficients[327] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[328])
         .field_div(&NonZeroFelt::try_from(point - pow1209 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[328] * value;
+    total_sum += constraint_coefficients[328] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[329])
         .field_div(&NonZeroFelt::try_from(point - pow1674 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[329] * value;
+    total_sum += constraint_coefficients[329] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[330])
         .field_div(&NonZeroFelt::try_from(point - pow1234 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[330] * value;
+    total_sum += constraint_coefficients[330] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[331])
         .field_div(&NonZeroFelt::try_from(point - pow1210 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[331] * value;
+    total_sum += constraint_coefficients[331] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[332])
         .field_div(&NonZeroFelt::try_from(point - pow1220 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[332] * value;
+    total_sum += constraint_coefficients[332] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[333])
         .field_div(&NonZeroFelt::try_from(point - pow1228 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[333] * value;
+    total_sum += constraint_coefficients[333] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[334])
         .field_div(&NonZeroFelt::try_from(point - pow1571 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[334] * value;
+    total_sum += constraint_coefficients[334] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[335])
         .field_div(&NonZeroFelt::try_from(point - pow1205 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[335] * value;
+    total_sum += constraint_coefficients[335] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[336])
         .field_div(&NonZeroFelt::try_from(point - pow1229 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[336] * value;
+    total_sum += constraint_coefficients[336] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[337])
         .field_div(&NonZeroFelt::try_from(point - pow1572 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[337] * value;
+    total_sum += constraint_coefficients[337] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[338])
         .field_div(&NonZeroFelt::try_from(point - pow1206 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[338] * value;
+    total_sum += constraint_coefficients[338] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[339])
         .field_div(&NonZeroFelt::try_from(point - pow1230 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[339] * value;
+    total_sum += constraint_coefficients[339] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[340])
         .field_div(&NonZeroFelt::try_from(point - pow1615 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[340] * value;
+    total_sum += constraint_coefficients[340] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[341])
         .field_div(&NonZeroFelt::try_from(point - pow1581 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[341] * value;
+    total_sum += constraint_coefficients[341] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[342])
         .field_div(&NonZeroFelt::try_from(point - pow1588 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[342] * value;
+    total_sum += constraint_coefficients[342] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[343])
         .field_div(&NonZeroFelt::try_from(point - pow1596 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[343] * value;
+    total_sum += constraint_coefficients[343] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[344])
         .field_div(&NonZeroFelt::try_from(point - pow1604 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[344] * value;
+    total_sum += constraint_coefficients[344] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[345])
         .field_div(&NonZeroFelt::try_from(point - pow1546 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[345] * value;
+    total_sum += constraint_coefficients[345] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[346])
         .field_div(&NonZeroFelt::try_from(point - pow1518 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[346] * value;
+    total_sum += constraint_coefficients[346] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[347])
         .field_div(&NonZeroFelt::try_from(point - pow1512 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[347] * value;
+    total_sum += constraint_coefficients[347] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[348])
         .field_div(&NonZeroFelt::try_from(point - pow1574 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[348] * value;
+    total_sum += constraint_coefficients[348] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[349])
         .field_div(&NonZeroFelt::try_from(point - pow1582 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[349] * value;
+    total_sum += constraint_coefficients[349] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[350])
         .field_div(&NonZeroFelt::try_from(point - pow1590 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[350] * value;
+    total_sum += constraint_coefficients[350] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[351])
         .field_div(&NonZeroFelt::try_from(point - pow1599 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[351] * value;
+    total_sum += constraint_coefficients[351] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[352])
         .field_div(&NonZeroFelt::try_from(point - pow1605 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[352] * value;
+    total_sum += constraint_coefficients[352] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[353])
         .field_div(&NonZeroFelt::try_from(point - pow1622 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[353] * value;
+    total_sum += constraint_coefficients[353] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[354])
         .field_div(&NonZeroFelt::try_from(point - pow1548 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[354] * value;
+    total_sum += constraint_coefficients[354] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[355])
         .field_div(&NonZeroFelt::try_from(point - pow1508 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[355] * value;
+    total_sum += constraint_coefficients[355] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[356])
         .field_div(&NonZeroFelt::try_from(point - pow1575 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[356] * value;
+    total_sum += constraint_coefficients[356] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[357])
         .field_div(&NonZeroFelt::try_from(point - pow1583 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[357] * value;
+    total_sum += constraint_coefficients[357] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[358])
         .field_div(&NonZeroFelt::try_from(point - pow1591 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[358] * value;
+    total_sum += constraint_coefficients[358] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[359])
         .field_div(&NonZeroFelt::try_from(point - pow1600 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[359] * value;
+    total_sum += constraint_coefficients[359] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[360])
         .field_div(&NonZeroFelt::try_from(point - pow1608 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[360] * value;
+    total_sum += constraint_coefficients[360] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[361])
         .field_div(&NonZeroFelt::try_from(point - pow1516 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[361] * value;
+    total_sum += constraint_coefficients[361] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[362])
         .field_div(&NonZeroFelt::try_from(point - pow1628 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[362] * value;
+    total_sum += constraint_coefficients[362] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[363])
         .field_div(&NonZeroFelt::try_from(point - pow1619 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[363] * value;
+    total_sum += constraint_coefficients[363] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[364])
         .field_div(&NonZeroFelt::try_from(point - pow1576 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[364] * value;
+    total_sum += constraint_coefficients[364] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[365])
         .field_div(&NonZeroFelt::try_from(point - pow1584 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[365] * value;
+    total_sum += constraint_coefficients[365] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[366])
         .field_div(&NonZeroFelt::try_from(point - pow1592 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[366] * value;
+    total_sum += constraint_coefficients[366] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[367])
         .field_div(&NonZeroFelt::try_from(point - pow1601 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[367] * value;
+    total_sum += constraint_coefficients[367] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[368])
         .field_div(&NonZeroFelt::try_from(point - pow1609 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[368] * value;
+    total_sum += constraint_coefficients[368] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[369])
         .field_div(&NonZeroFelt::try_from(point - pow1547 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[369] * value;
+    total_sum += constraint_coefficients[369] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[370])
         .field_div(&NonZeroFelt::try_from(point - pow1519 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[370] * value;
+    total_sum += constraint_coefficients[370] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[371])
         .field_div(&NonZeroFelt::try_from(point - pow1513 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[371] * value;
+    total_sum += constraint_coefficients[371] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[372])
         .field_div(&NonZeroFelt::try_from(point - pow1579 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[372] * value;
+    total_sum += constraint_coefficients[372] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[373])
         .field_div(&NonZeroFelt::try_from(point - pow1587 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[373] * value;
+    total_sum += constraint_coefficients[373] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[374])
         .field_div(&NonZeroFelt::try_from(point - pow1593 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[374] * value;
+    total_sum += constraint_coefficients[374] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[375])
         .field_div(&NonZeroFelt::try_from(point - pow1602 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[375] * value;
+    total_sum += constraint_coefficients[375] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[376])
         .field_div(&NonZeroFelt::try_from(point - pow1614 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[376] * value;
+    total_sum += constraint_coefficients[376] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[377])
         .field_div(&NonZeroFelt::try_from(point - pow1627 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[377] * value;
+    total_sum += constraint_coefficients[377] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[378])
         .field_div(&NonZeroFelt::try_from(point - pow1549 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[378] * value;
+    total_sum += constraint_coefficients[378] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column] - oods_values[379])
         .field_div(&NonZeroFelt::try_from(point - pow1195 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[379] * value;
+    total_sum += constraint_coefficients[379] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column] - oods_values[380])
         .field_div(&NonZeroFelt::try_from(point - pow1192 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[380] * value;
+    total_sum += constraint_coefficients[380] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[381])
         .field_div(&NonZeroFelt::try_from(point - pow1677 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[381] * value;
+    total_sum += constraint_coefficients[381] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column] - oods_values[382])
         .field_div(&NonZeroFelt::try_from(point - pow1188 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[382] * value;
+    total_sum += constraint_coefficients[382] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column] - oods_values[383])
         .field_div(&NonZeroFelt::try_from(point - pow1182 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[383] * value;
+    total_sum += constraint_coefficients[383] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[384])
         .field_div(&NonZeroFelt::try_from(point - pow1538 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[384] * value;
+    total_sum += constraint_coefficients[384] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column] - oods_values[385])
         .field_div(&NonZeroFelt::try_from(point - pow1175 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[385] * value;
+    total_sum += constraint_coefficients[385] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column] - oods_values[386])
         .field_div(&NonZeroFelt::try_from(point - pow1171 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[386] * value;
+    total_sum += constraint_coefficients[386] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[387])
         .field_div(&NonZeroFelt::try_from(point - pow1568 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[387] * value;
+    total_sum += constraint_coefficients[387] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity3_column] - oods_values[388])
         .field_div(&NonZeroFelt::try_from(point - pow1165 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[388] * value;
+    total_sum += constraint_coefficients[388] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity3_column] - oods_values[389])
         .field_div(&NonZeroFelt::try_from(point - pow1164 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[389] * value;
+    total_sum += constraint_coefficients[389] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[390])
         .field_div(&NonZeroFelt::try_from(point - pow1678 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[390] * value;
+    total_sum += constraint_coefficients[390] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column] - oods_values[391])
         .field_div(&NonZeroFelt::try_from(point - pow1156 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[391] * value;
+    total_sum += constraint_coefficients[391] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column] - oods_values[392])
         .field_div(&NonZeroFelt::try_from(point - pow1153 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[392] * value;
+    total_sum += constraint_coefficients[392] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[393])
         .field_div(&NonZeroFelt::try_from(point - pow1542 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[393] * value;
+    total_sum += constraint_coefficients[393] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[394])
         .field_div(&NonZeroFelt::try_from(point - pow1383 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[394] * value;
+    total_sum += constraint_coefficients[394] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[395])
         .field_div(&NonZeroFelt::try_from(point - pow1629 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[395] * value;
+    total_sum += constraint_coefficients[395] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[396])
         .field_div(&NonZeroFelt::try_from(point - pow1404 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[396] * value;
+    total_sum += constraint_coefficients[396] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[397])
         .field_div(&NonZeroFelt::try_from(point - pow1455 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[397] * value;
+    total_sum += constraint_coefficients[397] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[398])
         .field_div(&NonZeroFelt::try_from(point - pow1570 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[398] * value;
+    total_sum += constraint_coefficients[398] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column] - oods_values[399])
         .field_div(&NonZeroFelt::try_from(point - pow1181 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[399] * value;
+    total_sum += constraint_coefficients[399] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[400])
         .field_div(&NonZeroFelt::try_from(point - pow1676 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[400] * value;
+    total_sum += constraint_coefficients[400] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[401])
         .field_div(&NonZeroFelt::try_from(point - pow1553 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[401] * value;
+    total_sum += constraint_coefficients[401] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[402])
         .field_div(&NonZeroFelt::try_from(point - pow1421 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[402] * value;
+    total_sum += constraint_coefficients[402] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[403])
         .field_div(&NonZeroFelt::try_from(point - pow1485 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[403] * value;
+    total_sum += constraint_coefficients[403] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[404])
         .field_div(&NonZeroFelt::try_from(point - pow1494 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[404] * value;
+    total_sum += constraint_coefficients[404] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[405])
         .field_div(&NonZeroFelt::try_from(point - pow1517 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[405] * value;
+    total_sum += constraint_coefficients[405] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity3_column] - oods_values[406])
         .field_div(&NonZeroFelt::try_from(point - pow1166 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[406] * value;
+    total_sum += constraint_coefficients[406] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[407])
         .field_div(&NonZeroFelt::try_from(point - pow1650 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[407] * value;
+    total_sum += constraint_coefficients[407] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[408])
         .field_div(&NonZeroFelt::try_from(point - pow1447 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[408] * value;
+    total_sum += constraint_coefficients[408] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[409])
         .field_div(&NonZeroFelt::try_from(point - pow1393 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[409] * value;
+    total_sum += constraint_coefficients[409] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[410])
         .field_div(&NonZeroFelt::try_from(point - pow1491 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[410] * value;
+    total_sum += constraint_coefficients[410] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[411])
         .field_div(&NonZeroFelt::try_from(point - pow1531 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[411] * value;
+    total_sum += constraint_coefficients[411] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[412])
         .field_div(&NonZeroFelt::try_from(point - pow1562 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[412] * value;
+    total_sum += constraint_coefficients[412] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column] - oods_values[413])
         .field_div(&NonZeroFelt::try_from(point - pow1161 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[413] * value;
+    total_sum += constraint_coefficients[413] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[414])
         .field_div(&NonZeroFelt::try_from(point - pow1577 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[414] * value;
+    total_sum += constraint_coefficients[414] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[415])
         .field_div(&NonZeroFelt::try_from(point - pow1521 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[415] * value;
+    total_sum += constraint_coefficients[415] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[416])
         .field_div(&NonZeroFelt::try_from(point - pow1416 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[416] * value;
+    total_sum += constraint_coefficients[416] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[417])
         .field_div(&NonZeroFelt::try_from(point - pow1440 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[417] * value;
+    total_sum += constraint_coefficients[417] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[418])
         .field_div(&NonZeroFelt::try_from(point - pow1453 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[418] * value;
+    total_sum += constraint_coefficients[418] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[419])
         .field_div(&NonZeroFelt::try_from(point - pow1640 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[419] * value;
+    total_sum += constraint_coefficients[419] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column] - oods_values[420])
         .field_div(&NonZeroFelt::try_from(point - pow1199 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[420] * value;
+    total_sum += constraint_coefficients[420] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[421])
         .field_div(&NonZeroFelt::try_from(point - pow1667 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[421] * value;
+    total_sum += constraint_coefficients[421] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[422])
         .field_div(&NonZeroFelt::try_from(point - pow1442 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[422] * value;
+    total_sum += constraint_coefficients[422] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[423])
         .field_div(&NonZeroFelt::try_from(point - pow1417 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[423] * value;
+    total_sum += constraint_coefficients[423] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[424])
         .field_div(&NonZeroFelt::try_from(point - pow1473 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[424] * value;
+    total_sum += constraint_coefficients[424] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[425])
         .field_div(&NonZeroFelt::try_from(point - pow1492 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[425] * value;
+    total_sum += constraint_coefficients[425] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[426])
         .field_div(&NonZeroFelt::try_from(point - pow1527 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[426] * value;
+    total_sum += constraint_coefficients[426] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column] - oods_values[427])
         .field_div(&NonZeroFelt::try_from(point - pow1189 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[427] * value;
+    total_sum += constraint_coefficients[427] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[428])
         .field_div(&NonZeroFelt::try_from(point - pow1663 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[428] * value;
+    total_sum += constraint_coefficients[428] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[429])
         .field_div(&NonZeroFelt::try_from(point - pow1443 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[429] * value;
+    total_sum += constraint_coefficients[429] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[430])
         .field_div(&NonZeroFelt::try_from(point - pow1385 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[430] * value;
+    total_sum += constraint_coefficients[430] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[431])
         .field_div(&NonZeroFelt::try_from(point - pow1504 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[431] * value;
+    total_sum += constraint_coefficients[431] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[432])
         .field_div(&NonZeroFelt::try_from(point - pow1545 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[432] * value;
+    total_sum += constraint_coefficients[432] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[433])
         .field_div(&NonZeroFelt::try_from(point - pow1625 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[433] * value;
+    total_sum += constraint_coefficients[433] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column] - oods_values[434])
         .field_div(&NonZeroFelt::try_from(point - pow1177 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[434] * value;
+    total_sum += constraint_coefficients[434] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[435])
         .field_div(&NonZeroFelt::try_from(point - pow1624 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[435] * value;
+    total_sum += constraint_coefficients[435] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[436])
         .field_div(&NonZeroFelt::try_from(point - pow1520 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[436] * value;
+    total_sum += constraint_coefficients[436] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[437])
         .field_div(&NonZeroFelt::try_from(point - pow1408 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[437] * value;
+    total_sum += constraint_coefficients[437] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[438])
         .field_div(&NonZeroFelt::try_from(point - pow1414 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[438] * value;
+    total_sum += constraint_coefficients[438] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[439])
         .field_div(&NonZeroFelt::try_from(point - pow1463 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[439] * value;
+    total_sum += constraint_coefficients[439] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[440])
         .field_div(&NonZeroFelt::try_from(point - pow1539 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[440] * value;
+    total_sum += constraint_coefficients[440] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity3_column] - oods_values[441])
         .field_div(&NonZeroFelt::try_from(point - pow1170 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[441] * value;
+    total_sum += constraint_coefficients[441] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[442])
         .field_div(&NonZeroFelt::try_from(point - pow1668 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[442] * value;
+    total_sum += constraint_coefficients[442] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[443])
         .field_div(&NonZeroFelt::try_from(point - pow1441 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[443] * value;
+    total_sum += constraint_coefficients[443] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[444])
         .field_div(&NonZeroFelt::try_from(point - pow1424 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[444] * value;
+    total_sum += constraint_coefficients[444] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[445])
         .field_div(&NonZeroFelt::try_from(point - pow1456 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[445] * value;
+    total_sum += constraint_coefficients[445] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[446])
         .field_div(&NonZeroFelt::try_from(point - pow1399 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[446] * value;
+    total_sum += constraint_coefficients[446] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[447])
         .field_div(&NonZeroFelt::try_from(point - pow1510 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[447] * value;
+    total_sum += constraint_coefficients[447] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column] - oods_values[448])
         .field_div(&NonZeroFelt::try_from(point - pow1154 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[448] * value;
+    total_sum += constraint_coefficients[448] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[449])
         .field_div(&NonZeroFelt::try_from(point - pow1585 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[449] * value;
+    total_sum += constraint_coefficients[449] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[450])
         .field_div(&NonZeroFelt::try_from(point - pow1457 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[450] * value;
+    total_sum += constraint_coefficients[450] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[451])
         .field_div(&NonZeroFelt::try_from(point - pow1406 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[451] * value;
+    total_sum += constraint_coefficients[451] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[452])
         .field_div(&NonZeroFelt::try_from(point - pow1511 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[452] * value;
+    total_sum += constraint_coefficients[452] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column] - oods_values[453])
         .field_div(&NonZeroFelt::try_from(point - pow1155 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[453] * value;
+    total_sum += constraint_coefficients[453] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[454])
         .field_div(&NonZeroFelt::try_from(point - pow1586 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[454] * value;
+    total_sum += constraint_coefficients[454] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[455])
         .field_div(&NonZeroFelt::try_from(point - pow1476 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[455] * value;
+    total_sum += constraint_coefficients[455] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[456])
         .field_div(&NonZeroFelt::try_from(point - pow1407 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[456] * value;
+    total_sum += constraint_coefficients[456] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[457])
         .field_div(&NonZeroFelt::try_from(point - pow1558 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[457] * value;
+    total_sum += constraint_coefficients[457] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column] - oods_values[458])
         .field_div(&NonZeroFelt::try_from(point - pow1158 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[458] * value;
+    total_sum += constraint_coefficients[458] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[459])
         .field_div(&NonZeroFelt::try_from(point - pow1611 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[459] * value;
+    total_sum += constraint_coefficients[459] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[460])
         .field_div(&NonZeroFelt::try_from(point - pow1422 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[460] * value;
+    total_sum += constraint_coefficients[460] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[461])
         .field_div(&NonZeroFelt::try_from(point - pow1384 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[461] * value;
+    total_sum += constraint_coefficients[461] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[462])
         .field_div(&NonZeroFelt::try_from(point - pow1559 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[462] * value;
+    total_sum += constraint_coefficients[462] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column] - oods_values[463])
         .field_div(&NonZeroFelt::try_from(point - pow1159 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[463] * value;
+    total_sum += constraint_coefficients[463] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[464])
         .field_div(&NonZeroFelt::try_from(point - pow1644 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[464] * value;
+    total_sum += constraint_coefficients[464] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[465])
         .field_div(&NonZeroFelt::try_from(point - pow1423 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[465] * value;
+    total_sum += constraint_coefficients[465] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[466])
         .field_div(&NonZeroFelt::try_from(point - pow1386 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[466] * value;
+    total_sum += constraint_coefficients[466] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[467])
         .field_div(&NonZeroFelt::try_from(point - pow1560 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[467] * value;
+    total_sum += constraint_coefficients[467] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column] - oods_values[468])
         .field_div(&NonZeroFelt::try_from(point - pow1160 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[468] * value;
+    total_sum += constraint_coefficients[468] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[469])
         .field_div(&NonZeroFelt::try_from(point - pow1651 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[469] * value;
+    total_sum += constraint_coefficients[469] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[470])
         .field_div(&NonZeroFelt::try_from(point - pow1388 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[470] * value;
+    total_sum += constraint_coefficients[470] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[471])
         .field_div(&NonZeroFelt::try_from(point - pow1395 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[471] * value;
+    total_sum += constraint_coefficients[471] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[472])
         .field_div(&NonZeroFelt::try_from(point - pow1426 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[472] * value;
+    total_sum += constraint_coefficients[472] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[473])
         .field_div(&NonZeroFelt::try_from(point - pow1552 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[473] * value;
+    total_sum += constraint_coefficients[473] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[474])
         .field_div(&NonZeroFelt::try_from(point - pow1641 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[474] * value;
+    total_sum += constraint_coefficients[474] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column] - oods_values[475])
         .field_div(&NonZeroFelt::try_from(point - pow1200 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[475] * value;
+    total_sum += constraint_coefficients[475] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[476])
         .field_div(&NonZeroFelt::try_from(point - pow1671 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[476] * value;
+    total_sum += constraint_coefficients[476] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[477])
         .field_div(&NonZeroFelt::try_from(point - pow1551 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[477] * value;
+    total_sum += constraint_coefficients[477] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[478])
         .field_div(&NonZeroFelt::try_from(point - pow1397 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[478] * value;
+    total_sum += constraint_coefficients[478] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[479])
         .field_div(&NonZeroFelt::try_from(point - pow1466 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[479] * value;
+    total_sum += constraint_coefficients[479] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[480])
         .field_div(&NonZeroFelt::try_from(point - pow1462 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[480] * value;
+    total_sum += constraint_coefficients[480] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[481])
         .field_div(&NonZeroFelt::try_from(point - pow1541 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[481] * value;
+    total_sum += constraint_coefficients[481] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column] - oods_values[482])
         .field_div(&NonZeroFelt::try_from(point - pow1191 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[482] * value;
+    total_sum += constraint_coefficients[482] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[483])
         .field_div(&NonZeroFelt::try_from(point - pow1589 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[483] * value;
+    total_sum += constraint_coefficients[483] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[484])
         .field_div(&NonZeroFelt::try_from(point - pow1438 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[484] * value;
+    total_sum += constraint_coefficients[484] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[485])
         .field_div(&NonZeroFelt::try_from(point - pow1418 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[485] * value;
+    total_sum += constraint_coefficients[485] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[486])
         .field_div(&NonZeroFelt::try_from(point - pow1472 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[486] * value;
+    total_sum += constraint_coefficients[486] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[487])
         .field_div(&NonZeroFelt::try_from(point - pow1474 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[487] * value;
+    total_sum += constraint_coefficients[487] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[488])
         .field_div(&NonZeroFelt::try_from(point - pow1616 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[488] * value;
+    total_sum += constraint_coefficients[488] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column] - oods_values[489])
         .field_div(&NonZeroFelt::try_from(point - pow1172 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[489] * value;
+    total_sum += constraint_coefficients[489] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[490])
         .field_div(&NonZeroFelt::try_from(point - pow1612 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[490] * value;
+    total_sum += constraint_coefficients[490] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[491])
         .field_div(&NonZeroFelt::try_from(point - pow1444 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[491] * value;
+    total_sum += constraint_coefficients[491] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[492])
         .field_div(&NonZeroFelt::try_from(point - pow1387 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[492] * value;
+    total_sum += constraint_coefficients[492] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[493])
         .field_div(&NonZeroFelt::try_from(point - pow1503 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[493] * value;
+    total_sum += constraint_coefficients[493] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[494])
         .field_div(&NonZeroFelt::try_from(point - pow1569 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[494] * value;
+    total_sum += constraint_coefficients[494] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[495])
         .field_div(&NonZeroFelt::try_from(point - pow1536 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[495] * value;
+    total_sum += constraint_coefficients[495] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity3_column] - oods_values[496])
         .field_div(&NonZeroFelt::try_from(point - pow1168 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[496] * value;
+    total_sum += constraint_coefficients[496] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[497])
         .field_div(&NonZeroFelt::try_from(point - pow1626 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[497] * value;
+    total_sum += constraint_coefficients[497] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[498])
         .field_div(&NonZeroFelt::try_from(point - pow1550 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[498] * value;
+    total_sum += constraint_coefficients[498] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[499])
         .field_div(&NonZeroFelt::try_from(point - pow1410 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[499] * value;
+    total_sum += constraint_coefficients[499] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[500])
         .field_div(&NonZeroFelt::try_from(point - pow1460 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[500] * value;
+    total_sum += constraint_coefficients[500] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[501])
         .field_div(&NonZeroFelt::try_from(point - pow1669 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[501] * value;
+    total_sum += constraint_coefficients[501] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[502])
         .field_div(&NonZeroFelt::try_from(point - pow1564 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[502] * value;
+    total_sum += constraint_coefficients[502] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column] - oods_values[503])
         .field_div(&NonZeroFelt::try_from(point - pow1162 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[503] * value;
+    total_sum += constraint_coefficients[503] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[504])
         .field_div(&NonZeroFelt::try_from(point - pow1653 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[504] * value;
+    total_sum += constraint_coefficients[504] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[505])
         .field_div(&NonZeroFelt::try_from(point - pow1647 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[505] * value;
+    total_sum += constraint_coefficients[505] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[506])
         .field_div(&NonZeroFelt::try_from(point - pow1430 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[506] * value;
+    total_sum += constraint_coefficients[506] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[507])
         .field_div(&NonZeroFelt::try_from(point - pow1427 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[507] * value;
+    total_sum += constraint_coefficients[507] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[508])
         .field_div(&NonZeroFelt::try_from(point - pow1481 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[508] * value;
+    total_sum += constraint_coefficients[508] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[509])
         .field_div(&NonZeroFelt::try_from(point - pow1620 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[509] * value;
+    total_sum += constraint_coefficients[509] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column] - oods_values[510])
         .field_div(&NonZeroFelt::try_from(point - pow1193 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[510] * value;
+    total_sum += constraint_coefficients[510] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[511])
         .field_div(&NonZeroFelt::try_from(point - pow1594 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[511] * value;
+    total_sum += constraint_coefficients[511] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[512])
         .field_div(&NonZeroFelt::try_from(point - pow1429 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[512] * value;
+    total_sum += constraint_coefficients[512] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[513])
         .field_div(&NonZeroFelt::try_from(point - pow1484 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[513] * value;
+    total_sum += constraint_coefficients[513] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[514])
         .field_div(&NonZeroFelt::try_from(point - pow1621 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[514] * value;
+    total_sum += constraint_coefficients[514] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column] - oods_values[515])
         .field_div(&NonZeroFelt::try_from(point - pow1194 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[515] * value;
+    total_sum += constraint_coefficients[515] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[516])
         .field_div(&NonZeroFelt::try_from(point - pow1595 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[516] * value;
+    total_sum += constraint_coefficients[516] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[517])
         .field_div(&NonZeroFelt::try_from(point - pow1475 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[517] * value;
+    total_sum += constraint_coefficients[517] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[518])
         .field_div(&NonZeroFelt::try_from(point - pow1495 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[518] * value;
+    total_sum += constraint_coefficients[518] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[519])
         .field_div(&NonZeroFelt::try_from(point - pow1639 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[519] * value;
+    total_sum += constraint_coefficients[519] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column] - oods_values[520])
         .field_div(&NonZeroFelt::try_from(point - pow1196 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[520] * value;
+    total_sum += constraint_coefficients[520] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[521])
         .field_div(&NonZeroFelt::try_from(point - pow1613 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[521] * value;
+    total_sum += constraint_coefficients[521] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[522])
         .field_div(&NonZeroFelt::try_from(point - pow1425 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[522] * value;
+    total_sum += constraint_coefficients[522] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[523])
         .field_div(&NonZeroFelt::try_from(point - pow1390 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[523] * value;
+    total_sum += constraint_coefficients[523] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[524])
         .field_div(&NonZeroFelt::try_from(point - pow1660 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[524] * value;
+    total_sum += constraint_coefficients[524] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column] - oods_values[525])
         .field_div(&NonZeroFelt::try_from(point - pow1197 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[525] * value;
+    total_sum += constraint_coefficients[525] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[526])
         .field_div(&NonZeroFelt::try_from(point - pow1659 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[526] * value;
+    total_sum += constraint_coefficients[526] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[527])
         .field_div(&NonZeroFelt::try_from(point - pow1428 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[527] * value;
+    total_sum += constraint_coefficients[527] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[528])
         .field_div(&NonZeroFelt::try_from(point - pow1392 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[528] * value;
+    total_sum += constraint_coefficients[528] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[529])
         .field_div(&NonZeroFelt::try_from(point - pow1662 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[529] * value;
+    total_sum += constraint_coefficients[529] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column] - oods_values[530])
         .field_div(&NonZeroFelt::try_from(point - pow1198 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[530] * value;
+    total_sum += constraint_coefficients[530] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[531])
         .field_div(&NonZeroFelt::try_from(point - pow1661 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[531] * value;
+    total_sum += constraint_coefficients[531] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[532])
         .field_div(&NonZeroFelt::try_from(point - pow1394 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[532] * value;
+    total_sum += constraint_coefficients[532] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[533])
         .field_div(&NonZeroFelt::try_from(point - pow1433 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[533] * value;
+    total_sum += constraint_coefficients[533] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[534])
         .field_div(&NonZeroFelt::try_from(point - pow1498 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[534] * value;
+    total_sum += constraint_coefficients[534] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[535])
         .field_div(&NonZeroFelt::try_from(point - pow1486 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[535] * value;
+    total_sum += constraint_coefficients[535] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[536])
         .field_div(&NonZeroFelt::try_from(point - pow1514 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[536] * value;
+    total_sum += constraint_coefficients[536] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column] - oods_values[537])
         .field_div(&NonZeroFelt::try_from(point - pow1184 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[537] * value;
+    total_sum += constraint_coefficients[537] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[538])
         .field_div(&NonZeroFelt::try_from(point - pow1597 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[538] * value;
+    total_sum += constraint_coefficients[538] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[539])
         .field_div(&NonZeroFelt::try_from(point - pow1499 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[539] * value;
+    total_sum += constraint_coefficients[539] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[540])
         .field_div(&NonZeroFelt::try_from(point - pow1496 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[540] * value;
+    total_sum += constraint_coefficients[540] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[541])
         .field_div(&NonZeroFelt::try_from(point - pow1515 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[541] * value;
+    total_sum += constraint_coefficients[541] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column] - oods_values[542])
         .field_div(&NonZeroFelt::try_from(point - pow1186 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[542] * value;
+    total_sum += constraint_coefficients[542] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[543])
         .field_div(&NonZeroFelt::try_from(point - pow1598 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[543] * value;
+    total_sum += constraint_coefficients[543] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[544])
         .field_div(&NonZeroFelt::try_from(point - pow1500 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[544] * value;
+    total_sum += constraint_coefficients[544] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[545])
         .field_div(&NonZeroFelt::try_from(point - pow1497 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[545] * value;
+    total_sum += constraint_coefficients[545] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[546])
         .field_div(&NonZeroFelt::try_from(point - pow1528 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[546] * value;
+    total_sum += constraint_coefficients[546] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column] - oods_values[547])
         .field_div(&NonZeroFelt::try_from(point - pow1183 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[547] * value;
+    total_sum += constraint_coefficients[547] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[548])
         .field_div(&NonZeroFelt::try_from(point - pow1637 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[548] * value;
+    total_sum += constraint_coefficients[548] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[549])
         .field_div(&NonZeroFelt::try_from(point - pow1431 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[549] * value;
+    total_sum += constraint_coefficients[549] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[550])
         .field_div(&NonZeroFelt::try_from(point - pow1396 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[550] * value;
+    total_sum += constraint_coefficients[550] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[551])
         .field_div(&NonZeroFelt::try_from(point - pow1529 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[551] * value;
+    total_sum += constraint_coefficients[551] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column] - oods_values[552])
         .field_div(&NonZeroFelt::try_from(point - pow1185 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[552] * value;
+    total_sum += constraint_coefficients[552] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[553])
         .field_div(&NonZeroFelt::try_from(point - pow1638 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[553] * value;
+    total_sum += constraint_coefficients[553] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[554])
         .field_div(&NonZeroFelt::try_from(point - pow1432 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[554] * value;
+    total_sum += constraint_coefficients[554] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[555])
         .field_div(&NonZeroFelt::try_from(point - pow1398 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[555] * value;
+    total_sum += constraint_coefficients[555] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[556])
         .field_div(&NonZeroFelt::try_from(point - pow1530 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[556] * value;
+    total_sum += constraint_coefficients[556] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column] - oods_values[557])
         .field_div(&NonZeroFelt::try_from(point - pow1187 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[557] * value;
+    total_sum += constraint_coefficients[557] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[558])
         .field_div(&NonZeroFelt::try_from(point - pow1652 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[558] * value;
+    total_sum += constraint_coefficients[558] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[559])
         .field_div(&NonZeroFelt::try_from(point - pow1401 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[559] * value;
+    total_sum += constraint_coefficients[559] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[560])
         .field_div(&NonZeroFelt::try_from(point - pow1400 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[560] * value;
+    total_sum += constraint_coefficients[560] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[561])
         .field_div(&NonZeroFelt::try_from(point - pow1470 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[561] * value;
+    total_sum += constraint_coefficients[561] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[562])
         .field_div(&NonZeroFelt::try_from(point - pow1646 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[562] * value;
+    total_sum += constraint_coefficients[562] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[563])
         .field_div(&NonZeroFelt::try_from(point - pow1623 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[563] * value;
+    total_sum += constraint_coefficients[563] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column] - oods_values[564])
         .field_div(&NonZeroFelt::try_from(point - pow1176 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[564] * value;
+    total_sum += constraint_coefficients[564] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[565])
         .field_div(&NonZeroFelt::try_from(point - pow1603 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[565] * value;
+    total_sum += constraint_coefficients[565] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[566])
         .field_div(&NonZeroFelt::try_from(point - pow1645 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[566] * value;
+    total_sum += constraint_coefficients[566] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[567])
         .field_div(&NonZeroFelt::try_from(point - pow1419 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[567] * value;
+    total_sum += constraint_coefficients[567] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[568])
         .field_div(&NonZeroFelt::try_from(point - pow1490 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[568] * value;
+    total_sum += constraint_coefficients[568] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[569])
         .field_div(&NonZeroFelt::try_from(point - pow1487 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[569] * value;
+    total_sum += constraint_coefficients[569] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[570])
         .field_div(&NonZeroFelt::try_from(point - pow1537 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[570] * value;
+    total_sum += constraint_coefficients[570] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity3_column] - oods_values[571])
         .field_div(&NonZeroFelt::try_from(point - pow1169 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[571] * value;
+    total_sum += constraint_coefficients[571] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[572])
         .field_div(&NonZeroFelt::try_from(point - pow1664 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[572] * value;
+    total_sum += constraint_coefficients[572] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[573])
         .field_div(&NonZeroFelt::try_from(point - pow1445 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[573] * value;
+    total_sum += constraint_coefficients[573] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[574])
         .field_div(&NonZeroFelt::try_from(point - pow1389 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[574] * value;
+    total_sum += constraint_coefficients[574] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[575])
         .field_div(&NonZeroFelt::try_from(point - pow1468 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[575] * value;
+    total_sum += constraint_coefficients[575] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[576])
         .field_div(&NonZeroFelt::try_from(point - pow1469 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[576] * value;
+    total_sum += constraint_coefficients[576] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[577])
         .field_div(&NonZeroFelt::try_from(point - pow1565 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[577] * value;
+    total_sum += constraint_coefficients[577] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column] - oods_values[578])
         .field_div(&NonZeroFelt::try_from(point - pow1163 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[578] * value;
+    total_sum += constraint_coefficients[578] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[579])
         .field_div(&NonZeroFelt::try_from(point - pow1670 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[579] * value;
+    total_sum += constraint_coefficients[579] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[580])
         .field_div(&NonZeroFelt::try_from(point - pow1437 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[580] * value;
+    total_sum += constraint_coefficients[580] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[581])
         .field_div(&NonZeroFelt::try_from(point - pow1411 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[581] * value;
+    total_sum += constraint_coefficients[581] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[582])
         .field_div(&NonZeroFelt::try_from(point - pow1415 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[582] * value;
+    total_sum += constraint_coefficients[582] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[583])
         .field_div(&NonZeroFelt::try_from(point - pow1543 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[583] * value;
+    total_sum += constraint_coefficients[583] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[584])
         .field_div(&NonZeroFelt::try_from(point - pow1666 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[584] * value;
+    total_sum += constraint_coefficients[584] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column] - oods_values[585])
         .field_div(&NonZeroFelt::try_from(point - pow1202 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[585] * value;
+    total_sum += constraint_coefficients[585] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[586])
         .field_div(&NonZeroFelt::try_from(point - pow1665 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[586] * value;
+    total_sum += constraint_coefficients[586] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[587])
         .field_div(&NonZeroFelt::try_from(point - pow1523 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[587] * value;
+    total_sum += constraint_coefficients[587] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[588])
         .field_div(&NonZeroFelt::try_from(point - pow1412 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[588] * value;
+    total_sum += constraint_coefficients[588] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[589])
         .field_div(&NonZeroFelt::try_from(point - pow1413 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[589] * value;
+    total_sum += constraint_coefficients[589] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[590])
         .field_div(&NonZeroFelt::try_from(point - pow1566 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[590] * value;
+    total_sum += constraint_coefficients[590] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[591])
         .field_div(&NonZeroFelt::try_from(point - pow1540 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[591] * value;
+    total_sum += constraint_coefficients[591] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column] - oods_values[592])
         .field_div(&NonZeroFelt::try_from(point - pow1190 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[592] * value;
+    total_sum += constraint_coefficients[592] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[593])
         .field_div(&NonZeroFelt::try_from(point - pow1672 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[593] * value;
+    total_sum += constraint_coefficients[593] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[594])
         .field_div(&NonZeroFelt::try_from(point - pow1554 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[594] * value;
+    total_sum += constraint_coefficients[594] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[595])
         .field_div(&NonZeroFelt::try_from(point - pow1436 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[595] * value;
+    total_sum += constraint_coefficients[595] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[596])
         .field_div(&NonZeroFelt::try_from(point - pow1451 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[596] * value;
+    total_sum += constraint_coefficients[596] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[597])
         .field_div(&NonZeroFelt::try_from(point - pow1439 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[597] * value;
+    total_sum += constraint_coefficients[597] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[598])
         .field_div(&NonZeroFelt::try_from(point - pow1617 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[598] * value;
+    total_sum += constraint_coefficients[598] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column] - oods_values[599])
         .field_div(&NonZeroFelt::try_from(point - pow1173 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[599] * value;
+    total_sum += constraint_coefficients[599] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[600])
         .field_div(&NonZeroFelt::try_from(point - pow1606 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[600] * value;
+    total_sum += constraint_coefficients[600] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[601])
         .field_div(&NonZeroFelt::try_from(point - pow1452 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[601] * value;
+    total_sum += constraint_coefficients[601] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[602])
         .field_div(&NonZeroFelt::try_from(point - pow1458 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[602] * value;
+    total_sum += constraint_coefficients[602] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[603])
         .field_div(&NonZeroFelt::try_from(point - pow1618 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[603] * value;
+    total_sum += constraint_coefficients[603] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column] - oods_values[604])
         .field_div(&NonZeroFelt::try_from(point - pow1174 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[604] * value;
+    total_sum += constraint_coefficients[604] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[605])
         .field_div(&NonZeroFelt::try_from(point - pow1607 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[605] * value;
+    total_sum += constraint_coefficients[605] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[606])
         .field_div(&NonZeroFelt::try_from(point - pow1454 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[606] * value;
+    total_sum += constraint_coefficients[606] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[607])
         .field_div(&NonZeroFelt::try_from(point - pow1459 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[607] * value;
+    total_sum += constraint_coefficients[607] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[608])
         .field_div(&NonZeroFelt::try_from(point - pow1656 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[608] * value;
+    total_sum += constraint_coefficients[608] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column] - oods_values[609])
         .field_div(&NonZeroFelt::try_from(point - pow1178 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[609] * value;
+    total_sum += constraint_coefficients[609] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[610])
         .field_div(&NonZeroFelt::try_from(point - pow1642 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[610] * value;
+    total_sum += constraint_coefficients[610] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[611])
         .field_div(&NonZeroFelt::try_from(point - pow1434 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[611] * value;
+    total_sum += constraint_coefficients[611] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[612])
         .field_div(&NonZeroFelt::try_from(point - pow1403 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[612] * value;
+    total_sum += constraint_coefficients[612] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[613])
         .field_div(&NonZeroFelt::try_from(point - pow1657 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[613] * value;
+    total_sum += constraint_coefficients[613] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column] - oods_values[614])
         .field_div(&NonZeroFelt::try_from(point - pow1179 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[614] * value;
+    total_sum += constraint_coefficients[614] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[615])
         .field_div(&NonZeroFelt::try_from(point - pow1654 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[615] * value;
+    total_sum += constraint_coefficients[615] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[616])
         .field_div(&NonZeroFelt::try_from(point - pow1435 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[616] * value;
+    total_sum += constraint_coefficients[616] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[617])
         .field_div(&NonZeroFelt::try_from(point - pow1405 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[617] * value;
+    total_sum += constraint_coefficients[617] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[618])
         .field_div(&NonZeroFelt::try_from(point - pow1658 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[618] * value;
+    total_sum += constraint_coefficients[618] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column] - oods_values[619])
         .field_div(&NonZeroFelt::try_from(point - pow1180 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[619] * value;
+    total_sum += constraint_coefficients[619] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[620])
         .field_div(&NonZeroFelt::try_from(point - pow1655 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[620] * value;
+    total_sum += constraint_coefficients[620] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[621])
         .field_div(&NonZeroFelt::try_from(point - pow1409 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[621] * value;
+    total_sum += constraint_coefficients[621] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[622])
         .field_div(&NonZeroFelt::try_from(point - pow1402 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[622] * value;
+    total_sum += constraint_coefficients[622] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[623])
         .field_div(&NonZeroFelt::try_from(point - pow1502 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[623] * value;
+    total_sum += constraint_coefficients[623] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[624])
         .field_div(&NonZeroFelt::try_from(point - pow1544 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[624] * value;
+    total_sum += constraint_coefficients[624] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[625])
         .field_div(&NonZeroFelt::try_from(point - pow1526 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[625] * value;
+    total_sum += constraint_coefficients[625] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity3_column] - oods_values[626])
         .field_div(&NonZeroFelt::try_from(point - pow1167 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[626] * value;
+    total_sum += constraint_coefficients[626] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[627])
         .field_div(&NonZeroFelt::try_from(point - pow1636 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[627] * value;
+    total_sum += constraint_coefficients[627] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[628])
         .field_div(&NonZeroFelt::try_from(point - pow1522 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[628] * value;
+    total_sum += constraint_coefficients[628] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[629])
         .field_div(&NonZeroFelt::try_from(point - pow1420 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[629] * value;
+    total_sum += constraint_coefficients[629] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[630])
         .field_div(&NonZeroFelt::try_from(point - pow1501 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[630] * value;
+    total_sum += constraint_coefficients[630] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[631])
         .field_div(&NonZeroFelt::try_from(point - pow1493 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[631] * value;
+    total_sum += constraint_coefficients[631] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[632])
         .field_div(&NonZeroFelt::try_from(point - pow1509 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[632] * value;
+    total_sum += constraint_coefficients[632] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column] - oods_values[633])
         .field_div(&NonZeroFelt::try_from(point - pow1157 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[633] * value;
+    total_sum += constraint_coefficients[633] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[634])
         .field_div(&NonZeroFelt::try_from(point - pow1610 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[634] * value;
+    total_sum += constraint_coefficients[634] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[635])
         .field_div(&NonZeroFelt::try_from(point - pow1446 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[635] * value;
+    total_sum += constraint_coefficients[635] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[636])
         .field_div(&NonZeroFelt::try_from(point - pow1391 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[636] * value;
+    total_sum += constraint_coefficients[636] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[637])
         .field_div(&NonZeroFelt::try_from(point - pow1478 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[637] * value;
+    total_sum += constraint_coefficients[637] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[638])
         .field_div(&NonZeroFelt::try_from(point - pow1643 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[638] * value;
+    total_sum += constraint_coefficients[638] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[639])
         .field_div(&NonZeroFelt::try_from(point - pow1649 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[639] * value;
+    total_sum += constraint_coefficients[639] * value;
 
     value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column] - oods_values[640])
         .field_div(&NonZeroFelt::try_from(point - pow1201 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[640] * value;
+    total_sum += constraint_coefficients[640] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[641])
         .field_div(&NonZeroFelt::try_from(point - pow1648 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[641] * value;
+    total_sum += constraint_coefficients[641] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[642])
         .field_div(&NonZeroFelt::try_from(point - pow1635 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[642] * value;
+    total_sum += constraint_coefficients[642] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[643])
         .field_div(&NonZeroFelt::try_from(point - pow1573 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[643] * value;
+    total_sum += constraint_coefficients[643] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[644])
         .field_div(&NonZeroFelt::try_from(point - pow1380 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[644] * value;
+    total_sum += constraint_coefficients[644] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[645])
         .field_div(&NonZeroFelt::try_from(point - pow1377 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[645] * value;
+    total_sum += constraint_coefficients[645] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[646])
         .field_div(&NonZeroFelt::try_from(point - pow1630 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[646] * value;
+    total_sum += constraint_coefficients[646] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[647])
         .field_div(&NonZeroFelt::try_from(point - pow1448 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[647] * value;
+    total_sum += constraint_coefficients[647] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[648])
         .field_div(&NonZeroFelt::try_from(point - pow1449 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[648] * value;
+    total_sum += constraint_coefficients[648] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[649])
         .field_div(&NonZeroFelt::try_from(point - pow1450 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[649] * value;
+    total_sum += constraint_coefficients[649] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[650])
         .field_div(&NonZeroFelt::try_from(point - pow1524 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[650] * value;
+    total_sum += constraint_coefficients[650] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[651])
         .field_div(&NonZeroFelt::try_from(point - pow1555 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[651] * value;
+    total_sum += constraint_coefficients[651] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[652])
         .field_div(&NonZeroFelt::try_from(point - pow1631 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[652] * value;
+    total_sum += constraint_coefficients[652] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[653])
         .field_div(&NonZeroFelt::try_from(point - pow1461 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[653] * value;
+    total_sum += constraint_coefficients[653] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[654])
         .field_div(&NonZeroFelt::try_from(point - pow1464 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[654] * value;
+    total_sum += constraint_coefficients[654] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[655])
         .field_div(&NonZeroFelt::try_from(point - pow1465 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[655] * value;
+    total_sum += constraint_coefficients[655] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[656])
         .field_div(&NonZeroFelt::try_from(point - pow1525 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[656] * value;
+    total_sum += constraint_coefficients[656] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[657])
         .field_div(&NonZeroFelt::try_from(point - pow1556 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[657] * value;
+    total_sum += constraint_coefficients[657] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[658])
         .field_div(&NonZeroFelt::try_from(point - pow1632 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[658] * value;
+    total_sum += constraint_coefficients[658] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[659])
         .field_div(&NonZeroFelt::try_from(point - pow1467 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[659] * value;
+    total_sum += constraint_coefficients[659] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[660])
         .field_div(&NonZeroFelt::try_from(point - pow1471 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[660] * value;
+    total_sum += constraint_coefficients[660] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[661])
         .field_div(&NonZeroFelt::try_from(point - pow1477 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[661] * value;
+    total_sum += constraint_coefficients[661] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[662])
         .field_div(&NonZeroFelt::try_from(point - pow1532 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[662] * value;
+    total_sum += constraint_coefficients[662] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[663])
         .field_div(&NonZeroFelt::try_from(point - pow1557 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[663] * value;
+    total_sum += constraint_coefficients[663] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[664])
         .field_div(&NonZeroFelt::try_from(point - pow1633 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[664] * value;
+    total_sum += constraint_coefficients[664] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[665])
         .field_div(&NonZeroFelt::try_from(point - pow1479 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[665] * value;
+    total_sum += constraint_coefficients[665] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[666])
         .field_div(&NonZeroFelt::try_from(point - pow1482 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[666] * value;
+    total_sum += constraint_coefficients[666] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[667])
         .field_div(&NonZeroFelt::try_from(point - pow1488 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[667] * value;
+    total_sum += constraint_coefficients[667] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[668])
         .field_div(&NonZeroFelt::try_from(point - pow1533 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[668] * value;
+    total_sum += constraint_coefficients[668] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[669])
         .field_div(&NonZeroFelt::try_from(point - pow1561 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[669] * value;
+    total_sum += constraint_coefficients[669] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[670])
         .field_div(&NonZeroFelt::try_from(point - pow1634 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[670] * value;
+    total_sum += constraint_coefficients[670] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[671])
         .field_div(&NonZeroFelt::try_from(point - pow1480 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[671] * value;
+    total_sum += constraint_coefficients[671] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[672])
         .field_div(&NonZeroFelt::try_from(point - pow1483 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[672] * value;
+    total_sum += constraint_coefficients[672] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[673])
         .field_div(&NonZeroFelt::try_from(point - pow1489 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[673] * value;
+    total_sum += constraint_coefficients[673] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[674])
         .field_div(&NonZeroFelt::try_from(point - pow1534 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[674] * value;
+    total_sum += constraint_coefficients[674] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[675])
         .field_div(&NonZeroFelt::try_from(point - pow1563 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[675] * value;
+    total_sum += constraint_coefficients[675] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[676])
         .field_div(&NonZeroFelt::try_from(point - pow1675 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[676] * value;
+    total_sum += constraint_coefficients[676] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[677])
         .field_div(&NonZeroFelt::try_from(point - pow1505 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[677] * value;
+    total_sum += constraint_coefficients[677] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[678])
         .field_div(&NonZeroFelt::try_from(point - pow1506 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[678] * value;
+    total_sum += constraint_coefficients[678] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[679])
         .field_div(&NonZeroFelt::try_from(point - pow1507 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[679] * value;
+    total_sum += constraint_coefficients[679] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[680])
         .field_div(&NonZeroFelt::try_from(point - pow1535 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[680] * value;
+    total_sum += constraint_coefficients[680] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[681])
         .field_div(&NonZeroFelt::try_from(point - pow1567 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[681] * value;
+    total_sum += constraint_coefficients[681] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[682])
         .field_div(&NonZeroFelt::try_from(point - pow1580 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[682] * value;
+    total_sum += constraint_coefficients[682] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[683])
         .field_div(&NonZeroFelt::try_from(point - pow1382 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[683] * value;
+    total_sum += constraint_coefficients[683] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[684])
         .field_div(&NonZeroFelt::try_from(point - pow1379 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[684] * value;
+    total_sum += constraint_coefficients[684] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[685])
         .field_div(&NonZeroFelt::try_from(point - pow1578 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[685] * value;
+    total_sum += constraint_coefficients[685] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[686])
         .field_div(&NonZeroFelt::try_from(point - pow1381 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[686] * value;
+    total_sum += constraint_coefficients[686] * value;
 
     value = (column_values[dynamic_params.diluted_pool_column] - oods_values[687])
         .field_div(&NonZeroFelt::try_from(point - pow1378 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[687] * value;
+    total_sum += constraint_coefficients[687] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[688])
         .field_div(&NonZeroFelt::try_from(point - pow1961 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[688] * value;
+    total_sum += constraint_coefficients[688] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[689])
         .field_div(&NonZeroFelt::try_from(point - pow1962 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[689] * value;
+    total_sum += constraint_coefficients[689] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[690])
         .field_div(&NonZeroFelt::try_from(point - pow1959 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[690] * value;
+    total_sum += constraint_coefficients[690] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[691])
         .field_div(&NonZeroFelt::try_from(point - pow1960 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[691] * value;
+    total_sum += constraint_coefficients[691] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[692])
         .field_div(&NonZeroFelt::try_from(point - pow1957 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[692] * value;
+    total_sum += constraint_coefficients[692] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[693])
         .field_div(&NonZeroFelt::try_from(point - pow1958 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[693] * value;
+    total_sum += constraint_coefficients[693] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state0_squared_column]
         - oods_values[694])
         .field_div(&NonZeroFelt::try_from(point - pow1150 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[694] * value;
+    total_sum += constraint_coefficients[694] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state0_column]
         - oods_values[695])
         .field_div(&NonZeroFelt::try_from(point - pow1145 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[695] * value;
+    total_sum += constraint_coefficients[695] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state1_squared_column]
         - oods_values[696])
         .field_div(&NonZeroFelt::try_from(point - pow1142 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[696] * value;
+    total_sum += constraint_coefficients[696] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state1_column]
         - oods_values[697])
         .field_div(&NonZeroFelt::try_from(point - pow1137 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[697] * value;
+    total_sum += constraint_coefficients[697] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state2_squared_column]
         - oods_values[698])
         .field_div(&NonZeroFelt::try_from(point - pow1134 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[698] * value;
+    total_sum += constraint_coefficients[698] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state2_column]
         - oods_values[699])
         .field_div(&NonZeroFelt::try_from(point - pow1129 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[699] * value;
+    total_sum += constraint_coefficients[699] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state0_squared_column]
         - oods_values[700])
         .field_div(&NonZeroFelt::try_from(point - pow1126 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[700] * value;
+    total_sum += constraint_coefficients[700] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state0_column]
         - oods_values[701])
         .field_div(&NonZeroFelt::try_from(point - pow1119 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[701] * value;
+    total_sum += constraint_coefficients[701] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_squared_column]
         - oods_values[702])
         .field_div(&NonZeroFelt::try_from(point - pow1113 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[702] * value;
+    total_sum += constraint_coefficients[702] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_column]
         - oods_values[703])
         .field_div(&NonZeroFelt::try_from(point - pow1106 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[703] * value;
+    total_sum += constraint_coefficients[703] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[704])
         .field_div(&NonZeroFelt::try_from(point - pow1884 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[704] * value;
+    total_sum += constraint_coefficients[704] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[705])
         .field_div(&NonZeroFelt::try_from(point - pow1882 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[705] * value;
+    total_sum += constraint_coefficients[705] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[706])
         .field_div(&NonZeroFelt::try_from(point - pow1880 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[706] * value;
+    total_sum += constraint_coefficients[706] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state0_column]
         - oods_values[707])
         .field_div(&NonZeroFelt::try_from(point - pow1147 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[707] * value;
+    total_sum += constraint_coefficients[707] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state1_column]
         - oods_values[708])
         .field_div(&NonZeroFelt::try_from(point - pow1138 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[708] * value;
+    total_sum += constraint_coefficients[708] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state2_column]
         - oods_values[709])
         .field_div(&NonZeroFelt::try_from(point - pow1131 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[709] * value;
+    total_sum += constraint_coefficients[709] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[710])
         .field_div(&NonZeroFelt::try_from(point - pow1885 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[710] * value;
+    total_sum += constraint_coefficients[710] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state0_column]
         - oods_values[711])
         .field_div(&NonZeroFelt::try_from(point - pow1149 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[711] * value;
+    total_sum += constraint_coefficients[711] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state0_squared_column]
         - oods_values[712])
         .field_div(&NonZeroFelt::try_from(point - pow1152 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[712] * value;
+    total_sum += constraint_coefficients[712] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state1_column]
         - oods_values[713])
         .field_div(&NonZeroFelt::try_from(point - pow1141 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[713] * value;
+    total_sum += constraint_coefficients[713] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state1_squared_column]
         - oods_values[714])
         .field_div(&NonZeroFelt::try_from(point - pow1144 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[714] * value;
+    total_sum += constraint_coefficients[714] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state2_column]
         - oods_values[715])
         .field_div(&NonZeroFelt::try_from(point - pow1133 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[715] * value;
+    total_sum += constraint_coefficients[715] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state2_squared_column]
         - oods_values[716])
         .field_div(&NonZeroFelt::try_from(point - pow1136 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[716] * value;
+    total_sum += constraint_coefficients[716] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[717])
         .field_div(&NonZeroFelt::try_from(point - pow1883 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[717] * value;
+    total_sum += constraint_coefficients[717] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[718])
         .field_div(&NonZeroFelt::try_from(point - pow1881 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[718] * value;
+    total_sum += constraint_coefficients[718] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state0_column]
         - oods_values[719])
         .field_div(&NonZeroFelt::try_from(point - pow1123 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[719] * value;
+    total_sum += constraint_coefficients[719] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_column]
         - oods_values[720])
         .field_div(&NonZeroFelt::try_from(point - pow1107 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[720] * value;
+    total_sum += constraint_coefficients[720] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state0_column]
         - oods_values[721])
         .field_div(&NonZeroFelt::try_from(point - pow1124 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[721] * value;
+    total_sum += constraint_coefficients[721] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_column]
         - oods_values[722])
         .field_div(&NonZeroFelt::try_from(point - pow1108 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[722] * value;
+    total_sum += constraint_coefficients[722] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state0_column]
         - oods_values[723])
         .field_div(&NonZeroFelt::try_from(point - pow1125 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[723] * value;
+    total_sum += constraint_coefficients[723] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state0_column]
         - oods_values[724])
         .field_div(&NonZeroFelt::try_from(point - pow1146 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[724] * value;
+    total_sum += constraint_coefficients[724] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state0_squared_column]
         - oods_values[725])
         .field_div(&NonZeroFelt::try_from(point - pow1151 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[725] * value;
+    total_sum += constraint_coefficients[725] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state1_column]
         - oods_values[726])
         .field_div(&NonZeroFelt::try_from(point - pow1139 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[726] * value;
+    total_sum += constraint_coefficients[726] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state1_squared_column]
         - oods_values[727])
         .field_div(&NonZeroFelt::try_from(point - pow1143 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[727] * value;
+    total_sum += constraint_coefficients[727] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state2_column]
         - oods_values[728])
         .field_div(&NonZeroFelt::try_from(point - pow1130 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[728] * value;
+    total_sum += constraint_coefficients[728] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state2_squared_column]
         - oods_values[729])
         .field_div(&NonZeroFelt::try_from(point - pow1135 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[729] * value;
+    total_sum += constraint_coefficients[729] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state0_column]
         - oods_values[730])
         .field_div(&NonZeroFelt::try_from(point - pow1120 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[730] * value;
+    total_sum += constraint_coefficients[730] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state0_column]
         - oods_values[731])
         .field_div(&NonZeroFelt::try_from(point - pow1121 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[731] * value;
+    total_sum += constraint_coefficients[731] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state0_squared_column]
         - oods_values[732])
         .field_div(&NonZeroFelt::try_from(point - pow1127 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[732] * value;
+    total_sum += constraint_coefficients[732] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state0_column]
         - oods_values[733])
         .field_div(&NonZeroFelt::try_from(point - pow1122 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[733] * value;
+    total_sum += constraint_coefficients[733] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state0_squared_column]
         - oods_values[734])
         .field_div(&NonZeroFelt::try_from(point - pow1128 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[734] * value;
+    total_sum += constraint_coefficients[734] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_column]
         - oods_values[735])
         .field_div(&NonZeroFelt::try_from(point - pow1109 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[735] * value;
+    total_sum += constraint_coefficients[735] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_squared_column]
         - oods_values[736])
         .field_div(&NonZeroFelt::try_from(point - pow1115 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[736] * value;
+    total_sum += constraint_coefficients[736] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_squared_column]
         - oods_values[737])
         .field_div(&NonZeroFelt::try_from(point - pow1116 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[737] * value;
+    total_sum += constraint_coefficients[737] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state0_column]
         - oods_values[738])
         .field_div(&NonZeroFelt::try_from(point - pow1148 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[738] * value;
+    total_sum += constraint_coefficients[738] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_column]
         - oods_values[739])
         .field_div(&NonZeroFelt::try_from(point - pow1110 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[739] * value;
+    total_sum += constraint_coefficients[739] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_squared_column]
         - oods_values[740])
         .field_div(&NonZeroFelt::try_from(point - pow1114 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[740] * value;
+    total_sum += constraint_coefficients[740] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_column]
         - oods_values[741])
         .field_div(&NonZeroFelt::try_from(point - pow1111 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[741] * value;
+    total_sum += constraint_coefficients[741] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_squared_column]
         - oods_values[742])
         .field_div(&NonZeroFelt::try_from(point - pow1117 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[742] * value;
+    total_sum += constraint_coefficients[742] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_column]
         - oods_values[743])
         .field_div(&NonZeroFelt::try_from(point - pow1112 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[743] * value;
+    total_sum += constraint_coefficients[743] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_squared_column]
         - oods_values[744])
         .field_div(&NonZeroFelt::try_from(point - pow1118 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[744] * value;
+    total_sum += constraint_coefficients[744] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state1_column]
         - oods_values[745])
         .field_div(&NonZeroFelt::try_from(point - pow1140 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[745] * value;
+    total_sum += constraint_coefficients[745] * value;
 
     value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state2_column]
         - oods_values[746])
         .field_div(&NonZeroFelt::try_from(point - pow1132 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[746] * value;
+    total_sum += constraint_coefficients[746] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[747])
         .field_div(&NonZeroFelt::try_from(point - pow1854 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[747] * value;
+    total_sum += constraint_coefficients[747] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[748])
         .field_div(&NonZeroFelt::try_from(point - pow1785 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[748] * value;
+    total_sum += constraint_coefficients[748] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[749])
         .field_div(&NonZeroFelt::try_from(point - pow1784 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[749] * value;
+    total_sum += constraint_coefficients[749] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[750])
         .field_div(&NonZeroFelt::try_from(point - pow1783 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[750] * value;
+    total_sum += constraint_coefficients[750] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[751])
         .field_div(&NonZeroFelt::try_from(point - pow1782 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[751] * value;
+    total_sum += constraint_coefficients[751] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[752])
         .field_div(&NonZeroFelt::try_from(point - pow1781 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[752] * value;
+    total_sum += constraint_coefficients[752] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[753])
         .field_div(&NonZeroFelt::try_from(point - pow1780 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[753] * value;
+    total_sum += constraint_coefficients[753] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[754])
         .field_div(&NonZeroFelt::try_from(point - pow1946 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[754] * value;
+    total_sum += constraint_coefficients[754] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[755])
         .field_div(&NonZeroFelt::try_from(point - pow1945 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[755] * value;
+    total_sum += constraint_coefficients[755] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[756])
         .field_div(&NonZeroFelt::try_from(point - pow1943 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[756] * value;
+    total_sum += constraint_coefficients[756] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[757])
         .field_div(&NonZeroFelt::try_from(point - pow1942 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[757] * value;
+    total_sum += constraint_coefficients[757] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[758])
         .field_div(&NonZeroFelt::try_from(point - pow1941 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[758] * value;
+    total_sum += constraint_coefficients[758] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[759])
         .field_div(&NonZeroFelt::try_from(point - pow1940 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[759] * value;
+    total_sum += constraint_coefficients[759] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[760])
         .field_div(&NonZeroFelt::try_from(point - pow1939 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[760] * value;
+    total_sum += constraint_coefficients[760] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[761])
         .field_div(&NonZeroFelt::try_from(point - pow1938 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[761] * value;
+    total_sum += constraint_coefficients[761] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[762])
         .field_div(&NonZeroFelt::try_from(point - pow1937 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[762] * value;
+    total_sum += constraint_coefficients[762] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[763])
         .field_div(&NonZeroFelt::try_from(point - pow1944 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[763] * value;
+    total_sum += constraint_coefficients[763] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[764])
         .field_div(&NonZeroFelt::try_from(point - pow1877 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[764] * value;
+    total_sum += constraint_coefficients[764] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[765])
         .field_div(&NonZeroFelt::try_from(point - pow1853 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[765] * value;
+    total_sum += constraint_coefficients[765] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[766])
         .field_div(&NonZeroFelt::try_from(point - pow1851 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[766] * value;
+    total_sum += constraint_coefficients[766] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[767])
         .field_div(&NonZeroFelt::try_from(point - pow1850 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[767] * value;
+    total_sum += constraint_coefficients[767] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[768])
         .field_div(&NonZeroFelt::try_from(point - pow1849 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[768] * value;
+    total_sum += constraint_coefficients[768] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[769])
         .field_div(&NonZeroFelt::try_from(point - pow1855 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[769] * value;
+    total_sum += constraint_coefficients[769] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[770])
         .field_div(&NonZeroFelt::try_from(point - pow1848 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[770] * value;
+    total_sum += constraint_coefficients[770] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[771])
         .field_div(&NonZeroFelt::try_from(point - pow1847 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[771] * value;
+    total_sum += constraint_coefficients[771] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[772])
         .field_div(&NonZeroFelt::try_from(point - pow1846 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[772] * value;
+    total_sum += constraint_coefficients[772] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[773])
         .field_div(&NonZeroFelt::try_from(point - pow1845 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[773] * value;
+    total_sum += constraint_coefficients[773] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[774])
         .field_div(&NonZeroFelt::try_from(point - pow1844 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[774] * value;
+    total_sum += constraint_coefficients[774] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[775])
         .field_div(&NonZeroFelt::try_from(point - pow1843 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[775] * value;
+    total_sum += constraint_coefficients[775] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[776])
         .field_div(&NonZeroFelt::try_from(point - pow1842 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[776] * value;
+    total_sum += constraint_coefficients[776] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[777])
         .field_div(&NonZeroFelt::try_from(point - pow1852 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[777] * value;
+    total_sum += constraint_coefficients[777] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[778])
         .field_div(&NonZeroFelt::try_from(point - pow1936 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[778] * value;
+    total_sum += constraint_coefficients[778] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[779])
         .field_div(&NonZeroFelt::try_from(point - pow1935 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[779] * value;
+    total_sum += constraint_coefficients[779] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[780])
         .field_div(&NonZeroFelt::try_from(point - pow1934 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[780] * value;
+    total_sum += constraint_coefficients[780] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[781])
         .field_div(&NonZeroFelt::try_from(point - pow1933 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[781] * value;
+    total_sum += constraint_coefficients[781] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[782])
         .field_div(&NonZeroFelt::try_from(point - pow1841 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[782] * value;
+    total_sum += constraint_coefficients[782] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[783])
         .field_div(&NonZeroFelt::try_from(point - pow1932 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[783] * value;
+    total_sum += constraint_coefficients[783] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[784])
         .field_div(&NonZeroFelt::try_from(point - pow1931 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[784] * value;
+    total_sum += constraint_coefficients[784] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[785])
         .field_div(&NonZeroFelt::try_from(point - pow1930 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[785] * value;
+    total_sum += constraint_coefficients[785] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[786])
         .field_div(&NonZeroFelt::try_from(point - pow1929 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[786] * value;
+    total_sum += constraint_coefficients[786] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[787])
         .field_div(&NonZeroFelt::try_from(point - pow1840 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[787] * value;
+    total_sum += constraint_coefficients[787] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[788])
         .field_div(&NonZeroFelt::try_from(point - pow1928 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[788] * value;
+    total_sum += constraint_coefficients[788] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[789])
         .field_div(&NonZeroFelt::try_from(point - pow1927 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[789] * value;
+    total_sum += constraint_coefficients[789] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[790])
         .field_div(&NonZeroFelt::try_from(point - pow1926 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[790] * value;
+    total_sum += constraint_coefficients[790] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[791])
         .field_div(&NonZeroFelt::try_from(point - pow1925 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[791] * value;
+    total_sum += constraint_coefficients[791] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[792])
         .field_div(&NonZeroFelt::try_from(point - pow1839 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[792] * value;
+    total_sum += constraint_coefficients[792] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[793])
         .field_div(&NonZeroFelt::try_from(point - pow1924 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[793] * value;
+    total_sum += constraint_coefficients[793] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[794])
         .field_div(&NonZeroFelt::try_from(point - pow1923 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[794] * value;
+    total_sum += constraint_coefficients[794] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[795])
         .field_div(&NonZeroFelt::try_from(point - pow1922 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[795] * value;
+    total_sum += constraint_coefficients[795] * value;
 
     value = (column_values[dynamic_params.add_mod_sub_p_bit_column] - oods_values[796])
         .field_div(&NonZeroFelt::try_from(point - pow1105 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[796] * value;
+    total_sum += constraint_coefficients[796] * value;
 
     value = (column_values[dynamic_params.add_mod_carry1_bit_column] - oods_values[797])
         .field_div(&NonZeroFelt::try_from(point - pow1104 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[797] * value;
+    total_sum += constraint_coefficients[797] * value;
 
     value = (column_values[dynamic_params.add_mod_carry1_sign_column] - oods_values[798])
         .field_div(&NonZeroFelt::try_from(point - pow1103 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[798] * value;
+    total_sum += constraint_coefficients[798] * value;
 
     value = (column_values[dynamic_params.add_mod_carry2_bit_column] - oods_values[799])
         .field_div(&NonZeroFelt::try_from(point - pow1102 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[799] * value;
+    total_sum += constraint_coefficients[799] * value;
 
     value = (column_values[dynamic_params.add_mod_carry2_sign_column] - oods_values[800])
         .field_div(&NonZeroFelt::try_from(point - pow1101 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[800] * value;
+    total_sum += constraint_coefficients[800] * value;
 
     value = (column_values[dynamic_params.add_mod_carry3_bit_column] - oods_values[801])
         .field_div(&NonZeroFelt::try_from(point - pow1100 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[801] * value;
+    total_sum += constraint_coefficients[801] * value;
 
     value = (column_values[dynamic_params.add_mod_carry3_sign_column] - oods_values[802])
         .field_div(&NonZeroFelt::try_from(point - pow1099 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[802] * value;
+    total_sum += constraint_coefficients[802] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[803])
         .field_div(&NonZeroFelt::try_from(point - pow1838 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[803] * value;
+    total_sum += constraint_coefficients[803] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[804])
         .field_div(&NonZeroFelt::try_from(point - pow1837 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[804] * value;
+    total_sum += constraint_coefficients[804] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[805])
         .field_div(&NonZeroFelt::try_from(point - pow1836 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[805] * value;
+    total_sum += constraint_coefficients[805] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[806])
         .field_div(&NonZeroFelt::try_from(point - pow1835 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[806] * value;
+    total_sum += constraint_coefficients[806] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[807])
         .field_div(&NonZeroFelt::try_from(point - pow1834 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[807] * value;
+    total_sum += constraint_coefficients[807] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[808])
         .field_div(&NonZeroFelt::try_from(point - pow1833 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[808] * value;
+    total_sum += constraint_coefficients[808] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[809])
         .field_div(&NonZeroFelt::try_from(point - pow1832 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[809] * value;
+    total_sum += constraint_coefficients[809] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[810])
         .field_div(&NonZeroFelt::try_from(point - pow1831 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[810] * value;
+    total_sum += constraint_coefficients[810] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[811])
         .field_div(&NonZeroFelt::try_from(point - pow1830 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[811] * value;
+    total_sum += constraint_coefficients[811] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[812])
         .field_div(&NonZeroFelt::try_from(point - pow1829 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[812] * value;
+    total_sum += constraint_coefficients[812] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[813])
         .field_div(&NonZeroFelt::try_from(point - pow1828 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[813] * value;
+    total_sum += constraint_coefficients[813] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[814])
         .field_div(&NonZeroFelt::try_from(point - pow1827 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[814] * value;
+    total_sum += constraint_coefficients[814] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[815])
         .field_div(&NonZeroFelt::try_from(point - pow1920 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[815] * value;
+    total_sum += constraint_coefficients[815] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[816])
         .field_div(&NonZeroFelt::try_from(point - pow1919 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[816] * value;
+    total_sum += constraint_coefficients[816] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[817])
         .field_div(&NonZeroFelt::try_from(point - pow1918 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[817] * value;
+    total_sum += constraint_coefficients[817] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[818])
         .field_div(&NonZeroFelt::try_from(point - pow1917 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[818] * value;
+    total_sum += constraint_coefficients[818] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[819])
         .field_div(&NonZeroFelt::try_from(point - pow1916 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[819] * value;
+    total_sum += constraint_coefficients[819] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[820])
         .field_div(&NonZeroFelt::try_from(point - pow1915 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[820] * value;
+    total_sum += constraint_coefficients[820] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[821])
         .field_div(&NonZeroFelt::try_from(point - pow1914 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[821] * value;
+    total_sum += constraint_coefficients[821] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[822])
         .field_div(&NonZeroFelt::try_from(point - pow1921 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[822] * value;
+    total_sum += constraint_coefficients[822] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[823])
         .field_div(&NonZeroFelt::try_from(point - pow1826 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[823] * value;
+    total_sum += constraint_coefficients[823] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[824])
         .field_div(&NonZeroFelt::try_from(point - pow1825 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[824] * value;
+    total_sum += constraint_coefficients[824] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[825])
         .field_div(&NonZeroFelt::try_from(point - pow1823 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[825] * value;
+    total_sum += constraint_coefficients[825] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[826])
         .field_div(&NonZeroFelt::try_from(point - pow1822 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[826] * value;
+    total_sum += constraint_coefficients[826] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[827])
         .field_div(&NonZeroFelt::try_from(point - pow1821 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[827] * value;
+    total_sum += constraint_coefficients[827] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[828])
         .field_div(&NonZeroFelt::try_from(point - pow1820 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[828] * value;
+    total_sum += constraint_coefficients[828] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[829])
         .field_div(&NonZeroFelt::try_from(point - pow1819 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[829] * value;
+    total_sum += constraint_coefficients[829] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[830])
         .field_div(&NonZeroFelt::try_from(point - pow1818 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[830] * value;
+    total_sum += constraint_coefficients[830] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[831])
         .field_div(&NonZeroFelt::try_from(point - pow1817 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[831] * value;
+    total_sum += constraint_coefficients[831] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[832])
         .field_div(&NonZeroFelt::try_from(point - pow1816 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[832] * value;
+    total_sum += constraint_coefficients[832] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[833])
         .field_div(&NonZeroFelt::try_from(point - pow1815 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[833] * value;
+    total_sum += constraint_coefficients[833] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[834])
         .field_div(&NonZeroFelt::try_from(point - pow1814 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[834] * value;
+    total_sum += constraint_coefficients[834] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[835])
         .field_div(&NonZeroFelt::try_from(point - pow1813 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[835] * value;
+    total_sum += constraint_coefficients[835] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[836])
         .field_div(&NonZeroFelt::try_from(point - pow1824 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[836] * value;
+    total_sum += constraint_coefficients[836] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[837])
         .field_div(&NonZeroFelt::try_from(point - pow1913 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[837] * value;
+    total_sum += constraint_coefficients[837] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[838])
         .field_div(&NonZeroFelt::try_from(point - pow1912 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[838] * value;
+    total_sum += constraint_coefficients[838] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[839])
         .field_div(&NonZeroFelt::try_from(point - pow1911 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[839] * value;
+    total_sum += constraint_coefficients[839] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[840])
         .field_div(&NonZeroFelt::try_from(point - pow1910 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[840] * value;
+    total_sum += constraint_coefficients[840] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[841])
         .field_div(&NonZeroFelt::try_from(point - pow1812 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[841] * value;
+    total_sum += constraint_coefficients[841] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[842])
         .field_div(&NonZeroFelt::try_from(point - pow1909 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[842] * value;
+    total_sum += constraint_coefficients[842] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[843])
         .field_div(&NonZeroFelt::try_from(point - pow1908 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[843] * value;
+    total_sum += constraint_coefficients[843] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[844])
         .field_div(&NonZeroFelt::try_from(point - pow1907 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[844] * value;
+    total_sum += constraint_coefficients[844] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[845])
         .field_div(&NonZeroFelt::try_from(point - pow1906 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[845] * value;
+    total_sum += constraint_coefficients[845] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[846])
         .field_div(&NonZeroFelt::try_from(point - pow1811 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[846] * value;
+    total_sum += constraint_coefficients[846] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[847])
         .field_div(&NonZeroFelt::try_from(point - pow1905 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[847] * value;
+    total_sum += constraint_coefficients[847] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[848])
         .field_div(&NonZeroFelt::try_from(point - pow1904 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[848] * value;
+    total_sum += constraint_coefficients[848] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[849])
         .field_div(&NonZeroFelt::try_from(point - pow1903 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[849] * value;
+    total_sum += constraint_coefficients[849] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[850])
         .field_div(&NonZeroFelt::try_from(point - pow1902 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[850] * value;
+    total_sum += constraint_coefficients[850] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[851])
         .field_div(&NonZeroFelt::try_from(point - pow1810 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[851] * value;
+    total_sum += constraint_coefficients[851] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[852])
         .field_div(&NonZeroFelt::try_from(point - pow1901 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[852] * value;
+    total_sum += constraint_coefficients[852] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[853])
         .field_div(&NonZeroFelt::try_from(point - pow1900 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[853] * value;
+    total_sum += constraint_coefficients[853] * value;
 
     value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[854])
         .field_div(&NonZeroFelt::try_from(point - pow1899 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[854] * value;
+    total_sum += constraint_coefficients[854] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[855])
         .field_div(&NonZeroFelt::try_from(point - pow1809 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[855] * value;
+    total_sum += constraint_coefficients[855] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[856])
         .field_div(&NonZeroFelt::try_from(point - pow1808 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[856] * value;
+    total_sum += constraint_coefficients[856] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[857])
         .field_div(&NonZeroFelt::try_from(point - pow1807 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[857] * value;
+    total_sum += constraint_coefficients[857] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[858])
         .field_div(&NonZeroFelt::try_from(point - pow1806 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[858] * value;
+    total_sum += constraint_coefficients[858] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[859])
         .field_div(&NonZeroFelt::try_from(point - pow1805 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[859] * value;
+    total_sum += constraint_coefficients[859] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[860])
         .field_div(&NonZeroFelt::try_from(point - pow1804 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[860] * value;
+    total_sum += constraint_coefficients[860] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[861])
         .field_div(&NonZeroFelt::try_from(point - pow1803 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[861] * value;
+    total_sum += constraint_coefficients[861] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[862])
         .field_div(&NonZeroFelt::try_from(point - pow1802 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[862] * value;
+    total_sum += constraint_coefficients[862] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[863])
         .field_div(&NonZeroFelt::try_from(point - pow1801 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[863] * value;
+    total_sum += constraint_coefficients[863] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[864])
         .field_div(&NonZeroFelt::try_from(point - pow1800 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[864] * value;
+    total_sum += constraint_coefficients[864] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[865])
         .field_div(&NonZeroFelt::try_from(point - pow1799 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[865] * value;
+    total_sum += constraint_coefficients[865] * value;
 
     value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[866])
         .field_div(&NonZeroFelt::try_from(point - pow1798 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[866] * value;
+    total_sum += constraint_coefficients[866] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[867])
         .field_div(&NonZeroFelt::try_from(point - pow1779 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[867] * value;
+    total_sum += constraint_coefficients[867] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[868])
         .field_div(&NonZeroFelt::try_from(point - pow1778 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[868] * value;
+    total_sum += constraint_coefficients[868] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[869])
         .field_div(&NonZeroFelt::try_from(point - pow1777 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[869] * value;
+    total_sum += constraint_coefficients[869] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[870])
         .field_div(&NonZeroFelt::try_from(point - pow1776 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[870] * value;
+    total_sum += constraint_coefficients[870] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[871])
         .field_div(&NonZeroFelt::try_from(point - pow1775 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[871] * value;
+    total_sum += constraint_coefficients[871] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[872])
         .field_div(&NonZeroFelt::try_from(point - pow1774 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[872] * value;
+    total_sum += constraint_coefficients[872] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[873])
         .field_div(&NonZeroFelt::try_from(point - pow1773 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[873] * value;
+    total_sum += constraint_coefficients[873] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[874])
         .field_div(&NonZeroFelt::try_from(point - pow1772 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[874] * value;
+    total_sum += constraint_coefficients[874] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[875])
         .field_div(&NonZeroFelt::try_from(point - pow1771 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[875] * value;
+    total_sum += constraint_coefficients[875] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[876])
         .field_div(&NonZeroFelt::try_from(point - pow1770 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[876] * value;
+    total_sum += constraint_coefficients[876] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[877])
         .field_div(&NonZeroFelt::try_from(point - pow1769 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[877] * value;
+    total_sum += constraint_coefficients[877] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[878])
         .field_div(&NonZeroFelt::try_from(point - pow1768 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[878] * value;
+    total_sum += constraint_coefficients[878] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[879])
         .field_div(&NonZeroFelt::try_from(point - pow1767 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[879] * value;
+    total_sum += constraint_coefficients[879] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[880])
         .field_div(&NonZeroFelt::try_from(point - pow1766 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[880] * value;
+    total_sum += constraint_coefficients[880] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[881])
         .field_div(&NonZeroFelt::try_from(point - pow1765 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[881] * value;
+    total_sum += constraint_coefficients[881] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[882])
         .field_div(&NonZeroFelt::try_from(point - pow1764 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[882] * value;
+    total_sum += constraint_coefficients[882] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[883])
         .field_div(&NonZeroFelt::try_from(point - pow1763 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[883] * value;
+    total_sum += constraint_coefficients[883] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[884])
         .field_div(&NonZeroFelt::try_from(point - pow1762 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[884] * value;
+    total_sum += constraint_coefficients[884] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[885])
         .field_div(&NonZeroFelt::try_from(point - pow1761 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[885] * value;
+    total_sum += constraint_coefficients[885] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[886])
         .field_div(&NonZeroFelt::try_from(point - pow1760 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[886] * value;
+    total_sum += constraint_coefficients[886] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[887])
         .field_div(&NonZeroFelt::try_from(point - pow1759 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[887] * value;
+    total_sum += constraint_coefficients[887] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[888])
         .field_div(&NonZeroFelt::try_from(point - pow1758 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[888] * value;
+    total_sum += constraint_coefficients[888] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[889])
         .field_div(&NonZeroFelt::try_from(point - pow1757 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[889] * value;
+    total_sum += constraint_coefficients[889] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[890])
         .field_div(&NonZeroFelt::try_from(point - pow1756 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[890] * value;
+    total_sum += constraint_coefficients[890] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[891])
         .field_div(&NonZeroFelt::try_from(point - pow1755 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[891] * value;
+    total_sum += constraint_coefficients[891] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[892])
         .field_div(&NonZeroFelt::try_from(point - pow1754 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[892] * value;
+    total_sum += constraint_coefficients[892] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[893])
         .field_div(&NonZeroFelt::try_from(point - pow1753 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[893] * value;
+    total_sum += constraint_coefficients[893] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[894])
         .field_div(&NonZeroFelt::try_from(point - pow1752 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[894] * value;
+    total_sum += constraint_coefficients[894] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[895])
         .field_div(&NonZeroFelt::try_from(point - pow1751 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[895] * value;
+    total_sum += constraint_coefficients[895] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[896])
         .field_div(&NonZeroFelt::try_from(point - pow1750 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[896] * value;
+    total_sum += constraint_coefficients[896] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[897])
         .field_div(&NonZeroFelt::try_from(point - pow1749 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[897] * value;
+    total_sum += constraint_coefficients[897] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[898])
         .field_div(&NonZeroFelt::try_from(point - pow1748 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[898] * value;
+    total_sum += constraint_coefficients[898] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[899])
         .field_div(&NonZeroFelt::try_from(point - pow1747 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[899] * value;
+    total_sum += constraint_coefficients[899] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[900])
         .field_div(&NonZeroFelt::try_from(point - pow1746 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[900] * value;
+    total_sum += constraint_coefficients[900] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[901])
         .field_div(&NonZeroFelt::try_from(point - pow1745 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[901] * value;
+    total_sum += constraint_coefficients[901] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[902])
         .field_div(&NonZeroFelt::try_from(point - pow1744 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[902] * value;
+    total_sum += constraint_coefficients[902] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[903])
         .field_div(&NonZeroFelt::try_from(point - pow1743 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[903] * value;
+    total_sum += constraint_coefficients[903] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[904])
         .field_div(&NonZeroFelt::try_from(point - pow1742 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[904] * value;
+    total_sum += constraint_coefficients[904] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[905])
         .field_div(&NonZeroFelt::try_from(point - pow1741 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[905] * value;
+    total_sum += constraint_coefficients[905] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[906])
         .field_div(&NonZeroFelt::try_from(point - pow1740 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[906] * value;
+    total_sum += constraint_coefficients[906] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[907])
         .field_div(&NonZeroFelt::try_from(point - pow1739 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[907] * value;
+    total_sum += constraint_coefficients[907] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[908])
         .field_div(&NonZeroFelt::try_from(point - pow1738 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[908] * value;
+    total_sum += constraint_coefficients[908] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[909])
         .field_div(&NonZeroFelt::try_from(point - pow1737 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[909] * value;
+    total_sum += constraint_coefficients[909] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[910])
         .field_div(&NonZeroFelt::try_from(point - pow1736 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[910] * value;
+    total_sum += constraint_coefficients[910] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[911])
         .field_div(&NonZeroFelt::try_from(point - pow1735 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[911] * value;
+    total_sum += constraint_coefficients[911] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[912])
         .field_div(&NonZeroFelt::try_from(point - pow1734 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[912] * value;
+    total_sum += constraint_coefficients[912] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[913])
         .field_div(&NonZeroFelt::try_from(point - pow1733 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[913] * value;
+    total_sum += constraint_coefficients[913] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[914])
         .field_div(&NonZeroFelt::try_from(point - pow1732 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[914] * value;
+    total_sum += constraint_coefficients[914] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[915])
         .field_div(&NonZeroFelt::try_from(point - pow1731 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[915] * value;
+    total_sum += constraint_coefficients[915] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[916])
         .field_div(&NonZeroFelt::try_from(point - pow1730 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[916] * value;
+    total_sum += constraint_coefficients[916] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[917])
         .field_div(&NonZeroFelt::try_from(point - pow1729 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[917] * value;
+    total_sum += constraint_coefficients[917] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[918])
         .field_div(&NonZeroFelt::try_from(point - pow1728 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[918] * value;
+    total_sum += constraint_coefficients[918] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[919])
         .field_div(&NonZeroFelt::try_from(point - pow1727 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[919] * value;
+    total_sum += constraint_coefficients[919] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[920])
         .field_div(&NonZeroFelt::try_from(point - pow1726 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[920] * value;
+    total_sum += constraint_coefficients[920] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[921])
         .field_div(&NonZeroFelt::try_from(point - pow1725 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[921] * value;
+    total_sum += constraint_coefficients[921] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[922])
         .field_div(&NonZeroFelt::try_from(point - pow1724 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[922] * value;
+    total_sum += constraint_coefficients[922] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[923])
         .field_div(&NonZeroFelt::try_from(point - pow1723 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[923] * value;
+    total_sum += constraint_coefficients[923] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[924])
         .field_div(&NonZeroFelt::try_from(point - pow1722 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[924] * value;
+    total_sum += constraint_coefficients[924] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[925])
         .field_div(&NonZeroFelt::try_from(point - pow1721 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[925] * value;
+    total_sum += constraint_coefficients[925] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[926])
         .field_div(&NonZeroFelt::try_from(point - pow1720 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[926] * value;
+    total_sum += constraint_coefficients[926] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[927])
         .field_div(&NonZeroFelt::try_from(point - pow1719 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[927] * value;
+    total_sum += constraint_coefficients[927] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[928])
         .field_div(&NonZeroFelt::try_from(point - pow1718 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[928] * value;
+    total_sum += constraint_coefficients[928] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[929])
         .field_div(&NonZeroFelt::try_from(point - pow1717 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[929] * value;
+    total_sum += constraint_coefficients[929] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[930])
         .field_div(&NonZeroFelt::try_from(point - pow1716 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[930] * value;
+    total_sum += constraint_coefficients[930] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[931])
         .field_div(&NonZeroFelt::try_from(point - pow1715 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[931] * value;
+    total_sum += constraint_coefficients[931] * value;
 
     value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[932])
         .field_div(&NonZeroFelt::try_from(point - pow1714 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[932] * value;
+    total_sum += constraint_coefficients[932] * value;
 
     value = (column_values[dynamic_params.memory_multi_column_perm_perm_cum_prod0_column]
         - oods_values[933])
         .field_div(&NonZeroFelt::try_from(point - pow1097 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[933] * value;
+    total_sum += constraint_coefficients[933] * value;
 
     value = (column_values[dynamic_params.memory_multi_column_perm_perm_cum_prod0_column]
         - oods_values[934])
         .field_div(&NonZeroFelt::try_from(point - pow1098 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[934] * value;
+    total_sum += constraint_coefficients[934] * value;
 
     value = (column_values[dynamic_params.range_check16_perm_cum_prod0_column] - oods_values[935])
         .field_div(&NonZeroFelt::try_from(point - pow1095 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[935] * value;
+    total_sum += constraint_coefficients[935] * value;
 
     value = (column_values[dynamic_params.range_check16_perm_cum_prod0_column] - oods_values[936])
         .field_div(&NonZeroFelt::try_from(point - pow1096 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[936] * value;
+    total_sum += constraint_coefficients[936] * value;
 
     value = (column_values[dynamic_params.diluted_check_permutation_cum_prod0_column]
         - oods_values[937])
         .field_div(&NonZeroFelt::try_from(point - pow1093 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[937] * value;
+    total_sum += constraint_coefficients[937] * value;
 
     value = (column_values[dynamic_params.diluted_check_permutation_cum_prod0_column]
         - oods_values[938])
         .field_div(&NonZeroFelt::try_from(point - pow1094 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[938] * value;
+    total_sum += constraint_coefficients[938] * value;
 
     value = (column_values[dynamic_params.diluted_check_cumulative_value_column]
         - oods_values[939])
         .field_div(&NonZeroFelt::try_from(point - pow1091 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[939] * value;
+    total_sum += constraint_coefficients[939] * value;
 
     value = (column_values[dynamic_params.diluted_check_cumulative_value_column]
         - oods_values[940])
         .field_div(&NonZeroFelt::try_from(point - pow1092 * oods_point)?);
-    total_sum = total_sum + constraint_coefficients[940] * value;
+    total_sum += constraint_coefficients[940] * value;
 
     // Sum the OODS boundary constraints on the composition polynomials.
     let oods_point_to_deg = oods_point.pow_felt(&Felt::from(Layout::CONSTRAINT_DEGREE));
@@ -6634,13 +6633,13 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
     value = (column_values[dynamic_params.num_columns_first + dynamic_params.num_columns_second]
         - oods_values[941])
         .field_div(&NonZeroFelt::try_from(point - oods_point_to_deg)?);
-    total_sum = total_sum + constraint_coefficients[941] * value;
+    total_sum += constraint_coefficients[941] * value;
 
     value = (column_values
         [dynamic_params.num_columns_first + dynamic_params.num_columns_second + 1]
         - oods_values[942])
         .field_div(&NonZeroFelt::try_from(point - oods_point_to_deg)?);
-    total_sum = total_sum + constraint_coefficients[942] * value;
+    total_sum += constraint_coefficients[942] * value;
 
     Ok(total_sum)
 }
