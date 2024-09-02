@@ -49,6 +49,7 @@ impl Builtin {
             Builtin::EcOp,
             Builtin::Keccak,
             Builtin::Poseidon,
+            Builtin::RangeCheck96,
             Builtin::AddMod,
             Builtin::MulMod,
         ]

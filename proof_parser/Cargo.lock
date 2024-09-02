@@ -692,6 +692,7 @@ dependencies = [
  "serde_with 3.9.0",
  "starknet-core",
  "starknet-crypto",
+ "starknet-types-core",
  "swiftness_commitment",
  "swiftness_transcript",
  "thiserror",

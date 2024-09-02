@@ -70,20 +70,20 @@ pub const IS_DYNAMIC_AIR: usize = 1;
 pub const KECCAK_PERMUTATIONS_PER_INSTANCE: usize = DILUTED_N_BITS;
 
 pub mod segments {
-    pub const ADD_MOD: usize = 11;
-    pub const BITWISE: usize = 6;
-    pub const EC_OP: usize = 7;
-    pub const ECDSA: usize = 5;
+    pub const PROGRAM: usize = 0;
     pub const EXECUTION: usize = 1;
-    pub const KECCAK: usize = 8;
-    pub const MUL_MOD: usize = 12;
-    pub const N_SEGMENTS: usize = 13;
     pub const OUTPUT: usize = 2;
     pub const PEDERSEN: usize = 3;
-    pub const POSEIDON: usize = 9;
-    pub const PROGRAM: usize = 0;
     pub const RANGE_CHECK: usize = 4;
+    pub const ECDSA: usize = 5;
+    pub const BITWISE: usize = 6;
+    pub const EC_OP: usize = 7;
+    pub const KECCAK: usize = 8;
+    pub const POSEIDON: usize = 9;
     pub const RANGE_CHECK96: usize = 10;
+    pub const ADD_MOD: usize = 11;
+    pub const MUL_MOD: usize = 12;
+    pub const N_SEGMENTS: usize = 13;
 }
 
 pub mod builtins {
@@ -510,7 +510,7 @@ impl LayoutTrait for Layout {
                     segment: crate::layout::segments::OUTPUT,
                 })?
                 .begin_addr;
-        ensure!(output_uses < u128::MAX.into(), PublicInputError::UsesInvalid);
+        ensure!(output_uses <= u128::MAX.into(), PublicInputError::UsesInvalid);
 
         let pedersen_copies = if dynamic_params.uses_pedersen_builtin == 0 {
             Felt::ZERO
@@ -532,7 +532,7 @@ impl LayoutTrait for Layout {
                 })?
                 .begin_addr)
             .field_div(&NonZeroFelt::from_felt_unchecked(Felt::from(3)));
-        ensure!(pedersen_uses < pedersen_copies, PublicInputError::UsesInvalid);
+        ensure!(pedersen_uses <= pedersen_copies, PublicInputError::UsesInvalid);
 
         let range_check_copies = if dynamic_params.uses_range_check_builtin == 0 {
             Felt::ZERO
@@ -553,7 +553,7 @@ impl LayoutTrait for Layout {
                     segment: crate::layout::segments::OUTPUT,
                 })?
                 .begin_addr;
-        ensure!(range_check_uses < range_check_copies, PublicInputError::UsesInvalid);
+        ensure!(range_check_uses <= range_check_copies, PublicInputError::UsesInvalid);
 
         let bitwise_copies = if dynamic_params.uses_bitwise_builtin == 0 {
             Felt::ZERO
@@ -574,8 +574,9 @@ impl LayoutTrait for Layout {
                     segment: crate::layout::segments::OUTPUT,
                 })?
                 .begin_addr)
-            .field_div(&NonZeroFelt::from_felt_unchecked(Felt::from(0x5)));
-        ensure!(bitwise_uses < bitwise_copies, PublicInputError::UsesInvalid);
+            .field_div(&NonZeroFelt::from_felt_unchecked(Felt::from(5)));
+        ensure!(bitwise_uses <= bitwise_copies, PublicInputError::UsesInvalid);
+
         Ok(())
     }
 

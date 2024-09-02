@@ -43,9 +43,7 @@ impl Layout {
             cpu_component_step: *dynamic_params
                 .get("cpu_component_step")
                 .unwrap_or(&consts.cpu_component_step),
-            constraint_degree: *dynamic_params
-                .get("constraint_degree")
-                .unwrap_or(&consts.cpu_component_step),
+            constraint_degree: consts.constraint_degree,
             num_columns_first: *dynamic_params
                 .get("num_columns_first")
                 .unwrap_or(&consts.cpu_component_step),
@@ -141,7 +139,7 @@ impl LayoutConstants {
     pub fn dynamic() -> Self {
         LayoutConstants {
             constraint_degree: 2,
-            cpu_component_step: 1,
+            cpu_component_step: 4,
             num_columns_first: 0,
             num_columns_second: 0,
         }

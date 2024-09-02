@@ -714,6 +714,7 @@ name = "swiftness_commitment"
 version = "0.0.8"
 dependencies = [
  "blake2",
+ "num-bigint",
  "serde",
  "serde_with 3.9.0",
  "sha3",

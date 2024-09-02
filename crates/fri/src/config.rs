@@ -88,7 +88,7 @@ impl Config {
         let log_expected_input_degree = sum_of_step_sizes + self.log_last_layer_degree_bound;
         if log_expected_input_degree + log_n_cosets != self.log_input_size {
             return Err(Error::LogInputSizeMismatch {
-                expected: log_expected_input_degree,
+                expected: log_expected_input_degree + log_n_cosets,
                 actual: self.log_input_size,
             });
         }
