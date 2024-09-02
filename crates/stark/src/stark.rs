@@ -2,53 +2,27 @@ use crate::{
     commit::stark_commit, queries::generate_queries, types::StarkProof, verify::stark_verify,
 };
 use starknet_crypto::Felt;
-#[cfg(feature = "dynamic")]
-use swiftness_air::layout::DynamicLayoutTrait;
-#[cfg(any(
-    feature = "dex",
-    feature = "recursive",
-    feature = "recursive_with_poseidon",
-    feature = "small",
-    feature = "starknet",
-    feature = "starknet_with_keccak"
-))]
-use swiftness_air::layout::StaticLayoutTrait;
 use swiftness_air::{
     domains::StarkDomains,
-    layout::{LayoutTrait, PublicInputError},
+    layout::{GenericLayoutTrait, LayoutTrait, PublicInputError},
 };
 use swiftness_transcript::transcript::Transcript;
 
-#[cfg(any(
-    feature = "dex",
-    feature = "recursive",
-    feature = "recursive_with_poseidon",
-    feature = "small",
-    feature = "starknet",
-    feature = "starknet_with_keccak"
-))]
-pub trait LayoutTraitSwitch: LayoutTrait + StaticLayoutTrait {}
-
-#[cfg(feature = "dynamic")]
-pub trait LayoutTraitSwitch: LayoutTrait + DynamicLayoutTrait {}
-
 impl StarkProof {
-    pub fn verify<Layout: LayoutTraitSwitch>(
+    pub fn verify<Layout: GenericLayoutTrait + LayoutTrait>(
         &self,
         security_bits: Felt,
     ) -> Result<(Felt, Felt), Error> {
-        #[cfg(any(
-            feature = "dex",
-            feature = "recursive",
-            feature = "recursive_with_poseidon",
-            feature = "small",
-            feature = "starknet",
-            feature = "starknet_with_keccak"
-        ))]
-        self.config.validate_static_layout::<Layout>(security_bits)?;
+        let n_original_columns =
+            Layout::get_num_columns_first(&self.public_input).ok_or(Error::ColumnMissing)?;
+        let n_interaction_columns =
+            Layout::get_num_columns_second(&self.public_input).ok_or(Error::ColumnMissing)?;
 
-        #[cfg(feature = "dynamic")]
-        self.config.validate_dynamic_layout::<Layout>(security_bits, &self.public_input)?;
+        self.config.validate(
+            security_bits,
+            n_original_columns.into(),
+            n_interaction_columns.into(),
+        )?;
 
         // Validate the public input.
         let stark_domains =
@@ -75,31 +49,6 @@ impl StarkProof {
             &mut transcript,
             self.config.n_queries,
             stark_domains.eval_domain_size,
-        );
-
-        #[cfg(any(
-            feature = "dex",
-            feature = "recursive",
-            feature = "recursive_with_poseidon",
-            feature = "small",
-            feature = "starknet",
-            feature = "starknet_with_keccak"
-        ))]
-        let (n_original_columns, n_interaction_columns) =
-            (Layout::NUM_COLUMNS_FIRST, Layout::NUM_COLUMNS_SECOND);
-
-        #[cfg(feature = "dynamic")]
-        let (n_original_columns, n_interaction_columns) = (
-            self.public_input
-                .dynamic_params
-                .as_ref()
-                .expect("DynamicParams not present")
-                .num_columns_first,
-            self.public_input
-                .dynamic_params
-                .as_ref()
-                .expect("DynamicParams not present")
-                .num_columns_second,
         );
 
         // STARK verify phase.
@@ -134,6 +83,9 @@ pub enum Error {
 
     #[error("Verify Error")]
     Verify(#[from] crate::verify::Error),
+
+    #[error("Column missing")]
+    ColumnMissing,
 }
 
 #[cfg(not(feature = "std"))]
@@ -153,4 +105,7 @@ pub enum Error {
 
     #[error("Verify Error")]
     Verify(#[from] crate::verify::Error),
+
+    #[error("Column missing")]
+    ColumnMissing,
 }

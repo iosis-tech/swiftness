@@ -23,7 +23,9 @@ use starknet_crypto::{pedersen_hash, Felt};
 use swiftness_commitment::table::{commit::table_commit, decommit::table_decommit};
 use swiftness_transcript::ensure;
 
-use super::{CompositionPolyEvalError, LayoutTrait, OodsPolyEvalError, PublicInputError};
+use super::{
+    CompositionPolyEvalError, GenericLayoutTrait, LayoutTrait, OodsPolyEvalError, PublicInputError,
+};
 
 pub const N_DYNAMIC_PARAMS: usize = 340;
 pub const N_CONSTRAINTS: usize = 419;
@@ -121,6 +123,15 @@ pub const BUILTINS: [Felt; 11] = [
 ];
 
 pub struct Layout {}
+
+impl GenericLayoutTrait for Layout {
+    fn get_num_columns_first(public_input: &PublicInput) -> Option<usize> {
+        public_input.dynamic_params.as_ref().map(|d| d.num_columns_first)
+    }
+    fn get_num_columns_second(public_input: &PublicInput) -> Option<usize> {
+        public_input.dynamic_params.as_ref().map(|d| d.num_columns_second)
+    }
+}
 
 impl LayoutTrait for Layout {
     const CONSTRAINT_DEGREE: usize = 2;

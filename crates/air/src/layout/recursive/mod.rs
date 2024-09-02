@@ -15,7 +15,8 @@ use swiftness_commitment::table::{commit::table_commit, decommit::table_decommit
 use swiftness_transcript::ensure;
 
 use super::{
-    CompositionPolyEvalError, LayoutTrait, OodsPolyEvalError, PublicInputError, StaticLayoutTrait,
+    CompositionPolyEvalError, GenericLayoutTrait, LayoutTrait, OodsPolyEvalError, PublicInputError,
+    StaticLayoutTrait,
 };
 
 pub const BITWISE_RATIO: usize = 8;
@@ -77,6 +78,15 @@ pub struct Layout {}
 impl StaticLayoutTrait for Layout {
     const NUM_COLUMNS_FIRST: usize = 7;
     const NUM_COLUMNS_SECOND: usize = 3;
+}
+
+impl GenericLayoutTrait for Layout {
+    fn get_num_columns_first(_public_input: &PublicInput) -> Option<usize> {
+        Some(Self::NUM_COLUMNS_FIRST)
+    }
+    fn get_num_columns_second(_public_input: &PublicInput) -> Option<usize> {
+        Some(Self::NUM_COLUMNS_SECOND)
+    }
 }
 
 impl LayoutTrait for Layout {

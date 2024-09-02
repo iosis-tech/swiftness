@@ -84,7 +84,10 @@ pub trait StaticLayoutTrait {
     const NUM_COLUMNS_SECOND: usize;
 }
 
-pub trait DynamicLayoutTrait {}
+pub trait GenericLayoutTrait {
+    fn get_num_columns_first(public_input: &PublicInput) -> Option<usize>;
+    fn get_num_columns_second(public_input: &PublicInput) -> Option<usize>;
+}
 
 pub fn safe_div(value: Felt, divisor: Felt) -> Result<Felt, FeltIsZeroError> {
     Ok(value.floor_div(&NonZeroFelt::try_from(divisor)?))

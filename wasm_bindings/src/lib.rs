@@ -1,5 +1,7 @@
 #[cfg(feature = "dex")]
 use swiftness_air::layout::dex::Layout;
+#[cfg(feature = "dynamic")]
+use swiftness_air::layout::dynamic::Layout;
 #[cfg(feature = "recursive")]
 use swiftness_air::layout::recursive::Layout;
 #[cfg(feature = "recursive_with_poseidon")]

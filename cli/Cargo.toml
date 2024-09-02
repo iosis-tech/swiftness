@@ -34,6 +34,10 @@ starknet_with_keccak = [
     "swiftness_air/starknet_with_keccak",
     "swiftness_stark/starknet_with_keccak",
 ]
+dynamic = [
+    "swiftness_air/dynamic",
+    "swiftness_stark/dynamic",
+]
 keccak_160_lsb = [
     "swiftness_air/keccak_160_lsb",
     "swiftness_stark/keccak_160_lsb",

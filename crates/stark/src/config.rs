@@ -1,11 +1,6 @@
-use crate::alloc::borrow::ToOwned;
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
 use starknet_crypto::Felt;
-use swiftness_air::{
-    layout::{DynamicLayoutTrait, StaticLayoutTrait},
-    public_memory::PublicInput,
-};
 use swiftness_commitment::vector;
 
 #[serde_as]
@@ -47,9 +42,11 @@ impl StarkConfig {
         self.n_queries * self.log_n_cosets + Felt::from(self.proof_of_work.n_bits)
     }
 
-    pub fn validate_static_layout<Layout: StaticLayoutTrait>(
+    pub fn validate(
         &self,
         security_bits: Felt,
+        num_columns_first: Felt,
+        num_columns_second: Felt,
     ) -> Result<(), Error> {
         self.proof_of_work.validate()?;
 
@@ -60,39 +57,8 @@ impl StarkConfig {
         self.traces.validate(
             log_eval_domain_size,
             self.n_verifier_friendly_commitment_layers,
-            Layout::NUM_COLUMNS_FIRST.into(),
-            Layout::NUM_COLUMNS_SECOND.into(),
-        )?;
-
-        // Validate composition config.
-        self.composition
-            .vector
-            .validate(log_eval_domain_size, self.n_verifier_friendly_commitment_layers)?;
-
-        // Validate Fri config.
-        self.fri.validate(self.log_n_cosets, self.n_verifier_friendly_commitment_layers)?;
-        Ok(())
-    }
-
-    pub fn validate_dynamic_layout<Layout: DynamicLayoutTrait>(
-        &self,
-        security_bits: Felt,
-        public_input: &PublicInput,
-    ) -> Result<(), Error> {
-        self.proof_of_work.validate()?;
-
-        ensure!(security_bits <= self.security_bits(), Error::InsufficientSecurity);
-
-        let dynamc_params =
-            public_input.dynamic_params.to_owned().ok_or(Error::DynamicParamsMissing)?;
-
-        // Validate traces config.
-        let log_eval_domain_size = self.log_trace_domain_size + self.log_n_cosets;
-        self.traces.validate(
-            log_eval_domain_size,
-            self.n_verifier_friendly_commitment_layers,
-            dynamc_params.num_columns_first.into(),
-            dynamc_params.num_columns_second.into(),
+            num_columns_first,
+            num_columns_second,
         )?;
 
         // Validate composition config.
