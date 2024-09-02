@@ -698,6 +698,7 @@ dependencies = [
 name = "swiftness_air"
 version = "0.0.8"
 dependencies = [
+ "num-bigint",
  "serde",
  "serde_with 3.9.0",
  "starknet-core",
@@ -730,6 +731,7 @@ dependencies = [
 name = "swiftness_fri"
 version = "0.0.8"
 dependencies = [
+ "num-bigint",
  "serde",
  "serde_with 3.9.0",
  "sha3",

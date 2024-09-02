@@ -5,6 +5,7 @@ extern crate alloc;
 #[cfg(feature = "std")]
 extern crate std;
 
+pub mod consts;
 pub mod diluted;
 pub mod domains;
 pub mod dynamic;

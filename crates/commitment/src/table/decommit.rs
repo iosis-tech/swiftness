@@ -124,4 +124,7 @@ pub enum Error {
 
     #[error("Vector Error")]
     Vector(#[from] crate::vector::decommit::Error),
+
+    #[error("BigInt conversion Error")]
+    TryFromBigInt(#[from] TryFromBigIntError<BigInt>),
 }

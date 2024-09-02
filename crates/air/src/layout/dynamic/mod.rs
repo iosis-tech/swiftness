@@ -3,8 +3,9 @@ pub mod global_values;
 
 use crate::{
     alloc::borrow::ToOwned,
+    consts::*,
     diluted::get_diluted_product,
-    layout::stark_curve,
+    layout::{safe_div, stark_curve},
     periodic_columns::{
         eval_ecdsa_x, eval_ecdsa_y, eval_keccak_round_key0, eval_keccak_round_key1,
         eval_keccak_round_key15, eval_keccak_round_key3, eval_keccak_round_key31,
@@ -500,36 +501,32 @@ impl LayoutTrait for Layout {
 
         let output_uses = public_input
             .segments
-            .get(crate::layout::segments::OUTPUT)
-            .ok_or(PublicInputError::SegmentMissing { segment: crate::layout::segments::OUTPUT })?
+            .get(segments::OUTPUT)
+            .ok_or(PublicInputError::SegmentMissing { segment: segments::OUTPUT })?
             .stop_ptr
             - public_input
                 .segments
-                .get(crate::layout::segments::OUTPUT)
-                .ok_or(PublicInputError::SegmentMissing {
-                    segment: crate::layout::segments::OUTPUT,
-                })?
+                .get(segments::OUTPUT)
+                .ok_or(PublicInputError::SegmentMissing { segment: segments::OUTPUT })?
                 .begin_addr;
         ensure!(output_uses <= u128::MAX.into(), PublicInputError::UsesInvalid);
 
         let pedersen_copies = if dynamic_params.uses_pedersen_builtin == 0 {
             Felt::ZERO
         } else {
-            trace_length.field_div(&NonZeroFelt::from_felt_unchecked(Felt::from(
+            trace_length.field_div(&NonZeroFelt::try_from(Felt::from(
                 dynamic_params.pedersen_builtin_row_ratio,
-            )))
+            ))?)
         };
         let pedersen_uses = (public_input
             .segments
             .get(segments::PEDERSEN)
-            .ok_or(PublicInputError::SegmentMissing { segment: crate::layout::segments::OUTPUT })?
+            .ok_or(PublicInputError::SegmentMissing { segment: segments::PEDERSEN })?
             .stop_ptr
             - public_input
                 .segments
                 .get(segments::PEDERSEN)
-                .ok_or(PublicInputError::SegmentMissing {
-                    segment: crate::layout::segments::OUTPUT,
-                })?
+                .ok_or(PublicInputError::SegmentMissing { segment: segments::PEDERSEN })?
                 .begin_addr)
             .field_div(&NonZeroFelt::from_felt_unchecked(Felt::from(3)));
         ensure!(pedersen_uses <= pedersen_copies, PublicInputError::UsesInvalid);
@@ -537,45 +534,213 @@ impl LayoutTrait for Layout {
         let range_check_copies = if dynamic_params.uses_range_check_builtin == 0 {
             Felt::ZERO
         } else {
-            trace_length.field_div(&NonZeroFelt::from_felt_unchecked(Felt::from(
+            trace_length.field_div(&NonZeroFelt::try_from(Felt::from(
                 dynamic_params.range_check_builtin_row_ratio,
-            )))
+            ))?)
         };
         let range_check_uses = public_input
             .segments
             .get(segments::RANGE_CHECK)
-            .ok_or(PublicInputError::SegmentMissing { segment: crate::layout::segments::OUTPUT })?
+            .ok_or(PublicInputError::SegmentMissing { segment: segments::RANGE_CHECK })?
             .stop_ptr
             - public_input
                 .segments
                 .get(segments::RANGE_CHECK)
-                .ok_or(PublicInputError::SegmentMissing {
-                    segment: crate::layout::segments::OUTPUT,
-                })?
+                .ok_or(PublicInputError::SegmentMissing { segment: segments::RANGE_CHECK })?
                 .begin_addr;
         ensure!(range_check_uses <= range_check_copies, PublicInputError::UsesInvalid);
+
+        let ecdsa_copies = if dynamic_params.uses_ecdsa_builtin == 0 {
+            Felt::ZERO
+        } else {
+            trace_length.field_div(&NonZeroFelt::try_from(Felt::from(
+                dynamic_params.ecdsa_builtin_row_ratio,
+            ))?)
+        };
+        let ecdsa_uses = (public_input
+            .segments
+            .get(segments::ECDSA)
+            .ok_or(PublicInputError::SegmentMissing { segment: segments::ECDSA })?
+            .stop_ptr
+            - public_input
+                .segments
+                .get(segments::ECDSA)
+                .ok_or(PublicInputError::SegmentMissing { segment: segments::ECDSA })?
+                .begin_addr)
+            .field_div(&NonZeroFelt::from_felt_unchecked(FELT_2));
+        ensure!(ecdsa_uses <= ecdsa_copies, PublicInputError::UsesInvalid);
 
         let bitwise_copies = if dynamic_params.uses_bitwise_builtin == 0 {
             Felt::ZERO
         } else {
-            trace_length.field_div(&NonZeroFelt::from_felt_unchecked(Felt::from(
-                dynamic_params.bitwise_row_ratio,
-            )))
+            trace_length
+                .field_div(&NonZeroFelt::try_from(Felt::from(dynamic_params.bitwise_row_ratio))?)
         };
         let bitwise_uses = (public_input
             .segments
             .get(segments::BITWISE)
-            .ok_or(PublicInputError::SegmentMissing { segment: crate::layout::segments::OUTPUT })?
+            .ok_or(PublicInputError::SegmentMissing { segment: segments::BITWISE })?
             .stop_ptr
             - public_input
                 .segments
                 .get(segments::BITWISE)
-                .ok_or(PublicInputError::SegmentMissing {
-                    segment: crate::layout::segments::OUTPUT,
-                })?
+                .ok_or(PublicInputError::SegmentMissing { segment: segments::BITWISE })?
                 .begin_addr)
-            .field_div(&NonZeroFelt::from_felt_unchecked(Felt::from(5)));
+            .field_div(&NonZeroFelt::from_felt_unchecked(FELT_5));
         ensure!(bitwise_uses <= bitwise_copies, PublicInputError::UsesInvalid);
+
+        let ec_op_copies = if dynamic_params.uses_ec_op_builtin == 0 {
+            Felt::ZERO
+        } else {
+            trace_length.field_div(&NonZeroFelt::try_from(Felt::from(
+                dynamic_params.ec_op_builtin_row_ratio,
+            ))?)
+        };
+        let ec_op_uses = (public_input
+            .segments
+            .get(segments::EC_OP)
+            .ok_or(PublicInputError::SegmentMissing { segment: segments::EC_OP })?
+            .stop_ptr
+            - public_input
+                .segments
+                .get(segments::EC_OP)
+                .ok_or(PublicInputError::SegmentMissing { segment: segments::EC_OP })?
+                .begin_addr)
+            .field_div(&NonZeroFelt::from_felt_unchecked(FELT_7));
+        ensure!(ec_op_uses <= ec_op_copies, PublicInputError::UsesInvalid);
+
+        let keccak_copies = if dynamic_params.uses_keccak_builtin == 0 {
+            Felt::ZERO
+        } else {
+            trace_length
+                .field_div(&NonZeroFelt::try_from(Felt::from(dynamic_params.keccak_row_ratio))?)
+        };
+        let keccak_uses = (public_input
+            .segments
+            .get(segments::KECCAK)
+            .ok_or(PublicInputError::SegmentMissing { segment: segments::KECCAK })?
+            .stop_ptr
+            - public_input
+                .segments
+                .get(segments::KECCAK)
+                .ok_or(PublicInputError::SegmentMissing { segment: segments::KECCAK })?
+                .begin_addr)
+            .field_div(&NonZeroFelt::from_felt_unchecked(FELT_16));
+        ensure!(keccak_uses <= keccak_copies, PublicInputError::UsesInvalid);
+
+        let poseidon_copies = if dynamic_params.uses_poseidon_builtin == 0 {
+            Felt::ZERO
+        } else {
+            trace_length
+                .field_div(&NonZeroFelt::try_from(Felt::from(dynamic_params.poseidon_row_ratio))?)
+        };
+        let poseidon_uses = (public_input
+            .segments
+            .get(segments::POSEIDON)
+            .ok_or(PublicInputError::SegmentMissing { segment: segments::POSEIDON })?
+            .stop_ptr
+            - public_input
+                .segments
+                .get(segments::POSEIDON)
+                .ok_or(PublicInputError::SegmentMissing { segment: segments::POSEIDON })?
+                .begin_addr)
+            .field_div(&NonZeroFelt::from_felt_unchecked(FELT_6));
+        ensure!(poseidon_uses <= poseidon_copies, PublicInputError::UsesInvalid);
+
+        let range_check96_copies = if dynamic_params.uses_range_check96_builtin == 0 {
+            Felt::ZERO
+        } else {
+            trace_length.field_div(&NonZeroFelt::try_from(Felt::from(
+                dynamic_params.range_check96_builtin_row_ratio,
+            ))?)
+        };
+        let range_check96_uses = public_input
+            .segments
+            .get(segments::RANGE_CHECK96)
+            .ok_or(PublicInputError::SegmentMissing { segment: segments::RANGE_CHECK96 })?
+            .stop_ptr
+            - public_input
+                .segments
+                .get(segments::RANGE_CHECK96)
+                .ok_or(PublicInputError::SegmentMissing { segment: segments::RANGE_CHECK96 })?
+                .begin_addr;
+        ensure!(range_check96_uses <= range_check96_copies, PublicInputError::UsesInvalid);
+
+        let add_mod_copies = if dynamic_params.uses_add_mod_builtin == 0 {
+            Felt::ZERO
+        } else {
+            trace_length
+                .field_div(&NonZeroFelt::try_from(Felt::from(dynamic_params.add_mod_row_ratio))?)
+        };
+        let add_mod_uses = (public_input
+            .segments
+            .get(segments::ADD_MOD)
+            .ok_or(PublicInputError::SegmentMissing { segment: segments::ADD_MOD })?
+            .stop_ptr
+            - public_input
+                .segments
+                .get(segments::ADD_MOD)
+                .ok_or(PublicInputError::SegmentMissing { segment: segments::ADD_MOD })?
+                .begin_addr)
+            .field_div(&NonZeroFelt::from_felt_unchecked(FELT_7));
+        ensure!(add_mod_uses <= add_mod_copies, PublicInputError::UsesInvalid);
+
+        let mul_mod_copies = if dynamic_params.uses_mul_mod_builtin == 0 {
+            Felt::ZERO
+        } else {
+            trace_length
+                .field_div(&NonZeroFelt::try_from(Felt::from(dynamic_params.mul_mod_row_ratio))?)
+        };
+        let mul_mod_uses = (public_input
+            .segments
+            .get(segments::MUL_MOD)
+            .ok_or(PublicInputError::SegmentMissing { segment: segments::MUL_MOD })?
+            .stop_ptr
+            - public_input
+                .segments
+                .get(segments::MUL_MOD)
+                .ok_or(PublicInputError::SegmentMissing { segment: segments::MUL_MOD })?
+                .begin_addr)
+            .field_div(&NonZeroFelt::from_felt_unchecked(FELT_7));
+        ensure!(mul_mod_uses <= mul_mod_copies, PublicInputError::UsesInvalid);
+
+        let memory_units = trace_length
+            .field_div(&NonZeroFelt::try_from(Felt::from(dynamic_params.memory_units_row_ratio))?);
+        ensure!(
+            FELT_4 * n_steps
+                + safe_div(memory_units, PUBLIC_MEMORY_FRACTION.into())?
+                + FELT_3 * pedersen_copies
+                + FELT_1 * range_check_copies
+                + FELT_2 * ecdsa_copies
+                + FELT_5 * bitwise_copies
+                + FELT_7 * ec_op_copies
+                + FELT_16 * keccak_copies
+                + FELT_6 * poseidon_copies
+                + FELT_1 * range_check96_copies
+                + FELT_7 * add_mod_copies
+                + FELT_7 * mul_mod_copies
+                <= memory_units,
+            PublicInputError::CopiesInvalid
+        );
+
+        let rc_units = trace_length.field_div(&NonZeroFelt::try_from(Felt::from(
+            dynamic_params.range_check_units_row_ratio,
+        ))?);
+        ensure!(
+            FELT_3 * n_steps
+                + FELT_8 * range_check_copies
+                + FELT_6 * range_check96_copies
+                + FELT_66 * mul_mod_copies
+                <= rc_units,
+            PublicInputError::CopiesInvalid
+        );
+
+        let diluted_units = trace_length
+            .field_div(&NonZeroFelt::try_from(Felt::from(dynamic_params.diluted_units_row_ratio))?);
+        ensure!(
+            FELT_68 * bitwise_copies + FELT_16384 * keccak_copies <= diluted_units,
+            PublicInputError::CopiesInvalid
+        );
 
         Ok(())
     }
@@ -628,15 +793,15 @@ impl LayoutTrait for Layout {
 
         let program: Vec<&Felt> = memory
             .iter()
-            .skip(initial_pc.to_bigint().try_into().unwrap())
+            .skip(initial_pc.to_bigint().try_into()?)
             .step_by(2)
-            .take((program_end_pc - Felt::ONE).to_bigint().try_into().unwrap())
+            .take((program_end_pc - Felt::ONE).to_bigint().try_into()?)
             .collect();
 
         let hash = program.iter().fold(Felt::ZERO, |acc, &e| pedersen_hash(&acc, e));
         let program_hash = pedersen_hash(&hash, &Felt::from(program.len()));
 
-        let output_len: usize = (output_stop - output_start).to_bigint().try_into().unwrap();
+        let output_len: usize = (output_stop - output_start).to_bigint().try_into()?;
         let output = &memory[memory.len() - output_len * 2..];
         let hash =
             output.iter().skip(1).step_by(2).fold(Felt::ZERO, |acc, e| pedersen_hash(&acc, e));

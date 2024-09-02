@@ -1,4 +1,5 @@
 use crate::{
+    consts::*,
     dynamic::DynamicParams,
     layout::{safe_div, LayoutTrait, OodsPolyEvalError},
 };
@@ -368,24 +369,11 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
     let range_check_builtin_row_ratio = Felt::from(dynamic_params.range_check_builtin_row_ratio);
     let range_check_units_row_ratio = Felt::from(dynamic_params.range_check_units_row_ratio);
 
-    let felt_3 = Felt::from(3);
-    let felt_4 = Felt::from(4);
-    let felt_8 = Felt::from(8);
-    let felt_49 = Felt::from(49);
-    let felt_61 = Felt::from(61);
-    let felt_64 = Felt::from(64);
-    let felt_128 = Felt::from(128);
-    let felt_251 = Felt::from(251);
-    let felt_255 = Felt::from(255);
-    let felt_256 = Felt::from(256);
-    let felt_512 = Felt::from(512);
-    let felt_32768 = Felt::from_hex_unchecked("0x8000");
-
     // Compute powers.
     let pow0 = trace_generator.pow_felt(&mul_mod_row_ratio);
     let pow1 = trace_generator.pow_felt(&add_mod_row_ratio);
     let pow2 = trace_generator.pow_felt(&range_check96_builtin_row_ratio);
-    let pow3 = trace_generator.pow_felt(&(safe_div(bitwise_row_ratio, felt_64)?));
+    let pow3 = trace_generator.pow_felt(&(safe_div(bitwise_row_ratio, FELT_64)?));
     let pow4 = pow3 * pow3; // pow(trace_generator, &(safe_div(bitwise_row_ratio, 32))).
     let pow5 = pow3 * pow4; // pow(trace_generator, &(safe_div((3* bitwise_row_ratio), 64))).
     let pow6 = pow3 * pow5; // pow(trace_generator, &(safe_div(bitwise_row_ratio, 16))).
@@ -402,7 +390,7 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
     let pow17 = pow3 * pow16; // pow(trace_generator, &(safe_div((15* bitwise_row_ratio), 64))).
     let pow18 = pow3 * pow17; // pow(trace_generator, &(safe_div(bitwise_row_ratio, 4))).
     let pow19 = pow18 * pow18; // pow(trace_generator, &(safe_div(bitwise_row_ratio, 2))).
-    let pow30 = trace_generator.pow_felt(&(safe_div(range_check_builtin_row_ratio, felt_8)?));
+    let pow30 = trace_generator.pow_felt(&(safe_div(range_check_builtin_row_ratio, FELT_8)?));
     let pow31 = pow30 * pow30; // pow(trace_generator, &(safe_div(range_check_builtin_row_ratio, 4))).
     let pow32 = pow30 * pow31; // pow(trace_generator, &(safe_div((3* range_check_builtin_row_ratio), 8))).
     let pow33 = pow30 * pow32; // pow(trace_generator, &(safe_div(range_check_builtin_row_ratio, 2))).
@@ -608,13 +596,13 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
     );
     let pow168 =
         trace_generator.pow_felt(&(range_check96_builtin_mem_suboffset * memory_units_row_ratio));
-    let pow170 = trace_generator.pow_felt(&(safe_div(poseidon_row_ratio, felt_64)?));
-    let pow171 = trace_generator.pow_felt(&(safe_div(felt_3 * poseidon_row_ratio, felt_8)?));
+    let pow170 = trace_generator.pow_felt(&(safe_div(poseidon_row_ratio, FELT_64)?));
+    let pow171 = trace_generator.pow_felt(&(safe_div(FELT_3 * poseidon_row_ratio, FELT_8)?));
     let pow172 = pow170 * pow170; // pow(trace_generator, &(safe_div(poseidon_row_ratio, 32))).
     let pow173 = pow170 * pow172; // pow(trace_generator, &(safe_div((3* poseidon_row_ratio), 64))).
     let pow174 = pow170 * pow173; // pow(trace_generator, &(safe_div(poseidon_row_ratio, 16))).
     let pow175 = pow172 * pow174; // pow(trace_generator, &(safe_div((3* poseidon_row_ratio), 32))).
-    let pow176 = trace_generator.pow_felt(&(safe_div(felt_61 * poseidon_row_ratio, felt_64)?));
+    let pow176 = trace_generator.pow_felt(&(safe_div(FELT_61 * poseidon_row_ratio, FELT_64)?));
     let pow177 = pow172 * pow175; // pow(trace_generator, &(safe_div(poseidon_row_ratio, 8))).
     let pow178 = pow171 * pow177; // pow(trace_generator, &(safe_div(poseidon_row_ratio, 2))).
     let pow179 = pow175 * pow178; // pow(trace_generator, &(safe_div((19* poseidon_row_ratio), 32))).
@@ -632,7 +620,7 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
         .pow_felt(&(keccak_keccak_diluted_column3_suboffset * diluted_units_row_ratio));
     let pow194 = trace_generator
         .pow_felt(&(keccak_keccak_diluted_column0_suboffset * diluted_units_row_ratio));
-    let pow195 = trace_generator.pow_felt(&(safe_div(keccak_row_ratio, felt_32768)?));
+    let pow195 = trace_generator.pow_felt(&(safe_div(keccak_row_ratio, FELT_32768)?));
     let pow196 = pow195 * pow195; // pow(trace_generator, &(safe_div(keccak_row_ratio, 16384))).
     let pow197 = pow195 * pow196; // pow(trace_generator, &(safe_div((3* keccak_row_ratio), 32768))).
     let pow198 = pow195 * pow197; // pow(trace_generator, &(safe_div(keccak_row_ratio, 8192))).
@@ -970,12 +958,12 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
     let pow958 =
         trace_generator.pow_felt(&(keccak_input_output_suboffset * memory_units_row_ratio));
     let pow974 =
-        trace_generator.pow_felt(&(safe_div(felt_255 * ec_op_builtin_row_ratio, felt_256)?));
+        trace_generator.pow_felt(&(safe_div(FELT_255 * ec_op_builtin_row_ratio, FELT_256)?));
     let pow975 =
-        trace_generator.pow_felt(&(safe_div(felt_251 * ec_op_builtin_row_ratio, felt_256)?));
-    let pow976 = trace_generator.pow_felt(&(safe_div(felt_49 * ec_op_builtin_row_ratio, felt_64)?));
-    let pow977 = trace_generator.pow_felt(&(safe_div(felt_3 * ec_op_builtin_row_ratio, felt_4)?));
-    let pow978 = trace_generator.pow_felt(&(safe_div(ec_op_builtin_row_ratio, felt_256)?));
+        trace_generator.pow_felt(&(safe_div(FELT_251 * ec_op_builtin_row_ratio, FELT_256)?));
+    let pow976 = trace_generator.pow_felt(&(safe_div(FELT_49 * ec_op_builtin_row_ratio, FELT_64)?));
+    let pow977 = trace_generator.pow_felt(&(safe_div(FELT_3 * ec_op_builtin_row_ratio, FELT_4)?));
+    let pow978 = trace_generator.pow_felt(&(safe_div(ec_op_builtin_row_ratio, FELT_256)?));
     let pow979 = pow974 * pow978; // pow(trace_generator, ec_op_builtin_row_ratio).
     let pow983 = trace_generator.pow_felt(&(ec_op_r_y_suboffset * memory_units_row_ratio));
     let pow984 = trace_generator.pow_felt(&(ec_op_r_x_suboffset * memory_units_row_ratio));
@@ -999,9 +987,9 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
     let pow1028 = trace_generator.pow_felt(&(ecdsa_message_suboffset * memory_units_row_ratio));
     let pow1029 = trace_generator.pow_felt(&(ecdsa_pubkey_suboffset * memory_units_row_ratio));
     let pow1030 =
-        trace_generator.pow_felt(&(safe_div(felt_255 * ecdsa_builtin_row_ratio, felt_512)?));
+        trace_generator.pow_felt(&(safe_div(FELT_255 * ecdsa_builtin_row_ratio, FELT_512)?));
     let pow1031 = pow1030 * pow1030; // pow(trace_generator, &(safe_div((255* ecdsa_builtin_row_ratio), 256))).
-    let pow1032 = trace_generator.pow_felt(&(safe_div(ecdsa_builtin_row_ratio, felt_512)?));
+    let pow1032 = trace_generator.pow_felt(&(safe_div(ecdsa_builtin_row_ratio, FELT_512)?));
     let pow1035 = pow1032 * pow1032; // pow(trace_generator, &(safe_div(ecdsa_builtin_row_ratio, 256))).
     let pow1036 = pow1031 * pow1035; // pow(trace_generator, ecdsa_builtin_row_ratio).
     let pow1038 = trace_generator
@@ -1012,14 +1000,14 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
     let pow1049 = trace_generator.pow_felt(&(pedersen_output_suboffset * memory_units_row_ratio));
     let pow1050 = trace_generator.pow_felt(&(pedersen_input0_suboffset * memory_units_row_ratio));
     let pow1051 =
-        trace_generator.pow_felt(&(safe_div(felt_255 * pedersen_builtin_row_ratio, felt_512)?));
+        trace_generator.pow_felt(&(safe_div(FELT_255 * pedersen_builtin_row_ratio, FELT_512)?));
     let pow1052 =
-        trace_generator.pow_felt(&(safe_div(felt_251 * pedersen_builtin_row_ratio, felt_512)?));
+        trace_generator.pow_felt(&(safe_div(FELT_251 * pedersen_builtin_row_ratio, FELT_512)?));
     let pow1053 =
-        trace_generator.pow_felt(&(safe_div(felt_49 * pedersen_builtin_row_ratio, felt_128)?));
+        trace_generator.pow_felt(&(safe_div(FELT_49 * pedersen_builtin_row_ratio, FELT_128)?));
     let pow1054 =
-        trace_generator.pow_felt(&(safe_div(felt_3 * pedersen_builtin_row_ratio, felt_8)?));
-    let pow1055 = trace_generator.pow_felt(&(safe_div(pedersen_builtin_row_ratio, felt_512)?));
+        trace_generator.pow_felt(&(safe_div(FELT_3 * pedersen_builtin_row_ratio, FELT_8)?));
+    let pow1055 = trace_generator.pow_felt(&(safe_div(pedersen_builtin_row_ratio, FELT_512)?));
     let pow1057 = pow1051 * pow1055; // pow(trace_generator, &(safe_div(pedersen_builtin_row_ratio, 2))).
     let pow1058 = pow1051 * pow1057; // pow(trace_generator, &(safe_div(pedersen_builtin_row_ratio, 2)) + &(safe_div((255* pedersen_builtin_row_ratio), 512))).
     let pow1059 = pow1055 * pow1058; // pow(trace_generator, pedersen_builtin_row_ratio).

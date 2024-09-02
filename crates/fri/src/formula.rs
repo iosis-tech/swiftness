@@ -1,4 +1,5 @@
 use alloc::vec::Vec;
+use num_bigint::{BigUint, TryFromBigIntError};
 use starknet_crypto::Felt;
 
 // Constants representing primitive roots of unity for orders 2, 4, 8, and 16.
@@ -76,7 +77,7 @@ pub fn fri_formula(
     x_inv: Felt,
     coset_size: Felt,
 ) -> Result<Felt, Error> {
-    let coset_size: u64 = coset_size.to_biguint().try_into().unwrap();
+    let coset_size: u64 = coset_size.to_biguint().try_into()?;
     // Sort by usage frequency.
     match coset_size {
         2 => {
@@ -98,4 +99,6 @@ use thiserror_no_std::Error;
 pub enum Error {
     #[error("Invalid values length: expected {expected}, got {got}")]
     InvalidValuesLength { expected: usize, got: usize },
+    #[error("BigInt conversion Error")]
+    TryFromBigInt(#[from] TryFromBigIntError<BigUint>),
 }

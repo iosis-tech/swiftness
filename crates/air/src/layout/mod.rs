@@ -1,4 +1,5 @@
 use crate::{domains::StarkDomains, public_memory::PublicInput};
+use num_bigint::{BigInt, TryFromBigIntError};
 use starknet_core::types::NonZeroFelt;
 use starknet_crypto::Felt;
 use starknet_types_core::felt::FeltIsZeroError;
@@ -143,8 +144,17 @@ pub enum PublicInputError {
     #[error("invalid number of builtin uses")]
     UsesInvalid,
 
+    #[error("invalid number of builtin copies")]
+    CopiesInvalid,
+
     #[error("dynamic params missing")]
     DynamicParamsMissing,
+
+    #[error("BigInt conversion Error")]
+    TryFromBigInt(#[from] TryFromBigIntError<BigInt>),
+
+    #[error("field element is zero")]
+    FeltIsZero(#[from] FeltIsZeroError),
 }
 
 #[cfg(not(feature = "std"))]
@@ -197,8 +207,17 @@ pub enum PublicInputError {
     #[error("invalid number of builtin uses")]
     UsesInvalid,
 
+    #[error("invalid number of builtin copies")]
+    CopiesInvalid,
+
     #[error("dynamic params missing")]
     DynamicParamsMissing,
+
+    #[error("BigInt conversion Error")]
+    TryFromBigInt(#[from] TryFromBigIntError<BigInt>),
+
+    #[error("field element is zero")]
+    FeltIsZero(#[from] FeltIsZeroError),
 }
 
 pub mod segments {

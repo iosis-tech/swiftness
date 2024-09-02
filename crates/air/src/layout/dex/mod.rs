@@ -303,7 +303,7 @@ impl LayoutTrait for Layout {
                     segment: crate::layout::segments::OUTPUT,
                 })?
                 .begin_addr;
-        ensure!(output_uses < u128::MAX.into(), PublicInputError::UsesInvalid);
+        ensure!(output_uses <= u128::MAX.into(), PublicInputError::UsesInvalid);
 
         let pedersen_copies = trace_length
             .field_div(&NonZeroFelt::from_felt_unchecked(Felt::from(PEDERSEN_BUILTIN_ROW_RATIO)));
@@ -317,8 +317,8 @@ impl LayoutTrait for Layout {
                 .get(segments::PEDERSEN)
                 .ok_or(PublicInputError::SegmentMissing { segment: segments::PEDERSEN })?
                 .begin_addr)
-            .field_div(&NonZeroFelt::from_felt_unchecked(Felt::THREE));
-        ensure!(pedersen_uses < pedersen_copies, PublicInputError::UsesInvalid);
+            .field_div(&NonZeroFelt::from_felt_unchecked(Felt::from(3)));
+        ensure!(pedersen_uses <= pedersen_copies, PublicInputError::UsesInvalid);
 
         let range_check_copies = trace_length.field_div(&NonZeroFelt::from_felt_unchecked(
             Felt::from(RANGE_CHECK_BUILTIN_ROW_RATIO),
@@ -333,7 +333,7 @@ impl LayoutTrait for Layout {
                 .get(segments::RANGE_CHECK)
                 .ok_or(PublicInputError::SegmentMissing { segment: segments::RANGE_CHECK })?
                 .begin_addr;
-        ensure!(range_check_uses < range_check_copies, PublicInputError::UsesInvalid);
+        ensure!(range_check_uses <= range_check_copies, PublicInputError::UsesInvalid);
 
         let ecdsa_copies = trace_length
             .field_div(&NonZeroFelt::from_felt_unchecked(Felt::from(ECDSA_BUILTIN_ROW_RATIO)));
@@ -349,8 +349,8 @@ impl LayoutTrait for Layout {
                     segment: crate::layout::segments::OUTPUT,
                 })?
                 .begin_addr)
-            .field_div(&NonZeroFelt::from_felt_unchecked(Felt::TWO));
-        ensure!(ecdsa_uses < ecdsa_copies, PublicInputError::UsesInvalid);
+            .field_div(&NonZeroFelt::from_felt_unchecked(Felt::from(2)));
+        ensure!(ecdsa_uses <= ecdsa_copies, PublicInputError::UsesInvalid);
         Ok(())
     }
 
@@ -402,15 +402,15 @@ impl LayoutTrait for Layout {
 
         let program: Vec<&Felt> = memory
             .iter()
-            .skip(initial_pc.to_bigint().try_into().unwrap())
+            .skip(initial_pc.to_bigint().try_into()?)
             .step_by(2)
-            .take((program_end_pc - Felt::ONE).to_bigint().try_into().unwrap())
+            .take((program_end_pc - Felt::ONE).to_bigint().try_into()?)
             .collect();
 
         let hash = program.iter().fold(Felt::ZERO, |acc, &e| pedersen_hash(&acc, e));
         let program_hash = pedersen_hash(&hash, &Felt::from(program.len()));
 
-        let output_len: usize = (output_stop - output_start).to_bigint().try_into().unwrap();
+        let output_len: usize = (output_stop - output_start).to_bigint().try_into()?;
         let output = &memory[memory.len() - output_len * 2..];
         let hash =
             output.iter().skip(1).step_by(2).fold(Felt::ZERO, |acc, e| pedersen_hash(&acc, e));

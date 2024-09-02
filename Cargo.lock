@@ -536,6 +536,7 @@ checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
 name = "swiftness_air"
 version = "0.0.8"
 dependencies = [
+ "num-bigint",
  "serde",
  "serde_with 3.9.0",
  "starknet-core",
@@ -568,6 +569,7 @@ dependencies = [
 name = "swiftness_fri"
 version = "0.0.8"
 dependencies = [
+ "num-bigint",
  "serde",
  "serde_with 3.9.0",
  "sha3",

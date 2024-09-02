@@ -1,4 +1,5 @@
 use crate::{
+    consts::*,
     dynamic::DynamicParams,
     layout::{dynamic::GlobalValues, safe_div, CompositionPolyEvalError},
 };
@@ -40,128 +41,17 @@ pub fn eval_composition_polynomial_inner(
     let uses_range_check96_builtin = dynamic_params.uses_range_check96_builtin;
     let uses_range_check_builtin = dynamic_params.uses_range_check_builtin;
 
-    let felt_0 = Felt::from(0);
-    let felt_1 = Felt::from(1);
-    let felt_2 = Felt::from(2);
-    let felt_3 = Felt::from(3);
-    let felt_4 = Felt::from(4);
-    let felt_5 = Felt::from(5);
-    let felt_6 = Felt::from(6);
-    let felt_7 = Felt::from(7);
-    let felt_8 = Felt::from(8);
-    let felt_10 = Felt::from(10);
-    let felt_11 = Felt::from(11);
-    let felt_13 = Felt::from(13);
-    let felt_15 = Felt::from(15);
-    let felt_16 = Felt::from(16);
-    let felt_19 = Felt::from(19);
-    let felt_21 = Felt::from(21);
-    let felt_23 = Felt::from(23);
-    let felt_25 = Felt::from(25);
-    let felt_27 = Felt::from(27);
-    let felt_29 = Felt::from(29);
-    let felt_31 = Felt::from(31);
-    let felt_32 = Felt::from(32);
-    let felt_61 = Felt::from(61);
-    let felt_63 = Felt::from(63);
-    let felt_64 = Felt::from(64);
-    let felt_128 = Felt::from(128);
-    let felt_251 = Felt::from(251);
-    let felt_255 = Felt::from(255);
-    let felt_256 = Felt::from(256);
-    let felt_512 = Felt::from(512);
-    let felt_4096 = Felt::from(4096);
-    let felt_524288 = Felt::from(524288);
-    let felt_36893488147419103232 = Felt::from_hex_unchecked("0x20000000000000000");
-    let felt_73786976294838206464 = Felt::from_hex_unchecked("0x40000000000000000");
-    let felt_147573952589676412928 = Felt::from_hex_unchecked("0x80000000000000000");
-    let felt_340282366920938463463374607431768211456 =
-        Felt::from_hex_unchecked("0x100000000000000000000000000000000");
-    let felt_680564733841876926926749214863536422912 =
-        Felt::from_hex_unchecked("0x200000000000000000000000000000000");
-    let felt_1361129467683753853853498429727072845824 =
-        Felt::from_hex_unchecked("0x400000000000000000000000000000000");
-    let felt_2722258935367507707706996859454145691648 =
-        Felt::from_hex_unchecked("0x800000000000000000000000000000000");
-    let felt_6277101735386680763835789423207666416102355444464034512896 =
-        Felt::from_hex_unchecked("0x1000000000000000000000000000000000000000000000000");
-    let felt_12554203470773361527671578846415332832204710888928069025792 =
-        Felt::from_hex_unchecked("0x2000000000000000000000000000000000000000000000000");
-    let felt_25108406941546723055343157692830665664409421777856138051584 =
-        Felt::from_hex_unchecked("0x4000000000000000000000000000000000000000000000000");
-    let felt_50216813883093446110686315385661331328818843555712276103168 =
-        Felt::from_hex_unchecked("0x8000000000000000000000000000000000000000000000000");
-    let felt_1606938044258990275541962092341162602522202993782792835301376 =
-        Felt::from_hex_unchecked("0x100000000000000000000000000000000000000000000000000");
-    let felt_1229782938247303441 = Felt::from_hex_unchecked("0x1111111111111111");
-    let felt_65536 = Felt::from_hex_unchecked("0x10000");
-    let felt_4294967296 = Felt::from_hex_unchecked("0x100000000");
-    let felt_281474976710656 = Felt::from_hex_unchecked("0x1000000000000");
-    let felt_18446744073709551616 = Felt::from_hex_unchecked("0x10000000000000000");
-    let felt_1208925819614629174706176 = Felt::from_hex_unchecked("0x100000000000000000000");
-    let felt_316912650057057350374175801344 =
-        Felt::from_hex_unchecked("0x4000000000000000000000000");
-    let felt_79228162514264337593543950336 =
-        Felt::from_hex_unchecked("0x1000000000000000000000000");
-    let felt_3138550867693340381917894711603833208051177722232017256448 =
-        Felt::from_hex_unchecked("0x800000000000000000000000000000000000000000000000");
-    let felt_2950795762459345168613727575620414179244544320470208355568817838579231751791 =
-        Felt::from_hex_unchecked(
-            "0x6861759EA556A2339DD92F9562A30B9E58E2AD98109AE4780B7FD8EAC77FE6F",
-        );
-    let felt_1587446564224215276866294500450702039420286416111469274423465069420553242820 =
-        Felt::from_hex_unchecked(
-            "0x3827681995D5AF9FFC8397A3D00425A3DA43F76ABF28A64E4AB1A22F27508C4",
-        );
-    let felt_1645965921169490687904413452218868659025437693527479459426157555728339600137 =
-        Felt::from_hex_unchecked(
-            "0x3A3956D2FAD44D0E7F760A2277DC7CB2CAC75DC279B2D687A0DBE17704A8309",
-        );
-    let felt_2121140748740143694053732746913428481442990369183417228688865837805149503386 =
-        Felt::from_hex_unchecked(
-            "0x4B085EB1DF4258C3453CC97445954BF3433B6AB9DD5A99592864C00F54A3F9A",
-        );
-    let felt_3618502788666131213697322783095070105623107215331596699973092056135872020477 =
-        Felt::from_hex_unchecked(
-            "0x800000000000010FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD",
-        );
-    let felt_3618502788666131213697322783095070105623107215331596699973092056135872020479 =
-        Felt::from_hex_unchecked(
-            "0x800000000000010FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
-        );
-    let felt_2006642341318481906727563724340978325665491359415674592697055778067937914672 =
-        Felt::from_hex_unchecked(
-            "0x46FB825257FEC76C50FE043684D4E6D2D2F2FDFE9B7C8D7128CA7ACC0F66F30",
-        );
-    let felt_1246177936547655338400308396717835700699368047388302793172818304164989556526 =
-        Felt::from_hex_unchecked(
-            "0x2C14FCCABC26929170CC7AC9989C823608B9008BEF3B8E16B6089A5D33CD72E",
-        );
-    let felt_427751140904099001132521606468025610873158555767197326325930641757709538586 =
-        Felt::from_hex_unchecked(
-            "0xF2193BA0C7EA33CE6222D9446C1E166202AE5461005292F4A2BCB93420151A",
-        );
-    let felt_18014398509481984 = Felt::from_hex_unchecked("0x40000000000000");
-    let felt_560279373700919169769089400651532183647886248799764942664266404650165812023 =
-        Felt::from_hex_unchecked(
-            "0x13D1B5CFD87693224F0AC561AB2C15CA53365D768311AF59CEFAF701BC53B37",
-        );
-    let felt_1401754474293352309994371631695783042590401941592571735921592823982231996415 =
-        Felt::from_hex_unchecked(
-            "0x3195D6B2D930E71CEDE286D5B8B41D49296DDF222BCD3BF3717A12A9A6947FF",
-        );
-
     // Compute powers.
     let pow0: Felt =
         point.pow_felt(&(safe_div(global_values.trace_length, range_check_units_row_ratio)?));
     let pow1: Felt =
-        point.pow_felt(&(safe_div(global_values.trace_length, felt_8 * memory_units_row_ratio)?));
+        point.pow_felt(&(safe_div(global_values.trace_length, FELT_8 * memory_units_row_ratio)?));
     let pow2: Felt =
         point.pow_felt(&(safe_div(global_values.trace_length, memory_units_row_ratio)?));
     let pow3: Felt =
         point.pow_felt(&(safe_div(global_values.trace_length, diluted_units_row_ratio)?));
     let pow4: Felt =
-        point.pow_felt(&(safe_div(global_values.trace_length, felt_16 * cpu_component_step)?));
+        point.pow_felt(&(safe_div(global_values.trace_length, FELT_16 * cpu_component_step)?));
     let pow5: Felt = point.pow_felt(&(safe_div(global_values.trace_length, cpu_component_step)?));
     let pow6: Felt =
         trace_generator.pow_felt(&(global_values.trace_length - diluted_units_row_ratio));
@@ -170,93 +60,93 @@ pub fn eval_composition_polynomial_inner(
     let pow8: Felt =
         trace_generator.pow_felt(&(global_values.trace_length - memory_units_row_ratio));
     let pow9: Felt =
-        trace_generator.pow_felt(&(global_values.trace_length - felt_16 * cpu_component_step));
+        trace_generator.pow_felt(&(global_values.trace_length - FELT_16 * cpu_component_step));
     let pow10: Felt =
-        trace_generator.pow_felt(&(safe_div(felt_15 * global_values.trace_length, felt_16)?));
+        trace_generator.pow_felt(&(safe_div(FELT_15 * global_values.trace_length, FELT_16)?));
 
     // Compute domains.
-    let domain0 = pow5 - 1;
+    let domain0 = pow5 - FELT_1;
     let domain1 = pow4 - pow10;
-    let domain2 = pow4 - 1;
-    let domain3 = pow3 - 1;
-    let domain4 = pow2 - 1;
-    let domain5 = pow1 - 1;
-    let domain6 = pow0 - 1;
+    let domain2 = pow4 - FELT_1;
+    let domain3 = pow3 - FELT_1;
+    let domain4 = pow2 - FELT_1;
+    let domain5 = pow1 - FELT_1;
+    let domain6 = pow0 - FELT_1;
     let domain7 = point - pow9;
-    let domain8 = point - 1;
+    let domain8 = point - FELT_1;
     let domain9 = point - pow8;
     let domain10 = point - pow7;
     let domain11 = point - pow6;
-    let mut domain12: Felt = felt_0;
-    let mut domain13: Felt = felt_0;
-    let mut domain14: Felt = felt_0;
-    let mut domain15: Felt = felt_0;
-    let mut domain16: Felt = felt_0;
-    let mut domain17: Felt = felt_0;
-    let mut domain18: Felt = felt_0;
-    let mut domain19: Felt = felt_0;
-    let mut domain20: Felt = felt_0;
-    let mut domain21: Felt = felt_0;
-    let mut domain22: Felt = felt_0;
-    let mut domain23: Felt = felt_0;
-    let mut domain24: Felt = felt_0;
-    let mut domain25: Felt = felt_0;
-    let mut domain26: Felt = felt_0;
-    let mut domain27: Felt = felt_0;
-    let mut domain28: Felt = felt_0;
-    let mut domain29: Felt = felt_0;
-    let mut domain30: Felt = felt_0;
-    let mut domain31: Felt = felt_0;
-    let mut domain32: Felt = felt_0;
-    let mut domain33: Felt = felt_0;
-    let mut domain34: Felt = felt_0;
-    let mut domain35: Felt = felt_0;
-    let mut domain36: Felt = felt_0;
-    let mut domain37: Felt = felt_0;
-    let mut domain38: Felt = felt_0;
-    let mut domain39: Felt = felt_0;
-    let mut domain40: Felt = felt_0;
-    let mut domain41: Felt = felt_0;
-    let mut domain42: Felt = felt_0;
-    let mut domain43: Felt = felt_0;
-    let mut domain44: Felt = felt_0;
-    let mut domain45: Felt = felt_0;
+    let mut domain12: Felt = FELT_0;
+    let mut domain13: Felt = FELT_0;
+    let mut domain14: Felt = FELT_0;
+    let mut domain15: Felt = FELT_0;
+    let mut domain16: Felt = FELT_0;
+    let mut domain17: Felt = FELT_0;
+    let mut domain18: Felt = FELT_0;
+    let mut domain19: Felt = FELT_0;
+    let mut domain20: Felt = FELT_0;
+    let mut domain21: Felt = FELT_0;
+    let mut domain22: Felt = FELT_0;
+    let mut domain23: Felt = FELT_0;
+    let mut domain24: Felt = FELT_0;
+    let mut domain25: Felt = FELT_0;
+    let mut domain26: Felt = FELT_0;
+    let mut domain27: Felt = FELT_0;
+    let mut domain28: Felt = FELT_0;
+    let mut domain29: Felt = FELT_0;
+    let mut domain30: Felt = FELT_0;
+    let mut domain31: Felt = FELT_0;
+    let mut domain32: Felt = FELT_0;
+    let mut domain33: Felt = FELT_0;
+    let mut domain34: Felt = FELT_0;
+    let mut domain35: Felt = FELT_0;
+    let mut domain36: Felt = FELT_0;
+    let mut domain37: Felt = FELT_0;
+    let mut domain38: Felt = FELT_0;
+    let mut domain39: Felt = FELT_0;
+    let mut domain40: Felt = FELT_0;
+    let mut domain41: Felt = FELT_0;
+    let mut domain42: Felt = FELT_0;
+    let mut domain43: Felt = FELT_0;
+    let mut domain44: Felt = FELT_0;
+    let mut domain45: Felt = FELT_0;
     let domain46: Felt;
-    let mut domain47: Felt = felt_0;
-    let mut domain48: Felt = felt_0;
+    let mut domain47: Felt = FELT_0;
+    let mut domain48: Felt = FELT_0;
     let domain49: Felt;
-    let mut domain50: Felt = felt_0;
-    let mut domain51: Felt = felt_0;
-    let mut domain52: Felt = felt_0;
+    let mut domain50: Felt = FELT_0;
+    let mut domain51: Felt = FELT_0;
+    let mut domain52: Felt = FELT_0;
     let domain53: Felt;
     let domain54: Felt;
-    let mut domain55: Felt = felt_0;
-    let mut domain56: Felt = felt_0;
-    let mut domain57: Felt = felt_0;
+    let mut domain55: Felt = FELT_0;
+    let mut domain56: Felt = FELT_0;
+    let mut domain57: Felt = FELT_0;
     let domain58: Felt;
     let domain59: Felt;
     let domain60: Felt;
-    let mut domain61: Felt = felt_0;
+    let mut domain61: Felt = FELT_0;
     let domain62: Felt;
     let domain63: Felt;
-    let mut domain64: Felt = felt_0;
-    let mut domain65: Felt = felt_0;
+    let mut domain64: Felt = FELT_0;
+    let mut domain65: Felt = FELT_0;
     let domain66: Felt;
-    let mut domain67: Felt = felt_0;
+    let mut domain67: Felt = FELT_0;
     let domain68: Felt;
     let domain69: Felt;
-    let mut domain70: Felt = felt_0;
+    let mut domain70: Felt = FELT_0;
     let domain71: Felt;
-    let mut domain72: Felt = felt_0;
+    let mut domain72: Felt = FELT_0;
     let domain73: Felt;
     let domain74: Felt;
     let domain75: Felt;
-    let mut domain76: Felt = felt_0;
+    let mut domain76: Felt = FELT_0;
     let domain77: Felt;
     let domain78: Felt;
     let domain79: Felt;
     let domain80: Felt;
-    let mut domain81: Felt = felt_0;
+    let mut domain81: Felt = FELT_0;
     let domain82: Felt;
     let domain83: Felt;
     let domain84: Felt;
@@ -266,25 +156,25 @@ pub fn eval_composition_polynomial_inner(
     let domain88: Felt;
     let domain89: Felt;
     let domain90: Felt;
-    let mut domain91: Felt = felt_0;
+    let mut domain91: Felt = FELT_0;
     let domain92: Felt;
-    let mut domain93: Felt = felt_0;
+    let mut domain93: Felt = FELT_0;
     let domain94: Felt;
     let domain95: Felt;
-    let mut domain96: Felt = felt_0;
-    let mut domain97: Felt = felt_0;
-    let mut domain98: Felt = felt_0;
+    let mut domain96: Felt = FELT_0;
+    let mut domain97: Felt = FELT_0;
+    let mut domain98: Felt = FELT_0;
     let domain99: Felt;
     let domain100: Felt;
     let domain101: Felt;
     let domain102: Felt;
-    let mut domain103: Felt = felt_0;
+    let mut domain103: Felt = FELT_0;
     let domain104: Felt;
     let domain105: Felt;
     let domain106: Felt;
     let domain107: Felt;
     let domain108: Felt;
-    let mut domain109: Felt = felt_0;
+    let mut domain109: Felt = FELT_0;
     let domain110: Felt;
     let domain111: Felt;
     let domain112: Felt;
@@ -295,70 +185,70 @@ pub fn eval_composition_polynomial_inner(
     let domain117: Felt;
     let domain118: Felt;
     let domain119: Felt;
-    let mut domain120: Felt = felt_0;
+    let mut domain120: Felt = FELT_0;
     let domain121: Felt;
-    let mut domain122: Felt = felt_0;
+    let mut domain122: Felt = FELT_0;
     let domain123: Felt;
     let domain124: Felt;
-    let mut domain125: Felt = felt_0;
-    let mut domain126: Felt = felt_0;
-    let mut domain127: Felt = felt_0;
-    let mut domain128: Felt = felt_0;
+    let mut domain125: Felt = FELT_0;
+    let mut domain126: Felt = FELT_0;
+    let mut domain127: Felt = FELT_0;
+    let mut domain128: Felt = FELT_0;
     let domain129: Felt;
-    let mut domain130: Felt = felt_0;
-    let mut domain131: Felt = felt_0;
+    let mut domain130: Felt = FELT_0;
+    let mut domain131: Felt = FELT_0;
     let domain132: Felt;
-    let mut domain133: Felt = felt_0;
-    let mut domain134: Felt = felt_0;
-    let mut domain135: Felt = felt_0;
+    let mut domain133: Felt = FELT_0;
+    let mut domain134: Felt = FELT_0;
+    let mut domain135: Felt = FELT_0;
     let domain136: Felt;
-    let mut domain137: Felt = felt_0;
+    let mut domain137: Felt = FELT_0;
     let domain138: Felt;
-    let mut domain139: Felt = felt_0;
-    let mut domain140: Felt = felt_0;
-    let mut domain141: Felt = felt_0;
-    let mut domain142: Felt = felt_0;
-    let mut domain143: Felt = felt_0;
-    let mut domain144: Felt = felt_0;
-    let mut domain145: Felt = felt_0;
-    let mut domain146: Felt = felt_0;
-    let mut domain147: Felt = felt_0;
-    let mut domain148: Felt = felt_0;
-    let mut domain149: Felt = felt_0;
-    let mut domain150: Felt = felt_0;
-    let mut domain151: Felt = felt_0;
-    let mut domain152: Felt = felt_0;
-    let mut domain153: Felt = felt_0;
-    let mut domain154: Felt = felt_0;
-    let mut domain155: Felt = felt_0;
-    let mut domain156: Felt = felt_0;
-    let mut domain157: Felt = felt_0;
-    let mut domain158: Felt = felt_0;
-    let mut domain159: Felt = felt_0;
-    let mut domain160: Felt = felt_0;
-    let mut domain161: Felt = felt_0;
-    let mut domain162: Felt = felt_0;
-    let mut domain163: Felt = felt_0;
-    let mut domain164: Felt = felt_0;
-    let mut domain165: Felt = felt_0;
-    let mut domain166: Felt = felt_0;
-    let mut domain167: Felt = felt_0;
-    let mut domain168: Felt = felt_0;
-    let mut domain169: Felt = felt_0;
-    let mut domain170: Felt = felt_0;
+    let mut domain139: Felt = FELT_0;
+    let mut domain140: Felt = FELT_0;
+    let mut domain141: Felt = FELT_0;
+    let mut domain142: Felt = FELT_0;
+    let mut domain143: Felt = FELT_0;
+    let mut domain144: Felt = FELT_0;
+    let mut domain145: Felt = FELT_0;
+    let mut domain146: Felt = FELT_0;
+    let mut domain147: Felt = FELT_0;
+    let mut domain148: Felt = FELT_0;
+    let mut domain149: Felt = FELT_0;
+    let mut domain150: Felt = FELT_0;
+    let mut domain151: Felt = FELT_0;
+    let mut domain152: Felt = FELT_0;
+    let mut domain153: Felt = FELT_0;
+    let mut domain154: Felt = FELT_0;
+    let mut domain155: Felt = FELT_0;
+    let mut domain156: Felt = FELT_0;
+    let mut domain157: Felt = FELT_0;
+    let mut domain158: Felt = FELT_0;
+    let mut domain159: Felt = FELT_0;
+    let mut domain160: Felt = FELT_0;
+    let mut domain161: Felt = FELT_0;
+    let mut domain162: Felt = FELT_0;
+    let mut domain163: Felt = FELT_0;
+    let mut domain164: Felt = FELT_0;
+    let mut domain165: Felt = FELT_0;
+    let mut domain166: Felt = FELT_0;
+    let mut domain167: Felt = FELT_0;
+    let mut domain168: Felt = FELT_0;
+    let mut domain169: Felt = FELT_0;
+    let mut domain170: Felt = FELT_0;
     let domain171: Felt;
-    let mut domain172: Felt = felt_0;
-    let mut domain173: Felt = felt_0;
-    let mut domain174: Felt = felt_0;
-    let mut domain175: Felt = felt_0;
-    let mut domain176: Felt = felt_0;
-    let mut domain177: Felt = felt_0;
-    let mut domain178: Felt = felt_0;
-    let mut domain179: Felt = felt_0;
-    let mut domain180: Felt = felt_0;
-    let mut domain181: Felt = felt_0;
-    let mut domain182: Felt = felt_0;
-    let mut domain183: Felt = felt_0;
+    let mut domain172: Felt = FELT_0;
+    let mut domain173: Felt = FELT_0;
+    let mut domain174: Felt = FELT_0;
+    let mut domain175: Felt = FELT_0;
+    let mut domain176: Felt = FELT_0;
+    let mut domain177: Felt = FELT_0;
+    let mut domain178: Felt = FELT_0;
+    let mut domain179: Felt = FELT_0;
+    let mut domain180: Felt = FELT_0;
+    let mut domain181: Felt = FELT_0;
+    let mut domain182: Felt = FELT_0;
+    let mut domain183: Felt = FELT_0;
 
     let pow11: Felt;
     let pow12: Felt;
@@ -395,11 +285,11 @@ pub fn eval_composition_polynomial_inner(
         let temp13 = point.pow_felt(&(safe_div(global_values.trace_length, bitwise_row_ratio)?));
         pow13 = temp13;
         let temp14 =
-            point.pow_felt(&(safe_div(felt_4 * global_values.trace_length, bitwise_row_ratio)?));
+            point.pow_felt(&(safe_div(FELT_4 * global_values.trace_length, bitwise_row_ratio)?));
         pow14 = temp14;
         let temp15 = trace_generator.pow_felt(&(global_values.trace_length - bitwise_row_ratio));
         pow15 = temp15;
-        let temp16 = trace_generator.pow_felt(&(safe_div(global_values.trace_length, felt_64)?));
+        let temp16 = trace_generator.pow_felt(&(safe_div(global_values.trace_length, FELT_64)?));
         pow16 = temp16;
         pow17 = pow16 * pow16; // trace_generator.pow_felt(&(safe_div(global_values.trace_length, 32))).
         pow18 = pow16 * pow17; // trace_generator.pow_felt(&(safe_div(((Felt::from(3) * global_values.trace_length)), 64))).
@@ -416,12 +306,12 @@ pub fn eval_composition_polynomial_inner(
         pow29 = pow16 * pow28; // trace_generator.pow_felt(&(safe_div(((Felt::from(7) * global_values.trace_length)), 32))).
         pow30 = pow16 * pow29; // trace_generator.pow_felt(&(safe_div(((Felt::from(15) * global_values.trace_length)), 64))).
         let temp31 =
-            trace_generator.pow_felt(&(safe_div(felt_3 * global_values.trace_length, felt_4)?));
+            trace_generator.pow_felt(&(safe_div(FELT_3 * global_values.trace_length, FELT_4)?));
         pow31 = temp31;
 
-        domain15 = pow14 - felt_1;
+        domain15 = pow14 - FELT_1;
         domain16 = pow13 - pow31;
-        domain17 = pow13 - felt_1;
+        domain17 = pow13 - FELT_1;
         let mut temp = pow13 - pow16;
         temp *= pow13 - pow17;
         temp *= pow13 - pow18;
@@ -438,7 +328,7 @@ pub fn eval_composition_polynomial_inner(
         temp *= pow13 - pow29;
         temp *= pow13 - pow30;
         domain18 = temp * (domain17);
-        domain19 = point - felt_1;
+        domain19 = point - FELT_1;
         domain20 = point - pow15;
     };
     let pow32: Felt;
@@ -451,16 +341,16 @@ pub fn eval_composition_polynomial_inner(
             point.pow_felt(&(safe_div(global_values.trace_length, ec_op_builtin_row_ratio)?));
         pow32 = temp32;
         let temp33 = point
-            .pow_felt(&(safe_div(felt_256 * global_values.trace_length, ec_op_builtin_row_ratio)?));
+            .pow_felt(&(safe_div(FELT_256 * global_values.trace_length, ec_op_builtin_row_ratio)?));
         pow33 = temp33;
         let temp34 =
             trace_generator.pow_felt(&(global_values.trace_length - ec_op_builtin_row_ratio));
         pow34 = temp34;
         let temp35 =
-            trace_generator.pow_felt(&(safe_div(felt_63 * global_values.trace_length, felt_64)?));
+            trace_generator.pow_felt(&(safe_div(FELT_63 * global_values.trace_length, FELT_64)?));
         pow35 = temp35;
         let temp36 =
-            trace_generator.pow_felt(&(safe_div(felt_255 * global_values.trace_length, felt_256)?));
+            trace_generator.pow_felt(&(safe_div(FELT_255 * global_values.trace_length, FELT_256)?));
         pow36 = temp36;
 
         domain21 = pow33 - 1;
@@ -483,17 +373,17 @@ pub fn eval_composition_polynomial_inner(
         pow37 = temp37;
         pow38 = pow37 * pow37; // point.pow_felt(&(safe_div(((Felt::from(2) * global_values.trace_length)), ecdsa_builtin_row_ratio))).
         let temp39 = point
-            .pow_felt(&(safe_div(felt_256 * global_values.trace_length, ecdsa_builtin_row_ratio)?));
+            .pow_felt(&(safe_div(FELT_256 * global_values.trace_length, ecdsa_builtin_row_ratio)?));
         pow39 = temp39;
         pow40 = pow39 * pow39; // point.pow_felt(&(safe_div(((Felt::from(512) * global_values.trace_length)), ecdsa_builtin_row_ratio))).
         let temp41 =
             trace_generator.pow_felt(&(global_values.trace_length - ecdsa_builtin_row_ratio));
         pow41 = temp41;
         let temp42 =
-            trace_generator.pow_felt(&(safe_div(felt_251 * global_values.trace_length, felt_256)?));
+            trace_generator.pow_felt(&(safe_div(FELT_251 * global_values.trace_length, FELT_256)?));
         pow42 = temp42;
         let temp43 =
-            trace_generator.pow_felt(&(safe_div(felt_255 * global_values.trace_length, felt_256)?));
+            trace_generator.pow_felt(&(safe_div(FELT_255 * global_values.trace_length, FELT_256)?));
         pow43 = temp43;
 
         domain27 = pow40 - 1;
@@ -3861,27 +3751,27 @@ pub fn eval_composition_polynomial_inner(
 
     if uses_keccak_builtin != 0 {
         let temp44 =
-            point.pow_felt(&(safe_div(global_values.trace_length, felt_16 * keccak_row_ratio)?));
+            point.pow_felt(&(safe_div(global_values.trace_length, FELT_16 * keccak_row_ratio)?));
         pow44 = temp44;
         let temp45 = point.pow_felt(&(safe_div(global_values.trace_length, keccak_row_ratio)?));
         pow45 = temp45;
         let temp46 =
-            point.pow_felt(&(safe_div(felt_4 * global_values.trace_length, keccak_row_ratio)?));
+            point.pow_felt(&(safe_div(FELT_4 * global_values.trace_length, keccak_row_ratio)?));
         pow46 = temp46;
         let temp47 =
-            point.pow_felt(&(safe_div(felt_16 * global_values.trace_length, keccak_row_ratio)?));
+            point.pow_felt(&(safe_div(FELT_16 * global_values.trace_length, keccak_row_ratio)?));
         pow47 = temp47;
         let temp48 =
-            point.pow_felt(&(safe_div(felt_128 * global_values.trace_length, keccak_row_ratio)?));
+            point.pow_felt(&(safe_div(FELT_128 * global_values.trace_length, keccak_row_ratio)?));
         pow48 = temp48;
         let temp49 =
-            point.pow_felt(&(safe_div(felt_4096 * global_values.trace_length, keccak_row_ratio)?));
+            point.pow_felt(&(safe_div(FELT_4096 * global_values.trace_length, keccak_row_ratio)?));
         pow49 = temp49;
         let temp50 = trace_generator
-            .pow_felt(&(global_values.trace_length - (safe_div(keccak_row_ratio, felt_16)?)));
+            .pow_felt(&(global_values.trace_length - (safe_div(keccak_row_ratio, FELT_16)?)));
         pow50 = temp50;
         let temp51 =
-            trace_generator.pow_felt(&(safe_div(global_values.trace_length, felt_524288)?));
+            trace_generator.pow_felt(&(safe_div(global_values.trace_length, FELT_524288)?));
         pow51 = temp51;
         pow52 = pow51 * pow51; // pow(trace_generator, &(safe_div(global_values.trace_length, 262144))).
         pow53 = pow51 * pow52; // pow(trace_generator, &(safe_div(((3 * global_values.trace_length)), 524288))).
@@ -10930,19 +10820,19 @@ pub fn eval_composition_polynomial_inner(
         pow3397 = temp3397;
         pow3398 = pow3397 * pow3397; // pow(point, &(safe_div(((2 * global_values.trace_length)), pedersen_builtin_row_ratio))).
         let temp3399 = point.pow_felt(
-            &(safe_div(felt_512 * global_values.trace_length, pedersen_builtin_row_ratio)?),
+            &(safe_div(FELT_512 * global_values.trace_length, pedersen_builtin_row_ratio)?),
         );
         pow3399 = temp3399;
         let temp3400 =
             trace_generator.pow_felt(&(global_values.trace_length - pedersen_builtin_row_ratio));
         pow3400 = temp3400;
-        let temp3401 = trace_generator.pow_felt(&(safe_div(global_values.trace_length, felt_2)?));
+        let temp3401 = trace_generator.pow_felt(&(safe_div(global_values.trace_length, FELT_2)?));
         pow3401 = temp3401;
         let temp3402 =
-            trace_generator.pow_felt(&(safe_div(felt_63 * global_values.trace_length, felt_64)?));
+            trace_generator.pow_felt(&(safe_div(FELT_63 * global_values.trace_length, FELT_64)?));
         pow3402 = temp3402;
         let temp3403 =
-            trace_generator.pow_felt(&(safe_div(felt_255 * global_values.trace_length, felt_256)?));
+            trace_generator.pow_felt(&(safe_div(FELT_255 * global_values.trace_length, FELT_256)?));
         pow3403 = temp3403;
 
         domain158 = pow3399 - 1;
@@ -10980,59 +10870,59 @@ pub fn eval_composition_polynomial_inner(
         pow3404 = temp3404;
         pow3405 = pow3404 * pow3404; // pow(point, &(safe_div(((2 * global_values.trace_length)), poseidon_row_ratio))).
         let temp3406 =
-            point.pow_felt(&(safe_div(felt_8 * global_values.trace_length, poseidon_row_ratio)?));
+            point.pow_felt(&(safe_div(FELT_8 * global_values.trace_length, poseidon_row_ratio)?));
         pow3406 = temp3406;
         let temp3407 =
-            point.pow_felt(&(safe_div(felt_32 * global_values.trace_length, poseidon_row_ratio)?));
+            point.pow_felt(&(safe_div(FELT_32 * global_values.trace_length, poseidon_row_ratio)?));
         pow3407 = temp3407;
         pow3408 = pow3407 * pow3407; // pow(point, &(safe_div(((64 * global_values.trace_length)), poseidon_row_ratio))).
         let temp3409 = trace_generator
-            .pow_felt(&(global_values.trace_length - (safe_div(poseidon_row_ratio, felt_2)?)));
+            .pow_felt(&(global_values.trace_length - (safe_div(poseidon_row_ratio, FELT_2)?)));
         pow3409 = temp3409;
         let temp3410 =
-            trace_generator.pow_felt(&(safe_div(felt_21 * global_values.trace_length, felt_32)?));
+            trace_generator.pow_felt(&(safe_div(FELT_21 * global_values.trace_length, FELT_32)?));
         pow3410 = temp3410;
         let temp3411 =
-            trace_generator.pow_felt(&(safe_div(felt_5 * global_values.trace_length, felt_8)?));
+            trace_generator.pow_felt(&(safe_div(FELT_5 * global_values.trace_length, FELT_8)?));
         pow3411 = temp3411;
         let temp3412 =
-            trace_generator.pow_felt(&(safe_div(felt_19 * global_values.trace_length, felt_32)?));
+            trace_generator.pow_felt(&(safe_div(FELT_19 * global_values.trace_length, FELT_32)?));
         pow3412 = temp3412;
         let temp3413 =
-            trace_generator.pow_felt(&(safe_div(felt_63 * global_values.trace_length, felt_64)?));
+            trace_generator.pow_felt(&(safe_div(FELT_63 * global_values.trace_length, FELT_64)?));
         pow3413 = temp3413;
         let temp3414 =
-            trace_generator.pow_felt(&(safe_div(felt_61 * global_values.trace_length, felt_64)?));
+            trace_generator.pow_felt(&(safe_div(FELT_61 * global_values.trace_length, FELT_64)?));
         pow3414 = temp3414;
         let temp3415 =
-            trace_generator.pow_felt(&(safe_div(felt_15 * global_values.trace_length, felt_16)?));
+            trace_generator.pow_felt(&(safe_div(FELT_15 * global_values.trace_length, FELT_16)?));
         pow3415 = temp3415;
         let temp3416 =
-            trace_generator.pow_felt(&(safe_div(felt_29 * global_values.trace_length, felt_32)?));
+            trace_generator.pow_felt(&(safe_div(FELT_29 * global_values.trace_length, FELT_32)?));
         pow3416 = temp3416;
         let temp3417 =
-            trace_generator.pow_felt(&(safe_div(felt_7 * global_values.trace_length, felt_8)?));
+            trace_generator.pow_felt(&(safe_div(FELT_7 * global_values.trace_length, FELT_8)?));
         pow3417 = temp3417;
         let temp3418 =
-            trace_generator.pow_felt(&(safe_div(felt_27 * global_values.trace_length, felt_32)?));
+            trace_generator.pow_felt(&(safe_div(FELT_27 * global_values.trace_length, FELT_32)?));
         pow3418 = temp3418;
         let temp3419 =
-            trace_generator.pow_felt(&(safe_div(felt_13 * global_values.trace_length, felt_16)?));
+            trace_generator.pow_felt(&(safe_div(FELT_13 * global_values.trace_length, FELT_16)?));
         pow3419 = temp3419;
         let temp3420 =
-            trace_generator.pow_felt(&(safe_div(felt_25 * global_values.trace_length, felt_32)?));
+            trace_generator.pow_felt(&(safe_div(FELT_25 * global_values.trace_length, FELT_32)?));
         pow3420 = temp3420;
         let temp3421 =
-            trace_generator.pow_felt(&(safe_div(felt_23 * global_values.trace_length, felt_32)?));
+            trace_generator.pow_felt(&(safe_div(FELT_23 * global_values.trace_length, FELT_32)?));
         pow3421 = temp3421;
         let temp3422 =
-            trace_generator.pow_felt(&(safe_div(felt_11 * global_values.trace_length, felt_16)?));
+            trace_generator.pow_felt(&(safe_div(FELT_11 * global_values.trace_length, FELT_16)?));
         pow3422 = temp3422;
         let temp3423 =
-            trace_generator.pow_felt(&(safe_div(felt_31 * global_values.trace_length, felt_32)?));
+            trace_generator.pow_felt(&(safe_div(FELT_31 * global_values.trace_length, FELT_32)?));
         pow3423 = temp3423;
         let temp3424 =
-            trace_generator.pow_felt(&(safe_div(felt_3 * global_values.trace_length, felt_4)?));
+            trace_generator.pow_felt(&(safe_div(FELT_3 * global_values.trace_length, FELT_4)?));
         pow3424 = temp3424;
 
         domain166 = pow3408 - 1;
@@ -12050,7 +11940,7 @@ pub fn eval_composition_polynomial_inner(
         cpu_decode_opcode_range_check_column_column_row_expr685
             - (cpu_decode_opcode_range_check_column_column_row_expr686
                 + cpu_decode_opcode_range_check_column_column_row_expr686);
-    let cpu_decode_flag_op1_base_op0_0 = felt_1
+    let cpu_decode_flag_op1_base_op0_0 = FELT_1
         - (cpu_decode_opcode_range_check_bit_2
             + cpu_decode_opcode_range_check_bit_4
             + cpu_decode_opcode_range_check_bit_3);
@@ -12066,7 +11956,7 @@ pub fn eval_composition_polynomial_inner(
         cpu_decode_opcode_range_check_column_column_row_expr691
             - (cpu_decode_opcode_range_check_column_column_row_expr692
                 + cpu_decode_opcode_range_check_column_column_row_expr692);
-    let cpu_decode_flag_res_op1_0 = felt_1
+    let cpu_decode_flag_res_op1_0 = FELT_1
         - (cpu_decode_opcode_range_check_bit_5
             + cpu_decode_opcode_range_check_bit_6
             + cpu_decode_opcode_range_check_bit_9);
@@ -12078,7 +11968,7 @@ pub fn eval_composition_polynomial_inner(
         cpu_decode_opcode_range_check_column_column_row_expr695
             - (cpu_decode_opcode_range_check_column_column_row_expr696
                 + cpu_decode_opcode_range_check_column_column_row_expr696);
-    let cpu_decode_flag_pc_update_regular_0 = felt_1
+    let cpu_decode_flag_pc_update_regular_0 = FELT_1
         - (cpu_decode_opcode_range_check_bit_7
             + cpu_decode_opcode_range_check_bit_8
             + cpu_decode_opcode_range_check_bit_9);
@@ -12091,12 +11981,12 @@ pub fn eval_composition_polynomial_inner(
             - (cpu_decode_opcode_range_check_column_column_row_expr700
                 + cpu_decode_opcode_range_check_column_column_row_expr700);
     let cpu_decode_fp_update_regular_0 =
-        felt_1 - (cpu_decode_opcode_range_check_bit_12 + cpu_decode_opcode_range_check_bit_13);
+        FELT_1 - (cpu_decode_opcode_range_check_bit_12 + cpu_decode_opcode_range_check_bit_13);
     let cpu_decode_opcode_range_check_bit_1 =
         cpu_decode_opcode_range_check_column_column_row_expr680
             - (cpu_decode_opcode_range_check_column_column_row_expr701
                 + cpu_decode_opcode_range_check_column_column_row_expr701);
-    let npc_reg_0 = mem_pool_addr_column_row_expr10 + cpu_decode_opcode_range_check_bit_2 + felt_1;
+    let npc_reg_0 = mem_pool_addr_column_row_expr10 + cpu_decode_opcode_range_check_bit_2 + FELT_1;
     let cpu_decode_opcode_range_check_bit_10 =
         cpu_decode_opcode_range_check_column_column_row_expr702
             - (cpu_decode_opcode_range_check_column_column_row_expr703
@@ -12116,7 +12006,7 @@ pub fn eval_composition_polynomial_inner(
     let pedersen_hash0_ec_subset_sum_bit_0 = pedersen_hash0_ec_subset_sum_selector_column_row_expr48
         - (pedersen_hash0_ec_subset_sum_selector_column_row_expr49
             + pedersen_hash0_ec_subset_sum_selector_column_row_expr49);
-    let pedersen_hash0_ec_subset_sum_bit_neg_0 = felt_1 - pedersen_hash0_ec_subset_sum_bit_0;
+    let pedersen_hash0_ec_subset_sum_bit_neg_0 = FELT_1 - pedersen_hash0_ec_subset_sum_bit_0;
     let range_check_builtin_value0_0 = range_check16_pool_column_row_expr708;
     let range_check_builtin_value1_0 = range_check_builtin_value0_0 * global_values.offset_size
         + range_check16_pool_column_row_expr709;
@@ -12139,104 +12029,104 @@ pub fn eval_composition_polynomial_inner(
             - (ecdsa_signature0_exponentiate_generator_selector_column_row_expr716
                 + ecdsa_signature0_exponentiate_generator_selector_column_row_expr716);
     let ecdsa_signature0_exponentiate_generator_bit_neg_0 =
-        felt_1 - ecdsa_signature0_exponentiate_generator_bit_0;
+        FELT_1 - ecdsa_signature0_exponentiate_generator_bit_0;
     let ecdsa_signature0_exponentiate_key_bit_0 =
         ecdsa_signature0_exponentiate_key_selector_column_row_expr90
             - (ecdsa_signature0_exponentiate_key_selector_column_row_expr717
                 + ecdsa_signature0_exponentiate_key_selector_column_row_expr717);
     let ecdsa_signature0_exponentiate_key_bit_neg_0 =
-        felt_1 - ecdsa_signature0_exponentiate_key_bit_0;
+        FELT_1 - ecdsa_signature0_exponentiate_key_bit_0;
     let bitwise_sum_var_0_0 = diluted_pool_column_row_expr126
-        + diluted_pool_column_row_expr718 * felt_2
-        + diluted_pool_column_row_expr719 * felt_4
-        + diluted_pool_column_row_expr720 * felt_8
-        + diluted_pool_column_row_expr721 * felt_18446744073709551616
-        + diluted_pool_column_row_expr722 * felt_36893488147419103232
-        + diluted_pool_column_row_expr723 * felt_73786976294838206464
-        + diluted_pool_column_row_expr724 * felt_147573952589676412928;
+        + diluted_pool_column_row_expr718 * FELT_2
+        + diluted_pool_column_row_expr719 * FELT_4
+        + diluted_pool_column_row_expr720 * FELT_8
+        + diluted_pool_column_row_expr721 * FELT_18446744073709551616
+        + diluted_pool_column_row_expr722 * FELT_36893488147419103232
+        + diluted_pool_column_row_expr723 * FELT_73786976294838206464
+        + diluted_pool_column_row_expr724 * FELT_147573952589676412928;
     let bitwise_sum_var_8_0 = diluted_pool_column_row_expr725
-        * felt_340282366920938463463374607431768211456
-        + diluted_pool_column_row_expr726 * felt_680564733841876926926749214863536422912
-        + diluted_pool_column_row_expr727 * felt_1361129467683753853853498429727072845824
-        + diluted_pool_column_row_expr728 * felt_2722258935367507707706996859454145691648
+        * FELT_340282366920938463463374607431768211456
+        + diluted_pool_column_row_expr726 * FELT_680564733841876926926749214863536422912
+        + diluted_pool_column_row_expr727 * FELT_1361129467683753853853498429727072845824
+        + diluted_pool_column_row_expr728 * FELT_2722258935367507707706996859454145691648
         + diluted_pool_column_row_expr729
-            * felt_6277101735386680763835789423207666416102355444464034512896
+            * FELT_6277101735386680763835789423207666416102355444464034512896
         + diluted_pool_column_row_expr730
-            * felt_12554203470773361527671578846415332832204710888928069025792
+            * FELT_12554203470773361527671578846415332832204710888928069025792
         + diluted_pool_column_row_expr731
-            * felt_25108406941546723055343157692830665664409421777856138051584
+            * FELT_25108406941546723055343157692830665664409421777856138051584
         + diluted_pool_column_row_expr732
-            * felt_50216813883093446110686315385661331328818843555712276103168;
+            * FELT_50216813883093446110686315385661331328818843555712276103168;
     let ec_op_doubling_q_x_squared_0 =
         ec_op_doubled_points_x_column_row_expr152 * ec_op_doubled_points_x_column_row_expr152;
     let ec_op_ec_subset_sum_bit_0 = ec_op_ec_subset_sum_selector_column_row_expr158
         - (ec_op_ec_subset_sum_selector_column_row_expr159
             + ec_op_ec_subset_sum_selector_column_row_expr159);
-    let ec_op_ec_subset_sum_bit_neg_0 = felt_1 - ec_op_ec_subset_sum_bit_0;
+    let ec_op_ec_subset_sum_bit_neg_0 = FELT_1 - ec_op_ec_subset_sum_bit_0;
     let keccak_keccak_parse_to_diluted_sum_words_over_instances0_0 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr733
             - keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr734
-                * felt_1606938044258990275541962092341162602522202993782792835301376;
+                * FELT_1606938044258990275541962092341162602522202993782792835301376;
     let keccak_keccak_parse_to_diluted_sum_words_over_instances0_2 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr735
             - keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr736
-                * felt_1606938044258990275541962092341162602522202993782792835301376;
+                * FELT_1606938044258990275541962092341162602522202993782792835301376;
     let keccak_keccak_parse_to_diluted_sum_words_over_instances1_0 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr734
             - keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr737
-                * felt_1606938044258990275541962092341162602522202993782792835301376;
+                * FELT_1606938044258990275541962092341162602522202993782792835301376;
     let keccak_keccak_parse_to_diluted_sum_words_over_instances1_2 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr736
             - keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr738
-                * felt_1606938044258990275541962092341162602522202993782792835301376;
+                * FELT_1606938044258990275541962092341162602522202993782792835301376;
     let keccak_keccak_parse_to_diluted_sum_words_over_instances2_0 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr737
             - keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr739
-                * felt_1606938044258990275541962092341162602522202993782792835301376;
+                * FELT_1606938044258990275541962092341162602522202993782792835301376;
     let keccak_keccak_parse_to_diluted_sum_words_over_instances2_2 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr738
             - keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr740
-                * felt_1606938044258990275541962092341162602522202993782792835301376;
+                * FELT_1606938044258990275541962092341162602522202993782792835301376;
     let keccak_keccak_parse_to_diluted_sum_words_over_instances3_0 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr739
             - keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr741
-                * felt_1606938044258990275541962092341162602522202993782792835301376;
+                * FELT_1606938044258990275541962092341162602522202993782792835301376;
     let keccak_keccak_parse_to_diluted_sum_words_over_instances3_2 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr740
             - keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr742
-                * felt_1606938044258990275541962092341162602522202993782792835301376;
+                * FELT_1606938044258990275541962092341162602522202993782792835301376;
     let keccak_keccak_parse_to_diluted_sum_words_over_instances4_0 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr741
             - keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr743
-                * felt_1606938044258990275541962092341162602522202993782792835301376;
+                * FELT_1606938044258990275541962092341162602522202993782792835301376;
     let keccak_keccak_parse_to_diluted_sum_words_over_instances4_2 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr742
             - keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr744
-                * felt_1606938044258990275541962092341162602522202993782792835301376;
+                * FELT_1606938044258990275541962092341162602522202993782792835301376;
     let keccak_keccak_parse_to_diluted_sum_words_over_instances5_0 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr743
             - keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr745
-                * felt_1606938044258990275541962092341162602522202993782792835301376;
+                * FELT_1606938044258990275541962092341162602522202993782792835301376;
     let keccak_keccak_parse_to_diluted_sum_words_over_instances5_2 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr744
             - keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr746
-                * felt_1606938044258990275541962092341162602522202993782792835301376;
+                * FELT_1606938044258990275541962092341162602522202993782792835301376;
     let keccak_keccak_parse_to_diluted_sum_words_over_instances6_0 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr745
             - keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr747
-                * felt_1606938044258990275541962092341162602522202993782792835301376;
+                * FELT_1606938044258990275541962092341162602522202993782792835301376;
     let keccak_keccak_parse_to_diluted_sum_words_over_instances6_2 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr746
             - keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr748
-                * felt_1606938044258990275541962092341162602522202993782792835301376;
+                * FELT_1606938044258990275541962092341162602522202993782792835301376;
     let keccak_keccak_parse_to_diluted_sum_words_over_instances7_0 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr747
             - keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr245
-                * felt_1606938044258990275541962092341162602522202993782792835301376;
+                * FELT_1606938044258990275541962092341162602522202993782792835301376;
     let keccak_keccak_parse_to_diluted_sum_words_over_instances7_2 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr748
             - keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr749
-                * felt_1606938044258990275541962092341162602522202993782792835301376;
+                * FELT_1606938044258990275541962092341162602522202993782792835301376;
     let keccak_keccak_parse_to_diluted_partial_diluted1_0 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr750
             - (keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr751
@@ -12247,7 +12137,7 @@ pub fn eval_composition_polynomial_inner(
                 + keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr753);
     let keccak_keccak_parse_to_diluted_bit_other1_0 =
         keccak_keccak_parse_to_diluted_partial_diluted1_2
-            - felt_16 * keccak_keccak_parse_to_diluted_partial_diluted1_0;
+            - FELT_16 * keccak_keccak_parse_to_diluted_partial_diluted1_0;
     let keccak_keccak_parse_to_diluted_partial_diluted1_30 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr754
             - (keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr755
@@ -12266,7 +12156,7 @@ pub fn eval_composition_polynomial_inner(
                 + keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr759);
     let keccak_keccak_parse_to_diluted_bit_other0_0 =
         keccak_keccak_parse_to_diluted_partial_diluted0_2
-            - felt_16 * keccak_keccak_parse_to_diluted_partial_diluted0_0;
+            - FELT_16 * keccak_keccak_parse_to_diluted_partial_diluted0_0;
     let keccak_keccak_parse_to_diluted_partial_diluted0_30 =
         keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr760
             - (keccak_keccak_parse_to_diluted_cumulative_sum_column_row_expr761
@@ -12366,23 +12256,23 @@ pub fn eval_composition_polynomial_inner(
     let keccak_keccak_sum_parities4_51200 =
         diluted_pool_column_row_expr841 + keccak_keccak_rotated_parity0_column_row_expr842;
     let keccak_keccak_after_theta_rho_pi_xor_one_32 =
-        felt_1229782938247303441 - diluted_pool_column_row_expr348;
+        FELT_1229782938247303441 - diluted_pool_column_row_expr348;
     let keccak_keccak_after_theta_rho_pi_xor_one_1056 =
-        felt_1229782938247303441 - diluted_pool_column_row_expr843;
+        FELT_1229782938247303441 - diluted_pool_column_row_expr843;
     let keccak_keccak_after_theta_rho_pi_xor_one_3104 =
-        felt_1229782938247303441 - diluted_pool_column_row_expr844;
+        FELT_1229782938247303441 - diluted_pool_column_row_expr844;
     let keccak_keccak_after_theta_rho_pi_xor_one_7200 =
-        felt_1229782938247303441 - diluted_pool_column_row_expr845;
+        FELT_1229782938247303441 - diluted_pool_column_row_expr845;
     let keccak_keccak_after_theta_rho_pi_xor_one_15392 =
-        felt_1229782938247303441 - diluted_pool_column_row_expr846;
+        FELT_1229782938247303441 - diluted_pool_column_row_expr846;
     let keccak_keccak_after_theta_rho_pi_xor_one_31776 =
-        felt_1229782938247303441 - diluted_pool_column_row_expr847;
+        FELT_1229782938247303441 - diluted_pool_column_row_expr847;
     let keccak_keccak_after_theta_rho_pi_xor_one_64544 =
-        felt_1229782938247303441 - diluted_pool_column_row_expr848;
+        FELT_1229782938247303441 - diluted_pool_column_row_expr848;
     let keccak_keccak_after_theta_rho_pi_xor_one_0 =
-        felt_1229782938247303441 - diluted_pool_column_row_expr318;
+        FELT_1229782938247303441 - diluted_pool_column_row_expr318;
     let keccak_keccak_after_theta_rho_pi_xor_one_128 =
-        felt_1229782938247303441 - diluted_pool_column_row_expr486;
+        FELT_1229782938247303441 - diluted_pool_column_row_expr486;
     let poseidon_poseidon_full_rounds_state0_cubed_0 =
         poseidon_poseidon_full_rounds_state0_column_row_expr533
             * poseidon_poseidon_full_rounds_state0_squared_column_row_expr534;
@@ -12449,71 +12339,71 @@ pub fn eval_composition_polynomial_inner(
     let range_check96_builtin_value5_0 = range_check96_builtin_value4_0 * global_values.offset_size
         + range_check16_pool_column_row_expr874;
     let mul_mod_p_multiplier1_0 = range_check16_pool_column_row_expr875
-        + felt_65536 * range_check16_pool_column_row_expr876
-        + felt_4294967296 * range_check16_pool_column_row_expr877
-        + felt_281474976710656 * range_check16_pool_column_row_expr878
-        + felt_18446744073709551616 * range_check16_pool_column_row_expr879
-        + felt_1208925819614629174706176 * range_check16_pool_column_row_expr880;
+        + FELT_65536 * range_check16_pool_column_row_expr876
+        + FELT_4294967296 * range_check16_pool_column_row_expr877
+        + FELT_281474976710656 * range_check16_pool_column_row_expr878
+        + FELT_18446744073709551616 * range_check16_pool_column_row_expr879
+        + FELT_1208925819614629174706176 * range_check16_pool_column_row_expr880;
     let mul_mod_p_multiplier2_0 = range_check16_pool_column_row_expr881
-        + felt_65536 * range_check16_pool_column_row_expr882
-        + felt_4294967296 * range_check16_pool_column_row_expr883
-        + felt_281474976710656 * range_check16_pool_column_row_expr884
-        + felt_18446744073709551616 * range_check16_pool_column_row_expr885
-        + felt_1208925819614629174706176 * range_check16_pool_column_row_expr886;
+        + FELT_65536 * range_check16_pool_column_row_expr882
+        + FELT_4294967296 * range_check16_pool_column_row_expr883
+        + FELT_281474976710656 * range_check16_pool_column_row_expr884
+        + FELT_18446744073709551616 * range_check16_pool_column_row_expr885
+        + FELT_1208925819614629174706176 * range_check16_pool_column_row_expr886;
     let mul_mod_p_multiplier3_0 = range_check16_pool_column_row_expr887
-        + felt_65536 * range_check16_pool_column_row_expr888
-        + felt_4294967296 * range_check16_pool_column_row_expr889
-        + felt_281474976710656 * range_check16_pool_column_row_expr890
-        + felt_18446744073709551616 * range_check16_pool_column_row_expr891
-        + felt_1208925819614629174706176 * range_check16_pool_column_row_expr892;
+        + FELT_65536 * range_check16_pool_column_row_expr888
+        + FELT_4294967296 * range_check16_pool_column_row_expr889
+        + FELT_281474976710656 * range_check16_pool_column_row_expr890
+        + FELT_18446744073709551616 * range_check16_pool_column_row_expr891
+        + FELT_1208925819614629174706176 * range_check16_pool_column_row_expr892;
     let mul_mod_p_multiplier0_0 = range_check16_pool_column_row_expr893
-        + felt_65536 * range_check16_pool_column_row_expr894
-        + felt_4294967296 * range_check16_pool_column_row_expr895
-        + felt_281474976710656 * range_check16_pool_column_row_expr896
-        + felt_18446744073709551616 * range_check16_pool_column_row_expr897
-        + felt_1208925819614629174706176 * range_check16_pool_column_row_expr898;
+        + FELT_65536 * range_check16_pool_column_row_expr894
+        + FELT_4294967296 * range_check16_pool_column_row_expr895
+        + FELT_281474976710656 * range_check16_pool_column_row_expr896
+        + FELT_18446744073709551616 * range_check16_pool_column_row_expr897
+        + FELT_1208925819614629174706176 * range_check16_pool_column_row_expr898;
     let mul_mod_carry1_0 = range_check16_pool_column_row_expr899
-        + felt_65536 * range_check16_pool_column_row_expr900
-        + felt_4294967296 * range_check16_pool_column_row_expr901
-        + felt_281474976710656 * range_check16_pool_column_row_expr902
-        + felt_18446744073709551616 * range_check16_pool_column_row_expr903
-        + felt_1208925819614629174706176 * range_check16_pool_column_row_expr904
-        + felt_79228162514264337593543950336 * range_check16_pool_column_row_expr905;
+        + FELT_65536 * range_check16_pool_column_row_expr900
+        + FELT_4294967296 * range_check16_pool_column_row_expr901
+        + FELT_281474976710656 * range_check16_pool_column_row_expr902
+        + FELT_18446744073709551616 * range_check16_pool_column_row_expr903
+        + FELT_1208925819614629174706176 * range_check16_pool_column_row_expr904
+        + FELT_79228162514264337593543950336 * range_check16_pool_column_row_expr905;
     let mul_mod_carry2_0 = range_check16_pool_column_row_expr906
-        + felt_65536 * range_check16_pool_column_row_expr907
-        + felt_4294967296 * range_check16_pool_column_row_expr908
-        + felt_281474976710656 * range_check16_pool_column_row_expr909
-        + felt_18446744073709551616 * range_check16_pool_column_row_expr910
-        + felt_1208925819614629174706176 * range_check16_pool_column_row_expr911
-        + felt_79228162514264337593543950336 * range_check16_pool_column_row_expr912;
+        + FELT_65536 * range_check16_pool_column_row_expr907
+        + FELT_4294967296 * range_check16_pool_column_row_expr908
+        + FELT_281474976710656 * range_check16_pool_column_row_expr909
+        + FELT_18446744073709551616 * range_check16_pool_column_row_expr910
+        + FELT_1208925819614629174706176 * range_check16_pool_column_row_expr911
+        + FELT_79228162514264337593543950336 * range_check16_pool_column_row_expr912;
     let mul_mod_carry3_0 = range_check16_pool_column_row_expr913
-        + felt_65536 * range_check16_pool_column_row_expr914
-        + felt_4294967296 * range_check16_pool_column_row_expr915
-        + felt_281474976710656 * range_check16_pool_column_row_expr916
-        + felt_18446744073709551616 * range_check16_pool_column_row_expr917
-        + felt_1208925819614629174706176 * range_check16_pool_column_row_expr918
-        + felt_79228162514264337593543950336 * range_check16_pool_column_row_expr919;
+        + FELT_65536 * range_check16_pool_column_row_expr914
+        + FELT_4294967296 * range_check16_pool_column_row_expr915
+        + FELT_281474976710656 * range_check16_pool_column_row_expr916
+        + FELT_18446744073709551616 * range_check16_pool_column_row_expr917
+        + FELT_1208925819614629174706176 * range_check16_pool_column_row_expr918
+        + FELT_79228162514264337593543950336 * range_check16_pool_column_row_expr919;
     let mul_mod_carry4_0 = range_check16_pool_column_row_expr920
-        + felt_65536 * range_check16_pool_column_row_expr921
-        + felt_4294967296 * range_check16_pool_column_row_expr922
-        + felt_281474976710656 * range_check16_pool_column_row_expr923
-        + felt_18446744073709551616 * range_check16_pool_column_row_expr924
-        + felt_1208925819614629174706176 * range_check16_pool_column_row_expr925
-        + felt_79228162514264337593543950336 * range_check16_pool_column_row_expr926;
+        + FELT_65536 * range_check16_pool_column_row_expr921
+        + FELT_4294967296 * range_check16_pool_column_row_expr922
+        + FELT_281474976710656 * range_check16_pool_column_row_expr923
+        + FELT_18446744073709551616 * range_check16_pool_column_row_expr924
+        + FELT_1208925819614629174706176 * range_check16_pool_column_row_expr925
+        + FELT_79228162514264337593543950336 * range_check16_pool_column_row_expr926;
     let mul_mod_carry5_0 = range_check16_pool_column_row_expr927
-        + felt_65536 * range_check16_pool_column_row_expr928
-        + felt_4294967296 * range_check16_pool_column_row_expr929
-        + felt_281474976710656 * range_check16_pool_column_row_expr930
-        + felt_18446744073709551616 * range_check16_pool_column_row_expr931
-        + felt_1208925819614629174706176 * range_check16_pool_column_row_expr932
-        + felt_79228162514264337593543950336 * range_check16_pool_column_row_expr933;
+        + FELT_65536 * range_check16_pool_column_row_expr928
+        + FELT_4294967296 * range_check16_pool_column_row_expr929
+        + FELT_281474976710656 * range_check16_pool_column_row_expr930
+        + FELT_18446744073709551616 * range_check16_pool_column_row_expr931
+        + FELT_1208925819614629174706176 * range_check16_pool_column_row_expr932
+        + FELT_79228162514264337593543950336 * range_check16_pool_column_row_expr933;
     let mul_mod_carry0_0 = range_check16_pool_column_row_expr934
-        + felt_65536 * range_check16_pool_column_row_expr935
-        + felt_4294967296 * range_check16_pool_column_row_expr936
-        + felt_281474976710656 * range_check16_pool_column_row_expr937
-        + felt_18446744073709551616 * range_check16_pool_column_row_expr938
-        + felt_1208925819614629174706176 * range_check16_pool_column_row_expr939
-        + felt_79228162514264337593543950336 * range_check16_pool_column_row_expr940;
+        + FELT_65536 * range_check16_pool_column_row_expr935
+        + FELT_4294967296 * range_check16_pool_column_row_expr936
+        + FELT_281474976710656 * range_check16_pool_column_row_expr937
+        + FELT_18446744073709551616 * range_check16_pool_column_row_expr938
+        + FELT_1208925819614629174706176 * range_check16_pool_column_row_expr939
+        + FELT_79228162514264337593543950336 * range_check16_pool_column_row_expr940;
 
     // Sum constraints.
 
@@ -12566,7 +12456,7 @@ pub fn eval_composition_polynomial_inner(
     // Constraint: cpu/operands/mem_dst_addr.
     value = (mem_pool_addr_column_row_expr5 + global_values.half_offset_size
         - (cpu_decode_opcode_range_check_bit_0 * cpu_registers_fp_column_row_expr6
-            + (felt_1 - cpu_decode_opcode_range_check_bit_0) * cpu_registers_ap_column_row_expr7
+            + (FELT_1 - cpu_decode_opcode_range_check_bit_0) * cpu_registers_ap_column_row_expr7
             + range_check16_pool_column_row_expr4))
         .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum += constraint_coefficients[7] * value;
@@ -12574,7 +12464,7 @@ pub fn eval_composition_polynomial_inner(
     // Constraint: cpu/operands/mem0_addr.
     value = (mem_pool_addr_column_row_expr8 + global_values.half_offset_size
         - (cpu_decode_opcode_range_check_bit_1 * cpu_registers_fp_column_row_expr6
-            + (felt_1 - cpu_decode_opcode_range_check_bit_1) * cpu_registers_ap_column_row_expr7
+            + (FELT_1 - cpu_decode_opcode_range_check_bit_1) * cpu_registers_ap_column_row_expr7
             + range_check16_pool_column_row_expr3))
         .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum += constraint_coefficients[8] * value;
@@ -12596,7 +12486,7 @@ pub fn eval_composition_polynomial_inner(
     total_sum += constraint_coefficients[10] * value;
 
     // Constraint: cpu/operands/res.
-    value = ((felt_1 - cpu_decode_opcode_range_check_bit_9) * cpu_operands_res_column_row_expr14
+    value = ((FELT_1 - cpu_decode_opcode_range_check_bit_9) * cpu_operands_res_column_row_expr14
         - (cpu_decode_opcode_range_check_bit_5
             * (mem_pool_value_column_row_expr11 + mem_pool_value_column_row_expr13)
             + cpu_decode_opcode_range_check_bit_6 * cpu_operands_ops_mul_column_row_expr12
@@ -12618,7 +12508,7 @@ pub fn eval_composition_polynomial_inner(
     total_sum += constraint_coefficients[13] * value;
 
     // Constraint: cpu/update_registers/update_pc/pc_cond_negative.
-    value = ((felt_1 - cpu_decode_opcode_range_check_bit_9) * mem_pool_addr_column_row_expr18
+    value = ((FELT_1 - cpu_decode_opcode_range_check_bit_9) * mem_pool_addr_column_row_expr18
         + cpu_update_registers_update_pc_tmp0_column_row_expr15
             * (mem_pool_addr_column_row_expr18
                 - (mem_pool_addr_column_row_expr10 + mem_pool_value_column_row_expr13))
@@ -12641,7 +12531,7 @@ pub fn eval_composition_polynomial_inner(
         - (cpu_registers_ap_column_row_expr7
             + cpu_decode_opcode_range_check_bit_10 * cpu_operands_res_column_row_expr14
             + cpu_decode_opcode_range_check_bit_11
-            + cpu_decode_opcode_range_check_bit_12 * felt_2))
+            + cpu_decode_opcode_range_check_bit_12 * FELT_2))
         * domain7.field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum += constraint_coefficients[16] * value;
 
@@ -12649,7 +12539,7 @@ pub fn eval_composition_polynomial_inner(
     value = (cpu_registers_fp_column_row_expr20
         - (cpu_decode_fp_update_regular_0 * cpu_registers_fp_column_row_expr6
             + cpu_decode_opcode_range_check_bit_13 * mem_pool_value_column_row_expr16
-            + cpu_decode_opcode_range_check_bit_12 * (cpu_registers_ap_column_row_expr7 + felt_2)))
+            + cpu_decode_opcode_range_check_bit_12 * (cpu_registers_ap_column_row_expr7 + FELT_2)))
         * domain7.field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum += constraint_coefficients[17] * value;
 
@@ -12662,7 +12552,7 @@ pub fn eval_composition_polynomial_inner(
     // Constraint: cpu/opcodes/call/push_pc.
     value = (cpu_decode_opcode_range_check_bit_12
         * (mem_pool_value_column_row_expr11
-            - (mem_pool_addr_column_row_expr10 + cpu_decode_opcode_range_check_bit_2 + felt_1)))
+            - (mem_pool_addr_column_row_expr10 + cpu_decode_opcode_range_check_bit_2 + FELT_1)))
         .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum += constraint_coefficients[19] * value;
 
@@ -12674,7 +12564,7 @@ pub fn eval_composition_polynomial_inner(
 
     // Constraint: cpu/opcodes/call/off1.
     value = (cpu_decode_opcode_range_check_bit_12
-        * (range_check16_pool_column_row_expr3 - (global_values.half_offset_size + felt_1)))
+        * (range_check16_pool_column_row_expr3 - (global_values.half_offset_size + FELT_1)))
         .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum += constraint_coefficients[21] * value;
 
@@ -12682,23 +12572,23 @@ pub fn eval_composition_polynomial_inner(
     value = (cpu_decode_opcode_range_check_bit_12
         * (cpu_decode_opcode_range_check_bit_12
             + cpu_decode_opcode_range_check_bit_12
-            + felt_1
-            + felt_1
+            + FELT_1
+            + FELT_1
             - (cpu_decode_opcode_range_check_bit_0
                 + cpu_decode_opcode_range_check_bit_1
-                + felt_4)))
+                + FELT_4)))
         .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum += constraint_coefficients[22] * value;
 
     // Constraint: cpu/opcodes/ret/off0.
     value = (cpu_decode_opcode_range_check_bit_13
-        * (range_check16_pool_column_row_expr4 + felt_2 - global_values.half_offset_size))
+        * (range_check16_pool_column_row_expr4 + FELT_2 - global_values.half_offset_size))
         .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum += constraint_coefficients[23] * value;
 
     // Constraint: cpu/opcodes/ret/off2.
     value = (cpu_decode_opcode_range_check_bit_13
-        * (range_check16_pool_column_row_expr2 + felt_1 - global_values.half_offset_size))
+        * (range_check16_pool_column_row_expr2 + FELT_1 - global_values.half_offset_size))
         .field_div(&NonZeroFelt::try_from(domain2)?);
     total_sum += constraint_coefficients[24] * value;
 
@@ -12883,7 +12773,7 @@ pub fn eval_composition_polynomial_inner(
     // Constraint: diluted_check/step.
     value = (diluted_check_cumulative_value_column_row_expr46
         - (diluted_check_cumulative_value_column_row_expr45
-            * (felt_1
+            * (FELT_1
                 + global_values.diluted_check_interaction_z
                     * (diluted_check_permuted_values_column_row_expr42
                         - diluted_check_permuted_values_column_row_expr39))
@@ -12913,7 +12803,7 @@ pub fn eval_composition_polynomial_inner(
         // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/zeroes_between_ones0.
         value = (pedersen_hash0_ec_subset_sum_bit_unpacking_prod_ones192_column_row_expr47
             * (pedersen_hash0_ec_subset_sum_selector_column_row_expr49
-                - felt_3138550867693340381917894711603833208051177722232017256448
+                - FELT_3138550867693340381917894711603833208051177722232017256448
                     * pedersen_hash0_ec_subset_sum_selector_column_row_expr50))
             .field_div(&NonZeroFelt::try_from(domain159)?);
         total_sum += constraint_coefficients[55] * value;
@@ -12930,7 +12820,7 @@ pub fn eval_composition_polynomial_inner(
         // Constraint: pedersen/hash0/ec_subset_sum/bit_unpacking/zeroes_between_ones192.
         value = (pedersen_hash0_ec_subset_sum_bit_unpacking_prod_ones196_column_row_expr51
             * (pedersen_hash0_ec_subset_sum_selector_column_row_expr52
-                - felt_8 * pedersen_hash0_ec_subset_sum_selector_column_row_expr53))
+                - FELT_8 * pedersen_hash0_ec_subset_sum_selector_column_row_expr53))
             .field_div(&NonZeroFelt::try_from(domain159)?);
         total_sum += constraint_coefficients[57] * value;
 
@@ -12950,7 +12840,7 @@ pub fn eval_composition_polynomial_inner(
             - (pedersen_hash0_ec_subset_sum_selector_column_row_expr55
                 + pedersen_hash0_ec_subset_sum_selector_column_row_expr55))
             * (pedersen_hash0_ec_subset_sum_selector_column_row_expr56
-                - felt_18014398509481984
+                - FELT_18014398509481984
                     * pedersen_hash0_ec_subset_sum_selector_column_row_expr54))
             .field_div(&NonZeroFelt::try_from(domain159)?);
         total_sum += constraint_coefficients[59] * value;
@@ -13045,7 +12935,7 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[72] * value;
 
         // Constraint: pedersen/input0_addr.
-        value = (mem_pool_addr_column_row_expr67 - (mem_pool_addr_column_row_expr68 + felt_1))
+        value = (mem_pool_addr_column_row_expr67 - (mem_pool_addr_column_row_expr68 + FELT_1))
             * domain164.field_div(&NonZeroFelt::try_from(domain163)?);
         total_sum += constraint_coefficients[73] * value;
 
@@ -13061,7 +12951,7 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[75] * value;
 
         // Constraint: pedersen/input1_addr.
-        value = (mem_pool_addr_column_row_expr72 - (mem_pool_addr_column_row_expr69 + felt_1))
+        value = (mem_pool_addr_column_row_expr72 - (mem_pool_addr_column_row_expr69 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain163)?);
         total_sum += constraint_coefficients[76] * value;
 
@@ -13072,7 +12962,7 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[77] * value;
 
         // Constraint: pedersen/output_addr.
-        value = (mem_pool_addr_column_row_expr68 - (mem_pool_addr_column_row_expr72 + felt_1))
+        value = (mem_pool_addr_column_row_expr68 - (mem_pool_addr_column_row_expr72 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain163)?);
         total_sum += constraint_coefficients[78] * value;
     }
@@ -13083,7 +12973,7 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[79] * value;
 
         // Constraint: range_check_builtin/addr_step.
-        value = (mem_pool_addr_column_row_expr76 - (mem_pool_addr_column_row_expr77 + felt_1))
+        value = (mem_pool_addr_column_row_expr76 - (mem_pool_addr_column_row_expr77 + FELT_1))
             * domain182.field_div(&NonZeroFelt::try_from(domain181)?);
         total_sum += constraint_coefficients[80] * value;
 
@@ -13381,12 +13271,12 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[118] * value;
 
         // Constraint: ecdsa/message_addr.
-        value = (mem_pool_addr_column_row_expr113 - (mem_pool_addr_column_row_expr112 + felt_1))
+        value = (mem_pool_addr_column_row_expr113 - (mem_pool_addr_column_row_expr112 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain34)?);
         total_sum += constraint_coefficients[119] * value;
 
         // Constraint: ecdsa/pubkey_addr.
-        value = (mem_pool_addr_column_row_expr114 - (mem_pool_addr_column_row_expr113 + felt_1))
+        value = (mem_pool_addr_column_row_expr114 - (mem_pool_addr_column_row_expr113 + FELT_1))
             * domain36.field_div(&NonZeroFelt::try_from(domain34)?);
         total_sum += constraint_coefficients[120] * value;
 
@@ -13409,17 +13299,17 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[123] * value;
 
         // Constraint: bitwise/step_var_pool_addr.
-        value = (mem_pool_addr_column_row_expr118 - (mem_pool_addr_column_row_expr117 + felt_1))
+        value = (mem_pool_addr_column_row_expr118 - (mem_pool_addr_column_row_expr117 + FELT_1))
             * domain16.field_div(&NonZeroFelt::try_from(domain15)?);
         total_sum += constraint_coefficients[124] * value;
 
         // Constraint: bitwise/x_or_y_addr.
-        value = (mem_pool_addr_column_row_expr119 - (mem_pool_addr_column_row_expr120 + felt_1))
+        value = (mem_pool_addr_column_row_expr119 - (mem_pool_addr_column_row_expr120 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain17)?);
         total_sum += constraint_coefficients[125] * value;
 
         // Constraint: bitwise/next_var_pool_addr.
-        value = (mem_pool_addr_column_row_expr121 - (mem_pool_addr_column_row_expr119 + felt_1))
+        value = (mem_pool_addr_column_row_expr121 - (mem_pool_addr_column_row_expr119 + FELT_1))
             * domain20.field_div(&NonZeroFelt::try_from(domain17)?);
         total_sum += constraint_coefficients[126] * value;
 
@@ -13443,25 +13333,25 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[129] * value;
 
         // Constraint: bitwise/unique_unpacking192.
-        value = ((diluted_pool_column_row_expr130 + diluted_pool_column_row_expr131) * felt_16
+        value = ((diluted_pool_column_row_expr130 + diluted_pool_column_row_expr131) * FELT_16
             - diluted_pool_column_row_expr132)
             .field_div(&NonZeroFelt::try_from(domain17)?);
         total_sum += constraint_coefficients[130] * value;
 
         // Constraint: bitwise/unique_unpacking193.
-        value = ((diluted_pool_column_row_expr133 + diluted_pool_column_row_expr134) * felt_16
+        value = ((diluted_pool_column_row_expr133 + diluted_pool_column_row_expr134) * FELT_16
             - diluted_pool_column_row_expr135)
             .field_div(&NonZeroFelt::try_from(domain17)?);
         total_sum += constraint_coefficients[131] * value;
 
         // Constraint: bitwise/unique_unpacking194.
-        value = ((diluted_pool_column_row_expr136 + diluted_pool_column_row_expr137) * felt_16
+        value = ((diluted_pool_column_row_expr136 + diluted_pool_column_row_expr137) * FELT_16
             - diluted_pool_column_row_expr138)
             .field_div(&NonZeroFelt::try_from(domain17)?);
         total_sum += constraint_coefficients[132] * value;
 
         // Constraint: bitwise/unique_unpacking195.
-        value = ((diluted_pool_column_row_expr139 + diluted_pool_column_row_expr140) * felt_256
+        value = ((diluted_pool_column_row_expr139 + diluted_pool_column_row_expr140) * FELT_256
             - diluted_pool_column_row_expr141)
             .field_div(&NonZeroFelt::try_from(domain17)?);
         total_sum += constraint_coefficients[133] * value;
@@ -13473,37 +13363,37 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[134] * value;
 
         // Constraint: ec_op/p_x_addr.
-        value = (mem_pool_addr_column_row_expr143 - (mem_pool_addr_column_row_expr142 + felt_7))
+        value = (mem_pool_addr_column_row_expr143 - (mem_pool_addr_column_row_expr142 + FELT_7))
             * domain26.field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum += constraint_coefficients[135] * value;
 
         // Constraint: ec_op/p_y_addr.
-        value = (mem_pool_addr_column_row_expr144 - (mem_pool_addr_column_row_expr142 + felt_1))
+        value = (mem_pool_addr_column_row_expr144 - (mem_pool_addr_column_row_expr142 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum += constraint_coefficients[136] * value;
 
         // Constraint: ec_op/q_x_addr.
-        value = (mem_pool_addr_column_row_expr145 - (mem_pool_addr_column_row_expr144 + felt_1))
+        value = (mem_pool_addr_column_row_expr145 - (mem_pool_addr_column_row_expr144 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum += constraint_coefficients[137] * value;
 
         // Constraint: ec_op/q_y_addr.
-        value = (mem_pool_addr_column_row_expr146 - (mem_pool_addr_column_row_expr145 + felt_1))
+        value = (mem_pool_addr_column_row_expr146 - (mem_pool_addr_column_row_expr145 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum += constraint_coefficients[138] * value;
 
         // Constraint: ec_op/m_addr.
-        value = (mem_pool_addr_column_row_expr147 - (mem_pool_addr_column_row_expr146 + felt_1))
+        value = (mem_pool_addr_column_row_expr147 - (mem_pool_addr_column_row_expr146 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum += constraint_coefficients[139] * value;
 
         // Constraint: ec_op/r_x_addr.
-        value = (mem_pool_addr_column_row_expr148 - (mem_pool_addr_column_row_expr147 + felt_1))
+        value = (mem_pool_addr_column_row_expr148 - (mem_pool_addr_column_row_expr147 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum += constraint_coefficients[140] * value;
 
         // Constraint: ec_op/r_y_addr.
-        value = (mem_pool_addr_column_row_expr149 - (mem_pool_addr_column_row_expr148 + felt_1))
+        value = (mem_pool_addr_column_row_expr149 - (mem_pool_addr_column_row_expr148 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum += constraint_coefficients[141] * value;
 
@@ -13556,7 +13446,7 @@ pub fn eval_composition_polynomial_inner(
         // Constraint: ec_op/ec_subset_sum/bit_unpacking/zeroes_between_ones0.
         value = (ec_op_ec_subset_sum_bit_unpacking_prod_ones192_column_row_expr157
             * (ec_op_ec_subset_sum_selector_column_row_expr159
-                - felt_3138550867693340381917894711603833208051177722232017256448
+                - FELT_3138550867693340381917894711603833208051177722232017256448
                     * ec_op_ec_subset_sum_selector_column_row_expr160))
             .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum += constraint_coefficients[148] * value;
@@ -13573,7 +13463,7 @@ pub fn eval_composition_polynomial_inner(
         // Constraint: ec_op/ec_subset_sum/bit_unpacking/zeroes_between_ones192.
         value = (ec_op_ec_subset_sum_bit_unpacking_prod_ones196_column_row_expr161
             * (ec_op_ec_subset_sum_selector_column_row_expr162
-                - felt_8 * ec_op_ec_subset_sum_selector_column_row_expr163))
+                - FELT_8 * ec_op_ec_subset_sum_selector_column_row_expr163))
             .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum += constraint_coefficients[150] * value;
 
@@ -13593,7 +13483,7 @@ pub fn eval_composition_polynomial_inner(
             - (ec_op_ec_subset_sum_selector_column_row_expr165
                 + ec_op_ec_subset_sum_selector_column_row_expr165))
             * (ec_op_ec_subset_sum_selector_column_row_expr166
-                - felt_18014398509481984 * ec_op_ec_subset_sum_selector_column_row_expr164))
+                - FELT_18014398509481984 * ec_op_ec_subset_sum_selector_column_row_expr164))
             .field_div(&NonZeroFelt::try_from(domain22)?);
         total_sum += constraint_coefficients[152] * value;
 
@@ -13701,7 +13591,7 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[167] * value;
 
         // Constraint: keccak/addr_input_output_step.
-        value = (mem_pool_addr_column_row_expr181 - (mem_pool_addr_column_row_expr180 + felt_1))
+        value = (mem_pool_addr_column_row_expr181 - (mem_pool_addr_column_row_expr180 + FELT_1))
             * domain154.field_div(&NonZeroFelt::try_from(domain40)?);
         total_sum += constraint_coefficients[168] * value;
 
@@ -13910,7 +13800,7 @@ pub fn eval_composition_polynomial_inner(
 
         // Constraint: keccak/keccak/parse_to_diluted/init_other_invocations0.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr216
-            + keccak_keccak_parse_to_diluted_sum_words_over_instances0_0 * felt_16
+            + keccak_keccak_parse_to_diluted_sum_words_over_instances0_0 * FELT_16
             - keccak_keccak_parse_to_diluted_sum_words_over_instances0_2)
             .field_div(&NonZeroFelt::try_from(domain51)?);
         total_sum += constraint_coefficients[203] * value;
@@ -13923,7 +13813,7 @@ pub fn eval_composition_polynomial_inner(
 
         // Constraint: keccak/keccak/parse_to_diluted/init_other_invocations1.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr247
-            + keccak_keccak_parse_to_diluted_sum_words_over_instances1_0 * felt_16
+            + keccak_keccak_parse_to_diluted_sum_words_over_instances1_0 * FELT_16
             - keccak_keccak_parse_to_diluted_sum_words_over_instances1_2)
             .field_div(&NonZeroFelt::try_from(domain51)?);
         total_sum += constraint_coefficients[205] * value;
@@ -13936,7 +13826,7 @@ pub fn eval_composition_polynomial_inner(
 
         // Constraint: keccak/keccak/parse_to_diluted/init_other_invocations2.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr249
-            + keccak_keccak_parse_to_diluted_sum_words_over_instances2_0 * felt_16
+            + keccak_keccak_parse_to_diluted_sum_words_over_instances2_0 * FELT_16
             - keccak_keccak_parse_to_diluted_sum_words_over_instances2_2)
             .field_div(&NonZeroFelt::try_from(domain51)?);
         total_sum += constraint_coefficients[207] * value;
@@ -13949,7 +13839,7 @@ pub fn eval_composition_polynomial_inner(
 
         // Constraint: keccak/keccak/parse_to_diluted/init_other_invocations3.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr251
-            + keccak_keccak_parse_to_diluted_sum_words_over_instances3_0 * felt_16
+            + keccak_keccak_parse_to_diluted_sum_words_over_instances3_0 * FELT_16
             - keccak_keccak_parse_to_diluted_sum_words_over_instances3_2)
             .field_div(&NonZeroFelt::try_from(domain51)?);
         total_sum += constraint_coefficients[209] * value;
@@ -13962,7 +13852,7 @@ pub fn eval_composition_polynomial_inner(
 
         // Constraint: keccak/keccak/parse_to_diluted/init_other_invocations4.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr253
-            + keccak_keccak_parse_to_diluted_sum_words_over_instances4_0 * felt_16
+            + keccak_keccak_parse_to_diluted_sum_words_over_instances4_0 * FELT_16
             - keccak_keccak_parse_to_diluted_sum_words_over_instances4_2)
             .field_div(&NonZeroFelt::try_from(domain51)?);
         total_sum += constraint_coefficients[211] * value;
@@ -13975,7 +13865,7 @@ pub fn eval_composition_polynomial_inner(
 
         // Constraint: keccak/keccak/parse_to_diluted/init_other_invocations5.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr255
-            + keccak_keccak_parse_to_diluted_sum_words_over_instances5_0 * felt_16
+            + keccak_keccak_parse_to_diluted_sum_words_over_instances5_0 * FELT_16
             - keccak_keccak_parse_to_diluted_sum_words_over_instances5_2)
             .field_div(&NonZeroFelt::try_from(domain51)?);
         total_sum += constraint_coefficients[213] * value;
@@ -13988,7 +13878,7 @@ pub fn eval_composition_polynomial_inner(
 
         // Constraint: keccak/keccak/parse_to_diluted/init_other_invocations6.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr257
-            + keccak_keccak_parse_to_diluted_sum_words_over_instances6_0 * felt_16
+            + keccak_keccak_parse_to_diluted_sum_words_over_instances6_0 * FELT_16
             - keccak_keccak_parse_to_diluted_sum_words_over_instances6_2)
             .field_div(&NonZeroFelt::try_from(domain51)?);
         total_sum += constraint_coefficients[215] * value;
@@ -14001,7 +13891,7 @@ pub fn eval_composition_polynomial_inner(
 
         // Constraint: keccak/keccak/parse_to_diluted/init_other_invocations7.
         value = (keccak_keccak_parse_to_diluted_final_reshaped_input_column_row_expr259
-            + keccak_keccak_parse_to_diluted_sum_words_over_instances7_0 * felt_16
+            + keccak_keccak_parse_to_diluted_sum_words_over_instances7_0 * FELT_16
             - keccak_keccak_parse_to_diluted_sum_words_over_instances7_2)
             .field_div(&NonZeroFelt::try_from(domain51)?);
         total_sum += constraint_coefficients[217] * value;
@@ -14067,7 +13957,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr268
                 + diluted_pool_column_row_expr269
                 + diluted_pool_column_row_expr269
-                + diluted_pool_column_row_expr270 * felt_4))
+                + diluted_pool_column_row_expr270 * FELT_4))
             .field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum += constraint_coefficients[226] * value;
 
@@ -14080,7 +13970,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr276
                 + diluted_pool_column_row_expr277
                 + diluted_pool_column_row_expr277
-                + diluted_pool_column_row_expr278 * felt_4))
+                + diluted_pool_column_row_expr278 * FELT_4))
             .field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum += constraint_coefficients[227] * value;
 
@@ -14093,7 +13983,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr284
                 + diluted_pool_column_row_expr285
                 + diluted_pool_column_row_expr285
-                + diluted_pool_column_row_expr286 * felt_4))
+                + diluted_pool_column_row_expr286 * FELT_4))
             .field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum += constraint_coefficients[228] * value;
 
@@ -14106,7 +13996,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr292
                 + diluted_pool_column_row_expr293
                 + diluted_pool_column_row_expr293
-                + diluted_pool_column_row_expr294 * felt_4))
+                + diluted_pool_column_row_expr294 * FELT_4))
             .field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum += constraint_coefficients[229] * value;
 
@@ -14119,7 +14009,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr300
                 + diluted_pool_column_row_expr301
                 + diluted_pool_column_row_expr301
-                + diluted_pool_column_row_expr302 * felt_4))
+                + diluted_pool_column_row_expr302 * FELT_4))
             .field_div(&NonZeroFelt::try_from(domain42)?);
         total_sum += constraint_coefficients[230] * value;
 
@@ -14712,7 +14602,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr488
                 + diluted_pool_column_row_expr489
                 + diluted_pool_column_row_expr489
-                + diluted_pool_column_row_expr490 * felt_4))
+                + diluted_pool_column_row_expr490 * FELT_4))
             .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum += constraint_coefficients[306] * value;
 
@@ -14725,7 +14615,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr493
                 + diluted_pool_column_row_expr494
                 + diluted_pool_column_row_expr494
-                + diluted_pool_column_row_expr495 * felt_4))
+                + diluted_pool_column_row_expr495 * FELT_4))
             .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum += constraint_coefficients[307] * value;
 
@@ -14738,7 +14628,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr498
                 + diluted_pool_column_row_expr499
                 + diluted_pool_column_row_expr499
-                + diluted_pool_column_row_expr500 * felt_4))
+                + diluted_pool_column_row_expr500 * FELT_4))
             .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum += constraint_coefficients[308] * value;
 
@@ -14751,7 +14641,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr503
                 + diluted_pool_column_row_expr504
                 + diluted_pool_column_row_expr504
-                + diluted_pool_column_row_expr505 * felt_4))
+                + diluted_pool_column_row_expr505 * FELT_4))
             .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum += constraint_coefficients[309] * value;
 
@@ -14764,7 +14654,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr508
                 + diluted_pool_column_row_expr509
                 + diluted_pool_column_row_expr509
-                + diluted_pool_column_row_expr510 * felt_4))
+                + diluted_pool_column_row_expr510 * FELT_4))
             .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum += constraint_coefficients[310] * value;
 
@@ -14777,7 +14667,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr513
                 + diluted_pool_column_row_expr514
                 + diluted_pool_column_row_expr514
-                + diluted_pool_column_row_expr515 * felt_4))
+                + diluted_pool_column_row_expr515 * FELT_4))
             .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum += constraint_coefficients[311] * value;
 
@@ -14790,7 +14680,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr518
                 + diluted_pool_column_row_expr519
                 + diluted_pool_column_row_expr519
-                + diluted_pool_column_row_expr520 * felt_4))
+                + diluted_pool_column_row_expr520 * FELT_4))
             .field_div(&NonZeroFelt::try_from(domain50)?);
         total_sum += constraint_coefficients[312] * value;
 
@@ -14802,7 +14692,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr488
                 + diluted_pool_column_row_expr489
                 + diluted_pool_column_row_expr489
-                + diluted_pool_column_row_expr490 * felt_4))
+                + diluted_pool_column_row_expr490 * FELT_4))
             * domain152.field_div(&NonZeroFelt::try_from(domain44)?);
         total_sum += constraint_coefficients[313] * value;
 
@@ -14814,7 +14704,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr521
                 + diluted_pool_column_row_expr522
                 + diluted_pool_column_row_expr522
-                + diluted_pool_column_row_expr523 * felt_4))
+                + diluted_pool_column_row_expr523 * FELT_4))
             .field_div(&NonZeroFelt::try_from(domain43)?);
         total_sum += constraint_coefficients[314] * value;
 
@@ -14826,7 +14716,7 @@ pub fn eval_composition_polynomial_inner(
             - (diluted_pool_column_row_expr524
                 + diluted_pool_column_row_expr525
                 + diluted_pool_column_row_expr525
-                + diluted_pool_column_row_expr526 * felt_4))
+                + diluted_pool_column_row_expr526 * FELT_4))
             .field_div(&NonZeroFelt::try_from(domain43)?);
         total_sum += constraint_coefficients[315] * value;
     }
@@ -14837,27 +14727,27 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[316] * value;
 
         // Constraint: poseidon/param_0/addr_input_output_step.
-        value = (mem_pool_addr_column_row_expr528 - (mem_pool_addr_column_row_expr527 + felt_3))
+        value = (mem_pool_addr_column_row_expr528 - (mem_pool_addr_column_row_expr527 + FELT_3))
             * domain177.field_div(&NonZeroFelt::try_from(domain169)?);
         total_sum += constraint_coefficients[317] * value;
 
         // Constraint: poseidon/param_1/init_input_output_addr.
-        value = (mem_pool_addr_column_row_expr529 - (global_values.initial_poseidon_addr + felt_1))
+        value = (mem_pool_addr_column_row_expr529 - (global_values.initial_poseidon_addr + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain176)?);
         total_sum += constraint_coefficients[318] * value;
 
         // Constraint: poseidon/param_1/addr_input_output_step.
-        value = (mem_pool_addr_column_row_expr530 - (mem_pool_addr_column_row_expr529 + felt_3))
+        value = (mem_pool_addr_column_row_expr530 - (mem_pool_addr_column_row_expr529 + FELT_3))
             * domain177.field_div(&NonZeroFelt::try_from(domain169)?);
         total_sum += constraint_coefficients[319] * value;
 
         // Constraint: poseidon/param_2/init_input_output_addr.
-        value = (mem_pool_addr_column_row_expr531 - (global_values.initial_poseidon_addr + felt_2))
+        value = (mem_pool_addr_column_row_expr531 - (global_values.initial_poseidon_addr + FELT_2))
             .field_div(&NonZeroFelt::try_from(domain176)?);
         total_sum += constraint_coefficients[320] * value;
 
         // Constraint: poseidon/param_2/addr_input_output_step.
-        value = (mem_pool_addr_column_row_expr532 - (mem_pool_addr_column_row_expr531 + felt_3))
+        value = (mem_pool_addr_column_row_expr532 - (mem_pool_addr_column_row_expr531 + FELT_3))
             * domain177.field_div(&NonZeroFelt::try_from(domain169)?);
         total_sum += constraint_coefficients[321] * value;
 
@@ -14898,21 +14788,21 @@ pub fn eval_composition_polynomial_inner(
 
         // Constraint: poseidon/poseidon/add_first_round_key0.
         value = (mem_pool_value_column_row_expr543
-            + felt_2950795762459345168613727575620414179244544320470208355568817838579231751791
+            + FELT_2950795762459345168613727575620414179244544320470208355568817838579231751791
             - poseidon_poseidon_full_rounds_state0_column_row_expr533)
             .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum += constraint_coefficients[327] * value;
 
         // Constraint: poseidon/poseidon/add_first_round_key1.
         value = (mem_pool_value_column_row_expr544
-            + felt_1587446564224215276866294500450702039420286416111469274423465069420553242820
+            + FELT_1587446564224215276866294500450702039420286416111469274423465069420553242820
             - poseidon_poseidon_full_rounds_state1_column_row_expr535)
             .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum += constraint_coefficients[328] * value;
 
         // Constraint: poseidon/poseidon/add_first_round_key2.
         value = (mem_pool_value_column_row_expr545
-            + felt_1645965921169490687904413452218868659025437693527479459426157555728339600137
+            + FELT_1645965921169490687904413452218868659025437693527479459426157555728339600137
             - poseidon_poseidon_full_rounds_state2_column_row_expr537)
             .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum += constraint_coefficients[329] * value;
@@ -14997,43 +14887,43 @@ pub fn eval_composition_polynomial_inner(
             + poseidon_poseidon_full_rounds_state2_cubed_3
             - (poseidon_poseidon_full_rounds_state0_cubed_3
                 + poseidon_poseidon_full_rounds_state1_cubed_3
-                + felt_2121140748740143694053732746913428481442990369183417228688865837805149503386))
+                + FELT_2121140748740143694053732746913428481442990369183417228688865837805149503386))
             .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum += constraint_coefficients[339] * value;
 
         // Constraint: poseidon/poseidon/margin_full_to_partial1.
         value = (poseidon_poseidon_partial_rounds_state0_column_row_expr557
-            - (felt_3618502788666131213697322783095070105623107215331596699973092056135872020477
+            - (FELT_3618502788666131213697322783095070105623107215331596699973092056135872020477
                 * poseidon_poseidon_full_rounds_state1_cubed_3
-                + felt_10 * poseidon_poseidon_full_rounds_state2_cubed_3
-                + felt_4 * poseidon_poseidon_partial_rounds_state0_column_row_expr539
-                + felt_3618502788666131213697322783095070105623107215331596699973092056135872020479
+                + FELT_10 * poseidon_poseidon_full_rounds_state2_cubed_3
+                + FELT_4 * poseidon_poseidon_partial_rounds_state0_column_row_expr539
+                + FELT_3618502788666131213697322783095070105623107215331596699973092056135872020479
                     * poseidon_poseidon_partial_rounds_state0_cubed_0
-                + felt_2006642341318481906727563724340978325665491359415674592697055778067937914672))
+                + FELT_2006642341318481906727563724340978325665491359415674592697055778067937914672))
             .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum += constraint_coefficients[340] * value;
 
         // Constraint: poseidon/poseidon/margin_full_to_partial2.
         value = (poseidon_poseidon_partial_rounds_state0_column_row_expr558
-            - (felt_8 * poseidon_poseidon_full_rounds_state2_cubed_3
-                + felt_4 * poseidon_poseidon_partial_rounds_state0_column_row_expr539
-                + felt_6 * poseidon_poseidon_partial_rounds_state0_cubed_0
+            - (FELT_8 * poseidon_poseidon_full_rounds_state2_cubed_3
+                + FELT_4 * poseidon_poseidon_partial_rounds_state0_column_row_expr539
+                + FELT_6 * poseidon_poseidon_partial_rounds_state0_cubed_0
                 + poseidon_poseidon_partial_rounds_state0_column_row_expr557
                 + poseidon_poseidon_partial_rounds_state0_column_row_expr557
-                + felt_3618502788666131213697322783095070105623107215331596699973092056135872020479
+                + FELT_3618502788666131213697322783095070105623107215331596699973092056135872020479
                     * poseidon_poseidon_partial_rounds_state0_cubed_1
-                + felt_427751140904099001132521606468025610873158555767197326325930641757709538586))
+                + FELT_427751140904099001132521606468025610873158555767197326325930641757709538586))
             .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum += constraint_coefficients[341] * value;
 
         // Constraint: poseidon/poseidon/partial_round0.
         value = (poseidon_poseidon_partial_rounds_state0_column_row_expr559
-            - (felt_8 * poseidon_poseidon_partial_rounds_state0_cubed_0
-                + felt_4 * poseidon_poseidon_partial_rounds_state0_column_row_expr557
-                + felt_6 * poseidon_poseidon_partial_rounds_state0_cubed_1
+            - (FELT_8 * poseidon_poseidon_partial_rounds_state0_cubed_0
+                + FELT_4 * poseidon_poseidon_partial_rounds_state0_column_row_expr557
+                + FELT_6 * poseidon_poseidon_partial_rounds_state0_cubed_1
                 + poseidon_poseidon_partial_rounds_state0_column_row_expr558
                 + poseidon_poseidon_partial_rounds_state0_column_row_expr558
-                + felt_3618502788666131213697322783095070105623107215331596699973092056135872020479
+                + FELT_3618502788666131213697322783095070105623107215331596699973092056135872020479
                     * poseidon_poseidon_partial_rounds_state0_cubed_2
                 + global_values.poseidon_poseidon_partial_round_key0))
             * domain174.field_div(&NonZeroFelt::try_from(domain166)?);
@@ -15041,12 +14931,12 @@ pub fn eval_composition_polynomial_inner(
 
         // Constraint: poseidon/poseidon/partial_round1.
         value = (poseidon_poseidon_partial_rounds_state1_column_row_expr560
-            - (felt_8 * poseidon_poseidon_partial_rounds_state1_cubed_0
-                + felt_4 * poseidon_poseidon_partial_rounds_state1_column_row_expr554
-                + felt_6 * poseidon_poseidon_partial_rounds_state1_cubed_1
+            - (FELT_8 * poseidon_poseidon_partial_rounds_state1_cubed_0
+                + FELT_4 * poseidon_poseidon_partial_rounds_state1_column_row_expr554
+                + FELT_6 * poseidon_poseidon_partial_rounds_state1_cubed_1
                 + poseidon_poseidon_partial_rounds_state1_column_row_expr556
                 + poseidon_poseidon_partial_rounds_state1_column_row_expr556
-                + felt_3618502788666131213697322783095070105623107215331596699973092056135872020479
+                + FELT_3618502788666131213697322783095070105623107215331596699973092056135872020479
                     * poseidon_poseidon_partial_rounds_state1_cubed_2
                 + global_values.poseidon_poseidon_partial_round_key1))
             * domain175.field_div(&NonZeroFelt::try_from(domain167)?);
@@ -15054,35 +14944,35 @@ pub fn eval_composition_polynomial_inner(
 
         // Constraint: poseidon/poseidon/margin_partial_to_full0.
         value = (poseidon_poseidon_full_rounds_state0_column_row_expr561
-            - (felt_16 * poseidon_poseidon_partial_rounds_state1_cubed_19
-                + felt_8 * poseidon_poseidon_partial_rounds_state1_column_row_expr562
-                + felt_16 * poseidon_poseidon_partial_rounds_state1_cubed_20
-                + felt_6 * poseidon_poseidon_partial_rounds_state1_column_row_expr563
+            - (FELT_16 * poseidon_poseidon_partial_rounds_state1_cubed_19
+                + FELT_8 * poseidon_poseidon_partial_rounds_state1_column_row_expr562
+                + FELT_16 * poseidon_poseidon_partial_rounds_state1_cubed_20
+                + FELT_6 * poseidon_poseidon_partial_rounds_state1_column_row_expr563
                 + poseidon_poseidon_partial_rounds_state1_cubed_21
-                + felt_560279373700919169769089400651532183647886248799764942664266404650165812023))
+                + FELT_560279373700919169769089400651532183647886248799764942664266404650165812023))
             .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum += constraint_coefficients[344] * value;
 
         // Constraint: poseidon/poseidon/margin_partial_to_full1.
         value = (poseidon_poseidon_full_rounds_state1_column_row_expr564
-            - (felt_4 * poseidon_poseidon_partial_rounds_state1_cubed_20
+            - (FELT_4 * poseidon_poseidon_partial_rounds_state1_cubed_20
                 + poseidon_poseidon_partial_rounds_state1_column_row_expr563
                 + poseidon_poseidon_partial_rounds_state1_column_row_expr563
                 + poseidon_poseidon_partial_rounds_state1_cubed_21
-                + felt_1401754474293352309994371631695783042590401941592571735921592823982231996415))
+                + FELT_1401754474293352309994371631695783042590401941592571735921592823982231996415))
             .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum += constraint_coefficients[345] * value;
 
         // Constraint: poseidon/poseidon/margin_partial_to_full2.
         value = (poseidon_poseidon_full_rounds_state2_column_row_expr565
-            - (felt_8 * poseidon_poseidon_partial_rounds_state1_cubed_19
-                + felt_4 * poseidon_poseidon_partial_rounds_state1_column_row_expr562
-                + felt_6 * poseidon_poseidon_partial_rounds_state1_cubed_20
+            - (FELT_8 * poseidon_poseidon_partial_rounds_state1_cubed_19
+                + FELT_4 * poseidon_poseidon_partial_rounds_state1_column_row_expr562
+                + FELT_6 * poseidon_poseidon_partial_rounds_state1_cubed_20
                 + poseidon_poseidon_partial_rounds_state1_column_row_expr563
                 + poseidon_poseidon_partial_rounds_state1_column_row_expr563
-                + felt_3618502788666131213697322783095070105623107215331596699973092056135872020479
+                + FELT_3618502788666131213697322783095070105623107215331596699973092056135872020479
                     * poseidon_poseidon_partial_rounds_state1_cubed_21
-                + felt_1246177936547655338400308396717835700699368047388302793172818304164989556526))
+                + FELT_1246177936547655338400308396717835700699368047388302793172818304164989556526))
             .field_div(&NonZeroFelt::try_from(domain173)?);
         total_sum += constraint_coefficients[346] * value;
     }
@@ -15093,7 +14983,7 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[347] * value;
 
         // Constraint: range_check96_builtin/addr_step.
-        value = (mem_pool_addr_column_row_expr567 - (mem_pool_addr_column_row_expr568 + felt_1))
+        value = (mem_pool_addr_column_row_expr567 - (mem_pool_addr_column_row_expr568 + FELT_1))
             * domain179.field_div(&NonZeroFelt::try_from(domain178)?);
         total_sum += constraint_coefficients[348] * value;
 
@@ -15109,37 +14999,37 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[350] * value;
 
         // Constraint: add_mod/step_p1_addr.
-        value = (mem_pool_addr_column_row_expr570 - (mem_pool_addr_column_row_expr569 + felt_1))
+        value = (mem_pool_addr_column_row_expr570 - (mem_pool_addr_column_row_expr569 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[351] * value;
 
         // Constraint: add_mod/step_p2_addr.
-        value = (mem_pool_addr_column_row_expr571 - (mem_pool_addr_column_row_expr570 + felt_1))
+        value = (mem_pool_addr_column_row_expr571 - (mem_pool_addr_column_row_expr570 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[352] * value;
 
         // Constraint: add_mod/step_p3_addr.
-        value = (mem_pool_addr_column_row_expr572 - (mem_pool_addr_column_row_expr571 + felt_1))
+        value = (mem_pool_addr_column_row_expr572 - (mem_pool_addr_column_row_expr571 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[353] * value;
 
         // Constraint: add_mod/step_values_ptr_addr.
-        value = (mem_pool_addr_column_row_expr573 - (mem_pool_addr_column_row_expr572 + felt_1))
+        value = (mem_pool_addr_column_row_expr573 - (mem_pool_addr_column_row_expr572 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[354] * value;
 
         // Constraint: add_mod/step_offsets_ptr_addr.
-        value = (mem_pool_addr_column_row_expr574 - (mem_pool_addr_column_row_expr573 + felt_1))
+        value = (mem_pool_addr_column_row_expr574 - (mem_pool_addr_column_row_expr573 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[355] * value;
 
         // Constraint: add_mod/step_n_addr.
-        value = (mem_pool_addr_column_row_expr575 - (mem_pool_addr_column_row_expr574 + felt_1))
+        value = (mem_pool_addr_column_row_expr575 - (mem_pool_addr_column_row_expr574 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[356] * value;
 
         // Constraint: add_mod/step_p0_addr.
-        value = (mem_pool_addr_column_row_expr576 - (mem_pool_addr_column_row_expr575 + felt_1))
+        value = (mem_pool_addr_column_row_expr576 - (mem_pool_addr_column_row_expr575 + FELT_1))
             * domain14.field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[357] * value;
 
@@ -15175,13 +15065,13 @@ pub fn eval_composition_polynomial_inner(
 
         // Constraint: add_mod/step_offsets_ptr_value.
         value = ((mem_pool_value_column_row_expr588
-            - (mem_pool_value_column_row_expr589 + felt_3))
+            - (mem_pool_value_column_row_expr589 + FELT_3))
             * (mem_pool_value_column_row_expr579 - 1))
             * domain14.field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[363] * value;
 
         // Constraint: add_mod/step_n_value.
-        value = ((mem_pool_value_column_row_expr590 + felt_1 - mem_pool_value_column_row_expr579)
+        value = ((mem_pool_value_column_row_expr590 + FELT_1 - mem_pool_value_column_row_expr579)
             * (mem_pool_value_column_row_expr579 - 1))
             * domain14.field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[364] * value;
@@ -15192,12 +15082,12 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[365] * value;
 
         // Constraint: add_mod/b_offset.
-        value = (mem_pool_addr_column_row_expr592 - (mem_pool_addr_column_row_expr591 + felt_1))
+        value = (mem_pool_addr_column_row_expr592 - (mem_pool_addr_column_row_expr591 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[366] * value;
 
         // Constraint: add_mod/c_offset.
-        value = (mem_pool_addr_column_row_expr593 - (mem_pool_addr_column_row_expr592 + felt_1))
+        value = (mem_pool_addr_column_row_expr593 - (mem_pool_addr_column_row_expr592 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[367] * value;
 
@@ -15208,17 +15098,17 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[368] * value;
 
         // Constraint: add_mod/a1_value.
-        value = (mem_pool_addr_column_row_expr596 - (mem_pool_addr_column_row_expr594 + felt_1))
+        value = (mem_pool_addr_column_row_expr596 - (mem_pool_addr_column_row_expr594 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[369] * value;
 
         // Constraint: add_mod/a2_value.
-        value = (mem_pool_addr_column_row_expr597 - (mem_pool_addr_column_row_expr596 + felt_1))
+        value = (mem_pool_addr_column_row_expr597 - (mem_pool_addr_column_row_expr596 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[370] * value;
 
         // Constraint: add_mod/a3_value.
-        value = (mem_pool_addr_column_row_expr598 - (mem_pool_addr_column_row_expr597 + felt_1))
+        value = (mem_pool_addr_column_row_expr598 - (mem_pool_addr_column_row_expr597 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[371] * value;
 
@@ -15229,17 +15119,17 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[372] * value;
 
         // Constraint: add_mod/b1_value.
-        value = (mem_pool_addr_column_row_expr601 - (mem_pool_addr_column_row_expr599 + felt_1))
+        value = (mem_pool_addr_column_row_expr601 - (mem_pool_addr_column_row_expr599 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[373] * value;
 
         // Constraint: add_mod/b2_value.
-        value = (mem_pool_addr_column_row_expr602 - (mem_pool_addr_column_row_expr601 + felt_1))
+        value = (mem_pool_addr_column_row_expr602 - (mem_pool_addr_column_row_expr601 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[374] * value;
 
         // Constraint: add_mod/b3_value.
-        value = (mem_pool_addr_column_row_expr603 - (mem_pool_addr_column_row_expr602 + felt_1))
+        value = (mem_pool_addr_column_row_expr603 - (mem_pool_addr_column_row_expr602 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[375] * value;
 
@@ -15250,17 +15140,17 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[376] * value;
 
         // Constraint: add_mod/c1_value.
-        value = (mem_pool_addr_column_row_expr606 - (mem_pool_addr_column_row_expr604 + felt_1))
+        value = (mem_pool_addr_column_row_expr606 - (mem_pool_addr_column_row_expr604 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[377] * value;
 
         // Constraint: add_mod/c2_value.
-        value = (mem_pool_addr_column_row_expr607 - (mem_pool_addr_column_row_expr606 + felt_1))
+        value = (mem_pool_addr_column_row_expr607 - (mem_pool_addr_column_row_expr606 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[378] * value;
 
         // Constraint: add_mod/c3_value.
-        value = (mem_pool_addr_column_row_expr608 - (mem_pool_addr_column_row_expr607 + felt_1))
+        value = (mem_pool_addr_column_row_expr608 - (mem_pool_addr_column_row_expr607 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain12)?);
         total_sum += constraint_coefficients[379] * value;
 
@@ -15324,7 +15214,7 @@ pub fn eval_composition_polynomial_inner(
                     * global_values.add_mod_interaction_elm)
                 * global_values.add_mod_interaction_elm
                 + add_mod_carry1_bit_column_row_expr610 * add_mod_carry1_sign_column_row_expr611)
-                * (global_values.add_mod_interaction_elm - felt_79228162514264337593543950336)
+                * (global_values.add_mod_interaction_elm - FELT_79228162514264337593543950336)
             - ((mem_pool_value_column_row_expr624
                 + (mem_pool_value_column_row_expr625
                     + mem_pool_value_column_row_expr626 * global_values.add_mod_interaction_elm)
@@ -15349,37 +15239,37 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[388] * value;
 
         // Constraint: mul_mod/step_p1_addr.
-        value = (mem_pool_addr_column_row_expr629 - (mem_pool_addr_column_row_expr628 + felt_1))
+        value = (mem_pool_addr_column_row_expr629 - (mem_pool_addr_column_row_expr628 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[389] * value;
 
         // Constraint: mul_mod/step_p2_addr.
-        value = (mem_pool_addr_column_row_expr630 - (mem_pool_addr_column_row_expr629 + felt_1))
+        value = (mem_pool_addr_column_row_expr630 - (mem_pool_addr_column_row_expr629 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[390] * value;
 
         // Constraint: mul_mod/step_p3_addr.
-        value = (mem_pool_addr_column_row_expr631 - (mem_pool_addr_column_row_expr630 + felt_1))
+        value = (mem_pool_addr_column_row_expr631 - (mem_pool_addr_column_row_expr630 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[391] * value;
 
         // Constraint: mul_mod/step_values_ptr_addr.
-        value = (mem_pool_addr_column_row_expr632 - (mem_pool_addr_column_row_expr631 + felt_1))
+        value = (mem_pool_addr_column_row_expr632 - (mem_pool_addr_column_row_expr631 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[392] * value;
 
         // Constraint: mul_mod/step_offsets_ptr_addr.
-        value = (mem_pool_addr_column_row_expr633 - (mem_pool_addr_column_row_expr632 + felt_1))
+        value = (mem_pool_addr_column_row_expr633 - (mem_pool_addr_column_row_expr632 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[393] * value;
 
         // Constraint: mul_mod/step_n_addr.
-        value = (mem_pool_addr_column_row_expr634 - (mem_pool_addr_column_row_expr633 + felt_1))
+        value = (mem_pool_addr_column_row_expr634 - (mem_pool_addr_column_row_expr633 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[394] * value;
 
         // Constraint: mul_mod/step_p0_addr.
-        value = (mem_pool_addr_column_row_expr635 - (mem_pool_addr_column_row_expr634 + felt_1))
+        value = (mem_pool_addr_column_row_expr635 - (mem_pool_addr_column_row_expr634 + FELT_1))
             * domain157.field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[395] * value;
 
@@ -15415,13 +15305,13 @@ pub fn eval_composition_polynomial_inner(
 
         // Constraint: mul_mod/step_offsets_ptr_value.
         value = ((mem_pool_value_column_row_expr647
-            - (mem_pool_value_column_row_expr648 + felt_3))
+            - (mem_pool_value_column_row_expr648 + FELT_3))
             * (mem_pool_value_column_row_expr638 - 1))
             * domain157.field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[401] * value;
 
         // Constraint: mul_mod/step_n_value.
-        value = ((mem_pool_value_column_row_expr649 + felt_1 - mem_pool_value_column_row_expr638)
+        value = ((mem_pool_value_column_row_expr649 + FELT_1 - mem_pool_value_column_row_expr638)
             * (mem_pool_value_column_row_expr638 - 1))
             * domain157.field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[402] * value;
@@ -15432,12 +15322,12 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[403] * value;
 
         // Constraint: mul_mod/b_offset.
-        value = (mem_pool_addr_column_row_expr651 - (mem_pool_addr_column_row_expr650 + felt_1))
+        value = (mem_pool_addr_column_row_expr651 - (mem_pool_addr_column_row_expr650 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[404] * value;
 
         // Constraint: mul_mod/c_offset.
-        value = (mem_pool_addr_column_row_expr652 - (mem_pool_addr_column_row_expr651 + felt_1))
+        value = (mem_pool_addr_column_row_expr652 - (mem_pool_addr_column_row_expr651 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[405] * value;
 
@@ -15448,17 +15338,17 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[406] * value;
 
         // Constraint: mul_mod/a1_value.
-        value = (mem_pool_addr_column_row_expr655 - (mem_pool_addr_column_row_expr653 + felt_1))
+        value = (mem_pool_addr_column_row_expr655 - (mem_pool_addr_column_row_expr653 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[407] * value;
 
         // Constraint: mul_mod/a2_value.
-        value = (mem_pool_addr_column_row_expr656 - (mem_pool_addr_column_row_expr655 + felt_1))
+        value = (mem_pool_addr_column_row_expr656 - (mem_pool_addr_column_row_expr655 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[408] * value;
 
         // Constraint: mul_mod/a3_value.
-        value = (mem_pool_addr_column_row_expr657 - (mem_pool_addr_column_row_expr656 + felt_1))
+        value = (mem_pool_addr_column_row_expr657 - (mem_pool_addr_column_row_expr656 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[409] * value;
 
@@ -15469,17 +15359,17 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[410] * value;
 
         // Constraint: mul_mod/b1_value.
-        value = (mem_pool_addr_column_row_expr660 - (mem_pool_addr_column_row_expr658 + felt_1))
+        value = (mem_pool_addr_column_row_expr660 - (mem_pool_addr_column_row_expr658 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[411] * value;
 
         // Constraint: mul_mod/b2_value.
-        value = (mem_pool_addr_column_row_expr661 - (mem_pool_addr_column_row_expr660 + felt_1))
+        value = (mem_pool_addr_column_row_expr661 - (mem_pool_addr_column_row_expr660 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[412] * value;
 
         // Constraint: mul_mod/b3_value.
-        value = (mem_pool_addr_column_row_expr662 - (mem_pool_addr_column_row_expr661 + felt_1))
+        value = (mem_pool_addr_column_row_expr662 - (mem_pool_addr_column_row_expr661 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[413] * value;
 
@@ -15490,17 +15380,17 @@ pub fn eval_composition_polynomial_inner(
         total_sum += constraint_coefficients[414] * value;
 
         // Constraint: mul_mod/c1_value.
-        value = (mem_pool_addr_column_row_expr665 - (mem_pool_addr_column_row_expr663 + felt_1))
+        value = (mem_pool_addr_column_row_expr665 - (mem_pool_addr_column_row_expr663 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[415] * value;
 
         // Constraint: mul_mod/c2_value.
-        value = (mem_pool_addr_column_row_expr666 - (mem_pool_addr_column_row_expr665 + felt_1))
+        value = (mem_pool_addr_column_row_expr666 - (mem_pool_addr_column_row_expr665 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[416] * value;
 
         // Constraint: mul_mod/c3_value.
-        value = (mem_pool_addr_column_row_expr667 - (mem_pool_addr_column_row_expr666 + felt_1))
+        value = (mem_pool_addr_column_row_expr667 - (mem_pool_addr_column_row_expr666 + FELT_1))
             .field_div(&NonZeroFelt::try_from(domain155)?);
         total_sum += constraint_coefficients[417] * value;
 
@@ -15521,19 +15411,19 @@ pub fn eval_composition_polynomial_inner(
                 + (mul_mod_carry2_0
                     + (mul_mod_carry3_0
                         + (mul_mod_carry4_0
-                            + (mul_mod_carry5_0 - felt_316912650057057350374175801344)
+                            + (mul_mod_carry5_0 - FELT_316912650057057350374175801344)
                                 * global_values.mul_mod_interaction_elm
-                            - felt_316912650057057350374175801344)
+                            - FELT_316912650057057350374175801344)
                             * global_values.mul_mod_interaction_elm
-                        - felt_316912650057057350374175801344)
+                        - FELT_316912650057057350374175801344)
                         * global_values.mul_mod_interaction_elm
-                    - felt_316912650057057350374175801344)
+                    - FELT_316912650057057350374175801344)
                     * global_values.mul_mod_interaction_elm
-                - felt_316912650057057350374175801344)
+                - FELT_316912650057057350374175801344)
                 * global_values.mul_mod_interaction_elm
                 + mul_mod_carry0_0
-                - felt_316912650057057350374175801344)
-                * (global_values.mul_mod_interaction_elm - felt_79228162514264337593543950336)
+                - FELT_316912650057057350374175801344)
+                * (global_values.mul_mod_interaction_elm - FELT_79228162514264337593543950336)
             - ((mem_pool_value_column_row_expr676
                 + (mem_pool_value_column_row_expr677
                     + mem_pool_value_column_row_expr678 * global_values.mul_mod_interaction_elm)
