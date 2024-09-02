@@ -158,6 +158,19 @@ pub enum PublicInputError {
 
     #[error("field element is zero")]
     FeltIsZero(#[from] FeltIsZeroError),
+
+    #[error("dynamic params check failed")]
+    CheckAsserts(#[from] CheckAssertsError),
+}
+
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
+pub enum CheckAssertsError {
+    #[error("value is not power of two")]
+    ValueNotPowerOfTwo,
+
+    #[error("value out of range")]
+    ValueOutOfRange,
 }
 
 #[cfg(not(feature = "std"))]
@@ -224,4 +237,17 @@ pub enum PublicInputError {
 
     #[error("field element is zero")]
     FeltIsZero(#[from] FeltIsZeroError),
+
+    #[error("dynamic params check failed")]
+    CheckAsserts(#[from] CheckAssertsError),
+}
+
+#[cfg(not(feature = "std"))]
+#[derive(Error, Debug)]
+pub enum CheckAssertsError {
+    #[error("value is not power of two")]
+    ValueNotPowerOfTwo,
+
+    #[error("value out of range")]
+    ValueOutOfRange,
 }
