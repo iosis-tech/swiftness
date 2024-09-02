@@ -219,9 +219,3 @@ pub enum PublicInputError {
     #[error("field element is zero")]
     FeltIsZero(#[from] FeltIsZeroError),
 }
-
-pub mod segments {
-    pub const EXECUTION: usize = 1;
-    pub const OUTPUT: usize = 2;
-    pub const PROGRAM: usize = 0;
-}
