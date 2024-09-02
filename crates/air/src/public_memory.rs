@@ -1,4 +1,5 @@
 use crate::{
+    consts::{FELT_0, FELT_1, FELT_2},
     dynamic::DynamicParams,
     types::{ContinuousPageHeader, Page, SegmentInfo},
 };
@@ -9,7 +10,7 @@ use serde_with::serde_as;
 use starknet_core::types::NonZeroFelt;
 use starknet_crypto::{pedersen_hash, poseidon_hash_many, Felt};
 
-pub const MAX_LOG_N_STEPS: Felt = Felt::from_hex_unchecked("50");
+pub const MAX_LOG_N_STEPS: Felt = Felt::from_hex_unchecked("0x50");
 pub const MAX_RANGE_CHECK: Felt = Felt::from_hex_unchecked("0xffff");
 pub const MAX_ADDRESS: Felt = Felt::from_hex_unchecked("0xffffffffffffffff");
 pub const INITIAL_PC: Felt = Felt::from_hex_unchecked("0x1");
@@ -91,13 +92,13 @@ impl PublicInput {
     }
 
     pub fn get_hash(&self, n_verifier_friendly_commitment_layers: Felt) -> Felt {
-        let mut main_page_hash = Felt::ZERO;
+        let mut main_page_hash = FELT_0;
         for memory in self.main_page.iter() {
             main_page_hash = pedersen_hash(&main_page_hash, &memory.address);
             main_page_hash = pedersen_hash(&main_page_hash, &memory.value);
         }
         main_page_hash =
-            pedersen_hash(&main_page_hash, &(Felt::TWO * Felt::from(self.main_page.len())));
+            pedersen_hash(&main_page_hash, &(FELT_2 * Felt::from(self.main_page.len())));
 
         let mut hash_data = vec![
             n_verifier_friendly_commitment_layers,
@@ -134,8 +135,8 @@ impl PublicInput {
 }
 
 fn get_continuous_pages_product(page_headers: &[ContinuousPageHeader]) -> (Felt, Felt) {
-    let mut res = Felt::ONE;
-    let mut total_length = Felt::ZERO;
+    let mut res = FELT_1;
+    let mut total_length = FELT_0;
 
     for header in page_headers {
         res *= header.prod;

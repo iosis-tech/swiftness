@@ -275,6 +275,11 @@ impl LayoutTrait for Layout {
             PublicInputError::TraceLengthInvalid
         );
 
+        ensure!(
+            public_input.segments.len() == segments::N_SEGMENTS,
+            PublicInputError::InvalidSegments
+        );
+
         ensure!(FELT_0 <= public_input.range_check_min, PublicInputError::RangeCheckInvalid);
         ensure!(
             public_input.range_check_min < public_input.range_check_max,
@@ -358,20 +363,20 @@ impl LayoutTrait for Layout {
             .stop_ptr;
         let initial_ap = public_segments
             .get(segments::EXECUTION)
-            .ok_or(PublicInputError::SegmentMissing { segment: segments::PROGRAM })?
+            .ok_or(PublicInputError::SegmentMissing { segment: segments::EXECUTION })?
             .begin_addr;
         let initial_fp = initial_ap;
         let final_ap = public_segments
             .get(segments::EXECUTION)
-            .ok_or(PublicInputError::SegmentMissing { segment: segments::PROGRAM })?
+            .ok_or(PublicInputError::SegmentMissing { segment: segments::EXECUTION })?
             .stop_ptr;
         let output_start = public_segments
             .get(segments::OUTPUT)
-            .ok_or(PublicInputError::SegmentMissing { segment: segments::PROGRAM })?
+            .ok_or(PublicInputError::SegmentMissing { segment: segments::OUTPUT })?
             .begin_addr;
         let output_stop = public_segments
             .get(segments::OUTPUT)
-            .ok_or(PublicInputError::SegmentMissing { segment: segments::PROGRAM })?
+            .ok_or(PublicInputError::SegmentMissing { segment: segments::OUTPUT })?
             .stop_ptr;
 
         ensure!(initial_ap < MAX_ADDRESS, PublicInputError::MaxSteps);
@@ -387,9 +392,9 @@ impl LayoutTrait for Layout {
             .collect::<Vec<Felt>>();
 
         ensure!(initial_pc == INITIAL_PC, PublicInputError::MaxSteps);
-        ensure!(final_pc == INITIAL_PC + 4, PublicInputError::MaxSteps);
+        ensure!(final_pc == INITIAL_PC + FELT_4, PublicInputError::MaxSteps);
 
-        let program_end_pc = initial_fp - 2;
+        let program_end_pc = initial_fp - FELT_2;
 
         let program: Vec<&Felt> = memory
             .iter()

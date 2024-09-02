@@ -17,7 +17,7 @@ pub mod starknet_with_keccak;
 pub mod stark_curve {
     use starknet_crypto::Felt;
 
-    pub const ALPHA: Felt = Felt::from_hex_unchecked("1");
+    pub const ALPHA: Felt = Felt::from_hex_unchecked("0x1");
     pub const BETA: Felt = Felt::from_hex_unchecked(
         "0x6f21413efbe40de150e596d72f7a8c5609ad26c15c915c1f4cdfcb99cee9e89",
     );
@@ -147,6 +147,9 @@ pub enum PublicInputError {
     #[error("invalid number of builtin copies")]
     CopiesInvalid,
 
+    #[error("invalid number of segments")]
+    InvalidSegments,
+
     #[error("dynamic params missing")]
     DynamicParamsMissing,
 
@@ -209,6 +212,9 @@ pub enum PublicInputError {
 
     #[error("invalid number of builtin copies")]
     CopiesInvalid,
+
+    #[error("invalid number of segments")]
+    InvalidSegments,
 
     #[error("dynamic params missing")]
     DynamicParamsMissing,
