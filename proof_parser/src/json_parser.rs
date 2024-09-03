@@ -6,7 +6,11 @@ use crate::{
 };
 use num_bigint::BigUint;
 use serde::Deserialize;
-use std::{collections::BTreeMap, convert::TryFrom};
+use starknet_types_core::felt::Felt;
+use std::{
+    collections::{BTreeMap, HashMap},
+    convert::TryFrom,
+};
 
 #[derive(Deserialize, Debug, Clone, PartialEq)]
 pub struct StarkProof {
@@ -166,7 +170,7 @@ impl StarkProof {
         alpha: BigUint,
     ) -> anyhow::Result<stark_proof::PublicInput> {
         let continuous_page_headers =
-            Self::continuous_page_headers(&public_input.public_memory, z, alpha)?;
+            Self::continuous_page_headers(&public_input.public_memory, z, alpha);
         let main_page = Self::main_page(&public_input.public_memory)?;
         let dynamic_params = public_input.dynamic_params.unwrap_or_default();
         let memory_segments = Builtin::sort_segments(public_input.memory_segments)
@@ -211,13 +215,99 @@ impl StarkProof {
             })
             .collect::<anyhow::Result<Vec<_>>>()
     }
-    fn continuous_page_headers(
-        _public_memory: &[PublicMemoryElement],
-        _z: BigUint,
-        _alpha: BigUint,
-    ) -> anyhow::Result<Vec<BigUint>> {
-        //TODO: Do it properly
-        Ok(vec![])
+    pub fn continuous_page_headers(
+        public_memory: &[PublicMemoryElement],
+        z: BigUint,
+        alpha: BigUint,
+    ) -> Vec<BigUint> {
+        let (_pages, page_prods) =
+            Self::get_pages_and_products(public_memory, z.clone(), alpha.clone());
+
+        let mut start_address: HashMap<Felt, Felt> = HashMap::new();
+        let mut size: HashMap<Felt, Felt> = HashMap::new();
+        let mut data: HashMap<Felt, Vec<Felt>> = HashMap::new();
+
+        for access in public_memory {
+            let page_id = Felt::from(access.page);
+            let addr = Felt::from(access.address);
+            let val = Felt::from_hex(&access.value).unwrap();
+
+            start_address.entry(page_id.clone()).or_insert(addr.clone());
+            if page_id == Felt::ZERO {
+                continue;
+            }
+
+            // Ensure the address is correct
+            let current_size = data.entry(page_id.clone()).or_insert_with(Vec::new).len();
+            let expected_address = start_address.get(&page_id).unwrap() + Felt::from(current_size);
+            assert_eq!(addr, expected_address);
+
+            data.get_mut(&page_id).unwrap().push(val);
+            *size.entry(page_id).or_insert(Felt::ZERO) += Felt::ONE;
+        }
+
+        let n_pages = size.len() + 1; // +1 because size does not count page 0
+        assert_eq!(page_prods.len(), n_pages);
+
+        let mut headers = Vec::new();
+        let mut sorted_keys: Vec<_> = size.keys().collect();
+        sorted_keys.sort(); // Ensure keys are sorted
+
+        for (i, page_id) in sorted_keys.into_iter().enumerate() {
+            let page_index = i + 1;
+            assert_eq!(Felt::from(page_index), *page_id);
+            let hash_value = Self::compute_hash_on_elements(data.get(page_id).unwrap());
+            let header = (
+                start_address.get(page_id).unwrap().clone(),
+                size.get(page_id).unwrap().clone(),
+                hash_value,
+                page_prods.get(page_id).unwrap().clone(),
+            );
+            headers.push(header);
+        }
+
+        headers
+            .into_iter()
+            .flat_map(|x| {
+                vec![x.0.to_biguint(), x.1.to_biguint(), x.2.to_biguint(), x.3.to_biguint()]
+            })
+            .collect::<Vec<BigUint>>()
+    }
+
+    // Assuming a function to compute the hash of elements
+    fn compute_hash_on_elements(elements: &[Felt]) -> Felt {
+        // Placeholder for the hash computation function
+        // Replace this with actual hash computation logic as needed
+        elements.iter().fold(Felt::from(0u64), |acc, x| acc + x)
+    }
+    fn get_pages_and_products(
+        public_memory: &[PublicMemoryElement],
+        z: BigUint,
+        alpha: BigUint,
+    ) -> (HashMap<Felt, Vec<Felt>>, HashMap<Felt, Felt>) {
+        let mut pages = HashMap::new();
+        let mut page_prods = HashMap::new();
+
+        let z = Felt::from(z);
+        let alpha = Felt::from(alpha);
+
+        for cell in public_memory {
+            let page_id = Felt::from(cell.page);
+            let addr = Felt::from(cell.address);
+            let val = Felt::from_hex(&cell.value).unwrap();
+
+            // Insert or get the vector for the current page_id
+            let page = pages.entry(page_id).or_insert_with(Vec::new);
+            page.push(addr);
+            page.push(val);
+
+            // Calculate the product for the current page_id
+            let product = (z - (addr + alpha * val));
+            let page_prod = page_prods.entry(page_id).or_insert(Felt::ONE);
+            *page_prod = *page_prod * product;
+        }
+
+        (pages, page_prods)
     }
     fn stark_unsent_commitment(&self, annotations: &Annotations) -> StarkUnsentCommitment {
         StarkUnsentCommitment {
