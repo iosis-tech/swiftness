@@ -232,13 +232,13 @@ impl StarkProof {
             let addr = Felt::from(access.address);
             let val = Felt::from_hex(&access.value).unwrap();
 
-            start_address.entry(page_id.clone()).or_insert(addr.clone());
+            start_address.entry(page_id).or_insert(addr);
             if page_id == Felt::ZERO {
                 continue;
             }
 
             // Ensure the address is correct
-            let current_size = data.entry(page_id.clone()).or_insert_with(Vec::new).len();
+            let current_size = data.entry(page_id).or_default().len();
             let expected_address = start_address.get(&page_id).unwrap() + Felt::from(current_size);
             assert_eq!(addr, expected_address);
 
@@ -258,10 +258,10 @@ impl StarkProof {
             assert_eq!(Felt::from(page_index), *page_id);
             let hash_value = Self::compute_hash_on_elements(data.get(page_id).unwrap());
             let header = (
-                start_address.get(page_id).unwrap().clone(),
-                size.get(page_id).unwrap().clone(),
+                *start_address.get(page_id).unwrap(),
+                *size.get(page_id).unwrap(),
                 hash_value,
-                page_prods.get(page_id).unwrap().clone(),
+                *page_prods.get(page_id).unwrap(),
             );
             headers.push(header);
         }
@@ -302,9 +302,9 @@ impl StarkProof {
             page.push(val);
 
             // Calculate the product for the current page_id
-            let product = (z - (addr + alpha * val));
+            let product = z - (addr + alpha * val);
             let page_prod = page_prods.entry(page_id).or_insert(Felt::ONE);
-            *page_prod = *page_prod * product;
+            *page_prod *= product;
         }
 
         (pages, page_prods)
