@@ -6,7 +6,7 @@ use crate::{
 };
 use num_bigint::BigUint;
 use serde::Deserialize;
-use starknet_types_core::felt::Felt;
+use starknet_crypto::{pedersen_hash, Felt};
 use std::{
     collections::{BTreeMap, HashMap},
     convert::TryFrom,
@@ -199,7 +199,12 @@ impl StarkProof {
             main_page_len: main_page.len(),
             main_page,
             n_continuous_pages: continuous_page_headers.len(),
-            continuous_page_headers,
+            continuous_page_headers: continuous_page_headers
+                .into_iter()
+                .flat_map(|x| {
+                    vec![x.0.to_biguint(), x.1.to_biguint(), x.2.to_biguint(), x.3.to_biguint()]
+                })
+                .collect::<Vec<BigUint>>(),
         })
     }
     fn main_page(public_memory: &[PublicMemoryElement]) -> anyhow::Result<Vec<PubilcMemoryCell>> {
@@ -219,7 +224,7 @@ impl StarkProof {
         public_memory: &[PublicMemoryElement],
         z: BigUint,
         alpha: BigUint,
-    ) -> Vec<BigUint> {
+    ) -> Vec<(Felt, Felt, Felt, Felt)> {
         let (_pages, page_prods) =
             Self::get_pages_and_products(public_memory, z.clone(), alpha.clone());
 
@@ -267,18 +272,10 @@ impl StarkProof {
         }
 
         headers
-            .into_iter()
-            .flat_map(|x| {
-                vec![x.0.to_biguint(), x.1.to_biguint(), x.2.to_biguint(), x.3.to_biguint()]
-            })
-            .collect::<Vec<BigUint>>()
     }
-
-    // Assuming a function to compute the hash of elements
-    fn compute_hash_on_elements(elements: &[Felt]) -> Felt {
-        // Placeholder for the hash computation function
-        // Replace this with actual hash computation logic as needed
-        elements.iter().fold(Felt::from(0u64), |acc, x| acc + x)
+    fn compute_hash_on_elements(data: &[Felt]) -> Felt {
+        let hash = data.iter().fold(Felt::ZERO, |acc, value| pedersen_hash(&acc, value));
+        pedersen_hash(&hash, &Felt::from(data.len()))
     }
     fn get_pages_and_products(
         public_memory: &[PublicMemoryElement],
