@@ -690,6 +690,9 @@ version = "0.0.8"
 dependencies = [
  "clap",
  "swiftness_air",
+ "swiftness_commitment",
+ "swiftness_fri",
+ "swiftness_pow",
  "swiftness_proof_parser",
  "swiftness_stark",
 ]

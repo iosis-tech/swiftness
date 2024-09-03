@@ -31,26 +31,24 @@ impl Layout {
     pub fn get_dynamics_or_consts(
         &self,
         dynamic_params: &Option<BTreeMap<String, u32>>,
-    ) -> Option<LayoutConstants> {
+    ) -> LayoutConstants {
         let consts = self.get_consts();
 
-        let dynamic_params = match dynamic_params {
-            Some(dp) => dp,
-            None => return Some(consts),
-        };
-
-        Some(LayoutConstants {
-            cpu_component_step: *dynamic_params
-                .get("cpu_component_step")
-                .unwrap_or(&consts.cpu_component_step),
-            constraint_degree: consts.constraint_degree,
-            num_columns_first: *dynamic_params
-                .get("num_columns_first")
-                .unwrap_or(&consts.cpu_component_step),
-            num_columns_second: *dynamic_params
-                .get("num_columns_second")
-                .unwrap_or(&consts.cpu_component_step),
-        })
+        match dynamic_params {
+            Some(dynamic_params) => LayoutConstants {
+                cpu_component_step: *dynamic_params
+                    .get("cpu_component_step")
+                    .unwrap_or(&consts.cpu_component_step),
+                constraint_degree: consts.constraint_degree,
+                num_columns_first: *dynamic_params
+                    .get("num_columns_first")
+                    .unwrap_or(&consts.cpu_component_step),
+                num_columns_second: *dynamic_params
+                    .get("num_columns_second")
+                    .unwrap_or(&consts.cpu_component_step),
+            },
+            None => consts,
+        }
     }
     pub fn bytes_encode(&self) -> Vec<u8> {
         self.to_string().as_bytes().to_vec()
@@ -72,7 +70,7 @@ impl Display for Layout {
     }
 }
 
-pub(crate) struct LayoutConstants {
+pub struct LayoutConstants {
     pub cpu_component_step: u32,
     pub constraint_degree: u32,
     pub num_columns_first: u32,

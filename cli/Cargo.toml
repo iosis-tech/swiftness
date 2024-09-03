@@ -13,6 +13,15 @@ clap = { version = "4.4.4", features = ["derive"] }
 swiftness_air = { path = "../crates/air", default-features = false, features = [
     "std",
 ], version = "0.0.8" }
+swiftness_commitment = { path = "../crates/commitment", default-features = false, features = [
+    "std",
+], version = "0.0.8" }
+swiftness_fri = { path = "../crates/fri", default-features = false, features = [
+    "std",
+], version = "0.0.8" }
+swiftness_pow = { path = "../crates/pow", default-features = false, features = [
+    "std",
+], version = "0.0.8" }
 swiftness_stark = { path = "../crates/stark", default-features = false, features = [
     "std",
 ], version = "0.0.8" }

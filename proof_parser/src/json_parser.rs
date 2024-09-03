@@ -2,15 +2,14 @@ use crate::{
     annotations::{extract::FromStrHex, Annotations},
     builtins::Builtin,
     layout::Layout,
-    stark_proof::*,
-    utils::log2_if_power_of_2,
+    stark_proof::{self, *},
 };
 use num_bigint::BigUint;
 use serde::Deserialize;
 use std::{collections::BTreeMap, convert::TryFrom};
 
 #[derive(Deserialize, Debug, Clone, PartialEq)]
-pub struct ProofJSON {
+pub struct StarkProof {
     proof_parameters: ProofParameters,
     annotations: Vec<String>,
     public_input: PublicInput,
@@ -61,25 +60,17 @@ pub struct PublicInput {
     rc_max: u32,
 }
 
-impl ProofJSON {
+impl StarkProof {
     const COMPONENT_HEIGHT: u32 = 16;
     pub fn stark_config(&self) -> anyhow::Result<StarkConfig> {
         let stark = &self.proof_parameters.stark;
         let n_verifier_friendly_commitment_layers =
             self.proof_parameters.n_verifier_friendly_commitment_layers;
 
-        let consts = match self
-            .public_input
-            .layout
-            .get_dynamics_or_consts(&self.public_input.dynamic_params)
-        {
-            Some(c) => c,
-            None => anyhow::bail!(
-                "There were some constant overrides in the dynamic params but couldn't be parsed!"
-            ),
-        };
+        let consts =
+            self.public_input.layout.get_dynamics_or_consts(&self.public_input.dynamic_params);
 
-        let log_eval_domain_size = self.log_eval_damain_size()?;
+        let log_eval_domain_size = self.log_eval_damain_size(&self.public_input.dynamic_params)?;
         let traces = TracesConfig {
             original: TableCommitmentConfig {
                 n_columns: consts.num_columns_first,
@@ -110,7 +101,7 @@ impl ProofJSON {
         let proof_of_work = ProofOfWorkConfig { n_bits: fri.proof_of_work_bits };
         let n_queries = fri.n_queries;
 
-        let layer_log_sizes = self.layer_log_sizes()?;
+        let layer_log_sizes = self.layer_log_sizes(&self.public_input.dynamic_params)?;
 
         let fri_step_list = fri.fri_step_list;
         let log_last_layer_degree_bound = log2_if_power_of_2(fri.last_layer_degree_bound)
@@ -138,23 +129,32 @@ impl ProofJSON {
             composition,
             fri,
             proof_of_work,
-            log_trace_domain_size: self.log_trace_domain_size()?,
+            log_trace_domain_size: self.log_trace_domain_size(&self.public_input.dynamic_params)?,
             n_queries,
             log_n_cosets: stark.log_n_cosets,
             n_verifier_friendly_commitment_layers,
         })
     }
-    fn log_trace_domain_size(&self) -> anyhow::Result<u32> {
-        let consts = self.public_input.layout.get_consts();
+    fn log_trace_domain_size(
+        &self,
+        dynamic_params: &Option<BTreeMap<String, u32>>,
+    ) -> anyhow::Result<u32> {
+        let consts = self.public_input.layout.get_dynamics_or_consts(dynamic_params);
         let effective_component_height = Self::COMPONENT_HEIGHT * consts.cpu_component_step;
         log2_if_power_of_2(effective_component_height * self.public_input.n_steps)
             .ok_or(anyhow::anyhow!("Invalid cpu component step"))
     }
-    fn log_eval_damain_size(&self) -> anyhow::Result<u32> {
-        Ok(self.log_trace_domain_size()? + self.proof_parameters.stark.log_n_cosets)
+    fn log_eval_damain_size(
+        &self,
+        dynamic_params: &Option<BTreeMap<String, u32>>,
+    ) -> anyhow::Result<u32> {
+        Ok(self.log_trace_domain_size(dynamic_params)? + self.proof_parameters.stark.log_n_cosets)
     }
-    fn layer_log_sizes(&self) -> anyhow::Result<Vec<u32>> {
-        let mut layer_log_sizes = vec![self.log_eval_damain_size()?];
+    fn layer_log_sizes(
+        &self,
+        dynamic_params: &Option<BTreeMap<String, u32>>,
+    ) -> anyhow::Result<Vec<u32>> {
+        let mut layer_log_sizes = vec![self.log_eval_damain_size(dynamic_params)?];
         for layer_step in &self.proof_parameters.stark.fri.fri_step_list {
             layer_log_sizes.push(layer_log_sizes.last().unwrap() - layer_step);
         }
@@ -164,7 +164,7 @@ impl ProofJSON {
         public_input: PublicInput,
         z: BigUint,
         alpha: BigUint,
-    ) -> anyhow::Result<CairoPublicInput> {
+    ) -> anyhow::Result<stark_proof::PublicInput> {
         let continuous_page_headers =
             Self::continuous_page_headers(&public_input.public_memory, z, alpha)?;
         let main_page = Self::main_page(&public_input.public_memory)?;
@@ -181,7 +181,7 @@ impl ProofJSON {
             ),
             None => anyhow::bail!("Invalid public memory"),
         };
-        Ok(CairoPublicInput {
+        Ok(stark_proof::PublicInput {
             log_n_steps: log2_if_power_of_2(public_input.n_steps)
                 .ok_or(anyhow::anyhow!("Invalid number of steps"))?,
             range_check_min: public_input.rc_min,
@@ -292,16 +292,16 @@ impl ProofJSON {
     }
 }
 
-impl TryFrom<ProofJSON> for StarkProof {
+impl TryFrom<StarkProof> for stark_proof::StarkProof {
     type Error = anyhow::Error;
-    fn try_from(value: ProofJSON) -> anyhow::Result<Self> {
+    fn try_from(value: StarkProof) -> anyhow::Result<Self> {
         let config = value.stark_config()?;
 
         let annotations = Annotations::new(
             &value.annotations.iter().map(String::as_str).collect::<Vec<_>>(),
             value.proof_parameters.stark.fri.fri_step_list.len(),
         )?;
-        let public_input = ProofJSON::public_input(
+        let public_input = StarkProof::public_input(
             value.public_input.clone(),
             annotations.z.clone(),
             annotations.alpha.clone(),
@@ -309,6 +309,14 @@ impl TryFrom<ProofJSON> for StarkProof {
         let unsent_commitment = value.stark_unsent_commitment(&annotations);
         let witness = value.stark_witness(&annotations);
 
-        Ok(StarkProof { config, public_input, unsent_commitment, witness })
+        Ok(stark_proof::StarkProof { config, public_input, unsent_commitment, witness })
+    }
+}
+
+pub fn log2_if_power_of_2(x: u32) -> Option<u32> {
+    if x != 0 && (x & (x - 1)) == 0 {
+        Some(f64::from(x).log2() as u32)
+    } else {
+        None
     }
 }
