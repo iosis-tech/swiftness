@@ -99,7 +99,7 @@ pub fn safe_mult(value: Felt, multiplier: Felt) -> Result<Felt, SafeMultError> {
     let felt_mul = value * multiplier;
     match felt_mul.to_bigint().cmp(&mul) {
         core::cmp::Ordering::Equal => Ok(felt_mul),
-        _ => Err(SafeMultError::Overflow{actual: felt_mul.to_bigint(), expected: mul}),
+        _ => Err(SafeMultError::Overflow { actual: felt_mul.to_bigint(), expected: mul }),
     }
 }
 
@@ -188,7 +188,7 @@ pub enum CheckAssertsError {
     FeltIsZero(#[from] FeltIsZeroError),
 
     #[error("field multiplication fail")]
-    SafeMult(#[from] SafeMultError ),
+    SafeMult(#[from] SafeMultError),
 
     #[error("segment not present {segment}")]
     SegmentMissing { segment: usize },
@@ -198,7 +198,7 @@ pub enum CheckAssertsError {
 #[derive(Error, Debug)]
 pub enum SafeMultError {
     #[error("value multiplication overflowed actual {actual}, expected {expected}")]
-    Overflow{ actual: BigInt, expected: BigInt },
+    Overflow { actual: BigInt, expected: BigInt },
 }
 
 #[cfg(not(feature = "std"))]
@@ -286,7 +286,7 @@ pub enum CheckAssertsError {
     FeltIsZero(#[from] FeltIsZeroError),
 
     #[error("field multiplication fail")]
-    SafeMult(#[from] SafeMultError ),
+    SafeMult(#[from] SafeMultError),
 
     #[error("segment not present {segment}")]
     SegmentMissing { segment: usize },
@@ -296,5 +296,5 @@ pub enum CheckAssertsError {
 #[derive(Error, Debug)]
 pub enum SafeMultError {
     #[error("value multiplication overflowed actual {actual}, expected {expected}")]
-    Overflow{ actual: BigInt, expected: BigInt },
+    Overflow { actual: BigInt, expected: BigInt },
 }
