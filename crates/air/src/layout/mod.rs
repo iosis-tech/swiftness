@@ -94,6 +94,15 @@ pub fn safe_div(value: Felt, divisor: Felt) -> Result<Felt, FeltIsZeroError> {
     Ok(value.floor_div(&NonZeroFelt::try_from(divisor)?))
 }
 
+pub fn safe_mult(value: Felt, multiplier: Felt) -> Result<Felt, SafeMultError> {
+    let mul = value.to_bigint() * multiplier.to_bigint();
+    let felt_mul = value * multiplier;
+    match felt_mul.to_bigint().cmp(&mul) {
+        core::cmp::Ordering::Equal => Ok(felt_mul),
+        _ => Err(SafeMultError::Overflow { actual: felt_mul.to_bigint(), expected: mul }),
+    }
+}
+
 #[cfg(feature = "std")]
 use thiserror::Error;
 
@@ -167,10 +176,29 @@ pub enum PublicInputError {
 #[derive(Error, Debug)]
 pub enum CheckAssertsError {
     #[error("value is not power of two")]
-    ValueNotPowerOfTwo,
+    NotPowerOfTwo,
 
     #[error("value out of range")]
-    ValueOutOfRange,
+    OutOfRange,
+
+    #[error("value not boolean")]
+    NotBoolean,
+
+    #[error("field element is zero")]
+    FeltIsZero(#[from] FeltIsZeroError),
+
+    #[error("field multiplication fail")]
+    SafeMult(#[from] SafeMultError),
+
+    #[error("segment not present {segment}")]
+    SegmentMissing { segment: usize },
+}
+
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
+pub enum SafeMultError {
+    #[error("value multiplication overflowed actual {actual}, expected {expected}")]
+    Overflow { actual: BigInt, expected: BigInt },
 }
 
 #[cfg(not(feature = "std"))]
@@ -246,8 +274,27 @@ pub enum PublicInputError {
 #[derive(Error, Debug)]
 pub enum CheckAssertsError {
     #[error("value is not power of two")]
-    ValueNotPowerOfTwo,
+    NotPowerOfTwo,
 
     #[error("value out of range")]
-    ValueOutOfRange,
+    OutOfRange,
+
+    #[error("value not boolean")]
+    NotBoolean,
+
+    #[error("field element is zero")]
+    FeltIsZero(#[from] FeltIsZeroError),
+
+    #[error("field multiplication fail")]
+    SafeMult(#[from] SafeMultError),
+
+    #[error("segment not present {segment}")]
+    SegmentMissing { segment: usize },
+}
+
+#[cfg(not(feature = "std"))]
+#[derive(Error, Debug)]
+pub enum SafeMultError {
+    #[error("value multiplication overflowed actual {actual}, expected {expected}")]
+    Overflow { actual: BigInt, expected: BigInt },
 }

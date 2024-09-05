@@ -1,6 +1,10 @@
+pub mod transform;
+
+use clap::Parser;
 use std::path::PathBuf;
 pub use swiftness_proof_parser::*;
 pub use swiftness_stark::*;
+pub use transform::TransformTo;
 
 #[cfg(feature = "dex")]
 use swiftness_air::layout::dex::Layout;
@@ -17,8 +21,6 @@ use swiftness_air::layout::starknet::Layout;
 #[cfg(feature = "starknet_with_keccak")]
 use swiftness_air::layout::starknet_with_keccak::Layout;
 
-use clap::Parser;
-
 #[derive(Parser)]
 #[command(author, version, about)]
 struct CairoVMVerifier {
@@ -29,7 +31,7 @@ struct CairoVMVerifier {
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let cli = CairoVMVerifier::parse();
-    let stark_proof = parse(std::fs::read_to_string(cli.proof)?)?;
+    let stark_proof = parse(std::fs::read_to_string(cli.proof)?)?.transform_to();
     let security_bits = stark_proof.config.security_bits();
     let result = stark_proof.verify::<Layout>(security_bits)?;
     println!("{:?}", result);
