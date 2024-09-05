@@ -24,7 +24,7 @@ pub fn check_asserts(
     let mut x: Felt = felt!(dynamic_params.diluted_units_row_ratio);
     ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
     // Dimension should be a power of FELT_2.
-    x = (safe_div(trace_length, felt!(dynamic_params.diluted_units_row_ratio))?);
+    x = safe_div(trace_length, felt!(dynamic_params.diluted_units_row_ratio))?;
     ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
     // Index out of range.
     x = (safe_div(trace_length, felt!(dynamic_params.diluted_units_row_ratio))?) - FELT_1;
@@ -33,56 +33,53 @@ pub fn check_asserts(
     x = trace_length;
     ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
     // Index should be non negative.
-    x = (safe_div(trace_length, felt!(dynamic_params.diluted_units_row_ratio))?);
+    x = safe_div(trace_length, felt!(dynamic_params.diluted_units_row_ratio))?;
     ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     // Coset step (dynamicparam(range_check_units_row_ratio)) must be a power of two.
     x = felt!(dynamic_params.range_check_units_row_ratio);
     ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
     // Dimension should be a power of FELT_2.
-    x = (safe_div(trace_length, felt!(dynamic_params.range_check_units_row_ratio))?);
+    x = safe_div(trace_length, felt!(dynamic_params.range_check_units_row_ratio))?;
     ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
     // Index out of range.
     x = (safe_div(trace_length, felt!(dynamic_params.range_check_units_row_ratio))?) - FELT_1;
     ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     // Index should be non negative.
-    x = (safe_div(trace_length, felt!(dynamic_params.range_check_units_row_ratio))?);
+    x = safe_div(trace_length, felt!(dynamic_params.range_check_units_row_ratio))?;
     ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     // Coset step ((FELT_8) * (dynamicparam(memory_units_row_ratio))) must be a power of two.
-    x = (safe_mult(FELT_8, felt!(dynamic_params.memory_units_row_ratio))?);
+    x = safe_mult(FELT_8, felt!(dynamic_params.memory_units_row_ratio))?;
     ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
     // Dimension should be a power of FELT_2.
-    x = (safe_div(
-        trace_length,
-        (safe_mult(FELT_8, felt!(dynamic_params.memory_units_row_ratio))?),
-    )?);
+    x = safe_div(trace_length, safe_mult(FELT_8, felt!(dynamic_params.memory_units_row_ratio))?)?;
     ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
     // Coset step (dynamicparam(memory_units_row_ratio)) must be a power of two.
     x = felt!(dynamic_params.memory_units_row_ratio);
     ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
     // Dimension should be a power of FELT_2.
-    x = (safe_div(trace_length, felt!(dynamic_params.memory_units_row_ratio))?);
+    x = safe_div(trace_length, felt!(dynamic_params.memory_units_row_ratio))?;
     ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
     // Index out of range.
     x = (safe_div(trace_length, felt!(dynamic_params.memory_units_row_ratio))?) - FELT_1;
     ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     // Index should be non negative.
-    x = (safe_div(trace_length, felt!(dynamic_params.memory_units_row_ratio))?);
+    x = safe_div(trace_length, felt!(dynamic_params.memory_units_row_ratio))?;
     ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     // Coset step ((FELT_16) * (dynamicparam(cpu_component_step))) must be a power of two.
-    x = (safe_mult(FELT_16, felt!(dynamic_params.cpu_component_step))?);
+    x = safe_mult(FELT_16, felt!(dynamic_params.cpu_component_step))?;
     ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
     // Dimension should be a power of FELT_2.
-    x = (safe_div(trace_length, (safe_mult(FELT_16, felt!(dynamic_params.cpu_component_step))?))?);
+    x = safe_div(trace_length, safe_mult(FELT_16, felt!(dynamic_params.cpu_component_step))?)?;
     ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
     // Step must not exceed dimension.
-    x = (safe_div(trace_length, (safe_mult(FELT_16, felt!(dynamic_params.cpu_component_step))?))?)
+    x = (safe_div(trace_length, safe_mult(FELT_16, felt!(dynamic_params.cpu_component_step))?)?)
         - FELT_1;
     ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     // Coset step (dynamicparam(cpu_component_step)) must be a power of two.
     x = felt!(dynamic_params.cpu_component_step);
     ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
     // Index out of range.
-    x = (safe_div(trace_length, (safe_mult(FELT_16, felt!(dynamic_params.cpu_component_step))?))?);
+    x = safe_div(trace_length, safe_mult(FELT_16, felt!(dynamic_params.cpu_component_step))?)?;
     ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     // Cpu_component_step is out of range.
     x = FELT_256 - felt!(dynamic_params.cpu_component_step);
@@ -1476,24 +1473,24 @@ pub fn check_asserts(
     x = trace_length - felt!(dynamic_params.diluted_check_permutation_cum_prod0_offset) - FELT_1;
     ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
 
-    if (felt!(dynamic_params.uses_pedersen_builtin) != FELT_0) {
+    if felt!(dynamic_params.uses_pedersen_builtin) != FELT_0 {
         // Row ratio should be a power of FELT_2, smaller than trace length.
         x = felt!(dynamic_params.pedersen_builtin_row_ratio);
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Dimension should be a power of FELT_2.
-        x = (safe_div(trace_length, felt!(dynamic_params.pedersen_builtin_row_ratio))?);
+        x = safe_div(trace_length, felt!(dynamic_params.pedersen_builtin_row_ratio))?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Coset step ((dynamicparam(pedersen_builtin_row_ratio)) / (FELT_512)) must be a power of two.
-        x = (safe_div(felt!(dynamic_params.pedersen_builtin_row_ratio), FELT_512)?);
+        x = safe_div(felt!(dynamic_params.pedersen_builtin_row_ratio), FELT_512)?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Coset step ((dynamicparam(pedersen_builtin_row_ratio)) / (FELT_2)) must be a power of two.
-        x = (safe_div(felt!(dynamic_params.pedersen_builtin_row_ratio), FELT_2)?);
+        x = safe_div(felt!(dynamic_params.pedersen_builtin_row_ratio), FELT_2)?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Step must not exceed dimension.
         x = (safe_div(trace_length, felt!(dynamic_params.pedersen_builtin_row_ratio))?) - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Index should be non negative.
-        x = (safe_div(trace_length, felt!(dynamic_params.pedersen_builtin_row_ratio))?);
+        x = safe_div(trace_length, felt!(dynamic_params.pedersen_builtin_row_ratio))?;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Coset step (memberexpression(trace_length)) must be a power of two.
         x = trace_length;
@@ -1541,7 +1538,7 @@ pub fn check_asserts(
             - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     }
-    if (felt!(dynamic_params.uses_range_check_builtin) != FELT_0) {
+    if felt!(dynamic_params.uses_range_check_builtin) != FELT_0 {
         // Coset step (memberexpression(trace_length)) must be a power of two.
         x = trace_length;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
@@ -1549,16 +1546,16 @@ pub fn check_asserts(
         x = felt!(dynamic_params.range_check_builtin_row_ratio);
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Dimension should be a power of FELT_2.
-        x = (safe_div(trace_length, felt!(dynamic_params.range_check_builtin_row_ratio))?);
+        x = safe_div(trace_length, felt!(dynamic_params.range_check_builtin_row_ratio))?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Step must not exceed dimension.
         x = (safe_div(trace_length, felt!(dynamic_params.range_check_builtin_row_ratio))?) - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Index should be non negative.
-        x = (safe_div(trace_length, felt!(dynamic_params.range_check_builtin_row_ratio))?);
+        x = safe_div(trace_length, felt!(dynamic_params.range_check_builtin_row_ratio))?;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Coset step ((dynamicparam(range_check_builtin_row_ratio)) / (FELT_8)) must be a power of two.
-        x = (safe_div(felt!(dynamic_params.range_check_builtin_row_ratio), FELT_8)?);
+        x = safe_div(felt!(dynamic_params.range_check_builtin_row_ratio), FELT_8)?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Offset of range_check_builtin/mem must be nonnegative.
         x = felt!(dynamic_params.range_check_builtin_mem_suboffset);
@@ -1591,30 +1588,30 @@ pub fn check_asserts(
             - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     }
-    if (felt!(dynamic_params.uses_ecdsa_builtin) != FELT_0) {
+    if felt!(dynamic_params.uses_ecdsa_builtin) != FELT_0 {
         // Row ratio should be a power of FELT_2, smaller than trace length.
         x = felt!(dynamic_params.ecdsa_builtin_row_ratio);
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Dimension should be a power of FELT_2.
-        x = (safe_div(trace_length, felt!(dynamic_params.ecdsa_builtin_row_ratio))?);
+        x = safe_div(trace_length, felt!(dynamic_params.ecdsa_builtin_row_ratio))?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Coset step ((dynamicparam(ecdsa_builtin_row_ratio)) / (FELT_512)) must be a power of two.
-        x = (safe_div(felt!(dynamic_params.ecdsa_builtin_row_ratio), FELT_512)?);
+        x = safe_div(felt!(dynamic_params.ecdsa_builtin_row_ratio), FELT_512)?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Step must not exceed dimension.
         x = (safe_div(trace_length, felt!(dynamic_params.ecdsa_builtin_row_ratio))?) - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Index should be non negative.
-        x = (safe_div(trace_length, felt!(dynamic_params.ecdsa_builtin_row_ratio))?);
+        x = safe_div(trace_length, felt!(dynamic_params.ecdsa_builtin_row_ratio))?;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Coset step ((dynamicparam(ecdsa_builtin_row_ratio)) / (FELT_256)) must be a power of two.
-        x = (safe_div(felt!(dynamic_params.ecdsa_builtin_row_ratio), FELT_256)?);
+        x = safe_div(felt!(dynamic_params.ecdsa_builtin_row_ratio), FELT_256)?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Coset step (memberexpression(trace_length)) must be a power of two.
         x = trace_length;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Coset step ((dynamicparam(ecdsa_builtin_row_ratio)) / (FELT_2)) must be a power of two.
-        x = (safe_div(felt!(dynamic_params.ecdsa_builtin_row_ratio), FELT_2)?);
+        x = safe_div(felt!(dynamic_params.ecdsa_builtin_row_ratio), FELT_2)?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Offset of ecdsa/pubkey must be nonnegative.
         x = felt!(dynamic_params.ecdsa_pubkey_suboffset);
@@ -1645,24 +1642,24 @@ pub fn check_asserts(
             - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     }
-    if (felt!(dynamic_params.uses_bitwise_builtin) != FELT_0) {
+    if felt!(dynamic_params.uses_bitwise_builtin) != FELT_0 {
         // Row ratio should be a power of FELT_2, smaller than trace length.
         x = felt!(dynamic_params.bitwise_row_ratio);
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Dimension should be a power of FELT_2.
-        x = (safe_div(trace_length, felt!(dynamic_params.bitwise_row_ratio))?);
+        x = safe_div(trace_length, felt!(dynamic_params.bitwise_row_ratio))?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Coset step ((dynamicparam(bitwise_row_ratio)) / (FELT_64)) must be a power of two.
-        x = (safe_div(felt!(dynamic_params.bitwise_row_ratio), FELT_64)?);
+        x = safe_div(felt!(dynamic_params.bitwise_row_ratio), FELT_64)?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Coset step ((dynamicparam(bitwise_row_ratio)) / (FELT_4)) must be a power of two.
-        x = (safe_div(felt!(dynamic_params.bitwise_row_ratio), FELT_4)?);
+        x = safe_div(felt!(dynamic_params.bitwise_row_ratio), FELT_4)?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Index out of range.
         x = (safe_div(trace_length, felt!(dynamic_params.bitwise_row_ratio))?) - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Index should be non negative.
-        x = (safe_div(trace_length, felt!(dynamic_params.bitwise_row_ratio))?);
+        x = safe_div(trace_length, felt!(dynamic_params.bitwise_row_ratio))?;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Coset step (memberexpression(trace_length)) must be a power of two.
         x = trace_length;
@@ -1766,21 +1763,21 @@ pub fn check_asserts(
             - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     }
-    if (felt!(dynamic_params.uses_ec_op_builtin) != FELT_0) {
+    if felt!(dynamic_params.uses_ec_op_builtin) != FELT_0 {
         // Row ratio should be a power of FELT_2, smaller than trace length.
         x = felt!(dynamic_params.ec_op_builtin_row_ratio);
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Dimension should be a power of FELT_2.
-        x = (safe_div(trace_length, felt!(dynamic_params.ec_op_builtin_row_ratio))?);
+        x = safe_div(trace_length, felt!(dynamic_params.ec_op_builtin_row_ratio))?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Coset step ((dynamicparam(ec_op_builtin_row_ratio)) / (FELT_256)) must be a power of two.
-        x = (safe_div(felt!(dynamic_params.ec_op_builtin_row_ratio), FELT_256)?);
+        x = safe_div(felt!(dynamic_params.ec_op_builtin_row_ratio), FELT_256)?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Index out of range.
         x = (safe_div(trace_length, felt!(dynamic_params.ec_op_builtin_row_ratio))?) - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Index should be non negative.
-        x = (safe_div(trace_length, felt!(dynamic_params.ec_op_builtin_row_ratio))?);
+        x = safe_div(trace_length, felt!(dynamic_params.ec_op_builtin_row_ratio))?;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Coset step (memberexpression(trace_length)) must be a power of two.
         x = trace_length;
@@ -1884,45 +1881,34 @@ pub fn check_asserts(
             - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     }
-    if (felt!(dynamic_params.uses_keccak_builtin) != FELT_0) {
+    if felt!(dynamic_params.uses_keccak_builtin) != FELT_0 {
         // Coset step ((dynamicparam(keccak_row_ratio)) / (FELT_4096)) must be a power of two.
-        x = (safe_div(felt!(dynamic_params.keccak_row_ratio), FELT_4096)?);
+        x = safe_div(felt!(dynamic_params.keccak_row_ratio), FELT_4096)?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Dimension should be a power of FELT_2.
-        x = (safe_div(
-            trace_length,
-            (safe_mult(FELT_16, felt!(dynamic_params.keccak_row_ratio))?),
-        )?);
+        x = safe_div(trace_length, safe_mult(FELT_16, felt!(dynamic_params.keccak_row_ratio))?)?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Coset step ((dynamicparam(keccak_row_ratio)) / (FELT_128)) must be a power of two.
-        x = (safe_div(felt!(dynamic_params.keccak_row_ratio), FELT_128)?);
+        x = safe_div(felt!(dynamic_params.keccak_row_ratio), FELT_128)?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Coset step ((dynamicparam(keccak_row_ratio)) / (FELT_32768)) must be a power of two.
-        x = (safe_div(felt!(dynamic_params.keccak_row_ratio), FELT_32768)?);
+        x = safe_div(felt!(dynamic_params.keccak_row_ratio), FELT_32768)?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Row ratio should be a power of FELT_2, smaller than trace length.
         x = felt!(dynamic_params.keccak_row_ratio);
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Coset step ((dynamicparam(keccak_row_ratio)) / (FELT_16)) must be a power of two.
-        x = (safe_div(felt!(dynamic_params.keccak_row_ratio), FELT_16)?);
+        x = safe_div(felt!(dynamic_params.keccak_row_ratio), FELT_16)?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Dimension should be a power of FELT_2.
-        x = (safe_div(
-            (safe_mult(FELT_16, trace_length)?),
-            felt!(dynamic_params.keccak_row_ratio),
-        )?);
+        x = safe_div(safe_mult(FELT_16, trace_length)?, felt!(dynamic_params.keccak_row_ratio))?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Index out of range.
-        x = (safe_div(
-            (safe_mult(FELT_16, trace_length)?),
-            felt!(dynamic_params.keccak_row_ratio),
-        )?) - FELT_1;
+        x = (safe_div(safe_mult(FELT_16, trace_length)?, felt!(dynamic_params.keccak_row_ratio))?)
+            - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Index should be non negative.
-        x = (safe_div(
-            (safe_mult(FELT_16, trace_length)?),
-            felt!(dynamic_params.keccak_row_ratio),
-        )?);
+        x = safe_div(safe_mult(FELT_16, trace_length)?, felt!(dynamic_params.keccak_row_ratio))?;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Coset step (memberexpression(trace_length)) must be a power of two.
         x = trace_length;
@@ -1998,42 +1984,34 @@ pub fn check_asserts(
             - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     }
-    if (felt!(dynamic_params.uses_poseidon_builtin) != FELT_0) {
+    if felt!(dynamic_params.uses_poseidon_builtin) != FELT_0 {
         // Row ratio should be a power of FELT_2, smaller than trace length.
         x = felt!(dynamic_params.poseidon_row_ratio);
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Dimension should be a power of FELT_2.
-        x = (safe_div(trace_length, felt!(dynamic_params.poseidon_row_ratio))?);
+        x = safe_div(trace_length, felt!(dynamic_params.poseidon_row_ratio))?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Coset step ((dynamicparam(poseidon_row_ratio)) / (FELT_32)) must be a power of two.
-        x = (safe_div(felt!(dynamic_params.poseidon_row_ratio), FELT_32)?);
+        x = safe_div(felt!(dynamic_params.poseidon_row_ratio), FELT_32)?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Coset step ((dynamicparam(poseidon_row_ratio)) / (FELT_8)) must be a power of two.
-        x = (safe_div(felt!(dynamic_params.poseidon_row_ratio), FELT_8)?);
+        x = safe_div(felt!(dynamic_params.poseidon_row_ratio), FELT_8)?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Coset step ((dynamicparam(poseidon_row_ratio)) / (FELT_64)) must be a power of two.
-        x = (safe_div(felt!(dynamic_params.poseidon_row_ratio), FELT_64)?);
+        x = safe_div(felt!(dynamic_params.poseidon_row_ratio), FELT_64)?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Coset step ((dynamicparam(poseidon_row_ratio)) / (FELT_2)) must be a power of two.
-        x = (safe_div(felt!(dynamic_params.poseidon_row_ratio), FELT_2)?);
+        x = safe_div(felt!(dynamic_params.poseidon_row_ratio), FELT_2)?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Dimension should be a power of FELT_2.
-        x = (safe_div(
-            (safe_mult(FELT_2, trace_length)?),
-            felt!(dynamic_params.poseidon_row_ratio),
-        )?);
+        x = safe_div(safe_mult(FELT_2, trace_length)?, felt!(dynamic_params.poseidon_row_ratio))?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Index out of range.
-        x = (safe_div(
-            (safe_mult(FELT_2, trace_length)?),
-            felt!(dynamic_params.poseidon_row_ratio),
-        )?) - 1;
+        x = (safe_div(safe_mult(FELT_2, trace_length)?, felt!(dynamic_params.poseidon_row_ratio))?)
+            - 1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Index should be non negative.
-        x = (safe_div(
-            (safe_mult(FELT_2, trace_length)?),
-            felt!(dynamic_params.poseidon_row_ratio),
-        )?);
+        x = safe_div(safe_mult(FELT_2, trace_length)?, felt!(dynamic_params.poseidon_row_ratio))?;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Coset step (memberexpression(trace_length)) must be a power of two.
         x = trace_length;
@@ -2081,7 +2059,7 @@ pub fn check_asserts(
             - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     }
-    if (felt!(dynamic_params.uses_range_check96_builtin) != FELT_0) {
+    if felt!(dynamic_params.uses_range_check96_builtin) != FELT_0 {
         // Coset step (memberexpression(trace_length)) must be a power of two.
         x = trace_length;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
@@ -2089,14 +2067,14 @@ pub fn check_asserts(
         x = felt!(dynamic_params.range_check96_builtin_row_ratio);
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Dimension should be a power of FELT_2.
-        x = (safe_div(trace_length, felt!(dynamic_params.range_check96_builtin_row_ratio))?);
+        x = safe_div(trace_length, felt!(dynamic_params.range_check96_builtin_row_ratio))?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Step must not exceed dimension.
         x = (safe_div(trace_length, felt!(dynamic_params.range_check96_builtin_row_ratio))?)
             - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Index should be non negative.
-        x = (safe_div(trace_length, felt!(dynamic_params.range_check96_builtin_row_ratio))?);
+        x = safe_div(trace_length, felt!(dynamic_params.range_check96_builtin_row_ratio))?;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Offset of range_check96_builtin/mem must be nonnegative.
         x = felt!(dynamic_params.range_check96_builtin_mem_suboffset);
@@ -2209,18 +2187,18 @@ pub fn check_asserts(
             - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     }
-    if (felt!(dynamic_params.uses_add_mod_builtin) != FELT_0) {
+    if felt!(dynamic_params.uses_add_mod_builtin) != FELT_0 {
         // Row ratio should be a power of FELT_2, smaller than trace length.
         x = felt!(dynamic_params.add_mod_row_ratio);
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Dimension should be a power of FELT_2.
-        x = (safe_div(trace_length, felt!(dynamic_params.add_mod_row_ratio))?);
+        x = safe_div(trace_length, felt!(dynamic_params.add_mod_row_ratio))?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Index out of range.
         x = (safe_div(trace_length, felt!(dynamic_params.add_mod_row_ratio))?) - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Index should be non negative.
-        x = (safe_div(trace_length, felt!(dynamic_params.add_mod_row_ratio))?);
+        x = safe_div(trace_length, felt!(dynamic_params.add_mod_row_ratio))?;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Coset step (memberexpression(trace_length)) must be a power of two.
         x = trace_length;
@@ -2534,18 +2512,18 @@ pub fn check_asserts(
             - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     }
-    if (felt!(dynamic_params.uses_mul_mod_builtin) != FELT_0) {
+    if felt!(dynamic_params.uses_mul_mod_builtin) != FELT_0 {
         // Row ratio should be a power of FELT_2, smaller than trace length.
         x = felt!(dynamic_params.mul_mod_row_ratio);
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Dimension should be a power of FELT_2.
-        x = (safe_div(trace_length, felt!(dynamic_params.mul_mod_row_ratio))?);
+        x = safe_div(trace_length, felt!(dynamic_params.mul_mod_row_ratio))?;
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Index out of range.
         x = (safe_div(trace_length, felt!(dynamic_params.mul_mod_row_ratio))?) - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Index should be non negative.
-        x = (safe_div(trace_length, felt!(dynamic_params.mul_mod_row_ratio))?);
+        x = safe_div(trace_length, felt!(dynamic_params.mul_mod_row_ratio))?;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Coset step (memberexpression(trace_length)) must be a power of two.
         x = trace_length;
