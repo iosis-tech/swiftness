@@ -27,9 +27,8 @@ recursive_with_poseidon = [
 ]
 small = ["swiftness_air/small"]
 starknet = ["swiftness_air/starknet"]
-starknet_with_keccak = [
-    "swiftness_air/starknet_with_keccak",
-]
+starknet_with_keccak = ["swiftness_air/starknet_with_keccak"]
+dynamic = ["swiftness_air/dynamic"]
 keccak_160_lsb = [
     "swiftness_pow/keccak",
     "swiftness_commitment/keccak_160_lsb"

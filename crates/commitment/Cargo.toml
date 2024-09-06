@@ -21,6 +21,7 @@ blake2s_248_lsb = []
 
 [dependencies]
 serde_with.workspace = true
+num-bigint.workspace = true
 serde.workspace = true
 sha3.workspace = true
 starknet-core.workspace = true

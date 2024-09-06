@@ -71,6 +71,7 @@ cargo test
 - [x] small
 - [x] starknet
 - [x] starknet_with_keccak
+- [x] dynamic
 
 ### Commitment Hashes
 
@@ -83,19 +84,7 @@ cargo test
 
 - [x] WASM support
 - [x] [Web Demo](https://demo.swiftness.iosis.tech/)
-- [x] NPM packages:
-  - [swiftness-dex-blake2s](https://www.npmjs.com/package/swiftness-dex-blake2s)
-  - [swiftness-dex-keccak](https://www.npmjs.com/package/swiftness-dex-keccak)
-  - [swiftness-recursive-blake2s](https://www.npmjs.com/package/swiftness-recursive-blake2s)
-  - [swiftness-recursive-keccak](https://www.npmjs.com/package/swiftness-recursive-keccak)
-  - [swiftness-recursive-with-poseidon-blake2s](https://www.npmjs.com/package/swiftness-recursive-with-poseidon-blake2s)
-  - [swiftness-recursive-with-poseidon-keccak](https://www.npmjs.com/package/swiftness-recursive-with-poseidon-keccak)
-  - [swiftness-small-blake2s](https://www.npmjs.com/package/swiftness-small-blake2s)
-  - [swiftness-small-keccak](https://www.npmjs.com/package/swiftness-small-keccak)
-  - [swiftness-starknet-blake2s](https://www.npmjs.com/package/swiftness-starknet-blake2s)
-  - [swiftness-starknet-keccak](https://www.npmjs.com/package/swiftness-starknet-keccak)
-  - [swiftness-starknet-with-keccak-blake2s](https://www.npmjs.com/package/swiftness-starknet-with-keccak-blake2s)
-  - [swiftness-starknet-with-keccak-keccak](https://www.npmjs.com/package/swiftness-starknet-with-keccak-keccak)
+- [x] [NPM packages](https://www.npmjs.com/search?q=swiftness)
 
 ### Other Platforms Support
 

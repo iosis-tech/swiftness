@@ -1,4 +1,5 @@
 use alloc::vec::Vec;
+use num_bigint::{BigInt, TryFromBigIntError};
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
 use starknet_crypto::Felt;
@@ -59,7 +60,7 @@ impl Config {
             return Err(Error::FirstFriStepInvalid);
         }
 
-        let n_layers: usize = self.n_layers.to_bigint().try_into().unwrap();
+        let n_layers: usize = self.n_layers.to_bigint().try_into()?;
         let mut sum_of_step_sizes = Felt::ZERO;
         let mut log_input_size = self.log_input_size;
 
@@ -72,7 +73,7 @@ impl Config {
             if fri_step < MIN_FRI_STEP.into() || fri_step > MAX_FRI_STEP.into() {
                 return Err(Error::OutOfBounds { min: MIN_FRI_STEP, max: MAX_FRI_STEP });
             }
-            let fri_step: u64 = fri_step.to_bigint().try_into().unwrap();
+            let fri_step: u64 = fri_step.to_bigint().try_into()?;
             let expected_n_columns = Felt::from(2).pow(fri_step);
             if table_commitment.n_columns != expected_n_columns {
                 return Err(Error::InvalidColumnCount {
@@ -88,7 +89,7 @@ impl Config {
         let log_expected_input_degree = sum_of_step_sizes + self.log_last_layer_degree_bound;
         if log_expected_input_degree + log_n_cosets != self.log_input_size {
             return Err(Error::LogInputSizeMismatch {
-                expected: log_expected_input_degree,
+                expected: log_expected_input_degree + log_n_cosets,
                 actual: self.log_input_size,
             });
         }
@@ -113,6 +114,8 @@ pub enum Error {
     LogInputSizeMismatch { expected: Felt, actual: Felt },
     #[error("vector validation failed: {0}")]
     VectorValidationFailed(#[from] swiftness_commitment::vector::config::Error),
+    #[error("BigInt conversion Error")]
+    TryFromBigInt(#[from] TryFromBigIntError<BigInt>),
 }
 
 #[cfg(not(feature = "std"))]
@@ -131,4 +134,6 @@ pub enum Error {
     LogInputSizeMismatch { expected: Felt, actual: Felt },
     #[error("vector validation failed: {0}")]
     VectorValidationFailed(#[from] swiftness_commitment::vector::config::Error),
+    #[error("BigInt conversion Error")]
+    TryFromBigInt(#[from] TryFromBigIntError<BigInt>),
 }

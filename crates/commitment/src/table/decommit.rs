@@ -3,6 +3,7 @@ use crate::vector::{decommit::vector_commitment_decommit, types::Query};
 use alloc::vec::Vec;
 #[cfg(any(feature = "blake2s_160_lsb", feature = "blake2s_248_lsb"))]
 use blake2::{Blake2s256, Digest};
+use num_bigint::{BigInt, TryFromBigIntError};
 #[cfg(any(feature = "keccak_160_lsb", feature = "keccak_248_lsb"))]
 use sha3::{Digest, Keccak256};
 use starknet_crypto::{poseidon_hash_many, Felt};
@@ -26,7 +27,7 @@ pub fn table_decommit(
         commitment.vector_commitment.config.n_verifier_friendly_commitment_layers
             >= bottom_layer_depth;
 
-    let n_columns: u32 = commitment.config.n_columns.to_bigint().try_into().unwrap();
+    let n_columns: u32 = commitment.config.n_columns.to_bigint().try_into()?;
     if n_columns as usize * queries.len() != decommitment.values.len() {
         return Err(Error::DecommitmentLength);
     }
@@ -107,6 +108,9 @@ pub enum Error {
 
     #[error("Vector Error")]
     Vector(#[from] crate::vector::decommit::Error),
+
+    #[error("BigInt conversion Error")]
+    TryFromBigInt(#[from] TryFromBigIntError<BigInt>),
 }
 
 #[cfg(not(feature = "std"))]
@@ -120,4 +124,7 @@ pub enum Error {
 
     #[error("Vector Error")]
     Vector(#[from] crate::vector::decommit::Error),
+
+    #[error("BigInt conversion Error")]
+    TryFromBigInt(#[from] TryFromBigIntError<BigInt>),
 }

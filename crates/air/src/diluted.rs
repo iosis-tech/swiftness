@@ -1,3 +1,4 @@
+use crate::consts::{FELT_0, FELT_1, FELT_2};
 use starknet_crypto::Felt;
 
 // The cumulative value is defined using the next recursive formula:
@@ -24,15 +25,15 @@ use starknet_crypto::Felt;
 //
 // Now we can compute p_{n_bits} and q_{n_bits} in just n_bits recursive steps and we are done.
 pub fn get_diluted_product(n_bits: Felt, spacing: Felt, z: Felt, alpha: Felt) -> Felt {
-    let diff_multiplier = Felt::TWO.pow_felt(&spacing);
-    let mut diff_x: Felt = diff_multiplier - 2;
-    let mut x: Felt = Felt::ONE;
-    let mut p: Felt = z + 1;
-    let mut q: Felt = Felt::ONE;
+    let diff_multiplier = FELT_2.pow_felt(&spacing);
+    let mut diff_x: Felt = diff_multiplier - FELT_2;
+    let mut x: Felt = FELT_1;
+    let mut p: Felt = z + FELT_1;
+    let mut q: Felt = FELT_1;
 
-    let mut i = Felt::ZERO;
+    let mut i = FELT_0;
     loop {
-        if i == n_bits - 1 {
+        if i == n_bits - FELT_1 {
             break p + q * alpha;
         }
 
@@ -43,6 +44,6 @@ pub fn get_diluted_product(n_bits: Felt, spacing: Felt, z: Felt, alpha: Felt) ->
         q = q * y + x * x_p + q;
         p *= y;
 
-        i = i + 1;
+        i += FELT_1;
     }
 }

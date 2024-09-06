@@ -1,10 +1,28 @@
 use crate::{
     commit::stark_commit, queries::generate_queries, types::StarkProof, verify::stark_verify,
 };
+use starknet_crypto::Felt;
+use swiftness_air::{
+    domains::StarkDomains,
+    layout::{GenericLayoutTrait, LayoutTrait, PublicInputError},
+};
+use swiftness_transcript::transcript::Transcript;
 
 impl StarkProof {
-    pub fn verify<Layout: LayoutTrait>(&self, security_bits: Felt) -> Result<(Felt, Felt), Error> {
-        self.config.validate::<Layout>(security_bits)?;
+    pub fn verify<Layout: GenericLayoutTrait + LayoutTrait>(
+        &self,
+        security_bits: Felt,
+    ) -> Result<(Felt, Felt), Error> {
+        let n_original_columns =
+            Layout::get_num_columns_first(&self.public_input).ok_or(Error::ColumnMissing)?;
+        let n_interaction_columns =
+            Layout::get_num_columns_second(&self.public_input).ok_or(Error::ColumnMissing)?;
+
+        self.config.validate(
+            security_bits,
+            n_original_columns.into(),
+            n_interaction_columns.into(),
+        )?;
 
         // Validate the public input.
         let stark_domains =
@@ -35,8 +53,9 @@ impl StarkProof {
 
         // STARK verify phase.
         stark_verify::<Layout>(
-            Layout::NUM_COLUMNS_FIRST,
-            Layout::NUM_COLUMNS_SECOND,
+            n_original_columns,
+            n_interaction_columns,
+            &self.public_input,
             &queries,
             stark_commitment,
             &self.witness,
@@ -46,13 +65,6 @@ impl StarkProof {
         Ok(Layout::verify_public_input(&self.public_input)?)
     }
 }
-
-use starknet_crypto::Felt;
-use swiftness_air::{
-    domains::StarkDomains,
-    layout::{LayoutTrait, PublicInputError},
-};
-use swiftness_transcript::transcript::Transcript;
 
 #[cfg(feature = "std")]
 use thiserror::Error;
@@ -71,6 +83,9 @@ pub enum Error {
 
     #[error("Verify Error")]
     Verify(#[from] crate::verify::Error),
+
+    #[error("Column missing")]
+    ColumnMissing,
 }
 
 #[cfg(not(feature = "std"))]
@@ -90,4 +105,7 @@ pub enum Error {
 
     #[error("Verify Error")]
     Verify(#[from] crate::verify::Error),
+
+    #[error("Column missing")]
+    ColumnMissing,
 }

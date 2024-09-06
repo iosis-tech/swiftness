@@ -31,12 +31,11 @@ impl StarkDomains {
             log_eval_domain_size: log_trace_domain_size + log_n_cosets,
             eval_domain_size: Felt::TWO.pow_felt(&log_eval_domain_size),
             eval_generator: FIELD_GENERATOR.pow_felt(
-                &STARK_PRIME_MINUS_ONE
-                    .field_div(&NonZeroFelt::from_felt_unchecked(eval_domain_size)),
+                &STARK_PRIME_MINUS_ONE.field_div(&NonZeroFelt::try_from(eval_domain_size).unwrap()),
             ),
             trace_generator: FIELD_GENERATOR.pow_felt(
                 &STARK_PRIME_MINUS_ONE
-                    .field_div(&NonZeroFelt::from_felt_unchecked(trace_domain_size)),
+                    .field_div(&NonZeroFelt::try_from(trace_domain_size).unwrap()),
             ),
             trace_domain_size,
             log_trace_domain_size,

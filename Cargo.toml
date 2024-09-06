@@ -37,6 +37,7 @@ starknet-crypto = { version = "0.7.1", default-features = false }
 starknet-types-core = { version = "0.1.5", default-features = false }
 thiserror = "1.0.61"
 thiserror-no-std = "2.0.2"
+num-bigint = "0.4.6"
 
 swiftness_air = { path = "crates/air", default-features = false, version = "0.0.8" }
 swiftness_commitment = { path = "crates/commitment", default-features = false, version = "0.0.8" }

@@ -725,13 +725,28 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
 
 [[package]]
+name = "swiftness"
+version = "0.0.8"
+dependencies = [
+ "clap",
+ "swiftness_air",
+ "swiftness_commitment",
+ "swiftness_fri",
+ "swiftness_pow",
+ "swiftness_proof_parser",
+ "swiftness_stark",
+]
+
+[[package]]
 name = "swiftness_air"
 version = "0.0.8"
 dependencies = [
+ "num-bigint",
  "serde",
  "serde_with 3.9.0",
  "starknet-core",
  "starknet-crypto",
+ "starknet-types-core",
  "swiftness_commitment",
  "swiftness_transcript",
  "thiserror",
@@ -743,6 +758,7 @@ name = "swiftness_commitment"
 version = "0.0.8"
 dependencies = [
  "blake2",
+ "num-bigint",
  "serde",
  "serde_with 3.9.0",
  "sha3",
@@ -758,6 +774,7 @@ dependencies = [
 name = "swiftness_fri"
 version = "0.0.8"
 dependencies = [
+ "num-bigint",
  "serde",
  "serde_with 3.9.0",
  "sha3",
@@ -793,13 +810,8 @@ dependencies = [
  "regex",
  "serde",
  "serde_json",
+ "starknet-crypto",
  "starknet-types-core",
- "swiftness_air",
- "swiftness_commitment",
- "swiftness_fri",
- "swiftness_pow",
- "swiftness_stark",
- "swiftness_transcript",
  "thiserror",
 ]
 
@@ -833,6 +845,7 @@ version = "0.0.8"
 dependencies = [
  "getrandom",
  "serde_json",
+ "swiftness",
  "swiftness_air",
  "swiftness_proof_parser",
  "swiftness_stark",

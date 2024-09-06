@@ -26,3 +26,10 @@ macro_rules! assure {
         }
     };
 }
+
+#[macro_export]
+macro_rules! felt {
+    ($from:expr) => {
+        Felt::from($from)
+    };
+}
