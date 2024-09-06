@@ -780,7 +780,9 @@ pub fn check_asserts(
     x = felt!(dynamic_params.ecdsa_signature0_exponentiate_key_selector_offset);
     ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     // Offset must be smaller than trace length.
-    x = trace_length - felt!(dynamic_params.ecdsa_signature0_exponentiate_key_selector_offset) - 1;
+    x = trace_length
+        - felt!(dynamic_params.ecdsa_signature0_exponentiate_key_selector_offset)
+        - FELT_1;
     ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     // Column index out of range.
     x = felt!(dynamic_params.ecdsa_signature0_exponentiate_key_x_diff_inv_column);
@@ -860,7 +862,7 @@ pub fn check_asserts(
     // Column index out of range.
     x = felt!(dynamic_params.num_columns_first)
         - felt!(dynamic_params.ecdsa_signature0_z_inv_column)
-        - 1;
+        - FELT_1;
     ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     // Offset must be nonnegative.
     x = felt!(dynamic_params.ecdsa_signature0_z_inv_offset);
@@ -902,7 +904,7 @@ pub fn check_asserts(
     // Column index out of range.
     x = felt!(dynamic_params.num_columns_first)
         - felt!(dynamic_params.ec_op_doubled_points_x_column)
-        - 1;
+        - FELT_1;
     ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     // Offset must be nonnegative.
     x = felt!(dynamic_params.ec_op_doubled_points_x_offset);
@@ -916,7 +918,7 @@ pub fn check_asserts(
     // Column index out of range.
     x = felt!(dynamic_params.num_columns_first)
         - felt!(dynamic_params.ec_op_doubled_points_y_column)
-        - 1;
+        - FELT_1;
     ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
     // Offset must be nonnegative.
     x = felt!(dynamic_params.ec_op_doubled_points_y_offset);
@@ -1577,7 +1579,7 @@ pub fn check_asserts(
         // Offset of range_check_builtin/inner_range_check is too big.
         x = trace_length
             - felt!(dynamic_params.range_check_builtin_inner_range_check_suboffset)
-            - 1;
+            - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Offset of range_check_builtin/inner_range_check is too big.
         x = (safe_div(felt!(dynamic_params.range_check_builtin_row_ratio), FELT_8)?)
@@ -2008,7 +2010,7 @@ pub fn check_asserts(
         ensure!(is_power_of_2(x), CheckAssertsError::NotPowerOfTwo);
         // Index out of range.
         x = (safe_div(safe_mult(FELT_2, trace_length)?, felt!(dynamic_params.poseidon_row_ratio))?)
-            - 1;
+            - FELT_1;
         ensure!(x < FELT_USIZE_MAX, CheckAssertsError::OutOfRange);
         // Index should be non negative.
         x = safe_div(safe_mult(FELT_2, trace_length)?, felt!(dynamic_params.poseidon_row_ratio))?;
