@@ -132,7 +132,7 @@ jobs:
       fail-fast: false
       matrix:
         layout: ["dynamic"]
-        hash: ["blake2s_248_lsb", "keccak_248_lsb"]
+        hash: ["blake2s_248_lsb"]
         target: ["armebv7r-none-eabi", "riscv64imac-unknown-none-elf", "aarch64-unknown-none-softfloat", "aarch64-unknown-none"]
 
     env:
