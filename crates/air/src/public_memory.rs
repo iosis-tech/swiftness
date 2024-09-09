@@ -91,6 +91,7 @@ impl PublicInput {
         (prod, total_length)
     }
 
+    #[cfg_attr(feature = "stone5", allow(unused_variables))]
     pub fn get_hash(&self, n_verifier_friendly_commitment_layers: Felt) -> Felt {
         let mut main_page_hash = FELT_0;
         for memory in self.main_page.iter() {
@@ -100,13 +101,27 @@ impl PublicInput {
         main_page_hash =
             pedersen_hash(&main_page_hash, &(FELT_2 * Felt::from(self.main_page.len())));
 
-        let mut hash_data = vec![
-            n_verifier_friendly_commitment_layers,
-            self.log_n_steps,
-            self.range_check_min,
-            self.range_check_max,
-            self.layout,
-        ];
+        let mut hash_data = {
+            #[cfg(feature = "stone5")]
+            {
+                vec![
+                    self.log_n_steps,
+                    self.range_check_min,
+                    self.range_check_max,
+                    self.layout,
+                ]
+            }
+            #[cfg(feature = "stone6")]
+            {
+                vec![
+                    n_verifier_friendly_commitment_layers,
+                    self.log_n_steps,
+                    self.range_check_min,
+                    self.range_check_max,
+                    self.layout,
+                ]
+            }
+        };
 
         if let Some(dynamic_params) = &self.dynamic_params {
             let dynamic_params_vec: Vec<usize> = dynamic_params.clone().into();
