@@ -37,3 +37,101 @@ jobs:
 
       - name: Run tests
         run: cargo test -rv
+
+  verify-proof:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        layout:
+          [
+            "dex",
+            "recursive",
+            "recursive_with_poseidon",
+            "small",
+            "starknet",
+            "starknet_with_keccak",
+          ]
+
+    env:
+      PROOFS_DIR: ${{ github.workspace }}/examples/proofs
+      WORKING_DIR: ${{ github.workspace }}/cli
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Rust toolchain
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+
+      - name: Cache Cargo registry
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-registry-
+
+      - name: Cache Cargo build
+        uses: actions/cache@v2
+        with:
+          path: target
+          key: ${{ runner.os }}-cargo-build-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-build-
+
+      - name: Run verification
+        run: cargo run -r --bin swiftness --features ${{ matrix.layout }},keccak --no-default-features -- --proof ${{ env.PROOFS_DIR }}/${{ matrix.layout }}/cairo0_example_proof.json
+        working-directory: ${{ env.WORKING_DIR }}
+
+  no-std-build:
+    runs-on: ubuntu-latest
+    needs: verify-proof
+    strategy:
+      fail-fast: false
+      matrix:
+        layout: ["starknet_with_keccak",]
+        hash: ["blake2s", "keccak"]
+        target: ["armebv7r-none-eabi", "riscv64imac-unknown-none-elf", "aarch64-unknown-none-softfloat", "aarch64-unknown-none"]
+
+    env:
+      WORKING_DIR: ${{ github.workspace }}/examples/no_std_build
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Rust toolchain
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+
+      - name: Cache Cargo registry
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-registry-
+
+      - name: Cache Cargo build
+        uses: actions/cache@v2
+        with:
+          path: target
+          key: ${{ runner.os }}-cargo-build-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-build-
+
+      - name: Show rustup
+        run: rustup show
+        working-directory: ${{ env.WORKING_DIR }}
+
+      - name: Build project
+        run: cargo build -r --features ${{ matrix.layout }},${{ matrix.hash }} --no-default-features --target ${{ matrix.target }}
+        working-directory: ${{ env.WORKING_DIR }}
+
+      - name: Print binary metadata
+        run: file target/${{ matrix.target }}/release/no_std_build
+        working-directory: ${{ env.WORKING_DIR }}
