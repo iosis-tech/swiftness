@@ -75,10 +75,11 @@ pub enum OodsVerifyError {
 pub fn eval_oods_boundary_poly_at_points<Layout: LayoutTrait>(
     n_original_columns: usize,
     n_interaction_columns: usize,
-    eval_info: OodsEvaluationInfo,
+    public_input: &PublicInput,
+    eval_info: &OodsEvaluationInfo,
     points: &[Felt],
-    decommitment: trace::Decommitment,
-    composition_decommitment: table::types::Decommitment,
+    decommitment: &trace::Decommitment,
+    composition_decommitment: &table::types::Decommitment,
 ) -> Vec<Felt> {
     assert!(
         decommitment.original.values.len() == points.len() * n_original_columns,
@@ -113,13 +114,14 @@ pub fn eval_oods_boundary_poly_at_points<Layout: LayoutTrait>(
         );
 
         evaluations.push(Layout::eval_oods_polynomial(
+            public_input,
             &column_values,
             &eval_info.oods_values,
             &eval_info.constraint_coefficients,
             &point,
             &eval_info.oods_point,
             &eval_info.trace_generator,
-        ));
+        ).unwrap());
     }
 
     evaluations

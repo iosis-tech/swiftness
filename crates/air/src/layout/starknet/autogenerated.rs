@@ -1,5 +1,5 @@
 use super::global_values::GlobalValues;
-use crate::layout::LayoutTrait;
+use crate::layout::{LayoutTrait, StaticLayoutTrait};
 use starknet_core::types::NonZeroFelt;
 use starknet_crypto::Felt;
 
@@ -1734,7 +1734,7 @@ pub fn eval_composition_polynomial_inner(
     total_sum
 }
 
-pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
+pub fn eval_oods_polynomial_inner<Layout: StaticLayoutTrait + LayoutTrait>(
     column_values: &[Felt],
     oods_values: &[Felt],
     constraint_coefficients: &[Felt],

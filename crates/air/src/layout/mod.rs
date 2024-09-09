@@ -1,8 +1,12 @@
 use crate::{domains::StarkDomains, public_memory::PublicInput};
+use num_bigint::{BigInt, TryFromBigIntError};
+use starknet_core::types::NonZeroFelt;
 use starknet_crypto::Felt;
+use starknet_types_core::felt::FeltIsZeroError;
 use swiftness_transcript::transcript::Transcript;
 
 pub mod dex;
+pub mod dynamic;
 pub mod recursive;
 pub mod recursive_with_poseidon;
 pub mod small;
@@ -13,7 +17,7 @@ pub mod starknet_with_keccak;
 pub mod stark_curve {
     use starknet_crypto::Felt;
 
-    pub const ALPHA: Felt = Felt::from_hex_unchecked("1");
+    pub const ALPHA: Felt = Felt::from_hex_unchecked("0x1");
     pub const BETA: Felt = Felt::from_hex_unchecked(
         "0x6f21413efbe40de150e596d72f7a8c5609ad26c15c915c1f4cdfcb99cee9e89",
     );
@@ -32,8 +36,6 @@ pub trait LayoutTrait {
     type InteractionElements;
 
     const CONSTRAINT_DEGREE: usize;
-    const NUM_COLUMNS_FIRST: usize;
-    const NUM_COLUMNS_SECOND: usize;
     const N_CONSTRAINTS: usize;
     const MASK_SIZE: usize;
 
@@ -48,13 +50,14 @@ pub trait LayoutTrait {
     ) -> Result<Felt, CompositionPolyEvalError>;
 
     fn eval_oods_polynomial(
+        public_input: &PublicInput,
         column_values: &[Felt],
         oods_values: &[Felt],
         constraint_coefficients: &[Felt],
         point: &Felt,
         oods_point: &Felt,
         trace_generator: &Felt,
-    ) -> Felt;
+    ) -> Result<Felt, OodsPolyEvalError>;
 
     fn validate_public_input(
         public_input: &PublicInput,
@@ -77,6 +80,29 @@ pub trait LayoutTrait {
     fn verify_public_input(public_input: &PublicInput) -> Result<(Felt, Felt), PublicInputError>;
 }
 
+pub trait StaticLayoutTrait {
+    const NUM_COLUMNS_FIRST: usize;
+    const NUM_COLUMNS_SECOND: usize;
+}
+
+pub trait GenericLayoutTrait {
+    fn get_num_columns_first(public_input: &PublicInput) -> Option<usize>;
+    fn get_num_columns_second(public_input: &PublicInput) -> Option<usize>;
+}
+
+pub fn safe_div(value: Felt, divisor: Felt) -> Result<Felt, FeltIsZeroError> {
+    Ok(value.floor_div(&NonZeroFelt::try_from(divisor)?))
+}
+
+pub fn safe_mult(value: Felt, multiplier: Felt) -> Result<Felt, SafeMultError> {
+    let mul = value.to_bigint() * multiplier.to_bigint();
+    let felt_mul = value * multiplier;
+    match felt_mul.to_bigint().cmp(&mul) {
+        core::cmp::Ordering::Equal => Ok(felt_mul),
+        _ => Err(SafeMultError::Overflow { actual: felt_mul.to_bigint(), expected: mul }),
+    }
+}
+
 #[cfg(feature = "std")]
 use thiserror::Error;
 
@@ -85,6 +111,25 @@ use thiserror::Error;
 pub enum CompositionPolyEvalError {
     #[error("segment not present {segment}")]
     SegmentMissing { segment: usize },
+
+    #[error("value out of range")]
+    ValueOutOfRange,
+
+    #[error("dynamic params missing")]
+    DynamicParamsMissing,
+
+    #[error("field element is zero")]
+    FeltIsZero(#[from] FeltIsZeroError),
+}
+
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
+pub enum OodsPolyEvalError {
+    #[error("dynamic params missing")]
+    DynamicParamsMissing,
+
+    #[error("field element is zero")]
+    FeltIsZero(#[from] FeltIsZeroError),
 }
 
 #[cfg(feature = "std")]
@@ -107,6 +152,53 @@ pub enum PublicInputError {
 
     #[error("invalid number of builtin uses")]
     UsesInvalid,
+
+    #[error("invalid number of builtin copies")]
+    CopiesInvalid,
+
+    #[error("invalid number of segments")]
+    InvalidSegments,
+
+    #[error("dynamic params missing")]
+    DynamicParamsMissing,
+
+    #[error("BigInt conversion Error")]
+    TryFromBigInt(#[from] TryFromBigIntError<BigInt>),
+
+    #[error("field element is zero")]
+    FeltIsZero(#[from] FeltIsZeroError),
+
+    #[error("dynamic params check failed")]
+    CheckAsserts(#[from] CheckAssertsError),
+}
+
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
+pub enum CheckAssertsError {
+    #[error("value is not power of two")]
+    NotPowerOfTwo,
+
+    #[error("value out of range")]
+    OutOfRange,
+
+    #[error("value not boolean")]
+    NotBoolean,
+
+    #[error("field element is zero")]
+    FeltIsZero(#[from] FeltIsZeroError),
+
+    #[error("field multiplication fail")]
+    SafeMult(#[from] SafeMultError),
+
+    #[error("segment not present {segment}")]
+    SegmentMissing { segment: usize },
+}
+
+#[cfg(feature = "std")]
+#[derive(Error, Debug)]
+pub enum SafeMultError {
+    #[error("value multiplication overflowed actual {actual}, expected {expected}")]
+    Overflow { actual: BigInt, expected: BigInt },
 }
 
 #[cfg(not(feature = "std"))]
@@ -117,6 +209,25 @@ use thiserror_no_std::Error;
 pub enum CompositionPolyEvalError {
     #[error("segment not present {segment}")]
     SegmentMissing { segment: usize },
+
+    #[error("value out of range")]
+    ValueOutOfRange,
+
+    #[error("dynamic params missing")]
+    DynamicParamsMissing,
+
+    #[error("field element is zero")]
+    FeltIsZero(#[from] FeltIsZeroError),
+}
+
+#[cfg(not(feature = "std"))]
+#[derive(Error, Debug)]
+pub enum OodsPolyEvalError {
+    #[error("dynamic params missing")]
+    DynamicParamsMissing,
+
+    #[error("field element is zero")]
+    FeltIsZero(#[from] FeltIsZeroError),
 }
 
 #[cfg(not(feature = "std"))]
@@ -139,10 +250,51 @@ pub enum PublicInputError {
 
     #[error("invalid number of builtin uses")]
     UsesInvalid,
+
+    #[error("invalid number of builtin copies")]
+    CopiesInvalid,
+
+    #[error("invalid number of segments")]
+    InvalidSegments,
+
+    #[error("dynamic params missing")]
+    DynamicParamsMissing,
+
+    #[error("BigInt conversion Error")]
+    TryFromBigInt(#[from] TryFromBigIntError<BigInt>),
+
+    #[error("field element is zero")]
+    FeltIsZero(#[from] FeltIsZeroError),
+
+    #[error("dynamic params check failed")]
+    CheckAsserts(#[from] CheckAssertsError),
 }
 
-pub mod segments {
-    pub const EXECUTION: usize = 1;
-    pub const OUTPUT: usize = 2;
-    pub const PROGRAM: usize = 0;
+#[cfg(not(feature = "std"))]
+#[derive(Error, Debug)]
+pub enum CheckAssertsError {
+    #[error("value is not power of two")]
+    NotPowerOfTwo,
+
+    #[error("value out of range")]
+    OutOfRange,
+
+    #[error("value not boolean")]
+    NotBoolean,
+
+    #[error("field element is zero")]
+    FeltIsZero(#[from] FeltIsZeroError),
+
+    #[error("field multiplication fail")]
+    SafeMult(#[from] SafeMultError),
+
+    #[error("segment not present {segment}")]
+    SegmentMissing { segment: usize },
+}
+
+#[cfg(not(feature = "std"))]
+#[derive(Error, Debug)]
+pub enum SafeMultError {
+    #[error("value multiplication overflowed actual {actual}, expected {expected}")]
+    Overflow { actual: BigInt, expected: BigInt },
 }

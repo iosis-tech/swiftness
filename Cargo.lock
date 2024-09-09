@@ -534,12 +534,14 @@ checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
 
 [[package]]
 name = "swiftness_air"
-version = "0.0.8"
+version = "0.0.9"
 dependencies = [
+ "num-bigint",
  "serde",
  "serde_with 3.9.0",
  "starknet-core",
  "starknet-crypto",
+ "starknet-types-core",
  "swiftness_commitment",
  "swiftness_transcript",
  "thiserror",
@@ -548,9 +550,10 @@ dependencies = [
 
 [[package]]
 name = "swiftness_commitment"
-version = "0.0.8"
+version = "0.0.9"
 dependencies = [
  "blake2",
+ "num-bigint",
  "serde",
  "serde_with 3.9.0",
  "sha3",
@@ -564,8 +567,9 @@ dependencies = [
 
 [[package]]
 name = "swiftness_fri"
-version = "0.0.8"
+version = "0.0.9"
 dependencies = [
+ "num-bigint",
  "serde",
  "serde_with 3.9.0",
  "sha3",
@@ -579,7 +583,7 @@ dependencies = [
 
 [[package]]
 name = "swiftness_pow"
-version = "0.0.8"
+version = "0.0.9"
 dependencies = [
  "blake2",
  "serde",
@@ -593,7 +597,7 @@ dependencies = [
 
 [[package]]
 name = "swiftness_stark"
-version = "0.0.8"
+version = "0.0.9"
 dependencies = [
  "serde",
  "serde_with 3.9.0",
@@ -610,7 +614,7 @@ dependencies = [
 
 [[package]]
 name = "swiftness_transcript"
-version = "0.0.8"
+version = "0.0.9"
 dependencies = [
  "starknet-crypto",
 ]

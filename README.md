@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/v0.0.8-green?style=flat-square&logo=git&logoColor=white&label=version)
+![Version](https://img.shields.io/badge/v0.0.9-green?style=flat-square&logo=git&logoColor=white&label=version)
 ![Continuous Integration](https://img.shields.io/github/actions/workflow/status/iosis-tech/swiftness/ci.yml?style=flat-square&logo=githubactions&logoColor=white&label=Continuous%20Integration)
 
 [![Crates.io Version](https://img.shields.io/crates/v/swiftness?style=flat-square&logo=lootcrate)](https://crates.io/crates/swiftness)
@@ -16,25 +16,8 @@ Swiftness is a Rust implementation of the Cairo-VM STARK verifier with layouts, 
 ## Getting Started
 
 ### Verify an Example Proof
-
-1. **Install `swiftness`:**
-
    ```sh
-   cargo install -f --path cli/ --features starknet_with_keccak,keccak --no-default-features
-   ```
-
-2. **Verify the proof:**
-
-   Ensure you use a proof corresponding to the layout and hash used to build the binary.
-
-   ```sh
-   swiftness --proof examples/proofs/starknet_with_keccak/cairo0_example_proof.json
-   ```
-
-3. **Local Run:**
-
-   ```sh
-   cd cli && cargo run --release --bin swiftness --features starknet_with_keccak,keccak --no-default-features -- --proof ../examples/proofs/starknet_with_keccak/cairo0_example_proof.json
+   cd cli && cargo run --release --bin swiftness --features starknet_with_keccak,keccak_160_lsb,stone5 --no-default-features -- --proof ../examples/proofs/starknet_with_keccak/cairo0_stone5_example_proof.json
    ```
 
 ## Running Tests
@@ -54,14 +37,10 @@ cargo test
 2. **Build WASM:**
 
    ```sh
-   cd wasm_bindings && wasm-pack build --target web --features starknet_with_keccak,blake2s --no-default-features
+   cd wasm_bindings && wasm-pack build --target web --features recursive_with_poseidon,blake2s_248_lsb,stone5 --no-default-features
    ```
 
 ## Features
-
-### Usage
-
-- [x] CLI
 
 ### Implemented Layouts
 
@@ -71,29 +50,26 @@ cargo test
 - [x] small
 - [x] starknet
 - [x] starknet_with_keccak
+- [x] dynamic
 
 ### Commitment Hashes
 
-- [x] keccak
-- [x] blake2s
+- [x] keccak_160_lsb
+- [x] keccak_248_lsb
+- [x] blake2s_160_lsb
+- [x] blake2s_248_lsb
+
+### Stone Prover versions
+
+- [x] Stone5
+- [x] Stone6
 
 ### Web Support
 
 - [x] WASM support
+- [x] NO_STD support
 - [x] [Web Demo](https://demo.swiftness.iosis.tech/)
-- [x] NPM packages:
-  - [swiftness-dex-blake2s](https://www.npmjs.com/package/swiftness-dex-blake2s)
-  - [swiftness-dex-keccak](https://www.npmjs.com/package/swiftness-dex-keccak)
-  - [swiftness-recursive-blake2s](https://www.npmjs.com/package/swiftness-recursive-blake2s)
-  - [swiftness-recursive-keccak](https://www.npmjs.com/package/swiftness-recursive-keccak)
-  - [swiftness-recursive-with-poseidon-blake2s](https://www.npmjs.com/package/swiftness-recursive-with-poseidon-blake2s)
-  - [swiftness-recursive-with-poseidon-keccak](https://www.npmjs.com/package/swiftness-recursive-with-poseidon-keccak)
-  - [swiftness-small-blake2s](https://www.npmjs.com/package/swiftness-small-blake2s)
-  - [swiftness-small-keccak](https://www.npmjs.com/package/swiftness-small-keccak)
-  - [swiftness-starknet-blake2s](https://www.npmjs.com/package/swiftness-starknet-blake2s)
-  - [swiftness-starknet-keccak](https://www.npmjs.com/package/swiftness-starknet-keccak)
-  - [swiftness-starknet-with-keccak-blake2s](https://www.npmjs.com/package/swiftness-starknet-with-keccak-blake2s)
-  - [swiftness-starknet-with-keccak-keccak](https://www.npmjs.com/package/swiftness-starknet-with-keccak-keccak)
+- [x] [NPM packages](https://www.npmjs.com/search?q=swiftness)
 
 ### Other Platforms Support
 

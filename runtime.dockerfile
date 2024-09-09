@@ -8,7 +8,7 @@ WORKDIR /swiftness
 COPY . .
 
 # Define build arguments for features
-ARG FEATURES="starknet_with_keccak,blake2s"
+ARG FEATURES="starknet_with_keccak,blake2s_160_lsb"
 
 # Use the build arguments in the cargo install command
 RUN cargo install -f --path cli/ --features $FEATURES --no-default-features

@@ -4,7 +4,7 @@ use std::collections::BTreeMap;
 #[derive(Debug, Clone, PartialEq)]
 pub struct StarkProof {
     pub config: StarkConfig,
-    pub public_input: CairoPublicInput,
+    pub public_input: PublicInput,
     pub unsent_commitment: StarkUnsentCommitment,
     pub witness: StarkWitness,
 }
@@ -135,12 +135,12 @@ pub struct FriLayerWitness {
 }
 
 #[derive(Debug, Clone, PartialEq)]
-pub struct CairoPublicInput {
+pub struct PublicInput {
     pub log_n_steps: u32,
     pub range_check_min: u32,
     pub range_check_max: u32,
     pub layout: BigUint,
-    pub dynamic_params: BTreeMap<String, BigUint>,
+    pub dynamic_params: BTreeMap<String, u32>,
     pub n_segments: usize,
     pub segments: Vec<SegmentInfo>,
     pub padding_addr: u32,

@@ -1,3 +1,4 @@
+use crate::consts::FELT_0;
 use starknet_crypto::Felt;
 
 // Evaluates a periodic column at a point.
@@ -5,7 +6,7 @@ use starknet_crypto::Felt;
 // To simulate a periodic column with 2**k repetitions, one should evaluate at point**(2**k)
 // instead.
 pub fn eval_pedersen_x(point: Felt) -> Felt {
-    let mut res = Felt::ZERO;
+    let mut res = FELT_0;
     res = res * point
         + Felt::from_hex_unchecked(
             "0x43869b387c2d0eab20661ebdfaca58b4b23feac014e1e1d9413164312e77da",
@@ -2062,7 +2063,7 @@ pub fn eval_pedersen_x(point: Felt) -> Felt {
 // To simulate a periodic column with 2**k repetitions, one should evaluate at point**(2**k)
 // instead.
 pub fn eval_pedersen_y(point: Felt) -> Felt {
-    let mut res = Felt::ZERO;
+    let mut res = FELT_0;
     res = res * point
         + Felt::from_hex_unchecked(
             "0x62b07622f501888a668440d9b856be4b0c3bf12a401fc2bebaeab4a7e1684ad",
@@ -4119,7 +4120,7 @@ pub fn eval_pedersen_y(point: Felt) -> Felt {
 // To simulate a periodic column with 2**k repetitions, one should evaluate at point**(2**k)
 // instead.
 pub fn eval_ecdsa_x(point: Felt) -> Felt {
-    let mut res = Felt::ZERO;
+    let mut res = FELT_0;
     res = res * point
         + Felt::from_hex_unchecked(
             "0x22aac295d2c9dd7e94269a4a72b2fb3c3af04a0cb42ed1f66cfd446fc505ee2",
@@ -5152,7 +5153,7 @@ pub fn eval_ecdsa_x(point: Felt) -> Felt {
 // To simulate a periodic column with 2**k repetitions, one should evaluate at point**(2**k)
 // instead.
 pub fn eval_ecdsa_y(point: Felt) -> Felt {
-    let mut res = Felt::ZERO;
+    let mut res = FELT_0;
     res = res * point
         + Felt::from_hex_unchecked(
             "0x23a2994e807cd40717d68f37e1d765f4354a81b12374c82f481f09f9faff31a",
@@ -6185,7 +6186,7 @@ pub fn eval_ecdsa_y(point: Felt) -> Felt {
 // To simulate a periodic column with 2**k repetitions, one should evaluate at point**(2**k)
 // instead.
 pub fn eval_keccak_round_key0(point: Felt) -> Felt {
-    let mut res = Felt::ZERO;
+    let mut res = FELT_0;
     res = res * point
         + Felt::from_hex_unchecked(
             "0x25257ecfcf301b18da64254e59b151a549668b8c150b39f71eb3e3508224fbb",
@@ -6319,7 +6320,7 @@ pub fn eval_keccak_round_key0(point: Felt) -> Felt {
 // To simulate a periodic column with 2**k repetitions, one should evaluate at point**(2**k)
 // instead.
 pub fn eval_keccak_round_key1(point: Felt) -> Felt {
-    let mut res = Felt::ZERO;
+    let mut res = FELT_0;
     res = res * point
         + Felt::from_hex_unchecked(
             "0x46c20a61e3dd5f8e8d4085bfcf8e52c9c50152285742b9ba783a4edb6608353",
@@ -6453,7 +6454,7 @@ pub fn eval_keccak_round_key1(point: Felt) -> Felt {
 // To simulate a periodic column with 2**k repetitions, one should evaluate at point**(2**k)
 // instead.
 pub fn eval_keccak_round_key3(point: Felt) -> Felt {
-    let mut res = Felt::ZERO;
+    let mut res = FELT_0;
     res = res * point
         + Felt::from_hex_unchecked(
             "0x4a025b231a318123295e4fc2ad69f9552eec69c64066fac264b1cfcdd7d3158",
@@ -6587,7 +6588,7 @@ pub fn eval_keccak_round_key3(point: Felt) -> Felt {
 // To simulate a periodic column with 2**k repetitions, one should evaluate at point**(2**k)
 // instead.
 pub fn eval_keccak_round_key7(point: Felt) -> Felt {
-    let mut res = Felt::ZERO;
+    let mut res = FELT_0;
     res = res * point
         + Felt::from_hex_unchecked(
             "0x279b1137fbe58a227ed345e6b3136ea36aa5eabb7ebaac5f226c318ef599e60",
@@ -6721,7 +6722,7 @@ pub fn eval_keccak_round_key7(point: Felt) -> Felt {
 // To simulate a periodic column with 2**k repetitions, one should evaluate at point**(2**k)
 // instead.
 pub fn eval_keccak_round_key15(point: Felt) -> Felt {
-    let mut res = Felt::ZERO;
+    let mut res = FELT_0;
     res = res * point
         + Felt::from_hex_unchecked(
             "0x24ec7e1a7b8bcb5b138102f4131d7fa12dd5fc5278251892aa929a46b50dec4",
@@ -6858,7 +6859,7 @@ pub fn eval_keccak_round_key15(point: Felt) -> Felt {
 // To simulate a periodic column with 2**k repetitions, one should evaluate at point**(2**k)
 // instead.
 pub fn eval_keccak_round_key31(point: Felt) -> Felt {
-    let mut res = Felt::ZERO;
+    let mut res = FELT_0;
     res = res * point
         + Felt::from_hex_unchecked(
             "0x5852cb7312b6299275e11e7bf04e6a604038b1398d93ed46cdfa41cb9503116",
@@ -6995,7 +6996,7 @@ pub fn eval_keccak_round_key31(point: Felt) -> Felt {
 // To simulate a periodic column with 2**k repetitions, one should evaluate at point**(2**k)
 // instead.
 pub fn eval_keccak_round_key63(point: Felt) -> Felt {
-    let mut res = Felt::ZERO;
+    let mut res = FELT_0;
     res = res * point
         + Felt::from_hex_unchecked(
             "0x13c65642d180be37bf6db1ca47e2884a87a9c17aaa35744910c1b0fccc4c50f",
@@ -7132,7 +7133,7 @@ pub fn eval_keccak_round_key63(point: Felt) -> Felt {
 // To simulate a periodic column with 2**k repetitions, one should evaluate at point**(2**k)
 // instead.
 pub fn eval_poseidon_poseidon_full_round_key0(point: Felt) -> Felt {
-    let mut res = Felt::ZERO;
+    let mut res = FELT_0;
     res = res * point
         + Felt::from_hex_unchecked(
             "0x7ed6ec4a18e23340489e4e36db8f4fcebf6b6ebd56185c29397344c5deea4c8",
@@ -7173,7 +7174,7 @@ pub fn eval_poseidon_poseidon_full_round_key0(point: Felt) -> Felt {
 // To simulate a periodic column with 2**k repetitions, one should evaluate at point**(2**k)
 // instead.
 pub fn eval_poseidon_poseidon_full_round_key1(point: Felt) -> Felt {
-    let mut res = Felt::ZERO;
+    let mut res = FELT_0;
     res = res * point
         + Felt::from_hex_unchecked(
             "0x143ce163d9e857b549efa236512d839954411bc04e888aa114215f991ee8a57",
@@ -7214,7 +7215,7 @@ pub fn eval_poseidon_poseidon_full_round_key1(point: Felt) -> Felt {
 // To simulate a periodic column with 2**k repetitions, one should evaluate at point**(2**k)
 // instead.
 pub fn eval_poseidon_poseidon_full_round_key2(point: Felt) -> Felt {
-    let mut res = Felt::ZERO;
+    let mut res = FELT_0;
     res = res * point
         + Felt::from_hex_unchecked(
             "0x565a88ff293c0a9c48cb67be157ad800604990d390e1b173e9bdc09abf9f788",
@@ -7255,7 +7256,7 @@ pub fn eval_poseidon_poseidon_full_round_key2(point: Felt) -> Felt {
 // To simulate a periodic column with 2**k repetitions, one should evaluate at point**(2**k)
 // instead.
 pub fn eval_poseidon_poseidon_partial_round_key0(point: Felt) -> Felt {
-    let mut res = Felt::ZERO;
+    let mut res = FELT_0;
     res = res * point
         + Felt::from_hex_unchecked(
             "0x3413bee8966e47edad4d25455e74664d547713650ae8ef6f7f4bd1d56077b55",
@@ -7520,7 +7521,7 @@ pub fn eval_poseidon_poseidon_partial_round_key0(point: Felt) -> Felt {
 // To simulate a periodic column with 2**k repetitions, one should evaluate at point**(2**k)
 // instead.
 pub fn eval_poseidon_poseidon_partial_round_key1(point: Felt) -> Felt {
-    let mut res = Felt::ZERO;
+    let mut res = FELT_0;
     res = res * point
         + Felt::from_hex_unchecked(
             "0x26f2aa4059eb10ba60302d001cdf4a5482d43e2d7d05bd2b5486cd8c52ab9be",

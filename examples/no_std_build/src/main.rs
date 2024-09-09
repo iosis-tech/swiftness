@@ -2,7 +2,7 @@
 #![no_main]
 
 use core::panic::PanicInfo;
-use embedded_alloc::Heap;
+use embedded_alloc::LlffHeap as Heap;
 
 /// This function is called on panic.
 #[panic_handler]

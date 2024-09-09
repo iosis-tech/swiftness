@@ -5,41 +5,15 @@ edition = "2021"
 license-file = "LICENSE"
 readme = "README.md"
 repository = "https://github.com/iosis-tech/swiftness"
-version = "0.0.8"
-
-[features]
-default = ["std", "keccak"]
-std = [
-    "swiftness_air/std",
-    "swiftness_commitment/std",
-    "swiftness_fri/std",
-    "swiftness_pow/std",
-    "swiftness_stark/std",
-    "swiftness_transcript/std",
-]
-keccak = [
-    "swiftness_pow/keccak",
-    "swiftness_commitment/keccak",
-]
-blake2s = [
-    "swiftness_pow/blake2s",
-    "swiftness_commitment/blake2s",
-]
-
+version = "0.0.9"
 
 [dependencies]
-serde = "1.0"
-thiserror = "1.0.61"
-starknet-types-core = "0.1.5"
-num-bigint = { version = "0.4.4", features = ["serde"] }
 anyhow = "1.0.80"
 clap = { version = "4.5.1", features = ["derive"] }
+num-bigint = { version = "0.4.4", features = ["serde"] }
 regex = "1.10.3"
+serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.114"
-
-swiftness_air = { path = "../crates/air", default-features = false, version = "0.0.8" }
-swiftness_commitment = { path = "../crates/commitment", default-features = false, version = "0.0.8" }
-swiftness_fri = { path = "../crates/fri", default-features = false, version = "0.0.8" }
-swiftness_pow = { path = "../crates/pow", default-features = false, version = "0.0.8" }
-swiftness_stark = { path = "../crates/stark", default-features = false, version = "0.0.8" }
-swiftness_transcript = { path = "../crates/transcript", default-features = false, version = "0.0.8" }
+starknet-crypto = "0.7.1"
+starknet-types-core = "0.1.5"
+thiserror = "1.0.61"

@@ -1,6 +1,7 @@
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
 use starknet_crypto::Felt;
+use swiftness_commitment::vector;
 
 #[serde_as]
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
@@ -41,15 +42,24 @@ impl StarkConfig {
         self.n_queries * self.log_n_cosets + Felt::from(self.proof_of_work.n_bits)
     }
 
-    pub fn validate<Layout: LayoutTrait>(&self, security_bits: Felt) -> Result<(), Error> {
+    pub fn validate(
+        &self,
+        security_bits: Felt,
+        num_columns_first: Felt,
+        num_columns_second: Felt,
+    ) -> Result<(), Error> {
         self.proof_of_work.validate()?;
 
-        assert!(security_bits <= self.security_bits());
+        ensure!(security_bits <= self.security_bits(), Error::InsufficientSecurity);
 
         // Validate traces config.
         let log_eval_domain_size = self.log_trace_domain_size + self.log_n_cosets;
-        self.traces
-            .validate::<Layout>(log_eval_domain_size, self.n_verifier_friendly_commitment_layers)?;
+        self.traces.validate(
+            log_eval_domain_size,
+            self.n_verifier_friendly_commitment_layers,
+            num_columns_first,
+            num_columns_second,
+        )?;
 
         // Validate composition config.
         self.composition
@@ -62,9 +72,7 @@ impl StarkConfig {
     }
 }
 
-use swiftness_air::layout::LayoutTrait;
-use swiftness_commitment::vector;
-
+use swiftness_transcript::ensure;
 #[cfg(feature = "std")]
 use thiserror::Error;
 
@@ -79,6 +87,10 @@ pub enum Error {
     Pow(#[from] swiftness_pow::config::Error),
     #[error("Trace Error")]
     Trace(#[from] swiftness_air::trace::config::Error),
+    #[error("dynamic params missing")]
+    DynamicParamsMissing,
+    #[error("insufficient number ofsecurity bits")]
+    InsufficientSecurity,
 }
 
 #[cfg(not(feature = "std"))]
@@ -95,4 +107,8 @@ pub enum Error {
     Pow(#[from] swiftness_pow::config::Error),
     #[error("Trace Error")]
     Trace(#[from] swiftness_air::trace::config::Error),
+    #[error("dynamic params missing")]
+    DynamicParamsMissing,
+    #[error("insufficient number ofsecurity bits")]
+    InsufficientSecurity,
 }
