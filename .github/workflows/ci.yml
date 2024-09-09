@@ -86,7 +86,7 @@ jobs:
         run: cargo run -r --bin swiftness --features ${{ matrix.layout }},stone5,keccak_160_lsb --no-default-features -- --proof ${{ env.PROOFS_DIR }}/${{ matrix.layout }}/cairo0_stone5_example_proof.json
         working-directory: ${{ env.WORKING_DIR }}
   
-  verify-proof-stone6-keccak-248-lsb:
+  verify-proof-stone6-blake2s-248-lsb:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -123,7 +123,7 @@ jobs:
             ${{ runner.os }}-cargo-build-
 
       - name: Run verification
-        run: cargo run -r --bin swiftness --features ${{ matrix.layout }},stone6,keccak_248_lsb --no-default-features -- --proof ${{ env.PROOFS_DIR }}/${{ matrix.layout }}/cairo0_stone6_example_proof.json
+        run: cargo run -r --bin swiftness --features ${{ matrix.layout }},stone6,blake2s_248_lsb --no-default-features -- --proof ${{ env.PROOFS_DIR }}/${{ matrix.layout }}/cairo0_stone6_example_proof.json
         working-directory: ${{ env.WORKING_DIR }}
 
   no-std-build:
@@ -133,6 +133,7 @@ jobs:
       matrix:
         layout: ["dynamic"]
         hash: ["blake2s_248_lsb"]
+        stone: ["stone5"]
         target: ["armebv7r-none-eabi", "riscv64imac-unknown-none-elf", "aarch64-unknown-none-softfloat", "aarch64-unknown-none"]
 
     env:
@@ -168,7 +169,7 @@ jobs:
         working-directory: ${{ env.WORKING_DIR }}
 
       - name: Build project
-        run: cargo build -r --features ${{ matrix.layout }},${{ matrix.hash }} --no-default-features --target ${{ matrix.target }}
+        run: cargo build -r --features ${{ matrix.layout }},${{ matrix.hash }},${{ matrix.stone }} --no-default-features --target ${{ matrix.target }}
         working-directory: ${{ env.WORKING_DIR }}
 
       - name: Print binary metadata
