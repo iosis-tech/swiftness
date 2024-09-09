@@ -45,8 +45,14 @@ dynamic = [
     "swiftness_air/dynamic",
     "swiftness_stark/dynamic",
 ]
-stone5 = ["swiftness_air/stone5"]
-stone6 = ["swiftness_air/stone6"]
+stone5 = [
+    "swiftness_air/stone5",
+    "swiftness_stark/stone5",
+]
+stone6 = [
+    "swiftness_air/stone6",
+    "swiftness_stark/stone6",
+]
 keccak_160_lsb = [
     "swiftness_air/keccak_160_lsb",
     "swiftness_stark/keccak_160_lsb",

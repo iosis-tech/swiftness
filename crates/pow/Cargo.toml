@@ -18,12 +18,12 @@ keccak = []
 blake2s = []
 
 [dependencies]
+blake2.workspace = true
 serde.workspace = true
 sha3.workspace = true
 starknet-crypto.workspace = true
 starknet-types-core.workspace = true
 thiserror = { optional = true, workspace = true }
 thiserror-no-std.workspace = true
-blake2.workspace = true
 
 swiftness_transcript.workspace = true

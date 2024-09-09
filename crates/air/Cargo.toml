@@ -31,6 +31,7 @@ blake2s_160_lsb = ["swiftness_commitment/blake2s_160_lsb"]
 blake2s_248_lsb = ["swiftness_commitment/blake2s_248_lsb"]
 
 [dependencies]
+num-bigint.workspace = true
 serde_with.workspace = true
 serde.workspace = true
 starknet-core.workspace = true
@@ -38,7 +39,6 @@ starknet-crypto.workspace = true
 starknet-types-core.workspace = true
 thiserror = { optional = true, workspace = true }
 thiserror-no-std.workspace = true
-num-bigint.workspace = true
 
 swiftness_commitment.workspace = true
 swiftness_transcript.workspace = true
