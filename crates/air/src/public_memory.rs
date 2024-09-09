@@ -104,12 +104,7 @@ impl PublicInput {
         let mut hash_data = {
             #[cfg(feature = "stone5")]
             {
-                vec![
-                    self.log_n_steps,
-                    self.range_check_min,
-                    self.range_check_max,
-                    self.layout,
-                ]
+                vec![self.log_n_steps, self.range_check_min, self.range_check_max, self.layout]
             }
             #[cfg(feature = "stone6")]
             {
