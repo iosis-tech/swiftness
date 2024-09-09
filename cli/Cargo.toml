@@ -28,7 +28,7 @@ swiftness_stark = { path = "../crates/stark", default-features = false, features
 swiftness_proof_parser = { path = "../proof_parser", version = "0.0.8" }
 
 [features]
-default = ["recursive", "keccak_160_lsb"]
+default = ["recursive", "keccak_160_lsb", "stone5"]
 dex = ["swiftness_air/dex", "swiftness_stark/dex"]
 recursive = ["swiftness_air/recursive", "swiftness_stark/recursive"]
 recursive_with_poseidon = [
@@ -45,6 +45,8 @@ dynamic = [
     "swiftness_air/dynamic",
     "swiftness_stark/dynamic",
 ]
+stone5 = ["swiftness_air/stone5"]
+stone6 = ["swiftness_air/stone6"]
 keccak_160_lsb = [
     "swiftness_air/keccak_160_lsb",
     "swiftness_stark/keccak_160_lsb",

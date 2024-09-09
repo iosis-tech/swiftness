@@ -27,7 +27,7 @@ crate-type = ["cdylib", "rlib"]
 getrandom = { version = "0.2.15", features = ["js"] }
 
 [features]
-default = ["recursive", "keccak_160_lsb"]
+default = ["recursive", "keccak_160_lsb", "stone5"]
 dex = [
     "swiftness/dex",
     "swiftness_air/dex",
@@ -62,6 +62,14 @@ dynamic = [
     "swiftness/dynamic",
     "swiftness_air/dynamic",
     "swiftness_stark/dynamic",
+]
+stone5 = [
+    "swiftness/stone5",
+    "swiftness_air/stone5",
+]
+stone6 = [
+    "swiftness/stone6",
+    "swiftness_air/stone6",
 ]
 keccak_160_lsb = [
     "swiftness/keccak_160_lsb",
