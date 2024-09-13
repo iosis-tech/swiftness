@@ -8,7 +8,7 @@ repository.workspace = true
 version.workspace = true
 
 [features]
-default = ["std", "recursive", "keccak_160_lsb"]
+default = ["std", "recursive", "keccak_160_lsb", "stone5"]
 std = [
     "dep:thiserror",
     "starknet-core/std",
