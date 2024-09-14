@@ -29,7 +29,7 @@ pub mod config;
 pub mod queries;
 pub mod types;
 
-#[cfg(test)]
+#[cfg(any(test, feature = "test_fixtures"))]
 pub mod fixtures;
 #[cfg(test)]
 pub mod tests;

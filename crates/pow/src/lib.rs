@@ -8,7 +8,7 @@ extern crate std;
 pub mod config;
 pub mod pow;
 
-#[cfg(feature = "test_fixtures")]
+#[cfg(any(test, feature = "test_fixtures"))]
 pub mod fixtures;
 #[cfg(test)]
 pub mod tests;
