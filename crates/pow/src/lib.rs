@@ -6,8 +6,9 @@ extern crate alloc;
 extern crate std;
 
 pub mod config;
-pub mod fixtures;
 pub mod pow;
 
+#[cfg(feature = "test_fixtures")]
+pub mod fixtures;
 #[cfg(test)]
 pub mod tests;
