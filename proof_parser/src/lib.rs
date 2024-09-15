@@ -3,6 +3,7 @@ pub mod builtins;
 pub mod json_parser;
 pub mod layout;
 pub mod stark_proof;
+
 pub use stark_proof::*;
 
 pub fn parse(input: String) -> anyhow::Result<stark_proof::StarkProof> {
