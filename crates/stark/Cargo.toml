@@ -47,6 +47,11 @@ blake2s_248_lsb = [
     "swiftness_pow/blake2s",
     "swiftness_commitment/blake2s_248_lsb"
 ]
+test_fixtures = [
+    "swiftness_air/test_fixtures",
+    "swiftness_fri/test_fixtures",
+    "swiftness_pow/test_fixtures",
+]
 
 [dependencies]
 serde_with.workspace = true
@@ -61,3 +66,8 @@ swiftness_commitment.workspace = true
 swiftness_fri.workspace = true
 swiftness_pow.workspace = true
 swiftness_transcript.workspace = true
+
+[dev-dependencies]
+swiftness_air = { workspace = true, features = ["test_fixtures"] }
+swiftness_fri = { workspace = true, features = ["test_fixtures"] }
+swiftness_pow = { workspace = true, features = ["test_fixtures"] }

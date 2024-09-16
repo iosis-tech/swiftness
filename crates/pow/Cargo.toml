@@ -16,6 +16,7 @@ std = [
 ]
 keccak = []
 blake2s = []
+test_fixtures = []
 
 [dependencies]
 blake2.workspace = true

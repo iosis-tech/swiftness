@@ -24,11 +24,12 @@ import_module_if_layout!(commit);
 import_module_if_layout!(oods);
 import_module_if_layout!(stark);
 import_module_if_layout!(verify);
-import_module_if_layout!(fixtures);
 
 pub mod config;
 pub mod queries;
 pub mod types;
 
+#[cfg(any(test, feature = "test_fixtures"))]
+pub mod fixtures;
 #[cfg(test)]
 pub mod tests;
