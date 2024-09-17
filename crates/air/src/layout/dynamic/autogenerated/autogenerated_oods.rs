@@ -359,16 +359,6 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
     let range_check_builtin_mem_suboffset = felt!(dynamic_params.range_check_builtin_mem_suboffset);
     let range_check_builtin_row_ratio = felt!(dynamic_params.range_check_builtin_row_ratio);
     let range_check_units_row_ratio = felt!(dynamic_params.range_check_units_row_ratio);
-    let uses_add_mod_builtin = felt!(dynamic_params.uses_add_mod_builtin);
-    let uses_bitwise_builtin = felt!(dynamic_params.uses_bitwise_builtin);
-    let uses_ec_op_builtin = felt!(dynamic_params.uses_ec_op_builtin);
-    let uses_ecdsa_builtin = felt!(dynamic_params.uses_ecdsa_builtin);
-    let uses_keccak_builtin = felt!(dynamic_params.uses_keccak_builtin);
-    let uses_mul_mod_builtin = felt!(dynamic_params.uses_mul_mod_builtin);
-    let uses_pedersen_builtin = felt!(dynamic_params.uses_pedersen_builtin);
-    let uses_poseidon_builtin = felt!(dynamic_params.uses_poseidon_builtin);
-    let uses_range_check96_builtin = felt!(dynamic_params.uses_range_check96_builtin);
-    let uses_range_check_builtin = felt!(dynamic_params.uses_range_check_builtin);
 
     // Compute powers.
     let pow0 = trace_generator.pow_felt(&(mul_mod_row_ratio));
