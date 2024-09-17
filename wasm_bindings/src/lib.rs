@@ -15,7 +15,7 @@ use swiftness_air::layout::starknet_with_keccak::Layout;
 
 use serde_json::json;
 use swiftness::{transform::TransformTo, types::StarkProof as StarkProofVerifier};
-use swiftness_proof_parser::parse;
+use swiftness_proof_parser::{parse, StarkProof};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
@@ -26,9 +26,8 @@ pub fn parse_proof(stark_proof: JsValue) -> Result<JsValue, JsError> {
         .ok_or_else(|| JsError::new("Failed to convert input to string. Expected a valid string representation of the proof"))?;
 
     // Parse the proof
-    let stark_proof: StarkProofVerifier = parse(proof_str)
-        .map_err(|e| JsError::new(&format!("Error parsing proof: {}", e)))?
-        .transform_to();
+    let stark_proof: StarkProof =
+        parse(proof_str).map_err(|e| JsError::new(&format!("Error parsing proof: {}", e)))?;
 
     // Serialize result to JsValue
     let result = serde_json::to_value(stark_proof)
@@ -46,14 +45,15 @@ pub fn verify_proof(stark_proof: JsValue) -> Result<JsValue, JsError> {
         )
     })?;
 
-    let stark_proof: StarkProofVerifier = serde_json::from_str(&proof_str)
-        .map_err(|e| JsError::new(&format!("Error deserializing proof: {}", e)))?;
+    let stark_proof: StarkProofVerifier = serde_json::from_str::<StarkProof>(&proof_str)
+        .map_err(|e| JsError::new(&format!("Error deserializing proof: {}", e)))?
+        .transform_to();
 
     // Get security bits and verify
     let security_bits = stark_proof.config.security_bits();
     let (program_hash, output_hash) = stark_proof
         .verify::<Layout>(security_bits)
-        .map_err(|e| JsError::new(&format!("Verification failed: {}", e)))?;
+        .map_err(|e| JsError::new(&format!("Proof verification failed: {}", e)))?;
 
     // Serialize result to JsValue
     let result = serde_json::to_value(json!({
