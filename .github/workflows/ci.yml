@@ -91,7 +91,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        layout: [ "dynamic" ]
+        layout:
+          [
+            "dex",
+            "dynamic",
+            "recursive",
+            "recursive_with_poseidon",
+            "small",
+            "starknet",
+            "starknet_with_keccak",
+          ]
 
     env:
       PROOFS_DIR: ${{ github.workspace }}/examples/proofs
