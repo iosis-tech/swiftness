@@ -2532,4193 +2532,4193 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[0])
-        .field_div(&felt_nonzero!((point - pow2003 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2003 * oods_point));
     let total_sum = total_sum + constraint_coefficients[0] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[1])
-        .field_div(&felt_nonzero!((point - pow2004 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2004 * oods_point));
     let total_sum = total_sum + constraint_coefficients[1] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[2])
-        .field_div(&felt_nonzero!((point - pow2002 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2002 * oods_point));
     let total_sum = total_sum + constraint_coefficients[2] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[3])
-        .field_div(&felt_nonzero!((point - pow2001 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2001 * oods_point));
     let total_sum = total_sum + constraint_coefficients[3] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[4])
-        .field_div(&felt_nonzero!((point - pow2000 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2000 * oods_point));
     let total_sum = total_sum + constraint_coefficients[4] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[5])
-        .field_div(&felt_nonzero!((point - pow1999 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1999 * oods_point));
     let total_sum = total_sum + constraint_coefficients[5] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[6])
-        .field_div(&felt_nonzero!((point - pow2005 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2005 * oods_point));
     let total_sum = total_sum + constraint_coefficients[6] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[7])
-        .field_div(&felt_nonzero!((point - pow2006 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2006 * oods_point));
     let total_sum = total_sum + constraint_coefficients[7] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[8])
-        .field_div(&felt_nonzero!((point - pow2007 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2007 * oods_point));
     let total_sum = total_sum + constraint_coefficients[8] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[9])
-        .field_div(&felt_nonzero!((point - pow2008 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2008 * oods_point));
     let total_sum = total_sum + constraint_coefficients[9] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[10])
-        .field_div(&felt_nonzero!((point - pow2006 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2006 * oods_point));
     let total_sum = total_sum + constraint_coefficients[10] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[11])
-        .field_div(&felt_nonzero!((point - pow2007 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2007 * oods_point));
     let total_sum = total_sum + constraint_coefficients[11] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[12])
-        .field_div(&felt_nonzero!((point - pow2008 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2008 * oods_point));
     let total_sum = total_sum + constraint_coefficients[12] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[13])
-        .field_div(&felt_nonzero!((point - pow2009 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2009 * oods_point));
     let total_sum = total_sum + constraint_coefficients[13] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[14])
-        .field_div(&felt_nonzero!((point - pow2009 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2009 * oods_point));
     let total_sum = total_sum + constraint_coefficients[14] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[15])
-        .field_div(&felt_nonzero!((point - pow2010 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2010 * oods_point));
     let total_sum = total_sum + constraint_coefficients[15] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[16])
-        .field_div(&felt_nonzero!((point - pow2012 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2012 * oods_point));
     let total_sum = total_sum + constraint_coefficients[16] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[17])
-        .field_div(&felt_nonzero!((point - pow2013 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2013 * oods_point));
     let total_sum = total_sum + constraint_coefficients[17] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[18])
-        .field_div(&felt_nonzero!((point - pow2010 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2010 * oods_point));
     let total_sum = total_sum + constraint_coefficients[18] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[19])
-        .field_div(&felt_nonzero!((point - pow2011 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2011 * oods_point));
     let total_sum = total_sum + constraint_coefficients[19] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[20])
-        .field_div(&felt_nonzero!((point - pow2011 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2011 * oods_point));
     let total_sum = total_sum + constraint_coefficients[20] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[21])
-        .field_div(&felt_nonzero!((point - pow2012 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2012 * oods_point));
     let total_sum = total_sum + constraint_coefficients[21] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[22])
-        .field_div(&felt_nonzero!((point - pow2015 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2015 * oods_point));
     let total_sum = total_sum + constraint_coefficients[22] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[23])
-        .field_div(&felt_nonzero!((point - pow2016 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2016 * oods_point));
     let total_sum = total_sum + constraint_coefficients[23] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[24])
-        .field_div(&felt_nonzero!((point - pow2016 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2016 * oods_point));
     let total_sum = total_sum + constraint_coefficients[24] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[25])
-        .field_div(&felt_nonzero!((point - pow2017 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2017 * oods_point));
     let total_sum = total_sum + constraint_coefficients[25] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[26])
-        .field_div(&felt_nonzero!((point - pow1998 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1998 * oods_point));
     let total_sum = total_sum + constraint_coefficients[26] * value;
 
     let value = (column_values[dynamic_params.cpu_registers_fp_column] - oods_values[27])
-        .field_div(&felt_nonzero!((point - pow1996 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1996 * oods_point));
     let total_sum = total_sum + constraint_coefficients[27] * value;
 
     let value = (column_values[dynamic_params.cpu_registers_ap_column] - oods_values[28])
-        .field_div(&felt_nonzero!((point - pow1994 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1994 * oods_point));
     let total_sum = total_sum + constraint_coefficients[28] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[29])
-        .field_div(&felt_nonzero!((point - pow1993 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1993 * oods_point));
     let total_sum = total_sum + constraint_coefficients[29] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[30])
-        .field_div(&felt_nonzero!((point - pow2005 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2005 * oods_point));
     let total_sum = total_sum + constraint_coefficients[30] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[31])
-        .field_div(&felt_nonzero!((point - pow1992 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1992 * oods_point));
     let total_sum = total_sum + constraint_coefficients[31] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[32])
-        .field_div(&felt_nonzero!((point - pow1990 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1990 * oods_point));
     let total_sum = total_sum + constraint_coefficients[32] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[33])
-        .field_div(&felt_nonzero!((point - pow1989 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1989 * oods_point));
     let total_sum = total_sum + constraint_coefficients[33] * value;
 
     let value = (column_values[dynamic_params.cpu_operands_ops_mul_column] - oods_values[34])
-        .field_div(&felt_nonzero!((point - pow1988 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1988 * oods_point));
     let total_sum = total_sum + constraint_coefficients[34] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[35])
-        .field_div(&felt_nonzero!((point - pow1987 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1987 * oods_point));
     let total_sum = total_sum + constraint_coefficients[35] * value;
 
     let value = (column_values[dynamic_params.cpu_operands_res_column] - oods_values[36])
-        .field_div(&felt_nonzero!((point - pow1986 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1986 * oods_point));
     let total_sum = total_sum + constraint_coefficients[36] * value;
 
     let value = (column_values[dynamic_params.cpu_update_registers_update_pc_tmp0_column]
         - oods_values[37])
-        .field_div(&felt_nonzero!((point - pow1985 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1985 * oods_point));
     let total_sum = total_sum + constraint_coefficients[37] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[38])
-        .field_div(&felt_nonzero!((point - pow1984 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1984 * oods_point));
     let total_sum = total_sum + constraint_coefficients[38] * value;
 
     let value = (column_values[dynamic_params.cpu_update_registers_update_pc_tmp1_column]
         - oods_values[39])
-        .field_div(&felt_nonzero!((point - pow1983 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1983 * oods_point));
     let total_sum = total_sum + constraint_coefficients[39] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[40])
-        .field_div(&felt_nonzero!((point - pow1991 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1991 * oods_point));
     let total_sum = total_sum + constraint_coefficients[40] * value;
 
     let value = (column_values[dynamic_params.cpu_registers_ap_column] - oods_values[41])
-        .field_div(&felt_nonzero!((point - pow1995 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1995 * oods_point));
     let total_sum = total_sum + constraint_coefficients[41] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[42])
-        .field_div(&felt_nonzero!((point - pow2013 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2013 * oods_point));
     let total_sum = total_sum + constraint_coefficients[42] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[43])
-        .field_div(&felt_nonzero!((point - pow2014 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2014 * oods_point));
     let total_sum = total_sum + constraint_coefficients[43] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[44])
-        .field_div(&felt_nonzero!((point - pow2014 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2014 * oods_point));
     let total_sum = total_sum + constraint_coefficients[44] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[45])
-        .field_div(&felt_nonzero!((point - pow2015 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2015 * oods_point));
     let total_sum = total_sum + constraint_coefficients[45] * value;
 
     let value = (column_values[dynamic_params.cpu_registers_fp_column] - oods_values[46])
-        .field_div(&felt_nonzero!((point - pow1997 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1997 * oods_point));
     let total_sum = total_sum + constraint_coefficients[46] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[47])
-        .field_div(&felt_nonzero!((point - pow2017 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2017 * oods_point));
     let total_sum = total_sum + constraint_coefficients[47] * value;
 
     let value = (column_values[dynamic_params.cpu_decode_opcode_range_check_column_column]
         - oods_values[48])
-        .field_div(&felt_nonzero!((point - pow2018 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow2018 * oods_point));
     let total_sum = total_sum + constraint_coefficients[48] * value;
 
     let value = (column_values[dynamic_params.memory_sorted_addr_column] - oods_values[49])
-        .field_div(&felt_nonzero!((point - pow1981 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1981 * oods_point));
     let total_sum = total_sum + constraint_coefficients[49] * value;
 
     let value = (column_values[dynamic_params.memory_sorted_value_column] - oods_values[50])
-        .field_div(&felt_nonzero!((point - pow1979 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1979 * oods_point));
     let total_sum = total_sum + constraint_coefficients[50] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[51])
-        .field_div(&felt_nonzero!((point - pow1898 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1898 * oods_point));
     let total_sum = total_sum + constraint_coefficients[51] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[52])
-        .field_div(&felt_nonzero!((point - pow1797 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1797 * oods_point));
     let total_sum = total_sum + constraint_coefficients[52] * value;
 
     let value = (column_values[dynamic_params.memory_sorted_addr_column] - oods_values[53])
-        .field_div(&felt_nonzero!((point - pow1982 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1982 * oods_point));
     let total_sum = total_sum + constraint_coefficients[53] * value;
 
     let value = (column_values[dynamic_params.memory_sorted_value_column] - oods_values[54])
-        .field_div(&felt_nonzero!((point - pow1980 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1980 * oods_point));
     let total_sum = total_sum + constraint_coefficients[54] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[55])
-        .field_div(&felt_nonzero!((point - pow1978 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1978 * oods_point));
     let total_sum = total_sum + constraint_coefficients[55] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[56])
-        .field_div(&felt_nonzero!((point - pow1897 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1897 * oods_point));
     let total_sum = total_sum + constraint_coefficients[56] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[57])
-        .field_div(&felt_nonzero!((point - pow1977 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1977 * oods_point));
     let total_sum = total_sum + constraint_coefficients[57] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[58])
-        .field_div(&felt_nonzero!((point - pow1896 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1896 * oods_point));
     let total_sum = total_sum + constraint_coefficients[58] * value;
 
     let value = (column_values[dynamic_params.range_check16_sorted_column] - oods_values[59])
-        .field_div(&felt_nonzero!((point - pow1795 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1795 * oods_point));
     let total_sum = total_sum + constraint_coefficients[59] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[60])
-        .field_div(&felt_nonzero!((point - pow1713 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1713 * oods_point));
     let total_sum = total_sum + constraint_coefficients[60] * value;
 
     let value = (column_values[dynamic_params.range_check16_sorted_column] - oods_values[61])
-        .field_div(&felt_nonzero!((point - pow1796 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1796 * oods_point));
     let total_sum = total_sum + constraint_coefficients[61] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[62])
-        .field_div(&felt_nonzero!((point - pow1794 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1794 * oods_point));
     let total_sum = total_sum + constraint_coefficients[62] * value;
 
     let value = (column_values[dynamic_params.diluted_check_permuted_values_column]
         - oods_values[63])
-        .field_div(&felt_nonzero!((point - pow1711 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1711 * oods_point));
     let total_sum = total_sum + constraint_coefficients[63] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[64])
-        .field_div(&felt_nonzero!((point - pow1376 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1376 * oods_point));
     let total_sum = total_sum + constraint_coefficients[64] * value;
 
     let value = (column_values[dynamic_params.diluted_check_permuted_values_column]
         - oods_values[65])
-        .field_div(&felt_nonzero!((point - pow1712 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1712 * oods_point));
     let total_sum = total_sum + constraint_coefficients[65] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[66])
-        .field_div(&felt_nonzero!((point - pow1710 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1710 * oods_point));
     let total_sum = total_sum + constraint_coefficients[66] * value;
 
     let value = (column_values
         [dynamic_params.pedersen_hash0_ec_subset_sum_bit_unpacking_prod_ones192_column]
         - oods_values[67])
-        .field_div(&felt_nonzero!((point - pow1375 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1375 * oods_point));
     let total_sum = total_sum + constraint_coefficients[67] * value;
 
     let value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_selector_column]
         - oods_values[68])
-        .field_div(&felt_nonzero!((point - pow1366 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1366 * oods_point));
     let total_sum = total_sum + constraint_coefficients[68] * value;
 
     let value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_selector_column]
         - oods_values[69])
-        .field_div(&felt_nonzero!((point - pow1370 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1370 * oods_point));
     let total_sum = total_sum + constraint_coefficients[69] * value;
 
     let value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_selector_column]
         - oods_values[70])
-        .field_div(&felt_nonzero!((point - pow1369 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1369 * oods_point));
     let total_sum = total_sum + constraint_coefficients[70] * value;
 
     let value = (column_values
         [dynamic_params.pedersen_hash0_ec_subset_sum_bit_unpacking_prod_ones196_column]
         - oods_values[71])
-        .field_div(&felt_nonzero!((point - pow1365 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1365 * oods_point));
     let total_sum = total_sum + constraint_coefficients[71] * value;
 
     let value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_selector_column]
         - oods_values[72])
-        .field_div(&felt_nonzero!((point - pow1373 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1373 * oods_point));
     let total_sum = total_sum + constraint_coefficients[72] * value;
 
     let value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_selector_column]
         - oods_values[73])
-        .field_div(&felt_nonzero!((point - pow1368 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1368 * oods_point));
     let total_sum = total_sum + constraint_coefficients[73] * value;
 
     let value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_selector_column]
         - oods_values[74])
-        .field_div(&felt_nonzero!((point - pow1367 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1367 * oods_point));
     let total_sum = total_sum + constraint_coefficients[74] * value;
 
     let value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_selector_column]
         - oods_values[75])
-        .field_div(&felt_nonzero!((point - pow1372 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1372 * oods_point));
     let total_sum = total_sum + constraint_coefficients[75] * value;
 
     let value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_selector_column]
         - oods_values[76])
-        .field_div(&felt_nonzero!((point - pow1371 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1371 * oods_point));
     let total_sum = total_sum + constraint_coefficients[76] * value;
 
     let value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_x_column]
         - oods_values[77])
-        .field_div(&felt_nonzero!((point - pow1360 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1360 * oods_point));
     let total_sum = total_sum + constraint_coefficients[77] * value;
 
     let value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_y_column]
         - oods_values[78])
-        .field_div(&felt_nonzero!((point - pow1356 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1356 * oods_point));
     let total_sum = total_sum + constraint_coefficients[78] * value;
 
     let value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_x_column]
         - oods_values[79])
-        .field_div(&felt_nonzero!((point - pow1362 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1362 * oods_point));
     let total_sum = total_sum + constraint_coefficients[79] * value;
 
     let value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_y_column]
         - oods_values[80])
-        .field_div(&felt_nonzero!((point - pow1358 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1358 * oods_point));
     let total_sum = total_sum + constraint_coefficients[80] * value;
 
     let value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_slope_column]
         - oods_values[81])
-        .field_div(&felt_nonzero!((point - pow1355 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1355 * oods_point));
     let total_sum = total_sum + constraint_coefficients[81] * value;
 
     let value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_x_column]
         - oods_values[82])
-        .field_div(&felt_nonzero!((point - pow1361 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1361 * oods_point));
     let total_sum = total_sum + constraint_coefficients[82] * value;
 
     let value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_y_column]
         - oods_values[83])
-        .field_div(&felt_nonzero!((point - pow1357 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1357 * oods_point));
     let total_sum = total_sum + constraint_coefficients[83] * value;
 
     let value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_x_column]
         - oods_values[84])
-        .field_div(&felt_nonzero!((point - pow1363 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1363 * oods_point));
     let total_sum = total_sum + constraint_coefficients[84] * value;
 
     let value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_y_column]
         - oods_values[85])
-        .field_div(&felt_nonzero!((point - pow1359 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1359 * oods_point));
     let total_sum = total_sum + constraint_coefficients[85] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[86])
-        .field_div(&felt_nonzero!((point - pow1895 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1895 * oods_point));
     let total_sum = total_sum + constraint_coefficients[86] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[87])
-        .field_div(&felt_nonzero!((point - pow1976 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1976 * oods_point));
     let total_sum = total_sum + constraint_coefficients[87] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[88])
-        .field_div(&felt_nonzero!((point - pow1975 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1975 * oods_point));
     let total_sum = total_sum + constraint_coefficients[88] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[89])
-        .field_div(&felt_nonzero!((point - pow1974 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1974 * oods_point));
     let total_sum = total_sum + constraint_coefficients[89] * value;
 
     let value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_selector_column]
         - oods_values[90])
-        .field_div(&felt_nonzero!((point - pow1374 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1374 * oods_point));
     let total_sum = total_sum + constraint_coefficients[90] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[91])
-        .field_div(&felt_nonzero!((point - pow1894 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1894 * oods_point));
     let total_sum = total_sum + constraint_coefficients[91] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[92])
-        .field_div(&felt_nonzero!((point - pow1973 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1973 * oods_point));
     let total_sum = total_sum + constraint_coefficients[92] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[93])
-        .field_div(&felt_nonzero!((point - pow1893 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1893 * oods_point));
     let total_sum = total_sum + constraint_coefficients[93] * value;
 
     let value = (column_values[dynamic_params.pedersen_hash0_ec_subset_sum_partial_sum_x_column]
         - oods_values[94])
-        .field_div(&felt_nonzero!((point - pow1364 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1364 * oods_point));
     let total_sum = total_sum + constraint_coefficients[94] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[95])
-        .field_div(&felt_nonzero!((point - pow1892 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1892 * oods_point));
     let total_sum = total_sum + constraint_coefficients[95] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[96])
-        .field_div(&felt_nonzero!((point - pow1786 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1786 * oods_point));
     let total_sum = total_sum + constraint_coefficients[96] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[97])
-        .field_div(&felt_nonzero!((point - pow1787 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1787 * oods_point));
     let total_sum = total_sum + constraint_coefficients[97] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[98])
-        .field_div(&felt_nonzero!((point - pow1788 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1788 * oods_point));
     let total_sum = total_sum + constraint_coefficients[98] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[99])
-        .field_div(&felt_nonzero!((point - pow1789 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1789 * oods_point));
     let total_sum = total_sum + constraint_coefficients[99] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[100])
-        .field_div(&felt_nonzero!((point - pow1790 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1790 * oods_point));
     let total_sum = total_sum + constraint_coefficients[100] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[101])
-        .field_div(&felt_nonzero!((point - pow1791 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1791 * oods_point));
     let total_sum = total_sum + constraint_coefficients[101] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[102])
-        .field_div(&felt_nonzero!((point - pow1792 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1792 * oods_point));
     let total_sum = total_sum + constraint_coefficients[102] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[103])
-        .field_div(&felt_nonzero!((point - pow1793 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1793 * oods_point));
     let total_sum = total_sum + constraint_coefficients[103] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[104])
-        .field_div(&felt_nonzero!((point - pow1972 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1972 * oods_point));
     let total_sum = total_sum + constraint_coefficients[104] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[105])
-        .field_div(&felt_nonzero!((point - pow1971 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1971 * oods_point));
     let total_sum = total_sum + constraint_coefficients[105] * value;
 
     let value = (column_values[dynamic_params.ecdsa_signature0_key_points_x_column]
         - oods_values[106])
-        .field_div(&felt_nonzero!((point - pow1352 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1352 * oods_point));
     let total_sum = total_sum + constraint_coefficients[106] * value;
 
     let value = (column_values[dynamic_params.ecdsa_signature0_key_points_y_column]
         - oods_values[107])
-        .field_div(&felt_nonzero!((point - pow1349 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1349 * oods_point));
     let total_sum = total_sum + constraint_coefficients[107] * value;
 
     let value = (column_values[dynamic_params.ecdsa_signature0_key_points_x_column]
         - oods_values[108])
-        .field_div(&felt_nonzero!((point - pow1353 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1353 * oods_point));
     let total_sum = total_sum + constraint_coefficients[108] * value;
 
     let value = (column_values[dynamic_params.ecdsa_signature0_key_points_y_column]
         - oods_values[109])
-        .field_div(&felt_nonzero!((point - pow1350 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1350 * oods_point));
     let total_sum = total_sum + constraint_coefficients[109] * value;
 
     let value = (column_values[dynamic_params.ecdsa_signature0_doubling_slope_column]
         - oods_values[110])
-        .field_div(&felt_nonzero!((point - pow1348 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1348 * oods_point));
     let total_sum = total_sum + constraint_coefficients[110] * value;
 
     let value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_generator_selector_column]
         - oods_values[111])
-        .field_div(&felt_nonzero!((point - pow1346 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1346 * oods_point));
     let total_sum = total_sum + constraint_coefficients[111] * value;
 
     let value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_generator_selector_column]
         - oods_values[112])
-        .field_div(&felt_nonzero!((point - pow1347 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1347 * oods_point));
     let total_sum = total_sum + constraint_coefficients[112] * value;
 
     let value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_generator_partial_sum_x_column]
         - oods_values[113])
-        .field_div(&felt_nonzero!((point - pow1343 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1343 * oods_point));
     let total_sum = total_sum + constraint_coefficients[113] * value;
 
     let value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_generator_partial_sum_y_column]
         - oods_values[114])
-        .field_div(&felt_nonzero!((point - pow1340 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1340 * oods_point));
     let total_sum = total_sum + constraint_coefficients[114] * value;
 
     let value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_generator_partial_sum_x_column]
         - oods_values[115])
-        .field_div(&felt_nonzero!((point - pow1344 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1344 * oods_point));
     let total_sum = total_sum + constraint_coefficients[115] * value;
 
     let value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_generator_partial_sum_y_column]
         - oods_values[116])
-        .field_div(&felt_nonzero!((point - pow1341 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1341 * oods_point));
     let total_sum = total_sum + constraint_coefficients[116] * value;
 
     let value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_generator_slope_column]
         - oods_values[117])
-        .field_div(&felt_nonzero!((point - pow1339 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1339 * oods_point));
     let total_sum = total_sum + constraint_coefficients[117] * value;
 
     let value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_generator_x_diff_inv_column]
         - oods_values[118])
-        .field_div(&felt_nonzero!((point - pow1338 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1338 * oods_point));
     let total_sum = total_sum + constraint_coefficients[118] * value;
 
     let value = (column_values[dynamic_params.ecdsa_signature0_exponentiate_key_selector_column]
         - oods_values[119])
-        .field_div(&felt_nonzero!((point - pow1336 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1336 * oods_point));
     let total_sum = total_sum + constraint_coefficients[119] * value;
 
     let value = (column_values[dynamic_params.ecdsa_signature0_exponentiate_key_selector_column]
         - oods_values[120])
-        .field_div(&felt_nonzero!((point - pow1337 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1337 * oods_point));
     let total_sum = total_sum + constraint_coefficients[120] * value;
 
     let value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_x_column]
         - oods_values[121])
-        .field_div(&felt_nonzero!((point - pow1332 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1332 * oods_point));
     let total_sum = total_sum + constraint_coefficients[121] * value;
 
     let value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_y_column]
         - oods_values[122])
-        .field_div(&felt_nonzero!((point - pow1328 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1328 * oods_point));
     let total_sum = total_sum + constraint_coefficients[122] * value;
 
     let value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_x_column]
         - oods_values[123])
-        .field_div(&felt_nonzero!((point - pow1333 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1333 * oods_point));
     let total_sum = total_sum + constraint_coefficients[123] * value;
 
     let value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_y_column]
         - oods_values[124])
-        .field_div(&felt_nonzero!((point - pow1329 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1329 * oods_point));
     let total_sum = total_sum + constraint_coefficients[124] * value;
 
     let value = (column_values[dynamic_params.ecdsa_signature0_exponentiate_key_slope_column]
         - oods_values[125])
-        .field_div(&felt_nonzero!((point - pow1327 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1327 * oods_point));
     let total_sum = total_sum + constraint_coefficients[125] * value;
 
     let value = (column_values[dynamic_params.ecdsa_signature0_exponentiate_key_x_diff_inv_column]
         - oods_values[126])
-        .field_div(&felt_nonzero!((point - pow1326 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1326 * oods_point));
     let total_sum = total_sum + constraint_coefficients[126] * value;
 
     let value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_generator_partial_sum_x_column]
         - oods_values[127])
-        .field_div(&felt_nonzero!((point - pow1345 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1345 * oods_point));
     let total_sum = total_sum + constraint_coefficients[127] * value;
 
     let value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_generator_partial_sum_y_column]
         - oods_values[128])
-        .field_div(&felt_nonzero!((point - pow1342 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1342 * oods_point));
     let total_sum = total_sum + constraint_coefficients[128] * value;
 
     let value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_x_column]
         - oods_values[129])
-        .field_div(&felt_nonzero!((point - pow1334 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1334 * oods_point));
     let total_sum = total_sum + constraint_coefficients[129] * value;
 
     let value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_y_column]
         - oods_values[130])
-        .field_div(&felt_nonzero!((point - pow1330 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1330 * oods_point));
     let total_sum = total_sum + constraint_coefficients[130] * value;
 
     let value = (column_values[dynamic_params.ecdsa_signature0_key_points_x_column]
         - oods_values[131])
-        .field_div(&felt_nonzero!((point - pow1354 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1354 * oods_point));
     let total_sum = total_sum + constraint_coefficients[131] * value;
 
     let value = (column_values[dynamic_params.ecdsa_signature0_key_points_y_column]
         - oods_values[132])
-        .field_div(&felt_nonzero!((point - pow1351 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1351 * oods_point));
     let total_sum = total_sum + constraint_coefficients[132] * value;
 
     let value = (column_values[dynamic_params.ecdsa_signature0_add_results_slope_column]
         - oods_values[133])
-        .field_div(&felt_nonzero!((point - pow1325 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1325 * oods_point));
     let total_sum = total_sum + constraint_coefficients[133] * value;
 
     let value = (column_values[dynamic_params.ecdsa_signature0_add_results_inv_column]
         - oods_values[134])
-        .field_div(&felt_nonzero!((point - pow1324 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1324 * oods_point));
     let total_sum = total_sum + constraint_coefficients[134] * value;
 
     let value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_x_column]
         - oods_values[135])
-        .field_div(&felt_nonzero!((point - pow1335 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1335 * oods_point));
     let total_sum = total_sum + constraint_coefficients[135] * value;
 
     let value = (column_values
         [dynamic_params.ecdsa_signature0_exponentiate_key_partial_sum_y_column]
         - oods_values[136])
-        .field_div(&felt_nonzero!((point - pow1331 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1331 * oods_point));
     let total_sum = total_sum + constraint_coefficients[136] * value;
 
     let value = (column_values[dynamic_params.ecdsa_signature0_extract_r_slope_column]
         - oods_values[137])
-        .field_div(&felt_nonzero!((point - pow1323 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1323 * oods_point));
     let total_sum = total_sum + constraint_coefficients[137] * value;
 
     let value = (column_values[dynamic_params.ecdsa_signature0_extract_r_inv_column]
         - oods_values[138])
-        .field_div(&felt_nonzero!((point - pow1322 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1322 * oods_point));
     let total_sum = total_sum + constraint_coefficients[138] * value;
 
     let value = (column_values[dynamic_params.ecdsa_signature0_z_inv_column] - oods_values[139])
-        .field_div(&felt_nonzero!((point - pow1321 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1321 * oods_point));
     let total_sum = total_sum + constraint_coefficients[139] * value;
 
     let value = (column_values[dynamic_params.ecdsa_signature0_r_w_inv_column] - oods_values[140])
-        .field_div(&felt_nonzero!((point - pow1320 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1320 * oods_point));
     let total_sum = total_sum + constraint_coefficients[140] * value;
 
     let value = (column_values[dynamic_params.ecdsa_signature0_q_x_squared_column]
         - oods_values[141])
-        .field_div(&felt_nonzero!((point - pow1319 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1319 * oods_point));
     let total_sum = total_sum + constraint_coefficients[141] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[142])
-        .field_div(&felt_nonzero!((point - pow1969 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1969 * oods_point));
     let total_sum = total_sum + constraint_coefficients[142] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[143])
-        .field_div(&felt_nonzero!((point - pow1968 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1968 * oods_point));
     let total_sum = total_sum + constraint_coefficients[143] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[144])
-        .field_div(&felt_nonzero!((point - pow1970 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1970 * oods_point));
     let total_sum = total_sum + constraint_coefficients[144] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[145])
-        .field_div(&felt_nonzero!((point - pow1891 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1891 * oods_point));
     let total_sum = total_sum + constraint_coefficients[145] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[146])
-        .field_div(&felt_nonzero!((point - pow1890 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1890 * oods_point));
     let total_sum = total_sum + constraint_coefficients[146] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[147])
-        .field_div(&felt_nonzero!((point - pow1964 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1964 * oods_point));
     let total_sum = total_sum + constraint_coefficients[147] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[148])
-        .field_div(&felt_nonzero!((point - pow1965 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1965 * oods_point));
     let total_sum = total_sum + constraint_coefficients[148] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[149])
-        .field_div(&felt_nonzero!((point - pow1963 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1963 * oods_point));
     let total_sum = total_sum + constraint_coefficients[149] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[150])
-        .field_div(&felt_nonzero!((point - pow1966 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1966 * oods_point));
     let total_sum = total_sum + constraint_coefficients[150] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[151])
-        .field_div(&felt_nonzero!((point - pow1967 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1967 * oods_point));
     let total_sum = total_sum + constraint_coefficients[151] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[152])
-        .field_div(&felt_nonzero!((point - pow1887 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1887 * oods_point));
     let total_sum = total_sum + constraint_coefficients[152] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[153])
-        .field_div(&felt_nonzero!((point - pow1683 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1683 * oods_point));
     let total_sum = total_sum + constraint_coefficients[153] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[154])
-        .field_div(&felt_nonzero!((point - pow1684 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1684 * oods_point));
     let total_sum = total_sum + constraint_coefficients[154] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[155])
-        .field_div(&felt_nonzero!((point - pow1685 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1685 * oods_point));
     let total_sum = total_sum + constraint_coefficients[155] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[156])
-        .field_div(&felt_nonzero!((point - pow1686 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1686 * oods_point));
     let total_sum = total_sum + constraint_coefficients[156] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[157])
-        .field_div(&felt_nonzero!((point - pow1687 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1687 * oods_point));
     let total_sum = total_sum + constraint_coefficients[157] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[158])
-        .field_div(&felt_nonzero!((point - pow1688 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1688 * oods_point));
     let total_sum = total_sum + constraint_coefficients[158] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[159])
-        .field_div(&felt_nonzero!((point - pow1689 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1689 * oods_point));
     let total_sum = total_sum + constraint_coefficients[159] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[160])
-        .field_div(&felt_nonzero!((point - pow1690 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1690 * oods_point));
     let total_sum = total_sum + constraint_coefficients[160] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[161])
-        .field_div(&felt_nonzero!((point - pow1691 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1691 * oods_point));
     let total_sum = total_sum + constraint_coefficients[161] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[162])
-        .field_div(&felt_nonzero!((point - pow1692 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1692 * oods_point));
     let total_sum = total_sum + constraint_coefficients[162] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[163])
-        .field_div(&felt_nonzero!((point - pow1693 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1693 * oods_point));
     let total_sum = total_sum + constraint_coefficients[163] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[164])
-        .field_div(&felt_nonzero!((point - pow1694 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1694 * oods_point));
     let total_sum = total_sum + constraint_coefficients[164] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[165])
-        .field_div(&felt_nonzero!((point - pow1695 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1695 * oods_point));
     let total_sum = total_sum + constraint_coefficients[165] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[166])
-        .field_div(&felt_nonzero!((point - pow1696 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1696 * oods_point));
     let total_sum = total_sum + constraint_coefficients[166] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[167])
-        .field_div(&felt_nonzero!((point - pow1697 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1697 * oods_point));
     let total_sum = total_sum + constraint_coefficients[167] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[168])
-        .field_div(&felt_nonzero!((point - pow1698 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1698 * oods_point));
     let total_sum = total_sum + constraint_coefficients[168] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[169])
-        .field_div(&felt_nonzero!((point - pow1886 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1886 * oods_point));
     let total_sum = total_sum + constraint_coefficients[169] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[170])
-        .field_div(&felt_nonzero!((point - pow1888 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1888 * oods_point));
     let total_sum = total_sum + constraint_coefficients[170] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[171])
-        .field_div(&felt_nonzero!((point - pow1889 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1889 * oods_point));
     let total_sum = total_sum + constraint_coefficients[171] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[172])
-        .field_div(&felt_nonzero!((point - pow1700 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1700 * oods_point));
     let total_sum = total_sum + constraint_coefficients[172] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[173])
-        .field_div(&felt_nonzero!((point - pow1699 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1699 * oods_point));
     let total_sum = total_sum + constraint_coefficients[173] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[174])
-        .field_div(&felt_nonzero!((point - pow1705 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1705 * oods_point));
     let total_sum = total_sum + constraint_coefficients[174] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[175])
-        .field_div(&felt_nonzero!((point - pow1682 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1682 * oods_point));
     let total_sum = total_sum + constraint_coefficients[175] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[176])
-        .field_div(&felt_nonzero!((point - pow1701 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1701 * oods_point));
     let total_sum = total_sum + constraint_coefficients[176] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[177])
-        .field_div(&felt_nonzero!((point - pow1706 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1706 * oods_point));
     let total_sum = total_sum + constraint_coefficients[177] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[178])
-        .field_div(&felt_nonzero!((point - pow1681 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1681 * oods_point));
     let total_sum = total_sum + constraint_coefficients[178] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[179])
-        .field_div(&felt_nonzero!((point - pow1702 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1702 * oods_point));
     let total_sum = total_sum + constraint_coefficients[179] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[180])
-        .field_div(&felt_nonzero!((point - pow1707 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1707 * oods_point));
     let total_sum = total_sum + constraint_coefficients[180] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[181])
-        .field_div(&felt_nonzero!((point - pow1680 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1680 * oods_point));
     let total_sum = total_sum + constraint_coefficients[181] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[182])
-        .field_div(&felt_nonzero!((point - pow1703 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1703 * oods_point));
     let total_sum = total_sum + constraint_coefficients[182] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[183])
-        .field_div(&felt_nonzero!((point - pow1708 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1708 * oods_point));
     let total_sum = total_sum + constraint_coefficients[183] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[184])
-        .field_div(&felt_nonzero!((point - pow1679 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1679 * oods_point));
     let total_sum = total_sum + constraint_coefficients[184] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[185])
-        .field_div(&felt_nonzero!((point - pow1704 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1704 * oods_point));
     let total_sum = total_sum + constraint_coefficients[185] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[186])
-        .field_div(&felt_nonzero!((point - pow1709 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1709 * oods_point));
     let total_sum = total_sum + constraint_coefficients[186] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[187])
-        .field_div(&felt_nonzero!((point - pow1955 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1955 * oods_point));
     let total_sum = total_sum + constraint_coefficients[187] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[188])
-        .field_div(&felt_nonzero!((point - pow1956 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1956 * oods_point));
     let total_sum = total_sum + constraint_coefficients[188] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[189])
-        .field_div(&felt_nonzero!((point - pow1954 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1954 * oods_point));
     let total_sum = total_sum + constraint_coefficients[189] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[190])
-        .field_div(&felt_nonzero!((point - pow1953 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1953 * oods_point));
     let total_sum = total_sum + constraint_coefficients[190] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[191])
-        .field_div(&felt_nonzero!((point - pow1952 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1952 * oods_point));
     let total_sum = total_sum + constraint_coefficients[191] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[192])
-        .field_div(&felt_nonzero!((point - pow1951 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1951 * oods_point));
     let total_sum = total_sum + constraint_coefficients[192] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[193])
-        .field_div(&felt_nonzero!((point - pow1950 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1950 * oods_point));
     let total_sum = total_sum + constraint_coefficients[193] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[194])
-        .field_div(&felt_nonzero!((point - pow1949 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1949 * oods_point));
     let total_sum = total_sum + constraint_coefficients[194] * value;
 
     let value = (column_values[dynamic_params.ec_op_doubling_slope_column] - oods_values[195])
-        .field_div(&felt_nonzero!((point - pow1318 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1318 * oods_point));
     let total_sum = total_sum + constraint_coefficients[195] * value;
 
     let value = (column_values[dynamic_params.ec_op_doubled_points_x_column] - oods_values[196])
-        .field_div(&felt_nonzero!((point - pow1316 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1316 * oods_point));
     let total_sum = total_sum + constraint_coefficients[196] * value;
 
     let value = (column_values[dynamic_params.ec_op_doubled_points_y_column] - oods_values[197])
-        .field_div(&felt_nonzero!((point - pow1314 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1314 * oods_point));
     let total_sum = total_sum + constraint_coefficients[197] * value;
 
     let value = (column_values[dynamic_params.ec_op_doubled_points_x_column] - oods_values[198])
-        .field_div(&felt_nonzero!((point - pow1317 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1317 * oods_point));
     let total_sum = total_sum + constraint_coefficients[198] * value;
 
     let value = (column_values[dynamic_params.ec_op_doubled_points_y_column] - oods_values[199])
-        .field_div(&felt_nonzero!((point - pow1315 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1315 * oods_point));
     let total_sum = total_sum + constraint_coefficients[199] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[200])
-        .field_div(&felt_nonzero!((point - pow1879 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1879 * oods_point));
     let total_sum = total_sum + constraint_coefficients[200] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[201])
-        .field_div(&felt_nonzero!((point - pow1878 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1878 * oods_point));
     let total_sum = total_sum + constraint_coefficients[201] * value;
 
     let value = (column_values
         [dynamic_params.ec_op_ec_subset_sum_bit_unpacking_prod_ones192_column]
         - oods_values[202])
-        .field_div(&felt_nonzero!((point - pow1313 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1313 * oods_point));
     let total_sum = total_sum + constraint_coefficients[202] * value;
 
     let value = (column_values[dynamic_params.ec_op_ec_subset_sum_selector_column]
         - oods_values[203])
-        .field_div(&felt_nonzero!((point - pow1305 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1305 * oods_point));
     let total_sum = total_sum + constraint_coefficients[203] * value;
 
     let value = (column_values[dynamic_params.ec_op_ec_subset_sum_selector_column]
         - oods_values[204])
-        .field_div(&felt_nonzero!((point - pow1306 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1306 * oods_point));
     let total_sum = total_sum + constraint_coefficients[204] * value;
 
     let value = (column_values[dynamic_params.ec_op_ec_subset_sum_selector_column]
         - oods_values[205])
-        .field_div(&felt_nonzero!((point - pow1311 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1311 * oods_point));
     let total_sum = total_sum + constraint_coefficients[205] * value;
 
     let value = (column_values
         [dynamic_params.ec_op_ec_subset_sum_bit_unpacking_prod_ones196_column]
         - oods_values[206])
-        .field_div(&felt_nonzero!((point - pow1304 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1304 * oods_point));
     let total_sum = total_sum + constraint_coefficients[206] * value;
 
     let value = (column_values[dynamic_params.ec_op_ec_subset_sum_selector_column]
         - oods_values[207])
-        .field_div(&felt_nonzero!((point - pow1312 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1312 * oods_point));
     let total_sum = total_sum + constraint_coefficients[207] * value;
 
     let value = (column_values[dynamic_params.ec_op_ec_subset_sum_selector_column]
         - oods_values[208])
-        .field_div(&felt_nonzero!((point - pow1309 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1309 * oods_point));
     let total_sum = total_sum + constraint_coefficients[208] * value;
 
     let value = (column_values[dynamic_params.ec_op_ec_subset_sum_selector_column]
         - oods_values[209])
-        .field_div(&felt_nonzero!((point - pow1307 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1307 * oods_point));
     let total_sum = total_sum + constraint_coefficients[209] * value;
 
     let value = (column_values[dynamic_params.ec_op_ec_subset_sum_selector_column]
         - oods_values[210])
-        .field_div(&felt_nonzero!((point - pow1308 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1308 * oods_point));
     let total_sum = total_sum + constraint_coefficients[210] * value;
 
     let value = (column_values[dynamic_params.ec_op_ec_subset_sum_selector_column]
         - oods_values[211])
-        .field_div(&felt_nonzero!((point - pow1310 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1310 * oods_point));
     let total_sum = total_sum + constraint_coefficients[211] * value;
 
     let value = (column_values[dynamic_params.ec_op_ec_subset_sum_partial_sum_x_column]
         - oods_values[212])
-        .field_div(&felt_nonzero!((point - pow1301 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1301 * oods_point));
     let total_sum = total_sum + constraint_coefficients[212] * value;
 
     let value = (column_values[dynamic_params.ec_op_ec_subset_sum_partial_sum_y_column]
         - oods_values[213])
-        .field_div(&felt_nonzero!((point - pow1298 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1298 * oods_point));
     let total_sum = total_sum + constraint_coefficients[213] * value;
 
     let value = (column_values[dynamic_params.ec_op_ec_subset_sum_partial_sum_x_column]
         - oods_values[214])
-        .field_div(&felt_nonzero!((point - pow1303 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1303 * oods_point));
     let total_sum = total_sum + constraint_coefficients[214] * value;
 
     let value = (column_values[dynamic_params.ec_op_ec_subset_sum_partial_sum_y_column]
         - oods_values[215])
-        .field_div(&felt_nonzero!((point - pow1300 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1300 * oods_point));
     let total_sum = total_sum + constraint_coefficients[215] * value;
 
     let value = (column_values[dynamic_params.ec_op_ec_subset_sum_slope_column] - oods_values[216])
-        .field_div(&felt_nonzero!((point - pow1297 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1297 * oods_point));
     let total_sum = total_sum + constraint_coefficients[216] * value;
 
     let value = (column_values[dynamic_params.ec_op_ec_subset_sum_x_diff_inv_column]
         - oods_values[217])
-        .field_div(&felt_nonzero!((point - pow1296 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1296 * oods_point));
     let total_sum = total_sum + constraint_coefficients[217] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[218])
-        .field_div(&felt_nonzero!((point - pow1876 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1876 * oods_point));
     let total_sum = total_sum + constraint_coefficients[218] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[219])
-        .field_div(&felt_nonzero!((point - pow1875 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1875 * oods_point));
     let total_sum = total_sum + constraint_coefficients[219] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[220])
-        .field_div(&felt_nonzero!((point - pow1874 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1874 * oods_point));
     let total_sum = total_sum + constraint_coefficients[220] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[221])
-        .field_div(&felt_nonzero!((point - pow1873 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1873 * oods_point));
     let total_sum = total_sum + constraint_coefficients[221] * value;
 
     let value = (column_values[dynamic_params.ec_op_ec_subset_sum_partial_sum_x_column]
         - oods_values[222])
-        .field_div(&felt_nonzero!((point - pow1302 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1302 * oods_point));
     let total_sum = total_sum + constraint_coefficients[222] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[223])
-        .field_div(&felt_nonzero!((point - pow1872 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1872 * oods_point));
     let total_sum = total_sum + constraint_coefficients[223] * value;
 
     let value = (column_values[dynamic_params.ec_op_ec_subset_sum_partial_sum_y_column]
         - oods_values[224])
-        .field_div(&felt_nonzero!((point - pow1299 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1299 * oods_point));
     let total_sum = total_sum + constraint_coefficients[224] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[225])
-        .field_div(&felt_nonzero!((point - pow1947 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1947 * oods_point));
     let total_sum = total_sum + constraint_coefficients[225] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[226])
-        .field_div(&felt_nonzero!((point - pow1948 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1948 * oods_point));
     let total_sum = total_sum + constraint_coefficients[226] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[227])
-        .field_div(&felt_nonzero!((point - pow1265 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1265 * oods_point));
     let total_sum = total_sum + constraint_coefficients[227] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[228])
-        .field_div(&felt_nonzero!((point - pow1856 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1856 * oods_point));
     let total_sum = total_sum + constraint_coefficients[228] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[229])
-        .field_div(&felt_nonzero!((point - pow1270 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1270 * oods_point));
     let total_sum = total_sum + constraint_coefficients[229] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[230])
-        .field_div(&felt_nonzero!((point - pow1857 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1857 * oods_point));
     let total_sum = total_sum + constraint_coefficients[230] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[231])
-        .field_div(&felt_nonzero!((point - pow1271 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1271 * oods_point));
     let total_sum = total_sum + constraint_coefficients[231] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[232])
-        .field_div(&felt_nonzero!((point - pow1858 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1858 * oods_point));
     let total_sum = total_sum + constraint_coefficients[232] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[233])
-        .field_div(&felt_nonzero!((point - pow1272 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1272 * oods_point));
     let total_sum = total_sum + constraint_coefficients[233] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[234])
-        .field_div(&felt_nonzero!((point - pow1859 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1859 * oods_point));
     let total_sum = total_sum + constraint_coefficients[234] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[235])
-        .field_div(&felt_nonzero!((point - pow1273 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1273 * oods_point));
     let total_sum = total_sum + constraint_coefficients[235] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[236])
-        .field_div(&felt_nonzero!((point - pow1860 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1860 * oods_point));
     let total_sum = total_sum + constraint_coefficients[236] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[237])
-        .field_div(&felt_nonzero!((point - pow1274 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1274 * oods_point));
     let total_sum = total_sum + constraint_coefficients[237] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[238])
-        .field_div(&felt_nonzero!((point - pow1861 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1861 * oods_point));
     let total_sum = total_sum + constraint_coefficients[238] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[239])
-        .field_div(&felt_nonzero!((point - pow1275 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1275 * oods_point));
     let total_sum = total_sum + constraint_coefficients[239] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[240])
-        .field_div(&felt_nonzero!((point - pow1862 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1862 * oods_point));
     let total_sum = total_sum + constraint_coefficients[240] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[241])
-        .field_div(&felt_nonzero!((point - pow1276 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1276 * oods_point));
     let total_sum = total_sum + constraint_coefficients[241] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[242])
-        .field_div(&felt_nonzero!((point - pow1863 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1863 * oods_point));
     let total_sum = total_sum + constraint_coefficients[242] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[243])
-        .field_div(&felt_nonzero!((point - pow1277 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1277 * oods_point));
     let total_sum = total_sum + constraint_coefficients[243] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[244])
-        .field_div(&felt_nonzero!((point - pow1864 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1864 * oods_point));
     let total_sum = total_sum + constraint_coefficients[244] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[245])
-        .field_div(&felt_nonzero!((point - pow1278 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1278 * oods_point));
     let total_sum = total_sum + constraint_coefficients[245] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[246])
-        .field_div(&felt_nonzero!((point - pow1865 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1865 * oods_point));
     let total_sum = total_sum + constraint_coefficients[246] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[247])
-        .field_div(&felt_nonzero!((point - pow1279 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1279 * oods_point));
     let total_sum = total_sum + constraint_coefficients[247] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[248])
-        .field_div(&felt_nonzero!((point - pow1866 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1866 * oods_point));
     let total_sum = total_sum + constraint_coefficients[248] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[249])
-        .field_div(&felt_nonzero!((point - pow1280 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1280 * oods_point));
     let total_sum = total_sum + constraint_coefficients[249] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[250])
-        .field_div(&felt_nonzero!((point - pow1867 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1867 * oods_point));
     let total_sum = total_sum + constraint_coefficients[250] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[251])
-        .field_div(&felt_nonzero!((point - pow1281 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1281 * oods_point));
     let total_sum = total_sum + constraint_coefficients[251] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[252])
-        .field_div(&felt_nonzero!((point - pow1868 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1868 * oods_point));
     let total_sum = total_sum + constraint_coefficients[252] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[253])
-        .field_div(&felt_nonzero!((point - pow1282 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1282 * oods_point));
     let total_sum = total_sum + constraint_coefficients[253] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[254])
-        .field_div(&felt_nonzero!((point - pow1869 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1869 * oods_point));
     let total_sum = total_sum + constraint_coefficients[254] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[255])
-        .field_div(&felt_nonzero!((point - pow1283 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1283 * oods_point));
     let total_sum = total_sum + constraint_coefficients[255] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[256])
-        .field_div(&felt_nonzero!((point - pow1870 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1870 * oods_point));
     let total_sum = total_sum + constraint_coefficients[256] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[257])
-        .field_div(&felt_nonzero!((point - pow1284 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1284 * oods_point));
     let total_sum = total_sum + constraint_coefficients[257] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[258])
-        .field_div(&felt_nonzero!((point - pow1871 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1871 * oods_point));
     let total_sum = total_sum + constraint_coefficients[258] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[259])
-        .field_div(&felt_nonzero!((point - pow1235 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1235 * oods_point));
     let total_sum = total_sum + constraint_coefficients[259] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[260])
-        .field_div(&felt_nonzero!((point - pow1243 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1243 * oods_point));
     let total_sum = total_sum + constraint_coefficients[260] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[261])
-        .field_div(&felt_nonzero!((point - pow1266 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1266 * oods_point));
     let total_sum = total_sum + constraint_coefficients[261] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[262])
-        .field_div(&felt_nonzero!((point - pow1251 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1251 * oods_point));
     let total_sum = total_sum + constraint_coefficients[262] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[263])
-        .field_div(&felt_nonzero!((point - pow1267 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1267 * oods_point));
     let total_sum = total_sum + constraint_coefficients[263] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[264])
-        .field_div(&felt_nonzero!((point - pow1252 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1252 * oods_point));
     let total_sum = total_sum + constraint_coefficients[264] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[265])
-        .field_div(&felt_nonzero!((point - pow1268 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1268 * oods_point));
     let total_sum = total_sum + constraint_coefficients[265] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[266])
-        .field_div(&felt_nonzero!((point - pow1253 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1253 * oods_point));
     let total_sum = total_sum + constraint_coefficients[266] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[267])
-        .field_div(&felt_nonzero!((point - pow1269 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1269 * oods_point));
     let total_sum = total_sum + constraint_coefficients[267] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[268])
-        .field_div(&felt_nonzero!((point - pow1254 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1254 * oods_point));
     let total_sum = total_sum + constraint_coefficients[268] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[269])
-        .field_div(&felt_nonzero!((point - pow1285 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1285 * oods_point));
     let total_sum = total_sum + constraint_coefficients[269] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[270])
-        .field_div(&felt_nonzero!((point - pow1255 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1255 * oods_point));
     let total_sum = total_sum + constraint_coefficients[270] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[271])
-        .field_div(&felt_nonzero!((point - pow1286 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1286 * oods_point));
     let total_sum = total_sum + constraint_coefficients[271] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[272])
-        .field_div(&felt_nonzero!((point - pow1256 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1256 * oods_point));
     let total_sum = total_sum + constraint_coefficients[272] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[273])
-        .field_div(&felt_nonzero!((point - pow1287 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1287 * oods_point));
     let total_sum = total_sum + constraint_coefficients[273] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[274])
-        .field_div(&felt_nonzero!((point - pow1257 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1257 * oods_point));
     let total_sum = total_sum + constraint_coefficients[274] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[275])
-        .field_div(&felt_nonzero!((point - pow1288 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1288 * oods_point));
     let total_sum = total_sum + constraint_coefficients[275] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[276])
-        .field_div(&felt_nonzero!((point - pow1258 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1258 * oods_point));
     let total_sum = total_sum + constraint_coefficients[276] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[277])
-        .field_div(&felt_nonzero!((point - pow1289 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1289 * oods_point));
     let total_sum = total_sum + constraint_coefficients[277] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[278])
-        .field_div(&felt_nonzero!((point - pow1259 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1259 * oods_point));
     let total_sum = total_sum + constraint_coefficients[278] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[279])
-        .field_div(&felt_nonzero!((point - pow1290 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1290 * oods_point));
     let total_sum = total_sum + constraint_coefficients[279] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[280])
-        .field_div(&felt_nonzero!((point - pow1260 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1260 * oods_point));
     let total_sum = total_sum + constraint_coefficients[280] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[281])
-        .field_div(&felt_nonzero!((point - pow1291 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1291 * oods_point));
     let total_sum = total_sum + constraint_coefficients[281] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[282])
-        .field_div(&felt_nonzero!((point - pow1261 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1261 * oods_point));
     let total_sum = total_sum + constraint_coefficients[282] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[283])
-        .field_div(&felt_nonzero!((point - pow1292 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1292 * oods_point));
     let total_sum = total_sum + constraint_coefficients[283] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[284])
-        .field_div(&felt_nonzero!((point - pow1262 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1262 * oods_point));
     let total_sum = total_sum + constraint_coefficients[284] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[285])
-        .field_div(&felt_nonzero!((point - pow1293 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1293 * oods_point));
     let total_sum = total_sum + constraint_coefficients[285] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[286])
-        .field_div(&felt_nonzero!((point - pow1263 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1263 * oods_point));
     let total_sum = total_sum + constraint_coefficients[286] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[287])
-        .field_div(&felt_nonzero!((point - pow1294 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1294 * oods_point));
     let total_sum = total_sum + constraint_coefficients[287] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[288])
-        .field_div(&felt_nonzero!((point - pow1264 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1264 * oods_point));
     let total_sum = total_sum + constraint_coefficients[288] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_reshaped_intermediate_column]
         - oods_values[289])
-        .field_div(&felt_nonzero!((point - pow1295 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1295 * oods_point));
     let total_sum = total_sum + constraint_coefficients[289] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[290])
-        .field_div(&felt_nonzero!((point - pow1219 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1219 * oods_point));
     let total_sum = total_sum + constraint_coefficients[290] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[291])
-        .field_div(&felt_nonzero!((point - pow1203 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1203 * oods_point));
     let total_sum = total_sum + constraint_coefficients[291] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[292])
-        .field_div(&felt_nonzero!((point - pow1211 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1211 * oods_point));
     let total_sum = total_sum + constraint_coefficients[292] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[293])
-        .field_div(&felt_nonzero!((point - pow1204 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1204 * oods_point));
     let total_sum = total_sum + constraint_coefficients[293] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[294])
-        .field_div(&felt_nonzero!((point - pow1214 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1214 * oods_point));
     let total_sum = total_sum + constraint_coefficients[294] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[295])
-        .field_div(&felt_nonzero!((point - pow1212 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1212 * oods_point));
     let total_sum = total_sum + constraint_coefficients[295] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[296])
-        .field_div(&felt_nonzero!((point - pow1236 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1236 * oods_point));
     let total_sum = total_sum + constraint_coefficients[296] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[297])
-        .field_div(&felt_nonzero!((point - pow1215 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1215 * oods_point));
     let total_sum = total_sum + constraint_coefficients[297] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[298])
-        .field_div(&felt_nonzero!((point - pow1244 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1244 * oods_point));
     let total_sum = total_sum + constraint_coefficients[298] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[299])
-        .field_div(&felt_nonzero!((point - pow1213 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1213 * oods_point));
     let total_sum = total_sum + constraint_coefficients[299] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[300])
-        .field_div(&felt_nonzero!((point - pow1237 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1237 * oods_point));
     let total_sum = total_sum + constraint_coefficients[300] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[301])
-        .field_div(&felt_nonzero!((point - pow1217 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1217 * oods_point));
     let total_sum = total_sum + constraint_coefficients[301] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[302])
-        .field_div(&felt_nonzero!((point - pow1245 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1245 * oods_point));
     let total_sum = total_sum + constraint_coefficients[302] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[303])
-        .field_div(&felt_nonzero!((point - pow1216 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1216 * oods_point));
     let total_sum = total_sum + constraint_coefficients[303] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[304])
-        .field_div(&felt_nonzero!((point - pow1238 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1238 * oods_point));
     let total_sum = total_sum + constraint_coefficients[304] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[305])
-        .field_div(&felt_nonzero!((point - pow1218 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1218 * oods_point));
     let total_sum = total_sum + constraint_coefficients[305] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[306])
-        .field_div(&felt_nonzero!((point - pow1246 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1246 * oods_point));
     let total_sum = total_sum + constraint_coefficients[306] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[307])
-        .field_div(&felt_nonzero!((point - pow1221 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1221 * oods_point));
     let total_sum = total_sum + constraint_coefficients[307] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[308])
-        .field_div(&felt_nonzero!((point - pow1239 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1239 * oods_point));
     let total_sum = total_sum + constraint_coefficients[308] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[309])
-        .field_div(&felt_nonzero!((point - pow1226 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1226 * oods_point));
     let total_sum = total_sum + constraint_coefficients[309] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[310])
-        .field_div(&felt_nonzero!((point - pow1247 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1247 * oods_point));
     let total_sum = total_sum + constraint_coefficients[310] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[311])
-        .field_div(&felt_nonzero!((point - pow1222 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1222 * oods_point));
     let total_sum = total_sum + constraint_coefficients[311] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[312])
-        .field_div(&felt_nonzero!((point - pow1240 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1240 * oods_point));
     let total_sum = total_sum + constraint_coefficients[312] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[313])
-        .field_div(&felt_nonzero!((point - pow1227 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1227 * oods_point));
     let total_sum = total_sum + constraint_coefficients[313] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[314])
-        .field_div(&felt_nonzero!((point - pow1248 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1248 * oods_point));
     let total_sum = total_sum + constraint_coefficients[314] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[315])
-        .field_div(&felt_nonzero!((point - pow1223 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1223 * oods_point));
     let total_sum = total_sum + constraint_coefficients[315] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[316])
-        .field_div(&felt_nonzero!((point - pow1241 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1241 * oods_point));
     let total_sum = total_sum + constraint_coefficients[316] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[317])
-        .field_div(&felt_nonzero!((point - pow1231 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1231 * oods_point));
     let total_sum = total_sum + constraint_coefficients[317] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[318])
-        .field_div(&felt_nonzero!((point - pow1249 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1249 * oods_point));
     let total_sum = total_sum + constraint_coefficients[318] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[319])
-        .field_div(&felt_nonzero!((point - pow1242 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1242 * oods_point));
     let total_sum = total_sum + constraint_coefficients[319] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[320])
-        .field_div(&felt_nonzero!((point - pow1225 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1225 * oods_point));
     let total_sum = total_sum + constraint_coefficients[320] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column]
         - oods_values[321])
-        .field_div(&felt_nonzero!((point - pow1250 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1250 * oods_point));
     let total_sum = total_sum + constraint_coefficients[321] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[322])
-        .field_div(&felt_nonzero!((point - pow1224 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1224 * oods_point));
     let total_sum = total_sum + constraint_coefficients[322] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[323])
-        .field_div(&felt_nonzero!((point - pow1207 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1207 * oods_point));
     let total_sum = total_sum + constraint_coefficients[323] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[324])
-        .field_div(&felt_nonzero!((point - pow1232 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1232 * oods_point));
     let total_sum = total_sum + constraint_coefficients[324] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[325])
-        .field_div(&felt_nonzero!((point - pow1208 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1208 * oods_point));
     let total_sum = total_sum + constraint_coefficients[325] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[326])
-        .field_div(&felt_nonzero!((point - pow1673 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1673 * oods_point));
     let total_sum = total_sum + constraint_coefficients[326] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[327])
-        .field_div(&felt_nonzero!((point - pow1233 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1233 * oods_point));
     let total_sum = total_sum + constraint_coefficients[327] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[328])
-        .field_div(&felt_nonzero!((point - pow1209 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1209 * oods_point));
     let total_sum = total_sum + constraint_coefficients[328] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[329])
-        .field_div(&felt_nonzero!((point - pow1674 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1674 * oods_point));
     let total_sum = total_sum + constraint_coefficients[329] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[330])
-        .field_div(&felt_nonzero!((point - pow1234 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1234 * oods_point));
     let total_sum = total_sum + constraint_coefficients[330] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[331])
-        .field_div(&felt_nonzero!((point - pow1210 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1210 * oods_point));
     let total_sum = total_sum + constraint_coefficients[331] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[332])
-        .field_div(&felt_nonzero!((point - pow1220 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1220 * oods_point));
     let total_sum = total_sum + constraint_coefficients[332] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[333])
-        .field_div(&felt_nonzero!((point - pow1228 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1228 * oods_point));
     let total_sum = total_sum + constraint_coefficients[333] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[334])
-        .field_div(&felt_nonzero!((point - pow1571 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1571 * oods_point));
     let total_sum = total_sum + constraint_coefficients[334] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[335])
-        .field_div(&felt_nonzero!((point - pow1205 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1205 * oods_point));
     let total_sum = total_sum + constraint_coefficients[335] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[336])
-        .field_div(&felt_nonzero!((point - pow1229 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1229 * oods_point));
     let total_sum = total_sum + constraint_coefficients[336] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[337])
-        .field_div(&felt_nonzero!((point - pow1572 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1572 * oods_point));
     let total_sum = total_sum + constraint_coefficients[337] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[338])
-        .field_div(&felt_nonzero!((point - pow1206 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1206 * oods_point));
     let total_sum = total_sum + constraint_coefficients[338] * value;
 
     let value = (column_values
         [dynamic_params.keccak_keccak_parse_to_diluted_cumulative_sum_column]
         - oods_values[339])
-        .field_div(&felt_nonzero!((point - pow1230 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1230 * oods_point));
     let total_sum = total_sum + constraint_coefficients[339] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[340])
-        .field_div(&felt_nonzero!((point - pow1615 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1615 * oods_point));
     let total_sum = total_sum + constraint_coefficients[340] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[341])
-        .field_div(&felt_nonzero!((point - pow1581 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1581 * oods_point));
     let total_sum = total_sum + constraint_coefficients[341] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[342])
-        .field_div(&felt_nonzero!((point - pow1588 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1588 * oods_point));
     let total_sum = total_sum + constraint_coefficients[342] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[343])
-        .field_div(&felt_nonzero!((point - pow1596 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1596 * oods_point));
     let total_sum = total_sum + constraint_coefficients[343] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[344])
-        .field_div(&felt_nonzero!((point - pow1604 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1604 * oods_point));
     let total_sum = total_sum + constraint_coefficients[344] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[345])
-        .field_div(&felt_nonzero!((point - pow1546 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1546 * oods_point));
     let total_sum = total_sum + constraint_coefficients[345] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[346])
-        .field_div(&felt_nonzero!((point - pow1518 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1518 * oods_point));
     let total_sum = total_sum + constraint_coefficients[346] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[347])
-        .field_div(&felt_nonzero!((point - pow1512 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1512 * oods_point));
     let total_sum = total_sum + constraint_coefficients[347] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[348])
-        .field_div(&felt_nonzero!((point - pow1574 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1574 * oods_point));
     let total_sum = total_sum + constraint_coefficients[348] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[349])
-        .field_div(&felt_nonzero!((point - pow1582 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1582 * oods_point));
     let total_sum = total_sum + constraint_coefficients[349] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[350])
-        .field_div(&felt_nonzero!((point - pow1590 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1590 * oods_point));
     let total_sum = total_sum + constraint_coefficients[350] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[351])
-        .field_div(&felt_nonzero!((point - pow1599 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1599 * oods_point));
     let total_sum = total_sum + constraint_coefficients[351] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[352])
-        .field_div(&felt_nonzero!((point - pow1605 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1605 * oods_point));
     let total_sum = total_sum + constraint_coefficients[352] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[353])
-        .field_div(&felt_nonzero!((point - pow1622 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1622 * oods_point));
     let total_sum = total_sum + constraint_coefficients[353] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[354])
-        .field_div(&felt_nonzero!((point - pow1548 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1548 * oods_point));
     let total_sum = total_sum + constraint_coefficients[354] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[355])
-        .field_div(&felt_nonzero!((point - pow1508 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1508 * oods_point));
     let total_sum = total_sum + constraint_coefficients[355] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[356])
-        .field_div(&felt_nonzero!((point - pow1575 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1575 * oods_point));
     let total_sum = total_sum + constraint_coefficients[356] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[357])
-        .field_div(&felt_nonzero!((point - pow1583 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1583 * oods_point));
     let total_sum = total_sum + constraint_coefficients[357] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[358])
-        .field_div(&felt_nonzero!((point - pow1591 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1591 * oods_point));
     let total_sum = total_sum + constraint_coefficients[358] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[359])
-        .field_div(&felt_nonzero!((point - pow1600 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1600 * oods_point));
     let total_sum = total_sum + constraint_coefficients[359] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[360])
-        .field_div(&felt_nonzero!((point - pow1608 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1608 * oods_point));
     let total_sum = total_sum + constraint_coefficients[360] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[361])
-        .field_div(&felt_nonzero!((point - pow1516 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1516 * oods_point));
     let total_sum = total_sum + constraint_coefficients[361] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[362])
-        .field_div(&felt_nonzero!((point - pow1628 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1628 * oods_point));
     let total_sum = total_sum + constraint_coefficients[362] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[363])
-        .field_div(&felt_nonzero!((point - pow1619 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1619 * oods_point));
     let total_sum = total_sum + constraint_coefficients[363] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[364])
-        .field_div(&felt_nonzero!((point - pow1576 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1576 * oods_point));
     let total_sum = total_sum + constraint_coefficients[364] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[365])
-        .field_div(&felt_nonzero!((point - pow1584 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1584 * oods_point));
     let total_sum = total_sum + constraint_coefficients[365] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[366])
-        .field_div(&felt_nonzero!((point - pow1592 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1592 * oods_point));
     let total_sum = total_sum + constraint_coefficients[366] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[367])
-        .field_div(&felt_nonzero!((point - pow1601 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1601 * oods_point));
     let total_sum = total_sum + constraint_coefficients[367] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[368])
-        .field_div(&felt_nonzero!((point - pow1609 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1609 * oods_point));
     let total_sum = total_sum + constraint_coefficients[368] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[369])
-        .field_div(&felt_nonzero!((point - pow1547 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1547 * oods_point));
     let total_sum = total_sum + constraint_coefficients[369] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[370])
-        .field_div(&felt_nonzero!((point - pow1519 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1519 * oods_point));
     let total_sum = total_sum + constraint_coefficients[370] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[371])
-        .field_div(&felt_nonzero!((point - pow1513 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1513 * oods_point));
     let total_sum = total_sum + constraint_coefficients[371] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[372])
-        .field_div(&felt_nonzero!((point - pow1579 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1579 * oods_point));
     let total_sum = total_sum + constraint_coefficients[372] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[373])
-        .field_div(&felt_nonzero!((point - pow1587 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1587 * oods_point));
     let total_sum = total_sum + constraint_coefficients[373] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[374])
-        .field_div(&felt_nonzero!((point - pow1593 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1593 * oods_point));
     let total_sum = total_sum + constraint_coefficients[374] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[375])
-        .field_div(&felt_nonzero!((point - pow1602 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1602 * oods_point));
     let total_sum = total_sum + constraint_coefficients[375] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[376])
-        .field_div(&felt_nonzero!((point - pow1614 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1614 * oods_point));
     let total_sum = total_sum + constraint_coefficients[376] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[377])
-        .field_div(&felt_nonzero!((point - pow1627 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1627 * oods_point));
     let total_sum = total_sum + constraint_coefficients[377] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[378])
-        .field_div(&felt_nonzero!((point - pow1549 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1549 * oods_point));
     let total_sum = total_sum + constraint_coefficients[378] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column]
         - oods_values[379])
-        .field_div(&felt_nonzero!((point - pow1195 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1195 * oods_point));
     let total_sum = total_sum + constraint_coefficients[379] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column]
         - oods_values[380])
-        .field_div(&felt_nonzero!((point - pow1192 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1192 * oods_point));
     let total_sum = total_sum + constraint_coefficients[380] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[381])
-        .field_div(&felt_nonzero!((point - pow1677 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1677 * oods_point));
     let total_sum = total_sum + constraint_coefficients[381] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column]
         - oods_values[382])
-        .field_div(&felt_nonzero!((point - pow1188 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1188 * oods_point));
     let total_sum = total_sum + constraint_coefficients[382] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column]
         - oods_values[383])
-        .field_div(&felt_nonzero!((point - pow1182 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1182 * oods_point));
     let total_sum = total_sum + constraint_coefficients[383] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[384])
-        .field_div(&felt_nonzero!((point - pow1538 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1538 * oods_point));
     let total_sum = total_sum + constraint_coefficients[384] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column]
         - oods_values[385])
-        .field_div(&felt_nonzero!((point - pow1175 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1175 * oods_point));
     let total_sum = total_sum + constraint_coefficients[385] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column]
         - oods_values[386])
-        .field_div(&felt_nonzero!((point - pow1171 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1171 * oods_point));
     let total_sum = total_sum + constraint_coefficients[386] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[387])
-        .field_div(&felt_nonzero!((point - pow1568 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1568 * oods_point));
     let total_sum = total_sum + constraint_coefficients[387] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity3_column]
         - oods_values[388])
-        .field_div(&felt_nonzero!((point - pow1165 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1165 * oods_point));
     let total_sum = total_sum + constraint_coefficients[388] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity3_column]
         - oods_values[389])
-        .field_div(&felt_nonzero!((point - pow1164 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1164 * oods_point));
     let total_sum = total_sum + constraint_coefficients[389] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[390])
-        .field_div(&felt_nonzero!((point - pow1678 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1678 * oods_point));
     let total_sum = total_sum + constraint_coefficients[390] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column]
         - oods_values[391])
-        .field_div(&felt_nonzero!((point - pow1156 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1156 * oods_point));
     let total_sum = total_sum + constraint_coefficients[391] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column]
         - oods_values[392])
-        .field_div(&felt_nonzero!((point - pow1153 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1153 * oods_point));
     let total_sum = total_sum + constraint_coefficients[392] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[393])
-        .field_div(&felt_nonzero!((point - pow1542 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1542 * oods_point));
     let total_sum = total_sum + constraint_coefficients[393] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[394])
-        .field_div(&felt_nonzero!((point - pow1383 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1383 * oods_point));
     let total_sum = total_sum + constraint_coefficients[394] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[395])
-        .field_div(&felt_nonzero!((point - pow1629 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1629 * oods_point));
     let total_sum = total_sum + constraint_coefficients[395] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[396])
-        .field_div(&felt_nonzero!((point - pow1404 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1404 * oods_point));
     let total_sum = total_sum + constraint_coefficients[396] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[397])
-        .field_div(&felt_nonzero!((point - pow1455 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1455 * oods_point));
     let total_sum = total_sum + constraint_coefficients[397] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[398])
-        .field_div(&felt_nonzero!((point - pow1570 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1570 * oods_point));
     let total_sum = total_sum + constraint_coefficients[398] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column]
         - oods_values[399])
-        .field_div(&felt_nonzero!((point - pow1181 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1181 * oods_point));
     let total_sum = total_sum + constraint_coefficients[399] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[400])
-        .field_div(&felt_nonzero!((point - pow1676 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1676 * oods_point));
     let total_sum = total_sum + constraint_coefficients[400] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[401])
-        .field_div(&felt_nonzero!((point - pow1553 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1553 * oods_point));
     let total_sum = total_sum + constraint_coefficients[401] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[402])
-        .field_div(&felt_nonzero!((point - pow1421 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1421 * oods_point));
     let total_sum = total_sum + constraint_coefficients[402] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[403])
-        .field_div(&felt_nonzero!((point - pow1485 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1485 * oods_point));
     let total_sum = total_sum + constraint_coefficients[403] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[404])
-        .field_div(&felt_nonzero!((point - pow1494 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1494 * oods_point));
     let total_sum = total_sum + constraint_coefficients[404] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[405])
-        .field_div(&felt_nonzero!((point - pow1517 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1517 * oods_point));
     let total_sum = total_sum + constraint_coefficients[405] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity3_column]
         - oods_values[406])
-        .field_div(&felt_nonzero!((point - pow1166 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1166 * oods_point));
     let total_sum = total_sum + constraint_coefficients[406] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[407])
-        .field_div(&felt_nonzero!((point - pow1650 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1650 * oods_point));
     let total_sum = total_sum + constraint_coefficients[407] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[408])
-        .field_div(&felt_nonzero!((point - pow1447 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1447 * oods_point));
     let total_sum = total_sum + constraint_coefficients[408] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[409])
-        .field_div(&felt_nonzero!((point - pow1393 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1393 * oods_point));
     let total_sum = total_sum + constraint_coefficients[409] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[410])
-        .field_div(&felt_nonzero!((point - pow1491 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1491 * oods_point));
     let total_sum = total_sum + constraint_coefficients[410] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[411])
-        .field_div(&felt_nonzero!((point - pow1531 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1531 * oods_point));
     let total_sum = total_sum + constraint_coefficients[411] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[412])
-        .field_div(&felt_nonzero!((point - pow1562 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1562 * oods_point));
     let total_sum = total_sum + constraint_coefficients[412] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column]
         - oods_values[413])
-        .field_div(&felt_nonzero!((point - pow1161 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1161 * oods_point));
     let total_sum = total_sum + constraint_coefficients[413] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[414])
-        .field_div(&felt_nonzero!((point - pow1577 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1577 * oods_point));
     let total_sum = total_sum + constraint_coefficients[414] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[415])
-        .field_div(&felt_nonzero!((point - pow1521 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1521 * oods_point));
     let total_sum = total_sum + constraint_coefficients[415] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[416])
-        .field_div(&felt_nonzero!((point - pow1416 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1416 * oods_point));
     let total_sum = total_sum + constraint_coefficients[416] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[417])
-        .field_div(&felt_nonzero!((point - pow1440 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1440 * oods_point));
     let total_sum = total_sum + constraint_coefficients[417] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[418])
-        .field_div(&felt_nonzero!((point - pow1453 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1453 * oods_point));
     let total_sum = total_sum + constraint_coefficients[418] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[419])
-        .field_div(&felt_nonzero!((point - pow1640 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1640 * oods_point));
     let total_sum = total_sum + constraint_coefficients[419] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column]
         - oods_values[420])
-        .field_div(&felt_nonzero!((point - pow1199 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1199 * oods_point));
     let total_sum = total_sum + constraint_coefficients[420] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[421])
-        .field_div(&felt_nonzero!((point - pow1667 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1667 * oods_point));
     let total_sum = total_sum + constraint_coefficients[421] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[422])
-        .field_div(&felt_nonzero!((point - pow1442 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1442 * oods_point));
     let total_sum = total_sum + constraint_coefficients[422] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[423])
-        .field_div(&felt_nonzero!((point - pow1417 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1417 * oods_point));
     let total_sum = total_sum + constraint_coefficients[423] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[424])
-        .field_div(&felt_nonzero!((point - pow1473 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1473 * oods_point));
     let total_sum = total_sum + constraint_coefficients[424] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[425])
-        .field_div(&felt_nonzero!((point - pow1492 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1492 * oods_point));
     let total_sum = total_sum + constraint_coefficients[425] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[426])
-        .field_div(&felt_nonzero!((point - pow1527 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1527 * oods_point));
     let total_sum = total_sum + constraint_coefficients[426] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column]
         - oods_values[427])
-        .field_div(&felt_nonzero!((point - pow1189 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1189 * oods_point));
     let total_sum = total_sum + constraint_coefficients[427] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[428])
-        .field_div(&felt_nonzero!((point - pow1663 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1663 * oods_point));
     let total_sum = total_sum + constraint_coefficients[428] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[429])
-        .field_div(&felt_nonzero!((point - pow1443 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1443 * oods_point));
     let total_sum = total_sum + constraint_coefficients[429] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[430])
-        .field_div(&felt_nonzero!((point - pow1385 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1385 * oods_point));
     let total_sum = total_sum + constraint_coefficients[430] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[431])
-        .field_div(&felt_nonzero!((point - pow1504 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1504 * oods_point));
     let total_sum = total_sum + constraint_coefficients[431] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[432])
-        .field_div(&felt_nonzero!((point - pow1545 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1545 * oods_point));
     let total_sum = total_sum + constraint_coefficients[432] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[433])
-        .field_div(&felt_nonzero!((point - pow1625 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1625 * oods_point));
     let total_sum = total_sum + constraint_coefficients[433] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column]
         - oods_values[434])
-        .field_div(&felt_nonzero!((point - pow1177 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1177 * oods_point));
     let total_sum = total_sum + constraint_coefficients[434] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[435])
-        .field_div(&felt_nonzero!((point - pow1624 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1624 * oods_point));
     let total_sum = total_sum + constraint_coefficients[435] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[436])
-        .field_div(&felt_nonzero!((point - pow1520 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1520 * oods_point));
     let total_sum = total_sum + constraint_coefficients[436] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[437])
-        .field_div(&felt_nonzero!((point - pow1408 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1408 * oods_point));
     let total_sum = total_sum + constraint_coefficients[437] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[438])
-        .field_div(&felt_nonzero!((point - pow1414 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1414 * oods_point));
     let total_sum = total_sum + constraint_coefficients[438] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[439])
-        .field_div(&felt_nonzero!((point - pow1463 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1463 * oods_point));
     let total_sum = total_sum + constraint_coefficients[439] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[440])
-        .field_div(&felt_nonzero!((point - pow1539 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1539 * oods_point));
     let total_sum = total_sum + constraint_coefficients[440] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity3_column]
         - oods_values[441])
-        .field_div(&felt_nonzero!((point - pow1170 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1170 * oods_point));
     let total_sum = total_sum + constraint_coefficients[441] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[442])
-        .field_div(&felt_nonzero!((point - pow1668 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1668 * oods_point));
     let total_sum = total_sum + constraint_coefficients[442] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[443])
-        .field_div(&felt_nonzero!((point - pow1441 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1441 * oods_point));
     let total_sum = total_sum + constraint_coefficients[443] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[444])
-        .field_div(&felt_nonzero!((point - pow1424 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1424 * oods_point));
     let total_sum = total_sum + constraint_coefficients[444] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[445])
-        .field_div(&felt_nonzero!((point - pow1456 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1456 * oods_point));
     let total_sum = total_sum + constraint_coefficients[445] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[446])
-        .field_div(&felt_nonzero!((point - pow1399 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1399 * oods_point));
     let total_sum = total_sum + constraint_coefficients[446] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[447])
-        .field_div(&felt_nonzero!((point - pow1510 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1510 * oods_point));
     let total_sum = total_sum + constraint_coefficients[447] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column]
         - oods_values[448])
-        .field_div(&felt_nonzero!((point - pow1154 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1154 * oods_point));
     let total_sum = total_sum + constraint_coefficients[448] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[449])
-        .field_div(&felt_nonzero!((point - pow1585 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1585 * oods_point));
     let total_sum = total_sum + constraint_coefficients[449] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[450])
-        .field_div(&felt_nonzero!((point - pow1457 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1457 * oods_point));
     let total_sum = total_sum + constraint_coefficients[450] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[451])
-        .field_div(&felt_nonzero!((point - pow1406 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1406 * oods_point));
     let total_sum = total_sum + constraint_coefficients[451] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[452])
-        .field_div(&felt_nonzero!((point - pow1511 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1511 * oods_point));
     let total_sum = total_sum + constraint_coefficients[452] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column]
         - oods_values[453])
-        .field_div(&felt_nonzero!((point - pow1155 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1155 * oods_point));
     let total_sum = total_sum + constraint_coefficients[453] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[454])
-        .field_div(&felt_nonzero!((point - pow1586 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1586 * oods_point));
     let total_sum = total_sum + constraint_coefficients[454] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[455])
-        .field_div(&felt_nonzero!((point - pow1476 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1476 * oods_point));
     let total_sum = total_sum + constraint_coefficients[455] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[456])
-        .field_div(&felt_nonzero!((point - pow1407 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1407 * oods_point));
     let total_sum = total_sum + constraint_coefficients[456] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[457])
-        .field_div(&felt_nonzero!((point - pow1558 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1558 * oods_point));
     let total_sum = total_sum + constraint_coefficients[457] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column]
         - oods_values[458])
-        .field_div(&felt_nonzero!((point - pow1158 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1158 * oods_point));
     let total_sum = total_sum + constraint_coefficients[458] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[459])
-        .field_div(&felt_nonzero!((point - pow1611 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1611 * oods_point));
     let total_sum = total_sum + constraint_coefficients[459] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[460])
-        .field_div(&felt_nonzero!((point - pow1422 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1422 * oods_point));
     let total_sum = total_sum + constraint_coefficients[460] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[461])
-        .field_div(&felt_nonzero!((point - pow1384 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1384 * oods_point));
     let total_sum = total_sum + constraint_coefficients[461] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[462])
-        .field_div(&felt_nonzero!((point - pow1559 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1559 * oods_point));
     let total_sum = total_sum + constraint_coefficients[462] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column]
         - oods_values[463])
-        .field_div(&felt_nonzero!((point - pow1159 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1159 * oods_point));
     let total_sum = total_sum + constraint_coefficients[463] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[464])
-        .field_div(&felt_nonzero!((point - pow1644 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1644 * oods_point));
     let total_sum = total_sum + constraint_coefficients[464] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[465])
-        .field_div(&felt_nonzero!((point - pow1423 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1423 * oods_point));
     let total_sum = total_sum + constraint_coefficients[465] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[466])
-        .field_div(&felt_nonzero!((point - pow1386 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1386 * oods_point));
     let total_sum = total_sum + constraint_coefficients[466] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[467])
-        .field_div(&felt_nonzero!((point - pow1560 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1560 * oods_point));
     let total_sum = total_sum + constraint_coefficients[467] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column]
         - oods_values[468])
-        .field_div(&felt_nonzero!((point - pow1160 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1160 * oods_point));
     let total_sum = total_sum + constraint_coefficients[468] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[469])
-        .field_div(&felt_nonzero!((point - pow1651 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1651 * oods_point));
     let total_sum = total_sum + constraint_coefficients[469] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[470])
-        .field_div(&felt_nonzero!((point - pow1388 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1388 * oods_point));
     let total_sum = total_sum + constraint_coefficients[470] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[471])
-        .field_div(&felt_nonzero!((point - pow1395 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1395 * oods_point));
     let total_sum = total_sum + constraint_coefficients[471] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[472])
-        .field_div(&felt_nonzero!((point - pow1426 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1426 * oods_point));
     let total_sum = total_sum + constraint_coefficients[472] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[473])
-        .field_div(&felt_nonzero!((point - pow1552 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1552 * oods_point));
     let total_sum = total_sum + constraint_coefficients[473] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[474])
-        .field_div(&felt_nonzero!((point - pow1641 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1641 * oods_point));
     let total_sum = total_sum + constraint_coefficients[474] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column]
         - oods_values[475])
-        .field_div(&felt_nonzero!((point - pow1200 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1200 * oods_point));
     let total_sum = total_sum + constraint_coefficients[475] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[476])
-        .field_div(&felt_nonzero!((point - pow1671 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1671 * oods_point));
     let total_sum = total_sum + constraint_coefficients[476] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[477])
-        .field_div(&felt_nonzero!((point - pow1551 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1551 * oods_point));
     let total_sum = total_sum + constraint_coefficients[477] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[478])
-        .field_div(&felt_nonzero!((point - pow1397 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1397 * oods_point));
     let total_sum = total_sum + constraint_coefficients[478] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[479])
-        .field_div(&felt_nonzero!((point - pow1466 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1466 * oods_point));
     let total_sum = total_sum + constraint_coefficients[479] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[480])
-        .field_div(&felt_nonzero!((point - pow1462 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1462 * oods_point));
     let total_sum = total_sum + constraint_coefficients[480] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[481])
-        .field_div(&felt_nonzero!((point - pow1541 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1541 * oods_point));
     let total_sum = total_sum + constraint_coefficients[481] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column]
         - oods_values[482])
-        .field_div(&felt_nonzero!((point - pow1191 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1191 * oods_point));
     let total_sum = total_sum + constraint_coefficients[482] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[483])
-        .field_div(&felt_nonzero!((point - pow1589 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1589 * oods_point));
     let total_sum = total_sum + constraint_coefficients[483] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[484])
-        .field_div(&felt_nonzero!((point - pow1438 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1438 * oods_point));
     let total_sum = total_sum + constraint_coefficients[484] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[485])
-        .field_div(&felt_nonzero!((point - pow1418 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1418 * oods_point));
     let total_sum = total_sum + constraint_coefficients[485] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[486])
-        .field_div(&felt_nonzero!((point - pow1472 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1472 * oods_point));
     let total_sum = total_sum + constraint_coefficients[486] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[487])
-        .field_div(&felt_nonzero!((point - pow1474 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1474 * oods_point));
     let total_sum = total_sum + constraint_coefficients[487] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[488])
-        .field_div(&felt_nonzero!((point - pow1616 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1616 * oods_point));
     let total_sum = total_sum + constraint_coefficients[488] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column]
         - oods_values[489])
-        .field_div(&felt_nonzero!((point - pow1172 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1172 * oods_point));
     let total_sum = total_sum + constraint_coefficients[489] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[490])
-        .field_div(&felt_nonzero!((point - pow1612 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1612 * oods_point));
     let total_sum = total_sum + constraint_coefficients[490] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[491])
-        .field_div(&felt_nonzero!((point - pow1444 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1444 * oods_point));
     let total_sum = total_sum + constraint_coefficients[491] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[492])
-        .field_div(&felt_nonzero!((point - pow1387 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1387 * oods_point));
     let total_sum = total_sum + constraint_coefficients[492] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[493])
-        .field_div(&felt_nonzero!((point - pow1503 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1503 * oods_point));
     let total_sum = total_sum + constraint_coefficients[493] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[494])
-        .field_div(&felt_nonzero!((point - pow1569 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1569 * oods_point));
     let total_sum = total_sum + constraint_coefficients[494] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[495])
-        .field_div(&felt_nonzero!((point - pow1536 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1536 * oods_point));
     let total_sum = total_sum + constraint_coefficients[495] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity3_column]
         - oods_values[496])
-        .field_div(&felt_nonzero!((point - pow1168 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1168 * oods_point));
     let total_sum = total_sum + constraint_coefficients[496] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[497])
-        .field_div(&felt_nonzero!((point - pow1626 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1626 * oods_point));
     let total_sum = total_sum + constraint_coefficients[497] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[498])
-        .field_div(&felt_nonzero!((point - pow1550 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1550 * oods_point));
     let total_sum = total_sum + constraint_coefficients[498] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[499])
-        .field_div(&felt_nonzero!((point - pow1410 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1410 * oods_point));
     let total_sum = total_sum + constraint_coefficients[499] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[500])
-        .field_div(&felt_nonzero!((point - pow1460 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1460 * oods_point));
     let total_sum = total_sum + constraint_coefficients[500] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[501])
-        .field_div(&felt_nonzero!((point - pow1669 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1669 * oods_point));
     let total_sum = total_sum + constraint_coefficients[501] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[502])
-        .field_div(&felt_nonzero!((point - pow1564 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1564 * oods_point));
     let total_sum = total_sum + constraint_coefficients[502] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column]
         - oods_values[503])
-        .field_div(&felt_nonzero!((point - pow1162 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1162 * oods_point));
     let total_sum = total_sum + constraint_coefficients[503] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[504])
-        .field_div(&felt_nonzero!((point - pow1653 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1653 * oods_point));
     let total_sum = total_sum + constraint_coefficients[504] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[505])
-        .field_div(&felt_nonzero!((point - pow1647 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1647 * oods_point));
     let total_sum = total_sum + constraint_coefficients[505] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[506])
-        .field_div(&felt_nonzero!((point - pow1430 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1430 * oods_point));
     let total_sum = total_sum + constraint_coefficients[506] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[507])
-        .field_div(&felt_nonzero!((point - pow1427 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1427 * oods_point));
     let total_sum = total_sum + constraint_coefficients[507] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[508])
-        .field_div(&felt_nonzero!((point - pow1481 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1481 * oods_point));
     let total_sum = total_sum + constraint_coefficients[508] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[509])
-        .field_div(&felt_nonzero!((point - pow1620 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1620 * oods_point));
     let total_sum = total_sum + constraint_coefficients[509] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column]
         - oods_values[510])
-        .field_div(&felt_nonzero!((point - pow1193 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1193 * oods_point));
     let total_sum = total_sum + constraint_coefficients[510] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[511])
-        .field_div(&felt_nonzero!((point - pow1594 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1594 * oods_point));
     let total_sum = total_sum + constraint_coefficients[511] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[512])
-        .field_div(&felt_nonzero!((point - pow1429 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1429 * oods_point));
     let total_sum = total_sum + constraint_coefficients[512] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[513])
-        .field_div(&felt_nonzero!((point - pow1484 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1484 * oods_point));
     let total_sum = total_sum + constraint_coefficients[513] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[514])
-        .field_div(&felt_nonzero!((point - pow1621 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1621 * oods_point));
     let total_sum = total_sum + constraint_coefficients[514] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column]
         - oods_values[515])
-        .field_div(&felt_nonzero!((point - pow1194 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1194 * oods_point));
     let total_sum = total_sum + constraint_coefficients[515] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[516])
-        .field_div(&felt_nonzero!((point - pow1595 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1595 * oods_point));
     let total_sum = total_sum + constraint_coefficients[516] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[517])
-        .field_div(&felt_nonzero!((point - pow1475 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1475 * oods_point));
     let total_sum = total_sum + constraint_coefficients[517] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[518])
-        .field_div(&felt_nonzero!((point - pow1495 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1495 * oods_point));
     let total_sum = total_sum + constraint_coefficients[518] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[519])
-        .field_div(&felt_nonzero!((point - pow1639 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1639 * oods_point));
     let total_sum = total_sum + constraint_coefficients[519] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column]
         - oods_values[520])
-        .field_div(&felt_nonzero!((point - pow1196 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1196 * oods_point));
     let total_sum = total_sum + constraint_coefficients[520] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[521])
-        .field_div(&felt_nonzero!((point - pow1613 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1613 * oods_point));
     let total_sum = total_sum + constraint_coefficients[521] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[522])
-        .field_div(&felt_nonzero!((point - pow1425 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1425 * oods_point));
     let total_sum = total_sum + constraint_coefficients[522] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[523])
-        .field_div(&felt_nonzero!((point - pow1390 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1390 * oods_point));
     let total_sum = total_sum + constraint_coefficients[523] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[524])
-        .field_div(&felt_nonzero!((point - pow1660 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1660 * oods_point));
     let total_sum = total_sum + constraint_coefficients[524] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column]
         - oods_values[525])
-        .field_div(&felt_nonzero!((point - pow1197 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1197 * oods_point));
     let total_sum = total_sum + constraint_coefficients[525] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[526])
-        .field_div(&felt_nonzero!((point - pow1659 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1659 * oods_point));
     let total_sum = total_sum + constraint_coefficients[526] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[527])
-        .field_div(&felt_nonzero!((point - pow1428 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1428 * oods_point));
     let total_sum = total_sum + constraint_coefficients[527] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[528])
-        .field_div(&felt_nonzero!((point - pow1392 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1392 * oods_point));
     let total_sum = total_sum + constraint_coefficients[528] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[529])
-        .field_div(&felt_nonzero!((point - pow1662 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1662 * oods_point));
     let total_sum = total_sum + constraint_coefficients[529] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column]
         - oods_values[530])
-        .field_div(&felt_nonzero!((point - pow1198 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1198 * oods_point));
     let total_sum = total_sum + constraint_coefficients[530] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[531])
-        .field_div(&felt_nonzero!((point - pow1661 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1661 * oods_point));
     let total_sum = total_sum + constraint_coefficients[531] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[532])
-        .field_div(&felt_nonzero!((point - pow1394 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1394 * oods_point));
     let total_sum = total_sum + constraint_coefficients[532] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[533])
-        .field_div(&felt_nonzero!((point - pow1433 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1433 * oods_point));
     let total_sum = total_sum + constraint_coefficients[533] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[534])
-        .field_div(&felt_nonzero!((point - pow1498 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1498 * oods_point));
     let total_sum = total_sum + constraint_coefficients[534] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[535])
-        .field_div(&felt_nonzero!((point - pow1486 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1486 * oods_point));
     let total_sum = total_sum + constraint_coefficients[535] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[536])
-        .field_div(&felt_nonzero!((point - pow1514 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1514 * oods_point));
     let total_sum = total_sum + constraint_coefficients[536] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column]
         - oods_values[537])
-        .field_div(&felt_nonzero!((point - pow1184 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1184 * oods_point));
     let total_sum = total_sum + constraint_coefficients[537] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[538])
-        .field_div(&felt_nonzero!((point - pow1597 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1597 * oods_point));
     let total_sum = total_sum + constraint_coefficients[538] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[539])
-        .field_div(&felt_nonzero!((point - pow1499 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1499 * oods_point));
     let total_sum = total_sum + constraint_coefficients[539] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[540])
-        .field_div(&felt_nonzero!((point - pow1496 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1496 * oods_point));
     let total_sum = total_sum + constraint_coefficients[540] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[541])
-        .field_div(&felt_nonzero!((point - pow1515 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1515 * oods_point));
     let total_sum = total_sum + constraint_coefficients[541] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column]
         - oods_values[542])
-        .field_div(&felt_nonzero!((point - pow1186 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1186 * oods_point));
     let total_sum = total_sum + constraint_coefficients[542] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[543])
-        .field_div(&felt_nonzero!((point - pow1598 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1598 * oods_point));
     let total_sum = total_sum + constraint_coefficients[543] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[544])
-        .field_div(&felt_nonzero!((point - pow1500 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1500 * oods_point));
     let total_sum = total_sum + constraint_coefficients[544] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[545])
-        .field_div(&felt_nonzero!((point - pow1497 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1497 * oods_point));
     let total_sum = total_sum + constraint_coefficients[545] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[546])
-        .field_div(&felt_nonzero!((point - pow1528 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1528 * oods_point));
     let total_sum = total_sum + constraint_coefficients[546] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column]
         - oods_values[547])
-        .field_div(&felt_nonzero!((point - pow1183 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1183 * oods_point));
     let total_sum = total_sum + constraint_coefficients[547] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[548])
-        .field_div(&felt_nonzero!((point - pow1637 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1637 * oods_point));
     let total_sum = total_sum + constraint_coefficients[548] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[549])
-        .field_div(&felt_nonzero!((point - pow1431 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1431 * oods_point));
     let total_sum = total_sum + constraint_coefficients[549] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[550])
-        .field_div(&felt_nonzero!((point - pow1396 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1396 * oods_point));
     let total_sum = total_sum + constraint_coefficients[550] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[551])
-        .field_div(&felt_nonzero!((point - pow1529 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1529 * oods_point));
     let total_sum = total_sum + constraint_coefficients[551] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column]
         - oods_values[552])
-        .field_div(&felt_nonzero!((point - pow1185 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1185 * oods_point));
     let total_sum = total_sum + constraint_coefficients[552] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[553])
-        .field_div(&felt_nonzero!((point - pow1638 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1638 * oods_point));
     let total_sum = total_sum + constraint_coefficients[553] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[554])
-        .field_div(&felt_nonzero!((point - pow1432 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1432 * oods_point));
     let total_sum = total_sum + constraint_coefficients[554] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[555])
-        .field_div(&felt_nonzero!((point - pow1398 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1398 * oods_point));
     let total_sum = total_sum + constraint_coefficients[555] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[556])
-        .field_div(&felt_nonzero!((point - pow1530 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1530 * oods_point));
     let total_sum = total_sum + constraint_coefficients[556] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column]
         - oods_values[557])
-        .field_div(&felt_nonzero!((point - pow1187 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1187 * oods_point));
     let total_sum = total_sum + constraint_coefficients[557] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[558])
-        .field_div(&felt_nonzero!((point - pow1652 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1652 * oods_point));
     let total_sum = total_sum + constraint_coefficients[558] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[559])
-        .field_div(&felt_nonzero!((point - pow1401 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1401 * oods_point));
     let total_sum = total_sum + constraint_coefficients[559] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[560])
-        .field_div(&felt_nonzero!((point - pow1400 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1400 * oods_point));
     let total_sum = total_sum + constraint_coefficients[560] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[561])
-        .field_div(&felt_nonzero!((point - pow1470 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1470 * oods_point));
     let total_sum = total_sum + constraint_coefficients[561] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[562])
-        .field_div(&felt_nonzero!((point - pow1646 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1646 * oods_point));
     let total_sum = total_sum + constraint_coefficients[562] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[563])
-        .field_div(&felt_nonzero!((point - pow1623 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1623 * oods_point));
     let total_sum = total_sum + constraint_coefficients[563] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column]
         - oods_values[564])
-        .field_div(&felt_nonzero!((point - pow1176 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1176 * oods_point));
     let total_sum = total_sum + constraint_coefficients[564] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[565])
-        .field_div(&felt_nonzero!((point - pow1603 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1603 * oods_point));
     let total_sum = total_sum + constraint_coefficients[565] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[566])
-        .field_div(&felt_nonzero!((point - pow1645 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1645 * oods_point));
     let total_sum = total_sum + constraint_coefficients[566] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[567])
-        .field_div(&felt_nonzero!((point - pow1419 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1419 * oods_point));
     let total_sum = total_sum + constraint_coefficients[567] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[568])
-        .field_div(&felt_nonzero!((point - pow1490 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1490 * oods_point));
     let total_sum = total_sum + constraint_coefficients[568] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[569])
-        .field_div(&felt_nonzero!((point - pow1487 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1487 * oods_point));
     let total_sum = total_sum + constraint_coefficients[569] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[570])
-        .field_div(&felt_nonzero!((point - pow1537 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1537 * oods_point));
     let total_sum = total_sum + constraint_coefficients[570] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity3_column]
         - oods_values[571])
-        .field_div(&felt_nonzero!((point - pow1169 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1169 * oods_point));
     let total_sum = total_sum + constraint_coefficients[571] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[572])
-        .field_div(&felt_nonzero!((point - pow1664 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1664 * oods_point));
     let total_sum = total_sum + constraint_coefficients[572] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[573])
-        .field_div(&felt_nonzero!((point - pow1445 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1445 * oods_point));
     let total_sum = total_sum + constraint_coefficients[573] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[574])
-        .field_div(&felt_nonzero!((point - pow1389 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1389 * oods_point));
     let total_sum = total_sum + constraint_coefficients[574] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[575])
-        .field_div(&felt_nonzero!((point - pow1468 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1468 * oods_point));
     let total_sum = total_sum + constraint_coefficients[575] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[576])
-        .field_div(&felt_nonzero!((point - pow1469 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1469 * oods_point));
     let total_sum = total_sum + constraint_coefficients[576] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[577])
-        .field_div(&felt_nonzero!((point - pow1565 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1565 * oods_point));
     let total_sum = total_sum + constraint_coefficients[577] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column]
         - oods_values[578])
-        .field_div(&felt_nonzero!((point - pow1163 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1163 * oods_point));
     let total_sum = total_sum + constraint_coefficients[578] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[579])
-        .field_div(&felt_nonzero!((point - pow1670 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1670 * oods_point));
     let total_sum = total_sum + constraint_coefficients[579] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[580])
-        .field_div(&felt_nonzero!((point - pow1437 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1437 * oods_point));
     let total_sum = total_sum + constraint_coefficients[580] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[581])
-        .field_div(&felt_nonzero!((point - pow1411 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1411 * oods_point));
     let total_sum = total_sum + constraint_coefficients[581] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[582])
-        .field_div(&felt_nonzero!((point - pow1415 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1415 * oods_point));
     let total_sum = total_sum + constraint_coefficients[582] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[583])
-        .field_div(&felt_nonzero!((point - pow1543 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1543 * oods_point));
     let total_sum = total_sum + constraint_coefficients[583] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[584])
-        .field_div(&felt_nonzero!((point - pow1666 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1666 * oods_point));
     let total_sum = total_sum + constraint_coefficients[584] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column]
         - oods_values[585])
-        .field_div(&felt_nonzero!((point - pow1202 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1202 * oods_point));
     let total_sum = total_sum + constraint_coefficients[585] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[586])
-        .field_div(&felt_nonzero!((point - pow1665 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1665 * oods_point));
     let total_sum = total_sum + constraint_coefficients[586] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[587])
-        .field_div(&felt_nonzero!((point - pow1523 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1523 * oods_point));
     let total_sum = total_sum + constraint_coefficients[587] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[588])
-        .field_div(&felt_nonzero!((point - pow1412 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1412 * oods_point));
     let total_sum = total_sum + constraint_coefficients[588] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[589])
-        .field_div(&felt_nonzero!((point - pow1413 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1413 * oods_point));
     let total_sum = total_sum + constraint_coefficients[589] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[590])
-        .field_div(&felt_nonzero!((point - pow1566 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1566 * oods_point));
     let total_sum = total_sum + constraint_coefficients[590] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[591])
-        .field_div(&felt_nonzero!((point - pow1540 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1540 * oods_point));
     let total_sum = total_sum + constraint_coefficients[591] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity1_column]
         - oods_values[592])
-        .field_div(&felt_nonzero!((point - pow1190 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1190 * oods_point));
     let total_sum = total_sum + constraint_coefficients[592] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[593])
-        .field_div(&felt_nonzero!((point - pow1672 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1672 * oods_point));
     let total_sum = total_sum + constraint_coefficients[593] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[594])
-        .field_div(&felt_nonzero!((point - pow1554 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1554 * oods_point));
     let total_sum = total_sum + constraint_coefficients[594] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[595])
-        .field_div(&felt_nonzero!((point - pow1436 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1436 * oods_point));
     let total_sum = total_sum + constraint_coefficients[595] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[596])
-        .field_div(&felt_nonzero!((point - pow1451 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1451 * oods_point));
     let total_sum = total_sum + constraint_coefficients[596] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[597])
-        .field_div(&felt_nonzero!((point - pow1439 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1439 * oods_point));
     let total_sum = total_sum + constraint_coefficients[597] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[598])
-        .field_div(&felt_nonzero!((point - pow1617 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1617 * oods_point));
     let total_sum = total_sum + constraint_coefficients[598] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column]
         - oods_values[599])
-        .field_div(&felt_nonzero!((point - pow1173 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1173 * oods_point));
     let total_sum = total_sum + constraint_coefficients[599] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[600])
-        .field_div(&felt_nonzero!((point - pow1606 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1606 * oods_point));
     let total_sum = total_sum + constraint_coefficients[600] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[601])
-        .field_div(&felt_nonzero!((point - pow1452 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1452 * oods_point));
     let total_sum = total_sum + constraint_coefficients[601] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[602])
-        .field_div(&felt_nonzero!((point - pow1458 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1458 * oods_point));
     let total_sum = total_sum + constraint_coefficients[602] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[603])
-        .field_div(&felt_nonzero!((point - pow1618 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1618 * oods_point));
     let total_sum = total_sum + constraint_coefficients[603] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column]
         - oods_values[604])
-        .field_div(&felt_nonzero!((point - pow1174 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1174 * oods_point));
     let total_sum = total_sum + constraint_coefficients[604] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[605])
-        .field_div(&felt_nonzero!((point - pow1607 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1607 * oods_point));
     let total_sum = total_sum + constraint_coefficients[605] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[606])
-        .field_div(&felt_nonzero!((point - pow1454 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1454 * oods_point));
     let total_sum = total_sum + constraint_coefficients[606] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[607])
-        .field_div(&felt_nonzero!((point - pow1459 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1459 * oods_point));
     let total_sum = total_sum + constraint_coefficients[607] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[608])
-        .field_div(&felt_nonzero!((point - pow1656 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1656 * oods_point));
     let total_sum = total_sum + constraint_coefficients[608] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column]
         - oods_values[609])
-        .field_div(&felt_nonzero!((point - pow1178 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1178 * oods_point));
     let total_sum = total_sum + constraint_coefficients[609] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[610])
-        .field_div(&felt_nonzero!((point - pow1642 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1642 * oods_point));
     let total_sum = total_sum + constraint_coefficients[610] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[611])
-        .field_div(&felt_nonzero!((point - pow1434 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1434 * oods_point));
     let total_sum = total_sum + constraint_coefficients[611] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[612])
-        .field_div(&felt_nonzero!((point - pow1403 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1403 * oods_point));
     let total_sum = total_sum + constraint_coefficients[612] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[613])
-        .field_div(&felt_nonzero!((point - pow1657 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1657 * oods_point));
     let total_sum = total_sum + constraint_coefficients[613] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column]
         - oods_values[614])
-        .field_div(&felt_nonzero!((point - pow1179 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1179 * oods_point));
     let total_sum = total_sum + constraint_coefficients[614] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[615])
-        .field_div(&felt_nonzero!((point - pow1654 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1654 * oods_point));
     let total_sum = total_sum + constraint_coefficients[615] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[616])
-        .field_div(&felt_nonzero!((point - pow1435 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1435 * oods_point));
     let total_sum = total_sum + constraint_coefficients[616] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[617])
-        .field_div(&felt_nonzero!((point - pow1405 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1405 * oods_point));
     let total_sum = total_sum + constraint_coefficients[617] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[618])
-        .field_div(&felt_nonzero!((point - pow1658 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1658 * oods_point));
     let total_sum = total_sum + constraint_coefficients[618] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity2_column]
         - oods_values[619])
-        .field_div(&felt_nonzero!((point - pow1180 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1180 * oods_point));
     let total_sum = total_sum + constraint_coefficients[619] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[620])
-        .field_div(&felt_nonzero!((point - pow1655 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1655 * oods_point));
     let total_sum = total_sum + constraint_coefficients[620] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[621])
-        .field_div(&felt_nonzero!((point - pow1409 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1409 * oods_point));
     let total_sum = total_sum + constraint_coefficients[621] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[622])
-        .field_div(&felt_nonzero!((point - pow1402 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1402 * oods_point));
     let total_sum = total_sum + constraint_coefficients[622] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[623])
-        .field_div(&felt_nonzero!((point - pow1502 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1502 * oods_point));
     let total_sum = total_sum + constraint_coefficients[623] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[624])
-        .field_div(&felt_nonzero!((point - pow1544 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1544 * oods_point));
     let total_sum = total_sum + constraint_coefficients[624] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[625])
-        .field_div(&felt_nonzero!((point - pow1526 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1526 * oods_point));
     let total_sum = total_sum + constraint_coefficients[625] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity3_column]
         - oods_values[626])
-        .field_div(&felt_nonzero!((point - pow1167 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1167 * oods_point));
     let total_sum = total_sum + constraint_coefficients[626] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[627])
-        .field_div(&felt_nonzero!((point - pow1636 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1636 * oods_point));
     let total_sum = total_sum + constraint_coefficients[627] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[628])
-        .field_div(&felt_nonzero!((point - pow1522 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1522 * oods_point));
     let total_sum = total_sum + constraint_coefficients[628] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[629])
-        .field_div(&felt_nonzero!((point - pow1420 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1420 * oods_point));
     let total_sum = total_sum + constraint_coefficients[629] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[630])
-        .field_div(&felt_nonzero!((point - pow1501 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1501 * oods_point));
     let total_sum = total_sum + constraint_coefficients[630] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[631])
-        .field_div(&felt_nonzero!((point - pow1493 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1493 * oods_point));
     let total_sum = total_sum + constraint_coefficients[631] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[632])
-        .field_div(&felt_nonzero!((point - pow1509 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1509 * oods_point));
     let total_sum = total_sum + constraint_coefficients[632] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity4_column]
         - oods_values[633])
-        .field_div(&felt_nonzero!((point - pow1157 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1157 * oods_point));
     let total_sum = total_sum + constraint_coefficients[633] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[634])
-        .field_div(&felt_nonzero!((point - pow1610 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1610 * oods_point));
     let total_sum = total_sum + constraint_coefficients[634] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[635])
-        .field_div(&felt_nonzero!((point - pow1446 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1446 * oods_point));
     let total_sum = total_sum + constraint_coefficients[635] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[636])
-        .field_div(&felt_nonzero!((point - pow1391 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1391 * oods_point));
     let total_sum = total_sum + constraint_coefficients[636] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[637])
-        .field_div(&felt_nonzero!((point - pow1478 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1478 * oods_point));
     let total_sum = total_sum + constraint_coefficients[637] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[638])
-        .field_div(&felt_nonzero!((point - pow1643 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1643 * oods_point));
     let total_sum = total_sum + constraint_coefficients[638] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[639])
-        .field_div(&felt_nonzero!((point - pow1649 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1649 * oods_point));
     let total_sum = total_sum + constraint_coefficients[639] * value;
 
     let value = (column_values[dynamic_params.keccak_keccak_rotated_parity0_column]
         - oods_values[640])
-        .field_div(&felt_nonzero!((point - pow1201 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1201 * oods_point));
     let total_sum = total_sum + constraint_coefficients[640] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[641])
-        .field_div(&felt_nonzero!((point - pow1648 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1648 * oods_point));
     let total_sum = total_sum + constraint_coefficients[641] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[642])
-        .field_div(&felt_nonzero!((point - pow1635 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1635 * oods_point));
     let total_sum = total_sum + constraint_coefficients[642] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[643])
-        .field_div(&felt_nonzero!((point - pow1573 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1573 * oods_point));
     let total_sum = total_sum + constraint_coefficients[643] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[644])
-        .field_div(&felt_nonzero!((point - pow1380 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1380 * oods_point));
     let total_sum = total_sum + constraint_coefficients[644] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[645])
-        .field_div(&felt_nonzero!((point - pow1377 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1377 * oods_point));
     let total_sum = total_sum + constraint_coefficients[645] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[646])
-        .field_div(&felt_nonzero!((point - pow1630 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1630 * oods_point));
     let total_sum = total_sum + constraint_coefficients[646] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[647])
-        .field_div(&felt_nonzero!((point - pow1448 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1448 * oods_point));
     let total_sum = total_sum + constraint_coefficients[647] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[648])
-        .field_div(&felt_nonzero!((point - pow1449 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1449 * oods_point));
     let total_sum = total_sum + constraint_coefficients[648] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[649])
-        .field_div(&felt_nonzero!((point - pow1450 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1450 * oods_point));
     let total_sum = total_sum + constraint_coefficients[649] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[650])
-        .field_div(&felt_nonzero!((point - pow1524 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1524 * oods_point));
     let total_sum = total_sum + constraint_coefficients[650] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[651])
-        .field_div(&felt_nonzero!((point - pow1555 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1555 * oods_point));
     let total_sum = total_sum + constraint_coefficients[651] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[652])
-        .field_div(&felt_nonzero!((point - pow1631 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1631 * oods_point));
     let total_sum = total_sum + constraint_coefficients[652] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[653])
-        .field_div(&felt_nonzero!((point - pow1461 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1461 * oods_point));
     let total_sum = total_sum + constraint_coefficients[653] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[654])
-        .field_div(&felt_nonzero!((point - pow1464 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1464 * oods_point));
     let total_sum = total_sum + constraint_coefficients[654] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[655])
-        .field_div(&felt_nonzero!((point - pow1465 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1465 * oods_point));
     let total_sum = total_sum + constraint_coefficients[655] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[656])
-        .field_div(&felt_nonzero!((point - pow1525 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1525 * oods_point));
     let total_sum = total_sum + constraint_coefficients[656] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[657])
-        .field_div(&felt_nonzero!((point - pow1556 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1556 * oods_point));
     let total_sum = total_sum + constraint_coefficients[657] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[658])
-        .field_div(&felt_nonzero!((point - pow1632 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1632 * oods_point));
     let total_sum = total_sum + constraint_coefficients[658] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[659])
-        .field_div(&felt_nonzero!((point - pow1467 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1467 * oods_point));
     let total_sum = total_sum + constraint_coefficients[659] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[660])
-        .field_div(&felt_nonzero!((point - pow1471 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1471 * oods_point));
     let total_sum = total_sum + constraint_coefficients[660] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[661])
-        .field_div(&felt_nonzero!((point - pow1477 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1477 * oods_point));
     let total_sum = total_sum + constraint_coefficients[661] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[662])
-        .field_div(&felt_nonzero!((point - pow1532 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1532 * oods_point));
     let total_sum = total_sum + constraint_coefficients[662] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[663])
-        .field_div(&felt_nonzero!((point - pow1557 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1557 * oods_point));
     let total_sum = total_sum + constraint_coefficients[663] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[664])
-        .field_div(&felt_nonzero!((point - pow1633 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1633 * oods_point));
     let total_sum = total_sum + constraint_coefficients[664] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[665])
-        .field_div(&felt_nonzero!((point - pow1479 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1479 * oods_point));
     let total_sum = total_sum + constraint_coefficients[665] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[666])
-        .field_div(&felt_nonzero!((point - pow1482 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1482 * oods_point));
     let total_sum = total_sum + constraint_coefficients[666] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[667])
-        .field_div(&felt_nonzero!((point - pow1488 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1488 * oods_point));
     let total_sum = total_sum + constraint_coefficients[667] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[668])
-        .field_div(&felt_nonzero!((point - pow1533 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1533 * oods_point));
     let total_sum = total_sum + constraint_coefficients[668] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[669])
-        .field_div(&felt_nonzero!((point - pow1561 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1561 * oods_point));
     let total_sum = total_sum + constraint_coefficients[669] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[670])
-        .field_div(&felt_nonzero!((point - pow1634 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1634 * oods_point));
     let total_sum = total_sum + constraint_coefficients[670] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[671])
-        .field_div(&felt_nonzero!((point - pow1480 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1480 * oods_point));
     let total_sum = total_sum + constraint_coefficients[671] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[672])
-        .field_div(&felt_nonzero!((point - pow1483 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1483 * oods_point));
     let total_sum = total_sum + constraint_coefficients[672] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[673])
-        .field_div(&felt_nonzero!((point - pow1489 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1489 * oods_point));
     let total_sum = total_sum + constraint_coefficients[673] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[674])
-        .field_div(&felt_nonzero!((point - pow1534 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1534 * oods_point));
     let total_sum = total_sum + constraint_coefficients[674] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[675])
-        .field_div(&felt_nonzero!((point - pow1563 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1563 * oods_point));
     let total_sum = total_sum + constraint_coefficients[675] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[676])
-        .field_div(&felt_nonzero!((point - pow1675 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1675 * oods_point));
     let total_sum = total_sum + constraint_coefficients[676] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[677])
-        .field_div(&felt_nonzero!((point - pow1505 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1505 * oods_point));
     let total_sum = total_sum + constraint_coefficients[677] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[678])
-        .field_div(&felt_nonzero!((point - pow1506 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1506 * oods_point));
     let total_sum = total_sum + constraint_coefficients[678] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[679])
-        .field_div(&felt_nonzero!((point - pow1507 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1507 * oods_point));
     let total_sum = total_sum + constraint_coefficients[679] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[680])
-        .field_div(&felt_nonzero!((point - pow1535 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1535 * oods_point));
     let total_sum = total_sum + constraint_coefficients[680] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[681])
-        .field_div(&felt_nonzero!((point - pow1567 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1567 * oods_point));
     let total_sum = total_sum + constraint_coefficients[681] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[682])
-        .field_div(&felt_nonzero!((point - pow1580 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1580 * oods_point));
     let total_sum = total_sum + constraint_coefficients[682] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[683])
-        .field_div(&felt_nonzero!((point - pow1382 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1382 * oods_point));
     let total_sum = total_sum + constraint_coefficients[683] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[684])
-        .field_div(&felt_nonzero!((point - pow1379 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1379 * oods_point));
     let total_sum = total_sum + constraint_coefficients[684] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[685])
-        .field_div(&felt_nonzero!((point - pow1578 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1578 * oods_point));
     let total_sum = total_sum + constraint_coefficients[685] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[686])
-        .field_div(&felt_nonzero!((point - pow1381 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1381 * oods_point));
     let total_sum = total_sum + constraint_coefficients[686] * value;
 
     let value = (column_values[dynamic_params.diluted_pool_column] - oods_values[687])
-        .field_div(&felt_nonzero!((point - pow1378 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1378 * oods_point));
     let total_sum = total_sum + constraint_coefficients[687] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[688])
-        .field_div(&felt_nonzero!((point - pow1961 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1961 * oods_point));
     let total_sum = total_sum + constraint_coefficients[688] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[689])
-        .field_div(&felt_nonzero!((point - pow1962 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1962 * oods_point));
     let total_sum = total_sum + constraint_coefficients[689] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[690])
-        .field_div(&felt_nonzero!((point - pow1959 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1959 * oods_point));
     let total_sum = total_sum + constraint_coefficients[690] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[691])
-        .field_div(&felt_nonzero!((point - pow1960 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1960 * oods_point));
     let total_sum = total_sum + constraint_coefficients[691] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[692])
-        .field_div(&felt_nonzero!((point - pow1957 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1957 * oods_point));
     let total_sum = total_sum + constraint_coefficients[692] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[693])
-        .field_div(&felt_nonzero!((point - pow1958 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1958 * oods_point));
     let total_sum = total_sum + constraint_coefficients[693] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state0_squared_column]
         - oods_values[694])
-        .field_div(&felt_nonzero!((point - pow1150 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1150 * oods_point));
     let total_sum = total_sum + constraint_coefficients[694] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state0_column]
         - oods_values[695])
-        .field_div(&felt_nonzero!((point - pow1145 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1145 * oods_point));
     let total_sum = total_sum + constraint_coefficients[695] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state1_squared_column]
         - oods_values[696])
-        .field_div(&felt_nonzero!((point - pow1142 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1142 * oods_point));
     let total_sum = total_sum + constraint_coefficients[696] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state1_column]
         - oods_values[697])
-        .field_div(&felt_nonzero!((point - pow1137 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1137 * oods_point));
     let total_sum = total_sum + constraint_coefficients[697] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state2_squared_column]
         - oods_values[698])
-        .field_div(&felt_nonzero!((point - pow1134 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1134 * oods_point));
     let total_sum = total_sum + constraint_coefficients[698] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state2_column]
         - oods_values[699])
-        .field_div(&felt_nonzero!((point - pow1129 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1129 * oods_point));
     let total_sum = total_sum + constraint_coefficients[699] * value;
 
     let value = (column_values
         [dynamic_params.poseidon_poseidon_partial_rounds_state0_squared_column]
         - oods_values[700])
-        .field_div(&felt_nonzero!((point - pow1126 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1126 * oods_point));
     let total_sum = total_sum + constraint_coefficients[700] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state0_column]
         - oods_values[701])
-        .field_div(&felt_nonzero!((point - pow1119 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1119 * oods_point));
     let total_sum = total_sum + constraint_coefficients[701] * value;
 
     let value = (column_values
         [dynamic_params.poseidon_poseidon_partial_rounds_state1_squared_column]
         - oods_values[702])
-        .field_div(&felt_nonzero!((point - pow1113 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1113 * oods_point));
     let total_sum = total_sum + constraint_coefficients[702] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_column]
         - oods_values[703])
-        .field_div(&felt_nonzero!((point - pow1106 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1106 * oods_point));
     let total_sum = total_sum + constraint_coefficients[703] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[704])
-        .field_div(&felt_nonzero!((point - pow1884 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1884 * oods_point));
     let total_sum = total_sum + constraint_coefficients[704] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[705])
-        .field_div(&felt_nonzero!((point - pow1882 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1882 * oods_point));
     let total_sum = total_sum + constraint_coefficients[705] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[706])
-        .field_div(&felt_nonzero!((point - pow1880 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1880 * oods_point));
     let total_sum = total_sum + constraint_coefficients[706] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state0_column]
         - oods_values[707])
-        .field_div(&felt_nonzero!((point - pow1147 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1147 * oods_point));
     let total_sum = total_sum + constraint_coefficients[707] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state1_column]
         - oods_values[708])
-        .field_div(&felt_nonzero!((point - pow1138 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1138 * oods_point));
     let total_sum = total_sum + constraint_coefficients[708] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state2_column]
         - oods_values[709])
-        .field_div(&felt_nonzero!((point - pow1131 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1131 * oods_point));
     let total_sum = total_sum + constraint_coefficients[709] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[710])
-        .field_div(&felt_nonzero!((point - pow1885 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1885 * oods_point));
     let total_sum = total_sum + constraint_coefficients[710] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state0_column]
         - oods_values[711])
-        .field_div(&felt_nonzero!((point - pow1149 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1149 * oods_point));
     let total_sum = total_sum + constraint_coefficients[711] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state0_squared_column]
         - oods_values[712])
-        .field_div(&felt_nonzero!((point - pow1152 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1152 * oods_point));
     let total_sum = total_sum + constraint_coefficients[712] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state1_column]
         - oods_values[713])
-        .field_div(&felt_nonzero!((point - pow1141 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1141 * oods_point));
     let total_sum = total_sum + constraint_coefficients[713] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state1_squared_column]
         - oods_values[714])
-        .field_div(&felt_nonzero!((point - pow1144 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1144 * oods_point));
     let total_sum = total_sum + constraint_coefficients[714] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state2_column]
         - oods_values[715])
-        .field_div(&felt_nonzero!((point - pow1133 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1133 * oods_point));
     let total_sum = total_sum + constraint_coefficients[715] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state2_squared_column]
         - oods_values[716])
-        .field_div(&felt_nonzero!((point - pow1136 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1136 * oods_point));
     let total_sum = total_sum + constraint_coefficients[716] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[717])
-        .field_div(&felt_nonzero!((point - pow1883 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1883 * oods_point));
     let total_sum = total_sum + constraint_coefficients[717] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[718])
-        .field_div(&felt_nonzero!((point - pow1881 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1881 * oods_point));
     let total_sum = total_sum + constraint_coefficients[718] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state0_column]
         - oods_values[719])
-        .field_div(&felt_nonzero!((point - pow1123 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1123 * oods_point));
     let total_sum = total_sum + constraint_coefficients[719] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_column]
         - oods_values[720])
-        .field_div(&felt_nonzero!((point - pow1107 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1107 * oods_point));
     let total_sum = total_sum + constraint_coefficients[720] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state0_column]
         - oods_values[721])
-        .field_div(&felt_nonzero!((point - pow1124 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1124 * oods_point));
     let total_sum = total_sum + constraint_coefficients[721] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_column]
         - oods_values[722])
-        .field_div(&felt_nonzero!((point - pow1108 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1108 * oods_point));
     let total_sum = total_sum + constraint_coefficients[722] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state0_column]
         - oods_values[723])
-        .field_div(&felt_nonzero!((point - pow1125 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1125 * oods_point));
     let total_sum = total_sum + constraint_coefficients[723] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state0_column]
         - oods_values[724])
-        .field_div(&felt_nonzero!((point - pow1146 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1146 * oods_point));
     let total_sum = total_sum + constraint_coefficients[724] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state0_squared_column]
         - oods_values[725])
-        .field_div(&felt_nonzero!((point - pow1151 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1151 * oods_point));
     let total_sum = total_sum + constraint_coefficients[725] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state1_column]
         - oods_values[726])
-        .field_div(&felt_nonzero!((point - pow1139 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1139 * oods_point));
     let total_sum = total_sum + constraint_coefficients[726] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state1_squared_column]
         - oods_values[727])
-        .field_div(&felt_nonzero!((point - pow1143 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1143 * oods_point));
     let total_sum = total_sum + constraint_coefficients[727] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state2_column]
         - oods_values[728])
-        .field_div(&felt_nonzero!((point - pow1130 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1130 * oods_point));
     let total_sum = total_sum + constraint_coefficients[728] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state2_squared_column]
         - oods_values[729])
-        .field_div(&felt_nonzero!((point - pow1135 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1135 * oods_point));
     let total_sum = total_sum + constraint_coefficients[729] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state0_column]
         - oods_values[730])
-        .field_div(&felt_nonzero!((point - pow1120 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1120 * oods_point));
     let total_sum = total_sum + constraint_coefficients[730] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state0_column]
         - oods_values[731])
-        .field_div(&felt_nonzero!((point - pow1121 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1121 * oods_point));
     let total_sum = total_sum + constraint_coefficients[731] * value;
 
     let value = (column_values
         [dynamic_params.poseidon_poseidon_partial_rounds_state0_squared_column]
         - oods_values[732])
-        .field_div(&felt_nonzero!((point - pow1127 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1127 * oods_point));
     let total_sum = total_sum + constraint_coefficients[732] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state0_column]
         - oods_values[733])
-        .field_div(&felt_nonzero!((point - pow1122 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1122 * oods_point));
     let total_sum = total_sum + constraint_coefficients[733] * value;
 
     let value = (column_values
         [dynamic_params.poseidon_poseidon_partial_rounds_state0_squared_column]
         - oods_values[734])
-        .field_div(&felt_nonzero!((point - pow1128 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1128 * oods_point));
     let total_sum = total_sum + constraint_coefficients[734] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_column]
         - oods_values[735])
-        .field_div(&felt_nonzero!((point - pow1109 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1109 * oods_point));
     let total_sum = total_sum + constraint_coefficients[735] * value;
 
     let value = (column_values
         [dynamic_params.poseidon_poseidon_partial_rounds_state1_squared_column]
         - oods_values[736])
-        .field_div(&felt_nonzero!((point - pow1115 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1115 * oods_point));
     let total_sum = total_sum + constraint_coefficients[736] * value;
 
     let value = (column_values
         [dynamic_params.poseidon_poseidon_partial_rounds_state1_squared_column]
         - oods_values[737])
-        .field_div(&felt_nonzero!((point - pow1116 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1116 * oods_point));
     let total_sum = total_sum + constraint_coefficients[737] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state0_column]
         - oods_values[738])
-        .field_div(&felt_nonzero!((point - pow1148 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1148 * oods_point));
     let total_sum = total_sum + constraint_coefficients[738] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_column]
         - oods_values[739])
-        .field_div(&felt_nonzero!((point - pow1110 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1110 * oods_point));
     let total_sum = total_sum + constraint_coefficients[739] * value;
 
     let value = (column_values
         [dynamic_params.poseidon_poseidon_partial_rounds_state1_squared_column]
         - oods_values[740])
-        .field_div(&felt_nonzero!((point - pow1114 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1114 * oods_point));
     let total_sum = total_sum + constraint_coefficients[740] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_column]
         - oods_values[741])
-        .field_div(&felt_nonzero!((point - pow1111 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1111 * oods_point));
     let total_sum = total_sum + constraint_coefficients[741] * value;
 
     let value = (column_values
         [dynamic_params.poseidon_poseidon_partial_rounds_state1_squared_column]
         - oods_values[742])
-        .field_div(&felt_nonzero!((point - pow1117 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1117 * oods_point));
     let total_sum = total_sum + constraint_coefficients[742] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_partial_rounds_state1_column]
         - oods_values[743])
-        .field_div(&felt_nonzero!((point - pow1112 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1112 * oods_point));
     let total_sum = total_sum + constraint_coefficients[743] * value;
 
     let value = (column_values
         [dynamic_params.poseidon_poseidon_partial_rounds_state1_squared_column]
         - oods_values[744])
-        .field_div(&felt_nonzero!((point - pow1118 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1118 * oods_point));
     let total_sum = total_sum + constraint_coefficients[744] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state1_column]
         - oods_values[745])
-        .field_div(&felt_nonzero!((point - pow1140 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1140 * oods_point));
     let total_sum = total_sum + constraint_coefficients[745] * value;
 
     let value = (column_values[dynamic_params.poseidon_poseidon_full_rounds_state2_column]
         - oods_values[746])
-        .field_div(&felt_nonzero!((point - pow1132 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1132 * oods_point));
     let total_sum = total_sum + constraint_coefficients[746] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[747])
-        .field_div(&felt_nonzero!((point - pow1854 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1854 * oods_point));
     let total_sum = total_sum + constraint_coefficients[747] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[748])
-        .field_div(&felt_nonzero!((point - pow1785 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1785 * oods_point));
     let total_sum = total_sum + constraint_coefficients[748] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[749])
-        .field_div(&felt_nonzero!((point - pow1784 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1784 * oods_point));
     let total_sum = total_sum + constraint_coefficients[749] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[750])
-        .field_div(&felt_nonzero!((point - pow1783 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1783 * oods_point));
     let total_sum = total_sum + constraint_coefficients[750] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[751])
-        .field_div(&felt_nonzero!((point - pow1782 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1782 * oods_point));
     let total_sum = total_sum + constraint_coefficients[751] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[752])
-        .field_div(&felt_nonzero!((point - pow1781 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1781 * oods_point));
     let total_sum = total_sum + constraint_coefficients[752] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[753])
-        .field_div(&felt_nonzero!((point - pow1780 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1780 * oods_point));
     let total_sum = total_sum + constraint_coefficients[753] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[754])
-        .field_div(&felt_nonzero!((point - pow1946 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1946 * oods_point));
     let total_sum = total_sum + constraint_coefficients[754] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[755])
-        .field_div(&felt_nonzero!((point - pow1945 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1945 * oods_point));
     let total_sum = total_sum + constraint_coefficients[755] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[756])
-        .field_div(&felt_nonzero!((point - pow1943 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1943 * oods_point));
     let total_sum = total_sum + constraint_coefficients[756] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[757])
-        .field_div(&felt_nonzero!((point - pow1942 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1942 * oods_point));
     let total_sum = total_sum + constraint_coefficients[757] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[758])
-        .field_div(&felt_nonzero!((point - pow1941 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1941 * oods_point));
     let total_sum = total_sum + constraint_coefficients[758] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[759])
-        .field_div(&felt_nonzero!((point - pow1940 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1940 * oods_point));
     let total_sum = total_sum + constraint_coefficients[759] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[760])
-        .field_div(&felt_nonzero!((point - pow1939 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1939 * oods_point));
     let total_sum = total_sum + constraint_coefficients[760] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[761])
-        .field_div(&felt_nonzero!((point - pow1938 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1938 * oods_point));
     let total_sum = total_sum + constraint_coefficients[761] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[762])
-        .field_div(&felt_nonzero!((point - pow1937 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1937 * oods_point));
     let total_sum = total_sum + constraint_coefficients[762] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[763])
-        .field_div(&felt_nonzero!((point - pow1944 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1944 * oods_point));
     let total_sum = total_sum + constraint_coefficients[763] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[764])
-        .field_div(&felt_nonzero!((point - pow1877 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1877 * oods_point));
     let total_sum = total_sum + constraint_coefficients[764] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[765])
-        .field_div(&felt_nonzero!((point - pow1853 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1853 * oods_point));
     let total_sum = total_sum + constraint_coefficients[765] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[766])
-        .field_div(&felt_nonzero!((point - pow1851 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1851 * oods_point));
     let total_sum = total_sum + constraint_coefficients[766] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[767])
-        .field_div(&felt_nonzero!((point - pow1850 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1850 * oods_point));
     let total_sum = total_sum + constraint_coefficients[767] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[768])
-        .field_div(&felt_nonzero!((point - pow1849 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1849 * oods_point));
     let total_sum = total_sum + constraint_coefficients[768] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[769])
-        .field_div(&felt_nonzero!((point - pow1855 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1855 * oods_point));
     let total_sum = total_sum + constraint_coefficients[769] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[770])
-        .field_div(&felt_nonzero!((point - pow1848 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1848 * oods_point));
     let total_sum = total_sum + constraint_coefficients[770] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[771])
-        .field_div(&felt_nonzero!((point - pow1847 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1847 * oods_point));
     let total_sum = total_sum + constraint_coefficients[771] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[772])
-        .field_div(&felt_nonzero!((point - pow1846 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1846 * oods_point));
     let total_sum = total_sum + constraint_coefficients[772] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[773])
-        .field_div(&felt_nonzero!((point - pow1845 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1845 * oods_point));
     let total_sum = total_sum + constraint_coefficients[773] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[774])
-        .field_div(&felt_nonzero!((point - pow1844 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1844 * oods_point));
     let total_sum = total_sum + constraint_coefficients[774] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[775])
-        .field_div(&felt_nonzero!((point - pow1843 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1843 * oods_point));
     let total_sum = total_sum + constraint_coefficients[775] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[776])
-        .field_div(&felt_nonzero!((point - pow1842 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1842 * oods_point));
     let total_sum = total_sum + constraint_coefficients[776] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[777])
-        .field_div(&felt_nonzero!((point - pow1852 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1852 * oods_point));
     let total_sum = total_sum + constraint_coefficients[777] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[778])
-        .field_div(&felt_nonzero!((point - pow1936 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1936 * oods_point));
     let total_sum = total_sum + constraint_coefficients[778] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[779])
-        .field_div(&felt_nonzero!((point - pow1935 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1935 * oods_point));
     let total_sum = total_sum + constraint_coefficients[779] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[780])
-        .field_div(&felt_nonzero!((point - pow1934 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1934 * oods_point));
     let total_sum = total_sum + constraint_coefficients[780] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[781])
-        .field_div(&felt_nonzero!((point - pow1933 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1933 * oods_point));
     let total_sum = total_sum + constraint_coefficients[781] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[782])
-        .field_div(&felt_nonzero!((point - pow1841 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1841 * oods_point));
     let total_sum = total_sum + constraint_coefficients[782] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[783])
-        .field_div(&felt_nonzero!((point - pow1932 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1932 * oods_point));
     let total_sum = total_sum + constraint_coefficients[783] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[784])
-        .field_div(&felt_nonzero!((point - pow1931 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1931 * oods_point));
     let total_sum = total_sum + constraint_coefficients[784] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[785])
-        .field_div(&felt_nonzero!((point - pow1930 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1930 * oods_point));
     let total_sum = total_sum + constraint_coefficients[785] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[786])
-        .field_div(&felt_nonzero!((point - pow1929 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1929 * oods_point));
     let total_sum = total_sum + constraint_coefficients[786] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[787])
-        .field_div(&felt_nonzero!((point - pow1840 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1840 * oods_point));
     let total_sum = total_sum + constraint_coefficients[787] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[788])
-        .field_div(&felt_nonzero!((point - pow1928 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1928 * oods_point));
     let total_sum = total_sum + constraint_coefficients[788] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[789])
-        .field_div(&felt_nonzero!((point - pow1927 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1927 * oods_point));
     let total_sum = total_sum + constraint_coefficients[789] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[790])
-        .field_div(&felt_nonzero!((point - pow1926 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1926 * oods_point));
     let total_sum = total_sum + constraint_coefficients[790] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[791])
-        .field_div(&felt_nonzero!((point - pow1925 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1925 * oods_point));
     let total_sum = total_sum + constraint_coefficients[791] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[792])
-        .field_div(&felt_nonzero!((point - pow1839 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1839 * oods_point));
     let total_sum = total_sum + constraint_coefficients[792] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[793])
-        .field_div(&felt_nonzero!((point - pow1924 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1924 * oods_point));
     let total_sum = total_sum + constraint_coefficients[793] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[794])
-        .field_div(&felt_nonzero!((point - pow1923 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1923 * oods_point));
     let total_sum = total_sum + constraint_coefficients[794] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[795])
-        .field_div(&felt_nonzero!((point - pow1922 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1922 * oods_point));
     let total_sum = total_sum + constraint_coefficients[795] * value;
 
     let value = (column_values[dynamic_params.add_mod_sub_p_bit_column] - oods_values[796])
-        .field_div(&felt_nonzero!((point - pow1105 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1105 * oods_point));
     let total_sum = total_sum + constraint_coefficients[796] * value;
 
     let value = (column_values[dynamic_params.add_mod_carry1_bit_column] - oods_values[797])
-        .field_div(&felt_nonzero!((point - pow1104 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1104 * oods_point));
     let total_sum = total_sum + constraint_coefficients[797] * value;
 
     let value = (column_values[dynamic_params.add_mod_carry1_sign_column] - oods_values[798])
-        .field_div(&felt_nonzero!((point - pow1103 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1103 * oods_point));
     let total_sum = total_sum + constraint_coefficients[798] * value;
 
     let value = (column_values[dynamic_params.add_mod_carry2_bit_column] - oods_values[799])
-        .field_div(&felt_nonzero!((point - pow1102 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1102 * oods_point));
     let total_sum = total_sum + constraint_coefficients[799] * value;
 
     let value = (column_values[dynamic_params.add_mod_carry2_sign_column] - oods_values[800])
-        .field_div(&felt_nonzero!((point - pow1101 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1101 * oods_point));
     let total_sum = total_sum + constraint_coefficients[800] * value;
 
     let value = (column_values[dynamic_params.add_mod_carry3_bit_column] - oods_values[801])
-        .field_div(&felt_nonzero!((point - pow1100 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1100 * oods_point));
     let total_sum = total_sum + constraint_coefficients[801] * value;
 
     let value = (column_values[dynamic_params.add_mod_carry3_sign_column] - oods_values[802])
-        .field_div(&felt_nonzero!((point - pow1099 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1099 * oods_point));
     let total_sum = total_sum + constraint_coefficients[802] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[803])
-        .field_div(&felt_nonzero!((point - pow1838 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1838 * oods_point));
     let total_sum = total_sum + constraint_coefficients[803] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[804])
-        .field_div(&felt_nonzero!((point - pow1837 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1837 * oods_point));
     let total_sum = total_sum + constraint_coefficients[804] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[805])
-        .field_div(&felt_nonzero!((point - pow1836 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1836 * oods_point));
     let total_sum = total_sum + constraint_coefficients[805] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[806])
-        .field_div(&felt_nonzero!((point - pow1835 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1835 * oods_point));
     let total_sum = total_sum + constraint_coefficients[806] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[807])
-        .field_div(&felt_nonzero!((point - pow1834 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1834 * oods_point));
     let total_sum = total_sum + constraint_coefficients[807] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[808])
-        .field_div(&felt_nonzero!((point - pow1833 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1833 * oods_point));
     let total_sum = total_sum + constraint_coefficients[808] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[809])
-        .field_div(&felt_nonzero!((point - pow1832 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1832 * oods_point));
     let total_sum = total_sum + constraint_coefficients[809] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[810])
-        .field_div(&felt_nonzero!((point - pow1831 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1831 * oods_point));
     let total_sum = total_sum + constraint_coefficients[810] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[811])
-        .field_div(&felt_nonzero!((point - pow1830 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1830 * oods_point));
     let total_sum = total_sum + constraint_coefficients[811] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[812])
-        .field_div(&felt_nonzero!((point - pow1829 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1829 * oods_point));
     let total_sum = total_sum + constraint_coefficients[812] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[813])
-        .field_div(&felt_nonzero!((point - pow1828 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1828 * oods_point));
     let total_sum = total_sum + constraint_coefficients[813] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[814])
-        .field_div(&felt_nonzero!((point - pow1827 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1827 * oods_point));
     let total_sum = total_sum + constraint_coefficients[814] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[815])
-        .field_div(&felt_nonzero!((point - pow1920 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1920 * oods_point));
     let total_sum = total_sum + constraint_coefficients[815] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[816])
-        .field_div(&felt_nonzero!((point - pow1919 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1919 * oods_point));
     let total_sum = total_sum + constraint_coefficients[816] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[817])
-        .field_div(&felt_nonzero!((point - pow1918 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1918 * oods_point));
     let total_sum = total_sum + constraint_coefficients[817] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[818])
-        .field_div(&felt_nonzero!((point - pow1917 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1917 * oods_point));
     let total_sum = total_sum + constraint_coefficients[818] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[819])
-        .field_div(&felt_nonzero!((point - pow1916 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1916 * oods_point));
     let total_sum = total_sum + constraint_coefficients[819] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[820])
-        .field_div(&felt_nonzero!((point - pow1915 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1915 * oods_point));
     let total_sum = total_sum + constraint_coefficients[820] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[821])
-        .field_div(&felt_nonzero!((point - pow1914 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1914 * oods_point));
     let total_sum = total_sum + constraint_coefficients[821] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[822])
-        .field_div(&felt_nonzero!((point - pow1921 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1921 * oods_point));
     let total_sum = total_sum + constraint_coefficients[822] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[823])
-        .field_div(&felt_nonzero!((point - pow1826 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1826 * oods_point));
     let total_sum = total_sum + constraint_coefficients[823] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[824])
-        .field_div(&felt_nonzero!((point - pow1825 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1825 * oods_point));
     let total_sum = total_sum + constraint_coefficients[824] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[825])
-        .field_div(&felt_nonzero!((point - pow1823 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1823 * oods_point));
     let total_sum = total_sum + constraint_coefficients[825] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[826])
-        .field_div(&felt_nonzero!((point - pow1822 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1822 * oods_point));
     let total_sum = total_sum + constraint_coefficients[826] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[827])
-        .field_div(&felt_nonzero!((point - pow1821 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1821 * oods_point));
     let total_sum = total_sum + constraint_coefficients[827] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[828])
-        .field_div(&felt_nonzero!((point - pow1820 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1820 * oods_point));
     let total_sum = total_sum + constraint_coefficients[828] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[829])
-        .field_div(&felt_nonzero!((point - pow1819 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1819 * oods_point));
     let total_sum = total_sum + constraint_coefficients[829] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[830])
-        .field_div(&felt_nonzero!((point - pow1818 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1818 * oods_point));
     let total_sum = total_sum + constraint_coefficients[830] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[831])
-        .field_div(&felt_nonzero!((point - pow1817 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1817 * oods_point));
     let total_sum = total_sum + constraint_coefficients[831] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[832])
-        .field_div(&felt_nonzero!((point - pow1816 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1816 * oods_point));
     let total_sum = total_sum + constraint_coefficients[832] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[833])
-        .field_div(&felt_nonzero!((point - pow1815 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1815 * oods_point));
     let total_sum = total_sum + constraint_coefficients[833] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[834])
-        .field_div(&felt_nonzero!((point - pow1814 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1814 * oods_point));
     let total_sum = total_sum + constraint_coefficients[834] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[835])
-        .field_div(&felt_nonzero!((point - pow1813 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1813 * oods_point));
     let total_sum = total_sum + constraint_coefficients[835] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[836])
-        .field_div(&felt_nonzero!((point - pow1824 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1824 * oods_point));
     let total_sum = total_sum + constraint_coefficients[836] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[837])
-        .field_div(&felt_nonzero!((point - pow1913 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1913 * oods_point));
     let total_sum = total_sum + constraint_coefficients[837] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[838])
-        .field_div(&felt_nonzero!((point - pow1912 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1912 * oods_point));
     let total_sum = total_sum + constraint_coefficients[838] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[839])
-        .field_div(&felt_nonzero!((point - pow1911 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1911 * oods_point));
     let total_sum = total_sum + constraint_coefficients[839] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[840])
-        .field_div(&felt_nonzero!((point - pow1910 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1910 * oods_point));
     let total_sum = total_sum + constraint_coefficients[840] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[841])
-        .field_div(&felt_nonzero!((point - pow1812 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1812 * oods_point));
     let total_sum = total_sum + constraint_coefficients[841] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[842])
-        .field_div(&felt_nonzero!((point - pow1909 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1909 * oods_point));
     let total_sum = total_sum + constraint_coefficients[842] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[843])
-        .field_div(&felt_nonzero!((point - pow1908 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1908 * oods_point));
     let total_sum = total_sum + constraint_coefficients[843] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[844])
-        .field_div(&felt_nonzero!((point - pow1907 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1907 * oods_point));
     let total_sum = total_sum + constraint_coefficients[844] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[845])
-        .field_div(&felt_nonzero!((point - pow1906 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1906 * oods_point));
     let total_sum = total_sum + constraint_coefficients[845] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[846])
-        .field_div(&felt_nonzero!((point - pow1811 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1811 * oods_point));
     let total_sum = total_sum + constraint_coefficients[846] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[847])
-        .field_div(&felt_nonzero!((point - pow1905 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1905 * oods_point));
     let total_sum = total_sum + constraint_coefficients[847] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[848])
-        .field_div(&felt_nonzero!((point - pow1904 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1904 * oods_point));
     let total_sum = total_sum + constraint_coefficients[848] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[849])
-        .field_div(&felt_nonzero!((point - pow1903 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1903 * oods_point));
     let total_sum = total_sum + constraint_coefficients[849] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[850])
-        .field_div(&felt_nonzero!((point - pow1902 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1902 * oods_point));
     let total_sum = total_sum + constraint_coefficients[850] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[851])
-        .field_div(&felt_nonzero!((point - pow1810 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1810 * oods_point));
     let total_sum = total_sum + constraint_coefficients[851] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[852])
-        .field_div(&felt_nonzero!((point - pow1901 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1901 * oods_point));
     let total_sum = total_sum + constraint_coefficients[852] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[853])
-        .field_div(&felt_nonzero!((point - pow1900 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1900 * oods_point));
     let total_sum = total_sum + constraint_coefficients[853] * value;
 
     let value = (column_values[dynamic_params.mem_pool_addr_column] - oods_values[854])
-        .field_div(&felt_nonzero!((point - pow1899 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1899 * oods_point));
     let total_sum = total_sum + constraint_coefficients[854] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[855])
-        .field_div(&felt_nonzero!((point - pow1809 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1809 * oods_point));
     let total_sum = total_sum + constraint_coefficients[855] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[856])
-        .field_div(&felt_nonzero!((point - pow1808 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1808 * oods_point));
     let total_sum = total_sum + constraint_coefficients[856] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[857])
-        .field_div(&felt_nonzero!((point - pow1807 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1807 * oods_point));
     let total_sum = total_sum + constraint_coefficients[857] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[858])
-        .field_div(&felt_nonzero!((point - pow1806 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1806 * oods_point));
     let total_sum = total_sum + constraint_coefficients[858] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[859])
-        .field_div(&felt_nonzero!((point - pow1805 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1805 * oods_point));
     let total_sum = total_sum + constraint_coefficients[859] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[860])
-        .field_div(&felt_nonzero!((point - pow1804 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1804 * oods_point));
     let total_sum = total_sum + constraint_coefficients[860] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[861])
-        .field_div(&felt_nonzero!((point - pow1803 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1803 * oods_point));
     let total_sum = total_sum + constraint_coefficients[861] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[862])
-        .field_div(&felt_nonzero!((point - pow1802 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1802 * oods_point));
     let total_sum = total_sum + constraint_coefficients[862] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[863])
-        .field_div(&felt_nonzero!((point - pow1801 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1801 * oods_point));
     let total_sum = total_sum + constraint_coefficients[863] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[864])
-        .field_div(&felt_nonzero!((point - pow1800 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1800 * oods_point));
     let total_sum = total_sum + constraint_coefficients[864] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[865])
-        .field_div(&felt_nonzero!((point - pow1799 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1799 * oods_point));
     let total_sum = total_sum + constraint_coefficients[865] * value;
 
     let value = (column_values[dynamic_params.mem_pool_value_column] - oods_values[866])
-        .field_div(&felt_nonzero!((point - pow1798 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1798 * oods_point));
     let total_sum = total_sum + constraint_coefficients[866] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[867])
-        .field_div(&felt_nonzero!((point - pow1779 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1779 * oods_point));
     let total_sum = total_sum + constraint_coefficients[867] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[868])
-        .field_div(&felt_nonzero!((point - pow1778 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1778 * oods_point));
     let total_sum = total_sum + constraint_coefficients[868] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[869])
-        .field_div(&felt_nonzero!((point - pow1777 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1777 * oods_point));
     let total_sum = total_sum + constraint_coefficients[869] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[870])
-        .field_div(&felt_nonzero!((point - pow1776 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1776 * oods_point));
     let total_sum = total_sum + constraint_coefficients[870] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[871])
-        .field_div(&felt_nonzero!((point - pow1775 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1775 * oods_point));
     let total_sum = total_sum + constraint_coefficients[871] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[872])
-        .field_div(&felt_nonzero!((point - pow1774 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1774 * oods_point));
     let total_sum = total_sum + constraint_coefficients[872] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[873])
-        .field_div(&felt_nonzero!((point - pow1773 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1773 * oods_point));
     let total_sum = total_sum + constraint_coefficients[873] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[874])
-        .field_div(&felt_nonzero!((point - pow1772 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1772 * oods_point));
     let total_sum = total_sum + constraint_coefficients[874] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[875])
-        .field_div(&felt_nonzero!((point - pow1771 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1771 * oods_point));
     let total_sum = total_sum + constraint_coefficients[875] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[876])
-        .field_div(&felt_nonzero!((point - pow1770 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1770 * oods_point));
     let total_sum = total_sum + constraint_coefficients[876] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[877])
-        .field_div(&felt_nonzero!((point - pow1769 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1769 * oods_point));
     let total_sum = total_sum + constraint_coefficients[877] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[878])
-        .field_div(&felt_nonzero!((point - pow1768 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1768 * oods_point));
     let total_sum = total_sum + constraint_coefficients[878] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[879])
-        .field_div(&felt_nonzero!((point - pow1767 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1767 * oods_point));
     let total_sum = total_sum + constraint_coefficients[879] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[880])
-        .field_div(&felt_nonzero!((point - pow1766 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1766 * oods_point));
     let total_sum = total_sum + constraint_coefficients[880] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[881])
-        .field_div(&felt_nonzero!((point - pow1765 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1765 * oods_point));
     let total_sum = total_sum + constraint_coefficients[881] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[882])
-        .field_div(&felt_nonzero!((point - pow1764 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1764 * oods_point));
     let total_sum = total_sum + constraint_coefficients[882] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[883])
-        .field_div(&felt_nonzero!((point - pow1763 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1763 * oods_point));
     let total_sum = total_sum + constraint_coefficients[883] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[884])
-        .field_div(&felt_nonzero!((point - pow1762 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1762 * oods_point));
     let total_sum = total_sum + constraint_coefficients[884] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[885])
-        .field_div(&felt_nonzero!((point - pow1761 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1761 * oods_point));
     let total_sum = total_sum + constraint_coefficients[885] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[886])
-        .field_div(&felt_nonzero!((point - pow1760 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1760 * oods_point));
     let total_sum = total_sum + constraint_coefficients[886] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[887])
-        .field_div(&felt_nonzero!((point - pow1759 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1759 * oods_point));
     let total_sum = total_sum + constraint_coefficients[887] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[888])
-        .field_div(&felt_nonzero!((point - pow1758 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1758 * oods_point));
     let total_sum = total_sum + constraint_coefficients[888] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[889])
-        .field_div(&felt_nonzero!((point - pow1757 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1757 * oods_point));
     let total_sum = total_sum + constraint_coefficients[889] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[890])
-        .field_div(&felt_nonzero!((point - pow1756 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1756 * oods_point));
     let total_sum = total_sum + constraint_coefficients[890] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[891])
-        .field_div(&felt_nonzero!((point - pow1755 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1755 * oods_point));
     let total_sum = total_sum + constraint_coefficients[891] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[892])
-        .field_div(&felt_nonzero!((point - pow1754 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1754 * oods_point));
     let total_sum = total_sum + constraint_coefficients[892] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[893])
-        .field_div(&felt_nonzero!((point - pow1753 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1753 * oods_point));
     let total_sum = total_sum + constraint_coefficients[893] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[894])
-        .field_div(&felt_nonzero!((point - pow1752 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1752 * oods_point));
     let total_sum = total_sum + constraint_coefficients[894] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[895])
-        .field_div(&felt_nonzero!((point - pow1751 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1751 * oods_point));
     let total_sum = total_sum + constraint_coefficients[895] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[896])
-        .field_div(&felt_nonzero!((point - pow1750 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1750 * oods_point));
     let total_sum = total_sum + constraint_coefficients[896] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[897])
-        .field_div(&felt_nonzero!((point - pow1749 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1749 * oods_point));
     let total_sum = total_sum + constraint_coefficients[897] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[898])
-        .field_div(&felt_nonzero!((point - pow1748 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1748 * oods_point));
     let total_sum = total_sum + constraint_coefficients[898] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[899])
-        .field_div(&felt_nonzero!((point - pow1747 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1747 * oods_point));
     let total_sum = total_sum + constraint_coefficients[899] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[900])
-        .field_div(&felt_nonzero!((point - pow1746 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1746 * oods_point));
     let total_sum = total_sum + constraint_coefficients[900] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[901])
-        .field_div(&felt_nonzero!((point - pow1745 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1745 * oods_point));
     let total_sum = total_sum + constraint_coefficients[901] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[902])
-        .field_div(&felt_nonzero!((point - pow1744 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1744 * oods_point));
     let total_sum = total_sum + constraint_coefficients[902] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[903])
-        .field_div(&felt_nonzero!((point - pow1743 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1743 * oods_point));
     let total_sum = total_sum + constraint_coefficients[903] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[904])
-        .field_div(&felt_nonzero!((point - pow1742 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1742 * oods_point));
     let total_sum = total_sum + constraint_coefficients[904] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[905])
-        .field_div(&felt_nonzero!((point - pow1741 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1741 * oods_point));
     let total_sum = total_sum + constraint_coefficients[905] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[906])
-        .field_div(&felt_nonzero!((point - pow1740 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1740 * oods_point));
     let total_sum = total_sum + constraint_coefficients[906] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[907])
-        .field_div(&felt_nonzero!((point - pow1739 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1739 * oods_point));
     let total_sum = total_sum + constraint_coefficients[907] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[908])
-        .field_div(&felt_nonzero!((point - pow1738 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1738 * oods_point));
     let total_sum = total_sum + constraint_coefficients[908] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[909])
-        .field_div(&felt_nonzero!((point - pow1737 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1737 * oods_point));
     let total_sum = total_sum + constraint_coefficients[909] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[910])
-        .field_div(&felt_nonzero!((point - pow1736 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1736 * oods_point));
     let total_sum = total_sum + constraint_coefficients[910] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[911])
-        .field_div(&felt_nonzero!((point - pow1735 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1735 * oods_point));
     let total_sum = total_sum + constraint_coefficients[911] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[912])
-        .field_div(&felt_nonzero!((point - pow1734 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1734 * oods_point));
     let total_sum = total_sum + constraint_coefficients[912] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[913])
-        .field_div(&felt_nonzero!((point - pow1733 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1733 * oods_point));
     let total_sum = total_sum + constraint_coefficients[913] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[914])
-        .field_div(&felt_nonzero!((point - pow1732 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1732 * oods_point));
     let total_sum = total_sum + constraint_coefficients[914] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[915])
-        .field_div(&felt_nonzero!((point - pow1731 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1731 * oods_point));
     let total_sum = total_sum + constraint_coefficients[915] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[916])
-        .field_div(&felt_nonzero!((point - pow1730 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1730 * oods_point));
     let total_sum = total_sum + constraint_coefficients[916] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[917])
-        .field_div(&felt_nonzero!((point - pow1729 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1729 * oods_point));
     let total_sum = total_sum + constraint_coefficients[917] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[918])
-        .field_div(&felt_nonzero!((point - pow1728 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1728 * oods_point));
     let total_sum = total_sum + constraint_coefficients[918] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[919])
-        .field_div(&felt_nonzero!((point - pow1727 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1727 * oods_point));
     let total_sum = total_sum + constraint_coefficients[919] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[920])
-        .field_div(&felt_nonzero!((point - pow1726 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1726 * oods_point));
     let total_sum = total_sum + constraint_coefficients[920] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[921])
-        .field_div(&felt_nonzero!((point - pow1725 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1725 * oods_point));
     let total_sum = total_sum + constraint_coefficients[921] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[922])
-        .field_div(&felt_nonzero!((point - pow1724 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1724 * oods_point));
     let total_sum = total_sum + constraint_coefficients[922] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[923])
-        .field_div(&felt_nonzero!((point - pow1723 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1723 * oods_point));
     let total_sum = total_sum + constraint_coefficients[923] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[924])
-        .field_div(&felt_nonzero!((point - pow1722 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1722 * oods_point));
     let total_sum = total_sum + constraint_coefficients[924] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[925])
-        .field_div(&felt_nonzero!((point - pow1721 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1721 * oods_point));
     let total_sum = total_sum + constraint_coefficients[925] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[926])
-        .field_div(&felt_nonzero!((point - pow1720 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1720 * oods_point));
     let total_sum = total_sum + constraint_coefficients[926] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[927])
-        .field_div(&felt_nonzero!((point - pow1719 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1719 * oods_point));
     let total_sum = total_sum + constraint_coefficients[927] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[928])
-        .field_div(&felt_nonzero!((point - pow1718 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1718 * oods_point));
     let total_sum = total_sum + constraint_coefficients[928] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[929])
-        .field_div(&felt_nonzero!((point - pow1717 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1717 * oods_point));
     let total_sum = total_sum + constraint_coefficients[929] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[930])
-        .field_div(&felt_nonzero!((point - pow1716 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1716 * oods_point));
     let total_sum = total_sum + constraint_coefficients[930] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[931])
-        .field_div(&felt_nonzero!((point - pow1715 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1715 * oods_point));
     let total_sum = total_sum + constraint_coefficients[931] * value;
 
     let value = (column_values[dynamic_params.range_check16_pool_column] - oods_values[932])
-        .field_div(&felt_nonzero!((point - pow1714 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1714 * oods_point));
     let total_sum = total_sum + constraint_coefficients[932] * value;
 
     let value = (column_values[dynamic_params.memory_multi_column_perm_perm_cum_prod0_column]
         - oods_values[933])
-        .field_div(&felt_nonzero!((point - pow1097 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1097 * oods_point));
     let total_sum = total_sum + constraint_coefficients[933] * value;
 
     let value = (column_values[dynamic_params.memory_multi_column_perm_perm_cum_prod0_column]
         - oods_values[934])
-        .field_div(&felt_nonzero!((point - pow1098 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1098 * oods_point));
     let total_sum = total_sum + constraint_coefficients[934] * value;
 
     let value = (column_values[dynamic_params.range_check16_perm_cum_prod0_column]
         - oods_values[935])
-        .field_div(&felt_nonzero!((point - pow1095 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1095 * oods_point));
     let total_sum = total_sum + constraint_coefficients[935] * value;
 
     let value = (column_values[dynamic_params.range_check16_perm_cum_prod0_column]
         - oods_values[936])
-        .field_div(&felt_nonzero!((point - pow1096 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1096 * oods_point));
     let total_sum = total_sum + constraint_coefficients[936] * value;
 
     let value = (column_values[dynamic_params.diluted_check_permutation_cum_prod0_column]
         - oods_values[937])
-        .field_div(&felt_nonzero!((point - pow1093 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1093 * oods_point));
     let total_sum = total_sum + constraint_coefficients[937] * value;
 
     let value = (column_values[dynamic_params.diluted_check_permutation_cum_prod0_column]
         - oods_values[938])
-        .field_div(&felt_nonzero!((point - pow1094 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1094 * oods_point));
     let total_sum = total_sum + constraint_coefficients[938] * value;
 
     let value = (column_values[dynamic_params.diluted_check_cumulative_value_column]
         - oods_values[939])
-        .field_div(&felt_nonzero!((point - pow1091 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1091 * oods_point));
     let total_sum = total_sum + constraint_coefficients[939] * value;
 
     let value = (column_values[dynamic_params.diluted_check_cumulative_value_column]
         - oods_values[940])
-        .field_div(&felt_nonzero!((point - pow1092 * oods_point)));
+        .field_div(&felt_nonzero!(point - pow1092 * oods_point));
     let total_sum = total_sum + constraint_coefficients[940] * value;
 
     // Sum the OODS boundary constraints on the composition polynomials.
@@ -6727,12 +6727,12 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
     let value = (column_values
         [dynamic_params.num_columns_first + dynamic_params.num_columns_second]
         - oods_values[941])
-        .field_div(&felt_nonzero!((point - oods_point_to_deg)));
+        .field_div(&felt_nonzero!(point - oods_point_to_deg));
     let total_sum = total_sum + constraint_coefficients[941] * value;
 
     let value = (column_values
         [dynamic_params.num_columns_first + dynamic_params.num_columns_second + 1]
         - oods_values[942])
-        .field_div(&felt_nonzero!((point - oods_point_to_deg)));
+        .field_div(&felt_nonzero!(point - oods_point_to_deg));
     total_sum + constraint_coefficients[942] * value
 }

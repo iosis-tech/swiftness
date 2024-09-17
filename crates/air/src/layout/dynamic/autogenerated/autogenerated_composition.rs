@@ -43,14 +43,14 @@ pub fn eval_composition_polynomial_inner(
         &(global_values.trace_length.floor_div(&felt_nonzero!(range_check_units_row_ratio))),
     );
     let pow1 = point.pow_felt(
-        &(global_values.trace_length.floor_div(&felt_nonzero!((FELT_8 * memory_units_row_ratio)))),
+        &(global_values.trace_length.floor_div(&felt_nonzero!(FELT_8 * memory_units_row_ratio))),
     );
     let pow2 = point
         .pow_felt(&(global_values.trace_length.floor_div(&felt_nonzero!(memory_units_row_ratio))));
     let pow3 = point
         .pow_felt(&(global_values.trace_length.floor_div(&felt_nonzero!(diluted_units_row_ratio))));
     let pow4 = point.pow_felt(
-        &(global_values.trace_length.floor_div(&felt_nonzero!((FELT_16 * cpu_component_step)))),
+        &(global_values.trace_length.floor_div(&felt_nonzero!(FELT_16 * cpu_component_step))),
     );
     let pow5 =
         point.pow_felt(&(global_values.trace_length.floor_div(&felt_nonzero!(cpu_component_step))));
@@ -3531,7 +3531,7 @@ pub fn eval_composition_polynomial_inner(
     let mut pow3394 = FELT_0;
     if uses_keccak_builtin != FELT_0 {
         let temp44 = point.pow_felt(
-            &(global_values.trace_length.floor_div(&felt_nonzero!((FELT_16 * keccak_row_ratio)))),
+            &(global_values.trace_length.floor_div(&felt_nonzero!(FELT_16 * keccak_row_ratio))),
         );
         pow44 = temp44;
         let temp45 = point
@@ -15294,7 +15294,8 @@ pub fn eval_composition_polynomial_inner(
     } else {
         total_sum
     };
-    let total_sum = if uses_mul_mod_builtin != FELT_0 {
+
+    if uses_mul_mod_builtin != FELT_0 {
         // Constraint: mul_mod/init_p0_address.
         let value = (mem_pool_addr_column_row_expr628 - global_values.mul_mod_initial_mod_addr)
             .field_div(&felt_nonzero!(domain156));
@@ -15528,6 +15529,5 @@ pub fn eval_composition_polynomial_inner(
         total_sum + constraint_coefficients[418] * value
     } else {
         total_sum
-    };
-    total_sum
+    }
 }
