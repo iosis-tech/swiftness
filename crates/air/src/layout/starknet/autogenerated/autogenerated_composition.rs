@@ -1662,7 +1662,6 @@ pub fn eval_composition_polynomial_inner(
                 * poseidon_poseidon_partial_rounds_state1_cubed_21
             + FELT_1246177936547655338400308396717835700699368047388302793172818304164989556526))
         .field_div(&felt_nonzero!(domain13));
-    
 
     total_sum + constraint_coefficients[197] * value
 }

@@ -1,6 +1,13 @@
 use starknet_crypto::Felt;
 
 #[macro_export]
+macro_rules! felt {
+    ($expr:expr) => {
+        Felt::from($expr)
+    };
+}
+
+#[macro_export]
 macro_rules! felt_hex {
     ($expr:expr) => {
         Felt::from_hex_unchecked($expr)
@@ -11,6 +18,13 @@ macro_rules! felt_hex {
 macro_rules! felt_nonzero {
     ($expr:expr) => {
         NonZeroFelt::from_felt_unchecked($expr)
+    };
+}
+
+#[macro_export]
+macro_rules! felt_try_nonzero {
+    ($expr:expr) => {
+        NonZeroFelt::try_from($expr)
     };
 }
 

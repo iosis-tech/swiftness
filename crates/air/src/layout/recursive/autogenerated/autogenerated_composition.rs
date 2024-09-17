@@ -825,7 +825,6 @@ pub fn eval_composition_polynomial_inner(
     // Constraint: bitwise/unique_unpacking195.
     let value = ((column1_row94 + column1_row126) * FELT_256 - column1_row97)
         .field_div(&felt_nonzero!(domain6));
-    
 
     total_sum + constraint_coefficients[92] * value
 }

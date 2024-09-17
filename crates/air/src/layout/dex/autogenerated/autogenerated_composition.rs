@@ -1323,7 +1323,6 @@ pub fn eval_composition_polynomial_inner(
 
     // Constraint: ecdsa/pubkey_value0.
     let value = (column17_row23 - column19_row7).field_div(&felt_nonzero!(domain18));
-    
 
     total_sum + constraint_coefficients[178] * value
 }

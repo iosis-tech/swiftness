@@ -292,8 +292,7 @@ pub fn eval_oods_polynomial_inner<Layout: StaticLayoutTrait + LayoutTrait>(
     let value = (column1 - oods_values[42]).field_div(&felt_nonzero!(point - pow87 * oods_point));
     let total_sum = total_sum + constraint_coefficients[42] * value;
 
-    let value =
-        (column1 - oods_values[43]).field_div(&felt_nonzero!(point - pow115 * oods_point));
+    let value = (column1 - oods_values[43]).field_div(&felt_nonzero!(point - pow115 * oods_point));
     let total_sum = total_sum + constraint_coefficients[43] * value;
 
     let value = (column1 - oods_values[44]).field_div(&felt_nonzero!(point - pow88 * oods_point));
@@ -305,48 +304,37 @@ pub fn eval_oods_polynomial_inner<Layout: StaticLayoutTrait + LayoutTrait>(
     let value = (column1 - oods_values[46]).field_div(&felt_nonzero!(point - pow93 * oods_point));
     let total_sum = total_sum + constraint_coefficients[46] * value;
 
-    let value =
-        (column1 - oods_values[47]).field_div(&felt_nonzero!(point - pow109 * oods_point));
+    let value = (column1 - oods_values[47]).field_div(&felt_nonzero!(point - pow109 * oods_point));
     let total_sum = total_sum + constraint_coefficients[47] * value;
 
-    let value =
-        (column1 - oods_values[48]).field_div(&felt_nonzero!(point - pow113 * oods_point));
+    let value = (column1 - oods_values[48]).field_div(&felt_nonzero!(point - pow113 * oods_point));
     let total_sum = total_sum + constraint_coefficients[48] * value;
 
-    let value =
-        (column1 - oods_values[49]).field_div(&felt_nonzero!(point - pow110 * oods_point));
+    let value = (column1 - oods_values[49]).field_div(&felt_nonzero!(point - pow110 * oods_point));
     let total_sum = total_sum + constraint_coefficients[49] * value;
 
-    let value =
-        (column1 - oods_values[50]).field_div(&felt_nonzero!(point - pow114 * oods_point));
+    let value = (column1 - oods_values[50]).field_div(&felt_nonzero!(point - pow114 * oods_point));
     let total_sum = total_sum + constraint_coefficients[50] * value;
 
-    let value =
-        (column1 - oods_values[51]).field_div(&felt_nonzero!(point - pow111 * oods_point));
+    let value = (column1 - oods_values[51]).field_div(&felt_nonzero!(point - pow111 * oods_point));
     let total_sum = total_sum + constraint_coefficients[51] * value;
 
-    let value =
-        (column1 - oods_values[52]).field_div(&felt_nonzero!(point - pow116 * oods_point));
+    let value = (column1 - oods_values[52]).field_div(&felt_nonzero!(point - pow116 * oods_point));
     let total_sum = total_sum + constraint_coefficients[52] * value;
 
-    let value =
-        (column1 - oods_values[53]).field_div(&felt_nonzero!(point - pow122 * oods_point));
+    let value = (column1 - oods_values[53]).field_div(&felt_nonzero!(point - pow122 * oods_point));
     let total_sum = total_sum + constraint_coefficients[53] * value;
 
-    let value =
-        (column1 - oods_values[54]).field_div(&felt_nonzero!(point - pow127 * oods_point));
+    let value = (column1 - oods_values[54]).field_div(&felt_nonzero!(point - pow127 * oods_point));
     let total_sum = total_sum + constraint_coefficients[54] * value;
 
-    let value =
-        (column1 - oods_values[55]).field_div(&felt_nonzero!(point - pow131 * oods_point));
+    let value = (column1 - oods_values[55]).field_div(&felt_nonzero!(point - pow131 * oods_point));
     let total_sum = total_sum + constraint_coefficients[55] * value;
 
-    let value =
-        (column1 - oods_values[56]).field_div(&felt_nonzero!(point - pow132 * oods_point));
+    let value = (column1 - oods_values[56]).field_div(&felt_nonzero!(point - pow132 * oods_point));
     let total_sum = total_sum + constraint_coefficients[56] * value;
 
-    let value =
-        (column1 - oods_values[57]).field_div(&felt_nonzero!(point - pow133 * oods_point));
+    let value = (column1 - oods_values[57]).field_div(&felt_nonzero!(point - pow133 * oods_point));
     let total_sum = total_sum + constraint_coefficients[57] * value;
 
     let value = (column2 - oods_values[58]).field_div(&felt_nonzero!(point - pow0 * oods_point));
@@ -481,102 +469,79 @@ pub fn eval_oods_polynomial_inner<Layout: StaticLayoutTrait + LayoutTrait>(
     let value = (column4 - oods_values[101]).field_div(&felt_nonzero!(point - pow9 * oods_point));
     let total_sum = total_sum + constraint_coefficients[101] * value;
 
-    let value =
-        (column4 - oods_values[102]).field_div(&felt_nonzero!(point - pow10 * oods_point));
+    let value = (column4 - oods_values[102]).field_div(&felt_nonzero!(point - pow10 * oods_point));
     let total_sum = total_sum + constraint_coefficients[102] * value;
 
-    let value =
-        (column4 - oods_values[103]).field_div(&felt_nonzero!(point - pow11 * oods_point));
+    let value = (column4 - oods_values[103]).field_div(&felt_nonzero!(point - pow11 * oods_point));
     let total_sum = total_sum + constraint_coefficients[103] * value;
 
-    let value =
-        (column4 - oods_values[104]).field_div(&felt_nonzero!(point - pow13 * oods_point));
+    let value = (column4 - oods_values[104]).field_div(&felt_nonzero!(point - pow13 * oods_point));
     let total_sum = total_sum + constraint_coefficients[104] * value;
 
-    let value =
-        (column4 - oods_values[105]).field_div(&felt_nonzero!(point - pow15 * oods_point));
+    let value = (column4 - oods_values[105]).field_div(&felt_nonzero!(point - pow15 * oods_point));
     let total_sum = total_sum + constraint_coefficients[105] * value;
 
-    let value =
-        (column4 - oods_values[106]).field_div(&felt_nonzero!(point - pow16 * oods_point));
+    let value = (column4 - oods_values[106]).field_div(&felt_nonzero!(point - pow16 * oods_point));
     let total_sum = total_sum + constraint_coefficients[106] * value;
 
-    let value =
-        (column4 - oods_values[107]).field_div(&felt_nonzero!(point - pow17 * oods_point));
+    let value = (column4 - oods_values[107]).field_div(&felt_nonzero!(point - pow17 * oods_point));
     let total_sum = total_sum + constraint_coefficients[107] * value;
 
-    let value =
-        (column4 - oods_values[108]).field_div(&felt_nonzero!(point - pow37 * oods_point));
+    let value = (column4 - oods_values[108]).field_div(&felt_nonzero!(point - pow37 * oods_point));
     let total_sum = total_sum + constraint_coefficients[108] * value;
 
-    let value =
-        (column4 - oods_values[109]).field_div(&felt_nonzero!(point - pow52 * oods_point));
+    let value = (column4 - oods_values[109]).field_div(&felt_nonzero!(point - pow52 * oods_point));
     let total_sum = total_sum + constraint_coefficients[109] * value;
 
-    let value =
-        (column4 - oods_values[110]).field_div(&felt_nonzero!(point - pow58 * oods_point));
+    let value = (column4 - oods_values[110]).field_div(&felt_nonzero!(point - pow58 * oods_point));
     let total_sum = total_sum + constraint_coefficients[110] * value;
 
-    let value =
-        (column4 - oods_values[111]).field_div(&felt_nonzero!(point - pow66 * oods_point));
+    let value = (column4 - oods_values[111]).field_div(&felt_nonzero!(point - pow66 * oods_point));
     let total_sum = total_sum + constraint_coefficients[111] * value;
 
-    let value =
-        (column4 - oods_values[112]).field_div(&felt_nonzero!(point - pow67 * oods_point));
+    let value = (column4 - oods_values[112]).field_div(&felt_nonzero!(point - pow67 * oods_point));
     let total_sum = total_sum + constraint_coefficients[112] * value;
 
-    let value =
-        (column4 - oods_values[113]).field_div(&felt_nonzero!(point - pow78 * oods_point));
+    let value = (column4 - oods_values[113]).field_div(&felt_nonzero!(point - pow78 * oods_point));
     let total_sum = total_sum + constraint_coefficients[113] * value;
 
-    let value =
-        (column4 - oods_values[114]).field_div(&felt_nonzero!(point - pow81 * oods_point));
+    let value = (column4 - oods_values[114]).field_div(&felt_nonzero!(point - pow81 * oods_point));
     let total_sum = total_sum + constraint_coefficients[114] * value;
 
     let value = (column4 - oods_values[115]).field_div(&felt_nonzero!(point - pow3 * oods_point));
     let total_sum = total_sum + constraint_coefficients[115] * value;
 
-    let value =
-        (column4 - oods_values[116]).field_div(&felt_nonzero!(point - pow12 * oods_point));
+    let value = (column4 - oods_values[116]).field_div(&felt_nonzero!(point - pow12 * oods_point));
     let total_sum = total_sum + constraint_coefficients[116] * value;
 
-    let value =
-        (column4 - oods_values[117]).field_div(&felt_nonzero!(point - pow30 * oods_point));
+    let value = (column4 - oods_values[117]).field_div(&felt_nonzero!(point - pow30 * oods_point));
     let total_sum = total_sum + constraint_coefficients[117] * value;
 
-    let value =
-        (column4 - oods_values[118]).field_div(&felt_nonzero!(point - pow112 * oods_point));
+    let value = (column4 - oods_values[118]).field_div(&felt_nonzero!(point - pow112 * oods_point));
     let total_sum = total_sum + constraint_coefficients[118] * value;
 
     let value = (column4 - oods_values[119]).field_div(&felt_nonzero!(point - pow2 * oods_point));
     let total_sum = total_sum + constraint_coefficients[119] * value;
 
-    let value =
-        (column4 - oods_values[120]).field_div(&felt_nonzero!(point - pow123 * oods_point));
+    let value = (column4 - oods_values[120]).field_div(&felt_nonzero!(point - pow123 * oods_point));
     let total_sum = total_sum + constraint_coefficients[120] * value;
 
-    let value =
-        (column4 - oods_values[121]).field_div(&felt_nonzero!(point - pow124 * oods_point));
+    let value = (column4 - oods_values[121]).field_div(&felt_nonzero!(point - pow124 * oods_point));
     let total_sum = total_sum + constraint_coefficients[121] * value;
 
-    let value =
-        (column4 - oods_values[122]).field_div(&felt_nonzero!(point - pow125 * oods_point));
+    let value = (column4 - oods_values[122]).field_div(&felt_nonzero!(point - pow125 * oods_point));
     let total_sum = total_sum + constraint_coefficients[122] * value;
 
-    let value =
-        (column4 - oods_values[123]).field_div(&felt_nonzero!(point - pow126 * oods_point));
+    let value = (column4 - oods_values[123]).field_div(&felt_nonzero!(point - pow126 * oods_point));
     let total_sum = total_sum + constraint_coefficients[123] * value;
 
-    let value =
-        (column4 - oods_values[124]).field_div(&felt_nonzero!(point - pow128 * oods_point));
+    let value = (column4 - oods_values[124]).field_div(&felt_nonzero!(point - pow128 * oods_point));
     let total_sum = total_sum + constraint_coefficients[124] * value;
 
-    let value =
-        (column4 - oods_values[125]).field_div(&felt_nonzero!(point - pow129 * oods_point));
+    let value = (column4 - oods_values[125]).field_div(&felt_nonzero!(point - pow129 * oods_point));
     let total_sum = total_sum + constraint_coefficients[125] * value;
 
-    let value =
-        (column4 - oods_values[126]).field_div(&felt_nonzero!(point - pow130 * oods_point));
+    let value = (column4 - oods_values[126]).field_div(&felt_nonzero!(point - pow130 * oods_point));
     let total_sum = total_sum + constraint_coefficients[126] * value;
 
     let value = (column4 - oods_values[127]).field_div(&felt_nonzero!(point - pow1 * oods_point));
@@ -597,208 +562,157 @@ pub fn eval_oods_polynomial_inner<Layout: StaticLayoutTrait + LayoutTrait>(
     let value = (column5 - oods_values[132]).field_div(&felt_nonzero!(point - pow9 * oods_point));
     let total_sum = total_sum + constraint_coefficients[132] * value;
 
-    let value =
-        (column5 - oods_values[133]).field_div(&felt_nonzero!(point - pow11 * oods_point));
+    let value = (column5 - oods_values[133]).field_div(&felt_nonzero!(point - pow11 * oods_point));
     let total_sum = total_sum + constraint_coefficients[133] * value;
 
-    let value =
-        (column5 - oods_values[134]).field_div(&felt_nonzero!(point - pow13 * oods_point));
+    let value = (column5 - oods_values[134]).field_div(&felt_nonzero!(point - pow13 * oods_point));
     let total_sum = total_sum + constraint_coefficients[134] * value;
 
-    let value =
-        (column5 - oods_values[135]).field_div(&felt_nonzero!(point - pow14 * oods_point));
+    let value = (column5 - oods_values[135]).field_div(&felt_nonzero!(point - pow14 * oods_point));
     let total_sum = total_sum + constraint_coefficients[135] * value;
 
-    let value =
-        (column5 - oods_values[136]).field_div(&felt_nonzero!(point - pow16 * oods_point));
+    let value = (column5 - oods_values[136]).field_div(&felt_nonzero!(point - pow16 * oods_point));
     let total_sum = total_sum + constraint_coefficients[136] * value;
 
-    let value =
-        (column5 - oods_values[137]).field_div(&felt_nonzero!(point - pow18 * oods_point));
+    let value = (column5 - oods_values[137]).field_div(&felt_nonzero!(point - pow18 * oods_point));
     let total_sum = total_sum + constraint_coefficients[137] * value;
 
-    let value =
-        (column5 - oods_values[138]).field_div(&felt_nonzero!(point - pow20 * oods_point));
+    let value = (column5 - oods_values[138]).field_div(&felt_nonzero!(point - pow20 * oods_point));
     let total_sum = total_sum + constraint_coefficients[138] * value;
 
-    let value =
-        (column5 - oods_values[139]).field_div(&felt_nonzero!(point - pow21 * oods_point));
+    let value = (column5 - oods_values[139]).field_div(&felt_nonzero!(point - pow21 * oods_point));
     let total_sum = total_sum + constraint_coefficients[139] * value;
 
-    let value =
-        (column5 - oods_values[140]).field_div(&felt_nonzero!(point - pow23 * oods_point));
+    let value = (column5 - oods_values[140]).field_div(&felt_nonzero!(point - pow23 * oods_point));
     let total_sum = total_sum + constraint_coefficients[140] * value;
 
-    let value =
-        (column5 - oods_values[141]).field_div(&felt_nonzero!(point - pow24 * oods_point));
+    let value = (column5 - oods_values[141]).field_div(&felt_nonzero!(point - pow24 * oods_point));
     let total_sum = total_sum + constraint_coefficients[141] * value;
 
-    let value =
-        (column5 - oods_values[142]).field_div(&felt_nonzero!(point - pow25 * oods_point));
+    let value = (column5 - oods_values[142]).field_div(&felt_nonzero!(point - pow25 * oods_point));
     let total_sum = total_sum + constraint_coefficients[142] * value;
 
-    let value =
-        (column5 - oods_values[143]).field_div(&felt_nonzero!(point - pow27 * oods_point));
+    let value = (column5 - oods_values[143]).field_div(&felt_nonzero!(point - pow27 * oods_point));
     let total_sum = total_sum + constraint_coefficients[143] * value;
 
-    let value =
-        (column5 - oods_values[144]).field_div(&felt_nonzero!(point - pow29 * oods_point));
+    let value = (column5 - oods_values[144]).field_div(&felt_nonzero!(point - pow29 * oods_point));
     let total_sum = total_sum + constraint_coefficients[144] * value;
 
-    let value =
-        (column5 - oods_values[145]).field_div(&felt_nonzero!(point - pow32 * oods_point));
+    let value = (column5 - oods_values[145]).field_div(&felt_nonzero!(point - pow32 * oods_point));
     let total_sum = total_sum + constraint_coefficients[145] * value;
 
-    let value =
-        (column5 - oods_values[146]).field_div(&felt_nonzero!(point - pow34 * oods_point));
+    let value = (column5 - oods_values[146]).field_div(&felt_nonzero!(point - pow34 * oods_point));
     let total_sum = total_sum + constraint_coefficients[146] * value;
 
-    let value =
-        (column5 - oods_values[147]).field_div(&felt_nonzero!(point - pow38 * oods_point));
+    let value = (column5 - oods_values[147]).field_div(&felt_nonzero!(point - pow38 * oods_point));
     let total_sum = total_sum + constraint_coefficients[147] * value;
 
-    let value =
-        (column5 - oods_values[148]).field_div(&felt_nonzero!(point - pow40 * oods_point));
+    let value = (column5 - oods_values[148]).field_div(&felt_nonzero!(point - pow40 * oods_point));
     let total_sum = total_sum + constraint_coefficients[148] * value;
 
-    let value =
-        (column5 - oods_values[149]).field_div(&felt_nonzero!(point - pow42 * oods_point));
+    let value = (column5 - oods_values[149]).field_div(&felt_nonzero!(point - pow42 * oods_point));
     let total_sum = total_sum + constraint_coefficients[149] * value;
 
-    let value =
-        (column5 - oods_values[150]).field_div(&felt_nonzero!(point - pow44 * oods_point));
+    let value = (column5 - oods_values[150]).field_div(&felt_nonzero!(point - pow44 * oods_point));
     let total_sum = total_sum + constraint_coefficients[150] * value;
 
-    let value =
-        (column5 - oods_values[151]).field_div(&felt_nonzero!(point - pow47 * oods_point));
+    let value = (column5 - oods_values[151]).field_div(&felt_nonzero!(point - pow47 * oods_point));
     let total_sum = total_sum + constraint_coefficients[151] * value;
 
-    let value =
-        (column5 - oods_values[152]).field_div(&felt_nonzero!(point - pow49 * oods_point));
+    let value = (column5 - oods_values[152]).field_div(&felt_nonzero!(point - pow49 * oods_point));
     let total_sum = total_sum + constraint_coefficients[152] * value;
 
-    let value =
-        (column5 - oods_values[153]).field_div(&felt_nonzero!(point - pow53 * oods_point));
+    let value = (column5 - oods_values[153]).field_div(&felt_nonzero!(point - pow53 * oods_point));
     let total_sum = total_sum + constraint_coefficients[153] * value;
 
-    let value =
-        (column5 - oods_values[154]).field_div(&felt_nonzero!(point - pow54 * oods_point));
+    let value = (column5 - oods_values[154]).field_div(&felt_nonzero!(point - pow54 * oods_point));
     let total_sum = total_sum + constraint_coefficients[154] * value;
 
-    let value =
-        (column5 - oods_values[155]).field_div(&felt_nonzero!(point - pow55 * oods_point));
+    let value = (column5 - oods_values[155]).field_div(&felt_nonzero!(point - pow55 * oods_point));
     let total_sum = total_sum + constraint_coefficients[155] * value;
 
-    let value =
-        (column5 - oods_values[156]).field_div(&felt_nonzero!(point - pow56 * oods_point));
+    let value = (column5 - oods_values[156]).field_div(&felt_nonzero!(point - pow56 * oods_point));
     let total_sum = total_sum + constraint_coefficients[156] * value;
 
-    let value =
-        (column5 - oods_values[157]).field_div(&felt_nonzero!(point - pow61 * oods_point));
+    let value = (column5 - oods_values[157]).field_div(&felt_nonzero!(point - pow61 * oods_point));
     let total_sum = total_sum + constraint_coefficients[157] * value;
 
-    let value =
-        (column5 - oods_values[158]).field_div(&felt_nonzero!(point - pow64 * oods_point));
+    let value = (column5 - oods_values[158]).field_div(&felt_nonzero!(point - pow64 * oods_point));
     let total_sum = total_sum + constraint_coefficients[158] * value;
 
-    let value =
-        (column5 - oods_values[159]).field_div(&felt_nonzero!(point - pow74 * oods_point));
+    let value = (column5 - oods_values[159]).field_div(&felt_nonzero!(point - pow74 * oods_point));
     let total_sum = total_sum + constraint_coefficients[159] * value;
 
-    let value =
-        (column5 - oods_values[160]).field_div(&felt_nonzero!(point - pow77 * oods_point));
+    let value = (column5 - oods_values[160]).field_div(&felt_nonzero!(point - pow77 * oods_point));
     let total_sum = total_sum + constraint_coefficients[160] * value;
 
-    let value =
-        (column5 - oods_values[161]).field_div(&felt_nonzero!(point - pow89 * oods_point));
+    let value = (column5 - oods_values[161]).field_div(&felt_nonzero!(point - pow89 * oods_point));
     let total_sum = total_sum + constraint_coefficients[161] * value;
 
-    let value =
-        (column5 - oods_values[162]).field_div(&felt_nonzero!(point - pow90 * oods_point));
+    let value = (column5 - oods_values[162]).field_div(&felt_nonzero!(point - pow90 * oods_point));
     let total_sum = total_sum + constraint_coefficients[162] * value;
 
-    let value =
-        (column5 - oods_values[163]).field_div(&felt_nonzero!(point - pow91 * oods_point));
+    let value = (column5 - oods_values[163]).field_div(&felt_nonzero!(point - pow91 * oods_point));
     let total_sum = total_sum + constraint_coefficients[163] * value;
 
-    let value =
-        (column5 - oods_values[164]).field_div(&felt_nonzero!(point - pow94 * oods_point));
+    let value = (column5 - oods_values[164]).field_div(&felt_nonzero!(point - pow94 * oods_point));
     let total_sum = total_sum + constraint_coefficients[164] * value;
 
-    let value =
-        (column5 - oods_values[165]).field_div(&felt_nonzero!(point - pow95 * oods_point));
+    let value = (column5 - oods_values[165]).field_div(&felt_nonzero!(point - pow95 * oods_point));
     let total_sum = total_sum + constraint_coefficients[165] * value;
 
-    let value =
-        (column5 - oods_values[166]).field_div(&felt_nonzero!(point - pow96 * oods_point));
+    let value = (column5 - oods_values[166]).field_div(&felt_nonzero!(point - pow96 * oods_point));
     let total_sum = total_sum + constraint_coefficients[166] * value;
 
-    let value =
-        (column5 - oods_values[167]).field_div(&felt_nonzero!(point - pow97 * oods_point));
+    let value = (column5 - oods_values[167]).field_div(&felt_nonzero!(point - pow97 * oods_point));
     let total_sum = total_sum + constraint_coefficients[167] * value;
 
-    let value =
-        (column5 - oods_values[168]).field_div(&felt_nonzero!(point - pow98 * oods_point));
+    let value = (column5 - oods_values[168]).field_div(&felt_nonzero!(point - pow98 * oods_point));
     let total_sum = total_sum + constraint_coefficients[168] * value;
 
-    let value =
-        (column5 - oods_values[169]).field_div(&felt_nonzero!(point - pow99 * oods_point));
+    let value = (column5 - oods_values[169]).field_div(&felt_nonzero!(point - pow99 * oods_point));
     let total_sum = total_sum + constraint_coefficients[169] * value;
 
-    let value =
-        (column5 - oods_values[170]).field_div(&felt_nonzero!(point - pow100 * oods_point));
+    let value = (column5 - oods_values[170]).field_div(&felt_nonzero!(point - pow100 * oods_point));
     let total_sum = total_sum + constraint_coefficients[170] * value;
 
-    let value =
-        (column5 - oods_values[171]).field_div(&felt_nonzero!(point - pow101 * oods_point));
+    let value = (column5 - oods_values[171]).field_div(&felt_nonzero!(point - pow101 * oods_point));
     let total_sum = total_sum + constraint_coefficients[171] * value;
 
-    let value =
-        (column5 - oods_values[172]).field_div(&felt_nonzero!(point - pow102 * oods_point));
+    let value = (column5 - oods_values[172]).field_div(&felt_nonzero!(point - pow102 * oods_point));
     let total_sum = total_sum + constraint_coefficients[172] * value;
 
-    let value =
-        (column5 - oods_values[173]).field_div(&felt_nonzero!(point - pow104 * oods_point));
+    let value = (column5 - oods_values[173]).field_div(&felt_nonzero!(point - pow104 * oods_point));
     let total_sum = total_sum + constraint_coefficients[173] * value;
 
-    let value =
-        (column5 - oods_values[174]).field_div(&felt_nonzero!(point - pow106 * oods_point));
+    let value = (column5 - oods_values[174]).field_div(&felt_nonzero!(point - pow106 * oods_point));
     let total_sum = total_sum + constraint_coefficients[174] * value;
 
-    let value =
-        (column5 - oods_values[175]).field_div(&felt_nonzero!(point - pow103 * oods_point));
+    let value = (column5 - oods_values[175]).field_div(&felt_nonzero!(point - pow103 * oods_point));
     let total_sum = total_sum + constraint_coefficients[175] * value;
 
-    let value =
-        (column5 - oods_values[176]).field_div(&felt_nonzero!(point - pow105 * oods_point));
+    let value = (column5 - oods_values[176]).field_div(&felt_nonzero!(point - pow105 * oods_point));
     let total_sum = total_sum + constraint_coefficients[176] * value;
 
-    let value =
-        (column5 - oods_values[177]).field_div(&felt_nonzero!(point - pow107 * oods_point));
+    let value = (column5 - oods_values[177]).field_div(&felt_nonzero!(point - pow107 * oods_point));
     let total_sum = total_sum + constraint_coefficients[177] * value;
 
-    let value =
-        (column5 - oods_values[178]).field_div(&felt_nonzero!(point - pow108 * oods_point));
+    let value = (column5 - oods_values[178]).field_div(&felt_nonzero!(point - pow108 * oods_point));
     let total_sum = total_sum + constraint_coefficients[178] * value;
 
-    let value =
-        (column5 - oods_values[179]).field_div(&felt_nonzero!(point - pow117 * oods_point));
+    let value = (column5 - oods_values[179]).field_div(&felt_nonzero!(point - pow117 * oods_point));
     let total_sum = total_sum + constraint_coefficients[179] * value;
 
-    let value =
-        (column5 - oods_values[180]).field_div(&felt_nonzero!(point - pow118 * oods_point));
+    let value = (column5 - oods_values[180]).field_div(&felt_nonzero!(point - pow118 * oods_point));
     let total_sum = total_sum + constraint_coefficients[180] * value;
 
-    let value =
-        (column5 - oods_values[181]).field_div(&felt_nonzero!(point - pow119 * oods_point));
+    let value = (column5 - oods_values[181]).field_div(&felt_nonzero!(point - pow119 * oods_point));
     let total_sum = total_sum + constraint_coefficients[181] * value;
 
-    let value =
-        (column5 - oods_values[182]).field_div(&felt_nonzero!(point - pow120 * oods_point));
+    let value = (column5 - oods_values[182]).field_div(&felt_nonzero!(point - pow120 * oods_point));
     let total_sum = total_sum + constraint_coefficients[182] * value;
 
-    let value =
-        (column5 - oods_values[183]).field_div(&felt_nonzero!(point - pow121 * oods_point));
+    let value = (column5 - oods_values[183]).field_div(&felt_nonzero!(point - pow121 * oods_point));
     let total_sum = total_sum + constraint_coefficients[183] * value;
 
     let value = (column6 - oods_values[184]).field_div(&felt_nonzero!(point - pow0 * oods_point));
@@ -836,7 +750,6 @@ pub fn eval_oods_polynomial_inner<Layout: StaticLayoutTrait + LayoutTrait>(
     let value = (column_values[Layout::NUM_COLUMNS_FIRST + Layout::NUM_COLUMNS_SECOND + 1]
         - oods_values[193])
         .field_div(&felt_nonzero!(point - oods_point_to_deg));
-    
 
     total_sum + constraint_coefficients[193] * value
 }
