@@ -90,7 +90,7 @@ jobs:
         run: cargo run -r --bin swiftness --features ${{ matrix.layout }},stone5,keccak_160_lsb --no-default-features -- --proof ${{ env.PROOFS_DIR }}/${{ matrix.layout }}/cairo0_stone5_example_proof.json
         working-directory: ${{ env.WORKING_DIR }}
   
-  verify-proof-stone6-blake2s-248-lsb:
+  verify-proofs-stone6-blake2s-248-lsb:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
