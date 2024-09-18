@@ -4,6 +4,7 @@ pub mod global_values;
 use crate::{
     consts::*,
     diluted::get_diluted_product,
+    felt_hex,
     periodic_columns::{eval_pedersen_x, eval_pedersen_y},
     public_memory::{PublicInput, INITIAL_PC, MAX_ADDRESS, MAX_LOG_N_STEPS, MAX_RANGE_CHECK},
 };
@@ -38,7 +39,7 @@ pub const HAS_POSEIDON_BUILTIN: usize = 0;
 pub const HAS_RANGE_CHECK_BUILTIN: usize = 1;
 pub const HAS_RANGE_CHECK96_BUILTIN: usize = 0;
 pub const IS_DYNAMIC_AIR: usize = 0;
-pub const LAYOUT_CODE: Felt = Felt::from_hex_unchecked("0x726563757273697665");
+pub const LAYOUT_CODE: Felt = felt_hex!("0x726563757273697665");
 pub const LOG_CPU_COMPONENT_HEIGHT: usize = 4;
 pub const N_DYNAMIC_PARAMS: usize = 0;
 pub const PEDERSEN_BUILTIN_RATIO: usize = 128;
@@ -60,19 +61,20 @@ pub mod segments {
 }
 
 pub mod builtins {
+    use crate::felt_hex;
     use starknet_crypto::Felt;
 
-    pub const OUTPUT: Felt = Felt::from_hex_unchecked("0x6F7574707574");
-    pub const PEDERSEN: Felt = Felt::from_hex_unchecked("0x706564657273656E");
-    pub const RANGE_CHECK: Felt = Felt::from_hex_unchecked("0x72616E67655F636865636B");
-    pub const BITWISE: Felt = Felt::from_hex_unchecked("0x62697477697365");
+    pub const OUTPUT: Felt = felt_hex!("0x6F7574707574");
+    pub const PEDERSEN: Felt = felt_hex!("0x706564657273656E");
+    pub const RANGE_CHECK: Felt = felt_hex!("0x72616E67655F636865636B");
+    pub const BITWISE: Felt = felt_hex!("0x62697477697365");
 }
 
 // Pedersen builtin
 pub const SHIFT_POINT_X: Felt =
-    Felt::from_hex_unchecked("0x49ee3eba8c1600700ee1b87eb599f16716b0b1022947733551fde4050ca6804");
+    felt_hex!("0x49ee3eba8c1600700ee1b87eb599f16716b0b1022947733551fde4050ca6804");
 pub const SHIFT_POINT_Y: Felt =
-    Felt::from_hex_unchecked("0x3ca0cfe4b3bc6ddf346d49d06ea0ed34e621062c0e056c1d0405d266e10268a");
+    felt_hex!("0x3ca0cfe4b3bc6ddf346d49d06ea0ed34e621062c0e056c1d0405d266e10268a");
 
 pub const BUILTINS: [Felt; 4] =
     [builtins::OUTPUT, builtins::PEDERSEN, builtins::RANGE_CHECK, builtins::BITWISE];
