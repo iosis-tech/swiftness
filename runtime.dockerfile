@@ -7,8 +7,18 @@ WORKDIR /swiftness
 # Copy the project files into the container
 COPY . .
 
-# Define build arguments for features
-ARG FEATURES="starknet_with_keccak,blake2s_160_lsb"
+# Define environment variables for the different layouts, hashers, and stone versions
+ENV LAYOUTS="dex recursive recursive_with_poseidon small starknet starknet_with_keccak dynamic"
+ENV HASHERS="keccak_160_lsb keccak_248_lsb blake2s_160_lsb blake2s_248_lsb"
+ENV STONES="stone5 stone6"
 
-# Use the build arguments in the cargo install command
-RUN cargo install -f --path cli/ --features $FEATURES --no-default-features
+# Create a bash script for building and renaming all variants
+RUN bash -c 'for layout in $LAYOUTS; do \
+    for hasher in $HASHERS; do \
+        for stone in $STONES; do \
+            echo "Building swiftness verifier with layout=$layout, hasher=$hasher, stone=$stone"; \
+            cargo install -f --path cli/ --no-default-features --features "${layout},${hasher},${stone}"; \
+            mv /usr/local/cargo/bin/swiftness /usr/local/bin/swiftness_${layout}_${hasher}_${stone}; \
+        done; \
+    done; \
+done'

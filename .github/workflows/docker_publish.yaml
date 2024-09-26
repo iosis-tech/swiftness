@@ -12,20 +12,6 @@ jobs:
   docker-build-push:
     runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      matrix:
-        layout:
-          [
-            "dex",
-            "recursive",
-            "recursive_with_poseidon",
-            "small",
-            "starknet",
-            "starknet_with_keccak",
-          ]
-        hash: ["blake2s", "keccak"]
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -46,8 +32,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           file: runtime.dockerfile
-          tags: "okm165/swiftness:${{ github.event.inputs.version }}-${{ matrix.layout }}-${{ matrix.hash }}"
+          tags: "okm165/swiftness:${{ github.event.inputs.version }}"
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
-          build-args: |
-            FEATURES=${{ matrix.layout }},${{ matrix.hash }}
