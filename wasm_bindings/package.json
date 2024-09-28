@@ -1,0 +1,28 @@
+{
+  "name": "swiftness",
+  "type": "module",
+  "description": "Swiftness CairoVM Verifier",
+  "version": "0.1.2",
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iosis-tech/swiftness"
+  },
+  "files": [
+    "dist/*",
+    "pkg/*",
+    "swiftness.ts"
+  ],
+  "main": "dist/swiftness.js",
+  "types": "dist/swiftness.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ],
+  "devDependencies": {
+    "typescript": "^4.x.x"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  }
+}

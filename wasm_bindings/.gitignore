@@ -1,1 +1,40 @@
+# Node modules
+node_modules/
+
+# Output directories
 pkg/
+dist/
+
+# Generated files from scripts
+generated_imports.ts
+generated_verifier_map.ts
+
+# Logs
+*.log
+
+# TypeScript compiled output
+*.js
+*.js.map
+
+# IDE settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# NPM/Yarn specific files
+package-lock.json
+yarn.lock
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Other files to ignore
+*.tgz
+*.zip
