@@ -1,282 +1,282 @@
 import init_swiftness_dex_keccak_160_lsb_stone5, {
     parse_proof as parse_proof_swiftness_dex_keccak_160_lsb_stone5,
     verify_proof as verify_proof_swiftness_dex_keccak_160_lsb_stone5,
-} from "./pkg/swiftness_dex_keccak_160_lsb_stone5";
+} from "./pkg/swiftness_dex_keccak_160_lsb_stone5/swiftness_wasm.js";
 
 import init_swiftness_dex_keccak_160_lsb_stone6, {
     parse_proof as parse_proof_swiftness_dex_keccak_160_lsb_stone6,
     verify_proof as verify_proof_swiftness_dex_keccak_160_lsb_stone6,
-} from "./pkg/swiftness_dex_keccak_160_lsb_stone6";
+} from "./pkg/swiftness_dex_keccak_160_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_dex_keccak_248_lsb_stone5, {
     parse_proof as parse_proof_swiftness_dex_keccak_248_lsb_stone5,
     verify_proof as verify_proof_swiftness_dex_keccak_248_lsb_stone5,
-} from "./pkg/swiftness_dex_keccak_248_lsb_stone5";
+} from "./pkg/swiftness_dex_keccak_248_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_dex_keccak_248_lsb_stone6, {
     parse_proof as parse_proof_swiftness_dex_keccak_248_lsb_stone6,
     verify_proof as verify_proof_swiftness_dex_keccak_248_lsb_stone6,
-} from "./pkg/swiftness_dex_keccak_248_lsb_stone6";
+} from "./pkg/swiftness_dex_keccak_248_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_dex_blake2s_160_lsb_stone5, {
     parse_proof as parse_proof_swiftness_dex_blake2s_160_lsb_stone5,
     verify_proof as verify_proof_swiftness_dex_blake2s_160_lsb_stone5,
-} from "./pkg/swiftness_dex_blake2s_160_lsb_stone5";
+} from "./pkg/swiftness_dex_blake2s_160_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_dex_blake2s_160_lsb_stone6, {
     parse_proof as parse_proof_swiftness_dex_blake2s_160_lsb_stone6,
     verify_proof as verify_proof_swiftness_dex_blake2s_160_lsb_stone6,
-} from "./pkg/swiftness_dex_blake2s_160_lsb_stone6";
+} from "./pkg/swiftness_dex_blake2s_160_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_dex_blake2s_248_lsb_stone5, {
     parse_proof as parse_proof_swiftness_dex_blake2s_248_lsb_stone5,
     verify_proof as verify_proof_swiftness_dex_blake2s_248_lsb_stone5,
-} from "./pkg/swiftness_dex_blake2s_248_lsb_stone5";
+} from "./pkg/swiftness_dex_blake2s_248_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_dex_blake2s_248_lsb_stone6, {
     parse_proof as parse_proof_swiftness_dex_blake2s_248_lsb_stone6,
     verify_proof as verify_proof_swiftness_dex_blake2s_248_lsb_stone6,
-} from "./pkg/swiftness_dex_blake2s_248_lsb_stone6";
+} from "./pkg/swiftness_dex_blake2s_248_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_recursive_keccak_160_lsb_stone5, {
     parse_proof as parse_proof_swiftness_recursive_keccak_160_lsb_stone5,
     verify_proof as verify_proof_swiftness_recursive_keccak_160_lsb_stone5,
-} from "./pkg/swiftness_recursive_keccak_160_lsb_stone5";
+} from "./pkg/swiftness_recursive_keccak_160_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_recursive_keccak_160_lsb_stone6, {
     parse_proof as parse_proof_swiftness_recursive_keccak_160_lsb_stone6,
     verify_proof as verify_proof_swiftness_recursive_keccak_160_lsb_stone6,
-} from "./pkg/swiftness_recursive_keccak_160_lsb_stone6";
+} from "./pkg/swiftness_recursive_keccak_160_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_recursive_keccak_248_lsb_stone5, {
     parse_proof as parse_proof_swiftness_recursive_keccak_248_lsb_stone5,
     verify_proof as verify_proof_swiftness_recursive_keccak_248_lsb_stone5,
-} from "./pkg/swiftness_recursive_keccak_248_lsb_stone5";
+} from "./pkg/swiftness_recursive_keccak_248_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_recursive_keccak_248_lsb_stone6, {
     parse_proof as parse_proof_swiftness_recursive_keccak_248_lsb_stone6,
     verify_proof as verify_proof_swiftness_recursive_keccak_248_lsb_stone6,
-} from "./pkg/swiftness_recursive_keccak_248_lsb_stone6";
+} from "./pkg/swiftness_recursive_keccak_248_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_recursive_blake2s_160_lsb_stone5, {
     parse_proof as parse_proof_swiftness_recursive_blake2s_160_lsb_stone5,
     verify_proof as verify_proof_swiftness_recursive_blake2s_160_lsb_stone5,
-} from "./pkg/swiftness_recursive_blake2s_160_lsb_stone5";
+} from "./pkg/swiftness_recursive_blake2s_160_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_recursive_blake2s_160_lsb_stone6, {
     parse_proof as parse_proof_swiftness_recursive_blake2s_160_lsb_stone6,
     verify_proof as verify_proof_swiftness_recursive_blake2s_160_lsb_stone6,
-} from "./pkg/swiftness_recursive_blake2s_160_lsb_stone6";
+} from "./pkg/swiftness_recursive_blake2s_160_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_recursive_blake2s_248_lsb_stone5, {
     parse_proof as parse_proof_swiftness_recursive_blake2s_248_lsb_stone5,
     verify_proof as verify_proof_swiftness_recursive_blake2s_248_lsb_stone5,
-} from "./pkg/swiftness_recursive_blake2s_248_lsb_stone5";
+} from "./pkg/swiftness_recursive_blake2s_248_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_recursive_blake2s_248_lsb_stone6, {
     parse_proof as parse_proof_swiftness_recursive_blake2s_248_lsb_stone6,
     verify_proof as verify_proof_swiftness_recursive_blake2s_248_lsb_stone6,
-} from "./pkg/swiftness_recursive_blake2s_248_lsb_stone6";
+} from "./pkg/swiftness_recursive_blake2s_248_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_recursive_with_poseidon_keccak_160_lsb_stone5, {
     parse_proof as parse_proof_swiftness_recursive_with_poseidon_keccak_160_lsb_stone5,
     verify_proof as verify_proof_swiftness_recursive_with_poseidon_keccak_160_lsb_stone5,
-} from "./pkg/swiftness_recursive_with_poseidon_keccak_160_lsb_stone5";
+} from "./pkg/swiftness_recursive_with_poseidon_keccak_160_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_recursive_with_poseidon_keccak_160_lsb_stone6, {
     parse_proof as parse_proof_swiftness_recursive_with_poseidon_keccak_160_lsb_stone6,
     verify_proof as verify_proof_swiftness_recursive_with_poseidon_keccak_160_lsb_stone6,
-} from "./pkg/swiftness_recursive_with_poseidon_keccak_160_lsb_stone6";
+} from "./pkg/swiftness_recursive_with_poseidon_keccak_160_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_recursive_with_poseidon_keccak_248_lsb_stone5, {
     parse_proof as parse_proof_swiftness_recursive_with_poseidon_keccak_248_lsb_stone5,
     verify_proof as verify_proof_swiftness_recursive_with_poseidon_keccak_248_lsb_stone5,
-} from "./pkg/swiftness_recursive_with_poseidon_keccak_248_lsb_stone5";
+} from "./pkg/swiftness_recursive_with_poseidon_keccak_248_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_recursive_with_poseidon_keccak_248_lsb_stone6, {
     parse_proof as parse_proof_swiftness_recursive_with_poseidon_keccak_248_lsb_stone6,
     verify_proof as verify_proof_swiftness_recursive_with_poseidon_keccak_248_lsb_stone6,
-} from "./pkg/swiftness_recursive_with_poseidon_keccak_248_lsb_stone6";
+} from "./pkg/swiftness_recursive_with_poseidon_keccak_248_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_recursive_with_poseidon_blake2s_160_lsb_stone5, {
     parse_proof as parse_proof_swiftness_recursive_with_poseidon_blake2s_160_lsb_stone5,
     verify_proof as verify_proof_swiftness_recursive_with_poseidon_blake2s_160_lsb_stone5,
-} from "./pkg/swiftness_recursive_with_poseidon_blake2s_160_lsb_stone5";
+} from "./pkg/swiftness_recursive_with_poseidon_blake2s_160_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_recursive_with_poseidon_blake2s_160_lsb_stone6, {
     parse_proof as parse_proof_swiftness_recursive_with_poseidon_blake2s_160_lsb_stone6,
     verify_proof as verify_proof_swiftness_recursive_with_poseidon_blake2s_160_lsb_stone6,
-} from "./pkg/swiftness_recursive_with_poseidon_blake2s_160_lsb_stone6";
+} from "./pkg/swiftness_recursive_with_poseidon_blake2s_160_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_recursive_with_poseidon_blake2s_248_lsb_stone5, {
     parse_proof as parse_proof_swiftness_recursive_with_poseidon_blake2s_248_lsb_stone5,
     verify_proof as verify_proof_swiftness_recursive_with_poseidon_blake2s_248_lsb_stone5,
-} from "./pkg/swiftness_recursive_with_poseidon_blake2s_248_lsb_stone5";
+} from "./pkg/swiftness_recursive_with_poseidon_blake2s_248_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_recursive_with_poseidon_blake2s_248_lsb_stone6, {
     parse_proof as parse_proof_swiftness_recursive_with_poseidon_blake2s_248_lsb_stone6,
     verify_proof as verify_proof_swiftness_recursive_with_poseidon_blake2s_248_lsb_stone6,
-} from "./pkg/swiftness_recursive_with_poseidon_blake2s_248_lsb_stone6";
+} from "./pkg/swiftness_recursive_with_poseidon_blake2s_248_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_small_keccak_160_lsb_stone5, {
     parse_proof as parse_proof_swiftness_small_keccak_160_lsb_stone5,
     verify_proof as verify_proof_swiftness_small_keccak_160_lsb_stone5,
-} from "./pkg/swiftness_small_keccak_160_lsb_stone5";
+} from "./pkg/swiftness_small_keccak_160_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_small_keccak_160_lsb_stone6, {
     parse_proof as parse_proof_swiftness_small_keccak_160_lsb_stone6,
     verify_proof as verify_proof_swiftness_small_keccak_160_lsb_stone6,
-} from "./pkg/swiftness_small_keccak_160_lsb_stone6";
+} from "./pkg/swiftness_small_keccak_160_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_small_keccak_248_lsb_stone5, {
     parse_proof as parse_proof_swiftness_small_keccak_248_lsb_stone5,
     verify_proof as verify_proof_swiftness_small_keccak_248_lsb_stone5,
-} from "./pkg/swiftness_small_keccak_248_lsb_stone5";
+} from "./pkg/swiftness_small_keccak_248_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_small_keccak_248_lsb_stone6, {
     parse_proof as parse_proof_swiftness_small_keccak_248_lsb_stone6,
     verify_proof as verify_proof_swiftness_small_keccak_248_lsb_stone6,
-} from "./pkg/swiftness_small_keccak_248_lsb_stone6";
+} from "./pkg/swiftness_small_keccak_248_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_small_blake2s_160_lsb_stone5, {
     parse_proof as parse_proof_swiftness_small_blake2s_160_lsb_stone5,
     verify_proof as verify_proof_swiftness_small_blake2s_160_lsb_stone5,
-} from "./pkg/swiftness_small_blake2s_160_lsb_stone5";
+} from "./pkg/swiftness_small_blake2s_160_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_small_blake2s_160_lsb_stone6, {
     parse_proof as parse_proof_swiftness_small_blake2s_160_lsb_stone6,
     verify_proof as verify_proof_swiftness_small_blake2s_160_lsb_stone6,
-} from "./pkg/swiftness_small_blake2s_160_lsb_stone6";
+} from "./pkg/swiftness_small_blake2s_160_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_small_blake2s_248_lsb_stone5, {
     parse_proof as parse_proof_swiftness_small_blake2s_248_lsb_stone5,
     verify_proof as verify_proof_swiftness_small_blake2s_248_lsb_stone5,
-} from "./pkg/swiftness_small_blake2s_248_lsb_stone5";
+} from "./pkg/swiftness_small_blake2s_248_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_small_blake2s_248_lsb_stone6, {
     parse_proof as parse_proof_swiftness_small_blake2s_248_lsb_stone6,
     verify_proof as verify_proof_swiftness_small_blake2s_248_lsb_stone6,
-} from "./pkg/swiftness_small_blake2s_248_lsb_stone6";
+} from "./pkg/swiftness_small_blake2s_248_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_starknet_keccak_160_lsb_stone5, {
     parse_proof as parse_proof_swiftness_starknet_keccak_160_lsb_stone5,
     verify_proof as verify_proof_swiftness_starknet_keccak_160_lsb_stone5,
-} from "./pkg/swiftness_starknet_keccak_160_lsb_stone5";
+} from "./pkg/swiftness_starknet_keccak_160_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_starknet_keccak_160_lsb_stone6, {
     parse_proof as parse_proof_swiftness_starknet_keccak_160_lsb_stone6,
     verify_proof as verify_proof_swiftness_starknet_keccak_160_lsb_stone6,
-} from "./pkg/swiftness_starknet_keccak_160_lsb_stone6";
+} from "./pkg/swiftness_starknet_keccak_160_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_starknet_keccak_248_lsb_stone5, {
     parse_proof as parse_proof_swiftness_starknet_keccak_248_lsb_stone5,
     verify_proof as verify_proof_swiftness_starknet_keccak_248_lsb_stone5,
-} from "./pkg/swiftness_starknet_keccak_248_lsb_stone5";
+} from "./pkg/swiftness_starknet_keccak_248_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_starknet_keccak_248_lsb_stone6, {
     parse_proof as parse_proof_swiftness_starknet_keccak_248_lsb_stone6,
     verify_proof as verify_proof_swiftness_starknet_keccak_248_lsb_stone6,
-} from "./pkg/swiftness_starknet_keccak_248_lsb_stone6";
+} from "./pkg/swiftness_starknet_keccak_248_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_starknet_blake2s_160_lsb_stone5, {
     parse_proof as parse_proof_swiftness_starknet_blake2s_160_lsb_stone5,
     verify_proof as verify_proof_swiftness_starknet_blake2s_160_lsb_stone5,
-} from "./pkg/swiftness_starknet_blake2s_160_lsb_stone5";
+} from "./pkg/swiftness_starknet_blake2s_160_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_starknet_blake2s_160_lsb_stone6, {
     parse_proof as parse_proof_swiftness_starknet_blake2s_160_lsb_stone6,
     verify_proof as verify_proof_swiftness_starknet_blake2s_160_lsb_stone6,
-} from "./pkg/swiftness_starknet_blake2s_160_lsb_stone6";
+} from "./pkg/swiftness_starknet_blake2s_160_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_starknet_blake2s_248_lsb_stone5, {
     parse_proof as parse_proof_swiftness_starknet_blake2s_248_lsb_stone5,
     verify_proof as verify_proof_swiftness_starknet_blake2s_248_lsb_stone5,
-} from "./pkg/swiftness_starknet_blake2s_248_lsb_stone5";
+} from "./pkg/swiftness_starknet_blake2s_248_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_starknet_blake2s_248_lsb_stone6, {
     parse_proof as parse_proof_swiftness_starknet_blake2s_248_lsb_stone6,
     verify_proof as verify_proof_swiftness_starknet_blake2s_248_lsb_stone6,
-} from "./pkg/swiftness_starknet_blake2s_248_lsb_stone6";
+} from "./pkg/swiftness_starknet_blake2s_248_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_starknet_with_keccak_keccak_160_lsb_stone5, {
     parse_proof as parse_proof_swiftness_starknet_with_keccak_keccak_160_lsb_stone5,
     verify_proof as verify_proof_swiftness_starknet_with_keccak_keccak_160_lsb_stone5,
-} from "./pkg/swiftness_starknet_with_keccak_keccak_160_lsb_stone5";
+} from "./pkg/swiftness_starknet_with_keccak_keccak_160_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_starknet_with_keccak_keccak_160_lsb_stone6, {
     parse_proof as parse_proof_swiftness_starknet_with_keccak_keccak_160_lsb_stone6,
     verify_proof as verify_proof_swiftness_starknet_with_keccak_keccak_160_lsb_stone6,
-} from "./pkg/swiftness_starknet_with_keccak_keccak_160_lsb_stone6";
+} from "./pkg/swiftness_starknet_with_keccak_keccak_160_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_starknet_with_keccak_keccak_248_lsb_stone5, {
     parse_proof as parse_proof_swiftness_starknet_with_keccak_keccak_248_lsb_stone5,
     verify_proof as verify_proof_swiftness_starknet_with_keccak_keccak_248_lsb_stone5,
-} from "./pkg/swiftness_starknet_with_keccak_keccak_248_lsb_stone5";
+} from "./pkg/swiftness_starknet_with_keccak_keccak_248_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_starknet_with_keccak_keccak_248_lsb_stone6, {
     parse_proof as parse_proof_swiftness_starknet_with_keccak_keccak_248_lsb_stone6,
     verify_proof as verify_proof_swiftness_starknet_with_keccak_keccak_248_lsb_stone6,
-} from "./pkg/swiftness_starknet_with_keccak_keccak_248_lsb_stone6";
+} from "./pkg/swiftness_starknet_with_keccak_keccak_248_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_starknet_with_keccak_blake2s_160_lsb_stone5, {
     parse_proof as parse_proof_swiftness_starknet_with_keccak_blake2s_160_lsb_stone5,
     verify_proof as verify_proof_swiftness_starknet_with_keccak_blake2s_160_lsb_stone5,
-} from "./pkg/swiftness_starknet_with_keccak_blake2s_160_lsb_stone5";
+} from "./pkg/swiftness_starknet_with_keccak_blake2s_160_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_starknet_with_keccak_blake2s_160_lsb_stone6, {
     parse_proof as parse_proof_swiftness_starknet_with_keccak_blake2s_160_lsb_stone6,
     verify_proof as verify_proof_swiftness_starknet_with_keccak_blake2s_160_lsb_stone6,
-} from "./pkg/swiftness_starknet_with_keccak_blake2s_160_lsb_stone6";
+} from "./pkg/swiftness_starknet_with_keccak_blake2s_160_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_starknet_with_keccak_blake2s_248_lsb_stone5, {
     parse_proof as parse_proof_swiftness_starknet_with_keccak_blake2s_248_lsb_stone5,
     verify_proof as verify_proof_swiftness_starknet_with_keccak_blake2s_248_lsb_stone5,
-} from "./pkg/swiftness_starknet_with_keccak_blake2s_248_lsb_stone5";
+} from "./pkg/swiftness_starknet_with_keccak_blake2s_248_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_starknet_with_keccak_blake2s_248_lsb_stone6, {
     parse_proof as parse_proof_swiftness_starknet_with_keccak_blake2s_248_lsb_stone6,
     verify_proof as verify_proof_swiftness_starknet_with_keccak_blake2s_248_lsb_stone6,
-} from "./pkg/swiftness_starknet_with_keccak_blake2s_248_lsb_stone6";
+} from "./pkg/swiftness_starknet_with_keccak_blake2s_248_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_dynamic_keccak_160_lsb_stone5, {
     parse_proof as parse_proof_swiftness_dynamic_keccak_160_lsb_stone5,
     verify_proof as verify_proof_swiftness_dynamic_keccak_160_lsb_stone5,
-} from "./pkg/swiftness_dynamic_keccak_160_lsb_stone5";
+} from "./pkg/swiftness_dynamic_keccak_160_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_dynamic_keccak_160_lsb_stone6, {
     parse_proof as parse_proof_swiftness_dynamic_keccak_160_lsb_stone6,
     verify_proof as verify_proof_swiftness_dynamic_keccak_160_lsb_stone6,
-} from "./pkg/swiftness_dynamic_keccak_160_lsb_stone6";
+} from "./pkg/swiftness_dynamic_keccak_160_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_dynamic_keccak_248_lsb_stone5, {
     parse_proof as parse_proof_swiftness_dynamic_keccak_248_lsb_stone5,
     verify_proof as verify_proof_swiftness_dynamic_keccak_248_lsb_stone5,
-} from "./pkg/swiftness_dynamic_keccak_248_lsb_stone5";
+} from "./pkg/swiftness_dynamic_keccak_248_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_dynamic_keccak_248_lsb_stone6, {
     parse_proof as parse_proof_swiftness_dynamic_keccak_248_lsb_stone6,
     verify_proof as verify_proof_swiftness_dynamic_keccak_248_lsb_stone6,
-} from "./pkg/swiftness_dynamic_keccak_248_lsb_stone6";
+} from "./pkg/swiftness_dynamic_keccak_248_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_dynamic_blake2s_160_lsb_stone5, {
     parse_proof as parse_proof_swiftness_dynamic_blake2s_160_lsb_stone5,
     verify_proof as verify_proof_swiftness_dynamic_blake2s_160_lsb_stone5,
-} from "./pkg/swiftness_dynamic_blake2s_160_lsb_stone5";
+} from "./pkg/swiftness_dynamic_blake2s_160_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_dynamic_blake2s_160_lsb_stone6, {
     parse_proof as parse_proof_swiftness_dynamic_blake2s_160_lsb_stone6,
     verify_proof as verify_proof_swiftness_dynamic_blake2s_160_lsb_stone6,
-} from "./pkg/swiftness_dynamic_blake2s_160_lsb_stone6";
+} from "./pkg/swiftness_dynamic_blake2s_160_lsb_stone6//swiftness_wasm.js";
 
 import init_swiftness_dynamic_blake2s_248_lsb_stone5, {
     parse_proof as parse_proof_swiftness_dynamic_blake2s_248_lsb_stone5,
     verify_proof as verify_proof_swiftness_dynamic_blake2s_248_lsb_stone5,
-} from "./pkg/swiftness_dynamic_blake2s_248_lsb_stone5";
+} from "./pkg/swiftness_dynamic_blake2s_248_lsb_stone5//swiftness_wasm.js";
 
 import init_swiftness_dynamic_blake2s_248_lsb_stone6, {
     parse_proof as parse_proof_swiftness_dynamic_blake2s_248_lsb_stone6,
     verify_proof as verify_proof_swiftness_dynamic_blake2s_248_lsb_stone6,
-} from "./pkg/swiftness_dynamic_blake2s_248_lsb_stone6";
+} from "./pkg/swiftness_dynamic_blake2s_248_lsb_stone6//swiftness_wasm.js";
 
 
 

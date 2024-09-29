@@ -19,6 +19,8 @@ build_wasm_packages() {
 
                 # Run wasm-pack build with the specified features and output directory
                 wasm-pack build --out-dir "$output_dir" --target web --features "$features" --no-default-features
+                rm "$output_dir/.gitignore";
+                rm "$output_dir/README.md";
             done
         done
     done
