@@ -11,7 +11,7 @@ build_wasm_packages() {
         for hasher in "${HASHERS[@]}"; do
             for stone in "${STONES[@]}"; do
                 # Define output directory and features
-                output_dir="pkg/swiftness_${layout}_${hasher}_${stone}"
+                output_dir="src/pkg/swiftness_${layout}_${hasher}_${stone}"
                 features="${layout},${hasher},${stone}"
 
                 # Print message

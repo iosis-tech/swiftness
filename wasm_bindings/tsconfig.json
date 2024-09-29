@@ -13,11 +13,6 @@
         "outDir": "./dist",
         "rootDir": "./src",
         "baseUrl": ".",
-        "paths": {
-            "swiftness/pkg/*": [
-                "pkg/*"
-            ],
-        }
     },
     "include": [
         "src/**/*",

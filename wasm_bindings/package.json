@@ -10,7 +10,6 @@
   },
   "files": [
     "dist/*",
-    "pkg/*",
     "swiftness.ts"
   ],
   "main": "dist/swiftness.js",
@@ -22,7 +21,7 @@
     "typescript": "^4.x.x"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp -r src/pkg dist",
     "prepublishOnly": "npm run build"
   }
 }
