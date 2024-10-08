@@ -225,7 +225,7 @@ dependencies = [
  "lambdaworks-math",
  "serde",
  "sha2",
- "sha3",
+ "sha3 0.10.8 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -252,9 +252,9 @@ checksum = "78ca9ab1a0babb1e7d5695e3530886289c18cf2f87ec19a575a0abdce112e3a3"
 
 [[package]]
 name = "miniz_oxide"
-version = "0.8.2"
+version = "0.8.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4ffbe83022cedc1d264172192511ae958937694cd57ce297164951b8b3568394"
+checksum = "b8402cab7aefae129c6977bb0ff1b8fd9a04eb5b51efc50a70bea51cda0c7924"
 dependencies = [
  "adler2",
 ]
@@ -355,9 +355,9 @@ dependencies = [
 
 [[package]]
 name = "serde_json"
-version = "1.0.135"
+version = "1.0.137"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2b0d7ba2887406110130a978386c4e1befb98c674b4fba677954e4db976630d9"
+checksum = "930cfb6e6abf99298aaad7d29abbef7a9999a9a8806a40088f55f0dcec03146b"
 dependencies = [
  "itoa",
  "memchr",
@@ -448,6 +448,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "sha3"
+version = "0.10.8"
+source = "git+https://github.com/sp1-patches/RustCrypto-hashes?branch=patch-sha3-v0.10.8#8f6d303c0861ba7e5adcc36207c0f41fe5edaabc"
+dependencies = [
+ "digest",
+ "keccak",
+]
+
+[[package]]
 name = "starknet-core"
 version = "0.11.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -461,16 +470,16 @@ dependencies = [
  "serde_json",
  "serde_json_pythonic",
  "serde_with 2.3.3",
- "sha3",
+ "sha3 0.10.8 (registry+https://github.com/rust-lang/crates.io-index)",
  "starknet-crypto",
  "starknet-types-core",
 ]
 
 [[package]]
 name = "starknet-crypto"
-version = "0.7.3"
+version = "0.7.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ded22ccf4cb9e572ce3f77de6066af53560cd2520d508876c83bb1e6b29d5cbc"
+checksum = "039a3bad70806b494c9e6b21c5238a6c8a373d66a26071859deb0ccca6f93634"
 dependencies = [
  "crypto-bigint",
  "hex",
@@ -544,7 +553,7 @@ dependencies = [
  "num-bigint",
  "serde",
  "serde_with 3.12.0",
- "sha3",
+ "sha3 0.10.8 (git+https://github.com/sp1-patches/RustCrypto-hashes?branch=patch-sha3-v0.10.8)",
  "starknet-core",
  "starknet-crypto",
  "starknet-types-core",
@@ -560,7 +569,7 @@ dependencies = [
  "num-bigint",
  "serde",
  "serde_with 3.12.0",
- "sha3",
+ "sha3 0.10.8 (git+https://github.com/sp1-patches/RustCrypto-hashes?branch=patch-sha3-v0.10.8)",
  "starknet-core",
  "starknet-crypto",
  "swiftness_commitment",
@@ -575,7 +584,7 @@ version = "1.0.0"
 dependencies = [
  "blake2",
  "serde",
- "sha3",
+ "sha3 0.10.8 (git+https://github.com/sp1-patches/RustCrypto-hashes?branch=patch-sha3-v0.10.8)",
  "starknet-crypto",
  "starknet-types-core",
  "swiftness_transcript",
