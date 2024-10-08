@@ -45,4 +45,4 @@ swiftness_pow = { path = "crates/pow", default-features = false, version = "1.0.
 swiftness_stark = { path = "crates/stark", default-features = false, version = "1.0.0" }
 swiftness_transcript = { path = "crates/transcript", default-features = false, version = "1.0.0" }
 
-sha3 = { git = "https://github.com/sp1-patches/RustCrypto-hashes", package = "sha3", branch = "patch-sha3-v0.10.8" }
+sha3 = { git = "https://github.com/sp1-patches/RustCrypto-hashes", package = "sha3", branch = "patch-sha3-v0.10.8", default-features = false}
