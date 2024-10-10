@@ -69,7 +69,7 @@ cargo test
 - [x] WASM support
 - [x] NO_STD support
 - [x] [Web Demo](https://demo.swiftness.iosis.tech/)
-- [x] [NPM packages](https://www.npmjs.com/package/swiftness)
+- [x] [NPM package](https://www.npmjs.com/package/swiftness)
 
 ### Other Platforms Support
 
