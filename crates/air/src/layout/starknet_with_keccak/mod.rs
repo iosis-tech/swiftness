@@ -536,10 +536,7 @@ impl LayoutTrait for Layout {
             .get(segments::PROGRAM)
             .ok_or(PublicInputError::SegmentMissing { segment: segments::PROGRAM })?
             .begin_addr;
-        let final_pc = public_segments
-            .get(segments::PROGRAM)
-            .ok_or(PublicInputError::SegmentMissing { segment: segments::PROGRAM })?
-            .stop_ptr;
+
         let initial_ap = public_segments
             .get(segments::EXECUTION)
             .ok_or(PublicInputError::SegmentMissing { segment: segments::EXECUTION })?
