@@ -99,15 +99,15 @@ pub const BUILTINS: [Felt; 5] = [
 pub struct Layout {}
 
 impl StaticLayoutTrait for Layout {
-    const NUM_COLUMNS_FIRST: usize = 6;
-    const NUM_COLUMNS_SECOND: usize = 2;
+    const NUM_COLUMNS_FIRST: u32 = 6;
+    const NUM_COLUMNS_SECOND: u32 = 2;
 }
 
 impl GenericLayoutTrait for Layout {
-    fn get_num_columns_first(_public_input: &PublicInput) -> Option<usize> {
+    fn get_num_columns_first(_public_input: &PublicInput) -> Option<u32> {
         Some(Self::NUM_COLUMNS_FIRST)
     }
-    fn get_num_columns_second(_public_input: &PublicInput) -> Option<usize> {
+    fn get_num_columns_second(_public_input: &PublicInput) -> Option<u32> {
         Some(Self::NUM_COLUMNS_SECOND)
     }
 }

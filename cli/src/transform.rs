@@ -118,8 +118,8 @@ impl TransformTo<PublicInputVerifier> for stark_proof::PublicInput {
         let dynamic_params = match self.dynamic_params.is_empty() {
             true => None,
             false => {
-                let params: Vec<usize> =
-                    self.dynamic_params.values().map(|&f| f as usize).collect();
+                let params: Vec<u32> =
+                    self.dynamic_params.values().cloned().collect();
                 Some(DynamicParams::from(params))
             }
         };

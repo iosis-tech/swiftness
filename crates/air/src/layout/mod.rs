@@ -88,13 +88,13 @@ pub trait LayoutTrait {
 }
 
 pub trait StaticLayoutTrait {
-    const NUM_COLUMNS_FIRST: usize;
-    const NUM_COLUMNS_SECOND: usize;
+    const NUM_COLUMNS_FIRST: u32;
+    const NUM_COLUMNS_SECOND: u32;
 }
 
 pub trait GenericLayoutTrait {
-    fn get_num_columns_first(public_input: &PublicInput) -> Option<usize>;
-    fn get_num_columns_second(public_input: &PublicInput) -> Option<usize>;
+    fn get_num_columns_first(public_input: &PublicInput) -> Option<u32>;
+    fn get_num_columns_second(public_input: &PublicInput) -> Option<u32>;
 }
 
 pub fn safe_div(value: Felt, divisor: Felt) -> Result<Felt, FeltIsZeroError> {
