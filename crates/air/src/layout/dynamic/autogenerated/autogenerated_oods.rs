@@ -1289,13 +1289,13 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
     let pow1325 = trace_generator.pow_felt(&(ecdsa_signature0_add_results_slope_offset));
     let pow1326 = trace_generator.pow_felt(&(ecdsa_signature0_exponentiate_key_x_diff_inv_offset));
     let pow1327 = trace_generator.pow_felt(&(ecdsa_signature0_exponentiate_key_slope_offset));
-    let pow1328 = trace_generator
-        .pow_felt(&(ecdsa_signature0_exponentiate_key_partial_sum_y_offset));
+    let pow1328 =
+        trace_generator.pow_felt(&(ecdsa_signature0_exponentiate_key_partial_sum_y_offset));
     let pow1329 = pow1032 * pow1328; // pow(trace_generator, (safe_div(ecdsa_builtin_row_ratio, 512)) + ecdsa__signature0__exponentiate_key__partial_sum__y_offset).
     let pow1330 = pow1030 * pow1328; // pow(trace_generator, (safe_div((safe_mult(255, ecdsa_builtin_row_ratio)), 512)) + ecdsa__signature0__exponentiate_key__partial_sum__y_offset).
     let pow1331 = pow1031 * pow1329; // pow(trace_generator, (safe_div(ecdsa_builtin_row_ratio, 2)) + (safe_div((safe_mult(255, ecdsa_builtin_row_ratio)), 512)) + ecdsa__signature0__exponentiate_key__partial_sum__y_offset).
-    let pow1332 = trace_generator
-        .pow_felt(&(ecdsa_signature0_exponentiate_key_partial_sum_x_offset));
+    let pow1332 =
+        trace_generator.pow_felt(&(ecdsa_signature0_exponentiate_key_partial_sum_x_offset));
     let pow1333 = pow1032 * pow1332; // pow(trace_generator, (safe_div(ecdsa_builtin_row_ratio, 512)) + ecdsa__signature0__exponentiate_key__partial_sum__x_offset).
     let pow1334 = pow1030 * pow1332; // pow(trace_generator, (safe_div((safe_mult(255, ecdsa_builtin_row_ratio)), 512)) + ecdsa__signature0__exponentiate_key__partial_sum__x_offset).
     let pow1335 = pow1031 * pow1333; // pow(trace_generator, (safe_div(ecdsa_builtin_row_ratio, 2)) + (safe_div((safe_mult(255, ecdsa_builtin_row_ratio)), 512)) + ecdsa__signature0__exponentiate_key__partial_sum__x_offset).
@@ -3626,7 +3626,7 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
     let total_sum = total_sum + constraint_coefficients[318] * value;
 
     let value = (column_values
-        [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column as usize as usize]
+        [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column as usize]
         - oods_values[319])
         .field_div(&felt_nonzero!(point - pow1242 * oods_point));
     let total_sum = total_sum + constraint_coefficients[319] * value;
@@ -3638,7 +3638,7 @@ pub fn eval_oods_polynomial_inner<Layout: LayoutTrait>(
     let total_sum = total_sum + constraint_coefficients[320] * value;
 
     let value = (column_values
-        [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column as usize as usize]
+        [dynamic_params.keccak_keccak_parse_to_diluted_final_reshaped_input_column as usize]
         - oods_values[321])
         .field_div(&felt_nonzero!(point - pow1250 * oods_point));
     let total_sum = total_sum + constraint_coefficients[321] * value;
