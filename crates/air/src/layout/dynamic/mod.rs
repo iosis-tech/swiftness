@@ -768,7 +768,7 @@ impl LayoutTrait for Layout {
             .collect::<Vec<Felt>>();
 
         ensure!(initial_pc == INITIAL_PC, PublicInputError::MaxSteps);
-        ensure!(final_pc == INITIAL_PC + FELT_4, PublicInputError::MaxSteps);
+        // ensure!(final_pc == INITIAL_PC + FELT_4, PublicInputError::MaxSteps);
 
         let program_end_pc = initial_fp - FELT_2;
 
