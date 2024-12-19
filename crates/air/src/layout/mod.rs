@@ -5,6 +5,8 @@ use starknet_crypto::Felt;
 use starknet_types_core::felt::FeltIsZeroError;
 use swiftness_transcript::transcript::Transcript;
 
+pub mod utils;
+
 #[cfg(feature = "dex")]
 pub mod dex;
 #[cfg(feature = "dynamic")]
