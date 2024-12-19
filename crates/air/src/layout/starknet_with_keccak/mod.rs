@@ -5,6 +5,7 @@ use crate::{
     consts::*,
     diluted::get_diluted_product,
     layout::stark_curve,
+    layout::utils::compute_program_hash,
     periodic_columns::{
         eval_ecdsa_x, eval_ecdsa_y, eval_keccak_round_key0, eval_keccak_round_key1,
         eval_keccak_round_key15, eval_keccak_round_key3, eval_keccak_round_key31,
@@ -573,17 +574,7 @@ impl LayoutTrait for Layout {
         ensure!(initial_pc == INITIAL_PC, PublicInputError::MaxSteps);
         ensure!(final_pc == INITIAL_PC + FELT_4, PublicInputError::MaxSteps);
 
-        let program_end_pc = initial_fp - FELT_2;
-
-        let program: Vec<&Felt> = memory
-            .iter()
-            .skip(initial_pc.to_bigint().try_into().unwrap())
-            .step_by(2)
-            .take((program_end_pc - FELT_1).to_bigint().try_into().unwrap())
-            .collect();
-
-        let hash = program.iter().fold(FELT_0, |acc, &e| pedersen_hash(&acc, e));
-        let program_hash = pedersen_hash(&hash, &Felt::from(program.len()));
+        let program_hash = compute_program_hash(memory, initial_pc, initial_fp)?;
 
         let output_len: usize = (output_stop - output_start).to_bigint().try_into().unwrap();
         let output = &memory[memory.len() - output_len * 2..];
