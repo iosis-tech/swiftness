@@ -1,6 +1,7 @@
 use crate::{
     commit::stark_commit, queries::generate_queries, types::StarkProof, verify::stark_verify,
 };
+use alloc::vec::Vec;
 use starknet_crypto::Felt;
 use swiftness_air::{
     domains::StarkDomains,
@@ -12,7 +13,7 @@ impl StarkProof {
     pub fn verify<Layout: GenericLayoutTrait + LayoutTrait>(
         &self,
         security_bits: Felt,
-    ) -> Result<(Felt, Felt), Error> {
+    ) -> Result<(Felt, Vec<Felt>), Error> {
         let n_original_columns =
             Layout::get_num_columns_first(&self.public_input).ok_or(Error::ColumnMissing)?;
         let n_interaction_columns =
