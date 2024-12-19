@@ -129,10 +129,10 @@ pub const BUILTINS: [Felt; 11] = [
 pub struct Layout {}
 
 impl GenericLayoutTrait for Layout {
-    fn get_num_columns_first(public_input: &PublicInput) -> Option<usize> {
+    fn get_num_columns_first(public_input: &PublicInput) -> Option<u32> {
         public_input.dynamic_params.as_ref().map(|d| d.num_columns_first)
     }
-    fn get_num_columns_second(public_input: &PublicInput) -> Option<usize> {
+    fn get_num_columns_second(public_input: &PublicInput) -> Option<u32> {
         public_input.dynamic_params.as_ref().map(|d| d.num_columns_second)
     }
 }

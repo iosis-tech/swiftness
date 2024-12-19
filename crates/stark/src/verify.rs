@@ -15,8 +15,8 @@ use crate::{
 
 // STARK verify phase.
 pub fn stark_verify<Layout: LayoutTrait>(
-    n_original_columns: usize,
-    n_interaction_columns: usize,
+    n_original_columns: u32,
+    n_interaction_columns: u32,
     public_input: &PublicInput,
     queries: &[Felt],
     commitment: StarkCommitment<Layout::InteractionElements>,

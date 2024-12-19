@@ -73,8 +73,8 @@ pub enum OodsVerifyError {
 }
 
 pub fn eval_oods_boundary_poly_at_points<Layout: LayoutTrait>(
-    n_original_columns: usize,
-    n_interaction_columns: usize,
+    n_original_columns: u32,
+    n_interaction_columns: u32,
     public_input: &PublicInput,
     eval_info: &OodsEvaluationInfo,
     points: &[Felt],
@@ -82,11 +82,11 @@ pub fn eval_oods_boundary_poly_at_points<Layout: LayoutTrait>(
     composition_decommitment: &table::types::Decommitment,
 ) -> Vec<Felt> {
     assert!(
-        decommitment.original.values.len() == points.len() * n_original_columns,
+        decommitment.original.values.len() as u32 == points.len() as u32 * n_original_columns,
         "Invalid value"
     );
     assert!(
-        decommitment.interaction.values.len() == points.len() * n_interaction_columns,
+        decommitment.interaction.values.len() as u32 == points.len() as u32 * n_interaction_columns,
         "Invalid value"
     );
     assert!(
@@ -98,30 +98,36 @@ pub fn eval_oods_boundary_poly_at_points<Layout: LayoutTrait>(
 
     for (i, &point) in points.iter().enumerate() {
         let mut column_values = Vec::with_capacity(
-            n_original_columns + n_interaction_columns + Layout::CONSTRAINT_DEGREE,
+            n_original_columns as usize
+                + n_interaction_columns as usize
+                + Layout::CONSTRAINT_DEGREE,
         );
 
         column_values.extend(
-            &decommitment.original.values[i * n_original_columns..(i + 1) * n_original_columns],
+            &decommitment.original.values
+                [i * n_original_columns as usize..(i + 1) * n_original_columns as usize],
         );
         column_values.extend(
             &decommitment.interaction.values
-                [i * n_interaction_columns..(i + 1) * n_interaction_columns],
+                [i * n_interaction_columns as usize..(i + 1) * n_interaction_columns as usize],
         );
         column_values.extend(
             &composition_decommitment.values
                 [i * Layout::CONSTRAINT_DEGREE..(i + 1) * Layout::CONSTRAINT_DEGREE],
         );
 
-        evaluations.push(Layout::eval_oods_polynomial(
-            public_input,
-            &column_values,
-            &eval_info.oods_values,
-            &eval_info.constraint_coefficients,
-            &point,
-            &eval_info.oods_point,
-            &eval_info.trace_generator,
-        ).unwrap());
+        evaluations.push(
+            Layout::eval_oods_polynomial(
+                public_input,
+                &column_values,
+                &eval_info.oods_values,
+                &eval_info.constraint_coefficients,
+                &point,
+                &eval_info.oods_point,
+                &eval_info.trace_generator,
+            )
+            .unwrap(),
+        );
     }
 
     evaluations

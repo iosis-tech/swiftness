@@ -119,7 +119,7 @@ impl PublicInput {
         };
 
         if let Some(dynamic_params) = &self.dynamic_params {
-            let dynamic_params_vec: Vec<usize> = dynamic_params.clone().into();
+            let dynamic_params_vec: Vec<u32> = dynamic_params.clone().into();
             hash_data.extend(dynamic_params_vec.into_iter().map(Felt::from));
         }
 
