@@ -6,8 +6,7 @@ use crate::{
     consts::*,
     diluted::get_diluted_product,
     felt, felt_hex, felt_nonzero, felt_try_nonzero,
-    layout::utils::compute_program_hash,
-    layout::{safe_div, stark_curve},
+    layout::{compute_program_hash, safe_div, stark_curve},
     periodic_columns::{
         eval_ecdsa_x, eval_ecdsa_y, eval_keccak_round_key0, eval_keccak_round_key1,
         eval_keccak_round_key15, eval_keccak_round_key3, eval_keccak_round_key31,

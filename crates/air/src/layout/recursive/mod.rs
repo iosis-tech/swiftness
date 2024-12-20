@@ -5,7 +5,7 @@ use crate::{
     consts::*,
     diluted::get_diluted_product,
     felt_hex,
-    layout::utils::compute_program_hash,
+    layout::compute_program_hash,
     periodic_columns::{eval_pedersen_x, eval_pedersen_y},
     public_memory::{PublicInput, INITIAL_PC, MAX_ADDRESS, MAX_LOG_N_STEPS, MAX_RANGE_CHECK},
 };

@@ -5,7 +5,7 @@ use crate::{
     consts::*,
     diluted::get_diluted_product,
     felt_hex,
-    layout::utils::compute_program_hash,
+    layout::compute_program_hash,
     periodic_columns::{
         eval_pedersen_x, eval_pedersen_y, eval_poseidon_poseidon_full_round_key0,
         eval_poseidon_poseidon_full_round_key1, eval_poseidon_poseidon_full_round_key2,

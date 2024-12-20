@@ -4,8 +4,7 @@ pub mod global_values;
 use crate::{
     consts::*,
     diluted::get_diluted_product,
-    layout::stark_curve,
-    layout::utils::compute_program_hash,
+    layout::{compute_program_hash, stark_curve},
     periodic_columns::{
         eval_ecdsa_x, eval_ecdsa_y, eval_pedersen_x, eval_pedersen_y,
         eval_poseidon_poseidon_full_round_key0, eval_poseidon_poseidon_full_round_key1,
