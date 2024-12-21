@@ -1,0 +1,32 @@
+fn main() {
+    macro_rules! check_feature_enabled {
+        ($($feature:literal),*) => {
+            // Ensure at least one feature is enabled
+            #[cfg(not(any($(feature = $feature),*)))]
+            compile_error!(concat!(
+                "At least one feature must be enabled: ",
+                $(concat!("`", $feature, "`, ")),*
+            ));
+        };
+    }
+
+    macro_rules! check_feature_conflict {
+        ($feature:literal, $($all_features:expr),*) => {
+            $(
+                #[cfg(all(feature = $feature, feature = $all_features))]
+                compile_error!(concat!(
+                    "Conflicting features detected: `", $feature, "` and `", $all_features, "` cannot be enabled together."
+                ));
+            )*
+        };
+    }
+
+    #[rustfmt::skip]
+    mod check_hash {
+        check_feature_enabled!("keccak_160_lsb", "keccak_248_lsb", "blake2s_160_lsb", "blake2s_248_lsb");
+        check_feature_conflict!("keccak_160_lsb", "keccak_248_lsb", "blake2s_160_lsb", "blake2s_248_lsb");
+        check_feature_conflict!("keccak_248_lsb", "keccak_160_lsb", "blake2s_160_lsb", "blake2s_248_lsb");
+        check_feature_conflict!("blake2s_160_lsb", "keccak_160_lsb", "keccak_248_lsb", "blake2s_248_lsb");
+        check_feature_conflict!("blake2s_248_lsb", "keccak_160_lsb", "keccak_248_lsb", "blake2s_160_lsb");
+    }
+}

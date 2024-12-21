@@ -20,7 +20,7 @@ An example configuration for the Stone Prover is available [here](https://github
    See [example configuration](https://github.com/iosis-tech/swiftness/blob/main/examples/proofs/cpu_air_params.json#L26).
 
 2. **First FRI Step Requirement**
-   The first element of the FRI step list must be set to zero for compatibility with the verifier. See the [reference](https://github.com/iosis-tech/swiftness/blob/main/examples/proofs/cpu_air_params.json#L13).
+   The first element of the FRI step list must be set to zero. See the [reference](https://github.com/iosis-tech/swiftness/blob/main/examples/proofs/cpu_air_params.json#L13).
 
 ## Usage
 After generating the proof JSON output with proper annotations, use this parser to produce a `StarkProof` struct.
