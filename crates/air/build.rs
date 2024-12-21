@@ -24,7 +24,6 @@ fn main() {
 
         macro_rules! check_feature_enabled {
                 ($($feature:literal),*) => {
-                    // Ensure at least one feature is enabled
                     #[cfg(not(any($(feature = $feature),*)))]
                     compile_error!(concat!(
                         "At least one feature must be enabled: ",
