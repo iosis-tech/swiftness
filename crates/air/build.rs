@@ -27,7 +27,7 @@ fn main() {
                 #[cfg(not(any($(feature = $feature),*)))]
                 compile_error!(concat!(
                     "At least one feature must be enabled: ",
-                    $(concat!("`", $feature, "`, ")),*
+                    $(concat!("`", $feature, "`, "),)*
                 ));
             };
         }
@@ -37,7 +37,7 @@ fn main() {
             ($first:tt $(,$rest:tt)*) => {
                 $(
                     #[cfg(all(feature = $first, feature = $rest))]
-                    compile_error!(concat!("features \"", $first, "\" and \"", $rest, "\" cannot be used together"));
+                    compile_error!(concat!("Features \"", $first, "\" and \"", $rest, "\" cannot be used together"));
                 )*
                 assert_unique_feature!($($rest),*);
             }
