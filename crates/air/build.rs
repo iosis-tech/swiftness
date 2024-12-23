@@ -23,43 +23,36 @@ fn main() {
         }
 
         macro_rules! check_feature_enabled {
-                ($($feature:literal),*) => {
-                    #[cfg(not(any($(feature = $feature),*)))]
-                    compile_error!(concat!(
-                        "At least one feature must be enabled: ",
-                        $(concat!("`", $feature, "`, ")),*
-                    ));
-                };
-            }
+            ($($feature:literal),*) => {
+                #[cfg(not(any($(feature = $feature),*)))]
+                compile_error!(concat!(
+                    "At least one feature must be enabled: ",
+                    $(concat!("`", $feature, "`, ")),*
+                ));
+            };
+        }
 
-        macro_rules! check_feature_conflict {
-                ($feature:literal, $($all_features:expr),*) => {
-                    $(
-                        #[cfg(all(feature = $feature, feature = $all_features))]
-                        compile_error!(concat!(
-                            "Conflicting features detected: `", $feature, "` and `", $all_features, "` cannot be enabled together."
-                        ));
-                    )*
-                };
+        macro_rules! assert_unique_feature {
+            () => {};
+            ($first:tt $(,$rest:tt)*) => {
+                $(
+                    #[cfg(all(feature = $first, feature = $rest))]
+                    compile_error!(concat!("features \"", $first, "\" and \"", $rest, "\" cannot be used together"));
+                )*
+                assert_unique_feature!($($rest),*);
             }
+        }
 
         #[rustfmt::skip]
         mod check_layout {
             check_feature_enabled!("dex", "recursive", "recursive_with_poseidon", "small", "starknet", "starknet_with_keccak", "dynamic");
-            check_feature_conflict!("dex", "recursive", "recursive_with_poseidon", "small", "starknet", "starknet_with_keccak", "dynamic");
-            check_feature_conflict!("recursive", "dex", "recursive_with_poseidon", "small", "starknet", "starknet_with_keccak", "dynamic");
-            check_feature_conflict!("recursive_with_poseidon", "dex", "recursive", "small", "starknet", "starknet_with_keccak", "dynamic");
-            check_feature_conflict!("small", "dex", "recursive", "recursive_with_poseidon", "starknet", "starknet_with_keccak", "dynamic");
-            check_feature_conflict!("starknet", "dex", "recursive", "recursive_with_poseidon", "small", "starknet_with_keccak", "dynamic");
-            check_feature_conflict!("starknet_with_keccak", "dex", "recursive", "recursive_with_poseidon", "small", "starknet", "dynamic");
-            check_feature_conflict!("dynamic", "dex", "recursive", "recursive_with_poseidon", "small", "starknet", "starknet_with_keccak");
+            assert_unique_feature!("dex", "recursive", "recursive_with_poseidon", "small", "starknet", "starknet_with_keccak", "dynamic");
         }
 
         #[rustfmt::skip]
         mod check_stone {
             check_feature_enabled!("stone5", "stone6");
-            check_feature_conflict!("stone5", "stone6");
-            check_feature_conflict!("stone6", "stone5");
+            assert_unique_feature!("stone5", "stone6");
         }
     }
 }

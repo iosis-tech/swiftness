@@ -9,21 +9,20 @@ fn main() {
         };
     }
 
-    macro_rules! check_feature_conflict {
-        ($feature:literal, $($all_features:expr),*) => {
+    macro_rules! assert_unique_feature {
+        () => {};
+        ($first:tt $(,$rest:tt)*) => {
             $(
-                #[cfg(all(feature = $feature, feature = $all_features))]
-                compile_error!(concat!(
-                    "Conflicting features detected: `", $feature, "` and `", $all_features, "` cannot be enabled together."
-                ));
+                #[cfg(all(feature = $first, feature = $rest))]
+                compile_error!(concat!("features \"", $first, "\" and \"", $rest, "\" cannot be used together"));
             )*
-        };
+            assert_unique_feature!($($rest),*);
+        }
     }
 
     #[rustfmt::skip]
     mod check_hash {
         check_feature_enabled!("keccak", "blake2s");
-        check_feature_conflict!("keccak", "blake2s");
-        check_feature_conflict!("blake2s", "keccak");
+        assert_unique_feature!("keccak", "blake2s");
     }
 }
