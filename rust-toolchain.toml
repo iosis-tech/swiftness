@@ -1,6 +1,10 @@
 [toolchain]
 channel = "stable"
-components = ["rustfmt", "clippy"]
+components = [
+    "rust-src",
+    "rustfmt",
+    "clippy",
+]
 profile = "minimal"
 
 [profile.dev]
