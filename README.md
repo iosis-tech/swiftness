@@ -17,7 +17,8 @@ Swiftness is a Rust implementation of the Cairo-VM STARK verifier with layouts, 
 
 ### Verify an Example Proof
    ```sh
-   cd cli && cargo run --release --bin swiftness --features starknet_with_keccak,keccak_160_lsb,stone5 --no-default-features -- --proof ../examples/proofs/starknet_with_keccak/cairo0_stone5_example_proof.json
+   cd cli
+   cargo run --release --bin swiftness --features starknet_with_keccak,keccak_160_lsb,stone5 --no-default-features -- --proof ../examples/proofs/starknet_with_keccak/cairo0_stone5_example_proof.json
    ```
 
 ## Running Tests
