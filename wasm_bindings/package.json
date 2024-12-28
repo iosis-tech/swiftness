@@ -2,7 +2,7 @@
   "name": "swiftness",
   "type": "module",
   "description": "Swiftness CairoVM Verifier",
-  "version": "0.1.22",
+  "version": "0.1.3",
   "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",

@@ -24,7 +24,7 @@ edition = "2021"
 license-file = "LICENSE"
 readme = "README.md"
 repository = "https://github.com/iosis-tech/swiftness"
-version = "0.1.2"
+version = "0.1.3"
 
 [workspace.dependencies]
 blake2 = { version = "0.10.6",  default-features = false }
@@ -39,9 +39,9 @@ starknet-types-core = { version = "0.1.5", default-features = false }
 thiserror = "1.0.61"
 thiserror-no-std = "2.0.2"
 
-swiftness_air = { path = "crates/air", default-features = false, version = "0.1.2" }
-swiftness_commitment = { path = "crates/commitment", default-features = false, version = "0.1.2" }
-swiftness_fri = { path = "crates/fri", default-features = false, version = "0.1.2" }
-swiftness_pow = { path = "crates/pow", default-features = false, version = "0.1.2" }
-swiftness_stark = { path = "crates/stark", default-features = false, version = "0.1.2" }
-swiftness_transcript = { path = "crates/transcript", default-features = false, version = "0.1.2" }
+swiftness_air = { path = "crates/air", default-features = false, version = "0.1.3" }
+swiftness_commitment = { path = "crates/commitment", default-features = false, version = "0.1.3" }
+swiftness_fri = { path = "crates/fri", default-features = false, version = "0.1.3" }
+swiftness_pow = { path = "crates/pow", default-features = false, version = "0.1.3" }
+swiftness_stark = { path = "crates/stark", default-features = false, version = "0.1.3" }
+swiftness_transcript = { path = "crates/transcript", default-features = false, version = "0.1.3" }
