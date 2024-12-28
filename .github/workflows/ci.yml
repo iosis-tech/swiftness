@@ -85,7 +85,7 @@ jobs:
       - name: Run verification
         run: cargo run -r --bin swiftness --features ${{ matrix.layout }},stone5,keccak_160_lsb --no-default-features -- --proof ${{ env.PROOFS_DIR }}/${{ matrix.layout }}/cairo0_stone5_example_proof.json
         working-directory: ${{ env.WORKING_DIR }}
-  
+
   verify-proofs-stone6-blake2s-248-lsb:
     runs-on: ubuntu-latest
     strategy:
@@ -143,7 +143,13 @@ jobs:
         layout: ["dynamic"]
         hash: ["blake2s_248_lsb"]
         stone: ["stone5"]
-        target: ["armebv7r-none-eabi", "riscv64imac-unknown-none-elf", "aarch64-unknown-none-softfloat", "aarch64-unknown-none"]
+        target:
+          [
+            "armebv7r-none-eabi",
+            "riscv64imac-unknown-none-elf",
+            "aarch64-unknown-none-softfloat",
+            "aarch64-unknown-none",
+          ]
 
     env:
       WORKING_DIR: ${{ github.workspace }}/examples/no_std_build
@@ -178,7 +184,7 @@ jobs:
         working-directory: ${{ env.WORKING_DIR }}
 
       - name: Build project
-        run: cargo build -r --features ${{ matrix.layout }},${{ matrix.hash }},${{ matrix.stone }} --no-default-features --target ${{ matrix.target }}
+        run: cargo build -Zbuild-std=core,alloc -r --features ${{ matrix.layout }},${{ matrix.hash }},${{ matrix.stone }} --no-default-features --target ${{ matrix.target }}
         working-directory: ${{ env.WORKING_DIR }}
 
       - name: Print binary metadata
