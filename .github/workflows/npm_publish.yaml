@@ -2,6 +2,11 @@ name: Manual Publish to npm
 
 on:
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Run npm publish as a dry run (true) or publish directly (false)"
+        required: true
+        default: true
 
 jobs:
   publish:
@@ -36,7 +41,6 @@ jobs:
             "stone6",
           ]
 
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -45,7 +49,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "18"
-      
+
       - name: Setup Rust toolchain
         uses: actions-rust-lang/setup-rust-toolchain@v1
 
@@ -74,17 +78,37 @@ jobs:
       - name: Install wasm-pack
         run: cargo install wasm-pack
 
-      - name: Build package
-        run: wasm-pack build --out-dir pkg --target web --features ${{ matrix.layout }},${{ matrix.hash }},${{ matrix.stone }} --no-default-features
+      - name: Build WASM packages
+        run: |
+          LAYOUTS=(${{ matrix.layout }})
+          HASHERS=(${{ matrix.hash }})
+          STONES=(${{ matrix.stone }})
+
+          for layout in "${LAYOUTS[@]}"; do
+              for hasher in "${HASHERS[@]}"; do
+                  for stone in "${STONES[@]}"; do
+                      output_dir="src/pkg/swiftness_${layout}_${hasher}_${stone}"
+                      features="${layout},${hasher},${stone}"
+
+                      echo "Building WASM package with layout=$layout, hasher=$hasher, stone=$stone"
+
+                      wasm-pack build --out-dir "$output_dir" --target web --features "$features" --no-default-features
+
+                      # Clean up unnecessary files
+                      rm "$output_dir/.gitignore"
+                      rm "$output_dir/README.md"
+                  done
+              done
+          done
         working-directory: ${{ env.WORKING_DIR }}
 
-      - name: Rename package
+      - name: Publish to npm (dry run or actual)
         run: |
-          jq --arg layout "${{ matrix.layout }}" --arg hash "${{ matrix.hash }}" --arg stone "${{ matrix.stone }}" \
-            '.name = "swiftness-\($layout | gsub("_"; "-"))-\($hash | gsub("_"; "-"))-\($stone | gsub("_"; "-"))"' \
-            package.json > tmp.json && mv tmp.json package.json
-        working-directory: ${{ env.WORKING_DIR }}/pkg
-
-      - name: Publish to npm
-        run: npm publish
-        working-directory: ${{ env.WORKING_DIR }}/pkg
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            echo "Running npm publish in dry run mode"
+            npm publish --dry-run
+          else
+            echo "Publishing to npm"
+            npm publish
+          fi
+        working-directory: ${{ env.WORKING_DIR }}
