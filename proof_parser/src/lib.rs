@@ -6,8 +6,8 @@ pub mod stark_proof;
 
 pub use stark_proof::*;
 
-pub fn parse(input: String) -> anyhow::Result<stark_proof::StarkProof> {
-    let proof_json = serde_json::from_str::<json_parser::StarkProof>(&input)?;
+pub fn parse<I: AsRef<str>>(input: I) -> anyhow::Result<stark_proof::StarkProof> {
+    let proof_json = serde_json::from_str::<json_parser::StarkProof>(input.as_ref())?;
     stark_proof::StarkProof::try_from(proof_json)
 }
 
