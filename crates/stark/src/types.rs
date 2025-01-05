@@ -5,7 +5,7 @@ use starknet_crypto::Felt;
 
 use crate::config;
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct StarkProof {
     pub config: config::StarkConfig,
     pub public_input: swiftness_air::public_memory::PublicInput,
@@ -14,7 +14,7 @@ pub struct StarkProof {
 }
 
 #[serde_as]
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct StarkUnsentCommitment {
     pub traces: swiftness_air::trace::UnsentCommitment,
     #[cfg_attr(
@@ -57,7 +57,7 @@ pub struct StarkCommitment<InteractionElements> {
     pub fri: swiftness_fri::types::Commitment,
 }
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct StarkWitness {
     pub traces_decommitment: swiftness_air::trace::Decommitment,
     pub traces_witness: swiftness_air::trace::Witness,

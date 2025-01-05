@@ -8,7 +8,7 @@ use starknet_crypto::Felt;
 // Commitment values for the Traces component. Used to generate a commitment by "reading" these
 // values from the channel.
 #[serde_as]
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct UnsentCommitment {
     #[cfg_attr(
         feature = "std",

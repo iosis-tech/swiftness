@@ -4,7 +4,7 @@ use starknet_crypto::Felt;
 use swiftness_commitment::vector;
 
 #[serde_as]
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct StarkConfig {
     pub traces: swiftness_air::trace::config::Config,
     pub composition: swiftness_commitment::table::config::Config,
