@@ -9,6 +9,7 @@ version = "0.1.3"
 
 [dependencies]
 clap = { version = "4.4.4", features = ["derive"] }
+starknet-core = "0.12.0"
 
 swiftness_air = { path = "../crates/air", default-features = false, features = [
     "std",

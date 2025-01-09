@@ -353,7 +353,9 @@ impl LayoutTrait for Layout {
         Ok(())
     }
 
-    fn verify_public_input(public_input: &PublicInput) -> Result<(Felt, Felt), PublicInputError> {
+    fn verify_public_input(
+        public_input: &PublicInput,
+    ) -> Result<(Felt, Vec<Felt>), PublicInputError> {
         let public_segments = &public_input.segments;
 
         let initial_pc = public_segments
@@ -405,10 +407,9 @@ impl LayoutTrait for Layout {
         let program_hash = pedersen_hash(&hash, &Felt::from(program.len()));
 
         let output_len: usize = (output_stop - output_start).to_bigint().try_into()?;
-        let output = &memory[memory.len() - output_len * 2..];
-        let hash = output.iter().skip(1).step_by(2).fold(FELT_0, |acc, e| pedersen_hash(&acc, e));
-        let output_hash = pedersen_hash(&hash, &Felt::from(output_len));
+        let output =
+            memory[memory.len() - output_len * 2..].iter().skip(1).step_by(2).cloned().collect();
 
-        Ok((program_hash, output_hash))
+        Ok((program_hash, output))
     }
 }
