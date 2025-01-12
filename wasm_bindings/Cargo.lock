@@ -91,6 +91,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9d297deb1925b89f2ccc13d7635fa0714f12c87adce1c75356b39ca9b7178567"
 
 [[package]]
+name = "base64"
+version = "0.22.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "72b3254f16251a8381aa12e40e3c4d2f0199f8c6508fbecb9d91f575e0fbb8c6"
+
+[[package]]
 name = "blake2"
 version = "0.10.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -590,9 +596,14 @@ version = "3.12.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d6b6f7f2fcb69f747921f79f3926bd1e203fce4fef62c268dd3abfb6d86029aa"
 dependencies = [
+ "base64 0.22.1",
+ "chrono",
+ "hex",
  "serde",
  "serde_derive",
+ "serde_json",
  "serde_with_macros 3.12.0",
+ "time",
 ]
 
 [[package]]
@@ -660,6 +671,25 @@ dependencies = [
 ]
 
 [[package]]
+name = "starknet-core"
+version = "0.12.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2538240cbe6663c673fe77465f294da707080f39678dd7066761554899e46100"
+dependencies = [
+ "base64 0.21.7",
+ "crypto-bigint",
+ "flate2",
+ "hex",
+ "serde",
+ "serde_json",
+ "serde_json_pythonic",
+ "serde_with 3.12.0",
+ "sha3",
+ "starknet-crypto",
+ "starknet-types-core",
+]
+
+[[package]]
 name = "starknet-crypto"
 version = "0.7.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -718,6 +748,7 @@ name = "swiftness"
 version = "1.0.0"
 dependencies = [
  "clap",
+ "starknet-core 0.12.0",
  "swiftness_air",
  "swiftness_commitment",
  "swiftness_fri",
@@ -733,7 +764,7 @@ dependencies = [
  "num-bigint",
  "serde",
  "serde_with 3.12.0",
- "starknet-core",
+ "starknet-core 0.11.1",
  "starknet-crypto",
  "starknet-types-core",
  "swiftness_commitment",
@@ -751,7 +782,7 @@ dependencies = [
  "serde",
  "serde_with 3.12.0",
  "sha3",
- "starknet-core",
+ "starknet-core 0.11.1",
  "starknet-crypto",
  "starknet-types-core",
  "swiftness_transcript",
@@ -767,7 +798,7 @@ dependencies = [
  "serde",
  "serde_with 3.12.0",
  "sha3",
- "starknet-core",
+ "starknet-core 0.11.1",
  "starknet-crypto",
  "swiftness_commitment",
  "swiftness_transcript",
@@ -810,7 +841,7 @@ version = "1.0.0"
 dependencies = [
  "serde",
  "serde_with 3.12.0",
- "starknet-core",
+ "starknet-core 0.11.1",
  "starknet-crypto",
  "swiftness_air",
  "swiftness_commitment",
