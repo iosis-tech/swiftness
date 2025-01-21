@@ -5,27 +5,28 @@ edition = "2021"
 license-file = "LICENSE"
 readme = "../README.md"
 repository = "https://github.com/iosis-tech/swiftness"
-version = "0.1.2"
+version = "1.0.0"
 
 [dependencies]
 clap = { version = "4.4.4", features = ["derive"] }
+starknet-core = "0.12.0"
 
 swiftness_air = { path = "../crates/air", default-features = false, features = [
     "std",
-], version = "0.1.2" }
+], version = "1.0.0" }
 swiftness_commitment = { path = "../crates/commitment", default-features = false, features = [
     "std",
-], version = "0.1.2" }
+], version = "1.0.0" }
 swiftness_fri = { path = "../crates/fri", default-features = false, features = [
     "std",
-], version = "0.1.2" }
+], version = "1.0.0" }
 swiftness_pow = { path = "../crates/pow", default-features = false, features = [
     "std",
-], version = "0.1.2" }
+], version = "1.0.0" }
 swiftness_stark = { path = "../crates/stark", default-features = false, features = [
     "std",
-], version = "0.1.2" }
-swiftness_proof_parser = { path = "../proof_parser", version = "0.1.2" }
+], version = "1.0.0" }
+swiftness_proof_parser = { path = "../proof_parser", version = "1.0.0" }
 
 [features]
 default = ["recursive", "keccak_160_lsb", "stone5"]

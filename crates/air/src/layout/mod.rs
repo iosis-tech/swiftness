@@ -92,7 +92,9 @@ pub trait LayoutTrait {
         witness: crate::trace::Witness,
     ) -> Result<(), crate::trace::decommit::Error>;
 
-    fn verify_public_input(public_input: &PublicInput) -> Result<(Felt, Felt), PublicInputError>;
+    fn verify_public_input(
+        public_input: &PublicInput,
+    ) -> Result<(Felt, Vec<Felt>), PublicInputError>;
 }
 
 pub trait StaticLayoutTrait {

@@ -16,7 +16,7 @@ pub const MAX_ADDRESS: Felt = Felt::from_hex_unchecked("0xffffffffffffffff");
 pub const INITIAL_PC: Felt = Felt::from_hex_unchecked("0x1");
 
 #[serde_as]
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct PublicInput {
     #[cfg_attr(
         feature = "std",

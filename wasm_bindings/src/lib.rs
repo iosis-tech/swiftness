@@ -51,14 +51,14 @@ pub fn verify_proof(stark_proof: JsValue) -> Result<JsValue, JsError> {
 
     // Get security bits and verify
     let security_bits = stark_proof.config.security_bits();
-    let (program_hash, output_hash) = stark_proof
+    let (program_hash, output) = stark_proof
         .verify::<Layout>(security_bits)
         .map_err(|e| JsError::new(&format!("Proof verification failed: {}", e)))?;
 
     // Serialize result to JsValue
     let result = serde_json::to_value(json!({
         "program_hash": program_hash,
-        "output_hash": output_hash,
+        "output": output,
     }))
     .map_err(|e| {
         JsError::new(&format!("Failed to serialize verification result to JSON: {}", e))

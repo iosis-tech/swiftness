@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/v0.1.2-green?style=flat-square&logo=git&logoColor=white&label=version)
+![Version](https://img.shields.io/badge/v1.0.0-green?style=flat-square&logo=git&logoColor=white&label=version)
 ![Continuous Integration](https://img.shields.io/github/actions/workflow/status/iosis-tech/swiftness/ci.yml?style=flat-square&logo=githubactions&logoColor=white&label=Continuous%20Integration)
 
 [![Crates.io Version](https://img.shields.io/crates/v/swiftness?style=flat-square&logo=lootcrate)](https://crates.io/crates/swiftness)
@@ -17,7 +17,8 @@ Swiftness is a Rust implementation of the Cairo-VM STARK verifier with layouts, 
 
 ### Verify an Example Proof
    ```sh
-   cd cli && cargo run --release --bin swiftness --features starknet_with_keccak,keccak_160_lsb,stone5 --no-default-features -- --proof ../examples/proofs/starknet_with_keccak/cairo0_stone5_example_proof.json
+   cd cli
+   cargo run --release --bin swiftness --features starknet_with_keccak,keccak_160_lsb,stone5 --no-default-features -- --proof ../examples/proofs/starknet_with_keccak/cairo0_stone5_example_proof.json
    ```
 
 ## Running Tests
