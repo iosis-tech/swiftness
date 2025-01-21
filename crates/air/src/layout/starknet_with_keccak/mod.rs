@@ -19,7 +19,7 @@ use alloc::vec;
 use alloc::vec::Vec;
 use global_values::{CurveConfig, EcPoint, EcdsaSigConfig, GlobalValues, InteractionElements};
 use starknet_core::types::NonZeroFelt;
-use starknet_crypto::{pedersen_hash, Felt};
+use starknet_crypto::Felt;
 use swiftness_commitment::table::{commit::table_commit, decommit::table_decommit};
 use swiftness_transcript::ensure;
 
