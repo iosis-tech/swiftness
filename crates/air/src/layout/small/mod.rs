@@ -4,7 +4,7 @@ pub mod global_values;
 use crate::{
     consts::*,
     felt_hex,
-    layout::stark_curve,
+    layout::{compute_program_hash, stark_curve},
     periodic_columns::{eval_ecdsa_x, eval_ecdsa_y, eval_pedersen_x, eval_pedersen_y},
     public_memory::{PublicInput, INITIAL_PC, MAX_ADDRESS, MAX_LOG_N_STEPS, MAX_RANGE_CHECK},
 };
@@ -12,7 +12,7 @@ use alloc::vec;
 use alloc::vec::Vec;
 use global_values::{EcPoint, EcdsaSigConfig, GlobalValues, InteractionElements};
 use starknet_core::types::NonZeroFelt;
-use starknet_crypto::{pedersen_hash, Felt};
+use starknet_crypto::Felt;
 use swiftness_commitment::table::{commit::table_commit, decommit::table_decommit};
 use swiftness_transcript::ensure;
 
@@ -394,17 +394,7 @@ impl LayoutTrait for Layout {
 
         ensure!(initial_pc == INITIAL_PC, PublicInputError::MaxSteps);
 
-        let program_end_pc = initial_fp - FELT_2;
-
-        let program: Vec<&Felt> = memory
-            .iter()
-            .skip(initial_pc.to_bigint().try_into()?)
-            .step_by(2)
-            .take((program_end_pc - FELT_1).to_bigint().try_into()?)
-            .collect();
-
-        let hash = program.iter().fold(FELT_0, |acc, &e| pedersen_hash(&acc, e));
-        let program_hash = pedersen_hash(&hash, &Felt::from(program.len()));
+        let program_hash = compute_program_hash(memory, initial_pc, initial_fp)?;
 
         let output_len: usize = (output_stop - output_start).to_bigint().try_into()?;
         let output =
