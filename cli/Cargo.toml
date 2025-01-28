@@ -8,7 +8,8 @@ repository = "https://github.com/iosis-tech/swiftness"
 version = "1.0.0"
 
 [dependencies]
-clap = { version = "4.4.4", features = ["derive"] }
+funvec = { path = "../crates/funvec" }
+bytemuck = { version = "1.21.0", features = ["derive"] }
 starknet-core = "0.12.0"
 
 swiftness_air = { path = "../crates/air", default-features = false, features = [
@@ -42,18 +43,9 @@ starknet_with_keccak = [
     "swiftness_air/starknet_with_keccak",
     "swiftness_stark/starknet_with_keccak",
 ]
-dynamic = [
-    "swiftness_air/dynamic",
-    "swiftness_stark/dynamic",
-]
-stone5 = [
-    "swiftness_air/stone5",
-    "swiftness_stark/stone5",
-]
-stone6 = [
-    "swiftness_air/stone6",
-    "swiftness_stark/stone6",
-]
+dynamic = ["swiftness_air/dynamic", "swiftness_stark/dynamic"]
+stone5 = ["swiftness_air/stone5", "swiftness_stark/stone5"]
+stone6 = ["swiftness_air/stone6", "swiftness_stark/stone6"]
 keccak_160_lsb = [
     "swiftness_air/keccak_160_lsb",
     "swiftness_stark/keccak_160_lsb",

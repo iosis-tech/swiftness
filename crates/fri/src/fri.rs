@@ -1,4 +1,5 @@
 use alloc::{borrow::ToOwned, vec::Vec};
+use funvec::FunVec;
 use starknet_crypto::Felt;
 use swiftness_commitment::table::{
     commit::table_commit,
@@ -75,13 +76,13 @@ pub fn fri_commit(
     let (commitments, eval_points) = fri_commit_rounds(
         transcript,
         config.n_layers - 1,
-        inner_layers,
-        &unsent_commitment.inner_layers,
+        inner_layers.to_vec(),
+        &unsent_commitment.inner_layers.to_vec(),
     );
 
     // Read last layer coefficients.
-    transcript.read_felt_vector_from_prover(&unsent_commitment.last_layer_coefficients);
-    let coefficients = unsent_commitment.last_layer_coefficients;
+    transcript.read_felt_vector_from_prover(&unsent_commitment.last_layer_coefficients.to_vec());
+    let coefficients = unsent_commitment.last_layer_coefficients.to_vec();
 
     assert!(
         Felt::TWO.pow_felt(&config.log_last_layer_degree_bound) == coefficients.len().into(),
@@ -109,7 +110,7 @@ fn fri_verify_layers(
 
     for i in 0..len {
         let target_layer_witness = layer_witness.get(i).unwrap();
-        let mut target_layer_witness_leaves = target_layer_witness.leaves.to_owned();
+        let mut target_layer_witness_leaves = target_layer_witness.leaves.to_owned().to_vec();
         let target_layer_witness_table_withness = target_layer_witness.table_witness.to_owned();
         let target_commitment = commitment.get(i).unwrap().clone();
 
@@ -129,7 +130,7 @@ fn fri_verify_layers(
         let _ = table_decommit(
             target_commitment,
             &verify_indices,
-            TableDecommitment { values: verify_y_values },
+            TableDecommitment { values: FunVec::from_vec(verify_y_values) },
             target_layer_witness_table_withness,
         );
 
@@ -159,14 +160,15 @@ pub fn fri_verify(
     // Compute fri_group.
     let fri_group = get_fri_group();
 
+    let fri_step_sizes = commitment.config.fri_step_sizes.to_vec();
     // Verify inner layers.
     let last_queries = fri_verify_layers(
         fri_group,
         commitment.config.n_layers - 1,
         commitment.inner_layers,
-        witness.layers,
+        witness.layers.to_vec(),
         commitment.eval_points,
-        commitment.config.fri_step_sizes[1..commitment.config.fri_step_sizes.len()].to_vec(),
+        fri_step_sizes[1..fri_step_sizes.len()].to_vec(),
         fri_queries,
     );
 

@@ -32,6 +32,8 @@ blake2s_248_lsb = ["swiftness_commitment/blake2s_248_lsb"]
 test_fixtures = []
 
 [dependencies]
+funvec.workspace = true
+bytemuck.workspace = true
 num-bigint.workspace = true
 serde_with.workspace = true
 serde.workspace = true

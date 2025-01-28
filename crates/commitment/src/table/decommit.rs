@@ -28,13 +28,13 @@ pub fn table_decommit(
             >= bottom_layer_depth;
 
     let n_columns: u32 = commitment.config.n_columns.to_bigint().try_into()?;
-    if n_columns as usize * queries.len() != decommitment.values.len() {
+    if n_columns as usize * queries.len() != decommitment.values.to_vec().len() {
         return Err(Error::DecommitmentLength);
     }
 
     // Convert decommitment values to Montgomery form, since the commitment is in that form.
     let montgomery_values: Vec<Felt> =
-        decommitment.values.into_iter().map(|v| v * MONTGOMERY_R).collect();
+        decommitment.values.to_vec().into_iter().map(|v| v * MONTGOMERY_R).collect();
 
     // Generate queries to the underlying vector commitment.
     let vector_queries = generate_vector_queries(

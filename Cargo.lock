@@ -45,6 +45,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "bytemuck"
+version = "1.21.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ef657dfab802224e671f5818e9a4935f9b1957ed18e58292690cc39e7a4092a3"
+dependencies = [
+ "bytemuck_derive",
+]
+
+[[package]]
+name = "bytemuck_derive"
+version = "1.8.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3fa76293b4f7bb636ab88fd78228235b5248b4d05cc589aed610f954af5d7c7a"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 2.0.96",
+]
+
+[[package]]
 name = "cfg-if"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -169,6 +189,14 @@ name = "fnv"
 version = "1.0.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1"
+
+[[package]]
+name = "funvec"
+version = "1.0.0"
+dependencies = [
+ "serde",
+ "starknet-crypto",
+]
 
 [[package]]
 name = "generic-array"
@@ -524,6 +552,8 @@ checksum = "13c2bddecc57b384dee18652358fb23172facb8a2c51ccc10d74c157bdea3292"
 name = "swiftness_air"
 version = "1.0.0"
 dependencies = [
+ "bytemuck",
+ "funvec",
  "num-bigint",
  "serde",
  "serde_with 3.12.0",
@@ -541,6 +571,8 @@ name = "swiftness_commitment"
 version = "1.0.0"
 dependencies = [
  "blake2",
+ "bytemuck",
+ "funvec",
  "num-bigint",
  "serde",
  "serde_with 3.12.0",
@@ -557,6 +589,8 @@ dependencies = [
 name = "swiftness_fri"
 version = "1.0.0"
 dependencies = [
+ "bytemuck",
+ "funvec",
  "num-bigint",
  "serde",
  "serde_with 3.12.0",
@@ -574,6 +608,7 @@ name = "swiftness_pow"
 version = "1.0.0"
 dependencies = [
  "blake2",
+ "bytemuck",
  "serde",
  "sha3",
  "starknet-crypto",
@@ -587,6 +622,8 @@ dependencies = [
 name = "swiftness_stark"
 version = "1.0.0"
 dependencies = [
+ "bytemuck",
+ "funvec",
  "serde",
  "serde_with 3.12.0",
  "starknet-core",

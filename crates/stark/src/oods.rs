@@ -82,15 +82,17 @@ pub fn eval_oods_boundary_poly_at_points<Layout: LayoutTrait>(
     composition_decommitment: &table::types::Decommitment,
 ) -> Vec<Felt> {
     assert!(
-        decommitment.original.values.len() as u32 == points.len() as u32 * n_original_columns,
+        decommitment.original.values.to_vec().len() as u32
+            == points.len() as u32 * n_original_columns,
         "Invalid value"
     );
     assert!(
-        decommitment.interaction.values.len() as u32 == points.len() as u32 * n_interaction_columns,
+        decommitment.interaction.values.to_vec().len() as u32
+            == points.len() as u32 * n_interaction_columns,
         "Invalid value"
     );
     assert!(
-        composition_decommitment.values.len() == points.len() * Layout::CONSTRAINT_DEGREE,
+        composition_decommitment.values.to_vec().len() == points.len() * Layout::CONSTRAINT_DEGREE,
         "Invalid value"
     );
 
@@ -104,15 +106,15 @@ pub fn eval_oods_boundary_poly_at_points<Layout: LayoutTrait>(
         );
 
         column_values.extend(
-            &decommitment.original.values
+            &decommitment.original.values.to_vec()
                 [i * n_original_columns as usize..(i + 1) * n_original_columns as usize],
         );
         column_values.extend(
-            &decommitment.interaction.values
+            &decommitment.interaction.values.to_vec()
                 [i * n_interaction_columns as usize..(i + 1) * n_interaction_columns as usize],
         );
         column_values.extend(
-            &composition_decommitment.values
+            &composition_decommitment.values.to_vec()
                 [i * Layout::CONSTRAINT_DEGREE..(i + 1) * Layout::CONSTRAINT_DEGREE],
         );
 

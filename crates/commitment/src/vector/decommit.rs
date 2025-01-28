@@ -27,7 +27,7 @@ pub fn vector_commitment_decommit(
         shifted_queries,
         0,
         commitment.config.n_verifier_friendly_commitment_layers,
-        witness.authentications,
+        witness.authentications.to_vec(),
         0,
     )?;
 

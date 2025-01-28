@@ -1,0 +1,12 @@
+[package]
+name = "funvec"
+description.workspace = true
+edition.workspace = true
+license-file.workspace = true
+readme.workspace = true
+repository.workspace = true
+version.workspace = true
+
+[dependencies]
+serde = { workspace = true, features = ["derive"] }
+starknet-crypto.workspace = true

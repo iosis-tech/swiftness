@@ -31,11 +31,11 @@ pub fn stark_commit<Layout: LayoutTrait>(
     let interaction_after_composition = transcript.random_felt_to_prover();
 
     // Read OODS values.
-    transcript.read_felt_vector_from_prover(&unsent_commitment.oods_values);
+    transcript.read_felt_vector_from_prover(&unsent_commitment.oods_values.to_vec());
 
     // Check that the trace and the composition agree at oods_point.
     verify_oods::<Layout>(
-        &unsent_commitment.oods_values,
+        &unsent_commitment.oods_values.to_vec(),
         &traces_commitment.interaction_elements,
         public_input,
         &traces_coefficients,
@@ -60,7 +60,7 @@ pub fn stark_commit<Layout: LayoutTrait>(
         traces: traces_commitment,
         composition: composition_commitment,
         interaction_after_composition,
-        oods_values: unsent_commitment.oods_values.clone(),
+        oods_values: unsent_commitment.oods_values.to_vec(),
         interaction_after_oods: oods_coefficients,
         fri: fri_commitment,
     })

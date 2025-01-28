@@ -144,40 +144,34 @@ impl LayoutTrait for Layout {
         let pedersen_points_x = eval_pedersen_x(pedersen_point);
         let pedersen_points_y = eval_pedersen_y(pedersen_point);
 
+        let public_segments = public_input.segments.to_vec();
         let global_values = GlobalValues {
             trace_length: *trace_domain_size,
-            initial_pc: public_input
-                .segments
+            initial_pc: public_segments
                 .get(segments::PROGRAM)
                 .ok_or(CompositionPolyEvalError::SegmentMissing { segment: segments::PROGRAM })?
                 .begin_addr,
-            final_pc: public_input
-                .segments
+            final_pc: public_segments
                 .get(segments::PROGRAM)
                 .ok_or(CompositionPolyEvalError::SegmentMissing { segment: segments::PROGRAM })?
                 .stop_ptr,
-            initial_ap: public_input
-                .segments
+            initial_ap: public_segments
                 .get(segments::EXECUTION)
                 .ok_or(CompositionPolyEvalError::SegmentMissing { segment: segments::EXECUTION })?
                 .begin_addr,
-            final_ap: public_input
-                .segments
+            final_ap: public_segments
                 .get(segments::EXECUTION)
                 .ok_or(CompositionPolyEvalError::SegmentMissing { segment: segments::EXECUTION })?
                 .stop_ptr,
-            initial_pedersen_addr: public_input
-                .segments
+            initial_pedersen_addr: public_segments
                 .get(segments::PEDERSEN)
                 .ok_or(CompositionPolyEvalError::SegmentMissing { segment: segments::PEDERSEN })?
                 .begin_addr,
-            initial_range_check_addr: public_input
-                .segments
+            initial_range_check_addr: public_segments
                 .get(segments::RANGE_CHECK)
                 .ok_or(CompositionPolyEvalError::SegmentMissing { segment: segments::RANGE_CHECK })?
                 .begin_addr,
-            initial_bitwise_addr: public_input
-                .segments
+            initial_bitwise_addr: public_segments
                 .get(segments::BITWISE)
                 .ok_or(CompositionPolyEvalError::SegmentMissing { segment: segments::BITWISE })?
                 .begin_addr,
@@ -280,7 +274,7 @@ impl LayoutTrait for Layout {
         );
 
         ensure!(
-            public_input.segments.len() == segments::N_SEGMENTS,
+            public_input.segments.to_vec().len() == segments::N_SEGMENTS,
             PublicInputError::InvalidSegments
         );
 
@@ -296,13 +290,12 @@ impl LayoutTrait for Layout {
 
         ensure!(public_input.layout == LAYOUT_CODE, PublicInputError::LayoutCodeInvalid);
 
-        let output_uses = public_input
-            .segments
+        let public_segments = public_input.segments.to_vec();
+        let output_uses = public_segments
             .get(segments::OUTPUT)
             .ok_or(PublicInputError::SegmentMissing { segment: segments::OUTPUT })?
             .stop_ptr
-            - public_input
-                .segments
+            - public_segments
                 .get(segments::OUTPUT)
                 .ok_or(PublicInputError::SegmentMissing { segment: segments::OUTPUT })?
                 .begin_addr;
@@ -310,13 +303,11 @@ impl LayoutTrait for Layout {
 
         let pedersen_copies =
             trace_length.field_div(&NonZeroFelt::try_from(Felt::from(PEDERSEN_BUILTIN_ROW_RATIO))?);
-        let pedersen_uses = (public_input
-            .segments
+        let pedersen_uses = (public_segments
             .get(segments::PEDERSEN)
             .ok_or(PublicInputError::SegmentMissing { segment: segments::PEDERSEN })?
             .stop_ptr
-            - public_input
-                .segments
+            - public_segments
                 .get(segments::PEDERSEN)
                 .ok_or(PublicInputError::SegmentMissing { segment: segments::PEDERSEN })?
                 .begin_addr)
@@ -325,13 +316,11 @@ impl LayoutTrait for Layout {
 
         let range_check_copies = trace_length
             .field_div(&NonZeroFelt::try_from(Felt::from(RANGE_CHECK_BUILTIN_ROW_RATIO))?);
-        let range_check_uses = public_input
-            .segments
+        let range_check_uses = public_segments
             .get(segments::RANGE_CHECK)
             .ok_or(PublicInputError::SegmentMissing { segment: segments::RANGE_CHECK })?
             .stop_ptr
-            - public_input
-                .segments
+            - public_segments
                 .get(segments::RANGE_CHECK)
                 .ok_or(PublicInputError::SegmentMissing { segment: segments::RANGE_CHECK })?
                 .begin_addr;
@@ -339,13 +328,11 @@ impl LayoutTrait for Layout {
 
         let bitwise_copies =
             trace_length.field_div(&NonZeroFelt::try_from(Felt::from(BITWISE_ROW_RATIO))?);
-        let bitwise_uses = (public_input
-            .segments
+        let bitwise_uses = (public_segments
             .get(segments::BITWISE)
             .ok_or(PublicInputError::SegmentMissing { segment: segments::BITWISE })?
             .stop_ptr
-            - public_input
-                .segments
+            - public_segments
                 .get(segments::BITWISE)
                 .ok_or(PublicInputError::SegmentMissing { segment: segments::BITWISE })?
                 .begin_addr)
@@ -357,7 +344,7 @@ impl LayoutTrait for Layout {
     fn verify_public_input(
         public_input: &PublicInput,
     ) -> Result<(Felt, Vec<Felt>), PublicInputError> {
-        let public_segments = &public_input.segments;
+        let public_segments = &public_input.segments.to_vec();
 
         let initial_pc = public_segments
             .get(segments::PROGRAM)
@@ -385,10 +372,15 @@ impl LayoutTrait for Layout {
         ensure!(final_ap < MAX_ADDRESS, PublicInputError::MaxSteps);
 
         // TODO support more pages?
-        ensure!(public_input.continuous_page_headers.is_empty(), PublicInputError::MaxSteps);
+        ensure!(
+            public_input.continuous_page_headers.to_vec().is_empty(),
+            PublicInputError::MaxSteps
+        );
 
         let memory = &public_input
             .main_page
+            .0
+            .to_vec()
             .iter()
             .flat_map(|v| vec![v.address, v.value])
             .collect::<Vec<Felt>>();

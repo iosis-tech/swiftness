@@ -1,4 +1,4 @@
-use alloc::vec::Vec;
+use funvec::FunVec;
 use num_bigint::{BigInt, TryFromBigIntError};
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
@@ -6,12 +6,13 @@ use starknet_crypto::Felt;
 
 const MAX_LAST_LAYER_LOG_DEGREE_BOUND: u64 = 15;
 const MAX_FRI_LAYERS: u64 = 15;
+const MAX_FRI_LAYERS_USIZE: usize = 15;
 const MIN_FRI_LAYERS: u64 = 2;
 const MAX_FRI_STEP: u64 = 4;
 const MIN_FRI_STEP: u64 = 1;
 
 #[serde_as]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
 pub struct Config {
     // Log2 of the size of the input layer to FRI.
     #[cfg_attr(
@@ -27,14 +28,14 @@ pub struct Config {
     pub n_layers: Felt,
     // Array of size n_layers - 1, each entry is a configuration of a table commitment for the
     // corresponding inner layer.
-    pub inner_layers: Vec<swiftness_commitment::table::config::Config>,
+    pub inner_layers: FunVec<swiftness_commitment::table::config::Config, MAX_FRI_LAYERS_USIZE>,
     // Array of size n_layers, each entry represents the FRI step size,
     // i.e. the number of FRI-foldings between layer i and i+1.
     #[cfg_attr(
         feature = "std",
         serde_as(as = "Vec<starknet_core::serde::unsigned_field_element::UfeHex>")
     )]
-    pub fri_step_sizes: Vec<Felt>,
+    pub fri_step_sizes: FunVec<Felt, MAX_FRI_LAYERS_USIZE>,
     #[cfg_attr(
         feature = "std",
         serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
@@ -56,7 +57,8 @@ impl Config {
         {
             return Err(Error::OutOfBounds { min: 0, max: MAX_LAST_LAYER_LOG_DEGREE_BOUND });
         }
-        if *self.fri_step_sizes.first().ok_or(Error::FirstFriStepInvalid)? != Felt::ZERO {
+        let fri_step_sizes = self.fri_step_sizes.to_vec();
+        if *fri_step_sizes.first().ok_or(Error::FirstFriStepInvalid)? != Felt::ZERO {
             return Err(Error::FirstFriStepInvalid);
         }
 
@@ -64,9 +66,11 @@ impl Config {
         let mut sum_of_step_sizes = Felt::ZERO;
         let mut log_input_size = self.log_input_size;
 
+        let inner_layers = self.inner_layers.to_vec();
+
         for i in 1..n_layers {
-            let fri_step = self.fri_step_sizes[i];
-            let table_commitment = &self.inner_layers[i - 1];
+            let fri_step = fri_step_sizes[i];
+            let table_commitment = &inner_layers[i - 1];
             log_input_size -= fri_step;
             sum_of_step_sizes += fri_step;
 

@@ -4,7 +4,7 @@ use serde_with::serde_as;
 use starknet_crypto::Felt;
 
 #[serde_as]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Serialize, Deserialize)]
 pub struct Config {
     #[cfg_attr(
         feature = "std",

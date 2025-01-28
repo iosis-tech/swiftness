@@ -5,7 +5,7 @@ use swiftness_commitment::vector;
 const MAX_N_COLUMNS: Felt = Felt::from_hex_unchecked("0x80");
 
 // Configuration for the Traces component.
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
 pub struct Config {
     pub original: swiftness_commitment::table::config::Config,
     pub interaction: swiftness_commitment::table::config::Config,

@@ -1,11 +1,15 @@
 use alloc::vec::Vec;
+use funvec::{FunVec, FUNVEC_OODS};
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
 use starknet_crypto::Felt;
 
 use crate::config;
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(
+    Debug, Clone, Copy, PartialEq, Serialize, Deserialize, bytemuck::Zeroable, bytemuck::Pod,
+)]
+#[repr(C)]
 pub struct StarkProof {
     pub config: config::StarkConfig,
     pub public_input: swiftness_air::public_memory::PublicInput,
@@ -14,7 +18,7 @@ pub struct StarkProof {
 }
 
 #[serde_as]
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
 pub struct StarkUnsentCommitment {
     pub traces: swiftness_air::trace::UnsentCommitment,
     #[cfg_attr(
@@ -29,10 +33,13 @@ pub struct StarkUnsentCommitment {
         feature = "std",
         serde_as(as = "Vec<starknet_core::serde::unsigned_field_element::UfeHex>")
     )]
-    pub oods_values: Vec<Felt>,
+    pub oods_values: FunVec<Felt, FUNVEC_OODS>,
     pub fri: swiftness_fri::types::UnsentCommitment,
     pub proof_of_work: swiftness_pow::pow::UnsentCommitment,
 }
+
+unsafe impl bytemuck::Zeroable for StarkUnsentCommitment {}
+unsafe impl bytemuck::Pod for StarkUnsentCommitment {}
 
 #[serde_as]
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
@@ -57,7 +64,7 @@ pub struct StarkCommitment<InteractionElements> {
     pub fri: swiftness_fri::types::Commitment,
 }
 
-#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
 pub struct StarkWitness {
     pub traces_decommitment: swiftness_air::trace::Decommitment,
     pub traces_witness: swiftness_air::trace::Witness,
@@ -65,3 +72,6 @@ pub struct StarkWitness {
     pub composition_witness: swiftness_commitment::table::types::Witness,
     pub fri_witness: swiftness_fri::types::Witness,
 }
+
+unsafe impl bytemuck::Zeroable for StarkWitness {}
+unsafe impl bytemuck::Pod for StarkWitness {}

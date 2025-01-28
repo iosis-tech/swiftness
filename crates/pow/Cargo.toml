@@ -9,16 +9,13 @@ version.workspace = true
 
 [features]
 default = ["std", "keccak"]
-std = [
-    "dep:thiserror",
-    "swiftness_transcript/std",
-    "starknet-crypto/std",
-]
+std = ["dep:thiserror", "swiftness_transcript/std", "starknet-crypto/std"]
 keccak = []
 blake2s = []
 test_fixtures = []
 
 [dependencies]
+bytemuck.workspace = true
 blake2.workspace = true
 serde.workspace = true
 sha3.workspace = true
