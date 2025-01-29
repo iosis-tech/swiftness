@@ -60,7 +60,7 @@ pub fn stark_verify<Layout: LayoutTrait>(
 
     // Decommit FRI.
     let fri_decommitment = types::Decommitment { values: oods_poly_evals, points };
-    Ok(fri_verify(queries, commitment.fri, fri_decommitment, witness.fri_witness.to_owned())?)
+    Ok(fri_verify(queries, commitment.fri, fri_decommitment, &witness.fri_witness)?)
 }
 
 #[cfg(feature = "std")]

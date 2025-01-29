@@ -51,4 +51,42 @@ impl<T: Copy + Default, const N: usize> FunVec<T, N> {
     pub fn to_vec(&self) -> Vec<T> {
         self.vec.iter().copied().filter_map(identity).collect()
     }
+
+    pub fn to_vec_ref(&self) -> Vec<&T> {
+        self.vec.iter().filter_map(|x| x.as_ref()).collect()
+    }
+
+    pub fn len(&self) -> usize {
+        self.vec.iter().count()
+    }
+}
+
+impl<T: Copy + Default, const N: usize> IntoIterator for FunVec<T, N> {
+    type Item = T;
+    type IntoIter =
+        std::iter::FilterMap<std::array::IntoIter<Option<T>, N>, fn(Option<T>) -> Option<T>>;
+
+    fn into_iter(self) -> Self::IntoIter {
+        self.vec.into_iter().filter_map(identity)
+    }
+}
+
+impl<'a, T: Copy + Default, const N: usize> IntoIterator for &'a FunVec<T, N> {
+    type Item = &'a T;
+    type IntoIter =
+        std::iter::FilterMap<std::slice::Iter<'a, Option<T>>, fn(&'a Option<T>) -> Option<&'a T>>;
+
+    fn into_iter(self) -> Self::IntoIter {
+        self.vec.iter().filter_map(Option::as_ref)
+    }
+}
+
+impl<T: Copy + Default, const N: usize> FunVec<T, N> {
+    pub fn iter(&self) -> impl Iterator<Item = &T> {
+        self.vec.iter().filter_map(Option::as_ref)
+    }
+
+    pub fn iter_mut(&mut self) -> impl Iterator<Item = &mut T> {
+        self.vec.iter_mut().filter_map(Option::as_mut)
+    }
 }

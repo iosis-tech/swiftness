@@ -1,7 +1,9 @@
+use core::mem;
+
 use crate::{
     consts::{FELT_0, FELT_1, FELT_2},
     dynamic::DynamicParams,
-    types::{ContinuousPageHeader, Page, SegmentInfo},
+    types::{AddrValue, ContinuousPageHeader, Page, SegmentInfo},
 };
 use alloc::vec;
 use alloc::vec::Vec;
@@ -87,11 +89,11 @@ impl PublicInput {
         let main_page_prod = self.main_page.get_product(z, alpha);
 
         let (continuous_pages_prod, continuous_pages_total_length) =
-            get_continuous_pages_product(&self.continuous_page_headers.to_vec());
+            get_continuous_pages_product(&self.continuous_page_headers.to_vec_ref());
 
         let prod = main_page_prod * continuous_pages_prod;
         let total_length =
-            Felt::from(self.main_page.0.to_vec().len()) + continuous_pages_total_length;
+            Felt::from(self.main_page.0.to_vec_ref().len()) + continuous_pages_total_length;
 
         (prod, total_length)
     }
@@ -99,12 +101,18 @@ impl PublicInput {
     #[cfg_attr(feature = "stone5", allow(unused_variables))]
     pub fn get_hash(&self, n_verifier_friendly_commitment_layers: Felt) -> Felt {
         let mut main_page_hash = FELT_0;
-        for memory in self.main_page.0.to_vec().iter() {
-            main_page_hash = pedersen_hash(&main_page_hash, &memory.address);
-            main_page_hash = pedersen_hash(&main_page_hash, &memory.value);
+
+        #[inline]
+        fn hash_both(memory: &AddrValue, state: &Felt) -> Felt {
+            let state = pedersen_hash(&state, &memory.address);
+            pedersen_hash(&state, &memory.value)
+        }
+
+        for memory in self.main_page.0.iter() {
+            main_page_hash = hash_both(&memory, &main_page_hash);
         }
         main_page_hash =
-            pedersen_hash(&main_page_hash, &(FELT_2 * Felt::from(self.main_page.0.to_vec().len())));
+            pedersen_hash(&main_page_hash, &(FELT_2 * Felt::from(self.main_page.0.len())));
 
         let mut hash_data = {
             #[cfg(feature = "stone5")]
@@ -129,30 +137,26 @@ impl PublicInput {
         }
 
         // Segments.
-        hash_data
-            .extend(self.segments.to_vec().iter().flat_map(|s| vec![s.begin_addr, s.stop_ptr]));
+        hash_data.extend(self.segments.iter().flat_map(|s| vec![s.begin_addr, s.stop_ptr]));
 
         hash_data.push(self.padding_addr);
         hash_data.push(self.padding_value);
-        hash_data.push(Felt::from(self.continuous_page_headers.to_vec().len() + 1));
+        hash_data.push(Felt::from(self.continuous_page_headers.len() + 1));
 
-        // Main page.
-        hash_data.push(Felt::from(self.main_page.0.to_vec().len()));
+        // // Main page.
+        hash_data.push(Felt::from(self.main_page.0.len()));
         hash_data.push(main_page_hash);
 
-        // Add the rest of the pages.
+        // // Add the rest of the pages.
         hash_data.extend(
-            self.continuous_page_headers
-                .to_vec()
-                .iter()
-                .flat_map(|h| vec![h.start_address, h.size, h.hash]),
+            self.continuous_page_headers.iter().flat_map(|h| vec![h.start_address, h.size, h.hash]),
         );
 
         poseidon_hash_many(&hash_data)
     }
 }
 
-fn get_continuous_pages_product(page_headers: &[ContinuousPageHeader]) -> (Felt, Felt) {
+fn get_continuous_pages_product(page_headers: &[&ContinuousPageHeader]) -> (Felt, Felt) {
     let mut res = FELT_1;
     let mut total_length = FELT_0;
 

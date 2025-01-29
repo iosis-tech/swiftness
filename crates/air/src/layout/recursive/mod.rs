@@ -144,7 +144,7 @@ impl LayoutTrait for Layout {
         let pedersen_points_x = eval_pedersen_x(pedersen_point);
         let pedersen_points_y = eval_pedersen_y(pedersen_point);
 
-        let public_segments = public_input.segments.to_vec();
+        let public_segments = public_input.segments.to_vec_ref();
         let global_values = GlobalValues {
             trace_length: *trace_domain_size,
             initial_pc: public_segments
@@ -274,7 +274,7 @@ impl LayoutTrait for Layout {
         );
 
         ensure!(
-            public_input.segments.to_vec().len() == segments::N_SEGMENTS,
+            public_input.segments.to_vec_ref().len() == segments::N_SEGMENTS,
             PublicInputError::InvalidSegments
         );
 
@@ -290,7 +290,7 @@ impl LayoutTrait for Layout {
 
         ensure!(public_input.layout == LAYOUT_CODE, PublicInputError::LayoutCodeInvalid);
 
-        let public_segments = public_input.segments.to_vec();
+        let public_segments = public_input.segments.to_vec_ref();
         let output_uses = public_segments
             .get(segments::OUTPUT)
             .ok_or(PublicInputError::SegmentMissing { segment: segments::OUTPUT })?
@@ -344,7 +344,7 @@ impl LayoutTrait for Layout {
     fn verify_public_input(
         public_input: &PublicInput,
     ) -> Result<(Felt, Vec<Felt>), PublicInputError> {
-        let public_segments = &public_input.segments.to_vec();
+        let public_segments = public_input.segments.to_vec_ref();
 
         let initial_pc = public_segments
             .get(segments::PROGRAM)
@@ -373,14 +373,14 @@ impl LayoutTrait for Layout {
 
         // TODO support more pages?
         ensure!(
-            public_input.continuous_page_headers.to_vec().is_empty(),
+            public_input.continuous_page_headers.to_vec_ref().is_empty(),
             PublicInputError::MaxSteps
         );
 
         let memory = &public_input
             .main_page
             .0
-            .to_vec()
+            .to_vec_ref()
             .iter()
             .flat_map(|v| vec![v.address, v.value])
             .collect::<Vec<Felt>>();

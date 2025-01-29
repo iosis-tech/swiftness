@@ -145,7 +145,7 @@ pub fn fri_verify(
     queries: &[Felt],
     commitment: FriCommitment,
     decommitment: FriDecommitment,
-    witness: Witness,
+    witness: &Witness,
 ) -> Result<(), Error> {
     if queries.len() != decommitment.values.len() {
         return Err(Error::InvalidLength {
