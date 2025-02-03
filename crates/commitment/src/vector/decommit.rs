@@ -8,7 +8,7 @@ use starknet_core::types::NonZeroFelt;
 use starknet_crypto::{poseidon_hash, Felt};
 
 pub fn vector_commitment_decommit(
-    commitment: Commitment,
+    commitment: &Commitment,
     queries: &[Query],
     witness: Witness,
 ) -> Result<(), Error> {

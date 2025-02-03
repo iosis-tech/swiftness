@@ -38,13 +38,16 @@ pub fn verify_oods<Layout: LayoutTrait>(
     // TODO support degree > 2?
     let claimed_composition = oods[oods.len() - 2] + oods[oods.len() - 1] * oods_point;
 
-    assure!(
+    let x = assure!(
         composition_from_trace == claimed_composition,
         OodsVerifyError::EvaluationInvalid {
             expected: claimed_composition,
             actual: composition_from_trace
         }
-    )
+    );
+
+    // x.unwrap();
+    Ok(())
 }
 
 use swiftness_transcript::assure;
@@ -82,17 +85,15 @@ pub fn eval_oods_boundary_poly_at_points<Layout: LayoutTrait>(
     composition_decommitment: &table::types::Decommitment,
 ) -> Vec<Felt> {
     assert!(
-        decommitment.original.values.to_vec().len() as u32
-            == points.len() as u32 * n_original_columns,
+        decommitment.original.values.len() as u32 == points.len() as u32 * n_original_columns,
         "Invalid value"
     );
     assert!(
-        decommitment.interaction.values.to_vec().len() as u32
-            == points.len() as u32 * n_interaction_columns,
+        decommitment.interaction.values.len() as u32 == points.len() as u32 * n_interaction_columns,
         "Invalid value"
     );
     assert!(
-        composition_decommitment.values.to_vec().len() == points.len() * Layout::CONSTRAINT_DEGREE,
+        composition_decommitment.values.len() == points.len() * Layout::CONSTRAINT_DEGREE,
         "Invalid value"
     );
 

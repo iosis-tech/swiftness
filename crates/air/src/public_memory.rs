@@ -1,5 +1,3 @@
-use core::mem;
-
 use crate::{
     consts::{FELT_0, FELT_1, FELT_2},
     dynamic::DynamicParams,

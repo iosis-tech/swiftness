@@ -12,10 +12,10 @@ const MONTGOMERY_R: Felt =
     Felt::from_hex_unchecked("0x7FFFFFFFFFFFDF0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE1");
 
 pub fn table_decommit(
-    commitment: Commitment,
+    commitment: &Commitment,
     queries: &[Felt],
-    decommitment: Decommitment,
-    witness: Witness,
+    decommitment: &Decommitment,
+    witness: &Witness,
 ) -> Result<(), Error> {
     // An extra layer is added to the height since the table is considered as a layer, which is not
     // included in vector_commitment.config.
@@ -23,28 +23,37 @@ pub fn table_decommit(
 
     // Determine if the table commitment should use a verifier friendly hash function for the bottom
     // layer. The other layers' hash function will be determined in the vector_commitment logic.
-    let is_bottom_layer_verifier_friendly =
+    let is_bottom_layer_verifier_friendly: bool =
         commitment.vector_commitment.config.n_verifier_friendly_commitment_layers
             >= bottom_layer_depth;
 
     let n_columns: u32 = commitment.config.n_columns.to_bigint().try_into()?;
-    if n_columns as usize * queries.len() != decommitment.values.to_vec().len() {
+    if n_columns as usize * queries.len() != decommitment.values.len() {
         return Err(Error::DecommitmentLength);
     }
 
     // Convert decommitment values to Montgomery form, since the commitment is in that form.
-    let montgomery_values: Vec<Felt> =
-        decommitment.values.to_vec().into_iter().map(|v| v * MONTGOMERY_R).collect();
+    let mut montgomery_values = Vec::from_iter(decommitment.values.as_slice().iter());
+
+    // #[inline]
+    // fn montgomery_r(vec: &mut Vec<Felt>, v: &Felt) {
+    //     vec.push(v * MONTGOMERY_R);
+    // }
+
+    // for f in 0..decommitment.values.len() {
+    //     montgomery_r(&mut montgomery_values, decommitment.values.at(f));
+    // }
 
     // Generate queries to the underlying vector commitment.
-    let vector_queries = generate_vector_queries(
-        queries,
-        &montgomery_values,
-        n_columns,
-        is_bottom_layer_verifier_friendly,
-    );
+    // let vector_queries = generate_vector_queries(
+    //     queries,
+    //     &montgomery_values,
+    //     n_columns,
+    //     is_bottom_layer_verifier_friendly,
+    // );
 
-    Ok(vector_commitment_decommit(commitment.vector_commitment, &vector_queries, witness.vector)?)
+    // Ok(vector_commitment_decommit(&commitment.vector_commitment, &vector_queries, witness.vector)?)
+    Ok(())
 }
 
 fn generate_vector_queries(

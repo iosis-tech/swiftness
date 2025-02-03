@@ -1,5 +1,5 @@
 use alloc::vec::Vec;
-use funvec::{FunVec, FUNVEC_OODS};
+use funvec::{FunBox, FunVec, FUNVEC_OODS};
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
 use starknet_crypto::Felt;
@@ -44,8 +44,8 @@ unsafe impl bytemuck::Pod for StarkUnsentCommitment {}
 #[serde_as]
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct StarkCommitment<InteractionElements> {
-    pub traces: swiftness_air::trace::Commitment<InteractionElements>,
-    pub composition: swiftness_commitment::table::types::Commitment,
+    pub traces: FunBox<swiftness_air::trace::Commitment<InteractionElements>>,
+    pub composition: FunBox<swiftness_commitment::table::types::Commitment>,
     #[cfg_attr(
         feature = "std",
         serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
@@ -61,7 +61,7 @@ pub struct StarkCommitment<InteractionElements> {
         serde_as(as = "Vec<starknet_core::serde::unsigned_field_element::UfeHex>")
     )]
     pub interaction_after_oods: Vec<Felt>,
-    pub fri: swiftness_fri::types::Commitment,
+    pub fri: FunBox<swiftness_fri::types::Commitment>,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]

@@ -1,4 +1,4 @@
-use std::convert::identity;
+use std::ops::Deref;
 
 use serde::{Deserialize, Deserializer, Serialize};
 
@@ -13,12 +13,13 @@ pub const FUNVEC_SEGMENTS: usize = 12;
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct FunVec<T: Default, const N: usize> {
-    vec: [Option<T>; N],
+    len: usize,
+    data: [T; N],
 }
 
 impl<T: Default, const N: usize> Default for FunVec<T, N> {
     fn default() -> Self {
-        Self { vec: core::array::from_fn(|_| Default::default()) }
+        Self { len: 0, data: core::array::from_fn(|_| Default::default()) }
     }
 }
 
@@ -29,7 +30,7 @@ impl<'de, T: Copy + Default + Deserialize<'de>, const N: usize> Deserialize<'de>
     }
 }
 
-impl<'de, T: Copy + Default + Serialize, const N: usize> Serialize for FunVec<T, N> {
+impl<T: Copy + Default + Serialize, const N: usize> Serialize for FunVec<T, N> {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::Serializer,
@@ -41,52 +42,99 @@ impl<'de, T: Copy + Default + Serialize, const N: usize> Serialize for FunVec<T,
 
 impl<T: Copy + Default, const N: usize> FunVec<T, N> {
     pub fn from_vec(vec: Vec<T>) -> Self {
-        let mut fun_vec = [Default::default(); N];
-        for (i, value) in vec.iter().enumerate() {
-            fun_vec[i] = Some(*value);
-        }
-        Self { vec: fun_vec }
+        let mut s = Self::default();
+        s.data[..vec.len()].copy_from_slice(&vec);
+        Self { len: vec.len(), data: s.data }
     }
 
     pub fn to_vec(&self) -> Vec<T> {
-        self.vec.iter().copied().filter_map(identity).collect()
+        self.data[..self.len].to_vec()
     }
 
     pub fn to_vec_ref(&self) -> Vec<&T> {
-        self.vec.iter().filter_map(|x| x.as_ref()).collect()
+        self.data[..self.len].iter().collect()
+    }
+
+    pub fn as_slice(&self) -> &[T] {
+        &self.data[..self.len]
     }
 
     pub fn len(&self) -> usize {
-        self.vec.iter().count()
+        self.len
     }
-}
 
-impl<T: Copy + Default, const N: usize> IntoIterator for FunVec<T, N> {
-    type Item = T;
-    type IntoIter =
-        std::iter::FilterMap<std::array::IntoIter<Option<T>, N>, fn(Option<T>) -> Option<T>>;
+    pub fn is_empty(&self) -> bool {
+        self.len == 0
+    }
 
-    fn into_iter(self) -> Self::IntoIter {
-        self.vec.into_iter().filter_map(identity)
+    pub fn at(&self, index: usize) -> &T {
+        &self.data[index]
+    }
+
+    pub fn at_mut(&mut self, index: usize) -> &mut T {
+        &mut self.data[index]
+    }
+
+    pub fn push(&mut self, value: T) {
+        self.data[self.len] = value;
+        self.len += 1;
     }
 }
 
 impl<'a, T: Copy + Default, const N: usize> IntoIterator for &'a FunVec<T, N> {
     type Item = &'a T;
-    type IntoIter =
-        std::iter::FilterMap<std::slice::Iter<'a, Option<T>>, fn(&'a Option<T>) -> Option<&'a T>>;
+    type IntoIter = std::slice::Iter<'a, T>;
 
     fn into_iter(self) -> Self::IntoIter {
-        self.vec.iter().filter_map(Option::as_ref)
+        self.data[..self.len].iter()
     }
 }
 
 impl<T: Copy + Default, const N: usize> FunVec<T, N> {
     pub fn iter(&self) -> impl Iterator<Item = &T> {
-        self.vec.iter().filter_map(Option::as_ref)
+        self.data[..self.len].iter()
     }
 
     pub fn iter_mut(&mut self) -> impl Iterator<Item = &mut T> {
-        self.vec.iter_mut().filter_map(Option::as_mut)
+        self.data[..self.len].iter_mut()
+    }
+}
+
+#[derive(Debug, Clone, PartialEq)]
+pub struct FunBox<T>(Box<T>);
+
+impl<T> FunBox<T> {
+    pub fn new(content: T) -> Self {
+        Self(Box::new(content))
+    }
+}
+
+impl<T> Deref for FunBox<T> {
+    type Target = T;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+impl<T: Default> Default for FunBox<T> {
+    fn default() -> Self {
+        Self(Default::default())
+    }
+}
+
+impl<'de, T: Deserialize<'de>> Deserialize<'de> for FunBox<T> {
+    fn deserialize<D: Deserializer<'de>>(deserializer: D) -> Result<Self, D::Error> {
+        let content = Box::deserialize(deserializer)?;
+        Ok(Self(content))
+    }
+}
+
+impl<T: Serialize> Serialize for FunBox<T> {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        self.0.serialize(serializer)
     }
 }

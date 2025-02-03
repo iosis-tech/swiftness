@@ -71,17 +71,16 @@ pub fn fri_commit(
     config: FriConfig,
 ) -> FriCommitment {
     assert!(config.n_layers > Felt::from(0), "Invalid value");
-    let inner_layers = config.inner_layers.clone();
 
     let (commitments, eval_points) = fri_commit_rounds(
         transcript,
         config.n_layers - 1,
-        inner_layers.to_vec(),
+        config.inner_layers.to_vec(),
         &unsent_commitment.inner_layers.to_vec(),
     );
 
     // Read last layer coefficients.
-    transcript.read_felt_vector_from_prover(&unsent_commitment.last_layer_coefficients.to_vec());
+    transcript.read_felt_vector_from_prover(&unsent_commitment.last_layer_coefficients.as_slice());
     let coefficients = unsent_commitment.last_layer_coefficients.to_vec();
 
     assert!(
@@ -128,10 +127,10 @@ fn fri_verify_layers(
 
         // Table decommitment.
         let _ = table_decommit(
-            target_commitment,
+            &target_commitment,
             &verify_indices,
-            TableDecommitment { values: FunVec::from_vec(verify_y_values) },
-            target_layer_witness_table_withness,
+            &TableDecommitment { values: FunVec::from_vec(verify_y_values) },
+            &target_layer_witness_table_withness,
         );
 
         queries = next_queries;
@@ -143,8 +142,8 @@ fn fri_verify_layers(
 // FRI protocol component decommitment.
 pub fn fri_verify(
     queries: &[Felt],
-    commitment: FriCommitment,
-    decommitment: FriDecommitment,
+    commitment: &FriCommitment,
+    decommitment: &FriDecommitment,
     witness: &Witness,
 ) -> Result<(), Error> {
     if queries.len() != decommitment.values.len() {
@@ -155,7 +154,11 @@ pub fn fri_verify(
     }
 
     // Compute first FRI layer queries.
-    let fri_queries = gather_first_layer_queries(queries, decommitment.values, decommitment.points);
+    let fri_queries = gather_first_layer_queries(
+        queries,
+        decommitment.values.to_vec(),
+        decommitment.points.to_vec(),
+    );
 
     // Compute fri_group.
     let fri_group = get_fri_group();
@@ -165,9 +168,9 @@ pub fn fri_verify(
     let last_queries = fri_verify_layers(
         fri_group,
         commitment.config.n_layers - 1,
-        commitment.inner_layers,
+        commitment.inner_layers.to_vec(),
         witness.layers.to_vec(),
-        commitment.eval_points,
+        commitment.eval_points.to_vec(),
         fri_step_sizes[1..fri_step_sizes.len()].to_vec(),
         fri_queries,
     );
@@ -178,7 +181,7 @@ pub fn fri_verify(
         return Err(Error::InvalidValue);
     };
 
-    verify_last_layer(last_queries, commitment.last_layer_coefficients)
+    verify_last_layer(last_queries, commitment.last_layer_coefficients.to_vec())
         .map_err(|_| Error::LastLayerVerificationError)?;
     Ok(())
 }

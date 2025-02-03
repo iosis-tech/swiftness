@@ -2,6 +2,7 @@ use crate::{
     consts::{FELT_0, FELT_3},
     domains::StarkDomains,
     public_memory::PublicInput,
+    types::AddrValue,
 };
 use alloc::vec::Vec;
 use num_bigint::{BigInt, TryFromBigIntError};
@@ -87,9 +88,9 @@ pub trait LayoutTrait {
 
     fn traces_decommit(
         queries: &[Felt],
-        commitment: crate::trace::Commitment<Self::InteractionElements>,
-        decommitment: crate::trace::Decommitment,
-        witness: crate::trace::Witness,
+        commitment: &crate::trace::Commitment<Self::InteractionElements>,
+        decommitment: &crate::trace::Decommitment,
+        witness: &crate::trace::Witness,
     ) -> Result<(), crate::trace::decommit::Error>;
 
     fn verify_public_input(
@@ -121,19 +122,19 @@ pub fn safe_mult(value: Felt, multiplier: Felt) -> Result<Felt, SafeMultError> {
 }
 
 pub fn compute_program_hash(
-    memory: &[Felt],
+    memory: &[AddrValue],
     initial_pc: Felt,
     initial_fp: Felt,
 ) -> Result<Felt, TryFromBigIntError<BigInt>> {
-    let program: Vec<&Felt> = memory
-        .iter()
-        .skip(initial_pc.to_bigint().try_into()?)
-        .step_by(2)
-        .take((initial_fp - FELT_3).to_bigint().try_into()?)
-        .collect();
+    let initial_pc: usize = initial_pc.to_bigint().try_into()?;
+    let initial_fp: usize = (initial_fp - FELT_3).to_bigint().try_into()?;
 
-    let hash = program.iter().fold(FELT_0, |acc, &e| pedersen_hash(&acc, e));
-    let program_hash = pedersen_hash(&hash, &Felt::from(program.len()));
+    let mut program_hash = FELT_0;
+    for m in (initial_pc / 2)..initial_fp {
+        program_hash = pedersen_hash(&program_hash, &memory[m].value);
+    }
+
+    let program_hash = pedersen_hash(&program_hash, &Felt::from(initial_fp));
 
     Ok(program_hash)
 }

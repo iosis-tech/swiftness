@@ -44,10 +44,10 @@ impl Page {
         let mut res = Felt::ONE;
         let mut i = 0;
         loop {
-            if i == self.0.to_vec().len() {
+            if i == self.0.len() {
                 break res;
             }
-            let current = &self.0.to_vec()[i];
+            let current = &self.0.as_slice()[i];
 
             res *= z - (current.address + alpha * current.value);
             i += 1;
