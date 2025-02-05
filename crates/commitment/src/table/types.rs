@@ -23,6 +23,7 @@ pub struct Decommitment {
         serde_as(as = "starknet_core::serde::unsigned_field_element::UfeHex")
     )]
     pub values: FunVec<Felt, FUNVEC_DECOMMITMENT_VALUES>,
+    pub montgomery_values: FunVec<Felt, FUNVEC_DECOMMITMENT_VALUES>,
 }
 
 // Witness for a decommitment over queries.

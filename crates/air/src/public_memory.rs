@@ -53,7 +53,7 @@ pub struct PublicInput {
     )]
     pub padding_value: Felt,
     pub main_page: Page,
-    pub continuous_page_headers: FunVec<ContinuousPageHeader, 12>,
+    pub continuous_page_headers: FunVec<ContinuousPageHeader, 0>,
 }
 
 unsafe impl bytemuck::Zeroable for PublicInput {}
@@ -87,11 +87,10 @@ impl PublicInput {
         let main_page_prod = self.main_page.get_product(z, alpha);
 
         let (continuous_pages_prod, continuous_pages_total_length) =
-            get_continuous_pages_product(&self.continuous_page_headers.to_vec_ref());
+            get_continuous_pages_product(&self.continuous_page_headers.as_slice());
 
         let prod = main_page_prod * continuous_pages_prod;
-        let total_length =
-            Felt::from(self.main_page.0.to_vec_ref().len()) + continuous_pages_total_length;
+        let total_length = Felt::from(self.main_page.0.len()) + continuous_pages_total_length;
 
         (prod, total_length)
     }
@@ -141,11 +140,11 @@ impl PublicInput {
         hash_data.push(self.padding_value);
         hash_data.push(Felt::from(self.continuous_page_headers.len() + 1));
 
-        // // Main page.
+        // Main page.
         hash_data.push(Felt::from(self.main_page.0.len()));
         hash_data.push(main_page_hash);
 
-        // // Add the rest of the pages.
+        // Add the rest of the pages.
         hash_data.extend(
             self.continuous_page_headers.iter().flat_map(|h| vec![h.start_address, h.size, h.hash]),
         );
@@ -154,7 +153,7 @@ impl PublicInput {
     }
 }
 
-fn get_continuous_pages_product(page_headers: &[&ContinuousPageHeader]) -> (Felt, Felt) {
+fn get_continuous_pages_product(page_headers: &[ContinuousPageHeader]) -> (Felt, Felt) {
     let mut res = FELT_1;
     let mut total_length = FELT_0;
 

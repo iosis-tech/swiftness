@@ -1,11 +1,10 @@
-use std::{boxed::Box, vec};
-
 use crate::{
     commit::stark_commit,
     queries::generate_queries,
     types::{StarkCommitment, StarkProof, StarkWitness},
     verify::stark_verify,
 };
+use alloc::boxed::Box;
 use alloc::vec::Vec;
 use starknet_crypto::Felt;
 use swiftness_air::{

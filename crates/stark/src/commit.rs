@@ -43,15 +43,15 @@ pub fn stark_commit<Layout: LayoutTrait>(
 
     // Check that the trace and the composition agree at oods_point.
     // TODO: fit it somehow
-    // verify_oods::<Layout>(
-    //     unsent_commitment.oods_values.to_slice(),
-    //     &traces_commitment.interaction_elements,
-    //     public_input,
-    //     &traces_coefficients,
-    //     &interaction_after_composition,
-    //     &stark_domains.trace_domain_size,
-    //     &stark_domains.trace_generator,
-    // )?;
+    verify_oods::<Layout>(
+        unsent_commitment.oods_values.as_slice(),
+        &traces_commitment.interaction_elements,
+        public_input,
+        &traces_coefficients,
+        &interaction_after_composition,
+        &stark_domains.trace_domain_size,
+        &stark_domains.trace_generator,
+    )?;
 
     // Generate interaction values after OODS.
     let oods_alpha = transcript.random_felt_to_prover();
@@ -72,7 +72,7 @@ pub fn stark_commit<Layout: LayoutTrait>(
         composition: composition_commitment,
         interaction_after_composition,
         oods_values: unsent_commitment.oods_values.to_vec(),
-        interaction_after_oods: Vec::new(),
+        interaction_after_oods: oods_coefficients,
         fri: fri_commitment,
     })
 }

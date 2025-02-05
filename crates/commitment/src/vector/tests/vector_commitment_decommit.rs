@@ -1,4 +1,5 @@
 use alloc::vec;
+use funvec::FunVec;
 use starknet_crypto::Felt;
 
 use crate::vector::{
@@ -94,7 +95,7 @@ fn test_vector_commitment_decommit() {
     ];
 
     let witness = Witness {
-        authentications: vec![
+        authentications: FunVec::from_vec(vec![
             Felt::from_hex("0x2e9de49846b184d454c30e3b4854167583093da20c5ddef5e3ba2885524d006")
                 .unwrap(),
             Felt::from_hex("0xf3fb7305323c5fa68ad49a509a9c470e2396af41bfd2c9cf86228504436a3")
@@ -195,8 +196,8 @@ fn test_vector_commitment_decommit() {
                 .unwrap(),
             Felt::from_hex("0x2fd5a64db6093c9efda84ba327a43043e41310626073e58331c9f2f9f2db20f")
                 .unwrap(),
-        ],
+        ]),
     };
 
-    vector_commitment_decommit(commitment, &queries, witness).unwrap();
+    vector_commitment_decommit(&commitment, &queries, witness).unwrap();
 }

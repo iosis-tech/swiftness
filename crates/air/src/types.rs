@@ -1,3 +1,5 @@
+use core::ops::Deref;
+
 use funvec::{FunVec, FUNVEC_PAGES};
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
@@ -38,16 +40,23 @@ pub struct AddrValue {
 #[derive(Debug, Default, Clone, Copy, PartialEq, Serialize, Deserialize)]
 pub struct Page(pub FunVec<AddrValue, FUNVEC_PAGES>);
 
+impl Deref for Page {
+    type Target = FunVec<AddrValue, FUNVEC_PAGES>;
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
 impl Page {
     // Returns the product of (z - (addr + alpha * val)) over a single page.
     pub fn get_product(&self, z: Felt, alpha: Felt) -> Felt {
         let mut res = Felt::ONE;
         let mut i = 0;
         loop {
-            if i == self.0.len() {
+            if i == self.len() {
                 break res;
             }
-            let current = &self.0.as_slice()[i];
+            let current = &self.as_slice()[i];
 
             res *= z - (current.address + alpha * current.value);
             i += 1;

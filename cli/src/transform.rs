@@ -11,6 +11,7 @@ use swiftness_air::{
 use swiftness_commitment::{
     table::{
         config::Config as TableConfigVerifier,
+        decommit::MONTGOMERY_R,
         types::{
             Decommitment as TableDecommitmentVerifier, Witness as TableCommitmentWitnessVerifier,
         },
@@ -222,8 +223,10 @@ impl TransformTo<TraceDecommitmentVerifier> for stark_proof::TracesDecommitment 
 
 impl TransformTo<TableDecommitmentVerifier> for stark_proof::TableDecommitment {
     fn transform_to(self) -> TableDecommitmentVerifier {
+        let values = self.values.into_iter().map(|x| x.into()).collect::<Vec<_>>();
         TableDecommitmentVerifier {
-            values: FunVec::from_vec(self.values.into_iter().map(|x| x.into()).collect()),
+            montgomery_values: FunVec::from_vec(values.iter().map(|x| x * MONTGOMERY_R).collect()),
+            values: FunVec::from_vec(values),
         }
     }
 }

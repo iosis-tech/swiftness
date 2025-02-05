@@ -8,7 +8,7 @@ use num_bigint::{BigInt, TryFromBigIntError};
 use sha3::{Digest, Keccak256};
 use starknet_crypto::{poseidon_hash_many, Felt};
 
-const MONTGOMERY_R: Felt =
+pub const MONTGOMERY_R: Felt =
     Felt::from_hex_unchecked("0x7FFFFFFFFFFFDF0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE1");
 
 pub fn table_decommit(
@@ -23,7 +23,7 @@ pub fn table_decommit(
 
     // Determine if the table commitment should use a verifier friendly hash function for the bottom
     // layer. The other layers' hash function will be determined in the vector_commitment logic.
-    let is_bottom_layer_verifier_friendly: bool =
+    let is_bottom_layer_verifier_friendly =
         commitment.vector_commitment.config.n_verifier_friendly_commitment_layers
             >= bottom_layer_depth;
 
@@ -33,27 +33,15 @@ pub fn table_decommit(
     }
 
     // Convert decommitment values to Montgomery form, since the commitment is in that form.
-    let mut montgomery_values = Vec::from_iter(decommitment.values.as_slice().iter());
 
-    // #[inline]
-    // fn montgomery_r(vec: &mut Vec<Felt>, v: &Felt) {
-    //     vec.push(v * MONTGOMERY_R);
-    // }
+    let vector_queries = generate_vector_queries(
+        queries,
+        &decommitment.montgomery_values.as_slice(),
+        n_columns,
+        is_bottom_layer_verifier_friendly,
+    );
 
-    // for f in 0..decommitment.values.len() {
-    //     montgomery_r(&mut montgomery_values, decommitment.values.at(f));
-    // }
-
-    // Generate queries to the underlying vector commitment.
-    // let vector_queries = generate_vector_queries(
-    //     queries,
-    //     &montgomery_values,
-    //     n_columns,
-    //     is_bottom_layer_verifier_friendly,
-    // );
-
-    // Ok(vector_commitment_decommit(&commitment.vector_commitment, &vector_queries, witness.vector)?)
-    Ok(())
+    Ok(vector_commitment_decommit(&commitment.vector_commitment, &vector_queries, witness.vector)?)
 }
 
 fn generate_vector_queries(
@@ -70,34 +58,35 @@ fn generate_vector_queries(
             let slice = &values[(i * n_columns as usize)..((i + 1) * n_columns as usize)];
             poseidon_hash_many(slice)
         } else {
-            let slice = &values[(i * n_columns as usize)..((i + 1) * n_columns as usize)];
-            let mut data = Vec::new();
-            data.extend(slice.iter().flat_map(|x| x.to_bytes_be().to_vec()));
+            unimplemented!("big allocations would not fit on Solana");
+            // let slice = &values[(i * n_columns as usize)..((i + 1) * n_columns as usize)];
+            // let mut data = Vec::new();
+            // data.extend(slice.iter().flat_map(|x| x.to_bytes_be().to_vec()));
 
-            let mut hasher = {
-                #[cfg(any(feature = "keccak_160_lsb", feature = "keccak_248_lsb"))]
-                {
-                    Keccak256::new()
-                }
-                #[cfg(any(feature = "blake2s_160_lsb", feature = "blake2s_248_lsb"))]
-                {
-                    Blake2s256::new()
-                }
-            };
+            // let mut hasher = {
+            //     #[cfg(any(feature = "keccak_160_lsb", feature = "keccak_248_lsb"))]
+            //     {
+            //         Keccak256::new()
+            //     }
+            //     #[cfg(any(feature = "blake2s_160_lsb", feature = "blake2s_248_lsb"))]
+            //     {
+            //         Blake2s256::new()
+            //     }
+            // };
 
-            hasher.update(&data);
+            // hasher.update(&data);
 
-            {
-                #[cfg(any(feature = "keccak_160_lsb", feature = "blake2s_160_lsb"))]
-                {
-                    Felt::from_bytes_be_slice(&hasher.finalize().as_slice()[12..32])
-                }
+            // {
+            //     #[cfg(any(feature = "keccak_160_lsb", feature = "blake2s_160_lsb"))]
+            //     {
+            //         Felt::from_bytes_be_slice(&hasher.finalize().as_slice()[12..32])
+            //     }
 
-                #[cfg(any(feature = "keccak_248_lsb", feature = "blake2s_248_lsb"))]
-                {
-                    Felt::from_bytes_be_slice(&hasher.finalize().as_slice()[1..32])
-                }
-            }
+            //     #[cfg(any(feature = "keccak_248_lsb", feature = "blake2s_248_lsb"))]
+            //     {
+            //         Felt::from_bytes_be_slice(&hasher.finalize().as_slice()[1..32])
+            //     }
+            // }
         };
 
         vector_queries.push(Query { index: queries[i], value: hash })

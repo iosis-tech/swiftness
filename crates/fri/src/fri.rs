@@ -4,7 +4,7 @@ use starknet_crypto::Felt;
 use swiftness_commitment::table::{
     commit::table_commit,
     config::Config as TableCommitmentConfig,
-    decommit::table_decommit,
+    decommit::{table_decommit, MONTGOMERY_R},
     types::{Commitment as TableCommitment, Decommitment as TableDecommitment},
 };
 use swiftness_transcript::transcript::Transcript;
@@ -129,7 +129,12 @@ fn fri_verify_layers(
         let _ = table_decommit(
             &target_commitment,
             &verify_indices,
-            &TableDecommitment { values: FunVec::from_vec(verify_y_values) },
+            &TableDecommitment {
+                montgomery_values: FunVec::from_vec(
+                    verify_y_values.iter().map(|y| y * MONTGOMERY_R).collect(),
+                ),
+                values: FunVec::from_vec(verify_y_values),
+            },
             &target_layer_witness_table_withness,
         );
 

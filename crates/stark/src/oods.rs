@@ -38,16 +38,13 @@ pub fn verify_oods<Layout: LayoutTrait>(
     // TODO support degree > 2?
     let claimed_composition = oods[oods.len() - 2] + oods[oods.len() - 1] * oods_point;
 
-    let x = assure!(
+    assure!(
         composition_from_trace == claimed_composition,
         OodsVerifyError::EvaluationInvalid {
             expected: claimed_composition,
             actual: composition_from_trace
         }
-    );
-
-    // x.unwrap();
-    Ok(())
+    )
 }
 
 use swiftness_transcript::assure;
