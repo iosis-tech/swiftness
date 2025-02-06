@@ -18,7 +18,7 @@ pub struct Commitment {
 
 // A query to the vector commitment.
 #[serde_as]
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Serialize, Deserialize)]
 pub struct Query {
     #[cfg_attr(
         feature = "std",

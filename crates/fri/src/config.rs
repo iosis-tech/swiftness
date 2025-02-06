@@ -12,7 +12,7 @@ const MAX_FRI_STEP: u64 = 4;
 const MIN_FRI_STEP: u64 = 1;
 
 #[serde_as]
-#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Serialize, Deserialize)]
 pub struct Config {
     // Log2 of the size of the input layer to FRI.
     #[cfg_attr(

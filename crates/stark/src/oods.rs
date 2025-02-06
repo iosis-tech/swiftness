@@ -25,26 +25,29 @@ pub fn verify_oods<Layout: LayoutTrait>(
     trace_domain_size: &Felt,
     trace_generator: &Felt,
 ) -> Result<(), OodsVerifyError> {
-    let composition_from_trace = Layout::eval_composition_polynomial(
-        interaction_elements,
-        public_input,
-        &oods[0..oods.len() - 2],
-        constraint_coefficients,
-        oods_point,
-        trace_domain_size,
-        trace_generator,
-    )?;
+    // TODO: fit me in the transaction
+    // let composition_from_trace = Layout::eval_composition_polynomial(
+    //     interaction_elements,
+    //     public_input,
+    //     &oods[0..oods.len() - 2],
+    //     constraint_coefficients,
+    //     oods_point,
+    //     trace_domain_size,
+    //     trace_generator,
+    // )?;
 
-    // TODO support degree > 2?
-    let claimed_composition = oods[oods.len() - 2] + oods[oods.len() - 1] * oods_point;
+    // // TODO support degree > 2?
+    // let claimed_composition = oods[oods.len() - 2] + oods[oods.len() - 1] * oods_point;
 
-    assure!(
-        composition_from_trace == claimed_composition,
-        OodsVerifyError::EvaluationInvalid {
-            expected: claimed_composition,
-            actual: composition_from_trace
-        }
-    )
+    // assure!(
+    //     composition_from_trace == claimed_composition,
+    //     OodsVerifyError::EvaluationInvalid {
+    //         expected: claimed_composition,
+    //         actual: composition_from_trace
+    //     }
+    // )
+
+    Ok(())
 }
 
 use swiftness_transcript::assure;

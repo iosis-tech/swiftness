@@ -1,6 +1,6 @@
 use super::config::Config;
-use crate::vector;
-use funvec::{FunVec, FUNVEC_DECOMMITMENT_VALUES};
+use crate::vector::{self, types::Query};
+use funvec::{FunVec, FUNVEC_DECOMMITMENT_VALUES, FUNVEC_QUERIES};
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
 use starknet_crypto::Felt;
@@ -15,7 +15,7 @@ pub struct Commitment {
 // Responses for queries to the table commitment.
 // Each query corresponds to a full row of the table.
 #[serde_as]
-#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Serialize, Deserialize)]
 pub struct Decommitment {
     // n_columns * n_queries values to decommit.
     #[cfg_attr(

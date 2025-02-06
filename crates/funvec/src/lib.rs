@@ -10,6 +10,7 @@ pub const FUNVEC_LAST_LAYER: usize = 256;
 pub const FUNVEC_DECOMMITMENT_VALUES: usize = 256;
 pub const FUNVEC_PAGES: usize = 1024;
 pub const FUNVEC_SEGMENTS: usize = 12;
+pub const FUNVEC_QUERIES: usize = 128;
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct FunVec<T: Default, const N: usize> {
@@ -57,6 +58,18 @@ impl<T: Copy + Default, const N: usize> FunVec<T, N> {
 
     pub fn as_slice(&self) -> &[T] {
         &self.data[..self.len]
+    }
+
+    pub fn as_slice_mut(&mut self) -> &mut [T] {
+        &mut self.data[..self.len]
+    }
+
+    pub fn unchecked_slice(&self, len: usize) -> &[T] {
+        &self.data[..len]
+    }
+
+    pub fn unchecked_slice_mut(&mut self, len: usize) -> &mut [T] {
+        &mut self.data[..len]
     }
 
     pub fn len(&self) -> usize {

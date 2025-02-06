@@ -8,7 +8,7 @@ use starknet_crypto::Felt;
 // Commitment values for FRI. Used to generate a commitment by "reading" these values
 // from the transcript.
 #[serde_as]
-#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Serialize, Deserialize)]
 pub struct UnsentCommitment {
     // Array of size n_layers - 1 containing unsent table commitments for each inner layer.
     #[cfg_attr(
@@ -65,7 +65,7 @@ pub struct Decommitment {
 }
 
 // A witness for the decommitment of the FRI layers over queries.
-#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Serialize, Deserialize)]
 pub struct Witness {
     // An array of size n_layers - 1, containing a witness for each inner layer.
     pub layers: FunVec<LayerWitness, FUNVEC_LAYERS>,

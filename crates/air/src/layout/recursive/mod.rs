@@ -14,7 +14,10 @@ use alloc::vec::Vec;
 use global_values::{EcPoint, GlobalValues, InteractionElements};
 use starknet_core::types::NonZeroFelt;
 use starknet_crypto::Felt;
-use swiftness_commitment::table::{commit::table_commit, decommit::table_decommit};
+use swiftness_commitment::{
+    table::{commit::table_commit, decommit::table_decommit},
+    CacheCommitment,
+};
 use swiftness_transcript::ensure;
 
 use super::{
@@ -262,18 +265,26 @@ impl LayoutTrait for Layout {
         }
     }
     fn traces_decommit(
+        cache: &mut CacheCommitment,
         queries: &[Felt],
         commitment: &crate::trace::Commitment<Self::InteractionElements>,
         decommitment: &crate::trace::Decommitment,
         witness: &crate::trace::Witness,
     ) -> Result<(), crate::trace::decommit::Error> {
-        Ok(table_decommit(&commitment.original, queries, &decommitment.original, &witness.original)
-            .and(table_decommit(
-                &commitment.interaction,
-                queries,
-                &decommitment.interaction,
-                &witness.interaction,
-            ))?)
+        Ok(table_decommit(
+            cache,
+            &commitment.original,
+            queries,
+            &decommitment.original,
+            &witness.original,
+        )
+        .and(table_decommit(
+            cache,
+            &commitment.interaction,
+            queries,
+            &decommitment.interaction,
+            &witness.interaction,
+        ))?)
     }
     fn validate_public_input(
         public_input: &PublicInput,

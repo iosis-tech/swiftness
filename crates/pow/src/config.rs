@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 const MAX_PROOF_OF_WORK_BITS: u8 = 50;
 const MIN_PROOF_OF_WORK_BITS: u8 = 20;
 
-#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Serialize, Deserialize)]
 pub struct Config {
     // Proof of work difficulty (number of bits required to be 0).
     pub n_bits: u8,

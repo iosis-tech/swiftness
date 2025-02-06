@@ -1,11 +1,14 @@
 use alloc::{borrow::ToOwned, vec::Vec};
 use funvec::FunVec;
 use starknet_crypto::Felt;
-use swiftness_commitment::table::{
-    commit::table_commit,
-    config::Config as TableCommitmentConfig,
-    decommit::{table_decommit, MONTGOMERY_R},
-    types::{Commitment as TableCommitment, Decommitment as TableDecommitment},
+use swiftness_commitment::{
+    table::{
+        commit::table_commit,
+        config::Config as TableCommitmentConfig,
+        decommit::{table_decommit, MONTGOMERY_R},
+        types::{Commitment as TableCommitment, Decommitment as TableDecommitment},
+    },
+    CacheCommitment,
 };
 use swiftness_transcript::transcript::Transcript;
 
@@ -97,6 +100,7 @@ pub fn fri_commit(
 }
 
 fn fri_verify_layers(
+    cache: &mut CacheCommitment,
     fri_group: Vec<Felt>,
     n_layers: Felt,
     commitment: Vec<TableCommitment>,
@@ -127,6 +131,7 @@ fn fri_verify_layers(
 
         // Table decommitment.
         let _ = table_decommit(
+            cache,
             &target_commitment,
             &verify_indices,
             &TableDecommitment {
@@ -146,6 +151,7 @@ fn fri_verify_layers(
 
 // FRI protocol component decommitment.
 pub fn fri_verify(
+    cache: &mut CacheCommitment,
     queries: &[Felt],
     commitment: &FriCommitment,
     decommitment: &FriDecommitment,
@@ -171,6 +177,7 @@ pub fn fri_verify(
     let fri_step_sizes = commitment.config.fri_step_sizes.to_vec();
     // Verify inner layers.
     let last_queries = fri_verify_layers(
+        cache,
         fri_group,
         commitment.config.n_layers - 1,
         commitment.inner_layers.to_vec(),

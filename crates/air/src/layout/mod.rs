@@ -9,25 +9,26 @@ use num_bigint::{BigInt, TryFromBigIntError};
 use starknet_core::types::NonZeroFelt;
 use starknet_crypto::{pedersen_hash, Felt};
 use starknet_types_core::felt::FeltIsZeroError;
+use swiftness_commitment::CacheCommitment;
 use swiftness_transcript::transcript::Transcript;
 
 mod errors;
 pub use errors::*;
 
-#[cfg(feature = "dex")]
-pub mod dex;
-#[cfg(feature = "dynamic")]
-pub mod dynamic;
+// #[cfg(feature = "dex")]
+// pub mod dex;
+// #[cfg(feature = "dynamic")]
+// pub mod dynamic;
 #[cfg(feature = "recursive")]
 pub mod recursive;
-#[cfg(feature = "recursive_with_poseidon")]
-pub mod recursive_with_poseidon;
-#[cfg(feature = "small")]
-pub mod small;
-#[cfg(feature = "starknet")]
-pub mod starknet;
-#[cfg(feature = "starknet_with_keccak")]
-pub mod starknet_with_keccak;
+// #[cfg(feature = "recursive_with_poseidon")]
+// pub mod recursive_with_poseidon;
+// #[cfg(feature = "small")]
+// pub mod small;
+// #[cfg(feature = "starknet")]
+// pub mod starknet;
+// #[cfg(feature = "starknet_with_keccak")]
+// pub mod starknet_with_keccak;
 
 // StarkCurve
 pub mod stark_curve {
@@ -87,6 +88,7 @@ pub trait LayoutTrait {
     ) -> crate::trace::Commitment<Self::InteractionElements>;
 
     fn traces_decommit(
+        cache: &mut CacheCommitment,
         queries: &[Felt],
         commitment: &crate::trace::Commitment<Self::InteractionElements>,
         decommitment: &crate::trace::Decommitment,

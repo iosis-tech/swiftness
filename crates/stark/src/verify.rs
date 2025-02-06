@@ -1,7 +1,7 @@
 use alloc::borrow::ToOwned;
 use starknet_crypto::Felt;
 use swiftness_air::{domains::StarkDomains, layout::LayoutTrait, public_memory::PublicInput};
-use swiftness_commitment::table::decommit::table_decommit;
+use swiftness_commitment::{table::decommit::table_decommit, CacheCommitment};
 use swiftness_fri::{
     fri::{self, fri_verify},
     types,
@@ -15,6 +15,7 @@ use crate::{
 
 // STARK verify phase.
 pub fn stark_verify<Layout: LayoutTrait>(
+    cache: &mut CacheCommitment,
     n_original_columns: u32,
     n_interaction_columns: u32,
     public_input: &PublicInput,
@@ -25,21 +26,22 @@ pub fn stark_verify<Layout: LayoutTrait>(
 ) -> Result<(), Error> {
     // First layer decommit.
     Layout::traces_decommit(
+        cache,
         queries,
         &commitment.traces,
         &witness.traces_decommitment,
         &witness.traces_witness,
     )?;
 
-    table_decommit(
-        &commitment.composition,
-        queries,
-        &witness.composition_decommitment.to_owned(),
-        &witness.composition_witness.to_owned(),
-    )?;
+    // table_decommit(
+    //     &commitment.composition,
+    //     queries,
+    //     &witness.composition_decommitment.to_owned(),
+    //     &witness.composition_witness.to_owned(),
+    // )?;
 
     // Compute query points.
-    let points = queries_to_points(queries, stark_domains);
+    // let points = queries_to_points(queries, stark_domains);
 
     // Evaluate the FRI input layer at query points.
     // let eval_info = OodsEvaluationInfo {

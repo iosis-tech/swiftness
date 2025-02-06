@@ -1,7 +1,7 @@
 use crate::{
     commit::stark_commit,
     queries::generate_queries,
-    types::{StarkCommitment, StarkProof, StarkWitness},
+    types::{Cache, StarkProof, StarkWitness},
     verify::stark_verify,
 };
 use alloc::boxed::Box;
@@ -12,11 +12,13 @@ use swiftness_air::{
     layout::{GenericLayoutTrait, LayoutTrait, PublicInputError},
     public_memory::PublicInput,
 };
+pub use swiftness_commitment::CacheCommitment;
 use swiftness_transcript::transcript::Transcript;
 
 impl StarkProof {
     pub fn verify<Layout: GenericLayoutTrait + LayoutTrait>(
         &self,
+        cache: &mut Cache,
         security_bits: Felt,
     ) -> Result<(Felt, Vec<Felt>), Error> {
         let n_original_columns =
@@ -60,15 +62,16 @@ impl StarkProof {
         );
 
         // STARK verify phase.
-        // stark_verify::<Layout>(
-        //     n_original_columns,
-        //     n_interaction_columns,
-        //     &self.public_input,
-        //     &queries,
-        //     &*stark_commitment,
-        //     &self.witness,
-        //     &stark_domains,
-        // )?;
+        stark_verify::<Layout>(
+            &mut cache.commitment,
+            n_original_columns,
+            n_interaction_columns,
+            &self.public_input,
+            &queries,
+            &*stark_commitment,
+            &self.witness,
+            &stark_domains,
+        )?;
 
         Ok(Layout::verify_public_input(&self.public_input)?)
     }
