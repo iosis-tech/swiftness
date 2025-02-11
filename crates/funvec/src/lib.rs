@@ -1,6 +1,7 @@
 use std::ops::Deref;
 
 use serde::{Deserialize, Deserializer, Serialize};
+use solana_program::log::sol_log_64;
 
 pub const FUNVEC_LAYERS: usize = 5;
 pub const FUNVEC_OODS: usize = 256;
@@ -11,6 +12,55 @@ pub const FUNVEC_DECOMMITMENT_VALUES: usize = 256;
 pub const FUNVEC_PAGES: usize = 1024;
 pub const FUNVEC_SEGMENTS: usize = 12;
 pub const FUNVEC_QUERIES: usize = 128;
+
+pub fn print_address<T>(address: &T, label: u64) {
+    sol_log_64(
+        std::ptr::addr_of!(address) as u64,          // iteration
+        std::ptr::addr_of!(address) as u64 & 0x3fff, // input variable
+        std::ptr::addr_of!(address) as u64 & 0x3fff, // local variable
+        (std::ptr::addr_of!(address) as u64 - 0x200000000) >> 12, // frame number
+        label,
+    );
+}
+
+#[test]
+fn test_print_address() {
+    let a: u64 = 0x7ffcbd7e45d8;
+    let b: u64 = 0x688;
+
+    let a = a % 0x3fff - 2970;
+    assert_eq!(a, b);
+}
+
+#[inline(never)]
+pub fn print_frame(i: u64, label: u64) {
+    if i == 62 {
+        return; // otherwise we hit the max call depth
+    }
+
+    // Solana uses 4kB, so 4096 bytes, that gives us 14 bits to address the frame, so a mask of 0x3fff
+
+    let var = 10 * i;
+    // sol_log_64(
+    //     i,                                                                   // iteration
+    //     std::ptr::addr_of!(i) as u64 & 0x3fff,                               // input variable
+    //     std::ptr::addr_of!(var) as u64 & 0x3fff,                             // local variable
+    //     (std::ptr::addr_of!(var) as u64 & 0xfffffff000 - 0x200000000) >> 12, // frame number
+    //     label,
+    // );
+
+    sol_log_64(
+        std::ptr::addr_of!(var) as u64,                       // iteration
+        std::ptr::addr_of!(var) as u64 & 0x3fff,              // input variable
+        std::ptr::addr_of!(var) as u64 & 0x3fff,              // local variable
+        (std::ptr::addr_of!(var) as u64 - 0x200000000) >> 12, // frame number
+        label,
+    );
+
+    // 0x0, 0x7ffec715d0c0, 0x7ffec715d0c8, 0x7ffcc715d, 0x31
+
+    // print_frame(i + 1);
+}
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct FunVec<T: Default, const N: usize> {
@@ -84,6 +134,14 @@ impl<T: Copy + Default, const N: usize> FunVec<T, N> {
         &self.data[index]
     }
 
+    pub fn get(&self, index: usize) -> Option<&T> {
+        if index >= self.len {
+            None
+        } else {
+            Some(&self.data[index])
+        }
+    }
+
     pub fn at_mut(&mut self, index: usize) -> &mut T {
         &mut self.data[index]
     }
@@ -91,6 +149,16 @@ impl<T: Copy + Default, const N: usize> FunVec<T, N> {
     pub fn push(&mut self, value: T) {
         self.data[self.len] = value;
         self.len += 1;
+    }
+
+    pub fn push_uninitialized(&mut self) -> &mut T {
+        let index = self.len;
+        self.len += 1;
+        &mut self.data[index]
+    }
+
+    pub fn flush(&mut self) {
+        self.len = 0;
     }
 }
 

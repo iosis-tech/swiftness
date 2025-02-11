@@ -5,13 +5,13 @@ use swiftness_air::{
     public_memory::PublicInput,
     trace,
 };
-use swiftness_commitment::table;
+use swiftness_commitment::{table, CacheCommitment};
 
-pub struct OodsEvaluationInfo {
-    pub oods_values: Vec<Felt>,
-    pub oods_point: Felt,
-    pub trace_generator: Felt,
-    pub constraint_coefficients: Vec<Felt>,
+pub struct OodsEvaluationInfo<'a> {
+    pub oods_values: &'a Vec<Felt>,
+    pub oods_point: &'a Felt,
+    pub trace_generator: &'a Felt,
+    pub constraint_coefficients: &'a Vec<Felt>,
 }
 
 // Checks that the trace and the compostion agree at oods_point, assuming the prover provided us
@@ -26,26 +26,26 @@ pub fn verify_oods<Layout: LayoutTrait>(
     trace_generator: &Felt,
 ) -> Result<(), OodsVerifyError> {
     // TODO: fit me in the transaction
-    // let composition_from_trace = Layout::eval_composition_polynomial(
-    //     interaction_elements,
-    //     public_input,
-    //     &oods[0..oods.len() - 2],
-    //     constraint_coefficients,
-    //     oods_point,
-    //     trace_domain_size,
-    //     trace_generator,
-    // )?;
+    let composition_from_trace = Layout::eval_composition_polynomial(
+        interaction_elements,
+        public_input,
+        &oods[0..oods.len() - 2],
+        constraint_coefficients,
+        oods_point,
+        trace_domain_size,
+        trace_generator,
+    )?;
 
-    // // TODO support degree > 2?
-    // let claimed_composition = oods[oods.len() - 2] + oods[oods.len() - 1] * oods_point;
+    // TODO support degree > 2?
+    let claimed_composition = oods[oods.len() - 2] + oods[oods.len() - 1] * oods_point;
 
-    // assure!(
-    //     composition_from_trace == claimed_composition,
-    //     OodsVerifyError::EvaluationInvalid {
-    //         expected: claimed_composition,
-    //         actual: composition_from_trace
-    //     }
-    // )
+    assure!(
+        composition_from_trace == claimed_composition,
+        OodsVerifyError::EvaluationInvalid {
+            expected: claimed_composition,
+            actual: composition_from_trace
+        }
+    );
 
     Ok(())
 }
@@ -76,6 +76,7 @@ pub enum OodsVerifyError {
 }
 
 pub fn eval_oods_boundary_poly_at_points<Layout: LayoutTrait>(
+    cache: &mut CacheCommitment,
     n_original_columns: u32,
     n_interaction_columns: u32,
     public_input: &PublicInput,
@@ -107,15 +108,15 @@ pub fn eval_oods_boundary_poly_at_points<Layout: LayoutTrait>(
         );
 
         column_values.extend(
-            &decommitment.original.values.to_vec()
+            &decommitment.original.values.as_slice()
                 [i * n_original_columns as usize..(i + 1) * n_original_columns as usize],
         );
         column_values.extend(
-            &decommitment.interaction.values.to_vec()
+            &decommitment.interaction.values.as_slice()
                 [i * n_interaction_columns as usize..(i + 1) * n_interaction_columns as usize],
         );
         column_values.extend(
-            &composition_decommitment.values.to_vec()
+            &composition_decommitment.values.as_slice()
                 [i * Layout::CONSTRAINT_DEGREE..(i + 1) * Layout::CONSTRAINT_DEGREE],
         );
 

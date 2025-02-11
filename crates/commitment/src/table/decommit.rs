@@ -1,11 +1,15 @@
+use core::panic;
+
 use super::types::{Commitment, Decommitment, Witness};
 use crate::{
     vector::{decommit::vector_commitment_decommit, types::Query},
     CacheCommitment,
 };
+use alloc::boxed::Box;
 use alloc::vec::Vec;
 #[cfg(any(feature = "blake2s_160_lsb", feature = "blake2s_248_lsb"))]
 use blake2::{Blake2s256, Digest};
+use funvec::{print_address, print_frame};
 use num_bigint::{BigInt, TryFromBigIntError};
 #[cfg(any(feature = "keccak_160_lsb", feature = "keccak_248_lsb"))]
 use sha3::{Digest, Keccak256};
@@ -14,6 +18,7 @@ use starknet_crypto::{poseidon_hash_many, Felt};
 pub const MONTGOMERY_R: Felt =
     Felt::from_hex_unchecked("0x7FFFFFFFFFFFDF0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE1");
 
+#[inline(always)]
 pub fn table_decommit(
     cache: &mut CacheCommitment,
     commitment: &Commitment,
@@ -24,39 +29,53 @@ pub fn table_decommit(
     // TODO: uncomment
     // An extra layer is added to the height since the table is considered as a layer, which is not
     // included in vector_commitment.config.
-    // let bottom_layer_depth = commitment.vector_commitment.config.height + 1;
+    let bottom_layer_depth = Box::new(commitment.vector_commitment.config.height + 1);
 
-    // // Determine if the table commitment should use a verifier friendly hash function for the bottom
-    // // layer. The other layers' hash function will be determined in the vector_commitment logic.
-    // let is_bottom_layer_verifier_friendly =
-    //     commitment.vector_commitment.config.n_verifier_friendly_commitment_layers
-    //         >= bottom_layer_depth;
+    // Determine if the table commitment should use a verifier friendly hash function for the bottom
+    // layer. The other layers' hash function will be determined in the vector_commitment logic.
+    let is_bottom_layer_verifier_friendly =
+        &commitment.vector_commitment.config.n_verifier_friendly_commitment_layers
+            >= &bottom_layer_depth;
 
-    // let n_columns: u32 = commitment.config.n_columns.to_bigint().try_into()?;
-    // if n_columns as usize * queries.len() != decommitment.values.len() {
-    //     return Err(Error::DecommitmentLength);
-    // }
+    let n_columns: u32 = commitment.config.n_columns.to_bigint().try_into()?;
+    if n_columns as usize * queries.len() != decommitment.values.len() {
+        return Err(Error::DecommitmentLength);
+    }
 
     // // Convert decommitment values to Montgomery form, since the commitment is in that form.
-    // let montgomery_values = decommitment.montgomery_values.as_slice();
-    // for (m, v) in montgomery_values.iter().zip(decommitment.values.iter()) {
-    //     assert!(m == &(v * MONTGOMERY_R));
-    // }
+    let montgomery_values = decommitment.montgomery_values.as_slice();
+    for (m, v) in montgomery_values.iter().zip(decommitment.values.iter()) {
+        assert!(m == &(v * MONTGOMERY_R));
+    }
 
-    // let vector_queries = cache.vector_queries.unchecked_slice_mut(queries.len());
+    let CacheCommitment { vector_queries, shifted_queries, .. } = cache;
+    shifted_queries.flush();
+    assert_eq!(shifted_queries.len(), 0);
 
-    // let vector_queries = generate_vector_queries(
-    //     vector_queries,
-    //     queries,
-    //     &decommitment.montgomery_values.as_slice(),
-    //     n_columns,
-    //     is_bottom_layer_verifier_friendly,
-    // );
+    let vector_queries = vector_queries.unchecked_slice_mut(queries.len());
 
-    // Ok(vector_commitment_decommit(&commitment.vector_commitment, &vector_queries, witness.vector)?)
+    let vector_queries = generate_vector_queries(
+        vector_queries,
+        queries,
+        &decommitment.montgomery_values.as_slice(),
+        n_columns,
+        is_bottom_layer_verifier_friendly,
+    );
+
+    assert_eq!(vector_queries.len(), queries.len());
+
+    vector_commitment_decommit(
+        shifted_queries,
+        &commitment.vector_commitment,
+        &vector_queries,
+        &witness.vector,
+    )
+    .unwrap();
+
     Ok(())
 }
 
+#[inline(always)]
 fn generate_vector_queries<'a>(
     vector_queries: &'a mut [Query],
     queries: &[Felt],
@@ -64,8 +83,6 @@ fn generate_vector_queries<'a>(
     n_columns: u32,
     is_verifier_friendly: bool,
 ) -> &'a [Query] {
-    let mut qi = 0;
-
     for i in 0..queries.len() {
         let hash = if n_columns == 1 {
             values[i]
@@ -104,12 +121,11 @@ fn generate_vector_queries<'a>(
             // }
         };
 
-        vector_queries[qi] = Query { index: queries[i], value: hash };
-        qi += 1;
+        vector_queries[i] = Query { index: queries[i], value: hash };
     }
 
     // vector_queries
-    &vector_queries[0..qi]
+    &vector_queries[..queries.len()]
 }
 
 #[cfg(feature = "std")]

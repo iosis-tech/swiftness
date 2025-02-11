@@ -34,7 +34,7 @@ pub struct Query {
 
 // A query to the vector commitment that contains also the depth of the query in the Merkle tree.
 #[serde_as]
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Serialize, Deserialize)]
 pub struct QueryWithDepth {
     #[cfg_attr(
         feature = "std",

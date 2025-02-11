@@ -14,6 +14,7 @@ use crate::{
 };
 
 // STARK verify phase.
+#[inline(always)]
 pub fn stark_verify<Layout: LayoutTrait>(
     cache: &mut CacheCommitment,
     n_original_columns: u32,
@@ -33,24 +34,26 @@ pub fn stark_verify<Layout: LayoutTrait>(
         &witness.traces_witness,
     )?;
 
-    // table_decommit(
-    //     &commitment.composition,
-    //     queries,
-    //     &witness.composition_decommitment.to_owned(),
-    //     &witness.composition_witness.to_owned(),
-    // )?;
+    table_decommit(
+        cache,
+        &commitment.composition,
+        queries,
+        &witness.composition_decommitment,
+        &witness.composition_witness,
+    )?;
 
     // Compute query points.
-    // let points = queries_to_points(queries, stark_domains);
+    let points = queries_to_points(queries, stark_domains);
 
     // Evaluate the FRI input layer at query points.
-    // let eval_info = OodsEvaluationInfo {
-    //     oods_values: commitment.oods_values,
-    //     oods_point: commitment.interaction_after_composition,
-    //     trace_generator: stark_domains.trace_generator,
-    //     constraint_coefficients: commitment.interaction_after_oods,
-    // };
+    let eval_info = OodsEvaluationInfo {
+        oods_values: &commitment.oods_values,
+        oods_point: &commitment.interaction_after_composition,
+        trace_generator: &stark_domains.trace_generator,
+        constraint_coefficients: &commitment.interaction_after_oods,
+    };
     // let oods_poly_evals = eval_oods_boundary_poly_at_points::<Layout>(
+    //     cache,
     //     n_original_columns,
     //     n_interaction_columns,
     //     public_input,

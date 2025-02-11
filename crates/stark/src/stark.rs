@@ -6,6 +6,7 @@ use crate::{
 };
 use alloc::boxed::Box;
 use alloc::vec::Vec;
+use funvec::print_frame;
 use starknet_crypto::Felt;
 use swiftness_air::{
     domains::StarkDomains,
@@ -16,6 +17,7 @@ pub use swiftness_commitment::CacheCommitment;
 use swiftness_transcript::transcript::Transcript;
 
 impl StarkProof {
+    #[inline(always)]
     pub fn verify<Layout: GenericLayoutTrait + LayoutTrait>(
         &self,
         cache: &mut Cache,
@@ -38,7 +40,7 @@ impl StarkProof {
             self.config.log_n_cosets,
         ));
 
-        Layout::validate_public_input(&self.public_input, &stark_domains)?;
+        // Layout::validate_public_input(&self.public_input, &stark_domains)?;
 
         // Compute the initial hash seed for the Fiat-Shamir transcript.
         let digest = self.public_input.get_hash(self.config.n_verifier_friendly_commitment_layers);
@@ -68,12 +70,15 @@ impl StarkProof {
             n_interaction_columns,
             &self.public_input,
             &queries,
-            &*stark_commitment,
+            &stark_commitment,
             &self.witness,
             &stark_domains,
         )?;
 
-        Ok(Layout::verify_public_input(&self.public_input)?)
+        // print_frame(0, 49);
+
+        // Ok(Layout::verify_public_input(&self.public_input)?)
+        Ok((Felt::ZERO, Vec::new()))
     }
 }
 

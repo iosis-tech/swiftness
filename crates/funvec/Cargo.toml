@@ -10,3 +10,4 @@ version.workspace = true
 [dependencies]
 serde = { workspace = true, features = ["derive"] }
 starknet-crypto.workspace = true
+solana-program = { git = "https://github.com/Okm165/solana.git", branch = "fix/deps" }
