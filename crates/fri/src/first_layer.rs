@@ -3,13 +3,13 @@ use funvec::{FunVec, FUNVEC_QUERIES};
 use starknet_core::types::NonZeroFelt;
 use starknet_crypto::Felt;
 
-use crate::layer::FriLayerQuery;
+use crate::{layer::FriLayerQuery, FriQueries};
 
 const FIELD_GENERATOR_INVERSE: Felt =
     Felt::from_hex_unchecked("0x2AAAAAAAAAAAAB0555555555555555555555555555555555555555555555556");
 
 pub fn gather_first_layer_queries<'a>(
-    fri_queries: &'a mut FunVec<FriLayerQuery, FUNVEC_QUERIES>,
+    fri_queries: &'a mut FriQueries,
     queries: &[Felt],
     evaluations: &[Felt],
     x_values: &[Felt],

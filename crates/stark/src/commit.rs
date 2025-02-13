@@ -9,7 +9,7 @@ use swiftness_transcript::transcript::Transcript;
 
 // STARK commitment phase.
 pub fn stark_commit<Layout: LayoutTrait>(
-    cache: &mut Cache,
+    cache: &mut CacheStark,
     transcript: &mut Transcript,
     public_input: &PublicInput,
     unsent_commitment: &StarkUnsentCommitment,
@@ -26,8 +26,14 @@ pub fn stark_commit<Layout: LayoutTrait>(
 
     // Generate interaction values after traces commitment.
     let composition_alpha = transcript.random_felt_to_prover();
+    powers_array(
+        cache.powers_array.powers_array.unchecked_slice_mut(Layout::N_CONSTRAINTS),
+        Felt::ONE,
+        composition_alpha,
+        Layout::N_CONSTRAINTS as u32,
+    );
     let traces_coefficients =
-        powers_array(Felt::ONE, composition_alpha, Layout::N_CONSTRAINTS as u32);
+        cache.powers_array.powers_array.unchecked_slice(Layout::N_CONSTRAINTS);
 
     // Read composition commitment.
     let composition_commitment = FunBox::new(table_commit(
@@ -58,8 +64,15 @@ pub fn stark_commit<Layout: LayoutTrait>(
     // Generate interaction values after OODS.
     let oods_alpha = transcript.random_felt_to_prover();
 
-    let oods_coefficients =
-        powers_array(Felt::ONE, oods_alpha, (Layout::MASK_SIZE + Layout::CONSTRAINT_DEGREE) as u32);
+    cache.powers_array.powers_array.flush();
+    let n = Layout::MASK_SIZE + Layout::CONSTRAINT_DEGREE;
+    powers_array(
+        cache.powers_array.powers_array.unchecked_slice_mut(n),
+        Felt::ONE,
+        oods_alpha,
+        n as u32,
+    );
+    let oods_coefficients = cache.powers_array.powers_array.unchecked_slice(n);
 
     // Read fri commitment.
     let fri_commitment =
@@ -74,27 +87,25 @@ pub fn stark_commit<Layout: LayoutTrait>(
         composition: composition_commitment,
         interaction_after_composition,
         oods_values: unsent_commitment.oods_values.to_vec(),
-        interaction_after_oods: oods_coefficients,
+        interaction_after_oods: oods_coefficients.to_vec(),
         fri: fri_commitment,
     })
 }
 
-fn powers_array(initial: Felt, alpha: Felt, n: u32) -> Vec<Felt> {
-    let mut array = Vec::with_capacity(n as usize);
+fn powers_array(powers_array: &mut [Felt], initial: Felt, alpha: Felt, n: u32) {
+    // let mut array = Vec::with_capacity(n as usize);
     let mut value = initial;
 
-    for _ in 0..n {
-        array.push(value);
+    for i in 0..n as usize {
+        powers_array[i] = value;
         value *= alpha;
     }
-
-    array
 }
 
 use crate::{
     config::StarkConfig,
     oods::{self, verify_oods},
-    types::{Cache, StarkCommitment, StarkUnsentCommitment},
+    types::{Cache, CacheStark, StarkCommitment, StarkUnsentCommitment},
 };
 
 #[cfg(feature = "std")]

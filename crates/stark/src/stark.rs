@@ -1,7 +1,7 @@
 use crate::{
     commit::stark_commit,
     queries::generate_queries,
-    types::{Cache, StarkProof, StarkWitness},
+    types::{Cache, CacheStark, StarkProof, StarkWitness},
     verify::stark_verify,
 };
 use alloc::boxed::Box;
@@ -19,7 +19,7 @@ use swiftness_transcript::transcript::Transcript;
 impl StarkProof {
     #[inline(always)]
     pub fn verify<Layout: GenericLayoutTrait + LayoutTrait>(
-        &self,
+        &mut self,
         cache: &mut Cache,
         security_bits: Felt,
     ) -> Result<(Felt, Vec<Felt>), Error> {
@@ -35,10 +35,8 @@ impl StarkProof {
         )?;
 
         // Validate the public input.
-        let stark_domains = Box::new(StarkDomains::new(
-            self.config.log_trace_domain_size,
-            self.config.log_n_cosets,
-        ));
+        let stark_domains =
+            StarkDomains::new(self.config.log_trace_domain_size, self.config.log_n_cosets);
 
         Layout::validate_public_input(&self.public_input, &stark_domains)?;
 
@@ -48,9 +46,11 @@ impl StarkProof {
         // Construct the transcript.
         let mut transcript = Box::new(Transcript::new(digest));
 
+        let Cache { stark, verify } = cache;
+
         // // STARK commitment phase.
         let stark_commitment = Box::new(stark_commit::<Layout>(
-            cache,
+            stark,
             &mut transcript,
             &self.public_input,
             &self.unsent_commitment,
@@ -65,15 +65,18 @@ impl StarkProof {
             stark_domains.eval_domain_size,
         );
 
+        // Moves queries to the cache to free up memory.
+        let queries = cache.verify.queries.move_to(queries);
+
         // STARK verify phase.
         stark_verify::<Layout>(
-            cache,
+            stark,
             n_original_columns,
             n_interaction_columns,
             &self.public_input,
-            &queries,
+            queries,
             &stark_commitment,
-            &self.witness,
+            &mut self.witness,
             &stark_domains,
         )?;
 

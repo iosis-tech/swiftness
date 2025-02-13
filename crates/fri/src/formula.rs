@@ -17,7 +17,7 @@ fn fri_formula2(f_x: Felt, f_minus_x: Felt, eval_point: Felt, x_inv: Felt) -> Fe
 }
 
 // Function to fold 4 elements into one using 2 layers of FRI.
-fn fri_formula4(values: Vec<Felt>, eval_point: Felt, x_inv: Felt) -> Result<Felt, Error> {
+fn fri_formula4(values: &[Felt], eval_point: Felt, x_inv: Felt) -> Result<Felt, Error> {
     if values.len() != 4 {
         return Err(Error::InvalidValuesLength { expected: 4, got: values.len() });
     }
@@ -30,13 +30,13 @@ fn fri_formula4(values: Vec<Felt>, eval_point: Felt, x_inv: Felt) -> Result<Felt
 }
 
 // Function to fold 8 elements into one using 3 layers of FRI.
-fn fri_formula8(values: Vec<Felt>, eval_point: Felt, x_inv: Felt) -> Result<Felt, Error> {
+fn fri_formula8(values: &[Felt], eval_point: Felt, x_inv: Felt) -> Result<Felt, Error> {
     if values.len() != 8 {
         return Err(Error::InvalidValuesLength { expected: 8, got: values.len() });
     }
     // Applying the first layer of folding.
-    let g0 = fri_formula4(values[0..4].to_vec(), eval_point, x_inv)?;
-    let g1 = fri_formula4(values[4..8].to_vec(), eval_point, x_inv * OMEGA_8)?;
+    let g0 = fri_formula4(&values[0..4], eval_point, x_inv)?;
+    let g1 = fri_formula4(&values[4..8], eval_point, x_inv * OMEGA_8)?;
 
     // Preparing variables for the last layer.
     let eval_point2 = eval_point * eval_point;
@@ -49,13 +49,13 @@ fn fri_formula8(values: Vec<Felt>, eval_point: Felt, x_inv: Felt) -> Result<Felt
 }
 
 // Function to fold 16 elements into one using 4 layers of FRI.
-fn fri_formula16(values: Vec<Felt>, eval_point: Felt, x_inv: Felt) -> Result<Felt, Error> {
+fn fri_formula16(values: &[Felt], eval_point: Felt, x_inv: Felt) -> Result<Felt, Error> {
     if values.len() != 16 {
         return Err(Error::InvalidValuesLength { expected: 16, got: values.len() });
     }
     // Applying the first layer of folding.
-    let g0 = fri_formula8(values[0..8].to_vec(), eval_point, x_inv)?;
-    let g1 = fri_formula8(values[8..16].to_vec(), eval_point, x_inv * OMEGA_16)?;
+    let g0 = fri_formula8(&values[0..8], eval_point, x_inv)?;
+    let g1 = fri_formula8(&values[8..16], eval_point, x_inv * OMEGA_16)?;
 
     // Preparing variables for the last layer.
     let eval_point2 = eval_point * eval_point;
@@ -72,7 +72,7 @@ fn fri_formula16(values: Vec<Felt>, eval_point: Felt, x_inv: Felt) -> Result<Fel
 // Folds 'coset_size' elements into one using log2(coset_size) layers of FRI.
 // 'coset_size' can be 2, 4, 8, or 16.
 pub fn fri_formula(
-    values: Vec<Felt>,
+    values: &[Felt],
     eval_point: Felt,
     x_inv: Felt,
     coset_size: Felt,

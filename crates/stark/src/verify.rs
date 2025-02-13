@@ -10,19 +10,19 @@ use swiftness_fri::{
 use crate::{
     oods::{eval_oods_boundary_poly_at_points, OodsEvaluationInfo},
     queries::queries_to_points,
-    types::{Cache, StarkCommitment, StarkWitness},
+    types::{Cache, CacheStark, StarkCommitment, StarkWitness},
 };
 
 // STARK verify phase.
 #[inline(always)]
 pub fn stark_verify<Layout: LayoutTrait>(
-    cache: &mut Cache,
+    cache: &mut CacheStark,
     n_original_columns: u32,
     n_interaction_columns: u32,
     public_input: &PublicInput,
     queries: &[Felt],
     commitment: &StarkCommitment<Layout::InteractionElements>,
-    witness: &StarkWitness,
+    witness: &mut StarkWitness,
     stark_domains: &StarkDomains,
 ) -> Result<(), Error> {
     // First layer decommit.
@@ -68,7 +68,13 @@ pub fn stark_verify<Layout: LayoutTrait>(
 
     // Decommit FRI.
     let fri_decommitment = types::DecommitmentRef { values: oods_poly_evals, points };
-    fri_verify(&mut cache.fri, queries, &commitment.fri, &fri_decommitment, &witness.fri_witness)?;
+    fri_verify(
+        &mut cache.fri,
+        queries,
+        &commitment.fri,
+        &fri_decommitment,
+        &mut witness.fri_witness,
+    )?;
 
     Ok(())
 }

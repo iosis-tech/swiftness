@@ -173,6 +173,23 @@ impl<T: Copy + Default, const N: usize> FunVec<T, N> {
     pub fn inner(&mut self) -> &mut [T; N] {
         &mut self.data
     }
+
+    pub fn first(&self) -> Option<&T> {
+        self.data.first()
+    }
+
+    pub fn shift(&mut self, n: usize) {
+        for i in n..self.len {
+            self.data[i - n] = self.data[i];
+        }
+        self.len -= n;
+    }
+
+    pub fn move_to(&mut self, vec: Vec<T>) -> &[T] {
+        self.data[..vec.len()].copy_from_slice(&vec);
+        self.len = vec.len();
+        self.as_slice()
+    }
 }
 
 impl<'a, T: Copy + Default, const N: usize> IntoIterator for &'a FunVec<T, N> {

@@ -1,5 +1,5 @@
 use alloc::vec::Vec;
-use funvec::{FunBox, FunVec, FUNVEC_OODS};
+use funvec::{FunBox, FunVec, FUNVEC_OODS, FUNVEC_QUERIES};
 use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
 pub use starknet_crypto::Felt;
@@ -11,9 +11,35 @@ use crate::config;
 #[derive(Debug, Clone, Copy, Default, bytemuck::Zeroable, bytemuck::Pod)]
 #[repr(C)]
 pub struct Cache {
+    pub stark: CacheStark,
+    pub verify: VerifyCache,
+}
+
+#[derive(Debug, Clone, Copy, Default, bytemuck::Zeroable, bytemuck::Pod)]
+#[repr(C)]
+pub struct CacheStark {
     pub commitment: CacheCommitment,
     pub fri: FriVerifyCache,
+    pub powers_array: PowersArrayCache,
 }
+
+#[derive(Debug, Clone, Copy, Default)]
+#[repr(C)]
+pub struct PowersArrayCache {
+    pub powers_array: FunVec<Felt, 256>,
+}
+
+unsafe impl bytemuck::Pod for PowersArrayCache {}
+unsafe impl bytemuck::Zeroable for PowersArrayCache {}
+
+#[derive(Debug, Clone, Copy, Default)]
+#[repr(C)]
+pub struct VerifyCache {
+    pub queries: FunVec<Felt, FUNVEC_QUERIES>,
+}
+
+unsafe impl bytemuck::Pod for VerifyCache {}
+unsafe impl bytemuck::Zeroable for VerifyCache {}
 
 #[derive(
     Debug,
