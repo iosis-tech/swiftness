@@ -57,6 +57,7 @@ pub trait LayoutTrait {
     const MASK_SIZE: usize;
 
     fn eval_composition_polynomial(
+        powers: &mut [Felt; 34],
         interaction_elements: &Self::InteractionElements,
         public_input: &PublicInput,
         mask_values: &[Felt],
@@ -67,6 +68,7 @@ pub trait LayoutTrait {
     ) -> Result<Felt, CompositionPolyEvalError>;
 
     fn eval_oods_polynomial(
+        powers: &mut [Felt; 72],
         public_input: &PublicInput,
         column_values: &[Felt],
         oods_values: &[Felt],

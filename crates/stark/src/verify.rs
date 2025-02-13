@@ -10,13 +10,13 @@ use swiftness_fri::{
 use crate::{
     oods::{eval_oods_boundary_poly_at_points, OodsEvaluationInfo},
     queries::queries_to_points,
-    types::{StarkCommitment, StarkWitness},
+    types::{Cache, StarkCommitment, StarkWitness},
 };
 
 // STARK verify phase.
 #[inline(always)]
 pub fn stark_verify<Layout: LayoutTrait>(
-    cache: &mut CacheCommitment,
+    cache: &mut Cache,
     n_original_columns: u32,
     n_interaction_columns: u32,
     public_input: &PublicInput,
@@ -27,7 +27,7 @@ pub fn stark_verify<Layout: LayoutTrait>(
 ) -> Result<(), Error> {
     // First layer decommit.
     Layout::traces_decommit(
-        cache,
+        &mut cache.commitment,
         queries,
         &commitment.traces,
         &witness.traces_decommitment,
@@ -35,15 +35,18 @@ pub fn stark_verify<Layout: LayoutTrait>(
     )?;
 
     table_decommit(
-        cache,
+        &mut cache.commitment,
         &commitment.composition,
         queries,
         &witness.composition_decommitment,
         &witness.composition_witness,
     )?;
 
+    let CacheCommitment { points, eval_oods, .. } = &mut cache.commitment;
+
     // Compute query points.
-    let points = queries_to_points(queries, stark_domains);
+    let points =
+        queries_to_points(points.unchecked_slice_mut(queries.len()), queries, stark_domains);
 
     // Evaluate the FRI input layer at query points.
     let eval_info = OodsEvaluationInfo {
@@ -52,20 +55,21 @@ pub fn stark_verify<Layout: LayoutTrait>(
         trace_generator: &stark_domains.trace_generator,
         constraint_coefficients: &commitment.interaction_after_oods,
     };
-    // let oods_poly_evals = eval_oods_boundary_poly_at_points::<Layout>(
-    //     cache,
-    //     n_original_columns,
-    //     n_interaction_columns,
-    //     public_input,
-    //     &eval_info,
-    //     &points,
-    //     &witness.traces_decommitment,
-    //     &witness.composition_decommitment,
-    // );
+    let oods_poly_evals = eval_oods_boundary_poly_at_points::<Layout>(
+        eval_oods,
+        n_original_columns,
+        n_interaction_columns,
+        public_input,
+        &eval_info,
+        &points,
+        &witness.traces_decommitment,
+        &witness.composition_decommitment,
+    );
 
-    // // Decommit FRI.
-    // let fri_decommitment = types::Decommitment { values: oods_poly_evals, points };
-    // Ok(fri_verify(queries, &*commitment.fri, &fri_decommitment, &witness.fri_witness)?)
+    // Decommit FRI.
+    let fri_decommitment = types::DecommitmentRef { values: oods_poly_evals, points };
+    fri_verify(&mut cache.fri, queries, &commitment.fri, &fri_decommitment, &witness.fri_witness)?;
+
     Ok(())
 }
 

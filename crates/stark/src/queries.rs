@@ -27,8 +27,12 @@ pub fn generate_queries(
     samples
 }
 
-pub fn queries_to_points(queries: &[Felt], stark_domains: &StarkDomains) -> Vec<Felt> {
-    let mut points = Vec::<Felt>::new();
+pub fn queries_to_points<'a>(
+    points: &'a mut [Felt],
+    queries: &[Felt],
+    stark_domains: &StarkDomains,
+) -> &'a [Felt] {
+    assert_eq!(points.len(), queries.len());
 
     // Evaluation domains of size greater than 2**64 are not supported
     assert!((stark_domains.log_eval_domain_size) <= MAX_DOMAIN_SIZE);
@@ -37,9 +41,9 @@ pub fn queries_to_points(queries: &[Felt], stark_domains: &StarkDomains) -> Vec<
     // multiplied by 2**(64 - log_eval_domain_size) first.
     let shift = Felt::TWO.pow_felt(&(MAX_DOMAIN_SIZE - stark_domains.log_eval_domain_size));
 
-    for query in queries {
+    for (i, query) in queries.iter().enumerate() {
         let index: u64 = (query * shift).to_bigint().try_into().unwrap();
-        points.push(FIELD_GENERATOR * stark_domains.eval_generator.pow(index.reverse_bits()))
+        points[i] = FIELD_GENERATOR * stark_domains.eval_generator.pow(index.reverse_bits())
     }
-    points
+    &points[0..queries.len()]
 }

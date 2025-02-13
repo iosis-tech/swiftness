@@ -40,15 +40,17 @@ impl StarkProof {
             self.config.log_n_cosets,
         ));
 
-        // Layout::validate_public_input(&self.public_input, &stark_domains)?;
+        Layout::validate_public_input(&self.public_input, &stark_domains)?;
 
         // Compute the initial hash seed for the Fiat-Shamir transcript.
-        let digest = self.public_input.get_hash(self.config.n_verifier_friendly_commitment_layers);
+        let digest: Felt =
+            self.public_input.get_hash(self.config.n_verifier_friendly_commitment_layers);
         // Construct the transcript.
         let mut transcript = Box::new(Transcript::new(digest));
 
         // // STARK commitment phase.
         let stark_commitment = Box::new(stark_commit::<Layout>(
+            cache,
             &mut transcript,
             &self.public_input,
             &self.unsent_commitment,
@@ -65,7 +67,7 @@ impl StarkProof {
 
         // STARK verify phase.
         stark_verify::<Layout>(
-            &mut cache.commitment,
+            cache,
             n_original_columns,
             n_interaction_columns,
             &self.public_input,

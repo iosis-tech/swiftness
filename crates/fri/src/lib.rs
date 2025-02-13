@@ -1,5 +1,8 @@
 #![no_std]
 
+use funvec::{FunVec, FUNVEC_QUERIES};
+use layer::FriLayerQuery;
+
 extern crate alloc;
 
 #[cfg(feature = "std")]
@@ -18,3 +21,11 @@ pub mod types;
 pub mod fixtures;
 #[cfg(test)]
 pub mod tests;
+
+#[derive(Debug, Clone, Copy, Default)]
+pub struct FriVerifyCache {
+    pub fri_queries: FunVec<FriLayerQuery, FUNVEC_QUERIES>,
+}
+
+unsafe impl bytemuck::Pod for FriVerifyCache {}
+unsafe impl bytemuck::Zeroable for FriVerifyCache {}

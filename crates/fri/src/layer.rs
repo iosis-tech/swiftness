@@ -7,7 +7,7 @@ pub struct FriLayerComputationParams {
     pub eval_point: Felt,
 }
 
-#[derive(PartialEq, Eq, Debug)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub struct FriLayerQuery {
     pub index: Felt,
     pub y_value: Felt,

@@ -2,13 +2,14 @@ use alloc::vec::Vec;
 use funvec::FunBox;
 use starknet_crypto::Felt;
 use swiftness_air::{domains::StarkDomains, layout::LayoutTrait, public_memory::PublicInput};
-use swiftness_commitment::table::commit::table_commit;
+use swiftness_commitment::{table::commit::table_commit, CacheCommitment};
 use swiftness_fri::fri::fri_commit;
 use swiftness_pow::pow;
 use swiftness_transcript::transcript::Transcript;
 
 // STARK commitment phase.
 pub fn stark_commit<Layout: LayoutTrait>(
+    cache: &mut Cache,
     transcript: &mut Transcript,
     public_input: &PublicInput,
     unsent_commitment: &StarkUnsentCommitment,
@@ -43,15 +44,16 @@ pub fn stark_commit<Layout: LayoutTrait>(
 
     // Check that the trace and the composition agree at oods_point.
     // TODO: uncomment
-    // verify_oods::<Layout>(
-    //     unsent_commitment.oods_values.as_slice(),
-    //     &traces_commitment.interaction_elements,
-    //     public_input,
-    //     &traces_coefficients,
-    //     &interaction_after_composition,
-    //     &stark_domains.trace_domain_size,
-    //     &stark_domains.trace_generator,
-    // )?;
+    verify_oods::<Layout>(
+        cache.commitment.verify_oods.inner(),
+        unsent_commitment.oods_values.as_slice(),
+        &traces_commitment.interaction_elements,
+        public_input,
+        &traces_coefficients,
+        &interaction_after_composition,
+        &stark_domains.trace_domain_size,
+        &stark_domains.trace_generator,
+    )?;
 
     // Generate interaction values after OODS.
     let oods_alpha = transcript.random_felt_to_prover();
@@ -92,7 +94,7 @@ fn powers_array(initial: Felt, alpha: Felt, n: u32) -> Vec<Felt> {
 use crate::{
     config::StarkConfig,
     oods::{self, verify_oods},
-    types::{StarkCommitment, StarkUnsentCommitment},
+    types::{Cache, StarkCommitment, StarkUnsentCommitment},
 };
 
 #[cfg(feature = "std")]

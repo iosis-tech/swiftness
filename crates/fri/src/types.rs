@@ -64,6 +64,24 @@ pub struct Decommitment {
     pub points: Vec<Felt>,
 }
 
+#[serde_as]
+#[derive(Debug, PartialEq)]
+pub struct DecommitmentRef<'a> {
+    // Array of size n_values, containing the values of the input layer at query indices.
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "Vec<starknet_core::serde::unsigned_field_element::UfeHex>")
+    )]
+    pub values: &'a [Felt],
+    // Array of size n_values, containing the field elements that correspond to the query indices
+    // (See queries_to_points).
+    #[cfg_attr(
+        feature = "std",
+        serde_as(as = "Vec<starknet_core::serde::unsigned_field_element::UfeHex>")
+    )]
+    pub points: &'a [Felt],
+}
+
 // A witness for the decommitment of the FRI layers over queries.
 #[derive(Debug, Default, Clone, Copy, PartialEq, Serialize, Deserialize)]
 pub struct Witness {

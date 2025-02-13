@@ -4,6 +4,7 @@ use serde::{Deserialize, Serialize};
 use serde_with::serde_as;
 pub use starknet_crypto::Felt;
 use swiftness_commitment::CacheCommitment;
+use swiftness_fri::{layer::FriLayerQuery, FriVerifyCache};
 
 use crate::config;
 
@@ -11,6 +12,7 @@ use crate::config;
 #[repr(C)]
 pub struct Cache {
     pub commitment: CacheCommitment,
+    pub fri: FriVerifyCache,
 }
 
 #[derive(

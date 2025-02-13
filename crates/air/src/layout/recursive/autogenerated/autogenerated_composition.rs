@@ -3,6 +3,7 @@ use starknet_crypto::Felt;
 use starknet_types_core::felt::NonZeroFelt;
 
 pub fn eval_composition_polynomial_inner(
+    powers: &mut [Felt; 34],
     mask_values: &[Felt],
     constraint_coefficients: &[Felt],
     point: &Felt,
@@ -10,82 +11,82 @@ pub fn eval_composition_polynomial_inner(
     global_values: &GlobalValues,
 ) -> Felt {
     // Compute powers.
-    let pow0 = point.pow_felt(&(global_values.trace_length.floor_div(&felt_nonzero!(FELT_2048))));
-    let pow1 = pow0 * pow0; // pow(point, (safe_div(global_values.trace_length, 1024))).
-    let pow2 = point.pow_felt(&(global_values.trace_length.floor_div(&felt_nonzero!(FELT_128))));
-    let pow3 = point.pow_felt(&(global_values.trace_length.floor_div(&felt_nonzero!(FELT_32))));
-    let pow4 = pow3 * pow3; // pow(point, (safe_div(global_values.trace_length, 16))).
-    let pow5 = point.pow_felt(&(global_values.trace_length.floor_div(&felt_nonzero!(FELT_4))));
-    let pow6 = pow5 * pow5; // pow(point, (safe_div(global_values.trace_length, 2))).
-    let pow7 = pow6 * pow6; // pow(point, global_values.trace_length).
-    let pow8 = trace_generator.pow_felt(&(global_values.trace_length - FELT_128));
-    let pow9 = trace_generator.pow_felt(&(global_values.trace_length - FELT_2048));
-    let pow10 = trace_generator.pow_felt(&(global_values.trace_length - FELT_1));
-    let pow11 = trace_generator.pow_felt(&(global_values.trace_length - FELT_4));
-    let pow12 = trace_generator.pow_felt(&(global_values.trace_length - FELT_2));
-    let pow13 = trace_generator.pow_felt(&(global_values.trace_length - FELT_16));
-    let pow14 =
+    powers[0] = point.pow_felt(&(global_values.trace_length.floor_div(&felt_nonzero!(FELT_2048))));
+    powers[1] = powers[0] * powers[0]; // pow(point, (safe_div(global_values.trace_length, 1024))).
+    powers[2] = point.pow_felt(&(global_values.trace_length.floor_div(&felt_nonzero!(FELT_128))));
+    powers[3] = point.pow_felt(&(global_values.trace_length.floor_div(&felt_nonzero!(FELT_32))));
+    powers[4] = powers[3] * powers[3]; // pow(point, (safe_div(global_values.trace_length, 16))).
+    powers[5] = point.pow_felt(&(global_values.trace_length.floor_div(&felt_nonzero!(FELT_4))));
+    powers[6] = powers[5] * powers[5]; // pow(point, (safe_div(global_values.trace_length, 2))).
+    powers[7] = powers[6] * powers[6]; // pow(point, global_values.trace_length).
+    powers[8] = trace_generator.pow_felt(&(global_values.trace_length - FELT_128));
+    powers[9] = trace_generator.pow_felt(&(global_values.trace_length - FELT_2048));
+    powers[10] = trace_generator.pow_felt(&(global_values.trace_length - FELT_1));
+    powers[11] = trace_generator.pow_felt(&(global_values.trace_length - FELT_4));
+    powers[12] = trace_generator.pow_felt(&(global_values.trace_length - FELT_2));
+    powers[13] = trace_generator.pow_felt(&(global_values.trace_length - FELT_16));
+    powers[14] =
         trace_generator.pow_felt(&(global_values.trace_length.floor_div(&felt_nonzero!(FELT_2))));
-    let pow15 = trace_generator
+    powers[15] = trace_generator
         .pow_felt(&((FELT_255 * global_values.trace_length).floor_div(&felt_nonzero!(FELT_256))));
-    let pow16 =
+    powers[16] =
         trace_generator.pow_felt(&(global_values.trace_length.floor_div(&felt_nonzero!(FELT_64))));
-    let pow17 = pow16 * pow16; // pow(trace_generator, (safe_div(global_values.trace_length, 32))).
-    let pow18 = pow16 * pow17; // pow(trace_generator, (safe_div((safe_mult(3, global_values.trace_length)), 64))).
-    let pow19 = pow16 * pow18; // pow(trace_generator, (safe_div(global_values.trace_length, 16))).
-    let pow20 = pow16 * pow19; // pow(trace_generator, (safe_div((safe_mult(5, global_values.trace_length)), 64))).
-    let pow21 = pow16 * pow20; // pow(trace_generator, (safe_div((safe_mult(3, global_values.trace_length)), 32))).
-    let pow22 = pow16 * pow21; // pow(trace_generator, (safe_div((safe_mult(7, global_values.trace_length)), 64))).
-    let pow23 = pow16 * pow22; // pow(trace_generator, (safe_div(global_values.trace_length, 8))).
-    let pow24 = pow16 * pow23; // pow(trace_generator, (safe_div((safe_mult(9, global_values.trace_length)), 64))).
-    let pow25 = pow16 * pow24; // pow(trace_generator, (safe_div((safe_mult(5, global_values.trace_length)), 32))).
-    let pow26 = pow16 * pow25; // pow(trace_generator, (safe_div((safe_mult(11, global_values.trace_length)), 64))).
-    let pow27 = pow16 * pow26; // pow(trace_generator, (safe_div((safe_mult(3, global_values.trace_length)), 16))).
-    let pow28 = pow16 * pow27; // pow(trace_generator, (safe_div((safe_mult(13, global_values.trace_length)), 64))).
-    let pow29 = pow16 * pow28; // pow(trace_generator, (safe_div((safe_mult(7, global_values.trace_length)), 32))).
-    let pow30 = pow16 * pow29; // pow(trace_generator, (safe_div((safe_mult(15, global_values.trace_length)), 64))).
-    let pow31 = trace_generator
+    powers[17] = powers[16] * powers[16]; // pow(trace_generator, (safe_div(global_values.trace_length, 32))).
+    powers[18] = powers[16] * powers[17]; // pow(trace_generator, (safe_div((safe_mult(3, global_values.trace_length)), 64))).
+    powers[19] = powers[16] * powers[18]; // pow(trace_generator, (safe_div(global_values.trace_length, 16))).
+    powers[20] = powers[16] * powers[19]; // pow(trace_generator, (safe_div((safe_mult(5, global_values.trace_length)), 64))).
+    powers[21] = powers[16] * powers[20]; // pow(trace_generator, (safe_div((safe_mult(3, global_values.trace_length)), 32))).
+    powers[22] = powers[16] * powers[21]; // pow(trace_generator, (safe_div((safe_mult(7, global_values.trace_length)), 64))).
+    powers[23] = powers[16] * powers[22]; // pow(trace_generator, (safe_div(global_values.trace_length, 8))).
+    powers[24] = powers[16] * powers[23]; // pow(trace_generator, (safe_div((safe_mult(9, global_values.trace_length)), 64))).
+    powers[25] = powers[16] * powers[24]; // pow(trace_generator, (safe_div((safe_mult(5, global_values.trace_length)), 32))).
+    powers[26] = powers[16] * powers[25]; // pow(trace_generator, (safe_div((safe_mult(11, global_values.trace_length)), 64))).
+    powers[27] = powers[16] * powers[26]; // pow(trace_generator, (safe_div((safe_mult(3, global_values.trace_length)), 16))).
+    powers[28] = powers[16] * powers[27]; // pow(trace_generator, (safe_div((safe_mult(13, global_values.trace_length)), 64))).
+    powers[29] = powers[16] * powers[28]; // pow(trace_generator, (safe_div((safe_mult(7, global_values.trace_length)), 32))).
+    powers[30] = powers[16] * powers[29]; // pow(trace_generator, (safe_div((safe_mult(15, global_values.trace_length)), 64))).
+    powers[31] = trace_generator
         .pow_felt(&((FELT_3 * global_values.trace_length).floor_div(&felt_nonzero!(FELT_4))));
-    let pow32 = pow27 * pow31; // pow(trace_generator, (safe_div((safe_mult(15, global_values.trace_length)), 16))).
-    let pow33 = pow18 * pow32; // pow(trace_generator, (safe_div((safe_mult(63, global_values.trace_length)), 64))).
+    powers[32] = powers[27] * powers[31]; // pow(trace_generator, (safe_div((safe_mult(15, global_values.trace_length)), 16))).
+    powers[33] = powers[18] * powers[32]; // pow(trace_generator, (safe_div((safe_mult(63, global_values.trace_length)), 64))).
 
     // Compute domains.
-    let domain0 = pow7 - FELT_1;
-    let domain1 = pow6 - FELT_1;
-    let domain2 = pow5 - FELT_1;
-    let domain3 = pow4 - pow32;
-    let domain4 = pow4 - FELT_1;
-    let domain5 = pow3 - FELT_1;
-    let domain6 = pow2 - FELT_1;
-    let domain7 = pow2 - pow31;
-    let temp = pow2 - pow16;
-    let temp = temp * (pow2 - pow17);
-    let temp = temp * (pow2 - pow18);
-    let temp = temp * (pow2 - pow19);
-    let temp = temp * (pow2 - pow20);
-    let temp = temp * (pow2 - pow21);
-    let temp = temp * (pow2 - pow22);
-    let temp = temp * (pow2 - pow23);
-    let temp = temp * (pow2 - pow24);
-    let temp = temp * (pow2 - pow25);
-    let temp = temp * (pow2 - pow26);
-    let temp = temp * (pow2 - pow27);
-    let temp = temp * (pow2 - pow28);
-    let temp = temp * (pow2 - pow29);
-    let temp = temp * (pow2 - pow30);
-    let domain8 = temp * (domain6);
-    let domain9 = pow1 - FELT_1;
-    let domain10 = pow1 - pow15;
-    let domain11 = pow1 - pow33;
-    let domain12 = pow0 - pow14;
-    let domain13 = pow0 - FELT_1;
-    let domain14 = point - pow13;
+    let domain0 = powers[7] - FELT_1;
+    let domain1 = powers[6] - FELT_1;
+    let domain2 = powers[5] - FELT_1;
+    let domain3 = powers[4] - powers[32];
+    let domain4 = powers[4] - FELT_1;
+    let domain5 = powers[3] - FELT_1;
+    let domain6 = powers[2] - FELT_1;
+    let domain7 = powers[2] - powers[31];
+    let temp = powers[2] - powers[16];
+    let temp = temp * (powers[2] - powers[17]);
+    let temp = temp * (powers[2] - powers[18]);
+    let temp = temp * (powers[2] - powers[19]);
+    let temp = temp * (powers[2] - powers[20]);
+    let temp = temp * (powers[2] - powers[21]);
+    let temp = temp * (powers[2] - powers[22]);
+    let temp = temp * (powers[2] - powers[23]);
+    let temp = temp * (powers[2] - powers[24]);
+    let temp = temp * (powers[2] - powers[25]);
+    let temp = temp * (powers[2] - powers[26]);
+    let temp = temp * (powers[2] - powers[27]);
+    let temp = temp * (powers[2] - powers[28]);
+    let temp = temp * (powers[2] - powers[29]);
+    let temp = temp * (powers[2] - powers[30]);
+    let domain8 = temp * (powers[2] - powers[6]);
+    let domain9 = powers[1] - FELT_1;
+    let domain10 = powers[1] - powers[15];
+    let domain11 = powers[1] - powers[33];
+    let domain12 = powers[0] - powers[14];
+    let domain13 = powers[0] - FELT_1;
+    let domain14 = point - powers[13];
     let domain15 = point - FELT_1;
-    let domain16 = point - pow12;
-    let domain17 = point - pow11;
-    let domain18 = point - pow10;
-    let domain19 = point - pow9;
-    let domain20 = point - pow8;
+    let domain16 = point - powers[12];
+    let domain17 = point - powers[11];
+    let domain18 = point - powers[10];
+    let domain19 = point - powers[9];
+    let domain20 = point - powers[8];
 
     // Fetch mask variables.
     let column0_row0 = mask_values[0];
