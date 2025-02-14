@@ -203,14 +203,14 @@ pub fn fri_verify(
         // fri_queries,
     );
 
-    // if Felt::from(commitment.last_layer_coefficients.len())
-    //     != Felt::TWO.pow_felt(&commitment.config.log_last_layer_degree_bound)
-    // {
-    //     return Err(Error::InvalidValue);
-    // };
+    if Felt::from(commitment.last_layer_coefficients.len())
+        != Felt::TWO.pow_felt(&commitment.config.log_last_layer_degree_bound)
+    {
+        return Err(Error::InvalidValue);
+    };
 
-    // verify_last_layer(last_queries, commitment.last_layer_coefficients.to_vec())
-    //     .map_err(|_| Error::LastLayerVerificationError)?;
+    verify_last_layer(last_queries, &commitment.last_layer_coefficients)
+        .map_err(|_| Error::LastLayerVerificationError)?;
 
     Ok(())
 }

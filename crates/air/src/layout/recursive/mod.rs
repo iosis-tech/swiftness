@@ -212,14 +212,6 @@ impl LayoutTrait for Layout {
             &global_values,
         );
 
-        // TODO: investigate
-        // assert_eq!(
-        //     value,
-        //     *Box::new(felt_hex!(
-        //         "0x2e0ff243a9bfba8500c75d871c83aba14a081eed961753c2fdbe10e5966a244"
-        //     ))
-        // );
-
         Ok(value)
     }
 

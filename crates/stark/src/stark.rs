@@ -80,10 +80,7 @@ impl StarkProof {
             &stark_domains,
         )?;
 
-        // print_frame(0, 49);
-
-        // Ok(Layout::verify_public_input(&self.public_input)?)
-        Ok((Felt::ZERO, Vec::new()))
+        Ok(Layout::verify_public_input(&self.public_input)?)
     }
 }
 

@@ -49,7 +49,6 @@ pub fn stark_commit<Layout: LayoutTrait>(
     transcript.read_felt_vector_from_prover(&unsent_commitment.oods_values.to_vec());
 
     // Check that the trace and the composition agree at oods_point.
-    // TODO: uncomment
     verify_oods::<Layout>(
         cache.commitment.verify_oods.inner(),
         unsent_commitment.oods_values.as_slice(),

@@ -27,7 +27,6 @@ pub fn verify_oods<Layout: LayoutTrait>(
     trace_domain_size: &Felt,
     trace_generator: &Felt,
 ) -> Result<(), OodsVerifyError> {
-    // TODO: fit me in the transaction
     let composition_from_trace = Layout::eval_composition_polynomial(
         powers,
         interaction_elements,
