@@ -47,9 +47,7 @@ pub fn verify_oods<Layout: LayoutTrait>(
             expected: claimed_composition,
             actual: composition_from_trace
         }
-    );
-
-    Ok(())
+    )
 }
 
 use swiftness_transcript::assure;
