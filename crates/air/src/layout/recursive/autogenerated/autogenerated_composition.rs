@@ -10,19 +10,6 @@ pub fn eval_composition_polynomial_inner(
     trace_generator: &Felt,
     global_values: &GlobalValues,
 ) -> Felt {
-    // let inputs = (
-    //     powers.to_vec(),
-    //     mask_values,
-    //     constraint_coefficients,
-    //     point,
-    //     trace_generator,
-    //     global_values,
-    // );
-
-    // let json = serde_json::to_string(&inputs).unwrap();
-    // std::fs::write("eval_composition_polynomial_inner.json", json).unwrap();
-
-    // Compute powers.
     // Compute powers.
     powers[0] = point.pow_felt(&(global_values.trace_length.floor_div(&felt_nonzero!(FELT_2048))));
     powers[1] = powers[0] * powers[0]; // pow(point, (safe_div(global_values.trace_length, 1024))).
@@ -87,7 +74,8 @@ pub fn eval_composition_polynomial_inner(
     let temp = temp * (powers[2] - powers[28]);
     let temp = temp * (powers[2] - powers[29]);
     let temp = temp * (powers[2] - powers[30]);
-    let domain8 = temp * (powers[2] - powers[6]);
+
+    let domain8 = temp * (domain6);
     let domain9 = powers[1] - FELT_1;
     let domain10 = powers[1] - powers[15];
     let domain11 = powers[1] - powers[33];
